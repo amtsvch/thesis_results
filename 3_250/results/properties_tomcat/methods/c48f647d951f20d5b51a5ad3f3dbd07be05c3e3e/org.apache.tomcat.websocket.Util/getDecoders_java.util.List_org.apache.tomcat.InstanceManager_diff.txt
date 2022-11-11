@@ -1,0 +1,35 @@
+                                                                                                     | /**                                                                                                 
+                                                                                                     | * Build the list of decoder entries from a set of decoder implementations.                          
+                                                                                                     | *                                                                                                   
+                                                                                                     | * @param decoderClazzes    Decoder implementation classes                                           
+                                                                                                     | * @param instanceManager   Instance manager to use to create Decoder                                
+                                                                                                     | *                              instances                                                            
+                                                                                                     | *                                                                                                   
+                                                                                                     | * @return List of mappings from target type to associated decoder                                   
+                                                                                                     | *                                                                                                   
+                                                                                                     | * @throws DeploymentException If a provided decoder class is not valid                              
+                                                                                                     | */                                                                                                  
+                                                                                                     | public static List&lt;DecoderEntry&gt; getDecoders(List&lt;Class&lt;? extends Decoder&gt;&gt; decode
+                                                                                                     | List&lt;DecoderEntry&gt; result = new ArrayList&lt;&gt;();                                          
+                                                                                                     | if (decoderClazzes != null) {                                                                       
+                                                                                                     | for (Class&lt;? extends Decoder&gt; decoderClazz : decoderClazzes) {                                
+                                                                                                     | // Need to instantiate decoder to ensure it is valid and that                                       
+                                                                                                     | // deployment can be failed if it is not                                                            
+                                                                                                     | Decoder instance;                                                                                   
+                                                                                                     | try {                                                                                               
+                                                                                                     | if (instanceManager == null) {                                                                      
+                                                                                                     | instance = decoderClazz.getConstructor().newInstance();                                             
+                                                                                                     | } else {                                                                                            
+                                                                                                     | instance = (Decoder) instanceManager.newInstance(decoderClazz);                                     
+                                                                                                     | // Don't need this instance, so destroy it                                                          
+                                                                                                     | instanceManager.destroyInstance(instance);                                                          
+                                                                                                     | }                                                                                                   
+                                                                                                     | } catch (ReflectiveOperationException | IllegalArgumentException | SecurityException | NamingExcepti
+                                                                                                     | throw new DeploymentException(sm.getString("pojoMethodMapping.invalidDecoder", decoderClazz.getName(
+                                                                                                     | }                                                                                                   
+                                                                                                     | DecoderEntry entry = new DecoderEntry(Util.getDecoderType(decoderClazz), decoderClazz);             
+                                                                                                     | result.add(entry);                                                                                  
+                                                                                                     | }                                                                                                   
+                                                                                                     | }                                                                                                   
+                                                                                                     | return result;                                                                                      
+                                                                                                     | }                                                                                                   

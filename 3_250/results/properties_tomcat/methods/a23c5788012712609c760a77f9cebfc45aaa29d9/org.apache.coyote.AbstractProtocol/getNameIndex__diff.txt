@@ -1,0 +1,7 @@
+// ---------------------------------------------------------- Public methods
+public synchronized int getNameIndex() {
+    if (nameIndex == 0) {
+        nameIndex = nameCounter.incrementAndGet();
+    }
+    return nameIndex;
+}

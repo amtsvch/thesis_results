@@ -1,0 +1,40 @@
+/**
+ * Start this component and implement the requirements of
+ * {@link org.apache.catalina.util.LifecycleBase#startInternal()}.
+ *
+ * @exception LifecycleException
+ *                if this component detects a fatal error that prevents this
+ *                component from being used
+ */
+@Override
+protected synchronized void startInternal() throws LifecycleException {
+    ServletContext servletContext = context.getServletContext();
+    jaspicAppContextID = servletContext.getVirtualServerName() + " " + servletContext.getContextPath();
+    // Look up the SingleSignOn implementation in our request processing
+    // path, if there is one
+    Container parent = context.getParent();
+    while ((sso == null) && (parent != null)) {
+        Valve[] valves = parent.getPipeline().getValves();
+        for (Valve valve : valves) {
+            if (valve instanceof SingleSignOn) {
+                sso = (SingleSignOn) valve;
+                break;
+            }
+        }
+        if (sso == null) {
+            parent = parent.getParent();
+        }
+    }
+    if (log.isDebugEnabled()) {
+        if (sso != null) {
+            log.debug("Found SingleSignOn Valve at " + sso);
+        } else {
+            log.debug("No SingleSignOn Valve is present");
+        }
+    }
+    sessionIdGenerator = new StandardSessionIdGenerator();
+    sessionIdGenerator.setSecureRandomAlgorithm(getSecureRandomAlgorithm());
+    sessionIdGenerator.setSecureRandomClass(getSecureRandomClass());
+    sessionIdGenerator.setSecureRandomProvider(getSecureRandomProvider());
+    super.startInternal();
+}

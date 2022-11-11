@@ -1,0 +1,24 @@
+@Test
+public void testErrorRealm() throws Exception {
+    Context context = new TesterContext();
+    JNDIRealm realm = new JNDIRealm();
+    realm.setContainer(context);
+    realm.setUserSearch("");
+    // Connect to something that will fail
+    realm.setConnectionURL("ldap://127.0.0.1:12345");
+    realm.start();
+    final CountDownLatch latch = new CountDownLatch(3);
+    (new Thread(() -> {
+        realm.authenticate("foo", "bar");
+        latch.countDown();
+    })).start();
+    (new Thread(() -> {
+        realm.authenticate("foo", "bar");
+        latch.countDown();
+    })).start();
+    (new Thread(() -> {
+        realm.authenticate("foo", "bar");
+        latch.countDown();
+    })).start();
+    Assert.assertTrue(latch.await(30, TimeUnit.SECONDS));
+}

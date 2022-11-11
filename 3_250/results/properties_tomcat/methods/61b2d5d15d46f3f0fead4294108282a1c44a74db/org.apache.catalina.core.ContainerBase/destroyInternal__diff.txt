@@ -1,0 +1,28 @@
+@Override
+protected void destroyInternal() throws LifecycleException {
+    Realm realm = getRealmInternal();
+    if (realm instanceof Lifecycle) {
+        ((Lifecycle) realm).destroy();
+    }
+    Cluster cluster = getClusterInternal();
+    if (cluster instanceof Lifecycle) {
+        ((Lifecycle) cluster).destroy();
+    }
+    // Stop the Valves in our pipeline (including the basic), if any
+    if (pipeline instanceof Lifecycle) {
+        ((Lifecycle) pipeline).destroy();
+    }
+    // Remove children now this container is being destroyed
+    for (Container child : findChildren()) {
+        removeChild(child);
+    }
+    // Required if the child is destroyed directly.
+    if (parent != null) {
+        parent.removeChild(this);
+    }
+    // If init fails, this may be null
+    if (startStopExecutor != null) {
+        startStopExecutor.shutdownNow();
+    }
+    super.destroyInternal();
+}

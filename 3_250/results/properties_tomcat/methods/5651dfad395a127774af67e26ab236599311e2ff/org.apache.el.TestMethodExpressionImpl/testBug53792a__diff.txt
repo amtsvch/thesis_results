@@ -1,0 +1,10 @@
+@Test
+public void testBug53792a() {
+    MethodExpression me = factory.createMethodExpression(context, "${beanA.setBean(beanB)}", null, new Class<?>[] { TesterBeanB.class });
+    me.invoke(context, null);
+    me = factory.createMethodExpression(context, "${beanB.setName('" + BUG53792 + "')}", null, new Class<?>[] { TesterBeanB.class });
+    me.invoke(context, null);
+    ValueExpression ve = factory.createValueExpression(context, "#{beanA.getBean().name}", java.lang.String.class);
+    String actual = (String) ve.getValue(context);
+    Assert.assertEquals(BUG53792, actual);
+}

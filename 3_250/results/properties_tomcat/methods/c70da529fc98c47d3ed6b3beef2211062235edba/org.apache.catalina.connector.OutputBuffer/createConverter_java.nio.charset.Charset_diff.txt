@@ -1,0 +1,16 @@
+private static C2BConverter createConverter(final Charset charset) throws IOException {
+    if (Globals.IS_SECURITY_ENABLED) {
+        try {
+            return AccessController.doPrivileged(new PrivilegedCreateConverter(charset));
+        } catch (PrivilegedActionException ex) {
+            Exception e = ex.getException();
+            if (e instanceof IOException) {
+                throw (IOException) e;
+            } else {
+                throw new IOException(ex);
+            }
+        }
+    } else {
+        return new C2BConverter(charset);
+    }
+}

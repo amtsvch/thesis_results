@@ -1,0 +1,10 @@
+// ----------------------------------------------------------- Constructors
+/**
+ * Create mapper listener.
+ *
+ * @param service The service this listener is associated with
+ */
+public MapperListener(Service service) {
+    this.service = service;
+    this.mapper = service.getMapper();
+}

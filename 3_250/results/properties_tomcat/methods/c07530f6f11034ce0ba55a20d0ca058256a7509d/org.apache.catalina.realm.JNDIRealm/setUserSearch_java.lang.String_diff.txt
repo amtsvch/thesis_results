@@ -1,0 +1,9 @@
+/**
+ * Set the message format pattern for selecting users in this Realm.
+ *
+ * @param userSearch The new user search pattern
+ */
+public void setUserSearch(String userSearch) {
+    this.userSearch = userSearch;
+    singleConnection = create();
+}

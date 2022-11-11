@@ -1,0 +1,6 @@
+public SimpleAuthConfigProvider(Map<String, String> properties, AuthConfigFactory factory) {
+    this.properties = properties;
+    if (factory != null) {
+        factory.registerConfigProvider(this, null, null, "Automatic registration");
+    }
+}

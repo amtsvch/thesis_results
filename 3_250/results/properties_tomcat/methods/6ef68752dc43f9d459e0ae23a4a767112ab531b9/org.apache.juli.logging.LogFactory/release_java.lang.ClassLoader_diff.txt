@@ -1,0 +1,16 @@
+/**
+ * Release any internal references to previously created {@link LogFactory}
+ * instances that have been associated with the specified class loader
+ * (if any), after calling the instance method <code>release()</code> on
+ * each of them.
+ *
+ * @param classLoader ClassLoader for which to release the LogFactory
+ */
+public static void release(ClassLoader classLoader) {
+    // JULI's log manager looks at the current classLoader so there is no
+    // need to use the passed in classLoader, the default implementation
+    // does not so calling reset in that case will break things
+    if (!LogManager.getLogManager().getClass().getName().equals("java.util.logging.LogManager")) {
+        LogManager.getLogManager().reset();
+    }
+}

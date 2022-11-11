@@ -1,0 +1,10 @@
+// -------------------- JMX registration  --------------------
+@Override
+protected String getDomainInternal() {
+    Service s = getService();
+    if (s == null) {
+        return null;
+    } else {
+        return service.getDomain();
+    }
+}

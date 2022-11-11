@@ -1,0 +1,15 @@
+// ------------------------------------------------------------ Constructor
+/**
+ * Construct a default instance of this class.
+ */
+public StandardServer() {
+    super();
+    globalNamingResources = new NamingResourcesImpl();
+    globalNamingResources.setContainer(this);
+    if (isUseNaming()) {
+        namingContextListener = new NamingContextListener();
+        addLifecycleListener(namingContextListener);
+    } else {
+        namingContextListener = null;
+    }
+}

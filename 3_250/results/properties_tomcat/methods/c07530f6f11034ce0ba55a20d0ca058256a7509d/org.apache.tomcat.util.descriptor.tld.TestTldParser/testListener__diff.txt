@@ -1,0 +1,8 @@
+@Test
+public void testListener() throws Exception {
+    TaglibXml xml = parse("test/tld/listener.tld");
+    Assert.assertEquals("1.0", xml.getTlibVersion());
+    List<String> listeners = xml.getListeners();
+    Assert.assertEquals(1, listeners.size());
+    Assert.assertEquals("org.apache.catalina.core.TesterTldListener", listeners.get(0));
+}

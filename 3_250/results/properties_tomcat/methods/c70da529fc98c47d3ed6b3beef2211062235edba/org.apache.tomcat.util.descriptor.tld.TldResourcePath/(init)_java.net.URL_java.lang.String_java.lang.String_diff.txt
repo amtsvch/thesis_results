@@ -1,0 +1,12 @@
+/**
+ * Constructor identifying a TLD packaged within a JAR file.
+ *
+ * @param url        the location of the JAR
+ * @param webappPath the web application path, if any, of the JAR
+ * @param entryName  the name of the entry in the JAR
+ */
+public TldResourcePath(URL url, String webappPath, String entryName) {
+    this.url = url;
+    this.webappPath = webappPath;
+    this.entryName = entryName;
+}

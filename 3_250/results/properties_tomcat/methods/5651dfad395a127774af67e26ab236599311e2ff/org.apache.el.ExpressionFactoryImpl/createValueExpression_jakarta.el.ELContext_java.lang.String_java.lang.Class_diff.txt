@@ -1,0 +1,8 @@
+@Override
+public ValueExpression createValueExpression(ELContext context, String expression, Class<?> expectedType) {
+    if (expectedType == null) {
+        throw new NullPointerException(MessageFactory.get("error.value.expectedType"));
+    }
+    ExpressionBuilder builder = new ExpressionBuilder(expression, context);
+    return builder.createValueExpression(expectedType);
+}

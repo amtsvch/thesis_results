@@ -1,0 +1,130 @@
+/**
+ * Process the end of this element.
+ *
+ * @param namespace the namespace URI of the matching element, or an
+ *   empty string if the parser is not namespace aware or the element has
+ *   no namespace
+ * @param name the local name if the parser is namespace aware, or just
+ *   the element name otherwise
+ */
+// parameters can't trigger NPE
+@SuppressWarnings("null")
+@Override
+public void end(String namespace, String name) throws Exception {
+    // Retrieve or construct the parameter values array
+    Object[] parameters = null;
+    if (paramCount > 0) {
+        parameters = (Object[]) digester.popParams();
+        if (digester.log.isTraceEnabled()) {
+            for (int i = 0, size = parameters.length; i < size; i++) {
+                digester.log.trace("[CallMethodRule](" + i + ")" + parameters[i]);
+            }
+        }
+        // In the case where the parameter for the method
+        // is taken from an attribute, and that attribute
+        // isn't actually defined in the source XML file,
+        // skip the method call
+        if (paramCount == 1 && parameters[0] == null) {
+            return;
+        }
+    } else if (paramTypes != null && paramTypes.length != 0) {
+        // In the case where the parameter for the method
+        // is taken from the body text, but there is no
+        // body text included in the source XML file,
+        // skip the method call
+        if (bodyText == null) {
+            return;
+        }
+        parameters = new Object[1];
+        parameters[0] = bodyText;
+    }
+    // Construct the parameter values array we will need
+    // We only do the conversion if the param value is a String and
+    // the specified paramType is not String.
+    Object[] paramValues = new Object[paramTypes.length];
+    for (int i = 0; i < paramTypes.length; i++) {
+        // convert nulls and convert stringy parameters
+        // for non-stringy param types
+        Object param = parameters[i];
+        // Tolerate null non-primitive values
+        if (null == param && !paramTypes[i].isPrimitive())
+            paramValues[i] = null;
+        else if (param instanceof String && !String.class.isAssignableFrom(paramTypes[i])) {
+            paramValues[i] = IntrospectionUtils.convert((String) parameters[i], paramTypes[i]);
+        } else {
+            paramValues[i] = parameters[i];
+        }
+    }
+    // Determine the target object for the method call
+    Object target;
+    if (targetOffset >= 0) {
+        target = digester.peek(targetOffset);
+    } else {
+        target = digester.peek(digester.getCount() + targetOffset);
+    }
+    if (target == null) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[CallMethodRule]{");
+        sb.append(digester.match);
+        sb.append("} Call target is null (");
+        sb.append("targetOffset=");
+        sb.append(targetOffset);
+        sb.append(",stackdepth=");
+        sb.append(digester.getCount());
+        sb.append(')');
+        throw new org.xml.sax.SAXException(sb.toString());
+    }
+    // Invoke the required method on the top object
+    if (digester.log.isDebugEnabled()) {
+        StringBuilder sb = new StringBuilder("[CallMethodRule]{");
+        sb.append(digester.match);
+        sb.append("} Call ");
+        sb.append(target.getClass().getName());
+        sb.append('.');
+        sb.append(methodName);
+        sb.append('(');
+        for (int i = 0; i < paramValues.length; i++) {
+            if (i > 0) {
+                sb.append(',');
+            }
+            if (paramValues[i] == null) {
+                sb.append("null");
+            } else {
+                sb.append(paramValues[i].toString());
+            }
+            sb.append('/');
+            if (paramTypes[i] == null) {
+                sb.append("null");
+            } else {
+                sb.append(paramTypes[i].getName());
+            }
+        }
+        sb.append(')');
+        digester.log.debug(sb.toString());
+    }
+    Object result = IntrospectionUtils.callMethodN(target, methodName, paramValues, paramTypes);
+    processMethodCallResult(result);
+    StringBuilder code = digester.getGeneratedCode();
+    if (code != null) {
+        code.append(digester.toVariableName(target)).append('.').append(methodName);
+        code.append('(');
+        for (int i = 0; i < paramValues.length; i++) {
+            if (i > 0) {
+                code.append(", ");
+            }
+            if (bodyText != null) {
+                StringBuilder bodyTextParam = new StringBuilder();
+                for (String bodyPart : bodyText.split("\n")) {
+                    bodyTextParam.append(bodyPart.trim()).append(' ');
+                }
+                code.append("\"").append(bodyTextParam.toString().trim().replace("\"", "\\\"")).append("\"");
+            } else if (paramValues[i] instanceof String) {
+                code.append("\"").append(paramValues[i].toString()).append("\"");
+            } else {
+                code.append(digester.toVariableName(paramValues[i]));
+            }
+        }
+        code.append(");");
+        code.append(System.lineSeparator());
+    }
+}

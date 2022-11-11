@@ -1,0 +1,9 @@
+@Test
+public void testSetContentType06() throws IOException {
+    Response response = setupResponse();
+    // Check calling with an unknown character set
+    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
+    response.setContentType(TEXT_UNKNOWN);
+    Assert.assertEquals(UNKNOWN, response.getCharacterEncoding());
+    response.getOutputStream();
+}

@@ -1,0 +1,44 @@
+protected void socketTimeouts() {
+    long now = System.currentTimeMillis();
+    if ((now - lastCheck) < getSelectorTimeout())
+        return;
+    // timeout
+    Selector tmpsel = this.selector.get();
+    Set<SelectionKey> keys = (isListening() && tmpsel != null) ? tmpsel.keys() : null;
+    if (keys == null)
+        return;
+    for (SelectionKey key : keys) {
+        try {
+            // if (key.interestOps() == SelectionKey.OP_READ) {
+            // //only timeout sockets that we are waiting for a read from
+            // ObjectReader ka = (ObjectReader) key.attachment();
+            // long delta = now - ka.getLastAccess();
+            // if (delta > (long) getTimeout()) {
+            // cancelledKey(key);
+            // }
+            // }
+            // else
+            if (key.interestOps() == 0) {
+                // check for keys that didn't make it in.
+                ObjectReader ka = (ObjectReader) key.attachment();
+                if (ka != null) {
+                    long delta = now - ka.getLastAccess();
+                    if (delta > getTimeout() && (!ka.isAccessed())) {
+                        if (log.isWarnEnabled())
+                            log.warn(sm.getString("nioReceiver.threadsExhausted", Integer.valueOf(getTimeout()), Boolean.valueOf(ka.isCancelled()), key, new java.sql.Timestamp(ka.getLastAccess())));
+                        ka.setLastAccess(now);
+                        // key.interestOps(SelectionKey.OP_READ);
+                    }
+                    // end if
+                } else {
+                    cancelledKey(key);
+                }
+                // end if
+            }
+            // end if
+        } catch (CancelledKeyException ckx) {
+            cancelledKey(key);
+        }
+    }
+    lastCheck = System.currentTimeMillis();
+}

@@ -1,0 +1,3 @@
+public static Member getMember(byte[] data, int offset, int length) {
+    return getMember(data, offset, length, new MemberImpl());
+}

@@ -1,0 +1,13 @@
+public static BufferPool getBufferPool() {
+    if (instance == null) {
+        synchronized (BufferPool.class) {
+            if (instance == null) {
+                BufferPool pool = new BufferPool();
+                pool.setMaxSize(DEFAULT_POOL_SIZE);
+                log.info(sm.getString("bufferPool.created", Integer.toString(DEFAULT_POOL_SIZE), pool.getClass().getName()));
+                instance = pool;
+            }
+        }
+    }
+    return instance;
+}

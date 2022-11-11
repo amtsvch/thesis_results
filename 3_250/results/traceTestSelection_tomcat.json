@@ -1,0 +1,621 @@
+{
+  "url" : "https://github.com/apache/tomcat.git",
+  "commits" : {
+    "abd1dead7804e99e3215e8e01a6cf7448a6b9f36" : { },
+    "dc0663818a4329b965eeb05f65456379fdccf938" : {
+      "testcases" : {
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ]
+      },
+      "predecessor" : "abd1dead7804e99e3215e8e01a6cf7448a6b9f36"
+    },
+    "6ef68752dc43f9d459e0ae23a4a767112ab531b9" : {
+      "testcases" : {
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ]
+      },
+      "predecessor" : "dc0663818a4329b965eeb05f65456379fdccf938"
+    },
+    "e322a6b6b10623dc0adf7cf05c8423aba89bedab" : { },
+    "16d4bebe84550bfd934895796aad780b7a6a0241" : {
+      "testcases" : {
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ]
+      },
+      "predecessor" : "e322a6b6b10623dc0adf7cf05c8423aba89bedab"
+    },
+    "86ccc43940861703c2be96a5f35384407522125a" : {
+      "testcases" : {
+        "org.apache.coyote.TestRequest" : [ "test100ContinueExpectationImmediately", "test100ContinueExpectationOnRequestBodyRead", "testNoExpectationWithOnRequestBodyReadPolicy" ]
+      },
+      "predecessor" : "16d4bebe84550bfd934895796aad780b7a6a0241"
+    },
+    "a9691087718618262b19e4cf44581466a138d724" : {
+      "predecessor" : "86ccc43940861703c2be96a5f35384407522125a"
+    },
+    "9e6f3b7328b89259a222e85c838e6104c9eb2a22" : {
+      "predecessor" : "a9691087718618262b19e4cf44581466a138d724"
+    },
+    "e08dbf4559da7612c4060b68dfee8ce03560ce07" : {
+      "predecessor" : "9e6f3b7328b89259a222e85c838e6104c9eb2a22"
+    },
+    "5ac227ded1eb966daddcaf4b5b22ae0b8a17b697" : {
+      "testcases" : {
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ]
+      },
+      "predecessor" : "e08dbf4559da7612c4060b68dfee8ce03560ce07"
+    },
+    "7aa93cf8869d68843bb95682df6fc0d4daf5f88a" : { },
+    "4b8b9b1219e5c112dfc599fcc72104cfe88bfdde" : {
+      "testcases" : {
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ]
+      },
+      "predecessor" : "7aa93cf8869d68843bb95682df6fc0d4daf5f88a"
+    },
+    "ed63c95e4ca5ca88855416561a1dcce05fd27081" : {
+      "predecessor" : "4b8b9b1219e5c112dfc599fcc72104cfe88bfdde"
+    },
+    "06ed401eefbed833e862c64ce203b67e5d7bc1be" : {
+      "predecessor" : "ed63c95e4ca5ca88855416561a1dcce05fd27081"
+    },
+    "b9b3fa78a00e76b6344ababb1fd28cf20561cb82" : {
+      "predecessor" : "06ed401eefbed833e862c64ce203b67e5d7bc1be"
+    },
+    "23f8eb5c42c6e4bd3c877a95083020912ee67eb1" : {
+      "predecessor" : "b9b3fa78a00e76b6344ababb1fd28cf20561cb82"
+    },
+    "ffe30d91cd90c5c02bc15ec8b15cff43f18557f5" : {
+      "predecessor" : "23f8eb5c42c6e4bd3c877a95083020912ee67eb1"
+    },
+    "5e974d66cd4edcb9f18207d90b2ecd433104ec06" : {
+      "predecessor" : "ffe30d91cd90c5c02bc15ec8b15cff43f18557f5"
+    },
+    "6e3a2340a23e4a87c7bd0e0290adda5dc18f3f56" : {
+      "predecessor" : "5e974d66cd4edcb9f18207d90b2ecd433104ec06"
+    },
+    "85f214bc8305a21b6e010424531366ff51b39958" : {
+      "predecessor" : "6e3a2340a23e4a87c7bd0e0290adda5dc18f3f56"
+    },
+    "c70da529fc98c47d3ed6b3beef2211062235edba" : {
+      "testcases" : {
+        "org.apache.catalina.ant.TestDeployTask" : [ "bug58086a", "bug58086b", "bug58086c" ],
+        "org.apache.catalina.authenticator.TestDigestAuthenticator" : [ "bug54521" ],
+        "org.apache.catalina.connector.TestConnector" : [ "testInvalidProtocolNoThrows", "testInvalidProtocolThrows" ],
+        "org.apache.catalina.connector.TestCoyoteAdapter" : [ "testNormalize01" ],
+        "org.apache.catalina.connector.TestRequest" : [ "getLocaleMultipleHeaders01", "getLocaleMultipleHeaders02" ],
+        "org.apache.catalina.connector.TestResponse" : [ "testBug53062a", "testBug53062b", "testBug53062c", "testBug53062d", "testBug53062e", "testBug53062f", "testBug53062g", "testBug53062h", "testBug53062i", "testBug53062j", "testBug53062k", "testBug53062l", "testBug53062m", "testBug53062n", "testBug53062o", "testBug53062p", "testBug53469a", "testBug53469b", "testEncodeRedirectURL01", "testEncodeRedirectURL02", "testEncodeRedirectURL03", "testEncodeRedirectURL04", "testEncodeRedirectURL05", "testEncodeRedirectURL06", "testEncodeRedirectURL07", "testEncodeRedirectURL08", "testEncodeRedirectURL09", "testEncodeRedirectURL10", "testEncodeRedirectURL11", "testEncodeRedirectURL12", "testEncodeRedirectURL13", "testEncodeRedirectURL14", "testEncodeRedirectURL15", "testEncodeRedirectURL16", "testEncodeURL01", "testEncodeURL02", "testEncodeURL03", "testEncodeURL04", "testEncodeURL06", "testEncodeURL07", "testEncodeURL08", "testEncodeURL09", "testEncodeURL10", "testEncodeURL11", "testEncodeURL12", "testEncodeURL13", "testEncodeURL14", "testEncodeURL15", "testEncodeURL16", "testSendRedirect01", "testSendRedirect02", "testSendRedirect03", "testSetCharacterEncoding01", "testSetCharacterEncoding02", "testSetCharacterEncoding03", "testSetCharacterEncoding04", "testSetCharacterEncoding05", "testSetCharacterEncoding06", "testSetCharacterEncoding07", "testSetCharacterEncoding08", "testSetContentType01", "testSetContentType02", "testSetContentType03", "testSetContentType04", "testSetContentType05", "testSetContentType06", "testSetLocale01", "testSetLocale02", "testSetLocale03", "testSetLocale04", "testSetLocale05", "testSetLocale06", "testSetLocale07", "testSetLocale08" ],
+        "org.apache.catalina.core.TestApplicationContext" : [ "testAddFilterWithFilterNameEmptyString", "testAddFilterWithFilterNameNull", "testAddServletWithServletNameEmptyString", "testAddServletWithServletNameNull" ],
+        "org.apache.catalina.core.TestAsyncContextImpl" : [ "testAsyncListenerSupplyRequestResponse" ],
+        "org.apache.catalina.core.TestStandardContext" : [ "testAddPostConstructMethodConflicts", "testAddPostConstructMethodNullClassName", "testAddPostConstructMethodNullMethodName", "testAddPreDestroyMethodConflicts", "testAddPreDestroyMethodNullClassName", "testAddPreDestroyMethodNullMethodName", "testBug56903", "testSetPath" ],
+        "org.apache.catalina.core.TestStandardHostValve" : [ "testInvalidErrorPage" ],
+        "org.apache.catalina.filters.TestCsrfPreventionFilter" : [ "testAddNonceNoQueryAnchor", "testAddNonceNoQueryNoAnchor", "testAddNonceQueryAnchor", "testAddNonceQueryNoAnchor", "testLruCacheSerializable" ],
+        "org.apache.catalina.filters.TestExpiresFilter" : [ "testIntsToCommaDelimitedString", "testParseExpiresConfigurationCombinedDuration", "testParseExpiresConfigurationMonoDuration" ],
+        "org.apache.catalina.filters.TestRemoteIpFilter" : [ "testCommaDelimitedListToStringArray", "testCommaDelimitedListToStringArrayEmptyList", "testCommaDelimitedListToStringArrayNullList", "testHeaderNamesCaseInsensitivity", "testListToCommaDelimitedString", "testListToCommaDelimitedStringMixedSpaceChars" ],
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance", "testModified" ],
+        "org.apache.catalina.loader.TestWebappClassLoader" : [ "testFilter" ],
+        "org.apache.catalina.mapper.TestMapper" : [ "testAddHost", "testAddRemoveContextVersion", "testMap", "testReloadContextVersion", "testRemoveHost" ],
+        "org.apache.catalina.mbeans.TestRegistration" : [ "testNames" ],
+        "org.apache.catalina.tribes.group.TestGroupChannelSenderConnections" : [ "testConnectionLinger", "testKeepAliveCount", "testKeepAliveTime" ],
+        "org.apache.catalina.valves.rewrite.TestRewriteValve" : [ "testRewriteMissingCurlyBraceOnMapper", "testRewriteMissingCurlyBraceOnVar" ],
+        "org.apache.jasper.servlet.TestTldScanner" : [ "testBug57647" ],
+        "org.apache.tomcat.util.scan.TestJarScanner" : [ "testJarsToSkipFormat" ],
+        "org.apache.tomcat.websocket.server.TestWsServerContainer" : [ "testDuplicatePaths01", "testDuplicatePaths02", "testDuplicatePaths03", "testDuplicatePaths04", "testDuplicatePaths11", "testDuplicatePaths12", "testDuplicatePaths13", "testDuplicatePaths14", "testDuplicatePaths21", "testDuplicatePaths22", "testDuplicatePaths23", "testDuplicatePaths24", "testSpecExample3", "testSpecExample4" ]
+      },
+      "predecessor" : "85f214bc8305a21b6e010424531366ff51b39958"
+    },
+    "ce4f9a5e0e22a4a7e3005e23c0bc92339da3dd5c" : {
+      "predecessor" : "c70da529fc98c47d3ed6b3beef2211062235edba"
+    },
+    "1e95c5a414bba99d0f7693dea65b84af01e8fe26" : {
+      "predecessor" : "ce4f9a5e0e22a4a7e3005e23c0bc92339da3dd5c"
+    },
+    "61b2d5d15d46f3f0fead4294108282a1c44a74db" : {
+      "testcases" : {
+        "org.apache.catalina.connector.TestResponse" : [ "testSetCharacterEncoding04", "testSetContentType03", "testSetLocale03" ]
+      },
+      "predecessor" : "1e95c5a414bba99d0f7693dea65b84af01e8fe26"
+    },
+    "0535f4c73161761273457b5359b175a21533de03" : {
+      "predecessor" : "61b2d5d15d46f3f0fead4294108282a1c44a74db"
+    },
+    "e347617791746de5aa533d034232dc478d2ac573" : {
+      "predecessor" : "0535f4c73161761273457b5359b175a21533de03"
+    },
+    "35a2e044d5988466b21b664610ce57b502833cd2" : {
+      "predecessor" : "e347617791746de5aa533d034232dc478d2ac573"
+    },
+    "7b9dcab1df9ffc81fce87986bcf3933e646a035d" : { },
+    "ad13ceb588a3fcb1a0d169d6f5bee3267844d7ba" : { },
+    "722a19d362b67931df64e42c909833aa969aa8fb" : { },
+    "b419bd60473f0a1a3379b353f43ec11d46c5923a" : { },
+    "1b5370d7907af38b64bb0d313d038b11cf0e0f9d" : { },
+    "bf70b8e1f20d19991edc781abaa570e2447e62cf" : { },
+    "938052dd33909414878e772249ef578742f2e4b8" : { },
+    "68332adba1771ee253bbef5c2d3bfdfa38dd5993" : { },
+    "a9f85c83bbf005bb0c7f94b7dbec3570de7d36e0" : { },
+    "8fffdf2b825653e8f1acb8f419a913ee77625655" : { },
+    "0d6a5449cf9d3c26e09bf7123e9a5636c6177d48" : { },
+    "ea7e37e437ddea949de22b7b4df86d6718d3480f" : { },
+    "4b16b429d6beac1f1c180d12d20dbb10471debd2" : {
+      "predecessor" : "ea7e37e437ddea949de22b7b4df86d6718d3480f"
+    },
+    "63300af16bcf90414f51323b82bbcbbc0ebe3a87" : { },
+    "34115fb3c83f6cd97772232316a492a4cc5729e0" : {
+      "predecessor" : "63300af16bcf90414f51323b82bbcbbc0ebe3a87"
+    },
+    "4cb12b194b07d0dad978c13f47e0a838421ff520" : { },
+    "68991aac79a497dff9882efe3082d099ec79d222" : {
+      "predecessor" : "4cb12b194b07d0dad978c13f47e0a838421ff520"
+    },
+    "56c95a84280f54455fac4bf59c85446fc0e20ee9" : {
+      "predecessor" : "68991aac79a497dff9882efe3082d099ec79d222"
+    },
+    "5138997fa3fb8fff4938adef55a2c15c2d3ed821" : { },
+    "1ecd742c29a4cfef48694977bb958fb30888cf78" : {
+      "predecessor" : "5138997fa3fb8fff4938adef55a2c15c2d3ed821"
+    },
+    "ef8b1a759f1a3b7f7f4038836a80a409fae1ff3a" : {
+      "predecessor" : "1ecd742c29a4cfef48694977bb958fb30888cf78"
+    },
+    "7e7e4096893dc12119b5476491e2ec16ee5c6e4d" : { },
+    "1e99eaf16aee080bcb8b8c363373d4f4d2676bbc" : {
+      "predecessor" : "7e7e4096893dc12119b5476491e2ec16ee5c6e4d"
+    },
+    "de3a101b24bbd5e79283a822ea7b64cc11286267" : { },
+    "f87300d2978e067c4f45bb80960dd2389d1651e2" : { },
+    "bc8d75b488961ef963efef430c30bcbab2ca4564" : {
+      "predecessor" : "f87300d2978e067c4f45bb80960dd2389d1651e2"
+    },
+    "480a3be7508983374d4f540a7aaabe43c6b5905a" : { },
+    "6c3797c6014901a5cd118baec0b125e8b0a6ecf3" : {
+      "predecessor" : "480a3be7508983374d4f540a7aaabe43c6b5905a"
+    },
+    "efe0fe8b3d6b10b7e416c32b59f60bb441831c39" : { },
+    "54c6ac7ee1c9e583f8ce25aec9be74d767a4bae8" : {
+      "predecessor" : "efe0fe8b3d6b10b7e416c32b59f60bb441831c39"
+    },
+    "62ea6f7807789ca3186006f3d1eeb1dfe96f2d2e" : { },
+    "9b4422216734e17b77e34a96eac9e7c0c993769d" : {
+      "predecessor" : "62ea6f7807789ca3186006f3d1eeb1dfe96f2d2e"
+    },
+    "0c9f9bff7c3b23387c769104c662d05f2b8c4f5a" : {
+      "predecessor" : "9b4422216734e17b77e34a96eac9e7c0c993769d"
+    },
+    "d5c773bed0793b872ac21e675cf5777538acf1cd" : {
+      "predecessor" : "0c9f9bff7c3b23387c769104c662d05f2b8c4f5a"
+    },
+    "b16ffe56dd3238bdd91139f4a05116375b2b3d05" : {
+      "predecessor" : "d5c773bed0793b872ac21e675cf5777538acf1cd"
+    },
+    "3d73e35518c0f16439c33f14533399cc7b60525c" : {
+      "predecessor" : "b16ffe56dd3238bdd91139f4a05116375b2b3d05"
+    },
+    "436f7a3989e4edf79dd8bd5ca36826a561d7c9c9" : {
+      "predecessor" : "3d73e35518c0f16439c33f14533399cc7b60525c"
+    },
+    "76219238d4434d026b1f2eccda2b489d2254cced" : {
+      "predecessor" : "436f7a3989e4edf79dd8bd5ca36826a561d7c9c9"
+    },
+    "f4381f77289554dd01b97d39999c8cac08da1832" : {
+      "predecessor" : "76219238d4434d026b1f2eccda2b489d2254cced"
+    },
+    "db907f9d3cbf604754728e0b4a7e635c1f34299a" : {
+      "predecessor" : "f4381f77289554dd01b97d39999c8cac08da1832"
+    },
+    "02c202aae1789ac532e63894a9317bcda7f1fcec" : {
+      "predecessor" : "db907f9d3cbf604754728e0b4a7e635c1f34299a"
+    },
+    "87bb2e0f0c2d97d4be050702c06aff45eaf9bee6" : {
+      "predecessor" : "02c202aae1789ac532e63894a9317bcda7f1fcec"
+    },
+    "76115a2a8681e5951aef9037120fa3babeffd9d3" : {
+      "predecessor" : "87bb2e0f0c2d97d4be050702c06aff45eaf9bee6"
+    },
+    "1a7b9d8db55c974403a355b04eca563b63e4a5d6" : {
+      "predecessor" : "76115a2a8681e5951aef9037120fa3babeffd9d3"
+    },
+    "ea3c2b57e6c8ae5bbdaee2ea0f77d965653e654f" : { },
+    "8e22617f9abf090481abea578cf4689cebc4901f" : {
+      "predecessor" : "ea3c2b57e6c8ae5bbdaee2ea0f77d965653e654f"
+    },
+    "dda82a1a09c9baed391343ba745a521287843499" : { },
+    "cfa012cd242ce885dca80e6a0b58dc25937ea672" : { },
+    "ec13d000e7a484f424be33998bd7e08288027904" : {
+      "predecessor" : "cfa012cd242ce885dca80e6a0b58dc25937ea672"
+    },
+    "3643c39fd226b4368b13e7e879f8e7868a00573d" : { },
+    "94844961e76ccee6fcfb829dfeb842beaa5ea8ab" : {
+      "predecessor" : "3643c39fd226b4368b13e7e879f8e7868a00573d"
+    },
+    "7114289cd1b4152a1b71f785cd29d2a55c0127ef" : {
+      "predecessor" : "94844961e76ccee6fcfb829dfeb842beaa5ea8ab"
+    },
+    "81c88b82e1f934e1c4efdd353a800c060a817dcd" : {
+      "predecessor" : "7114289cd1b4152a1b71f785cd29d2a55c0127ef"
+    },
+    "f815a91b1943629539860852638a87034651d493" : { },
+    "fc30f97326862af3a577b1c0bfe2397382de798d" : {
+      "predecessor" : "f815a91b1943629539860852638a87034651d493"
+    },
+    "49e13cc363909b2bf4841315cab520eeb6fbaa3c" : { },
+    "3149befcb31301bc1eb115440858d34ae8adc516" : { },
+    "368f8c4958c209f6f5b1f1394a047ed711ed843a" : { },
+    "2aa646470ae9ec1e2b42930f19099544156c9386" : { },
+    "f558a1984ea60318e7d3405b1fbe2a246edc49b4" : { },
+    "b2b57736572eb1385130d32e5d291ee5558f2e3b" : {
+      "predecessor" : "f558a1984ea60318e7d3405b1fbe2a246edc49b4"
+    },
+    "c06dbae706e1907b961f5f36970e364744679c0c" : { },
+    "ced745df57818ea280942664991e51d287fd9431" : { },
+    "c3215cf9e3652a7c37b45580ccbb77d5233f47a5" : { },
+    "a57f5bcddfcc65ad4d1a42e7e3d03e9be05bdfc5" : { },
+    "043850ddf6b0f41867a27f6c98d1cd2acd40a8b2" : {
+      "predecessor" : "a57f5bcddfcc65ad4d1a42e7e3d03e9be05bdfc5"
+    },
+    "5803d56dac2261a5b65680fb1d250135b20175ee" : {
+      "predecessor" : "043850ddf6b0f41867a27f6c98d1cd2acd40a8b2"
+    },
+    "b87bb5f4b96dc70e2421881413a9335069e416b4" : { },
+    "174fa5679b401bfbff11392dac01a6f662ddf700" : {
+      "predecessor" : "b87bb5f4b96dc70e2421881413a9335069e416b4"
+    },
+    "b66b1f23f27ca1ac9da25e1d34f55d1bf8bb0b96" : {
+      "predecessor" : "174fa5679b401bfbff11392dac01a6f662ddf700"
+    },
+    "c34b60e9432a34242c0ba8c1498efa0a171fba62" : {
+      "predecessor" : "b66b1f23f27ca1ac9da25e1d34f55d1bf8bb0b96"
+    },
+    "1a695b38dada9563e60d06cd32086d465bcaa2a5" : { },
+    "e7019f6bbfdce78b88b82f1ed01add25290b3538" : {
+      "predecessor" : "1a695b38dada9563e60d06cd32086d465bcaa2a5"
+    },
+    "a9160a6cfc83adfdba18c78761ccb1b401f7b8b6" : {
+      "predecessor" : "e7019f6bbfdce78b88b82f1ed01add25290b3538"
+    },
+    "22a4b3d65d2a050ca2f70d7bceaec89883bfb887" : { },
+    "c1b85e442581ec2738493cc98ec35183830c0f99" : {
+      "predecessor" : "22a4b3d65d2a050ca2f70d7bceaec89883bfb887"
+    },
+    "53011ceadc706049cc92c03c3af401e8e1f5f206" : {
+      "predecessor" : "c1b85e442581ec2738493cc98ec35183830c0f99"
+    },
+    "2a065a51d959509c93b95f9fce5979ea39ec10a7" : { },
+    "81e30dd766a42ebd224a628dcba9e22e33ba861c" : { },
+    "78fd8b3d291cd142071dbc4934154795cf96ea36" : { },
+    "8bea0cb92ee9792c100be541f530eed0cdfb8d2a" : { },
+    "830e90024dad1a6519e7d364f7a335337863f4e0" : { },
+    "a3c00f4a8e68e3051c1165a0207a50248c0cf1d0" : { },
+    "d44dd7b511c187dd9771a00c11169cbb8e39772a" : { },
+    "e34b8d7f8770ee19188244062cec4c562369d521" : { },
+    "1b6d862f7bbb75586cdf97480d1ecf130a125ebe" : { },
+    "e0727cc4b543dfe903311914e8e2c45e927ce263" : {
+      "predecessor" : "1b6d862f7bbb75586cdf97480d1ecf130a125ebe"
+    },
+    "586a3c348d153d0a389dbebe20f58901114e60c0" : { },
+    "7af5bd7824c853fd68640529d33f69af6602ba80" : { },
+    "5325fec60a8d3b114357cf5af2908ef2691ef043" : { },
+    "4f2340865533218ffa836ee408da60e8b6eaed5f" : { },
+    "b59099e4ca501a039510334ebe1024971cd6f959" : {
+      "predecessor" : "4f2340865533218ffa836ee408da60e8b6eaed5f"
+    },
+    "eb8cfa2a4f5ebde23d13d131d6e158245aa1ff5d" : {
+      "predecessor" : "b59099e4ca501a039510334ebe1024971cd6f959"
+    },
+    "ed9a4ce2a27df336f1d4bc4d7230b9172ba2a8a5" : {
+      "predecessor" : "eb8cfa2a4f5ebde23d13d131d6e158245aa1ff5d"
+    },
+    "5f22fa883d3d92301fe0668eafccf3863d792599" : {
+      "predecessor" : "ed9a4ce2a27df336f1d4bc4d7230b9172ba2a8a5"
+    },
+    "2fa851bf833acaa2774c7bfe0ee500ec03ece62d" : {
+      "predecessor" : "5f22fa883d3d92301fe0668eafccf3863d792599"
+    },
+    "6036c21bcdf247ec823b624149260d5b43853ea3" : {
+      "predecessor" : "2fa851bf833acaa2774c7bfe0ee500ec03ece62d"
+    },
+    "70c7d663df87d35800eea571c2a1cecd4d5b4f91" : {
+      "predecessor" : "6036c21bcdf247ec823b624149260d5b43853ea3"
+    },
+    "a417690be308ca145a8b5b61f0260a4f713ea331" : { },
+    "45514a31b96c242e772f768cba1574152741ffc6" : { },
+    "b5ff0716b4383cfab92daad219721e07c85089bd" : {
+      "predecessor" : "45514a31b96c242e772f768cba1574152741ffc6"
+    },
+    "e31335ae25c327910d3be5d8e73a7a3747f2561f" : {
+      "predecessor" : "b5ff0716b4383cfab92daad219721e07c85089bd"
+    },
+    "d76786f7639cfc3327a69a8635c5e04c3b8055e3" : {
+      "predecessor" : "e31335ae25c327910d3be5d8e73a7a3747f2561f"
+    },
+    "c14c86c78889675ba73819cc5a92f37105214b94" : {
+      "predecessor" : "d76786f7639cfc3327a69a8635c5e04c3b8055e3"
+    },
+    "6844ff1c8a37835ac5497c1f2916c1fa52399f43" : { },
+    "769d0930b477d94edd19f051506c3b7d4f5c4ebf" : { },
+    "c3986264bfac32694369f5d5e630f65030167066" : { },
+    "1a850615aefd14061a2cc9d96f5e597fb173b798" : { },
+    "0d94fbb71fc378325c9d3630ad1a4bad2a0e17c0" : { },
+    "8623d4becf96dce9c467600cc5791b3847e661f7" : {
+      "predecessor" : "0d94fbb71fc378325c9d3630ad1a4bad2a0e17c0"
+    },
+    "386c3ec678ed0788fe39894cac76a02a3d452c77" : { },
+    "48051c24aefa49ae987cc2fea7e5f0abecf85cfa" : { },
+    "443cbf493d95c9b47d39ad0a8a1e93715bda2206" : { },
+    "5651dfad395a127774af67e26ab236599311e2ff" : {
+      "testcases" : {
+        "jakarta.el.TestBeanELResolver" : [ "testInvokeVarargsCoerce11" ],
+        "jakarta.el.TestUtil" : [ "testBug56425a", "testBug56425b" ],
+        "org.apache.el.TestELEvaluation" : [ "testBug42565", "testBug60431a", "testBug60431d", "testBug60431e", "testParserBug45511", "testParserLiteralExpression", "testParserStringLiteral" ],
+        "org.apache.el.TestMethodExpressionImpl" : [ "testBug49655", "testBug50449b", "testBug52445a", "testBug52970", "testBug53792a", "testBug56797b", "testBugPrimitives", "testInvokeWithSuperAABB", "testInvokeWithSuperABB", "testInvokeWithSuperABNoReturnTypeNoParamTypes", "testInvokeWithSuperABReturnTypeNoParamTypes", "testInvokeWithVarArgsAAAB", "testInvokeWithVarArgsAAABB", "testInvokeWithVarArgsAAABBB", "testInvokeWithVarArgsAAB", "testInvokeWithVarArgsAABBB", "testInvokeWithVarArgsABB" ],
+        "org.apache.el.parser.TestELParser" : [ "bug56179d", "bug56179e", "bug56179i", "bug56179j", "bug56179l", "bug56179m", "bug56179n", "testBug49081" ],
+        "org.apache.jasper.compiler.TestAttributeParser" : [ "testBug42565", "testBug45015", "testBug45451" ]
+      },
+      "predecessor" : "443cbf493d95c9b47d39ad0a8a1e93715bda2206"
+    },
+    "d51a1863f2dd9ccff4de4afe07399676fce16d29" : { },
+    "28b4b98f522dfe311249193a25953abf4e7d2829" : {
+      "predecessor" : "d51a1863f2dd9ccff4de4afe07399676fce16d29"
+    },
+    "d96e744b3c02b05839e9ad753d4d43c95ff205e7" : {
+      "predecessor" : "28b4b98f522dfe311249193a25953abf4e7d2829"
+    },
+    "7112769e878aacdd388f75d796d6691627f5e717" : { },
+    "afb6d44574b68954fd270c2172d23be0689198f0" : {
+      "predecessor" : "7112769e878aacdd388f75d796d6691627f5e717"
+    },
+    "48424dc8c4108c1f561e7fd8d569dd6a61842d6f" : {
+      "predecessor" : "afb6d44574b68954fd270c2172d23be0689198f0"
+    },
+    "27a0d770284ff54881d867c2fd9218030ca77097" : {
+      "predecessor" : "48424dc8c4108c1f561e7fd8d569dd6a61842d6f"
+    },
+    "b293109e2c10d30706439686a014570e82807d52" : { },
+    "8676c3e03387959924f1522404ce6aa339466fe0" : { },
+    "b32121cf75bffc62e215e4c338705951506c3d6d" : { },
+    "642badb1d7a684d3707c594bb37344aa30d907fc" : {
+      "predecessor" : "b32121cf75bffc62e215e4c338705951506c3d6d"
+    },
+    "9242148372d6059cfacc2f4ffa81c886c3ed095e" : {
+      "predecessor" : "642badb1d7a684d3707c594bb37344aa30d907fc"
+    },
+    "d42777a3c6fda15f0d5fb6c47528e37e21c254e4" : { },
+    "09b5dcd59223d714aef205328ebb722fa1e054f3" : { },
+    "530c990fd1343c36d9e37c8746424ee016337af9" : { },
+    "f2bbf049bda65bea9db38babbf456015bf7d3568" : {
+      "predecessor" : "530c990fd1343c36d9e37c8746424ee016337af9"
+    },
+    "d650aa21f12b88144439ca38331f9bef2ea7a897" : { },
+    "cf4c8874ddcee6bcdfd218e882591a6a2eed8253" : { },
+    "9035ae015a1285792286f6b0d6af24e7e55f71e8" : { },
+    "9cc8ceb8a1e8c119b4982c2d5d2695566264f208" : { },
+    "6f0573b0f42f00ed23e2c2f44925fc148bfdad5b" : {
+      "predecessor" : "9cc8ceb8a1e8c119b4982c2d5d2695566264f208"
+    },
+    "adcc9495fe0158dbac72b81f5c4c6da95e9974ee" : {
+      "predecessor" : "6f0573b0f42f00ed23e2c2f44925fc148bfdad5b"
+    },
+    "ff2c4e767d225e42580b0897e509fcde1a56229d" : { },
+    "aec77974a09913d1440df5eb26b4aca090afc4c3" : {
+      "predecessor" : "ff2c4e767d225e42580b0897e509fcde1a56229d"
+    },
+    "21fadbe02c3925f82754b44b602c1e0d64fcf361" : {
+      "predecessor" : "aec77974a09913d1440df5eb26b4aca090afc4c3"
+    },
+    "7b721d64754cc02031aa0a967e3ef615e0738b74" : {
+      "predecessor" : "21fadbe02c3925f82754b44b602c1e0d64fcf361"
+    },
+    "ec29686465037c31a318fc9803856c2f6ac8fd8c" : {
+      "testcases" : {
+        "org.apache.catalina.realm.TestJNDIRealm" : [ "testAuthenticateWithUserPassword", "testAuthenticateWithUserPasswordAndCredentialHandler", "testErrorRealm" ]
+      },
+      "predecessor" : "7b721d64754cc02031aa0a967e3ef615e0738b74"
+    },
+    "23517499b0f313b07c59cab02d74aaad4690f7b3" : { },
+    "1db93d3a0db2fb4d52b102c6a65bb0a870411ab9" : { },
+    "e3c5de01a556dd4e81eaecc75806cebe558d8c1c" : {
+      "testcases" : {
+        "org.apache.catalina.realm.TestJNDIRealm" : [ "testAuthenticateWithUserPassword", "testAuthenticateWithUserPasswordAndCredentialHandler" ]
+      },
+      "predecessor" : "1db93d3a0db2fb4d52b102c6a65bb0a870411ab9"
+    },
+    "b7c1897a950b2608dbbd54f024173ad9ae40fcfd" : { },
+    "6e0aa416353fef0ecccca932d3d79f1c474bfad7" : {
+      "predecessor" : "b7c1897a950b2608dbbd54f024173ad9ae40fcfd"
+    },
+    "04fbddcf49b866e1f0152d324c70885f04150fd5" : { },
+    "7ff693d5075ddfb2581fe7df911fc686dc535124" : {
+      "predecessor" : "04fbddcf49b866e1f0152d324c70885f04150fd5"
+    },
+    "77eb2a72cc89b2d9dd2ca76b395f4671b2e35ac3" : {
+      "predecessor" : "7ff693d5075ddfb2581fe7df911fc686dc535124"
+    },
+    "acb438307f5e96a68819bb88cb3e9b12dc124f2e" : {
+      "predecessor" : "77eb2a72cc89b2d9dd2ca76b395f4671b2e35ac3"
+    },
+    "b837cda08007a93e4be0dc48f6f8e02e0ae451b8" : {
+      "predecessor" : "acb438307f5e96a68819bb88cb3e9b12dc124f2e"
+    },
+    "da5a2cde5729ffac937b4a831d16a039d06297ba" : {
+      "predecessor" : "b837cda08007a93e4be0dc48f6f8e02e0ae451b8"
+    },
+    "f262b02f04f5b1a3d1d81d3b708214cf9b62a890" : { },
+    "daac8bb943c18efbf31246b13ee8c52b4d673e32" : {
+      "predecessor" : "f262b02f04f5b1a3d1d81d3b708214cf9b62a890"
+    },
+    "111f9f41a2b1fc350bb42dd4207d01297ce4061a" : {
+      "predecessor" : "daac8bb943c18efbf31246b13ee8c52b4d673e32"
+    },
+    "6a06b3cfff41dc81538c7b93a74dfa13ea5cea9e" : {
+      "predecessor" : "111f9f41a2b1fc350bb42dd4207d01297ce4061a"
+    },
+    "3fc0c3d395cd3b3c01f9c4fbb8cd47cb3b36c276" : {
+      "predecessor" : "6a06b3cfff41dc81538c7b93a74dfa13ea5cea9e"
+    },
+    "a67faf3ac7f2225f6a1dac6c6355ed8226665039" : {
+      "predecessor" : "3fc0c3d395cd3b3c01f9c4fbb8cd47cb3b36c276"
+    },
+    "eeeca457ff1ac70604c9bdb018269715690523e5" : {
+      "predecessor" : "a67faf3ac7f2225f6a1dac6c6355ed8226665039"
+    },
+    "dd60b5e446a44495dcbf6a90e84f4c5ec2cd716d" : {
+      "predecessor" : "eeeca457ff1ac70604c9bdb018269715690523e5"
+    },
+    "e6353864e6245da2553e6f56c07819dd8e703607" : {
+      "predecessor" : "dd60b5e446a44495dcbf6a90e84f4c5ec2cd716d"
+    },
+    "5ec77a49fd123c3b46e1a015a18e8bc6fe89aa13" : {
+      "predecessor" : "e6353864e6245da2553e6f56c07819dd8e703607"
+    },
+    "8183dbfeab714b097c1ac0cc558a14031458c6e9" : {
+      "predecessor" : "5ec77a49fd123c3b46e1a015a18e8bc6fe89aa13"
+    },
+    "b2e2c28d9751aa16512a5cbbe85adce7f4b36c7b" : {
+      "predecessor" : "8183dbfeab714b097c1ac0cc558a14031458c6e9"
+    },
+    "cb2e625b55e66d55452b9e67d98b5ec5727f8754" : {
+      "predecessor" : "b2e2c28d9751aa16512a5cbbe85adce7f4b36c7b"
+    },
+    "e663ab075f73876adcb5172ebb332e79f6d0ee22" : {
+      "predecessor" : "cb2e625b55e66d55452b9e67d98b5ec5727f8754"
+    },
+    "b58cc1149894633ff426b1dd993f2745dfc4a0cc" : {
+      "predecessor" : "e663ab075f73876adcb5172ebb332e79f6d0ee22"
+    },
+    "7dcf54b7a7f5fdd9560241d25427aba3e8899a84" : {
+      "predecessor" : "b58cc1149894633ff426b1dd993f2745dfc4a0cc"
+    },
+    "1c1fb14930b5ccf19d7dacaf6582c20f8b8658d6" : {
+      "predecessor" : "7dcf54b7a7f5fdd9560241d25427aba3e8899a84"
+    },
+    "bf5b9feca166557134120f0fc5210588c7b3673d" : {
+      "predecessor" : "1c1fb14930b5ccf19d7dacaf6582c20f8b8658d6"
+    },
+    "8ddc5313ffe8ca505df31987c23ef1b9cd1d5755" : {
+      "predecessor" : "bf5b9feca166557134120f0fc5210588c7b3673d"
+    },
+    "46febe042a9ed32bb53fcedf28f954e3095028ad" : { },
+    "26ba86cdbd40ca718e43b82e62b3eb49d004c3d6" : { },
+    "c07530f6f11034ce0ba55a20d0ca058256a7509d" : {
+      "testcases" : {
+        "jakarta.servlet.resources.TestSchemaValidation" : [ "testWebapp", "testWebapp_2_2", "testWebapp_2_3", "testWebapp_2_4", "testWebapp_2_5", "testWebapp_3_0", "testWebapp_3_1", "testWebapp_4_0", "testWebapp_5_0" ],
+        "org.apache.catalina.authenticator.TestDigestAuthenticator" : [ "bug54521" ],
+        "org.apache.catalina.authenticator.jaspic.TestAuthConfigFactoryImpl" : [ "testRegistrationNullClassName", "testRegistrationNullClassNullLayerNullAppContext", "testRegistrationNullClassOverrideExisting", "testRemovePersistentRegistration" ],
+        "org.apache.catalina.authenticator.jaspic.TestPersistentProviderRegistrations" : [ "testLoadEmpty", "testLoadProviderWithoutLayerAndAC", "testLoadSimple", "testSaveProviderWithoutLayerAndAC", "testSaveSimple" ],
+        "org.apache.catalina.connector.TestConnector" : [ "testInvalidProtocolNoThrows", "testInvalidProtocolThrows" ],
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ],
+        "org.apache.catalina.realm.TestJNDIRealm" : [ "testAuthenticateWithUserPassword", "testAuthenticateWithUserPasswordAndCredentialHandler", "testAuthenticateWithoutUserPassword", "testErrorRealm" ],
+        "org.apache.catalina.realm.TestRealmBase" : [ "testDigestMD5", "testDigestMD5Prefix", "testDigestSHA", "testDigestSHAPrefix", "testDigestSSHAPrefix" ],
+        "org.apache.catalina.session.TestPersistentManager" : [ "testBug62175", "testMinIdleSwap" ],
+        "org.apache.jasper.servlet.TestJspCServletContext" : [ "testResourceJARs", "testWebapp", "testWebapp_2_2", "testWebapp_2_3", "testWebapp_2_4", "testWebapp_2_5", "testWebapp_3_0", "testWebapp_3_1", "testWebapp_4_0", "testWebapp_5_0", "testWebresources" ],
+        "org.apache.tomcat.util.descriptor.tld.TestImplicitTldParser" : [ "testImplicitTldBad", "testImplicitTldGood" ],
+        "org.apache.tomcat.util.descriptor.tld.TestTldParser" : [ "testListener", "testParseTld11", "testParseTld12", "testParseTld20", "testParseTld21", "testTld" ],
+        "org.apache.tomcat.util.descriptor.web.TestWebXml" : [ "testValidateVersion22", "testValidateVersion23", "testValidateVersion24", "testValidateVersion25", "testValidateVersion30", "testValidateVersion31", "testValidateVersion40" ]
+      },
+      "predecessor" : "26ba86cdbd40ca718e43b82e62b3eb49d004c3d6"
+    },
+    "e5468e2a44448d3a90b3fb831bd83b156b32736f" : {
+      "predecessor" : "c07530f6f11034ce0ba55a20d0ca058256a7509d"
+    },
+    "2ce4ea2f8e9111269e990fff640b48847b9e6d87" : {
+      "predecessor" : "e5468e2a44448d3a90b3fb831bd83b156b32736f"
+    },
+    "e498a7dc8e6d3db852199288013ac58d6263f93d" : {
+      "predecessor" : "2ce4ea2f8e9111269e990fff640b48847b9e6d87"
+    },
+    "0e887b7729184fc65a71798175554f62dbcae876" : {
+      "predecessor" : "e498a7dc8e6d3db852199288013ac58d6263f93d"
+    },
+    "4f90bff128c6cb39bd0ebb8cf1eb6565229dcf86" : {
+      "testcases" : {
+        "org.apache.tomcat.websocket.TestWsSession" : [ "testAppendCloseReasonWithTruncation01", "testAppendCloseReasonWithTruncation02", "testAppendCloseReasonWithTruncation03", "testAppendCloseReasonWithTruncation04", "testAppendCloseReasonWithTruncation05", "testAppendCloseReasonWithTruncation06", "testAppendCloseReasonWithTruncation07", "testAppendCloseReasonWithTruncation08", "testAppendCloseReasonWithTruncation09" ]
+      },
+      "predecessor" : "0e887b7729184fc65a71798175554f62dbcae876"
+    },
+    "55093a2bc3ccdd759c63ef52ee99ba7f05e8c34d" : {
+      "predecessor" : "4f90bff128c6cb39bd0ebb8cf1eb6565229dcf86"
+    },
+    "7883e3dec71c27b2d14eb4a41c1beae9ff726aa5" : {
+      "predecessor" : "55093a2bc3ccdd759c63ef52ee99ba7f05e8c34d"
+    },
+    "0235fd745b9fe3805bf2efa38befa9d65a3c4259" : { },
+    "56ce1d9a83c55cf37bbb4ebff7cbd404a54cb00f" : {
+      "predecessor" : "0235fd745b9fe3805bf2efa38befa9d65a3c4259"
+    },
+    "c48f647d951f20d5b51a5ad3f3dbd07be05c3e3e" : {
+      "testcases" : {
+        "org.apache.tomcat.websocket.server.TestWsServerContainer" : [ "testDuplicatePaths01", "testDuplicatePaths02", "testDuplicatePaths03", "testDuplicatePaths04", "testDuplicatePaths11", "testDuplicatePaths12", "testDuplicatePaths13", "testDuplicatePaths14", "testDuplicatePaths21", "testDuplicatePaths22", "testDuplicatePaths23", "testDuplicatePaths24", "testSpecExample3", "testSpecExample4" ]
+      },
+      "predecessor" : "56ce1d9a83c55cf37bbb4ebff7cbd404a54cb00f"
+    },
+    "a23c5788012712609c760a77f9cebfc45aaa29d9" : {
+      "testcases" : {
+        "org.apache.tomcat.websocket.server.TestWsServerContainer" : [ "testDuplicatePaths11", "testDuplicatePaths12", "testDuplicatePaths13", "testDuplicatePaths14", "testDuplicatePaths21", "testDuplicatePaths22", "testDuplicatePaths23", "testDuplicatePaths24" ]
+      },
+      "predecessor" : "c48f647d951f20d5b51a5ad3f3dbd07be05c3e3e"
+    },
+    "6ae6242d29b980f44c46a82dbccc9d854c4930d1" : { },
+    "de89c23c65a66a381c3cd1a236effb0645ca2471" : { },
+    "0938b2df7d52036e3c6ca37d3c60bc448675e34d" : { },
+    "c87de4a80b602bcc112bd5165de7cf369b0ff217" : { },
+    "a79ffed8bded9a68ee17a7c4fba98cb8d8b754b2" : {
+      "predecessor" : "c87de4a80b602bcc112bd5165de7cf369b0ff217"
+    },
+    "2657bc2ecb51417474bc17a9dabb4ec67d156412" : {
+      "predecessor" : "a79ffed8bded9a68ee17a7c4fba98cb8d8b754b2"
+    },
+    "aace69ecff8551ba6b53f0c01d1fedf95228af16" : {
+      "predecessor" : "2657bc2ecb51417474bc17a9dabb4ec67d156412"
+    },
+    "8ea25561cbf1f5caa84413e7e8b366c7dc0421c4" : {
+      "predecessor" : "aace69ecff8551ba6b53f0c01d1fedf95228af16"
+    },
+    "5398e9f220d5f9c47fe94dd65712c30ba7aac911" : { },
+    "8275ed8bb1b7a9f3bf1e7305d310033807d59e88" : { },
+    "9cf936197e782fd656f67a8c4f6400f45d41f4b1" : { },
+    "53ff6b31455b8ba94d8b41f0a45c44b3735af227" : { },
+    "9747a3a6334369deb9b5bef1b17b1fe0ce774cdf" : {
+      "testcases" : {
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ]
+      },
+      "predecessor" : "53ff6b31455b8ba94d8b41f0a45c44b3735af227"
+    },
+    "9f2d78449f409ecffade937dfc7441d90ac914b3" : {
+      "predecessor" : "9747a3a6334369deb9b5bef1b17b1fe0ce774cdf"
+    },
+    "706fcc54e09011945fb3765d08d326743aa3018b" : {
+      "predecessor" : "9f2d78449f409ecffade937dfc7441d90ac914b3"
+    },
+    "1b2cad4add32e45c4decc6bdce457d9a140323ce" : {
+      "predecessor" : "706fcc54e09011945fb3765d08d326743aa3018b"
+    },
+    "e0014f2b77b44aecd56c68911d28ab3344506e6c" : { },
+    "7d5f38c44a157cd01ad3cab67e1f4c4ea89d193d" : {
+      "predecessor" : "e0014f2b77b44aecd56c68911d28ab3344506e6c"
+    },
+    "945db374e75e4925b78be67552f5b362cbfe00d7" : { },
+    "939efedccff7fafc45eedb11dcce67cd92975364" : {
+      "testcases" : {
+        "org.apache.catalina.realm.TestJNDIRealm" : [ "testAuthenticateWithUserPassword", "testAuthenticateWithUserPasswordAndCredentialHandler" ]
+      },
+      "predecessor" : "945db374e75e4925b78be67552f5b362cbfe00d7"
+    },
+    "22c7f1969f250901c4793798ac84c9a4a837e872" : {
+      "predecessor" : "939efedccff7fafc45eedb11dcce67cd92975364"
+    },
+    "2b9fa203f760bf63a4d182ec89fb855e37e130a2" : {
+      "predecessor" : "22c7f1969f250901c4793798ac84c9a4a837e872"
+    },
+    "d03377e512aa761b57e8314ad18fe6812ac7d1a7" : {
+      "predecessor" : "2b9fa203f760bf63a4d182ec89fb855e37e130a2"
+    },
+    "75d8c7958c472274f25589695b12e7336165d41f" : {
+      "predecessor" : "d03377e512aa761b57e8314ad18fe6812ac7d1a7"
+    },
+    "c5f7c636dbf775606d91bd24414cb325b78afc62" : { },
+    "4aab46d425e26dd6448665c74f0956e01c9fa8fb" : {
+      "predecessor" : "c5f7c636dbf775606d91bd24414cb325b78afc62"
+    },
+    "d73197196a578881fd99de0e4bf91e106c194668" : {
+      "predecessor" : "4aab46d425e26dd6448665c74f0956e01c9fa8fb"
+    },
+    "c7f904bc1a65c1cf93cc2b590974ebb1e8bbba8e" : { }
+  },
+  "android" : false
+}

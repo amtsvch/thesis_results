@@ -1,0 +1,32 @@
+                                                                                                     | /**                                                                                                 
+                                                                                                     | * Build the list of decoder entries from a set of decoder implementations.                          
+                                                                                                     | *                                                                                                   
+                                                                                                     | * @param decoderClazzes Decoder implementation classes                                              
+                                                                                                     | *                                                                                                   
+                                                                                                     | * @return List of mappings from target type to associated decoder                                   
+                                                                                                     | *                                                                                                   
+                                                                                                     | * @throws DeploymentException If a provided decoder class is not valid                              
+                                                                                                     | *                                                                                                   
+                                                                                                     | * @deprecated Will be removed in Tomcat 10.1.x.                                                     
+                                                                                                     | *             Use {@link Util#getDecoders(List, InstanceManager)}                                   
+                                                                                                     | */                                                                                                  
+                                                                                                     | @Deprecated                                                                                         
+public static List&lt;DecoderEntry&gt; getDecoders(List&lt;Class&lt;? extends Decoder&gt;&gt; decode   public static List&lt;DecoderEntry&gt; getDecoders(List&lt;Class&lt;? extends Decoder&gt;&gt; decode
+List&lt;DecoderEntry&gt; result = new ArrayList&lt;&gt;();                                           | return getDecoders(decoderClazzes, null);                                                           
+if (decoderClazzes != null) {                                                                        |                                                                                                     
+for (Class&lt;? extends Decoder&gt; decoderClazz : decoderClazzes) {                                 |                                                                                                     
+// Need to instantiate decoder to ensure it is valid and that                                        |                                                                                                     
+// deployment can be failed if it is not                                                             |                                                                                                     
+@SuppressWarnings("unused")                                                                          |                                                                                                     
+Decoder instance;                                                                                    |                                                                                                     
+try {                                                                                                |                                                                                                     
+instance = decoderClazz.getConstructor().newInstance();                                              |                                                                                                     
+} catch (ReflectiveOperationException e) {                                                           |                                                                                                     
+throw new DeploymentException(sm.getString("pojoMethodMapping.invalidDecoder", decoderClazz.getName( |                                                                                                     
+}                                                                                                      }                                                                                                   
+DecoderEntry entry = new DecoderEntry(Util.getDecoderType(decoderClazz), decoderClazz);              |                                                                                                     
+result.add(entry);                                                                                   |                                                                                                     
+}                                                                                                    |                                                                                                     
+}                                                                                                    |                                                                                                     
+return result;                                                                                       |                                                                                                     
+}                                                                                                    |                                                                                                     

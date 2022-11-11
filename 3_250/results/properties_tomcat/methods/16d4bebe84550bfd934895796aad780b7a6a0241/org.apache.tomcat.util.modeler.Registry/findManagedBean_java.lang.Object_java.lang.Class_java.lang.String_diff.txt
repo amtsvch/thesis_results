@@ -1,0 +1,44 @@
+/**
+ * Find or load metadata.
+ *
+ * @param bean The bean
+ * @param beanClass The bean class
+ * @param type The registry type
+ * @return the managed bean
+ * @throws Exception An error occurred
+ */
+public ManagedBean findManagedBean(Object bean, Class<?> beanClass, String type) throws Exception {
+    if (bean != null && beanClass == null) {
+        beanClass = bean.getClass();
+    }
+    if (type == null) {
+        type = beanClass.getName();
+    }
+    // first look for existing descriptor
+    ManagedBean managed = findManagedBean(type);
+    // Search for a descriptor in the same package
+    if (managed == null) {
+        // check package and parent packages
+        if (log.isDebugEnabled()) {
+            log.debug("Looking for descriptor ");
+        }
+        findDescriptor(beanClass, type);
+        managed = findManagedBean(type);
+    }
+    // Still not found - use introspection
+    if (managed == null) {
+        if (log.isDebugEnabled()) {
+            log.debug("Introspecting ");
+        }
+        // introspection
+        load("MbeansDescriptorsIntrospectionSource", beanClass, type);
+        managed = findManagedBean(type);
+        if (managed == null) {
+            log.warn(sm.getString("registry.noTypeMetadata", type));
+            return null;
+        }
+        managed.setName(type);
+        addManagedBean(managed);
+    }
+    return managed;
+}

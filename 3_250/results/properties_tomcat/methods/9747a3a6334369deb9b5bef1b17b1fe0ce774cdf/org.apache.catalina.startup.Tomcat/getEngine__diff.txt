@@ -1,0 +1,16 @@
+/**
+ * Access to the engine, for further customization.
+ * @return The engine
+ */
+public Engine getEngine() {
+    Service service = getServer().findServices()[0];
+    if (service.getContainer() != null) {
+        return service.getContainer();
+    }
+    Engine engine = new StandardEngine();
+    engine.setName("Tomcat");
+    engine.setDefaultHost(hostname);
+    engine.setRealm(createDefaultRealm());
+    service.setContainer(engine);
+    return engine;
+}

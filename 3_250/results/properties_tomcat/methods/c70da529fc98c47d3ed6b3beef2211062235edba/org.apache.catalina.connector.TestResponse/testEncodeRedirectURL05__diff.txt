@@ -1,0 +1,4 @@
+@Test(expected = IllegalArgumentException.class)
+public void testEncodeRedirectURL05() throws Exception {
+    doTestEncodeRedirectURL("../../..", "throws IAE");
+}

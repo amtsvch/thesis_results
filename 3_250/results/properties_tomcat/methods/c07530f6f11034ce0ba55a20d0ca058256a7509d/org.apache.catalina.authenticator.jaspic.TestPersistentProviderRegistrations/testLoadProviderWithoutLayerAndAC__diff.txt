@@ -1,0 +1,6 @@
+@Test
+public void testLoadProviderWithoutLayerAndAC() {
+    File f = new File("test/conf/jaspic-test-04.xml");
+    Providers providers = PersistentProviderRegistrations.loadProviders(f);
+    validateNoLayerAndAC(providers);
+}

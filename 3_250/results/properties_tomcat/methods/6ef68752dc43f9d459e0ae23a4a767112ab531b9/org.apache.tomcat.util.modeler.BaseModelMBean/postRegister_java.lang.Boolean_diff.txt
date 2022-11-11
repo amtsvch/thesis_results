@@ -1,0 +1,6 @@
+@Override
+public void postRegister(Boolean registrationDone) {
+    if (resource instanceof MBeanRegistration) {
+        ((MBeanRegistration) resource).postRegister(registrationDone);
+    }
+}

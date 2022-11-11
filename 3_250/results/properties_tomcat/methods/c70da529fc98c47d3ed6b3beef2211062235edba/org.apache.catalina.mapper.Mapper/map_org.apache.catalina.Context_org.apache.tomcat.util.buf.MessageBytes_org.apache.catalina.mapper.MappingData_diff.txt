@@ -1,0 +1,18 @@
+/**
+ * Map the specified URI relative to the context,
+ * mutating the given mapping data.
+ *
+ * @param context The actual context
+ * @param uri URI
+ * @param mappingData This structure will contain the result of the mapping
+ *                    operation
+ * @throws IOException if the buffers are too small to hold the results of
+ *                     the mapping.
+ */
+public void map(Context context, MessageBytes uri, MappingData mappingData) throws IOException {
+    ContextVersion contextVersion = contextObjectToContextVersionMap.get(context);
+    uri.toChars();
+    CharChunk uricc = uri.getCharChunk();
+    uricc.setLimit(-1);
+    internalMapWrapper(contextVersion, uricc, mappingData);
+}

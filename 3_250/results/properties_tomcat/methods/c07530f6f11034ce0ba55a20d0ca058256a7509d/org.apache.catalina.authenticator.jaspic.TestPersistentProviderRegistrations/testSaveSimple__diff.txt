@@ -1,0 +1,24 @@
+@Test
+public void testSaveSimple() {
+    File f = new File("test/conf/jaspic-test-03.xml");
+    if (f.exists()) {
+        Assert.assertTrue(f.delete());
+    }
+    // Create a config and write it out
+    Providers start = new Providers();
+    Provider p = new Provider();
+    p.setClassName("a");
+    p.setLayer("b");
+    p.setAppContext("c");
+    p.setDescription("d");
+    p.addProperty("e", "f");
+    p.addProperty("g", "h");
+    start.addProvider(p);
+    PersistentProviderRegistrations.writeProviders(start, f);
+    // Read it back
+    Providers end = PersistentProviderRegistrations.loadProviders(f);
+    validateSimple(end);
+    if (f.exists()) {
+        Assert.assertTrue("Failed to clean up [" + f + "]", f.delete());
+    }
+}

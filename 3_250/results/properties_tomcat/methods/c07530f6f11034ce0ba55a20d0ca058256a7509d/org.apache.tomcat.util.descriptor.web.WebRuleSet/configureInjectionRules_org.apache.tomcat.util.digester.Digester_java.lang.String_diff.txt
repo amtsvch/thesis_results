@@ -1,0 +1,5 @@
+protected void configureInjectionRules(Digester digester, String base) {
+    digester.addCallMethod(prefix + base + "injection-target", "addInjectionTarget", 2);
+    digester.addCallParam(prefix + base + "injection-target/injection-target-class", 0);
+    digester.addCallParam(prefix + base + "injection-target/injection-target-name", 1);
+}

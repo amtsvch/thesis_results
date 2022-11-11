@@ -1,0 +1,12 @@
+public final void destroy() throws Exception {
+    if (bindState == BindState.BOUND_ON_INIT) {
+        unbind();
+        bindState = BindState.UNBOUND;
+    }
+    Registry registry = Registry.getRegistry(null, null);
+    registry.unregisterComponent(oname);
+    registry.unregisterComponent(socketProperties.getObjectName());
+    for (SSLHostConfig sslHostConfig : findSslHostConfigs()) {
+        unregisterJmx(sslHostConfig);
+    }
+}

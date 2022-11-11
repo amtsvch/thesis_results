@@ -1,0 +1,9 @@
+// Common elements and attributes
+// Required attribute of web-app element
+public String getVersion() {
+    StringBuilder sb = new StringBuilder(3);
+    sb.append(majorVersion);
+    sb.append('.');
+    sb.append(minorVersion);
+    return sb.toString();
+}

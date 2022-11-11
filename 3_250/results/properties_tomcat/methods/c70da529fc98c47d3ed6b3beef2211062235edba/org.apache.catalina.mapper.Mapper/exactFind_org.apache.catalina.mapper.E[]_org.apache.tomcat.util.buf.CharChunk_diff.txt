@@ -1,0 +1,15 @@
+/**
+ * Find a map element given its name in a sorted array of map elements. This
+ * will return the element that you were searching for. Otherwise it will
+ * return <code>null</code>.
+ */
+private static final <T, E extends MapElement<T>> E exactFind(E[] map, CharChunk name) {
+    int pos = find(map, name);
+    if (pos >= 0) {
+        E result = map[pos];
+        if (name.equals(result.name)) {
+            return result;
+        }
+    }
+    return null;
+}

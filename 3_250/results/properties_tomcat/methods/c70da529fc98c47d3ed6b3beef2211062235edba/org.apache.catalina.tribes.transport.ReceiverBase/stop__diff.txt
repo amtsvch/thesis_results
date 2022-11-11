@@ -1,0 +1,14 @@
+@Override
+public void stop() {
+    // ignore left overs
+    if (executor != null)
+        executor.shutdownNow();
+    executor = null;
+    if (oname != null) {
+        JmxRegistry jmxRegistry = JmxRegistry.getRegistry(channel);
+        if (jmxRegistry != null)
+            jmxRegistry.unregisterJmx(oname);
+        oname = null;
+    }
+    channel = null;
+}

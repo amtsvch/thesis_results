@@ -1,0 +1,111 @@
+// -------------------------------------------------------- Private Methods
+/**
+ * Map the specified URI.
+ * @throws IOException
+ */
+private final void internalMap(CharChunk host, CharChunk uri, String version, MappingData mappingData) throws IOException {
+    if (mappingData.host != null) {
+        // The legacy code (dating down at least to Tomcat 4.1) just
+        // skipped all mapping work in this case. That behaviour has a risk
+        // of returning an inconsistent result.
+        // I do not see a valid use case for it.
+        throw new AssertionError();
+    }
+    // Virtual host mapping
+    MappedHost[] hosts = this.hosts;
+    MappedHost mappedHost = exactFindIgnoreCase(hosts, host);
+    if (mappedHost == null) {
+        // Note: Internally, the Mapper does not use the leading * on a
+        // wildcard host. This is to allow this shortcut.
+        int firstDot = host.indexOf('.');
+        if (firstDot > -1) {
+            int offset = host.getOffset();
+            try {
+                host.setOffset(firstDot + offset);
+                mappedHost = exactFindIgnoreCase(hosts, host);
+            } finally {
+                // Make absolutely sure this gets reset
+                host.setOffset(offset);
+            }
+        }
+        if (mappedHost == null) {
+            mappedHost = defaultHost;
+            if (mappedHost == null) {
+                return;
+            }
+        }
+    }
+    mappingData.host = mappedHost.object;
+    if (uri.isNull()) {
+        // Can't map context or wrapper without a uri
+        return;
+    }
+    uri.setLimit(-1);
+    // Context mapping
+    ContextList contextList = mappedHost.contextList;
+    MappedContext[] contexts = contextList.contexts;
+    int pos = find(contexts, uri);
+    if (pos == -1) {
+        return;
+    }
+    int lastSlash = -1;
+    int uriEnd = uri.getEnd();
+    int length = -1;
+    boolean found = false;
+    MappedContext context = null;
+    while (pos >= 0) {
+        context = contexts[pos];
+        if (uri.startsWith(context.name)) {
+            length = context.name.length();
+            if (uri.getLength() == length) {
+                found = true;
+                break;
+            } else if (uri.startsWithIgnoreCase("/", length)) {
+                found = true;
+                break;
+            }
+        }
+        if (lastSlash == -1) {
+            lastSlash = nthSlash(uri, contextList.nesting + 1);
+        } else {
+            lastSlash = lastSlash(uri);
+        }
+        uri.setEnd(lastSlash);
+        pos = find(contexts, uri);
+    }
+    uri.setEnd(uriEnd);
+    if (!found) {
+        if (contexts[0].name.equals("")) {
+            context = contexts[0];
+        } else {
+            context = null;
+        }
+    }
+    if (context == null) {
+        return;
+    }
+    ContextVersion contextVersion = null;
+    ContextVersion[] contextVersions = context.versions;
+    final int versionCount = contextVersions.length;
+    if (versionCount > 1) {
+        Context[] contextObjects = new Context[contextVersions.length];
+        for (int i = 0; i < contextObjects.length; i++) {
+            contextObjects[i] = contextVersions[i].object;
+        }
+        mappingData.contexts = contextObjects;
+        if (version != null) {
+            contextVersion = exactFind(contextVersions, version);
+        }
+    }
+    if (contextVersion == null) {
+        // Return the latest version
+        // The versions array is known to contain at least one element
+        contextVersion = contextVersions[versionCount - 1];
+    }
+    mappingData.context = contextVersion.object;
+    mappingData.contextSlashCount = contextVersion.slashCount;
+    // Wrapper mapping
+    if (!contextVersion.isPaused()) {
+        internalMapWrapper(contextVersion, uri, mappingData);
+    }
+}

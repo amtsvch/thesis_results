@@ -1,0 +1,6 @@
+@Test(expected = IllegalArgumentException.class)
+public void testAddPreDestroyMethodConflicts() {
+    StandardContext standardContext = new StandardContext();
+    standardContext.addPreDestroyMethod("a", "a");
+    standardContext.addPreDestroyMethod("a", "b");
+}

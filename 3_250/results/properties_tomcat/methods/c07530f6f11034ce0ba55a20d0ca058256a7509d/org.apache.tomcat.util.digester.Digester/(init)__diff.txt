@@ -1,0 +1,18 @@
+public Digester() {                                                                                    public Digester() {                                                                                 
+propertySourcesSet = true;                                                                             propertySourcesSet = true;                                                                          
+if (propertySources != null) {                                                                       |                                                                                                     
+ArrayList&lt;IntrospectionUtils.PropertySource&gt; sourcesList = new ArrayList&lt;&gt;();              ArrayList&lt;IntrospectionUtils.PropertySource&gt; sourcesList = new ArrayList&lt;&gt;();           
+sourcesList.addAll(Arrays.asList(propertySources));                                                  | boolean systemPropertySourceFound = false;                                                          
+sourcesList.add(source[0]);                                                                          | if (propertySources != null) {                                                                      
+source = sourcesList.toArray(new IntrospectionUtils.PropertySource[0]);                              | for (IntrospectionUtils.PropertySource source : propertySources) {                                  
+                                                                                                     | if (source instanceof SystemPropertySource) {                                                       
+                                                                                                     | systemPropertySourceFound = true;                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | sourcesList.add(source);                                                                            
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+                                                                                                     | if (!systemPropertySourceFound) {                                                                   
+                                                                                                     | sourcesList.add(new SystemPropertySource());                                                        
+                                                                                                     | }                                                                                                   
+                                                                                                     | source = sourcesList.toArray(new IntrospectionUtils.PropertySource[0]);                             
+                                                                                                     | }                                                                                                   

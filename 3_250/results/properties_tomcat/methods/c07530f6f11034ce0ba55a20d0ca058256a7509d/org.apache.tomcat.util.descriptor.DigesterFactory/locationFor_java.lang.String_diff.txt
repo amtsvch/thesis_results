@@ -1,0 +1,12 @@
+private static String locationFor(String name) {
+    URL location = CLASS_SERVLET_CONTEXT.getResource("resources/" + name);
+    if (location == null && CLASS_JSP_CONTEXT != null) {
+        location = CLASS_JSP_CONTEXT.getResource("resources/" + name);
+    }
+    if (location == null) {
+        Log log = LogFactory.getLog(DigesterFactory.class);
+        log.warn(sm.getString("digesterFactory.missingSchema", name));
+        return null;
+    }
+    return location.toExternalForm();
+}

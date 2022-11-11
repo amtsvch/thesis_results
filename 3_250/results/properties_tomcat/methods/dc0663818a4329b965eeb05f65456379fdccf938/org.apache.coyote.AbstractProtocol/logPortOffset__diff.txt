@@ -1,0 +1,5 @@
+private void logPortOffset() {
+    if (getPort() != getPortWithOffset()) {
+        getLog().info(sm.getString("abstractProtocolHandler.portOffset", getName(), String.valueOf(getPort()), String.valueOf(getPortOffset())));
+    }
+}

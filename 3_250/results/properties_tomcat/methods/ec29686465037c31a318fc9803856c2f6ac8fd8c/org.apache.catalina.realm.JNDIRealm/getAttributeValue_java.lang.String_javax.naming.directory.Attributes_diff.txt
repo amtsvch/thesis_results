@@ -1,0 +1,31 @@
+/**                                                                                                    /**                                                                                                 
+* Return a String representing the value of the specified attribute.                                   * Return a String representing the value of the specified attribute.                                
+*                                                                                                      *                                                                                                   
+* @param attrId Attribute name                                                                         * @param attrId Attribute name                                                                      
+* @param attrs Attributes containing the required value                                                * @param attrs Attributes containing the required value                                             
+* @return the attribute value                                                                          * @return the attribute value                                                                       
+* @exception NamingException if a directory server error occurs                                        * @exception NamingException if a directory server error occurs                                     
+*/                                                                                                     */                                                                                                  
+private String getAttributeValue(String attrId, Attributes attrs) throws NamingException {             private String getAttributeValue(String attrId, Attributes attrs) throws NamingException {          
+if (containerLog.isTraceEnabled())                                                                   | if (containerLog.isTraceEnabled()) {                                                                
+containerLog.trace("  retrieving attribute " + attrId);                                                containerLog.trace("  retrieving attribute " + attrId);                                             
+if (attrId == null || attrs == null)                                                                 | }                                                                                                   
+                                                                                                     | if (attrId == null || attrs == null) {                                                              
+return null;                                                                                           return null;                                                                                        
+                                                                                                     | }                                                                                                   
+Attribute attr = attrs.get(attrId);                                                                    Attribute attr = attrs.get(attrId);                                                                 
+if (attr == null)                                                                                    | if (attr == null) {                                                                                 
+return null;                                                                                           return null;                                                                                        
+                                                                                                     | }                                                                                                   
+Object value = attr.get();                                                                             Object value = attr.get();                                                                          
+if (value == null)                                                                                   | if (value == null) {                                                                                
+return null;                                                                                           return null;                                                                                        
+                                                                                                     | }                                                                                                   
+String valueString = null;                                                                             String valueString = null;                                                                          
+if (value instanceof byte[])                                                                         | if (value instanceof byte[]) {                                                                      
+valueString = new String((byte[]) value);                                                              valueString = new String((byte[]) value);                                                           
+else                                                                                                 | } else {                                                                                            
+valueString = value.toString();                                                                        valueString = value.toString();                                                                     
+                                                                                                     | }                                                                                                   
+return valueString;                                                                                    return valueString;                                                                                 
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,35 @@
+/**
+ * Close any open connection to the directory server for this Realm.
+ *
+ * @param connection The directory context to be closed
+ */
+protected void close(JNDIConnection connection) {
+    // Do nothing if there is no opened connection
+    if (connection == null || connection.context == null) {
+        if (connectionPool == null) {
+            singleConnectionLock.unlock();
+        }
+        return;
+    }
+    // Close tls startResponse if used
+    if (tls != null) {
+        try {
+            tls.close();
+        } catch (IOException e) {
+            containerLog.error(sm.getString("jndiRealm.tlsClose"), e);
+        }
+    }
+    // Close our opened connection
+    try {
+        if (containerLog.isDebugEnabled())
+            containerLog.debug("Closing directory context");
+        connection.context.close();
+    } catch (NamingException e) {
+        containerLog.error(sm.getString("jndiRealm.close"), e);
+    }
+    connection.context = null;
+    // The lock will be reacquired before any manipulation of the connection
+    if (connectionPool == null) {
+        singleConnectionLock.unlock();
+    }
+}

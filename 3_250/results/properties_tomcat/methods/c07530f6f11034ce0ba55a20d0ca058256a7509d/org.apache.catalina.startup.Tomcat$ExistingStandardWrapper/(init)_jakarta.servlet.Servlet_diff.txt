@@ -1,0 +1,9 @@
+@SuppressWarnings("deprecation")
+public ExistingStandardWrapper(Servlet existing) {
+    this.existing = existing;
+    if (existing instanceof jakarta.servlet.SingleThreadModel) {
+        singleThreadModel = true;
+        instancePool = new Stack<>();
+    }
+    this.asyncSupported = hasAsync(existing);
+}

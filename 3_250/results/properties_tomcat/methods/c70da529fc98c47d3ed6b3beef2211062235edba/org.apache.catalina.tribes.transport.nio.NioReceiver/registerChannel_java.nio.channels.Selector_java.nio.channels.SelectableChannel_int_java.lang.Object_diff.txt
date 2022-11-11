@@ -1,0 +1,19 @@
+// ----------------------------------------------------------
+/**
+ * Register the given channel with the given selector for
+ * the given operations of interest
+ * @param selector The selector to use
+ * @param channel The channel
+ * @param ops The operations to register
+ * @param attach Attachment object
+ * @throws Exception IO error with channel
+ */
+protected void registerChannel(Selector selector, SelectableChannel channel, int ops, Object attach) throws Exception {
+    // could happen
+    if (channel == null)
+        return;
+    // set the new channel non-blocking
+    channel.configureBlocking(false);
+    // register it with the selector
+    channel.register(selector, ops, attach);
+}

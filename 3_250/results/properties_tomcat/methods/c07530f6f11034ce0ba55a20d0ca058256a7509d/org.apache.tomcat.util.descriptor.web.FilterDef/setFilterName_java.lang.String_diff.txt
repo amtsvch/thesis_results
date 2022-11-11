@@ -1,0 +1,6 @@
+public void setFilterName(String filterName) {
+    if (filterName == null || filterName.equals("")) {
+        throw new IllegalArgumentException(sm.getString("filterDef.invalidFilterName", filterName));
+    }
+    this.filterName = filterName;
+}

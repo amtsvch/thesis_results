@@ -1,0 +1,27 @@
+/**
+ * Factory method to create (if necessary) and return our
+ * <code>MBeanServer</code> instance.
+ *
+ * @return the MBean server
+ */
+public MBeanServer getMBeanServer() {
+    if (server == null) {
+        synchronized (serverLock) {
+            if (server == null) {
+                long t1 = System.currentTimeMillis();
+                if (MBeanServerFactory.findMBeanServer(null).size() > 0) {
+                    server = MBeanServerFactory.findMBeanServer(null).get(0);
+                    if (log.isDebugEnabled()) {
+                        log.debug("Using existing MBeanServer " + (System.currentTimeMillis() - t1));
+                    }
+                } else {
+                    server = ManagementFactory.getPlatformMBeanServer();
+                    if (log.isDebugEnabled()) {
+                        log.debug("Creating MBeanServer" + (System.currentTimeMillis() - t1));
+                    }
+                }
+            }
+        }
+    }
+    return server;
+}

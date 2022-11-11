@@ -1,0 +1,6 @@
+@Override
+public void scanWebInfClasses() {
+    // NO-OP. Fragments unpacked in WEB-INF classes are not handled,
+    // mainly because if there are multiple fragments there is no way to
+    // handle multiple web-fragment.xml files.
+}

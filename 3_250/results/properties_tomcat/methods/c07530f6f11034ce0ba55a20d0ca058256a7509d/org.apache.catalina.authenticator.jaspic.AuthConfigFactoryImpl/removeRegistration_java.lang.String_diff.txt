@@ -1,0 +1,27 @@
+@Override
+public boolean removeRegistration(String registrationID) {
+    RegistrationContextImpl registration = null;
+    if (DEFAULT_REGISTRATION_ID.equals(registrationID)) {
+        registration = defaultRegistration.remove(registrationID);
+    }
+    if (registration == null) {
+        registration = layerAppContextRegistrations.remove(registrationID);
+    }
+    if (registration == null) {
+        registration = appContextRegistrations.remove(registrationID);
+    }
+    if (registration == null) {
+        registration = layerRegistrations.remove(registrationID);
+    }
+    if (registration == null) {
+        return false;
+    } else {
+        for (RegistrationListenerWrapper wrapper : registration.listeners) {
+            wrapper.getListener().notify(wrapper.getMessageLayer(), wrapper.getAppContext());
+        }
+        if (registration.isPersistent()) {
+            savePersistentRegistrations();
+        }
+        return true;
+    }
+}

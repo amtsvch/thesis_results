@@ -1,0 +1,28 @@
+protected final WebResource getResourceInternal(String path, boolean useClassLoaderResources) {
+    WebResource result = null;
+    WebResource virtual = null;
+    WebResource mainEmpty = null;
+    for (List<WebResourceSet> list : allResources) {
+        for (WebResourceSet webResourceSet : list) {
+            if (!useClassLoaderResources && !webResourceSet.getClassLoaderOnly() || useClassLoaderResources && !webResourceSet.getStaticOnly()) {
+                result = webResourceSet.getResource(path);
+                if (result.exists()) {
+                    return result;
+                }
+                if (virtual == null) {
+                    if (result.isVirtual()) {
+                        virtual = result;
+                    } else if (main.equals(webResourceSet)) {
+                        mainEmpty = result;
+                    }
+                }
+            }
+        }
+    }
+    // Use the first virtual result if no real result was found
+    if (virtual != null) {
+        return virtual;
+    }
+    // Default is empty resource in main resources
+    return mainEmpty;
+}

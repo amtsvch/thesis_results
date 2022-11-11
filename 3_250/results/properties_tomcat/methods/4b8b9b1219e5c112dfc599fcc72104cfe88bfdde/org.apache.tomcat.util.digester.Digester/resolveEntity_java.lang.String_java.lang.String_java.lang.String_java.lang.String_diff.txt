@@ -1,0 +1,48 @@
+@Override
+public InputSource resolveEntity(String name, String publicId, String baseURI, String systemId) throws SAXException, IOException {
+    if (saxLog.isDebugEnabled()) {
+        saxLog.debug("resolveEntity('" + publicId + "', '" + systemId + "', '" + baseURI + "')");
+    }
+    // Has this system identifier been registered?
+    String entityURL = null;
+    if (publicId != null) {
+        entityURL = entityValidator.get(publicId);
+    }
+    if (entityURL == null) {
+        if (systemId == null) {
+            // cannot resolve
+            if (log.isDebugEnabled()) {
+                log.debug(" Cannot resolve entity: '" + publicId + "'");
+            }
+            return null;
+        } else {
+            // try to resolve using system ID
+            if (log.isDebugEnabled()) {
+                log.debug(" Trying to resolve using system ID '" + systemId + "'");
+            }
+            entityURL = systemId;
+            // resolve systemId against baseURI if it is not absolute
+            if (baseURI != null) {
+                try {
+                    URI uri = new URI(systemId);
+                    if (!uri.isAbsolute()) {
+                        entityURL = new URI(baseURI).resolve(uri).toString();
+                    }
+                } catch (URISyntaxException e) {
+                    if (log.isDebugEnabled()) {
+                        log.debug("Invalid URI '" + baseURI + "' or '" + systemId + "'");
+                    }
+                }
+            }
+        }
+    }
+    // Return an input source to our alternative URL
+    if (log.isDebugEnabled()) {
+        log.debug(" Resolving to alternate DTD '" + entityURL + "'");
+    }
+    try {
+        return new InputSource(entityURL);
+    } catch (Exception e) {
+        throw createSAXException(e);
+    }
+}

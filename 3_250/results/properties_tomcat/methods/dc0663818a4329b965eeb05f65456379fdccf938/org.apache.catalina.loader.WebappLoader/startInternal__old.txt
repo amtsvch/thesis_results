@@ -1,0 +1,55 @@
+/**
+ * Start associated {@link ClassLoader} and implement the requirements
+ * of {@link org.apache.catalina.util.LifecycleBase#startInternal()}.
+ *
+ * @exception LifecycleException if this component detects a fatal error
+ *  that prevents this component from being used
+ */
+@Override
+protected void startInternal() throws LifecycleException {
+    if (log.isDebugEnabled())
+        log.debug(sm.getString("webappLoader.starting"));
+    if (context.getResources() == null) {
+        log.info(sm.getString("webappLoader.noResources", context));
+        setState(LifecycleState.STARTING);
+        return;
+    }
+    // Construct a class loader based on our current repositories list
+    try {
+        classLoader = createClassLoader();
+        classLoader.setResources(context.getResources());
+        classLoader.setDelegate(this.delegate);
+        // Set Jakarta class converter
+        if (getJakartaConverter() != null) {
+            try {
+                Class<?> jakartaEnumClass = Class.forName("org.apache.tomcat.jakartaee.EESpecProfile");
+                Method valueOf = jakartaEnumClass.getMethod("valueOf", String.class);
+                Object profile = null;
+                try {
+                    profile = valueOf.invoke(null, getJakartaConverter());
+                } catch (InvocationTargetException ignored) {
+                    profile = valueOf.invoke(null, "TOMCAT");
+                }
+                ClassFileTransformer transformer = (ClassFileTransformer) Class.forName("org.apache.tomcat.jakartaee.ClassConverter").getConstructor(jakartaEnumClass).newInstance(profile);
+                classLoader.addTransformer(transformer);
+            } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+                log.warn(sm.getString("webappLoader.noJakartaConverter"), e);
+            }
+        }
+        // Configure our repositories
+        setClassPath();
+        setPermissions();
+        classLoader.start();
+        String contextName = context.getName();
+        if (!contextName.startsWith("/")) {
+            contextName = "/" + contextName;
+        }
+        ObjectName cloname = new ObjectName(context.getDomain() + ":type=" + classLoader.getClass().getSimpleName() + ",host=" + context.getParent().getName() + ",context=" + contextName);
+        Registry.getRegistry(null, null).registerComponent(classLoader, cloname, null);
+    } catch (Throwable t) {
+        t = ExceptionUtils.unwrapInvocationTargetException(t);
+        ExceptionUtils.handleThrowable(t);
+        throw new LifecycleException(sm.getString("webappLoader.startError"), t);
+    }
+    setState(LifecycleState.STARTING);
+}

@@ -1,0 +1,7 @@
+void failDeployment() {
+    deploymentFailed = true;
+    // Clear all existing deployments
+    endpointsRegistered = false;
+    configExactMatchMap.clear();
+    configTemplateMatchMap.clear();
+}

@@ -1,0 +1,14 @@
+/**
+ * Opens a stream to access the TLD.
+ *
+ * @return a stream containing the TLD content
+ * @throws IOException if there was a problem opening the stream
+ */
+public InputStream openStream() throws IOException {
+    if (entryName == null) {
+        return url.openStream();
+    } else {
+        URL entryUrl = JarFactory.getJarEntryURL(url, entryName);
+        return entryUrl.openStream();
+    }
+}

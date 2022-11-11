@@ -1,0 +1,8 @@
+@Override
+public FilterRegistration.Dynamic addFilter(String filterName, Filter filter) {
+    if (SecurityUtil.isPackageProtectionEnabled()) {
+        return (FilterRegistration.Dynamic) doPrivileged("addFilter", new Class[] { String.class, Filter.class }, new Object[] { filterName, filter });
+    } else {
+        return context.addFilter(filterName, filter);
+    }
+}

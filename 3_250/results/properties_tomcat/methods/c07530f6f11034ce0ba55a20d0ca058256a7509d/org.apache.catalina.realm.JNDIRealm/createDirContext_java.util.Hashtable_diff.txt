@@ -1,0 +1,7 @@
+private DirContext createDirContext(Hashtable<String, String> env) throws NamingException {
+    if (useStartTls) {
+        return createTlsDirContext(env);
+    } else {
+        return new InitialDirContext(env);
+    }
+}

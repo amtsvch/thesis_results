@@ -1,0 +1,31 @@
+/**
+ * Create the configured {@link Context} for the given <code>host</code>.
+ * The default constructor of the class that was configured with
+ * {@link StandardHost#setContextClass(String)} will be used
+ *
+ * @param host
+ *            host for which the {@link Context} should be created, or
+ *            <code>null</code> if default host should be used
+ * @param url
+ *            path of the webapp which should get the {@link Context}
+ * @return newly created {@link Context}
+ */
+private Context createContext(Host host, String url) {
+    String defaultContextClass = StandardContext.class.getName();
+    String contextClass = StandardContext.class.getName();
+    if (host == null) {
+        host = this.getHost();
+    }
+    if (host instanceof StandardHost) {
+        contextClass = ((StandardHost) host).getContextClass();
+    }
+    try {
+        if (defaultContextClass.equals(contextClass)) {
+            return new StandardContext();
+        } else {
+            return (Context) Class.forName(contextClass).getConstructor().newInstance();
+        }
+    } catch (ReflectiveOperationException | IllegalArgumentException | SecurityException e) {
+        throw new IllegalArgumentException(sm.getString("tomcat.noContextClass", contextClass, host, url), e);
+    }
+}

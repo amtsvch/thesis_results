@@ -1,0 +1,13 @@
+/**
+ * Set a property on the protocol handler.
+ *
+ * @param name the property name
+ * @param value the property value
+ * @return <code>true</code> if the property was successfully set
+ */
+public boolean setProperty(String name, String value) {
+    if (protocolHandler == null) {
+        return false;
+    }
+    return IntrospectionUtils.setProperty(protocolHandler, name, value);
+}

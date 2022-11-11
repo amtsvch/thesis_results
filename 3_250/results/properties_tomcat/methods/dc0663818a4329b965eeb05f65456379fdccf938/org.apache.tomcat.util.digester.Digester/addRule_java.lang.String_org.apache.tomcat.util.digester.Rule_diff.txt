@@ -1,0 +1,12 @@
+// --------------------------------------------------------- Rule Methods
+/**
+ * <p>Register a new Rule matching the specified pattern.
+ * This method sets the <code>Digester</code> property on the rule.</p>
+ *
+ * @param pattern Element matching pattern
+ * @param rule Rule to be registered
+ */
+public void addRule(String pattern, Rule rule) {
+    rule.setDigester(this);
+    getRules().add(pattern, rule);
+}

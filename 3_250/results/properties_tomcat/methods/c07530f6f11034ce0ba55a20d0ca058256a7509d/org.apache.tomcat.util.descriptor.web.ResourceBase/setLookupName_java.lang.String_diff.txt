@@ -1,0 +1,7 @@
+public void setLookupName(String lookupName) {
+    if (lookupName == null || lookupName.length() == 0) {
+        this.lookupName = null;
+        return;
+    }
+    this.lookupName = lookupName;
+}

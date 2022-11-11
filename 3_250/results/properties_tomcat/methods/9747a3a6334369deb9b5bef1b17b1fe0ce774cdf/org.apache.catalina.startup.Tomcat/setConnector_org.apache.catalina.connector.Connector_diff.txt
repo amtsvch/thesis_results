@@ -1,0 +1,18 @@
+/**
+ * Set the specified connector in the service, if it is not already
+ * present.
+ * @param connector The connector instance to add
+ */
+public void setConnector(Connector connector) {
+    Service service = getService();
+    boolean found = false;
+    for (Connector serviceConnector : service.findConnectors()) {
+        if (connector == serviceConnector) {
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        service.addConnector(connector);
+    }
+}

@@ -1,0 +1,46 @@
+// --------------------------------------------------------- Private Methods
+/**
+ * Attempts to read some data into the input buffer.
+ *
+ * @return <code>true</code> if more data was added to the input buffer
+ *         otherwise <code>false</code>
+ */
+private boolean fill(boolean block) throws IOException {
+    if (log.isDebugEnabled()) {
+        log.debug("Before fill(): [" + parsingHeader + "], parsingRequestLine: [" + parsingRequestLine + "], parsingRequestLinePhase: [" + parsingRequestLinePhase + "], parsingRequestLineStart: [" + parsingRequestLineStart + "], byteBuffer.position() [" + byteBuffer.position() + "]");
+    }
+    if (parsingHeader) {
+        if (byteBuffer.limit() >= headerBufferSize) {
+            if (parsingRequestLine) {
+                // Avoid unknown protocol triggering an additional error
+                request.protocol().setString(Constants.HTTP_11);
+            }
+            throw new IllegalArgumentException(sm.getString("iib.requestheadertoolarge.error"));
+        }
+    } else {
+        byteBuffer.limit(end).position(end);
+    }
+    byteBuffer.mark();
+    if (byteBuffer.position() < byteBuffer.limit()) {
+        byteBuffer.position(byteBuffer.limit());
+    }
+    byteBuffer.limit(byteBuffer.capacity());
+    SocketWrapperBase<?> socketWrapper = this.wrapper;
+    int nRead = -1;
+    if (socketWrapper != null) {
+        nRead = socketWrapper.read(block, byteBuffer);
+    } else {
+        throw new CloseNowException(sm.getString("iib.eof.error"));
+    }
+    byteBuffer.limit(byteBuffer.position()).reset();
+    if (log.isDebugEnabled()) {
+        log.debug("Received [" + new String(byteBuffer.array(), byteBuffer.position(), byteBuffer.remaining(), StandardCharsets.ISO_8859_1) + "]");
+    }
+    if (nRead > 0) {
+        return true;
+    } else if (nRead == -1) {
+        throw new EOFException(sm.getString("iib.eof.error"));
+    } else {
+        return false;
+    }
+}

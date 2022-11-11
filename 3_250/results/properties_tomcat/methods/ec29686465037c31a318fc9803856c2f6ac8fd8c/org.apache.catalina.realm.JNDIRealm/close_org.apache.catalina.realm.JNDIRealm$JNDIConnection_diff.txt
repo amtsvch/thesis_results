@@ -1,0 +1,36 @@
+/**                                                                                                    /**                                                                                                 
+* Close any open connection to the directory server for this Realm.                                    * Close any open connection to the directory server for this Realm.                                 
+*                                                                                                      *                                                                                                   
+* @param connection The directory context to be closed                                                 * @param connection The directory context to be closed                                              
+*/                                                                                                     */                                                                                                  
+protected void close(JNDIConnection connection) {                                                      protected void close(JNDIConnection connection) {                                                   
+// Do nothing if there is no opened connection                                                         // Do nothing if there is no opened connection                                                      
+if (connection == null || connection.context == null) {                                                if (connection == null || connection.context == null) {                                             
+if (connectionPool == null) {                                                                          if (connectionPool == null) {                                                                       
+singleConnectionLock.unlock();                                                                         singleConnectionLock.unlock();                                                                      
+}                                                                                                      }                                                                                                   
+return;                                                                                                return;                                                                                             
+}                                                                                                      }                                                                                                   
+// Close tls startResponse if used                                                                     // Close tls startResponse if used                                                                  
+if (tls != null) {                                                                                     if (tls != null) {                                                                                  
+try {                                                                                                  try {                                                                                               
+tls.close();                                                                                           tls.close();                                                                                        
+} catch (IOException e) {                                                                              } catch (IOException e) {                                                                           
+containerLog.error(sm.getString("jndiRealm.tlsClose"), e);                                             containerLog.error(sm.getString("jndiRealm.tlsClose"), e);                                          
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+// Close our opened connection                                                                         // Close our opened connection                                                                      
+try {                                                                                                  try {                                                                                               
+if (containerLog.isDebugEnabled())                                                                   | if (containerLog.isDebugEnabled()) {                                                                
+containerLog.debug("Closing directory context");                                                       containerLog.debug("Closing directory context");                                                    
+                                                                                                     | }                                                                                                   
+connection.context.close();                                                                            connection.context.close();                                                                         
+} catch (NamingException e) {                                                                          } catch (NamingException e) {                                                                       
+containerLog.error(sm.getString("jndiRealm.close"), e);                                                containerLog.error(sm.getString("jndiRealm.close"), e);                                             
+}                                                                                                      }                                                                                                   
+connection.context = null;                                                                             connection.context = null;                                                                          
+// The lock will be reacquired before any manipulation of the connection                               // The lock will be reacquired before any manipulation of the connection                            
+if (connectionPool == null) {                                                                          if (connectionPool == null) {                                                                       
+singleConnectionLock.unlock();                                                                         singleConnectionLock.unlock();                                                                      
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

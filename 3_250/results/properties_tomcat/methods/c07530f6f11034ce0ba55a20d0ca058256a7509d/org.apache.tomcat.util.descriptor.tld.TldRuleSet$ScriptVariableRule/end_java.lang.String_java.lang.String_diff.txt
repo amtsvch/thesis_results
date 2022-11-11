@@ -1,0 +1,12 @@
+@Override
+public void end(String namespace, String name) throws Exception {
+    Variable variable = (Variable) digester.pop();
+    TagXml tag = (TagXml) digester.peek();
+    tag.getVariables().add(variable.toTagVariableInfo());
+    StringBuilder code = digester.getGeneratedCode();
+    if (code != null) {
+        code.append(digester.toVariableName(tag)).append(".getVariables().add(");
+        code.append(digester.toVariableName(variable)).append(".toTagVariableInfo());");
+        code.append(System.lineSeparator());
+    }
+}

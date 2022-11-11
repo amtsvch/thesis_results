@@ -1,0 +1,16 @@
+// ------------------------------------------------------ Protected Methods
+/**
+ * Return a User object containing information about the user
+ * with the specified username, if found in the directory;
+ * otherwise return <code>null</code>.
+ *
+ * @param connection The directory context
+ * @param username Username to be looked up
+ * @return the User object
+ * @exception NamingException if a directory server error occurs
+ *
+ * @see #getUser(JNDIConnection, String, String, int)
+ */
+protected User getUser(JNDIConnection connection, String username) throws NamingException {
+    return getUser(connection, username, null, -1);
+}

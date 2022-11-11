@@ -1,0 +1,19 @@
+/**
+ * @return the character encoding used for this Response.
+ */
+@Override
+public String getCharacterEncoding() {
+    String charset = getCoyoteResponse().getCharacterEncoding();
+    if (charset != null) {
+        return charset;
+    }
+    Context context = getContext();
+    String result = null;
+    if (context != null) {
+        result = context.getResponseCharacterEncoding();
+    }
+    if (result == null) {
+        result = org.apache.coyote.Constants.DEFAULT_BODY_CHARSET.name();
+    }
+    return result;
+}

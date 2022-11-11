@@ -1,0 +1,30 @@
+void addEndpoint(Class&lt;?&gt; pojo, boolean fromAnnotatedPojo) throws DeploymentException {          void addEndpoint(Class&lt;?&gt; pojo, boolean fromAnnotatedPojo) throws DeploymentException {       
+if (deploymentFailed) {                                                                                if (deploymentFailed) {                                                                             
+throw new DeploymentException(sm.getString("serverContainer.failedDeployment", servletContext.getCon   throw new DeploymentException(sm.getString("serverContainer.failedDeployment", servletContext.getCon
+}                                                                                                      }                                                                                                   
+ServerEndpointConfig sec;                                                                              ServerEndpointConfig sec;                                                                           
+try {                                                                                                  try {                                                                                               
+ServerEndpoint annotation = pojo.getAnnotation(ServerEndpoint.class);                                  ServerEndpoint annotation = pojo.getAnnotation(ServerEndpoint.class);                               
+if (annotation == null) {                                                                              if (annotation == null) {                                                                           
+throw new DeploymentException(sm.getString("serverContainer.missingAnnotation", pojo.getName()));      throw new DeploymentException(sm.getString("serverContainer.missingAnnotation", pojo.getName()));   
+}                                                                                                      }                                                                                                   
+String path = annotation.value();                                                                      String path = annotation.value();                                                                   
+// Validate encoders                                                                                   // Validate encoders                                                                                
+validateEncoders(annotation.encoders());                                                             | validateEncoders(annotation.encoders(), getInstanceManager(Thread.currentThread().getContextClassLoa
+// ServerEndpointConfig                                                                                // ServerEndpointConfig                                                                             
+Class&lt;? extends Configurator&gt; configuratorClazz = annotation.configurator();                     Class&lt;? extends Configurator&gt; configuratorClazz = annotation.configurator();                  
+Configurator configurator = null;                                                                      Configurator configurator = null;                                                                   
+if (!configuratorClazz.equals(Configurator.class)) {                                                   if (!configuratorClazz.equals(Configurator.class)) {                                                
+try {                                                                                                  try {                                                                                               
+configurator = annotation.configurator().getConstructor().newInstance();                               configurator = annotation.configurator().getConstructor().newInstance();                            
+} catch (ReflectiveOperationException e) {                                                             } catch (ReflectiveOperationException e) {                                                          
+throw new DeploymentException(sm.getString("serverContainer.configuratorFail", annotation.configurat   throw new DeploymentException(sm.getString("serverContainer.configuratorFail", annotation.configurat
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+sec = ServerEndpointConfig.Builder.create(pojo, path).decoders(Arrays.asList(annotation.decoders()))   sec = ServerEndpointConfig.Builder.create(pojo, path).decoders(Arrays.asList(annotation.decoders()))
+} catch (DeploymentException de) {                                                                     } catch (DeploymentException de) {                                                                  
+failDeployment();                                                                                      failDeployment();                                                                                   
+throw de;                                                                                              throw de;                                                                                           
+}                                                                                                      }                                                                                                   
+addEndpoint(sec, fromAnnotatedPojo);                                                                   addEndpoint(sec, fromAnnotatedPojo);                                                                
+}                                                                                                      }                                                                                                   

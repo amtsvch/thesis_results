@@ -1,0 +1,13 @@
+public void recycle() {
+    host = null;
+    context = null;
+    contextSlashCount = 0;
+    contexts = null;
+    wrapper = null;
+    jspWildCard = false;
+    requestPath.recycle();
+    wrapperPath.recycle();
+    pathInfo.recycle();
+    redirectPath.recycle();
+    matchType = null;
+}

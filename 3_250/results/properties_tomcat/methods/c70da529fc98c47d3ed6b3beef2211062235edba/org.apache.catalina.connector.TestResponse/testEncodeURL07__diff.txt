@@ -1,0 +1,4 @@
+@Test
+public void testEncodeURL07() throws Exception {
+    doTestEncodeURL("bar.html?x=/../", "bar.html;jsessionid=1234?x=/../");
+}

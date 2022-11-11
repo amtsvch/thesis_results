@@ -1,0 +1,10 @@
+@After                                                                                                 @After                                                                                              
+public void tearDown() throws Exception {                                                              public void tearDown() throws Exception {                                                           
+                                                                                                     | boolean deleted = true;                                                                             
+for (File file : deleteOnTearDown) {                                                                   for (File file : deleteOnTearDown) {                                                                
+ExpandWar.delete(file);                                                                              | deleted = deleted & ExpandWar.delete(file);                                                         
+}                                                                                                      }                                                                                                   
+deleteOnTearDown.clear();                                                                              deleteOnTearDown.clear();                                                                           
+// tempDir contains log files which will be open until JULI shuts down                               | Assert.assertTrue("Failed to delete at least one file", deleted);                                   
+deleteOnClassTearDown.add(tempDir);                                                                  |                                                                                                     
+}                                                                                                      }                                                                                                   
