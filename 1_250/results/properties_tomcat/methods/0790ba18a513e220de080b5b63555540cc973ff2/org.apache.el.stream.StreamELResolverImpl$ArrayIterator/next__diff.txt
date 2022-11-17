@@ -1,0 +1,8 @@
+@Override
+public Object next() {
+    try {
+        return Array.get(base, index++);
+    } catch (ArrayIndexOutOfBoundsException e) {
+        throw new NoSuchElementException();
+    }
+}

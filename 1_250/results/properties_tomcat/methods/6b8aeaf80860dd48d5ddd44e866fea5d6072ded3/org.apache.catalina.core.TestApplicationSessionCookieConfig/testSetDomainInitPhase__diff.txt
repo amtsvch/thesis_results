@@ -1,0 +1,6 @@
+@Test
+public void testSetDomainInitPhase() {
+    context.setState(LifecycleState.STARTING_PREP);
+    applicationSessionCookieConfig.setDomain("test");
+    Assert.assertTrue(applicationSessionCookieConfig.getDomain().equals("test"));
+}

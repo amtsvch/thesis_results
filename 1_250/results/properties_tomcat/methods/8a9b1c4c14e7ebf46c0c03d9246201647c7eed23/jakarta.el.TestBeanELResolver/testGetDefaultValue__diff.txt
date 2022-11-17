@@ -1,0 +1,11 @@
+/**                                                                                                    /**                                                                                                 
+* Tests that a valid property implemented by a default method is resolved.                             * Tests that a valid property implemented by a default method is resolved.                          
+*/                                                                                                     */                                                                                                  
+@Test                                                                                                  @Test                                                                                               
+public void testGetDefaultValue() {                                                                    public void testGetDefaultValue() {                                                                 
+BeanELResolver resolver = new BeanELResolver();                                                        BeanELResolver resolver = new BeanELResolver();                                                     
+ELContext context = new StandardELContext(ELManager.getExpressionFactory());                           ELContext context = new StandardELContext(ELManager.getExpressionFactory());                        
+Object result = resolver.getValue(context, new Bean(), PROPERTY02_NAME);                             | Object result = resolver.getValue(context, new Bean(), PROPERTY04_NAME);                            
+Assert.assertEquals("Default", result);                                                                Assert.assertEquals("Default", result);                                                             
+Assert.assertTrue(context.isPropertyResolved());                                                       Assert.assertTrue(context.isPropertyResolved());                                                    
+}                                                                                                      }                                                                                                   

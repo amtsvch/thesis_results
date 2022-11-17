@@ -1,0 +1,12 @@
+/**                                                                                                    /**                                                                                                 
+* Tests that a valid FeatureDescriptors are not returned if base is not                                * Tests that a valid FeatureDescriptors are not returned if base is not                             
+* ResourceBundle.                                                                                      * ResourceBundle.                                                                                   
+*/                                                                                                     */                                                                                                  
+                                                                                                     | @Deprecated(forRemoval = true, since = "Tomcat 10.1.0")                                             
+@Test                                                                                                  @Test                                                                                               
+public void testGetFeatureDescriptors01() {                                                            public void testGetFeatureDescriptors01() {                                                         
+ResourceBundleELResolver resolver = new ResourceBundleELResolver();                                    ResourceBundleELResolver resolver = new ResourceBundleELResolver();                                 
+ELContext context = new StandardELContext(ELManager.getExpressionFactory());                           ELContext context = new StandardELContext(ELManager.getExpressionFactory());                        
+Iterator&lt;FeatureDescriptor&gt; result = resolver.getFeatureDescriptors(context, new Object());      Iterator&lt;FeatureDescriptor&gt; result = resolver.getFeatureDescriptors(context, new Object());   
+Assert.assertNull(result);                                                                             Assert.assertNull(result);                                                                          
+}                                                                                                      }                                                                                                   

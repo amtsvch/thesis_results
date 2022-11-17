@@ -1,0 +1,9 @@
+public void setOpenSslConf(OpenSSLConf conf) {
+    if (conf == null) {
+        throw new IllegalArgumentException(sm.getString("sslHostConfig.opensslconf.null"));
+    } else if (openSslConf != null) {
+        throw new IllegalArgumentException(sm.getString("sslHostConfig.opensslconf.alreadySet"));
+    }
+    setProperty("<OpenSSLConf>", Type.OPENSSL);
+    openSslConf = conf;
+}

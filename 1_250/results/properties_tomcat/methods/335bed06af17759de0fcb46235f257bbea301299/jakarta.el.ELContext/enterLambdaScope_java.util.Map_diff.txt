@@ -1,0 +1,11 @@
+/**
+ * Called when starting to evaluate a lambda expression so that the
+ * arguments are available to the EL context during evaluation.
+ *
+ * @param arguments The arguments in scope for the current lambda
+ *                  expression.
+ * @since EL 3.0
+ */
+public void enterLambdaScope(Map<String, Object> arguments) {
+    lambdaArguments.push(arguments);
+}

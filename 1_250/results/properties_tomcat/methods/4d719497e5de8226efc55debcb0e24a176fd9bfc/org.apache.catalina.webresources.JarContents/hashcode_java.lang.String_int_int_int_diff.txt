@@ -1,0 +1,10 @@
+                                                                                                     | private int hashcode(String content, int startPos, int endPos, int hashPrime) {                     
+                                                                                                     | int h = hashPrime / 2;                                                                              
+                                                                                                     | for (int i = startPos; i &lt; endPos; i++) {                                                        
+                                                                                                     | h = hashPrime * h + content.charAt(i);                                                              
+                                                                                                     | }                                                                                                   
+                                                                                                     | if (h &lt; 0) {                                                                                     
+                                                                                                     | h = h * -1;                                                                                         
+                                                                                                     | }                                                                                                   
+                                                                                                     | return h;                                                                                           
+                                                                                                     | }                                                                                                   

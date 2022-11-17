@@ -1,0 +1,8 @@
+@Test
+public void testParseVersion24() {
+    WebXml webxml = new WebXml();
+    webxml.setVersion("2.4");
+    Assert.assertEquals(2, webxml.getMajorVersion());
+    Assert.assertEquals(4, webxml.getMinorVersion());
+    Assert.assertEquals("2.4", webxml.getVersion());
+}

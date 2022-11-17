@@ -1,0 +1,8 @@
+// ************************************************************************
+private String evaluateExpression(String expression) {
+    ExpressionFactoryImpl exprFactory = new ExpressionFactoryImpl();
+    ELContextImpl ctx = new ELContextImpl(exprFactory);
+    ctx.setFunctionMapper(new TesterFunctions.FMapper());
+    ValueExpression ve = exprFactory.createValueExpression(ctx, expression, String.class);
+    return (String) ve.getValue(ctx);
+}

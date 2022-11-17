@@ -1,0 +1,22 @@
+/**
+ * Parses the provided input String as a JSP attribute and returns an
+ * unquoted value.
+ *
+ * @param input         The input.
+ * @param quote         The quote character for the attribute or 0 for
+ *                      scripting expressions.
+ * @param isELIgnored   Is expression language being ignored on the page
+ *                      where the JSP attribute is defined.
+ * @param isDeferredSyntaxAllowedAsLiteral
+ *                      Are deferred expressions treated as literals?
+ * @param strict        Should the rules of JSP.1.6 for escaping of quotes
+ *                      be strictly applied?
+ * @param quoteAttributeEL Should the rules of JSP.1.6 for escaping in
+ *                      attributes be applied to EL in attribute values?
+ * @return              An unquoted JSP attribute that, if it contains
+ *                      expression language can be safely passed to the EL
+ *                      processor without fear of ambiguity.
+ */
+public static String getUnquoted(String input, char quote, boolean isELIgnored, boolean isDeferredSyntaxAllowedAsLiteral, boolean strict, boolean quoteAttributeEL) {
+    return new AttributeParser(input, quote, isELIgnored, isDeferredSyntaxAllowedAsLiteral, strict, quoteAttributeEL).getUnquoted();
+}

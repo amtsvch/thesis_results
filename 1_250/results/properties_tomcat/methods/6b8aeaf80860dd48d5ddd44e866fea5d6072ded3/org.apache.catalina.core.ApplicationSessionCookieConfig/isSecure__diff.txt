@@ -1,0 +1,8 @@
+@Override                                                                                              @Override                                                                                           
+public boolean isSecure() {                                                                            public boolean isSecure() {                                                                         
+return secure;                                                                                       | String secure = getAttribute(Constants.COOKIE_SECURE_ATTR);                                         
+                                                                                                     | if (secure == null) {                                                                               
+                                                                                                     | return DEFAULT_SECURE;                                                                              
+}                                                                                                      }                                                                                                   
+                                                                                                     | return Boolean.parseBoolean(secure);                                                                
+                                                                                                     | }                                                                                                   

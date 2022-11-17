@@ -1,0 +1,21 @@
+public JasperELResolver(List&lt;ELResolver&gt; appResolvers, ELResolver streamResolver) {              public JasperELResolver(List&lt;ELResolver&gt; appResolvers, ELResolver streamResolver) {           
+appResolversSize = appResolvers.size();                                                                appResolversSize = appResolvers.size();                                                             
+resolvers = new ELResolver[appResolversSize + STANDARD_RESOLVERS_COUNT];                               resolvers = new ELResolver[appResolversSize + STANDARD_RESOLVERS_COUNT];                            
+add(new ImplicitObjectELResolver());                                                                   add(new ImplicitObjectELResolver());                                                                
+for (ELResolver appResolver : appResolvers) {                                                          for (ELResolver appResolver : appResolvers) {                                                       
+add(appResolver);                                                                                      add(appResolver);                                                                                   
+}                                                                                                      }                                                                                                   
+add(streamResolver);                                                                                   add(streamResolver);                                                                                
+add(new StaticFieldELResolver());                                                                      add(new StaticFieldELResolver());                                                                   
+add(new MapELResolver());                                                                              add(new MapELResolver());                                                                           
+add(new ResourceBundleELResolver());                                                                   add(new ResourceBundleELResolver());                                                                
+add(new ListELResolver());                                                                             add(new ListELResolver());                                                                          
+add(new ArrayELResolver());                                                                            add(new ArrayELResolver());                                                                         
+if (JspRuntimeLibrary.GRAAL) {                                                                         if (JspRuntimeLibrary.GRAAL) {                                                                      
+add(new GraalBeanELResolver());                                                                        add(new GraalBeanELResolver());                                                                     
+}                                                                                                      }                                                                                                   
+add(new BeanELResolver());                                                                             add(new BeanELResolver());                                                                          
+add(new ScopedAttributeELResolver());                                                                  add(new ScopedAttributeELResolver());                                                               
+                                                                                                     | add(new ImportELResolver());                                                                        
+                                                                                                     | add(new NotFoundELResolver());                                                                      
+}                                                                                                      }                                                                                                   

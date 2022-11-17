@@ -1,0 +1,6 @@
+private Cache(Cache parent) {
+    cache = new String[cacheSize];
+    formatter = new SimpleDateFormat(format, Locale.US);
+    formatter.setTimeZone(TimeZone.getDefault());
+    this.parent = parent;
+}

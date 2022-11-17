@@ -1,0 +1,6 @@
+public void addServlet(ServletDef servletDef) {
+    servlets.put(servletDef.getServletName(), servletDef);
+    if (overridable) {
+        servletDef.setOverridable(overridable);
+    }
+}

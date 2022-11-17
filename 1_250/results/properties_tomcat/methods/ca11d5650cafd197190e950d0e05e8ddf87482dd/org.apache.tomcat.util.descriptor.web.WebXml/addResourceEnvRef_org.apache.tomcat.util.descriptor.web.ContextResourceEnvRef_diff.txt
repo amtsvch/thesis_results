@@ -1,0 +1,7 @@
+public void addResourceEnvRef(ContextResourceEnvRef resourceEnvRef) {
+    if (resourceEnvRefs.containsKey(resourceEnvRef.getName())) {
+        // resource-env-ref names must be unique within a web(-fragment).xml
+        throw new IllegalArgumentException(sm.getString("webXml.duplicateResourceEnvRef", resourceEnvRef.getName()));
+    }
+    resourceEnvRefs.put(resourceEnvRef.getName(), resourceEnvRef);
+}

@@ -1,0 +1,33 @@
+/**                                                                                                    /**                                                                                                 
+* Create a new connection to the directory server.                                                     * Create a new connection to the directory server.                                                  
+* @param connection The directory server connection wrapper                                            * @param connection The directory server connection wrapper                                         
+* @throws NamingException if a directory server error occurs                                           * @throws NamingException if a directory server error occurs                                        
+*/                                                                                                     */                                                                                                  
+protected void open(JNDIConnection connection) throws NamingException {                                protected void open(JNDIConnection connection) throws NamingException {                             
+ClassLoader ocl = null;                                                                              |                                                                                                     
+try {                                                                                                  try {                                                                                               
+if (!isUseContextClassLoader()) {                                                                    |                                                                                                     
+ocl = Thread.currentThread().getContextClassLoader();                                                |                                                                                                     
+Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());                      |                                                                                                     
+}                                                                                                    |                                                                                                     
+// Ensure that we have a directory context available                                                   // Ensure that we have a directory context available                                                
+connection.context = createDirContext(getDirectoryContextEnvironment());                               connection.context = createDirContext(getDirectoryContextEnvironment());                            
+} catch (Exception e) {                                                                                } catch (Exception e) {                                                                             
+if (alternateURL == null || alternateURL.length() == 0) {                                              if (alternateURL == null || alternateURL.length() == 0) {                                           
+// No alternate URL. Re-throw the exception.                                                           // No alternate URL. Re-throw the exception.                                                        
+throw e;                                                                                               throw e;                                                                                            
+}                                                                                                      }                                                                                                   
+connectionAttempt = 1;                                                                                 connectionAttempt = 1;                                                                              
+// log the first exception.                                                                            // log the first exception.                                                                         
+containerLog.info(sm.getString("jndiRealm.exception.retry"), e);                                       containerLog.info(sm.getString("jndiRealm.exception.retry"), e);                                    
+// Try connecting to the alternate url.                                                                // Try connecting to the alternate url.                                                             
+connection.context = createDirContext(getDirectoryContextEnvironment());                               connection.context = createDirContext(getDirectoryContextEnvironment());                            
+} finally {                                                                                            } finally {                                                                                         
+// reset it in case the connection times out.                                                          // reset it in case the connection times out.                                                       
+// the primary may come back.                                                                          // the primary may come back.                                                                       
+connectionAttempt = 0;                                                                                 connectionAttempt = 0;                                                                              
+if (!isUseContextClassLoader()) {                                                                    |                                                                                                     
+Thread.currentThread().setContextClassLoader(ocl);                                                   |                                                                                                     
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                    |                                                                                                     

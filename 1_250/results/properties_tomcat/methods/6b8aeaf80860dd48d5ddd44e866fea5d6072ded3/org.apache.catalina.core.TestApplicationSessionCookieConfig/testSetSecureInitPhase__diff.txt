@@ -1,0 +1,6 @@
+@Test
+public void testSetSecureInitPhase() {
+    context.setState(LifecycleState.STARTING_PREP);
+    applicationSessionCookieConfig.setSecure(true);
+    Assert.assertTrue(applicationSessionCookieConfig.isSecure());
+}

@@ -1,0 +1,12 @@
+/**
+ * Tests that a valid property is resolved.
+ */
+@Test
+public void testGetType03() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Class<?> result = resolver.getType(context, new Bean(), PROPERTY01_NAME);
+    // Property is read-only so should return null
+    Assert.assertNull(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

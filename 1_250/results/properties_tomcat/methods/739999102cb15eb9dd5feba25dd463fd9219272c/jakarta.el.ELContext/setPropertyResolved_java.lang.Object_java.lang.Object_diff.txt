@@ -1,0 +1,12 @@
+/**
+ * Mark the given property as resolved and notify any interested listeners.
+ *
+ * @param base     The base object on which the property was found
+ * @param property The property that was resolved
+ *
+ * @since EL 3.0
+ */
+public void setPropertyResolved(Object base, Object property) {
+    setPropertyResolved(true);
+    notifyPropertyResolved(base, property);
+}

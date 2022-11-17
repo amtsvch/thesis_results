@@ -1,0 +1,5 @@
+@Test(expected = ELException.class)
+public void testEval02() {
+    ELProcessor elp = new ELProcessor();
+    elp.eval("#{1+1}");
+}

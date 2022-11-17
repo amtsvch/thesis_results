@@ -1,0 +1,28 @@
+private void doTestValidateVersion(String version) throws IOException, SAXException {
+    WebXml webxml = new WebXml();
+    // Special cases
+    if ("2.2".equals(version)) {
+        webxml.setPublicId(XmlIdentifiers.WEB_22_PUBLIC);
+    } else if ("2.3".equals(version)) {
+        webxml.setPublicId(XmlIdentifiers.WEB_23_PUBLIC);
+    } else {
+        webxml.setVersion(version);
+    }
+    // Merged web.xml that is published as MERGED_WEB_XML context attribute
+    // in the simplest case consists of webapp's web.xml file
+    // plus the default conf/web.xml one.
+    Set<WebXml> defaults = new HashSet<>();
+    defaults.add(getDefaultWebXmlFragment());
+    webxml.merge(defaults);
+    Digester digester = DigesterFactory.newDigester(true, true, new WebRuleSet(), true);
+    XmlErrorHandler handler = new XmlErrorHandler();
+    digester.setErrorHandler(handler);
+    InputSource is = new InputSource(new StringReader(webxml.toXml()));
+    WebXml webxmlResult = new WebXml();
+    digester.push(webxmlResult);
+    digester.parse(is);
+    Assert.assertEquals(0, handler.getErrors().size());
+    Assert.assertEquals(0, handler.getWarnings().size());
+    Assert.assertEquals(version, webxml.getVersion());
+    Assert.assertEquals(version, webxmlResult.getVersion());
+}

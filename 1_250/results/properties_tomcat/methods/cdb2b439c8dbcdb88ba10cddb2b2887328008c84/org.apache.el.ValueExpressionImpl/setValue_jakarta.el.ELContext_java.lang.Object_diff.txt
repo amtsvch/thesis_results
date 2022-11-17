@@ -1,0 +1,13 @@
+/*
+     * (non-Javadoc)
+     *
+     * @see jakarta.el.ValueExpression#setValue(jakarta.el.ELContext,
+     *      java.lang.Object)
+     */
+@Override
+public void setValue(ELContext context, Object value) throws PropertyNotFoundException, PropertyNotWritableException, ELException {
+    EvaluationContext ctx = new EvaluationContext(context, this.fnMapper, this.varMapper);
+    context.notifyBeforeEvaluation(getExpressionString());
+    this.getNode().setValue(ctx, value);
+    context.notifyAfterEvaluation(getExpressionString());
+}

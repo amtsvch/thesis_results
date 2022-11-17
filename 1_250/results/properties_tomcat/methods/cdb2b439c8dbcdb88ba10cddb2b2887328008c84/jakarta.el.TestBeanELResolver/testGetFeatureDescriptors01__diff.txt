@@ -1,0 +1,12 @@
+/**                                                                                                    /**                                                                                                 
+* Tests that a valid FeatureDescriptors are not returned if base is not                                * Tests that a valid FeatureDescriptors are not returned if base is not                             
+* Map.                                                                                                 * Map.                                                                                              
+*/                                                                                                     */                                                                                                  
+                                                                                                     | @Deprecated(forRemoval = true, since = "Tomcat 10.1.0")                                             
+@Test                                                                                                  @Test                                                                                               
+public void testGetFeatureDescriptors01() {                                                            public void testGetFeatureDescriptors01() {                                                         
+BeanELResolver resolver = new BeanELResolver();                                                        BeanELResolver resolver = new BeanELResolver();                                                     
+ELContext context = new StandardELContext(ELManager.getExpressionFactory());                           ELContext context = new StandardELContext(ELManager.getExpressionFactory());                        
+Iterator&lt;FeatureDescriptor&gt; result = resolver.getFeatureDescriptors(context, null);              Iterator&lt;FeatureDescriptor&gt; result = resolver.getFeatureDescriptors(context, null);           
+Assert.assertNull(result);                                                                             Assert.assertNull(result);                                                                          
+}                                                                                                      }                                                                                                   

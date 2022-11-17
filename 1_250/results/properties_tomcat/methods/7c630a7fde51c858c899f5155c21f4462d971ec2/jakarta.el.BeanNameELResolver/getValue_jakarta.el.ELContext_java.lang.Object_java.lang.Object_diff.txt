@@ -1,0 +1,19 @@
+@Override
+public Object getValue(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base != null || !(property instanceof String)) {
+        return null;
+    }
+    String beanName = (String) property;
+    if (beanNameResolver.isNameResolved(beanName)) {
+        try {
+            Object result = beanNameResolver.getBean(beanName);
+            context.setPropertyResolved(base, property);
+            return result;
+        } catch (Throwable t) {
+            Util.handleThrowable(t);
+            throw new ELException(t);
+        }
+    }
+    return null;
+}

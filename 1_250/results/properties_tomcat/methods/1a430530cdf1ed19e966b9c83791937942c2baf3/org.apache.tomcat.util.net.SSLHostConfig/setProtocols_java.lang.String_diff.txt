@@ -1,0 +1,50 @@
+public void setProtocols(String input) {
+    protocols.clear();
+    explicitlyRequestedProtocols.clear();
+    // List of protocol names, separated by ",", "+" or "-".
+    // Semantics is adding ("+") or removing ("-") from left
+    // to right, starting with an empty protocol set.
+    // Tokens are individual protocol names or "all" for a
+    // default set of supported protocols.
+    // Separator "," is only kept for compatibility and has the
+    // same semantics as "+", except that it warns about a potentially
+    // missing "+" or "-".
+    // Split using a positive lookahead to keep the separator in
+    // the capture so we can check which case it is.
+    for (String value : input.split("(?=[-+,])")) {
+        String trimmed = value.trim();
+        // Ignore token which only consists of prefix character
+        if (trimmed.length() > 1) {
+            if (trimmed.charAt(0) == '+') {
+                trimmed = trimmed.substring(1).trim();
+                if (trimmed.equalsIgnoreCase(Constants.SSL_PROTO_ALL)) {
+                    protocols.addAll(SSL_PROTO_ALL_SET);
+                } else {
+                    protocols.add(trimmed);
+                    explicitlyRequestedProtocols.add(trimmed);
+                }
+            } else if (trimmed.charAt(0) == '-') {
+                trimmed = trimmed.substring(1).trim();
+                if (trimmed.equalsIgnoreCase(Constants.SSL_PROTO_ALL)) {
+                    protocols.removeAll(SSL_PROTO_ALL_SET);
+                } else {
+                    protocols.remove(trimmed);
+                    explicitlyRequestedProtocols.remove(trimmed);
+                }
+            } else {
+                if (trimmed.charAt(0) == ',') {
+                    trimmed = trimmed.substring(1).trim();
+                }
+                if (!protocols.isEmpty()) {
+                    log.warn(sm.getString("sslHostConfig.prefix_missing", trimmed, getHostName()));
+                }
+                if (trimmed.equalsIgnoreCase(Constants.SSL_PROTO_ALL)) {
+                    protocols.addAll(SSL_PROTO_ALL_SET);
+                } else {
+                    protocols.add(trimmed);
+                    explicitlyRequestedProtocols.add(trimmed);
+                }
+            }
+        }
+    }
+}

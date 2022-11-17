@@ -1,0 +1,15 @@
+/**                                                                                                    /**                                                                                                 
+* Tests that a valid FeatureDescriptors are returned.                                                  * Tests that a valid FeatureDescriptors are returned.                                               
+*/                                                                                                     */                                                                                                  
+                                                                                                     | @Deprecated(forRemoval = true, since = "Tomcat 10.1.0")                                             
+@Test                                                                                                  @Test                                                                                               
+public void testGetFeatureDescriptors02() {                                                            public void testGetFeatureDescriptors02() {                                                         
+BeanELResolver resolver = new BeanELResolver();                                                        BeanELResolver resolver = new BeanELResolver();                                                     
+ELContext context = new StandardELContext(ELManager.getExpressionFactory());                           ELContext context = new StandardELContext(ELManager.getExpressionFactory());                        
+Iterator&lt;FeatureDescriptor&gt; result = resolver.getFeatureDescriptors(context, new Bean());        Iterator&lt;FeatureDescriptor&gt; result = resolver.getFeatureDescriptors(context, new Bean());     
+while (result.hasNext()) {                                                                             while (result.hasNext()) {                                                                          
+PropertyDescriptor featureDescriptor = (PropertyDescriptor) result.next();                             PropertyDescriptor featureDescriptor = (PropertyDescriptor) result.next();                          
+Assert.assertEquals(featureDescriptor.getPropertyType(), featureDescriptor.getValue(ELResolver.TYPE)   Assert.assertEquals(featureDescriptor.getPropertyType(), featureDescriptor.getValue(ELResolver.TYPE)
+Assert.assertEquals(Boolean.TRUE, featureDescriptor.getValue(ELResolver.RESOLVABLE_AT_DESIGN_TIME));   Assert.assertEquals(Boolean.TRUE, featureDescriptor.getValue(ELResolver.RESOLVABLE_AT_DESIGN_TIME));
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

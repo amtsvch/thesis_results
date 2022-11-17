@@ -1,0 +1,23 @@
+/**                                                                                                    /**                                                                                                 
+* Tests that a valid FeatureDescriptors are returned.                                                  * Tests that a valid FeatureDescriptors are returned.                                               
+*/                                                                                                     */                                                                                                  
+                                                                                                     | @Deprecated(forRemoval = true, since = "Tomcat 10.1.0")                                             
+@Test                                                                                                  @Test                                                                                               
+public void testGetFeatureDescriptors02() {                                                            public void testGetFeatureDescriptors02() {                                                         
+MapELResolver mapELResolver = new MapELResolver();                                                     MapELResolver mapELResolver = new MapELResolver();                                                  
+ELContext context = new StandardELContext(ELManager.getExpressionFactory());                           ELContext context = new StandardELContext(ELManager.getExpressionFactory());                        
+Map&lt;String, String&gt; map = new HashMap&lt;&gt;();                                                 Map&lt;String, String&gt; map = new HashMap&lt;&gt;();                                              
+map.put("key", "value");                                                                               map.put("key", "value");                                                                            
+Iterator&lt;FeatureDescriptor&gt; result = mapELResolver.getFeatureDescriptors(context, map);          Iterator&lt;FeatureDescriptor&gt; result = mapELResolver.getFeatureDescriptors(context, map);       
+while (result.hasNext()) {                                                                             while (result.hasNext()) {                                                                          
+FeatureDescriptor featureDescriptor = result.next();                                                   FeatureDescriptor featureDescriptor = result.next();                                                
+Assert.assertEquals("key", featureDescriptor.getDisplayName());                                        Assert.assertEquals("key", featureDescriptor.getDisplayName());                                     
+Assert.assertEquals("key", featureDescriptor.getName());                                               Assert.assertEquals("key", featureDescriptor.getName());                                            
+Assert.assertEquals("", featureDescriptor.getShortDescription());                                      Assert.assertEquals("", featureDescriptor.getShortDescription());                                   
+Assert.assertFalse(featureDescriptor.isExpert());                                                      Assert.assertFalse(featureDescriptor.isExpert());                                                   
+Assert.assertFalse(featureDescriptor.isHidden());                                                      Assert.assertFalse(featureDescriptor.isHidden());                                                   
+Assert.assertTrue(featureDescriptor.isPreferred());                                                    Assert.assertTrue(featureDescriptor.isPreferred());                                                 
+Assert.assertEquals("key".getClass(), featureDescriptor.getValue(ELResolver.TYPE));                    Assert.assertEquals("key".getClass(), featureDescriptor.getValue(ELResolver.TYPE));                 
+Assert.assertEquals(Boolean.TRUE, featureDescriptor.getValue(ELResolver.RESOLVABLE_AT_DESIGN_TIME));   Assert.assertEquals(Boolean.TRUE, featureDescriptor.getValue(ELResolver.RESOLVABLE_AT_DESIGN_TIME));
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,9 @@
+@SuppressWarnings("unchecked")
+public synchronized T pop() {
+    if (index == -1) {
+        return null;
+    }
+    T result = (T) stack[index];
+    stack[index--] = null;
+    return result;
+}

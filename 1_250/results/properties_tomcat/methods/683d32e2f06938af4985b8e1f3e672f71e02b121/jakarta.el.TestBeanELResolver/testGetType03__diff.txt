@@ -1,0 +1,12 @@
+/**                                                                                                    /**                                                                                                 
+* Tests that a valid property is resolved.                                                             * Tests that a valid property is resolved.                                                          
+*/                                                                                                     */                                                                                                  
+@Test                                                                                                  @Test                                                                                               
+public void testGetType03() {                                                                          public void testGetType03() {                                                                       
+BeanELResolver resolver = new BeanELResolver();                                                        BeanELResolver resolver = new BeanELResolver();                                                     
+ELContext context = new StandardELContext(ELManager.getExpressionFactory());                           ELContext context = new StandardELContext(ELManager.getExpressionFactory());                        
+Class&lt;?&gt; result = resolver.getType(context, new Bean(), PROPERTY01_NAME);                        Class&lt;?&gt; result = resolver.getType(context, new Bean(), PROPERTY01_NAME);                     
+Assert.assertEquals(String.class, result);                                                           | // Property is read-only so should return null                                                      
+                                                                                                     | Assert.assertNull(result);                                                                          
+Assert.assertTrue(context.isPropertyResolved());                                                       Assert.assertTrue(context.isPropertyResolved());                                                    
+}                                                                                                      }                                                                                                   

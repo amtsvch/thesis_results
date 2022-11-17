@@ -1,0 +1,17 @@
+/**
+ * Release our use of this connection so that it can be recycled.
+ *
+ * @param connection The directory context to release
+ */
+protected void release(JNDIConnection connection) {
+    if (connectionPool != null) {
+        if (connection != null) {
+            if (!connectionPool.push(connection)) {
+                // Any connection that doesn't end back to the pool must be closed
+                close(connection);
+            }
+        }
+    } else {
+        singleConnectionLock.unlock();
+    }
+}

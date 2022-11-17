@@ -1,0 +1,11 @@
+/**
+ * Push a new object onto the top of the object stack.
+ *
+ * @param object The new object
+ */
+public void push(Object object) {
+    if (stack.size() == 0) {
+        root = object;
+    }
+    stack.push(object);
+}

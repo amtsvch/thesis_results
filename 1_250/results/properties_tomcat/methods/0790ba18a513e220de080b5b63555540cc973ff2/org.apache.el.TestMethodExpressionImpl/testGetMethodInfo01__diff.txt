@@ -1,0 +1,10 @@
+@Test
+public void testGetMethodInfo01() throws Exception {
+    MethodExpression me = factory.createMethodExpression(context, "#{beanA.setName('New value')}", null, null);
+    // This is the call that failed
+    MethodInfo mi = me.getMethodInfo(context);
+    // The rest is to check it worked correctly
+    Assert.assertEquals(void.class, mi.getReturnType());
+    Assert.assertEquals(1, mi.getParamTypes().length);
+    Assert.assertEquals(String.class, mi.getParamTypes()[0]);
+}

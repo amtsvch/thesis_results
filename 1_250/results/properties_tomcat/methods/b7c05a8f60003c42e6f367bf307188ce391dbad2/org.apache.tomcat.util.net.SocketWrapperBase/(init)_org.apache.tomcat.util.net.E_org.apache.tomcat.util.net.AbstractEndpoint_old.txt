@@ -1,0 +1,11 @@
+public SocketWrapperBase(E socket, AbstractEndpoint<E, ?> endpoint) {
+    this.socket = socket;
+    this.endpoint = endpoint;
+    if (endpoint.getUseAsyncIO() || needSemaphores()) {
+        readPending = new Semaphore(1);
+        writePending = new Semaphore(1);
+    } else {
+        readPending = null;
+        writePending = null;
+    }
+}

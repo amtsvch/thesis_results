@@ -1,0 +1,7 @@
+public Boolean getCookieHttpOnly() {
+    String httpOnly = getCookieAttribute(Constants.COOKIE_HTTP_ONLY_ATTR);
+    if (httpOnly == null) {
+        return null;
+    }
+    return Boolean.valueOf(httpOnly);
+}

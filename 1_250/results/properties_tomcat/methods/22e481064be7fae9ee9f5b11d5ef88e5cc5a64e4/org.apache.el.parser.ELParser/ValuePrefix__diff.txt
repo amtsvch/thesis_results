@@ -1,0 +1,30 @@
+/*                                                                                                     /*                                                                                                  
+* ValuePrefix                                                                                          * ValuePrefix                                                                                       
+* For Literals, Variables, and Functions                                                               * For Literals, Variables, and Functions                                                            
+*/                                                                                                     */                                                                                                  
+final public void ValuePrefix() throws ParseException {                                                final public void ValuePrefix() throws ParseException {                                             
+switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {                                                         | switch((jj_ntk == -1) ? jj_ntk_f() : jj_ntk) {                                                      
+case INTEGER_LITERAL:                                                                                  case INTEGER_LITERAL:                                                                               
+case FLOATING_POINT_LITERAL:                                                                           case FLOATING_POINT_LITERAL:                                                                        
+case STRING_LITERAL:                                                                                   case STRING_LITERAL:                                                                                
+case TRUE:                                                                                             case TRUE:                                                                                          
+case FALSE:                                                                                            case FALSE:                                                                                         
+case NULL:                                                                                             case NULL:                                                                                          
+                                                                                                     | {                                                                                                   
+Literal();                                                                                             Literal();                                                                                          
+break;                                                                                                 break;                                                                                              
+                                                                                                     | }                                                                                                   
+case START_SET_OR_MAP:                                                                                 case START_SET_OR_MAP:                                                                              
+case LPAREN:                                                                                           case LPAREN:                                                                                        
+case LBRACK:                                                                                           case LBRACK:                                                                                        
+case IDENTIFIER:                                                                                       case IDENTIFIER:                                                                                    
+                                                                                                     | {                                                                                                   
+NonLiteral();                                                                                          NonLiteral();                                                                                       
+break;                                                                                                 break;                                                                                              
+                                                                                                     | }                                                                                                   
+default:                                                                                               default:                                                                                            
+jj_la1[34] = jj_gen;                                                                                   jj_la1[34] = jj_gen;                                                                                
+jj_consume_token(-1);                                                                                  jj_consume_token(-1);                                                                               
+throw new ParseException();                                                                            throw new ParseException();                                                                         
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

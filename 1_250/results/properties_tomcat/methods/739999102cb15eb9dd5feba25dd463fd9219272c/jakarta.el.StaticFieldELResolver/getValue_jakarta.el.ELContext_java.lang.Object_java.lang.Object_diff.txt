@@ -1,0 +1,26 @@
+@Override
+public Object getValue(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base instanceof ELClass && property instanceof String) {
+        context.setPropertyResolved(base, property);
+        Class<?> clazz = ((ELClass) base).getKlass();
+        String name = (String) property;
+        Exception exception = null;
+        try {
+            Field field = clazz.getField(name);
+            int modifiers = field.getModifiers();
+            if (Modifier.isStatic(modifiers) && Modifier.isPublic(modifiers) && Util.canAccess(null, field)) {
+                return field.get(null);
+            }
+        } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
+            exception = e;
+        }
+        String msg = Util.message(context, "staticFieldELResolver.notFound", name, clazz.getName());
+        if (exception == null) {
+            throw new PropertyNotFoundException(msg);
+        } else {
+            throw new PropertyNotFoundException(msg, exception);
+        }
+    }
+    return null;
+}

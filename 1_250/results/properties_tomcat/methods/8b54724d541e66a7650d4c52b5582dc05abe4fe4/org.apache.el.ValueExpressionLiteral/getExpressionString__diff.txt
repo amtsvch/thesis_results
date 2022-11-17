@@ -1,0 +1,7 @@
+@Override
+public String getExpressionString() {
+    if (this.valueString == null) {
+        this.valueString = (this.value != null) ? this.value.toString() : null;
+    }
+    return this.valueString;
+}

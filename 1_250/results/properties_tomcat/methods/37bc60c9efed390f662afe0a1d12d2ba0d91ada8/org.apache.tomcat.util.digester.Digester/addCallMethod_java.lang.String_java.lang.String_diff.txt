@@ -1,0 +1,10 @@
+/**
+ * Add an "call method" rule for a method which accepts no arguments.
+ *
+ * @param pattern Element matching pattern
+ * @param methodName Method name to be called
+ * @see CallMethodRule
+ */
+public void addCallMethod(String pattern, String methodName) {
+    addRule(pattern, new CallMethodRule(methodName));
+}

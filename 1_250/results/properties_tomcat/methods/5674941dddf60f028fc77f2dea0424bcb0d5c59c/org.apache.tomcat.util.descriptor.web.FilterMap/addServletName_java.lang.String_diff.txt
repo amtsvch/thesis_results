@@ -1,0 +1,10 @@
+public void addServletName(String servletName) {
+    if ("*".equals(servletName)) {
+        this.matchAllServletNames = true;
+    } else {
+        String[] results = new String[servletNames.length + 1];
+        System.arraycopy(servletNames, 0, results, 0, servletNames.length);
+        results[servletNames.length] = servletName;
+        servletNames = results;
+    }
+}

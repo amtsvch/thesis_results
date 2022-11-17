@@ -1,0 +1,43 @@
+/**
+ * Provides a per class loader cache of ExpressionFactory instances without
+ * pinning any in memory as that could trigger a memory leak.
+ */
+static ExpressionFactory getExpressionFactory() {
+    ClassLoader tccl = getContextClassLoader();
+    CacheValue cacheValue = null;
+    ExpressionFactory factory = null;
+    if (tccl == null) {
+        cacheValue = nullTcclFactory;
+    } else {
+        CacheKey key = new CacheKey(tccl);
+        cacheValue = factoryCache.get(key);
+        if (cacheValue == null) {
+            CacheValue newCacheValue = new CacheValue();
+            cacheValue = factoryCache.putIfAbsent(key, newCacheValue);
+            if (cacheValue == null) {
+                cacheValue = newCacheValue;
+            }
+        }
+    }
+    final Lock readLock = cacheValue.getLock().readLock();
+    readLock.lock();
+    try {
+        factory = cacheValue.getExpressionFactory();
+    } finally {
+        readLock.unlock();
+    }
+    if (factory == null) {
+        final Lock writeLock = cacheValue.getLock().writeLock();
+        writeLock.lock();
+        try {
+            factory = cacheValue.getExpressionFactory();
+            if (factory == null) {
+                factory = ExpressionFactory.newInstance();
+                cacheValue.setExpressionFactory(factory);
+            }
+        } finally {
+            writeLock.unlock();
+        }
+    }
+    return factory;
+}

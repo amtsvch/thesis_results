@@ -1,0 +1,7 @@
+@Test                                                                                                  @Test                                                                                               
+public void testWebresources() throws Exception {                                                      public void testWebresources() throws Exception {                                                   
+File appDir = new File("test/webresources/dir1");                                                      File appDir = new File("test/webresources/dir1");                                                   
+JspCServletContext context = new JspCServletContext(null, appDir.toURI().toURL(), null, false, false   JspCServletContext context = new JspCServletContext(null, appDir.toURI().toURL(), null, false, false
+Assert.assertEquals(5, context.getEffectiveMajorVersion());                                          | Assert.assertEquals(6, context.getEffectiveMajorVersion());                                         
+Assert.assertEquals(0, context.getEffectiveMinorVersion());                                            Assert.assertEquals(0, context.getEffectiveMinorVersion());                                         
+}                                                                                                      }                                                                                                   

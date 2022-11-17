@@ -1,0 +1,50 @@
+private final Target getTarget(EvaluationContext ctx) throws ELException {
+    // evaluate expr-a to value-a
+    Object base = this.children[0].getValue(ctx);
+    // if our base is null (we know there are more properties to evaluate)
+    if (base == null) {
+        throw new PropertyNotFoundException(MessageFactory.get("error.unreachable.base", this.children[0].getImage()));
+    }
+    // set up our start/end
+    Object property = null;
+    int propCount = this.jjtGetNumChildren();
+    int i = 1;
+    // Evaluate any properties or methods before our target
+    ELResolver resolver = ctx.getELResolver();
+    while (i < propCount) {
+        if (i + 2 < propCount && this.children[i + 1] instanceof AstMethodParameters) {
+            // Method call not at end of expression
+            base = resolver.invoke(ctx, base, this.children[i].getValue(ctx), null, ((AstMethodParameters) this.children[i + 1]).getParameters(ctx));
+            i += 2;
+        } else if (i + 2 == propCount && this.children[i + 1] instanceof AstMethodParameters) {
+            // Method call at end of expression
+            ctx.setPropertyResolved(false);
+            property = this.children[i].getValue(ctx);
+            i += 2;
+            if (property == null) {
+                throw new PropertyNotFoundException(MessageFactory.get("error.unreachable.property", property));
+            }
+        } else if (i + 1 < propCount) {
+            // Object with property not at end of expression
+            property = this.children[i].getValue(ctx);
+            ctx.setPropertyResolved(false);
+            base = resolver.getValue(ctx, base, property);
+            i++;
+        } else {
+            // Object with property at end of expression
+            ctx.setPropertyResolved(false);
+            property = this.children[i].getValue(ctx);
+            i++;
+            if (property == null) {
+                throw new PropertyNotFoundException(MessageFactory.get("error.unreachable.property", property));
+            }
+        }
+        if (base == null) {
+            throw new PropertyNotFoundException(MessageFactory.get("error.unreachable.property", property));
+        }
+    }
+    Target t = new Target();
+    t.base = base;
+    t.property = property;
+    return t;
+}

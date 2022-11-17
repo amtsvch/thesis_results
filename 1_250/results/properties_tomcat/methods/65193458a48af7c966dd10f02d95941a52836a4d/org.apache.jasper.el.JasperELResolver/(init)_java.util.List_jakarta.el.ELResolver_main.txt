@@ -1,0 +1,21 @@
+public JasperELResolver(List<ELResolver> appResolvers, ELResolver streamResolver) {
+    appResolversSize = appResolvers.size();
+    resolvers = new ELResolver[appResolversSize + STANDARD_RESOLVERS_COUNT];
+    add(new ImplicitObjectELResolver());
+    for (ELResolver appResolver : appResolvers) {
+        add(appResolver);
+    }
+    add(streamResolver);
+    add(new StaticFieldELResolver());
+    add(new MapELResolver());
+    add(new ResourceBundleELResolver());
+    add(new ListELResolver());
+    add(new ArrayELResolver());
+    if (JspRuntimeLibrary.GRAAL) {
+        add(new GraalBeanELResolver());
+    }
+    add(new BeanELResolver());
+    add(new ScopedAttributeELResolver());
+    add(new ImportELResolver());
+    add(new NotFoundELResolver());
+}

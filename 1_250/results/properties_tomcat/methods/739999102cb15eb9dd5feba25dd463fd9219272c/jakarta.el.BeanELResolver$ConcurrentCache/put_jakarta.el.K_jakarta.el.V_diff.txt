@@ -1,0 +1,9 @@
+public void put(K key, V value) {
+    if (this.eden.size() >= this.size) {
+        synchronized (longterm) {
+            this.longterm.putAll(this.eden);
+        }
+        this.eden.clear();
+    }
+    this.eden.put(key, value);
+}

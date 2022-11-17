@@ -1,0 +1,7 @@
+public Integer getCookieMaxAge() {
+    String maxAge = getCookieAttribute(Constants.COOKIE_MAX_AGE_ATTR);
+    if (maxAge == null) {
+        return null;
+    }
+    return Integer.valueOf(maxAge);
+}

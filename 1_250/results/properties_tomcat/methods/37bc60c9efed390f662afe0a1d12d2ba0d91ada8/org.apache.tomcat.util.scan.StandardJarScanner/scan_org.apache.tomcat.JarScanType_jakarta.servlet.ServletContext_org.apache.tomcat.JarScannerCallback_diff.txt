@@ -1,0 +1,71 @@
+/**
+ * Scan the provided ServletContext and class loader for JAR files. Each JAR
+ * file found will be passed to the callback handler to be processed.
+ *
+ * @param scanType      The type of JAR scan to perform. This is passed to
+ *                          the filter which uses it to determine how to
+ *                          filter the results
+ * @param context       The ServletContext - used to locate and access
+ *                      WEB-INF/lib
+ * @param callback      The handler to process any JARs found
+ */
+@Override
+public void scan(JarScanType scanType, ServletContext context, JarScannerCallback callback) {
+    if (log.isTraceEnabled()) {
+        log.trace(sm.getString("jarScan.webinflibStart"));
+    }
+    if (jarScanFilter.isSkipAll()) {
+        return;
+    }
+    Set<URL> processedURLs = new HashSet<>();
+    // Scan WEB-INF/lib
+    Set<String> dirList = context.getResourcePaths(Constants.WEB_INF_LIB);
+    if (dirList != null) {
+        for (String path : dirList) {
+            if (path.endsWith(Constants.JAR_EXT) && getJarScanFilter().check(scanType, path.substring(path.lastIndexOf('/') + 1))) {
+                // Need to scan this JAR
+                if (log.isDebugEnabled()) {
+                    log.debug(sm.getString("jarScan.webinflibJarScan", path));
+                }
+                URL url = null;
+                try {
+                    url = context.getResource(path);
+                    processedURLs.add(url);
+                    process(scanType, callback, url, path, true, null);
+                } catch (IOException e) {
+                    log.warn(sm.getString("jarScan.webinflibFail", url), e);
+                }
+            } else {
+                if (log.isTraceEnabled()) {
+                    log.trace(sm.getString("jarScan.webinflibJarNoScan", path));
+                }
+            }
+        }
+    }
+    // Scan WEB-INF/classes
+    try {
+        URL webInfURL = context.getResource(Constants.WEB_INF_CLASSES);
+        if (webInfURL != null) {
+            // WEB-INF/classes will also be included in the URLs returned
+            // by the web application class loader so ensure the class path
+            // scanning below does not re-scan this location.
+            processedURLs.add(webInfURL);
+            if (isScanAllDirectories()) {
+                URL url = context.getResource(Constants.WEB_INF_CLASSES + "/META-INF");
+                if (url != null) {
+                    try {
+                        callback.scanWebInfClasses();
+                    } catch (IOException e) {
+                        log.warn(sm.getString("jarScan.webinfclassesFail"), e);
+                    }
+                }
+            }
+        }
+    } catch (MalformedURLException e) {
+        // Ignore. Won't happen. URLs are of the correct form.
+    }
+    // Scan the classpath
+    if (isScanClassPath()) {
+        doScanClassPath(scanType, context, callback, processedURLs);
+    }
+}

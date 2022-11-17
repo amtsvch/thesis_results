@@ -1,0 +1,8 @@
+/*                                                                                                   |                                                                                                     
+* Over-ridden to avoid memory leak via Throwable.backtrace                                           |                                                                                                     
+* https://java.net/jira/browse/JAVACC-293                                                            |                                                                                                     
+*/                                                                                                   |                                                                                                     
+@Override                                                                                              @Override                                                                                           
+public synchronized Throwable fillInStackTrace() {                                                   | public Throwable fillInStackTrace() {                                                               
+return this;                                                                                           return this;                                                                                        
+}                                                                                                      }                                                                                                   

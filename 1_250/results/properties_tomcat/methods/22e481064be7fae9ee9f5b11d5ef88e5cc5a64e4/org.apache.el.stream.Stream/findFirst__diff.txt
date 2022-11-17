@@ -1,0 +1,7 @@
+public Optional findFirst() {
+    if (iterator.hasNext()) {
+        return new Optional(iterator.next());
+    } else {
+        return Optional.EMPTY;
+    }
+}

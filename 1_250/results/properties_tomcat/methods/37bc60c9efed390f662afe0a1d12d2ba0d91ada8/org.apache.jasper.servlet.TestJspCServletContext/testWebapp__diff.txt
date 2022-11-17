@@ -1,0 +1,23 @@
+@Test                                                                                                  @Test                                                                                               
+public void testWebapp() throws Exception {                                                            public void testWebapp() throws Exception {                                                         
+File appDir = new File("test/webapp");                                                                 File appDir = new File("test/webapp");                                                              
+JspCServletContext context = new JspCServletContext(null, appDir.toURI().toURL(), null, false, false   JspCServletContext context = new JspCServletContext(null, appDir.toURI().toURL(), null, false, false
+Assert.assertEquals(6, context.getEffectiveMajorVersion());                                            Assert.assertEquals(6, context.getEffectiveMajorVersion());                                         
+Assert.assertEquals(0, context.getEffectiveMinorVersion());                                            Assert.assertEquals(0, context.getEffectiveMinorVersion());                                         
+JspConfigDescriptor jspConfigDescriptor = context.getJspConfigDescriptor();                            JspConfigDescriptor jspConfigDescriptor = context.getJspConfigDescriptor();                         
+Assert.assertTrue(jspConfigDescriptor.getTaglibs().isEmpty());                                         Assert.assertTrue(jspConfigDescriptor.getTaglibs().isEmpty());                                      
+Collection&lt;JspPropertyGroupDescriptor&gt; propertyGroups = jspConfigDescriptor.getJspPropertyGrou   Collection&lt;JspPropertyGroupDescriptor&gt; propertyGroups = jspConfigDescriptor.getJspPropertyGrou
+Assert.assertEquals(4, propertyGroups.size());                                                       | Assert.assertEquals(6, propertyGroups.size());                                                      
+Iterator&lt;JspPropertyGroupDescriptor&gt; groupIterator = propertyGroups.iterator();                  Iterator&lt;JspPropertyGroupDescriptor&gt; groupIterator = propertyGroups.iterator();               
+JspPropertyGroupDescriptor groupDescriptor;                                                            JspPropertyGroupDescriptor groupDescriptor;                                                         
+groupDescriptor = groupIterator.next();                                                                groupDescriptor = groupIterator.next();                                                             
+Assert.assertEquals("text/plain", groupDescriptor.getDefaultContentType());                            Assert.assertEquals("text/plain", groupDescriptor.getDefaultContentType());                         
+Collection&lt;String&gt; urlPatterns = groupDescriptor.getUrlPatterns();                               Collection&lt;String&gt; urlPatterns = groupDescriptor.getUrlPatterns();                            
+Assert.assertEquals(2, urlPatterns.size());                                                            Assert.assertEquals(2, urlPatterns.size());                                                         
+Iterator&lt;String&gt; iterator = urlPatterns.iterator();                                              Iterator&lt;String&gt; iterator = urlPatterns.iterator();                                           
+Assert.assertEquals("/bug49nnn/bug49726a.jsp", iterator.next());                                       Assert.assertEquals("/bug49nnn/bug49726a.jsp", iterator.next());                                    
+Assert.assertEquals("/bug49nnn/bug49726b.jsp", iterator.next());                                       Assert.assertEquals("/bug49nnn/bug49726b.jsp", iterator.next());                                    
+groupDescriptor = groupIterator.next();                                                                groupDescriptor = groupIterator.next();                                                             
+Assert.assertEquals(2, groupDescriptor.getIncludePreludes().size());                                   Assert.assertEquals(2, groupDescriptor.getIncludePreludes().size());                                
+Assert.assertEquals(2, groupDescriptor.getIncludeCodas().size());                                      Assert.assertEquals(2, groupDescriptor.getIncludeCodas().size());                                   
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,114 @@
+@Override
+public String generateHeader(Cookie cookie, HttpServletRequest request) {
+    /*
+         * The spec allows some latitude on when to send the version attribute
+         * with a Set-Cookie header. To be nice to clients, we'll make sure the
+         * version attribute is first. That means checking the various things
+         * that can cause us to switch to a v1 cookie first.
+         *
+         * Note that by checking for tokens we will also throw an exception if a
+         * control character is encountered.
+         */
+    int version = cookie.getVersion();
+    String value = cookie.getValue();
+    String path = cookie.getPath();
+    String domain = cookie.getDomain();
+    String comment = cookie.getComment();
+    if (version == 0) {
+        // Check for the things that require a v1 cookie
+        if (needsQuotes(value, 0) || comment != null || needsQuotes(path, 0) || needsQuotes(domain, 0)) {
+            version = 1;
+        }
+    }
+    // Now build the cookie header
+    // can't use StringBuilder due to DateFormat
+    StringBuffer buf = new StringBuffer();
+    // Just use the name supplied in the Cookie
+    buf.append(cookie.getName());
+    buf.append('=');
+    // Value
+    maybeQuote(buf, value, version);
+    // Add version 1 specific information
+    if (version == 1) {
+        // Version=1 ... required
+        buf.append("; Version=1");
+        // Comment=comment
+        if (comment != null) {
+            buf.append("; Comment=");
+            maybeQuote(buf, comment, version);
+        }
+    }
+    // Add domain information, if present
+    if (domain != null) {
+        buf.append("; Domain=");
+        maybeQuote(buf, domain, version);
+    }
+    // Max-Age=secs ... or use old "Expires" format
+    int maxAge = cookie.getMaxAge();
+    if (maxAge >= 0) {
+        if (version > 0) {
+            buf.append("; Max-Age=");
+            buf.append(maxAge);
+        }
+        // IE6, IE7 and possibly other browsers don't understand Max-Age.
+        // They do understand Expires, even with V1 cookies!
+        if (version == 0 || getAlwaysAddExpires()) {
+            // Wdy, DD-Mon-YY HH:MM:SS GMT ( Expires Netscape format )
+            buf.append("; Expires=");
+            // To expire immediately we need to set the time in past
+            if (maxAge == 0) {
+                buf.append(ANCIENT_DATE);
+            } else {
+                COOKIE_DATE_FORMAT.get().format(new Date(System.currentTimeMillis() + maxAge * 1000L), buf, new FieldPosition(0));
+            }
+        }
+    }
+    // Path=path
+    if (path != null) {
+        buf.append("; Path=");
+        maybeQuote(buf, path, version);
+    }
+    // Secure
+    if (cookie.getSecure()) {
+        buf.append("; Secure");
+    }
+    // HttpOnly
+    if (cookie.isHttpOnly()) {
+        buf.append("; HttpOnly");
+    }
+    String cookieSameSite = cookie.getAttribute(Constants.COOKIE_SAME_SITE_ATTR);
+    if (cookieSameSite == null) {
+        // Use processor config
+        SameSiteCookies sameSiteCookiesValue = getSameSiteCookies();
+        if (sameSiteCookiesValue.equals(SameSiteCookies.UNSET)) {
+            buf.append("; SameSite=");
+            buf.append(sameSiteCookiesValue.getValue());
+        }
+    } else {
+        // Use explict config
+        buf.append("; SameSite=");
+        buf.append(cookieSameSite);
+    }
+    // Add the remaining attributes
+    for (Map.Entry<String, String> entry : cookie.getAttributes().entrySet()) {
+        switch(entry.getKey()) {
+            case Constants.COOKIE_COMMENT_ATTR:
+            case Constants.COOKIE_DOMAIN_ATTR:
+            case Constants.COOKIE_MAX_AGE_ATTR:
+            case Constants.COOKIE_PATH_ATTR:
+            case Constants.COOKIE_SECURE_ATTR:
+            case Constants.COOKIE_HTTP_ONLY_ATTR:
+            case Constants.COOKIE_SAME_SITE_ATTR:
+                // Handled above so NO-OP
+                break;
+            default:
+                {
+                    buf.append("; ");
+                    buf.append(entry.getKey());
+                    buf.append('=');
+                    maybeQuote(buf, entry.getValue(), version);
+                }
+        }
+    }
+    return buf.toString();
+}

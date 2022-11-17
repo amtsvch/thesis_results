@@ -1,0 +1,7 @@
+private void doTestAllowSeparators(Cookie cookie, String expectedLegacy, String expectedRfc6265) {
+    LegacyCookieProcessor legacy = new LegacyCookieProcessor();
+    legacy.setAllowHttpSepsInV0(true);
+    legacy.setForwardSlashIsSeparator(true);
+    CookieProcessor rfc6265 = new Rfc6265CookieProcessor();
+    doTest(cookie, legacy, expectedLegacy, rfc6265, expectedRfc6265);
+}

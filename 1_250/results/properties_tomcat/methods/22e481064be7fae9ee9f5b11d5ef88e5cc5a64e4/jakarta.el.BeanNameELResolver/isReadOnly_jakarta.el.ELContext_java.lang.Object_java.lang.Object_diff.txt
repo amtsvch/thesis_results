@@ -1,0 +1,22 @@
+@Override
+public boolean isReadOnly(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base != null || !(property instanceof String)) {
+        // Return value undefined
+        return false;
+    }
+    String beanName = (String) property;
+    if (beanNameResolver.isNameResolved(beanName)) {
+        boolean result;
+        try {
+            result = beanNameResolver.isReadOnly(beanName);
+        } catch (Throwable t) {
+            Util.handleThrowable(t);
+            throw new ELException(t);
+        }
+        context.setPropertyResolved(base, property);
+        return result;
+    }
+    // Return value undefined
+    return false;
+}

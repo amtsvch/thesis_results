@@ -1,0 +1,6 @@
+@Override
+public boolean exists(String name) throws IOException {
+    // JarFile#getEntry() is multi-release aware
+    ZipEntry entry = jarFile.getEntry(name);
+    return entry != null;
+}

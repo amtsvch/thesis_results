@@ -1,0 +1,81 @@
+// ---------------------------------------------------------- Realm Methods
+/**
+ * Return the Principal associated with the specified username and
+ * credentials, if there is one; otherwise return <code>null</code>.
+ *
+ * If there are any errors with the JDBC connection, executing
+ * the query or anything we return null (don't authenticate). This
+ * event is also logged, and the connection will be closed so that
+ * a subsequent request will automatically re-open it.
+ *
+ * @param username Username of the Principal to look up
+ * @param credentials Password or other credentials to use in
+ *  authenticating this username
+ * @return the associated principal, or <code>null</code> if there is none.
+ */
+@Override
+public Principal authenticate(String username, String credentials) {
+    ClassLoader ocl = null;
+    JNDIConnection connection = null;
+    Principal principal = null;
+    try {
+        // https://bz.apache.org/bugzilla/show_bug.cgi?id=65553
+        // This can move back to open() once it is known that Tomcat must be
+        // running on a JVM that includes a fix for
+        // https://bugs.openjdk.java.net/browse/JDK-8273874
+        if (!isUseContextClassLoader()) {
+            ocl = Thread.currentThread().getContextClassLoader();
+            Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
+        }
+        // Ensure that we have a directory context available
+        connection = get();
+        try {
+            // Occasionally the directory context will timeout.  Try one more
+            // time before giving up.
+            // Authenticate the specified username if possible
+            principal = authenticate(connection, username, credentials);
+        } catch (NullPointerException | NamingException e) {
+            /*
+                 * BZ 61313
+                 * NamingException may or may not indicate an error that is
+                 * recoverable via fail over. Therefore a decision needs to be
+                 * made whether to fail over or not. Generally, attempting to
+                 * fail over when it is not appropriate is better than not
+                 * failing over when it is appropriate so the code always
+                 * attempts to fail over for NamingExceptions.
+                 */
+            /*
+                 * BZ 42449
+                 * Catch NPE - Kludge Sun's LDAP provider with broken SSL.
+                 */
+            // log the exception so we know it's there.
+            containerLog.info(sm.getString("jndiRealm.exception.retry"), e);
+            // close the connection so we know it will be reopened.
+            close(connection);
+            closePooledConnections();
+            // open a new directory context.
+            connection = get();
+            // Try the authentication again.
+            principal = authenticate(connection, username, credentials);
+        }
+        // Release this context
+        release(connection);
+        // Return the authenticated Principal (if any)
+        return principal;
+    } catch (NamingException e) {
+        // Log the problem for posterity
+        containerLog.error(sm.getString("jndiRealm.exception"), e);
+        // close the connection so we know it will be reopened.
+        close(connection);
+        closePooledConnections();
+        // Return "not authenticated" for this request
+        if (containerLog.isDebugEnabled()) {
+            containerLog.debug("Returning null principal.");
+        }
+        return null;
+    } finally {
+        if (!isUseContextClassLoader()) {
+            Thread.currentThread().setContextClassLoader(ocl);
+        }
+    }
+}

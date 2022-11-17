@@ -1,0 +1,9 @@
+private Method read(ELContext ctx, Object base) {
+    if (this.read == null) {
+        this.read = Util.getMethod(this.owner, base, descriptor.getReadMethod());
+        if (this.read == null) {
+            throw new PropertyNotFoundException(Util.message(ctx, "propertyNotReadable", new Object[] { owner.getName(), descriptor.getName() }));
+        }
+    }
+    return this.read;
+}

@@ -1,0 +1,20 @@
+public StandardELContext(ExpressionFactory factory) {
+    wrappedContext = null;
+    variableMapper = new StandardVariableMapper();
+    functionMapper = new StandardFunctionMapper(factory.getInitFunctionMap());
+    standardResolver = new CompositeELResolver();
+    customResolvers = new CompositeELResolver();
+    ELResolver streamResolver = factory.getStreamELResolver();
+    // Add resolvers in order
+    standardResolver.add(new BeanNameELResolver(new StandardBeanNameResolver(localBeans)));
+    standardResolver.add(customResolvers);
+    if (streamResolver != null) {
+        standardResolver.add(streamResolver);
+    }
+    standardResolver.add(new StaticFieldELResolver());
+    standardResolver.add(new MapELResolver());
+    standardResolver.add(new ResourceBundleELResolver());
+    standardResolver.add(new ListELResolver());
+    standardResolver.add(new ArrayELResolver());
+    standardResolver.add(new BeanELResolver());
+}

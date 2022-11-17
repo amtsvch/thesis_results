@@ -1,0 +1,8 @@
+@Override
+public MethodReference getMethodReference(ELContext context) {
+    EvaluationContext ctx = new EvaluationContext(context, this.fnMapper, this.varMapper);
+    ctx.notifyBeforeEvaluation(getExpressionString());
+    MethodReference methodReference = this.getNode().getMethodReference(ctx);
+    ctx.notifyAfterEvaluation(getExpressionString());
+    return methodReference;
+}

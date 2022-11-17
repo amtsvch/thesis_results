@@ -1,0 +1,14 @@
+private boolean jj_3_7() {
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3R_null_328_18_24()) {
+        jj_scanpos = xsp;
+    }
+    if (jj_scan_token(IDENTIFIER)) {
+        return true;
+    }
+    if (jj_scan_token(LPAREN)) {
+        return true;
+    }
+    return false;
+}

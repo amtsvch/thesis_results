@@ -1,0 +1,6 @@
+@Test
+public void testBug50449a() throws Exception {
+    MethodExpression me1 = factory.createMethodExpression(context, "${beanB.sayHello()}", null, null);
+    String actual = (String) me1.invoke(context, null);
+    Assert.assertEquals("Hello from B", actual);
+}

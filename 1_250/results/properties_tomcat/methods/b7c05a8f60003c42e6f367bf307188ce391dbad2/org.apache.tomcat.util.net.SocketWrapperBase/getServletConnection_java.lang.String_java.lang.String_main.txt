@@ -1,0 +1,7 @@
+// -------------------------------------------------------------- ID methods
+public ServletConnection getServletConnection(String protocol, String protocolConnectionId) {
+    if (servletConnection == null) {
+        servletConnection = new ServletConnectionImpl(connectionId, protocol, protocolConnectionId, endpoint.isSSLEnabled());
+    }
+    return servletConnection;
+}

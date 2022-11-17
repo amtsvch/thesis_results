@@ -1,0 +1,26 @@
+@Override                                                                                              @Override                                                                                           
+public Class&lt;?&gt; getType(ELContext context, Object base, Object property) {                       public Class&lt;?&gt; getType(ELContext context, Object base, Object property) {                    
+Objects.requireNonNull(context);                                                                       Objects.requireNonNull(context);                                                                    
+if (base instanceof ELClass && property instanceof String) {                                           if (base instanceof ELClass && property instanceof String) {                                        
+context.setPropertyResolved(base, property);                                                           context.setPropertyResolved(base, property);                                                        
+Class&lt;?&gt; clazz = ((ELClass) base).getKlass();                                                    Class&lt;?&gt; clazz = ((ELClass) base).getKlass();                                                 
+String name = (String) property;                                                                       String name = (String) property;                                                                    
+Exception exception = null;                                                                          |                                                                                                     
+try {                                                                                                  try {                                                                                               
+Field field = clazz.getField(name);                                                                  | clazz.getField(name);                                                                               
+int modifiers = field.getModifiers();                                                                | /*                                                                                                  
+if (Modifier.isStatic(modifiers) && Modifier.isPublic(modifiers) && Util.canAccess(null, field)) {   | * This resolver is always read-only so fall-through to return                                       
+return field.getType();                                                                              | * null.                                                                                             
+}                                                                                                    | */                                                                                                  
+} catch (IllegalArgumentException | NoSuchFieldException | SecurityException e) {                      } catch (IllegalArgumentException | NoSuchFieldException | SecurityException e) {                   
+exception = e;                                                                                       |                                                                                                     
+}                                                                                                    |                                                                                                     
+String msg = Util.message(context, "staticFieldELResolver.notFound", name, clazz.getName());           String msg = Util.message(context, "staticFieldELResolver.notFound", name, clazz.getName());        
+if (exception == null) {                                                                             | throw new PropertyNotFoundException(msg, e);                                                        
+throw new PropertyNotFoundException(msg);                                                            |                                                                                                     
+} else {                                                                                             |                                                                                                     
+throw new PropertyNotFoundException(msg, exception);                                                 |                                                                                                     
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   

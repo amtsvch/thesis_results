@@ -1,0 +1,23 @@
+@Test
+public void testWebapp() throws Exception {
+    File appDir = new File("test/webapp");
+    JspCServletContext context = new JspCServletContext(null, appDir.toURI().toURL(), null, false, false);
+    Assert.assertEquals(6, context.getEffectiveMajorVersion());
+    Assert.assertEquals(0, context.getEffectiveMinorVersion());
+    JspConfigDescriptor jspConfigDescriptor = context.getJspConfigDescriptor();
+    Assert.assertTrue(jspConfigDescriptor.getTaglibs().isEmpty());
+    Collection<JspPropertyGroupDescriptor> propertyGroups = jspConfigDescriptor.getJspPropertyGroups();
+    Assert.assertEquals(4, propertyGroups.size());
+    Iterator<JspPropertyGroupDescriptor> groupIterator = propertyGroups.iterator();
+    JspPropertyGroupDescriptor groupDescriptor;
+    groupDescriptor = groupIterator.next();
+    Assert.assertEquals("text/plain", groupDescriptor.getDefaultContentType());
+    Collection<String> urlPatterns = groupDescriptor.getUrlPatterns();
+    Assert.assertEquals(2, urlPatterns.size());
+    Iterator<String> iterator = urlPatterns.iterator();
+    Assert.assertEquals("/bug49nnn/bug49726a.jsp", iterator.next());
+    Assert.assertEquals("/bug49nnn/bug49726b.jsp", iterator.next());
+    groupDescriptor = groupIterator.next();
+    Assert.assertEquals(2, groupDescriptor.getIncludePreludes().size());
+    Assert.assertEquals(2, groupDescriptor.getIncludeCodas().size());
+}

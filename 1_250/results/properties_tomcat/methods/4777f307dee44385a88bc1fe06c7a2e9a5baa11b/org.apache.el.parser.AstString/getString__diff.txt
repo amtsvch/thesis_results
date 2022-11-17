@@ -1,0 +1,6 @@
+public String getString() {
+    if (this.string == null) {
+        this.string = this.image.substring(1, this.image.length() - 1);
+    }
+    return this.string;
+}

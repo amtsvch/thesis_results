@@ -1,0 +1,4 @@
+private void configureMockForNoAcknowledgementWrite(SocketWrapperBase<?> socketWrapper) {
+    EasyMock.reset(socketWrapper);
+    EasyMock.replay(socketWrapper);
+}

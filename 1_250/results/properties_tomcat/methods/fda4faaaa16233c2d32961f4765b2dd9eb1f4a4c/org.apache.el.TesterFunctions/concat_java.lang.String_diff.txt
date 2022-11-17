@@ -1,0 +1,10 @@
+public static String concat(String... inputs) {
+    if (inputs == null || inputs.length == 0) {
+        return null;
+    }
+    StringBuilder result = new StringBuilder();
+    for (String input : inputs) {
+        result.append(input);
+    }
+    return result.toString();
+}

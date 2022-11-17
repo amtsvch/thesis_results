@@ -1,0 +1,7 @@
+private String getDigestEncoding() {
+    CredentialHandler ch = credentialHandler;
+    if (ch instanceof MessageDigestCredentialHandler) {
+        return ((MessageDigestCredentialHandler) ch).getEncoding();
+    }
+    return null;
+}

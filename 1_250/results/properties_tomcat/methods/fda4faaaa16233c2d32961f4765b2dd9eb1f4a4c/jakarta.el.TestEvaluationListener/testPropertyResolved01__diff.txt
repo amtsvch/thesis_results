@@ -1,0 +1,16 @@
+@Test
+public void testPropertyResolved01() {
+    ELContext context = new TesterELContext();
+    ELResolver resolver = new BeanELResolver();
+    TesterBean bean = new TesterBean("test");
+    TesterEvaluationListener listener = new TesterEvaluationListener();
+    context.addEvaluationListener(listener);
+    Object result = resolver.getValue(context, bean, "name");
+    Assert.assertTrue(context.isPropertyResolved());
+    Assert.assertEquals("test", result);
+    List<Pair> events = listener.getResolvedProperties();
+    Assert.assertEquals(1, events.size());
+    Pair p = events.get(0);
+    Assert.assertEquals(bean, p.getBase());
+    Assert.assertEquals("name", p.getProperty());
+}

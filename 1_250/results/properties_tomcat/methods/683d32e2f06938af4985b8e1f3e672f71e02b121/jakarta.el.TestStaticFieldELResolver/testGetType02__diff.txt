@@ -1,0 +1,11 @@
+/**                                                                                                    /**                                                                                                 
+* Tests that a valid property is resolved.                                                             * Tests that a valid property is resolved.                                                          
+*/                                                                                                     */                                                                                                  
+@Test                                                                                                  @Test                                                                                               
+public void testGetType02() {                                                                          public void testGetType02() {                                                                       
+StaticFieldELResolver resolver = new StaticFieldELResolver();                                          StaticFieldELResolver resolver = new StaticFieldELResolver();                                       
+ELContext context = new StandardELContext(ELManager.getExpressionFactory());                           ELContext context = new StandardELContext(ELManager.getExpressionFactory());                        
+Class&lt;?&gt; result = resolver.getType(context, new ELClass(TesterClass.class), PROPERTY01_NAME);    Class&lt;?&gt; result = resolver.getType(context, new ELClass(TesterClass.class), PROPERTY01_NAME); 
+Assert.assertEquals(PROPERTY01_NAME.getClass(), result);                                             | // Resolver is read-only so this should return null                                                 
+Assert.assertTrue(context.isPropertyResolved());                                                     | Assert.assertNull(result);                                                                          
+}                                                                                                      }                                                                                                   

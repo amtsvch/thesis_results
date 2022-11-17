@@ -1,0 +1,8 @@
+@Override
+public boolean isHttpOnly() {
+    String httpOnly = getAttribute(Constants.COOKIE_HTTP_ONLY_ATTR);
+    if (httpOnly == null) {
+        return DEFAULT_HTTP_ONLY;
+    }
+    return Boolean.parseBoolean(httpOnly);
+}

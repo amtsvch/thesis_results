@@ -1,0 +1,4 @@
+@Test
+public void testVarArgsBeanGString() {
+    doTestVarArgsBeanG("beanG.doTest('apple')", (a) -> a.doTest("apple"));
+}

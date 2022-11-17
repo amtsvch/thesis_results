@@ -1,0 +1,7 @@
+/**
+ * Property is neither public nor static
+ */
+@Test
+public void testGetType08() {
+    doThrowableTest(PROPERTY05_NAME, MethodUnderTest.GET_TYPE, true);
+}

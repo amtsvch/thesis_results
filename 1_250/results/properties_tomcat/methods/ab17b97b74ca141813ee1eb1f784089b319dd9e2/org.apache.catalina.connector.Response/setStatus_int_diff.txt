@@ -1,0 +1,16 @@
+/**                                                                                                    /**                                                                                                 
+* Set the HTTP status to be returned with this response.                                               * Set the HTTP status to be returned with this response.                                            
+*                                                                                                      *                                                                                                   
+* @param status The new HTTP status                                                                    * @param status The new HTTP status                                                                 
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void setStatus(int status) {                                                                    public void setStatus(int status) {                                                                 
+setStatus(status, null);                                                                             | if (isCommitted()) {                                                                                
+                                                                                                     | return;                                                                                             
+}                                                                                                      }                                                                                                   
+                                                                                                     | // Ignore any call from an included servlet                                                         
+                                                                                                     | if (included) {                                                                                     
+                                                                                                     | return;                                                                                             
+                                                                                                     | }                                                                                                   
+                                                                                                     | getCoyoteResponse().setStatus(status);                                                              
+                                                                                                     | }                                                                                                   

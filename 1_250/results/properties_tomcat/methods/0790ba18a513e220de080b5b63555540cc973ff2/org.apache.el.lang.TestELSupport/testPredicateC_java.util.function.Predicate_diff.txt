@@ -1,0 +1,8 @@
+public static String testPredicateC(Predicate<String> filter) {
+    String s = "text";
+    if (filter.test(s)) {
+        return "PASS";
+    } else {
+        return "BLOCK";
+    }
+}

@@ -1,0 +1,21 @@
+/**
+ * Process notification that a namespace prefix is coming in to scope.
+ *
+ * @param prefix Prefix that is being declared
+ * @param namespaceURI Corresponding namespace URI being mapped to
+ *
+ * @exception SAXException if a parsing error is to be reported
+ */
+@Override
+public void startPrefixMapping(String prefix, String namespaceURI) throws SAXException {
+    if (saxLog.isDebugEnabled()) {
+        saxLog.debug("startPrefixMapping(" + prefix + "," + namespaceURI + ")");
+    }
+    // Register this prefix mapping
+    ArrayStack<String> stack = namespaces.get(prefix);
+    if (stack == null) {
+        stack = new ArrayStack<>();
+        namespaces.put(prefix, stack);
+    }
+    stack.push(namespaceURI);
+}

@@ -1,0 +1,5 @@
+@Test(expected = IllegalArgumentException.class)
+public void testBug57855b() {
+    MethodExpression me = factory.createMethodExpression(context, "${beanAA.echo2}", null, new Class[] { String.class });
+    me.invoke(context, null);
+}

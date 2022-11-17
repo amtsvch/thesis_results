@@ -1,0 +1,21 @@
+@Override                                                                                              @Override                                                                                           
+public Class&lt;?&gt; getType(ELContext context, Object base, Object property) {                       public Class&lt;?&gt; getType(ELContext context, Object base, Object property) {                    
+Objects.requireNonNull(context);                                                                       Objects.requireNonNull(context);                                                                    
+if (base instanceof List&lt;?&gt;) {                                                                   if (base instanceof List&lt;?&gt;) {                                                                
+context.setPropertyResolved(base, property);                                                           context.setPropertyResolved(base, property);                                                        
+List&lt;?&gt; list = (List&lt;?&gt;) base;                                                             List&lt;?&gt; list = (List&lt;?&gt;) base;                                                          
+int idx = coerce(property);                                                                            int idx = coerce(property);                                                                         
+if (idx &lt; 0 || idx &gt;= list.size()) {                                                             if (idx &lt; 0 || idx &gt;= list.size()) {                                                          
+throw new PropertyNotFoundException(new ArrayIndexOutOfBoundsException(idx).getMessage());             throw new PropertyNotFoundException(new ArrayIndexOutOfBoundsException(idx).getMessage());          
+}                                                                                                      }                                                                                                   
+                                                                                                     | /*                                                                                                  
+                                                                                                     | * Not perfect as a custom list implementation may be read-only but                                  
+                                                                                                     | * consistent with isReadOnly().                                                                     
+                                                                                                     | */                                                                                                  
+                                                                                                     | if (list.getClass() == UNMODIFIABLE || readOnly) {                                                  
+                                                                                                     | return null;                                                                                        
+                                                                                                     | }                                                                                                   
+return Object.class;                                                                                   return Object.class;                                                                                
+}                                                                                                      }                                                                                                   
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   

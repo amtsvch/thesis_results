@@ -1,0 +1,83 @@
+/**
+ * Create a new {@link ExpressionFactory} passing in the provided
+ * {@link Properties}. Search order is the same as {@link #newInstance()}.
+ *
+ * @param properties the properties to be passed to the new instance (may be null)
+ * @return the new ExpressionFactory
+ */
+public static ExpressionFactory newInstance(Properties properties) {
+    ExpressionFactory result = null;
+    ClassLoader tccl = Util.getContextClassLoader();
+    CacheValue cacheValue;
+    Class<?> clazz;
+    if (tccl == null) {
+        cacheValue = nullTcclFactory;
+    } else {
+        CacheKey key = new CacheKey(tccl);
+        cacheValue = factoryCache.get(key);
+        if (cacheValue == null) {
+            CacheValue newCacheValue = new CacheValue();
+            cacheValue = factoryCache.putIfAbsent(key, newCacheValue);
+            if (cacheValue == null) {
+                cacheValue = newCacheValue;
+            }
+        }
+    }
+    final Lock readLock = cacheValue.getLock().readLock();
+    readLock.lock();
+    try {
+        clazz = cacheValue.getFactoryClass();
+    } finally {
+        readLock.unlock();
+    }
+    if (clazz == null) {
+        String className = null;
+        try {
+            final Lock writeLock = cacheValue.getLock().writeLock();
+            writeLock.lock();
+            try {
+                className = cacheValue.getFactoryClassName();
+                if (className == null) {
+                    className = discoverClassName(tccl);
+                    cacheValue.setFactoryClassName(className);
+                }
+                if (tccl == null) {
+                    clazz = Class.forName(className);
+                } else {
+                    clazz = tccl.loadClass(className);
+                }
+                cacheValue.setFactoryClass(clazz);
+            } finally {
+                writeLock.unlock();
+            }
+        } catch (ClassNotFoundException e) {
+            throw new ELException(Util.message(null, "expressionFactory.cannotFind", className), e);
+        }
+    }
+    try {
+        Constructor<?> constructor = null;
+        // Do we need to look for a constructor that will take properties?
+        if (properties != null) {
+            try {
+                constructor = clazz.getConstructor(Properties.class);
+            } catch (SecurityException se) {
+                throw new ELException(se);
+            } catch (NoSuchMethodException nsme) {
+                // This can be ignored
+                // This is OK for this constructor not to exist
+            }
+        }
+        if (constructor == null) {
+            result = (ExpressionFactory) clazz.getConstructor().newInstance();
+        } else {
+            result = (ExpressionFactory) constructor.newInstance(properties);
+        }
+    } catch (InvocationTargetException e) {
+        Throwable cause = e.getCause();
+        Util.handleThrowable(cause);
+        throw new ELException(Util.message(null, "expressionFactory.cannotCreate", clazz.getName()), e);
+    } catch (ReflectiveOperationException | IllegalArgumentException e) {
+        throw new ELException(Util.message(null, "expressionFactory.cannotCreate", clazz.getName()), e);
+    }
+    return result;
+}

@@ -1,0 +1,7 @@
+@Override
+public void setHttpOnly(boolean httpOnly) {
+    if (!context.getState().equals(LifecycleState.STARTING_PREP)) {
+        throw new IllegalStateException(sm.getString("applicationSessionCookieConfig.ise", "HttpOnly", context.getPath()));
+    }
+    setAttribute(Constants.COOKIE_HTTP_ONLY_ATTR, Boolean.toString(httpOnly));
+}

@@ -1,0 +1,9 @@
+@Override
+public void accept(NodeVisitor visitor) throws Exception {
+    visitor.visit(this);
+    if (this.children != null && this.children.length > 0) {
+        for (Node child : this.children) {
+            child.accept(visitor);
+        }
+    }
+}

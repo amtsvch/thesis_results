@@ -1,0 +1,11 @@
+/**
+ * Tests that a valid property implemented by a default method is resolved.
+ */
+@Test
+public void testGetDefaultValue() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Object result = resolver.getValue(context, new Bean(), PROPERTY04_NAME);
+    Assert.assertEquals("Default", result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

@@ -1,0 +1,13 @@
+@Override                                                                                              @Override                                                                                           
+public Class&lt;?&gt; getType(ELContext context, Object base, Object property) {                       public Class&lt;?&gt; getType(ELContext context, Object base, Object property) {                    
+Objects.requireNonNull(context);                                                                       Objects.requireNonNull(context);                                                                    
+if (base instanceof Map&lt;?, ?&gt;) {                                                                 if (base instanceof Map&lt;?, ?&gt;) {                                                              
+context.setPropertyResolved(base, property);                                                           context.setPropertyResolved(base, property);                                                        
+                                                                                                     | Map&lt;?, ?&gt; map = (Map&lt;?, ?&gt;) base;                                                       
+                                                                                                     | if (readOnly || map.getClass() == UNMODIFIABLE) {                                                   
+                                                                                                     | return null;                                                                                        
+                                                                                                     | }                                                                                                   
+return Object.class;                                                                                   return Object.class;                                                                                
+}                                                                                                      }                                                                                                   
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   

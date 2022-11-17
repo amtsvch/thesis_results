@@ -1,0 +1,25 @@
+                                                                                                     | @Deprecated(forRemoval = true, since = "EL 5.0")                                                    
+@Override                                                                                              @Override                                                                                           
+public Iterator&lt;FeatureDescriptor&gt; getFeatureDescriptors(ELContext context, Object base) {       public Iterator&lt;FeatureDescriptor&gt; getFeatureDescriptors(ELContext context, Object base) {    
+if (base instanceof ResourceBundle) {                                                                  if (base instanceof ResourceBundle) {                                                               
+List&lt;FeatureDescriptor&gt; feats = new ArrayList&lt;&gt;();                                         List&lt;FeatureDescriptor&gt; feats = new ArrayList&lt;&gt;();                                      
+Enumeration&lt;String&gt; e = ((ResourceBundle) base).getKeys();                                       Enumeration&lt;String&gt; e = ((ResourceBundle) base).getKeys();                                    
+FeatureDescriptor feat;                                                                                FeatureDescriptor feat;                                                                             
+String key;                                                                                            String key;                                                                                         
+while (e.hasMoreElements()) {                                                                          while (e.hasMoreElements()) {                                                                       
+key = e.nextElement();                                                                                 key = e.nextElement();                                                                              
+feat = new FeatureDescriptor();                                                                        feat = new FeatureDescriptor();                                                                     
+feat.setDisplayName(key);                                                                              feat.setDisplayName(key);                                                                           
+feat.setShortDescription("");                                                                          feat.setShortDescription("");                                                                       
+feat.setExpert(false);                                                                                 feat.setExpert(false);                                                                              
+feat.setHidden(false);                                                                                 feat.setHidden(false);                                                                              
+feat.setName(key);                                                                                     feat.setName(key);                                                                                  
+feat.setPreferred(true);                                                                               feat.setPreferred(true);                                                                            
+feat.setValue(RESOLVABLE_AT_DESIGN_TIME, Boolean.TRUE);                                                feat.setValue(RESOLVABLE_AT_DESIGN_TIME, Boolean.TRUE);                                             
+feat.setValue(TYPE, String.class);                                                                     feat.setValue(TYPE, String.class);                                                                  
+feats.add(feat);                                                                                       feats.add(feat);                                                                                    
+}                                                                                                      }                                                                                                   
+return feats.iterator();                                                                               return feats.iterator();                                                                            
+}                                                                                                      }                                                                                                   
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   

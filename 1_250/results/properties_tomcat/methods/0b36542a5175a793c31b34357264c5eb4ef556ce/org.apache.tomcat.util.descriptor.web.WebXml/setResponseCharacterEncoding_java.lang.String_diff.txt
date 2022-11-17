@@ -1,0 +1,10 @@
+public void setResponseCharacterEncoding(String responseCharacterEncoding) {
+    if (responseCharacterEncoding != null) {
+        try {
+            B2CConverter.getCharset(responseCharacterEncoding);
+        } catch (UnsupportedEncodingException e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
+    this.responseCharacterEncoding = responseCharacterEncoding;
+}

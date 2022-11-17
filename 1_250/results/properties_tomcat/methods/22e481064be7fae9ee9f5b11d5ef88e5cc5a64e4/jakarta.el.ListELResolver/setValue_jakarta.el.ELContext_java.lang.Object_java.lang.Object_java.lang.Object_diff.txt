@@ -1,0 +1,21 @@
+@Override
+public void setValue(ELContext context, Object base, Object property, Object value) {
+    Objects.requireNonNull(context);
+    if (base instanceof List<?>) {
+        context.setPropertyResolved(base, property);
+        // Must be OK to cast to Object
+        @SuppressWarnings("unchecked")
+        List<Object> list = (List<Object>) base;
+        if (this.readOnly) {
+            throw new PropertyNotWritableException(Util.message(context, "resolverNotWriteable", base.getClass().getName()));
+        }
+        int idx = coerce(property);
+        try {
+            list.set(idx, value);
+        } catch (UnsupportedOperationException e) {
+            throw new PropertyNotWritableException(e);
+        } catch (IndexOutOfBoundsException e) {
+            throw new PropertyNotFoundException(e);
+        }
+    }
+}

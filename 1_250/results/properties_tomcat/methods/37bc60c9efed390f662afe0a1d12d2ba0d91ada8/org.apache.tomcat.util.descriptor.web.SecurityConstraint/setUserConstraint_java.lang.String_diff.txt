@@ -1,0 +1,10 @@
+/**
+ * Set the user data constraint for this security constraint.
+ *
+ * @param userConstraint The new user data constraint
+ */
+public void setUserConstraint(String userConstraint) {
+    if (userConstraint != null) {
+        this.userConstraint = userConstraint;
+    }
+}

@@ -1,0 +1,20 @@
+@Test
+public void testLifecycleMethodsWebFragmentsWithConflicts() {
+    WebXml webxml = new WebXml();
+    WebXml fragment1 = new WebXml();
+    fragment1.addPostConstructMethods("a", "a");
+    fragment1.addPreDestroyMethods("b", "a");
+    WebXml fragment2 = new WebXml();
+    fragment2.addPostConstructMethods("a", "b");
+    Set<WebXml> fragments = new HashSet<>();
+    fragments.add(fragment1);
+    fragments.add(fragment2);
+    Assert.assertFalse(webxml.merge(fragments));
+    Assert.assertEquals(0, webxml.getPostConstructMethods().size());
+    WebXml fragment3 = new WebXml();
+    fragment3.addPreDestroyMethods("b", "b");
+    fragments.remove(fragment2);
+    fragments.add(fragment3);
+    Assert.assertFalse(webxml.merge(fragments));
+    Assert.assertEquals(0, webxml.getPreDestroyMethods().size());
+}

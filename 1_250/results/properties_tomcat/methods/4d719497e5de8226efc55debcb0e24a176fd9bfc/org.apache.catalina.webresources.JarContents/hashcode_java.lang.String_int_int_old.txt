@@ -1,0 +1,21 @@
+/**
+ * Simple hashcode of a portion of the string. Typically we would use
+ * substring, but memory and runtime speed are critical.
+ *
+ * @param content
+ *            Wrapping String.
+ * @param startPos
+ *            First character in the range.
+ * @return hashcode of the range.
+ */
+private int hashcode(String content, int startPos, int hashPrime) {
+    int h = hashPrime / 2;
+    int contentLength = content.length();
+    for (int i = startPos; i < contentLength; i++) {
+        h = hashPrime * h + content.charAt(i);
+    }
+    if (h < 0) {
+        h = h * -1;
+    }
+    return h;
+}

@@ -1,0 +1,17 @@
+/**
+ * Returns the maximum age of the cookie, specified in seconds, By default,
+ * <code>-1</code> indicating the cookie will persist until browser
+ * shutdown.
+ *
+ * @return an integer specifying the maximum age of the cookie in seconds; if
+ *         negative, means the cookie persists until browser shutdown
+ * @see #setMaxAge
+ */
+public int getMaxAge() {
+    String maxAge = getAttribute(MAX_AGE);
+    if (maxAge == null) {
+        return -1;
+    } else {
+        return Integer.parseInt(maxAge);
+    }
+}

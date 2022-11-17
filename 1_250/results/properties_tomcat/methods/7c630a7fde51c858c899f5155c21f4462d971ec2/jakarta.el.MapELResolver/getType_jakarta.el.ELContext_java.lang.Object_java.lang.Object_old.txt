@@ -1,0 +1,9 @@
+@Override
+public Class<?> getType(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base instanceof Map<?, ?>) {
+        context.setPropertyResolved(base, property);
+        return Object.class;
+    }
+    return null;
+}

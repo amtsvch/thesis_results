@@ -1,0 +1,8 @@
+private void doV1TestPath(String path, String expectedLegacy, String expectedRfc6265) {
+    LegacyCookieProcessor legacy = new LegacyCookieProcessor();
+    legacy.setAlwaysAddExpires(false);
+    Cookie cookie = new Cookie("foo", "bar");
+    cookie.setVersion(1);
+    cookie.setPath(path);
+    doTest(cookie, legacy, expectedLegacy, new Rfc6265CookieProcessor(), expectedRfc6265);
+}

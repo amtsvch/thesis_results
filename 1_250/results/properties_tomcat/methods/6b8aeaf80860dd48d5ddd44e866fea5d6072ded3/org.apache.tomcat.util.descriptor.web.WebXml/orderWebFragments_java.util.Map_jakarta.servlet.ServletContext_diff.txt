@@ -1,0 +1,146 @@
+private Set<WebXml> orderWebFragments(Map<String, WebXml> fragments, ServletContext servletContext) {
+    Set<WebXml> orderedFragments = new LinkedHashSet<>();
+    boolean absoluteOrdering = getAbsoluteOrdering() != null;
+    boolean orderingPresent = false;
+    if (absoluteOrdering) {
+        orderingPresent = true;
+        // Only those fragments listed should be processed
+        Set<String> requestedOrder = getAbsoluteOrdering();
+        for (String requestedName : requestedOrder) {
+            if (WebXml.ORDER_OTHERS.equals(requestedName)) {
+                // Add all fragments not named explicitly at this point
+                for (Entry<String, WebXml> entry : fragments.entrySet()) {
+                    if (!requestedOrder.contains(entry.getKey())) {
+                        WebXml fragment = entry.getValue();
+                        if (fragment != null) {
+                            orderedFragments.add(fragment);
+                        }
+                    }
+                }
+            } else {
+                WebXml fragment = fragments.get(requestedName);
+                if (fragment != null) {
+                    orderedFragments.add(fragment);
+                } else {
+                    log.warn(sm.getString("webXml.wrongFragmentName", requestedName));
+                }
+            }
+        }
+    } else {
+        // Stage 0. Check there were no fragments with duplicate names
+        for (WebXml fragment : fragments.values()) {
+            if (fragment.isDuplicated()) {
+                throw new IllegalArgumentException(sm.getString("webXml.duplicateFragment", fragment.getName()));
+            }
+        }
+        // Stage 1. Make all dependencies bi-directional - this makes the
+        // next stage simpler.
+        for (WebXml fragment : fragments.values()) {
+            Iterator<String> before = fragment.getBeforeOrdering().iterator();
+            while (before.hasNext()) {
+                orderingPresent = true;
+                String beforeEntry = before.next();
+                if (!beforeEntry.equals(ORDER_OTHERS)) {
+                    WebXml beforeFragment = fragments.get(beforeEntry);
+                    if (beforeFragment == null) {
+                        before.remove();
+                    } else {
+                        beforeFragment.addAfterOrdering(fragment.getName());
+                    }
+                }
+            }
+            Iterator<String> after = fragment.getAfterOrdering().iterator();
+            while (after.hasNext()) {
+                orderingPresent = true;
+                String afterEntry = after.next();
+                if (!afterEntry.equals(ORDER_OTHERS)) {
+                    WebXml afterFragment = fragments.get(afterEntry);
+                    if (afterFragment == null) {
+                        after.remove();
+                    } else {
+                        afterFragment.addBeforeOrdering(fragment.getName());
+                    }
+                }
+            }
+        }
+        // Stage 2. Make all fragments that are implicitly before/after
+        // others explicitly so. This is iterative so the next
+        // stage doesn't have to be.
+        for (WebXml fragment : fragments.values()) {
+            if (fragment.getBeforeOrdering().contains(ORDER_OTHERS)) {
+                makeBeforeOthersExplicit(fragment.getAfterOrdering(), fragments);
+            }
+            if (fragment.getAfterOrdering().contains(ORDER_OTHERS)) {
+                makeAfterOthersExplicit(fragment.getBeforeOrdering(), fragments);
+            }
+        }
+        // Stage 3. Separate into three groups
+        Set<WebXml> beforeSet = new HashSet<>();
+        Set<WebXml> othersSet = new HashSet<>();
+        Set<WebXml> afterSet = new HashSet<>();
+        for (WebXml fragment : fragments.values()) {
+            if (fragment.getBeforeOrdering().contains(ORDER_OTHERS)) {
+                beforeSet.add(fragment);
+                fragment.getBeforeOrdering().remove(ORDER_OTHERS);
+            } else if (fragment.getAfterOrdering().contains(ORDER_OTHERS)) {
+                afterSet.add(fragment);
+                fragment.getAfterOrdering().remove(ORDER_OTHERS);
+            } else {
+                othersSet.add(fragment);
+            }
+        }
+        // Stage 4. Decouple the groups so the ordering requirements for
+        // each fragment in the group only refer to other fragments
+        // in the group. Ordering requirements outside the group
+        // will be handled by processing the groups in order.
+        // Note: Only after ordering requirements are considered.
+        // This is OK because of the processing in stage 1.
+        decoupleOtherGroups(beforeSet);
+        decoupleOtherGroups(othersSet);
+        decoupleOtherGroups(afterSet);
+        // Stage 5. Order each group
+        // Note: Only after ordering requirements are considered.
+        // This is OK because of the processing in stage 1.
+        orderFragments(orderedFragments, beforeSet);
+        orderFragments(orderedFragments, othersSet);
+        orderFragments(orderedFragments, afterSet);
+    }
+    // Container fragments are always included
+    Set<WebXml> containerFragments = new LinkedHashSet<>();
+    // Find all the container fragments and remove any present from the
+    // ordered list
+    for (WebXml fragment : fragments.values()) {
+        if (!fragment.getWebappJar()) {
+            containerFragments.add(fragment);
+            orderedFragments.remove(fragment);
+        }
+    }
+    // Avoid NPE when unit testing
+    if (servletContext != null) {
+        // Publish the ordered fragments. The app does not need to know
+        // about container fragments
+        List<String> orderedJarFileNames = null;
+        if (orderingPresent) {
+            orderedJarFileNames = new ArrayList<>();
+            for (WebXml fragment : orderedFragments) {
+                orderedJarFileNames.add(fragment.getJarName());
+            }
+        }
+        servletContext.setAttribute(ServletContext.ORDERED_LIBS, orderedJarFileNames);
+    }
+    // The remainder of the processing needs to know about container
+    // fragments
+    if (containerFragments.size() > 0) {
+        Set<WebXml> result = new LinkedHashSet<>();
+        if (containerFragments.iterator().next().getDelegate()) {
+            result.addAll(containerFragments);
+            result.addAll(orderedFragments);
+        } else {
+            result.addAll(orderedFragments);
+            result.addAll(containerFragments);
+        }
+        return result;
+    } else {
+        return orderedFragments;
+    }
+}

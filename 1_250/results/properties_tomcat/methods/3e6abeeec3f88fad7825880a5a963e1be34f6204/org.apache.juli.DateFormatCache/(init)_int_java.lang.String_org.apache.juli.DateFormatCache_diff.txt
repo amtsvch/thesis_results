@@ -1,0 +1,11 @@
+public DateFormatCache(int size, String format, DateFormatCache parent) {
+    cacheSize = size;
+    this.format = tidyFormat(format);
+    Cache parentCache = null;
+    if (parent != null) {
+        synchronized (parent) {
+            parentCache = parent.cache;
+        }
+    }
+    cache = new Cache(parentCache);
+}

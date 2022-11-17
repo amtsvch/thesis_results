@@ -1,0 +1,10 @@
+@Test
+public void testGetType01() {
+    ELProcessor processor = new ELProcessor();
+    ELContext context = processor.getELManager().getELContext();
+    ExpressionFactory factory = ELManager.getExpressionFactory();
+    processor.defineBean("bean01", new TesterBeanB());
+    ValueExpression ve = factory.createValueExpression(context, "${bean01.text = 'hello'}", String.class);
+    Assert.assertEquals(String.class, ve.getType(context));
+    Assert.assertEquals("hello", ve.getValue(context));
+}

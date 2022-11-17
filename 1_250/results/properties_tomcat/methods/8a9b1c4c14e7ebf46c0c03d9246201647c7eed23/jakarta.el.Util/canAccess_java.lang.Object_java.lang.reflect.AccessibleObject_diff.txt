@@ -1,0 +1,7 @@
+static boolean canAccess(Object base, AccessibleObject accessibleObject) {
+    try {
+        return accessibleObject.canAccess(base);
+    } catch (IllegalArgumentException iae) {
+        return false;
+    }
+}

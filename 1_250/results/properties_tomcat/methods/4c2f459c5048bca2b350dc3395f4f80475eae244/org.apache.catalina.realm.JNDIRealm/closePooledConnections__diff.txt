@@ -1,0 +1,14 @@
+/**
+ * Close all pooled connections.
+ */
+protected void closePooledConnections() {
+    if (connectionPool != null) {
+        // Close any pooled connections as they might be bad as well
+        synchronized (connectionPool) {
+            JNDIConnection connection = null;
+            while ((connection = connectionPool.pop()) != null) {
+                close(connection);
+            }
+        }
+    }
+}

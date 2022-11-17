@@ -1,0 +1,24 @@
+@Test                                                                                                  @Test                                                                                               
+public void testCircular01() {                                                                         public void testCircular01() {                                                                      
+// Setup                                                                                               // Setup                                                                                            
+Http2UpgradeHandler handler = new Http2UpgradeHandler(new Http2Protocol(), null, null);              | Http2UpgradeHandler handler = new Http2UpgradeHandler(new Http2Protocol(), null, null, new TesterSoc
+Stream a = new Stream(Integer.valueOf(1), handler);                                                    Stream a = new Stream(Integer.valueOf(1), handler);                                                 
+Stream b = new Stream(Integer.valueOf(2), handler);                                                    Stream b = new Stream(Integer.valueOf(2), handler);                                                 
+Stream c = new Stream(Integer.valueOf(3), handler);                                                    Stream c = new Stream(Integer.valueOf(3), handler);                                                 
+b.rePrioritise(a, false, 16);                                                                          b.rePrioritise(a, false, 16);                                                                       
+c.rePrioritise(b, false, 16);                                                                          c.rePrioritise(b, false, 16);                                                                       
+// Action                                                                                              // Action                                                                                           
+a.rePrioritise(c, false, 16);                                                                          a.rePrioritise(c, false, 16);                                                                       
+// Check parents                                                                                       // Check parents                                                                                    
+Assert.assertEquals(c, a.getParentStream());                                                           Assert.assertEquals(c, a.getParentStream());                                                        
+Assert.assertEquals(a, b.getParentStream());                                                           Assert.assertEquals(a, b.getParentStream());                                                        
+Assert.assertEquals(handler, c.getParentStream());                                                     Assert.assertEquals(handler, c.getParentStream());                                                  
+// Check children                                                                                      // Check children                                                                                   
+Assert.assertEquals(1, handler.getChildStreams().size());                                              Assert.assertEquals(1, handler.getChildStreams().size());                                           
+Assert.assertTrue(handler.getChildStreams().contains(c));                                              Assert.assertTrue(handler.getChildStreams().contains(c));                                           
+Assert.assertEquals(1, a.getChildStreams().size());                                                    Assert.assertEquals(1, a.getChildStreams().size());                                                 
+Assert.assertTrue(a.getChildStreams().contains(b));                                                    Assert.assertTrue(a.getChildStreams().contains(b));                                                 
+Assert.assertEquals(0, b.getChildStreams().size());                                                    Assert.assertEquals(0, b.getChildStreams().size());                                                 
+Assert.assertEquals(1, c.getChildStreams().size());                                                    Assert.assertEquals(1, c.getChildStreams().size());                                                 
+Assert.assertTrue(c.getChildStreams().contains(a));                                                    Assert.assertTrue(c.getChildStreams().contains(a));                                                 
+}                                                                                                      }                                                                                                   

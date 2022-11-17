@@ -1,0 +1,25 @@
+@Override                                                                                              @Override                                                                                           
+public Class&lt;?&gt; getType(ELContext context, Object base, Object property) {                       public Class&lt;?&gt; getType(ELContext context, Object base, Object property) {                    
+Objects.requireNonNull(context);                                                                       Objects.requireNonNull(context);                                                                    
+if (base != null || !(property instanceof String)) {                                                   if (base != null || !(property instanceof String)) {                                                
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   
+String beanName = (String) property;                                                                   String beanName = (String) property;                                                                
+try {                                                                                                  try {                                                                                               
+if (beanNameResolver.isNameResolved(beanName)) {                                                       if (beanNameResolver.isNameResolved(beanName)) {                                                    
+Class&lt;?&gt; result = beanNameResolver.getBean(beanName).getClass();                               |                                                                                                     
+context.setPropertyResolved(base, property);                                                           context.setPropertyResolved(base, property);                                                        
+return result;                                                                                       | /*                                                                                                  
+                                                                                                     | * No resolver level isReadOnly property for this resolver                                           
+                                                                                                     | */                                                                                                  
+                                                                                                     | if (beanNameResolver.isReadOnly((String) property)) {                                               
+                                                                                                     | return null;                                                                                        
+}                                                                                                      }                                                                                                   
+                                                                                                     | return beanNameResolver.getBean(beanName).getClass();                                               
+                                                                                                     | }                                                                                                   
+} catch (Throwable t) {                                                                                } catch (Throwable t) {                                                                             
+Util.handleThrowable(t);                                                                               Util.handleThrowable(t);                                                                            
+throw new ELException(t);                                                                              throw new ELException(t);                                                                           
+}                                                                                                      }                                                                                                   
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   

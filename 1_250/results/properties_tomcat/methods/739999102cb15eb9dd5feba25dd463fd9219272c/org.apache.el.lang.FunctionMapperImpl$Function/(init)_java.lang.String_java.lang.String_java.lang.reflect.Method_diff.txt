@@ -1,0 +1,11 @@
+public Function(String prefix, String localName, Method m) {
+    if (localName == null) {
+        throw new NullPointerException(MessageFactory.get("error.nullLocalName"));
+    }
+    if (m == null) {
+        throw new NullPointerException(MessageFactory.get("error.nullMethod"));
+    }
+    this.prefix = prefix;
+    this.localName = localName;
+    this.m = m;
+}

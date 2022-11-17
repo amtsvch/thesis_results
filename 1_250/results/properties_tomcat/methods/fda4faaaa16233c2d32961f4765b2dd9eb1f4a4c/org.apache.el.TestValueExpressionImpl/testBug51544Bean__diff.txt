@@ -1,0 +1,15 @@
+/*
+     * Test returning an empty list as a bean property.
+     */
+@Test
+public void testBug51544Bean() throws Exception {
+    ExpressionFactory factory = ExpressionFactory.newInstance();
+    ELContext context = new ELContextImpl(factory);
+    TesterBeanA beanA = new TesterBeanA();
+    beanA.setValList(Collections.emptyList());
+    ValueExpression var = factory.createValueExpression(beanA, TesterBeanA.class);
+    context.getVariableMapper().setVariable("beanA", var);
+    ValueExpression ve = factory.createValueExpression(context, "${beanA.valList.size()}", Integer.class);
+    Integer result = (Integer) ve.getValue(context);
+    Assert.assertEquals(Integer.valueOf(0), result);
+}

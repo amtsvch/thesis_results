@@ -1,0 +1,15 @@
+private boolean mergeLifecycleCallback(Map<String, String> fragmentMap, Map<String, String> tempMap, WebXml fragment, String mapName) {
+    for (Entry<String, String> entry : fragmentMap.entrySet()) {
+        final String key = entry.getKey();
+        final String value = entry.getValue();
+        if (tempMap.containsKey(key)) {
+            if (value != null && !value.equals(tempMap.get(key))) {
+                log.error(sm.getString("webXml.mergeConflictString", mapName, key, fragment.getName(), fragment.getURL()));
+                return false;
+            }
+        } else {
+            tempMap.put(key, value);
+        }
+    }
+    return true;
+}

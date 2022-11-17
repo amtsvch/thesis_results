@@ -1,0 +1,32 @@
+/*                                                                                                     /*                                                                                                  
+* ValueSuffix                                                                                          * ValueSuffix                                                                                       
+* Either dot or bracket notation                                                                       * Either dot or bracket notation                                                                    
+*/                                                                                                     */                                                                                                  
+final public void ValueSuffix() throws ParseException {                                                final public void ValueSuffix() throws ParseException {                                             
+switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {                                                         | switch((jj_ntk == -1) ? jj_ntk_f() : jj_ntk) {                                                      
+case DOT:                                                                                              case DOT:                                                                                           
+                                                                                                     | {                                                                                                   
+DotSuffix();                                                                                           DotSuffix();                                                                                        
+break;                                                                                                 break;                                                                                              
+                                                                                                     | }                                                                                                   
+case LBRACK:                                                                                           case LBRACK:                                                                                        
+                                                                                                     | {                                                                                                   
+BracketSuffix();                                                                                       BracketSuffix();                                                                                    
+break;                                                                                                 break;                                                                                              
+                                                                                                     | }                                                                                                   
+default:                                                                                               default:                                                                                            
+jj_la1[35] = jj_gen;                                                                                   jj_la1[35] = jj_gen;                                                                                
+jj_consume_token(-1);                                                                                  jj_consume_token(-1);                                                                               
+throw new ParseException();                                                                            throw new ParseException();                                                                         
+}                                                                                                      }                                                                                                   
+switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {                                                         | switch((jj_ntk == -1) ? jj_ntk_f() : jj_ntk) {                                                      
+case LPAREN:                                                                                           case LPAREN:                                                                                        
+                                                                                                     | {                                                                                                   
+MethodParameters();                                                                                    MethodParameters();                                                                                 
+break;                                                                                                 break;                                                                                              
+                                                                                                     | }                                                                                                   
+default:                                                                                               default:                                                                                            
+jj_la1[36] = jj_gen;                                                                                   jj_la1[36] = jj_gen;                                                                                
+;                                                                                                      ;                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

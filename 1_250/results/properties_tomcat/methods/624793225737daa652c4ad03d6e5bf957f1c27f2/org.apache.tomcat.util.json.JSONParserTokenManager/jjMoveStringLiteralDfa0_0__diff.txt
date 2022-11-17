@@ -1,0 +1,31 @@
+private int jjMoveStringLiteralDfa0_0() {
+    switch(curChar) {
+        case 34:
+            return jjMoveStringLiteralDfa1_0(0x800000L);
+        case 39:
+            return jjMoveStringLiteralDfa1_0(0x400000L);
+        case 44:
+            return jjStopAtPos(0, 6);
+        case 58:
+            return jjStopAtPos(0, 9);
+        case 91:
+            return jjStopAtPos(0, 10);
+        case 93:
+            return jjStopAtPos(0, 11);
+        case 70:
+        case 102:
+            return jjMoveStringLiteralDfa1_0(0x40000L);
+        case 78:
+        case 110:
+            return jjMoveStringLiteralDfa1_0(0x80000L);
+        case 84:
+        case 116:
+            return jjMoveStringLiteralDfa1_0(0x20000L);
+        case 123:
+            return jjStopAtPos(0, 7);
+        case 125:
+            return jjStopAtPos(0, 8);
+        default:
+            return jjMoveNfa_0(0, 0);
+    }
+}

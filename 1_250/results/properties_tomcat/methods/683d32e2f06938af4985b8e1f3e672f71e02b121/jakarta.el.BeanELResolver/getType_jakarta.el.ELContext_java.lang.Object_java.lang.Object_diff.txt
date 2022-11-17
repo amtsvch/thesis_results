@@ -1,0 +1,13 @@
+@Override
+public Class<?> getType(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base == null || property == null) {
+        return null;
+    }
+    context.setPropertyResolved(base, property);
+    BeanProperty beanProperty = property(context, base, property);
+    if (readOnly || beanProperty.isReadOnly(base)) {
+        return null;
+    }
+    return beanProperty.getPropertyType();
+}

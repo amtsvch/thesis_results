@@ -1,0 +1,19 @@
+@Test
+public void testParseVersion() {
+    WebXml webxml = new WebXml();
+    // Defaults
+    Assert.assertEquals(6, webxml.getMajorVersion());
+    Assert.assertEquals(0, webxml.getMinorVersion());
+    // Both get changed
+    webxml.setVersion("2.5");
+    Assert.assertEquals(2, webxml.getMajorVersion());
+    Assert.assertEquals(5, webxml.getMinorVersion());
+    // unknown input should be ignored
+    webxml.setVersion("0.0");
+    Assert.assertEquals(2, webxml.getMajorVersion());
+    Assert.assertEquals(5, webxml.getMinorVersion());
+    // null input should be ignored
+    webxml.setVersion(null);
+    Assert.assertEquals(2, webxml.getMajorVersion());
+    Assert.assertEquals(5, webxml.getMinorVersion());
+}

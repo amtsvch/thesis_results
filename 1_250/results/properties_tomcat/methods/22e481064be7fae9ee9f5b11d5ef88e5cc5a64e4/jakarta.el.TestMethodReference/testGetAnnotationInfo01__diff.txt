@@ -1,0 +1,14 @@
+@Test
+public void testGetAnnotationInfo01() {
+    // None
+    ExpressionFactory factory = ExpressionFactory.newInstance();
+    ELContext context = new ELContextImpl(factory);
+    TesterBean bean = new TesterBean("myBean");
+    ValueExpression var = factory.createValueExpression(bean, TesterBean.class);
+    context.getVariableMapper().setVariable("bean", var);
+    MethodExpression me = factory.createMethodExpression(context, "${bean.getName()}", String.class, null);
+    MethodReference result = me.getMethodReference(context);
+    Assert.assertNotNull(result);
+    Assert.assertNotNull(result.getAnnotations());
+    Assert.assertEquals(0, result.getAnnotations().length);
+}

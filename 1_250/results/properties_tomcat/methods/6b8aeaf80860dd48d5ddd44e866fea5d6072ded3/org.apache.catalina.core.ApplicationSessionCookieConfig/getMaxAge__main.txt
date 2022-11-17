@@ -1,0 +1,8 @@
+@Override
+public int getMaxAge() {
+    String maxAge = getAttribute(Constants.COOKIE_MAX_AGE_ATTR);
+    if (maxAge == null) {
+        return DEFAULT_MAX_AGE;
+    }
+    return Integer.parseInt(maxAge);
+}

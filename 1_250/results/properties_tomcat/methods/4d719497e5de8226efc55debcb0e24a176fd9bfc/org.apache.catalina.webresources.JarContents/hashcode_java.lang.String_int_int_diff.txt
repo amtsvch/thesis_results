@@ -1,0 +1,21 @@
+/**                                                                                                    /**                                                                                                 
+* Simple hashcode of a portion of the string. Typically we would use                                   * Simple hashcode of a portion of the string. Typically we would use                                
+* substring, but memory and runtime speed are critical.                                                * substring, but memory and runtime speed are critical.                                             
+*                                                                                                      *                                                                                                   
+* @param content                                                                                       * @param content                                                                                    
+*            Wrapping String.                                                                          *            Wrapping String.                                                                       
+* @param startPos                                                                                      * @param startPos                                                                                   
+*            First character in the range.                                                             *            First character in the range.                                                          
+* @return hashcode of the range.                                                                       * @return hashcode of the range.                                                                    
+*/                                                                                                     */                                                                                                  
+private int hashcode(String content, int startPos, int hashPrime) {                                    private int hashcode(String content, int startPos, int hashPrime) {                                 
+int h = hashPrime / 2;                                                                               | return hashcode(content, startPos, content.length(), hashPrime);                                    
+int contentLength = content.length();                                                                |                                                                                                     
+for (int i = startPos; i &lt; contentLength; i++) {                                                  |                                                                                                     
+h = hashPrime * h + content.charAt(i);                                                               |                                                                                                     
+}                                                                                                      }                                                                                                   
+if (h &lt; 0) {                                                                                      |                                                                                                     
+h = h * -1;                                                                                          |                                                                                                     
+}                                                                                                    |                                                                                                     
+return h;                                                                                            |                                                                                                     
+}                                                                                                    |                                                                                                     

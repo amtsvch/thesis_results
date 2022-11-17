@@ -1,0 +1,7 @@
+                                                                                                     | public ServletConnection getServletConnection() {                                                   
+                                                                                                     | if (socketWrapper.getSslSupport() == null) {                                                        
+                                                                                                     | return socketWrapper.getServletConnection("h2c", "");                                               
+                                                                                                     | } else {                                                                                            
+                                                                                                     | return socketWrapper.getServletConnection("h2", "");                                                
+                                                                                                     | }                                                                                                   
+                                                                                                     | }                                                                                                   

@@ -1,0 +1,7 @@
+@Override
+public void visit(Root n) throws JasperException {
+    output.append(n.getType());
+    output.append('{');
+    n.getExpression().visit(this);
+    output.append('}');
+}

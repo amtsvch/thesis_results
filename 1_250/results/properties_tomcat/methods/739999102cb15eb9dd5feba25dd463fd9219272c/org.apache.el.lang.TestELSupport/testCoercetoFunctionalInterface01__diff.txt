@@ -1,0 +1,7 @@
+@Test
+public void testCoercetoFunctionalInterface01() throws Exception {
+    final ELProcessor elp = new ELProcessor();
+    elp.defineFunction("", "", "org.apache.el.lang.TestELSupport", "testPredicateA");
+    Object result = elp.eval("testPredicateA(x -> x.equals('data'))");
+    Assert.assertEquals("PASS", result);
+}

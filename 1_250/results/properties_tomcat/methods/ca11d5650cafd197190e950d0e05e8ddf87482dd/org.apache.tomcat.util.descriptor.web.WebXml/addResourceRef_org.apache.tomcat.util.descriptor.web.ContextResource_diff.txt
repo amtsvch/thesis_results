@@ -1,0 +1,7 @@
+public void addResourceRef(ContextResource resourceRef) {
+    if (resourceRefs.containsKey(resourceRef.getName())) {
+        // resource-ref names must be unique within a web(-fragment).xml
+        throw new IllegalArgumentException(sm.getString("webXml.duplicateResourceRef", resourceRef.getName()));
+    }
+    resourceRefs.put(resourceRef.getName(), resourceRef);
+}

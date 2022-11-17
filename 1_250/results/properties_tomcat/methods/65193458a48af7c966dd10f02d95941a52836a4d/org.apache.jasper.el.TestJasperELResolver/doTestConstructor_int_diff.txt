@@ -1,0 +1,11 @@
+private void doTestConstructor(int count) throws Exception {                                           private void doTestConstructor(int count) throws Exception {                                        
+List&lt;ELResolver&gt; list = new ArrayList&lt;&gt;();                                                 List&lt;ELResolver&gt; list = new ArrayList&lt;&gt;();                                              
+for (int i = 0; i &lt; count; i++) {                                                                   for (int i = 0; i &lt; count; i++) {                                                                
+list.add(new ImplicitObjectELResolver());                                                              list.add(new ImplicitObjectELResolver());                                                           
+}                                                                                                      }                                                                                                   
+int adjustedForGraalCount = JspRuntimeLibrary.GRAAL ? count + 1 : count;                               int adjustedForGraalCount = JspRuntimeLibrary.GRAAL ? count + 1 : count;                            
+JasperELResolver resolver = new JasperELResolver(list, new StreamELResolverImpl());                    JasperELResolver resolver = new JasperELResolver(list, new StreamELResolverImpl());                 
+Assert.assertEquals(Integer.valueOf(count), getField("appResolversSize", resolver));                   Assert.assertEquals(Integer.valueOf(count), getField("appResolversSize", resolver));                
+Assert.assertEquals(9 + adjustedForGraalCount, ((ELResolver[]) getField("resolvers", resolver)).leng | Assert.assertEquals(STANDARD_RESOLVERS_COUNT + adjustedForGraalCount, ((ELResolver[]) getField("reso
+Assert.assertEquals(Integer.valueOf(9 + adjustedForGraalCount), Integer.valueOf(((AtomicInteger) get | Assert.assertEquals(Integer.valueOf(STANDARD_RESOLVERS_COUNT + adjustedForGraalCount), Integer.value
+}                                                                                                      }                                                                                                   

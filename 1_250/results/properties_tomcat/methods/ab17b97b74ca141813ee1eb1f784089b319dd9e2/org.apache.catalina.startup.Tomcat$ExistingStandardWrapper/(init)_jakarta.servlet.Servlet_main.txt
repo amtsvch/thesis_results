@@ -1,0 +1,4 @@
+public ExistingStandardWrapper(Servlet existing) {
+    this.existing = existing;
+    this.asyncSupported = hasAsync(existing);
+}

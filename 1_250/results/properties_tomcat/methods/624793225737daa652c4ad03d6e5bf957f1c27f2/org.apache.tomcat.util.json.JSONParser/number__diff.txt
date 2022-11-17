@@ -1,0 +1,46 @@
+final public Number number() throws ParseException {
+    Token t;
+    switch(jj_nt.kind) {
+        case NUMBER_DECIMAL:
+            {
+                t = jj_consume_token(NUMBER_DECIMAL);
+                if (nativeNumbers) {
+                    {
+                        if ("" != null) {
+                            return Long.valueOf(t.image);
+                        }
+                    }
+                } else {
+                    {
+                        if ("" != null) {
+                            return new java.math.BigDecimal(t.image);
+                        }
+                    }
+                }
+                break;
+            }
+        case NUMBER_INTEGER:
+            {
+                t = jj_consume_token(NUMBER_INTEGER);
+                if (nativeNumbers) {
+                    {
+                        if ("" != null) {
+                            return Double.valueOf(t.image);
+                        }
+                    }
+                } else {
+                    {
+                        if ("" != null) {
+                            return new java.math.BigInteger(substringBefore(t.image, '.'));
+                        }
+                    }
+                }
+                break;
+            }
+        default:
+            jj_la1[9] = jj_gen;
+            jj_consume_token(-1);
+            throw new ParseException();
+    }
+    throw new Error("Missing return statement in function");
+}

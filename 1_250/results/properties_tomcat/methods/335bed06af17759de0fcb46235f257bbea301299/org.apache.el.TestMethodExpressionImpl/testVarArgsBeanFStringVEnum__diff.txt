@@ -1,0 +1,4 @@
+@Test
+public void testVarArgsBeanFStringVEnum() {
+    doTestVarArgsBeanF("beanF.doTest('apple',apple,apple)", (a) -> a.doTest("apple", TesterEnum.APPLE, TesterEnum.APPLE));
+}

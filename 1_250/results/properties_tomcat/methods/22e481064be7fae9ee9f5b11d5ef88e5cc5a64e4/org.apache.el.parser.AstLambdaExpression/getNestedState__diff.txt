@@ -1,0 +1,6 @@
+private NestedState getNestedState() {
+    if (nestedState == null) {
+        setNestedState(new NestedState());
+    }
+    return nestedState;
+}

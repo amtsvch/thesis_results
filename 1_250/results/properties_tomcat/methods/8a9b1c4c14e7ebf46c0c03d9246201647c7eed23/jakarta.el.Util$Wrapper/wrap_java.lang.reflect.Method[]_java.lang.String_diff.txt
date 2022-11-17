@@ -1,0 +1,9 @@
+public static List<Wrapper<Method>> wrap(Method[] methods, String name) {
+    List<Wrapper<Method>> result = new ArrayList<>();
+    for (Method method : methods) {
+        if (method.getName().equals(name)) {
+            result.add(new MethodWrapper(method));
+        }
+    }
+    return result;
+}

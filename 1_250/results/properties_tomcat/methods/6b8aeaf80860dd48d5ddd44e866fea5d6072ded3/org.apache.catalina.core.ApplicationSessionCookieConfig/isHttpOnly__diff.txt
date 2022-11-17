@@ -1,0 +1,8 @@
+@Override                                                                                              @Override                                                                                           
+public boolean isHttpOnly() {                                                                          public boolean isHttpOnly() {                                                                       
+return httpOnly;                                                                                     | String httpOnly = getAttribute(Constants.COOKIE_HTTP_ONLY_ATTR);                                    
+                                                                                                     | if (httpOnly == null) {                                                                             
+                                                                                                     | return DEFAULT_HTTP_ONLY;                                                                           
+}                                                                                                      }                                                                                                   
+                                                                                                     | return Boolean.parseBoolean(httpOnly);                                                              
+                                                                                                     | }                                                                                                   

@@ -1,0 +1,12 @@
+@Override                                                                                              @Override                                                                                           
+public Class&lt;?&gt; getType(ELContext context, Object base, Object property) {                       public Class&lt;?&gt; getType(ELContext context, Object base, Object property) {                    
+Objects.requireNonNull(context);                                                                       Objects.requireNonNull(context);                                                                    
+if (base instanceof ResourceBundle) {                                                                  if (base instanceof ResourceBundle) {                                                               
+context.setPropertyResolved(base, property);                                                           context.setPropertyResolved(base, property);                                                        
+                                                                                                     | /*                                                                                                  
+                                                                                                     | * ResourceBundles are always read-only so fall-through to return                                    
+                                                                                                     | * null                                                                                              
+                                                                                                     | */                                                                                                  
+}                                                                                                      }                                                                                                   
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   

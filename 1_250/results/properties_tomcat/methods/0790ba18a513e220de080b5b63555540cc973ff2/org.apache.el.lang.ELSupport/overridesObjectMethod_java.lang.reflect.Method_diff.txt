@@ -1,0 +1,25 @@
+private static boolean overridesObjectMethod(Method method) {
+    // There are three methods that can be overridden
+    if ("equals".equals(method.getName())) {
+        if (method.getReturnType().equals(boolean.class)) {
+            if (method.getParameterCount() == 1) {
+                if (method.getParameterTypes()[0].equals(Object.class)) {
+                    return true;
+                }
+            }
+        }
+    } else if ("hashCode".equals(method.getName())) {
+        if (method.getReturnType().equals(int.class)) {
+            if (method.getParameterCount() == 0) {
+                return true;
+            }
+        }
+    } else if ("toString".equals(method.getName())) {
+        if (method.getReturnType().equals(String.class)) {
+            if (method.getParameterCount() == 0) {
+                return true;
+            }
+        }
+    }
+    return false;
+}

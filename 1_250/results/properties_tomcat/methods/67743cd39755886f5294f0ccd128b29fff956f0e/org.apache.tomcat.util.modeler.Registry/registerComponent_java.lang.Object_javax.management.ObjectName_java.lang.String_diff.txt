@@ -1,0 +1,35 @@
+/**
+ * Register a component
+ *
+ * @param bean The bean
+ * @param oname The object name
+ * @param type The registry type
+ * @throws Exception Error registering component
+ */
+public void registerComponent(Object bean, ObjectName oname, String type) throws Exception {
+    if (log.isDebugEnabled()) {
+        log.debug("Managed= " + oname);
+    }
+    if (bean == null) {
+        log.error(sm.getString("registry.nullBean", oname));
+        return;
+    }
+    try {
+        if (type == null) {
+            type = bean.getClass().getName();
+        }
+        ManagedBean managed = findManagedBean(null, bean.getClass(), type);
+        // The real mbean is created and registered
+        DynamicMBean mbean = managed.createMBean(bean);
+        if (getMBeanServer().isRegistered(oname)) {
+            if (log.isDebugEnabled()) {
+                log.debug("Unregistering existing component " + oname);
+            }
+            getMBeanServer().unregisterMBean(oname);
+        }
+        getMBeanServer().registerMBean(mbean, oname);
+    } catch (Exception ex) {
+        log.error(sm.getString("registry.registerError", oname), ex);
+        throw ex;
+    }
+}

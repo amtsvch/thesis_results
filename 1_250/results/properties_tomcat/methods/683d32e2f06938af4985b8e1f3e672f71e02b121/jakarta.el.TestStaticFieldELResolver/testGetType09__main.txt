@@ -1,0 +1,11 @@
+/**
+ * Tests that a valid property of Enum is resolved.
+ */
+@Test
+public void testGetType09() {
+    StaticFieldELResolver resolver = new StaticFieldELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Class<?> result = resolver.getType(context, new ELClass(MethodUnderTest.class), MethodUnderTest.GET_TYPE.toString());
+    // Resolver is read-only so this should return null
+    Assert.assertNull(result);
+}

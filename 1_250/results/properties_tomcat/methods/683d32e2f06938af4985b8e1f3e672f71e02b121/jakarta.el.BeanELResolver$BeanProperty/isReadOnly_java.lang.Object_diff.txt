@@ -1,0 +1,3 @@
+public boolean isReadOnly(Object base) {
+    return this.write == null && (null == (this.write = Util.getMethod(this.owner, base, descriptor.getWriteMethod())));
+}

@@ -1,0 +1,89 @@
+@Override
+public String generateHeader(jakarta.servlet.http.Cookie cookie, HttpServletRequest request) {
+    // Can't use StringBuilder due to DateFormat
+    StringBuffer header = new StringBuffer();
+    // TODO: Name validation takes place in Cookie and cannot be configured
+    // per Context. Moving it to here would allow per Context config
+    // but delay validation until the header is generated. However,
+    // the spec requires an IllegalArgumentException on Cookie
+    // generation.
+    header.append(cookie.getName());
+    header.append('=');
+    String value = cookie.getValue();
+    if (value != null && value.length() > 0) {
+        validateCookieValue(value);
+        header.append(value);
+    }
+    // RFC 6265 prefers Max-Age to Expires but... (see below)
+    int maxAge = cookie.getMaxAge();
+    if (maxAge > -1) {
+        // Negative Max-Age is equivalent to no Max-Age
+        header.append("; Max-Age=");
+        header.append(maxAge);
+        // Microsoft IE and Microsoft Edge don't understand Max-Age so send
+        // expires as well. Without this, persistent cookies fail with those
+        // browsers. See http://tomcat.markmail.org/thread/g6sipbofsjossacn
+        // Wdy, DD-Mon-YY HH:MM:SS GMT ( Expires Netscape format )
+        header.append("; Expires=");
+        // To expire immediately we need to set the time in past
+        if (maxAge == 0) {
+            header.append(ANCIENT_DATE);
+        } else {
+            COOKIE_DATE_FORMAT.get().format(new Date(System.currentTimeMillis() + maxAge * 1000L), header, new FieldPosition(0));
+        }
+    }
+    String domain = cookie.getDomain();
+    if (domain != null && domain.length() > 0) {
+        validateDomain(domain);
+        header.append("; Domain=");
+        header.append(domain);
+    }
+    String path = cookie.getPath();
+    if (path != null && path.length() > 0) {
+        validatePath(path);
+        header.append("; Path=");
+        header.append(path);
+    }
+    if (cookie.getSecure()) {
+        header.append("; Secure");
+    }
+    if (cookie.isHttpOnly()) {
+        header.append("; HttpOnly");
+    }
+    String cookieSameSite = cookie.getAttribute(Constants.COOKIE_SAME_SITE_ATTR);
+    if (cookieSameSite == null) {
+        // Use processor config
+        SameSiteCookies sameSiteCookiesValue = getSameSiteCookies();
+        if (!sameSiteCookiesValue.equals(SameSiteCookies.UNSET)) {
+            header.append("; SameSite=");
+            header.append(sameSiteCookiesValue.getValue());
+        }
+    } else {
+        // Use explict config
+        header.append("; SameSite=");
+        header.append(cookieSameSite);
+    }
+    // Add the remaining attributes
+    for (Map.Entry<String, String> entry : cookie.getAttributes().entrySet()) {
+        switch(entry.getKey()) {
+            case Constants.COOKIE_COMMENT_ATTR:
+            case Constants.COOKIE_DOMAIN_ATTR:
+            case Constants.COOKIE_MAX_AGE_ATTR:
+            case Constants.COOKIE_PATH_ATTR:
+            case Constants.COOKIE_SECURE_ATTR:
+            case Constants.COOKIE_HTTP_ONLY_ATTR:
+            case Constants.COOKIE_SAME_SITE_ATTR:
+                // Handled above so NO-OP
+                break;
+            default:
+                {
+                    validateAttribute(entry.getKey(), entry.getValue());
+                    header.append("; ");
+                    header.append(entry.getKey());
+                    header.append('=');
+                    header.append(entry.getValue());
+                }
+        }
+    }
+    return header.toString();
+}

@@ -1,0 +1,9 @@
+private Method write(ELContext ctx, Object base) {
+    if (this.write == null) {
+        this.write = Util.getMethod(this.owner, base, descriptor.getWriteMethod());
+        if (this.write == null) {
+            throw new PropertyNotWritableException(Util.message(ctx, "propertyNotWritable", new Object[] { owner.getName(), descriptor.getName() }));
+        }
+    }
+    return this.write;
+}

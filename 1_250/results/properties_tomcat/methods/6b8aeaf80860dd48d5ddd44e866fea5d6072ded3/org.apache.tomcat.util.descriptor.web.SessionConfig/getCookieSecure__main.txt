@@ -1,0 +1,7 @@
+public Boolean getCookieSecure() {
+    String secure = getCookieAttribute(Constants.COOKIE_SECURE_ATTR);
+    if (secure == null) {
+        return null;
+    }
+    return Boolean.valueOf(secure);
+}

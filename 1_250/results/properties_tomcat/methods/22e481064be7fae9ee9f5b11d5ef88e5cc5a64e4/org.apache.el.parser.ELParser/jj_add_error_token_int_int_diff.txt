@@ -1,0 +1,32 @@
+private void jj_add_error_token(int kind, int pos) {                                                   private void jj_add_error_token(int kind, int pos) {                                                
+if (pos &gt;= 100) {                                                                                   if (pos &gt;= 100) {                                                                                
+return;                                                                                                return;                                                                                             
+}                                                                                                      }                                                                                                   
+if (pos == jj_endpos + 1) {                                                                            if (pos == jj_endpos + 1) {                                                                         
+jj_lasttokens[jj_endpos++] = kind;                                                                     jj_lasttokens[jj_endpos++] = kind;                                                                  
+} else if (jj_endpos != 0) {                                                                           } else if (jj_endpos != 0) {                                                                        
+jj_expentry = new int[jj_endpos];                                                                      jj_expentry = new int[jj_endpos];                                                                   
+for (int i = 0; i &lt; jj_endpos; i++) {                                                               for (int i = 0; i &lt; jj_endpos; i++) {                                                            
+jj_expentry[i] = jj_lasttokens[i];                                                                     jj_expentry[i] = jj_lasttokens[i];                                                                  
+}                                                                                                      }                                                                                                   
+jj_entries_loop: for (java.util.Iterator&lt;?&gt; it = jj_expentries.iterator(); it.hasNext(); ) {   | for (int[] oldentry : jj_expentries) {                                                              
+int[] oldentry = (int[]) (it.next());                                                                |                                                                                                     
+if (oldentry.length == jj_expentry.length) {                                                           if (oldentry.length == jj_expentry.length) {                                                        
+                                                                                                     | boolean isMatched = true;                                                                           
+for (int i = 0; i &lt; jj_expentry.length; i++) {                                                      for (int i = 0; i &lt; jj_expentry.length; i++) {                                                   
+if (oldentry[i] != jj_expentry[i]) {                                                                   if (oldentry[i] != jj_expentry[i]) {                                                                
+continue jj_entries_loop;                                                                            | isMatched = false;                                                                                  
+                                                                                                     | break;                                                                                              
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | if (isMatched) {                                                                                    
+jj_expentries.add(jj_expentry);                                                                        jj_expentries.add(jj_expentry);                                                                     
+break jj_entries_loop;                                                                               | break;                                                                                              
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+if (pos != 0) {                                                                                        if (pos != 0) {                                                                                     
+jj_lasttokens[(jj_endpos = pos) - 1] = kind;                                                           jj_lasttokens[(jj_endpos = pos) - 1] = kind;                                                        
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,22 @@
+@Override                                                                                              @Override                                                                                           
+public Class&lt;?&gt; getType(ELContext context, Object base, Object property) {                       public Class&lt;?&gt; getType(ELContext context, Object base, Object property) {                    
+Objects.requireNonNull(context);                                                                       Objects.requireNonNull(context);                                                                    
+if (base != null && base.getClass().isArray()) {                                                       if (base != null && base.getClass().isArray()) {                                                    
+context.setPropertyResolved(base, property);                                                           context.setPropertyResolved(base, property);                                                        
+try {                                                                                                  try {                                                                                               
+int idx = coerce(property);                                                                            int idx = coerce(property);                                                                         
+checkBounds(base, idx);                                                                                checkBounds(base, idx);                                                                             
+} catch (IllegalArgumentException e) {                                                                 } catch (IllegalArgumentException e) {                                                              
+// ignore                                                                                              // ignore                                                                                           
+}                                                                                                      }                                                                                                   
+                                                                                                     | /*                                                                                                  
+                                                                                                     | * The resolver may have been created in read-only mode but the                                      
+                                                                                                     | * array and its elements will always be read-write.                                                 
+                                                                                                     | */                                                                                                  
+                                                                                                     | if (readOnly) {                                                                                     
+                                                                                                     | return null;                                                                                        
+                                                                                                     | }                                                                                                   
+return base.getClass().getComponentType();                                                             return base.getClass().getComponentType();                                                          
+}                                                                                                      }                                                                                                   
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   

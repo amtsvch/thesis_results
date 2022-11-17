@@ -1,0 +1,8 @@
+public void setName(String name) {
+    if (ORDER_OTHERS.equalsIgnoreCase(name)) {
+        // This is unusual. This name will be ignored. Log the fact.
+        log.warn(sm.getString("webXml.reservedName", name));
+    } else {
+        this.name = name;
+    }
+}

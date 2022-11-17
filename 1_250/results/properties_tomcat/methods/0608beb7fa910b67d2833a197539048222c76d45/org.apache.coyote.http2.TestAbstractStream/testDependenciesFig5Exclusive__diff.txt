@@ -1,0 +1,37 @@
+@Test
+public void testDependenciesFig5Exclusive() {
+    // Setup
+    Http2UpgradeHandler handler = new Http2UpgradeHandler(new Http2Protocol(), null, null, new TesterSocketWrapper());
+    Stream a = new Stream(Integer.valueOf(1), handler);
+    Stream b = new Stream(Integer.valueOf(2), handler);
+    Stream c = new Stream(Integer.valueOf(3), handler);
+    Stream d = new Stream(Integer.valueOf(4), handler);
+    Stream e = new Stream(Integer.valueOf(5), handler);
+    Stream f = new Stream(Integer.valueOf(6), handler);
+    b.rePrioritise(a, false, 16);
+    c.rePrioritise(a, false, 16);
+    d.rePrioritise(c, false, 16);
+    e.rePrioritise(c, false, 16);
+    f.rePrioritise(d, false, 16);
+    // Action
+    a.rePrioritise(d, true, 16);
+    // Check parents
+    Assert.assertEquals(handler, d.getParentStream());
+    Assert.assertEquals(d, a.getParentStream());
+    Assert.assertEquals(a, b.getParentStream());
+    Assert.assertEquals(a, c.getParentStream());
+    Assert.assertEquals(a, f.getParentStream());
+    Assert.assertEquals(c, e.getParentStream());
+    // Check children
+    Assert.assertEquals(1, d.getChildStreams().size());
+    Assert.assertTrue(d.getChildStreams().contains(a));
+    Assert.assertEquals(3, a.getChildStreams().size());
+    Assert.assertTrue(a.getChildStreams().contains(b));
+    Assert.assertTrue(a.getChildStreams().contains(c));
+    Assert.assertTrue(a.getChildStreams().contains(f));
+    Assert.assertEquals(0, b.getChildStreams().size());
+    Assert.assertEquals(0, f.getChildStreams().size());
+    Assert.assertEquals(1, c.getChildStreams().size());
+    Assert.assertTrue(c.getChildStreams().contains(e));
+    Assert.assertEquals(0, e.getChildStreams().size());
+}

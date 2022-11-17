@@ -1,0 +1,57 @@
+/*
+     * Returns the next unquoted character and sets the lastChEscaped flag to
+     * indicate if it was quoted/escaped or not.
+     * &apos; is always unquoted to '
+     * &quot; is always unquoted to "
+     * \" is always unquoted to "
+     * \' is always unquoted to '
+     * \\ is always unquoted to \
+     * \$ is unquoted to $ if EL is not being ignored
+     * \# is unquoted to # if EL is not being ignored
+     * <\% is always unquoted to <%
+     * %\> is always unquoted to %>
+     */
+private char nextChar() {
+    lastChEscaped = false;
+    char ch = input.charAt(i);
+    if (ch == '&') {
+        if (i + 5 < size && input.charAt(i + 1) == 'a' && input.charAt(i + 2) == 'p' && input.charAt(i + 3) == 'o' && input.charAt(i + 4) == 's' && input.charAt(i + 5) == ';') {
+            ch = '\'';
+            i += 6;
+        } else if (i + 5 < size && input.charAt(i + 1) == 'q' && input.charAt(i + 2) == 'u' && input.charAt(i + 3) == 'o' && input.charAt(i + 4) == 't' && input.charAt(i + 5) == ';') {
+            ch = '\"';
+            i += 6;
+        } else {
+            ++i;
+        }
+    } else if (ch == '\\' && i + 1 < size) {
+        ch = input.charAt(i + 1);
+        if (ch == '\\' || ch == '\"' || ch == '\'' || (!isELIgnored && (ch == '$' || (!isDeferredSyntaxAllowedAsLiteral && ch == '#')))) {
+            i += 2;
+            lastChEscaped = true;
+        } else {
+            ch = '\\';
+            ++i;
+        }
+    } else if (ch == '<' && (i + 2 < size) && input.charAt(i + 1) == '\\' && input.charAt(i + 2) == '%') {
+        // Note this is a hack since nextChar only returns a single char
+        // It is safe since <% does not require special treatment for EL
+        // or for literals
+        result.append('<');
+        i += 3;
+        return '%';
+    } else if (ch == '%' && i + 2 < size && input.charAt(i + 1) == '\\' && input.charAt(i + 2) == '>') {
+        // Note this is a hack since nextChar only returns a single char
+        // It is safe since %> does not require special treatment for EL
+        // or for literals
+        result.append('%');
+        i += 3;
+        return '>';
+    } else if (ch == quote && strict) {
+        String msg = Localizer.getMessage("jsp.error.attribute.noescape", input, "" + quote);
+        throw new IllegalArgumentException(msg);
+    } else {
+        ++i;
+    }
+    return ch;
+}

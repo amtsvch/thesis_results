@@ -1,0 +1,31 @@
+@Test
+public void testCache() throws Exception {
+    final String THREAD_NAME = "t-TestThreadNameCache";
+    final CountDownLatch threadIdLatch = new CountDownLatch(1);
+    final CountDownLatch cacheLatch = new CountDownLatch(1);
+    OneLineFormatter olf = new OneLineFormatter();
+    Method getThreadName = olf.getClass().getDeclaredMethod("getThreadName", int.class);
+    getThreadName.setAccessible(true);
+    Thread thread = new Thread() {
+
+        @Override
+        public void run() {
+            setName(THREAD_NAME);
+            threadId = Integer.valueOf((int) getId());
+            threadIdLatch.countDown();
+            try {
+                cacheLatch.await();
+            } catch (InterruptedException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+    };
+    thread.start();
+    threadIdLatch.await();
+    Object name = getThreadName.invoke(olf, threadId);
+    cacheLatch.countDown();
+    Assert.assertEquals(THREAD_NAME, name);
+    thread.join();
+    name = getThreadName.invoke(olf, threadId);
+    Assert.assertEquals(THREAD_NAME, name);
+}

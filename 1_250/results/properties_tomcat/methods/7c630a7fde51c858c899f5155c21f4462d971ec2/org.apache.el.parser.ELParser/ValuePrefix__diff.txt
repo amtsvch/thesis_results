@@ -1,0 +1,30 @@
+/*
+ * ValuePrefix
+ * For Literals, Variables, and Functions
+ */
+final public void ValuePrefix() throws ParseException {
+    switch((jj_ntk == -1) ? jj_ntk_f() : jj_ntk) {
+        case INTEGER_LITERAL:
+        case FLOATING_POINT_LITERAL:
+        case STRING_LITERAL:
+        case TRUE:
+        case FALSE:
+        case NULL:
+            {
+                Literal();
+                break;
+            }
+        case START_SET_OR_MAP:
+        case LPAREN:
+        case LBRACK:
+        case IDENTIFIER:
+            {
+                NonLiteral();
+                break;
+            }
+        default:
+            jj_la1[34] = jj_gen;
+            jj_consume_token(-1);
+            throw new ParseException();
+    }
+}

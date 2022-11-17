@@ -1,0 +1,7 @@
+@Test
+public void testImport02() {
+    ELProcessor processor = new ELProcessor();
+    processor.getELManager().getELContext().getImportHandler().importStatic("java.lang.Integer.MAX_VALUE");
+    Object result = processor.getValue("MAX_VALUE", Integer.class);
+    Assert.assertEquals(Integer.valueOf(Integer.MAX_VALUE), result);
+}

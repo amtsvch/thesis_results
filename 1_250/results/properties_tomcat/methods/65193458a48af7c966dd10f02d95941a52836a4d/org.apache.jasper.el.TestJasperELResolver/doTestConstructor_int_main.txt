@@ -1,0 +1,11 @@
+private void doTestConstructor(int count) throws Exception {
+    List<ELResolver> list = new ArrayList<>();
+    for (int i = 0; i < count; i++) {
+        list.add(new ImplicitObjectELResolver());
+    }
+    int adjustedForGraalCount = JspRuntimeLibrary.GRAAL ? count + 1 : count;
+    JasperELResolver resolver = new JasperELResolver(list, new StreamELResolverImpl());
+    Assert.assertEquals(Integer.valueOf(count), getField("appResolversSize", resolver));
+    Assert.assertEquals(STANDARD_RESOLVERS_COUNT + adjustedForGraalCount, ((ELResolver[]) getField("resolvers", resolver)).length);
+    Assert.assertEquals(Integer.valueOf(STANDARD_RESOLVERS_COUNT + adjustedForGraalCount), Integer.valueOf(((AtomicInteger) getField("resolversSize", resolver)).get()));
+}

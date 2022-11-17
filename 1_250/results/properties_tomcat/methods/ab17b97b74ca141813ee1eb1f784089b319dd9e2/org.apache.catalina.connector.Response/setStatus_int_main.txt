@@ -1,0 +1,16 @@
+/**
+ * Set the HTTP status to be returned with this response.
+ *
+ * @param status The new HTTP status
+ */
+@Override
+public void setStatus(int status) {
+    if (isCommitted()) {
+        return;
+    }
+    // Ignore any call from an included servlet
+    if (included) {
+        return;
+    }
+    getCoyoteResponse().setStatus(status);
+}

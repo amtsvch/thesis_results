@@ -1,0 +1,4 @@
+@Override
+protected boolean removeEldestEntry(Entry<Integer, String> eldest) {
+    return (size() > cacheSize);
+}

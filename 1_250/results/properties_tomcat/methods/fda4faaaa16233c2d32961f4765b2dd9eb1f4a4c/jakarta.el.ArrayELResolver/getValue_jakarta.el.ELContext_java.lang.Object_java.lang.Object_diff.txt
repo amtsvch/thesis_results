@@ -1,0 +1,13 @@
+@Override
+public Object getValue(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base != null && base.getClass().isArray()) {
+        context.setPropertyResolved(base, property);
+        int idx = coerce(property);
+        if (idx < 0 || idx >= Array.getLength(base)) {
+            return null;
+        }
+        return Array.get(base, idx);
+    }
+    return null;
+}

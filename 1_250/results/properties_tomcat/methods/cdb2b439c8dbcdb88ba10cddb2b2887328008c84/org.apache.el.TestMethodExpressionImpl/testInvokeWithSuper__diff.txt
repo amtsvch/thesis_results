@@ -1,0 +1,8 @@
+@Test
+public void testInvokeWithSuper() {
+    MethodExpression me = factory.createMethodExpression(context, "${beanA.setBean(beanBB)}", null, new Class<?>[] { TesterBeanB.class });
+    me.invoke(context, null);
+    ValueExpression ve = factory.createValueExpression(context, "${beanA.bean.name}", String.class);
+    Object r = ve.getValue(context);
+    Assert.assertEquals("BB", r);
+}

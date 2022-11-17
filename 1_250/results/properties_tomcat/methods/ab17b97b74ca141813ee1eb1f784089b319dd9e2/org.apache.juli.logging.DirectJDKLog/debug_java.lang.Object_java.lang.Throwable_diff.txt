@@ -1,0 +1,4 @@
+@Override
+public final void debug(Object message, Throwable t) {
+    log(Level.FINE, String.valueOf(message), t);
+}

@@ -1,0 +1,12 @@
+@Test
+public void testInvoke() {
+    MethodExpression me1 = factory.createMethodExpression(context, "${beanB.getName}", String.class, new Class<?>[] {});
+    MethodExpression me2 = factory.createMethodExpression(context, "${beanB.sayHello('JUnit')}", String.class, new Class<?>[] { String.class });
+    MethodExpression me3 = factory.createMethodExpression(context, "${beanB.sayHello}", String.class, new Class<?>[] { String.class });
+    Assert.assertEquals("B", me1.invoke(context, null));
+    Assert.assertEquals("Hello JUnit from B", me2.invoke(context, null));
+    Assert.assertEquals("Hello JUnit from B", me2.invoke(context, new Object[] { "JUnit2" }));
+    Assert.assertEquals("Hello JUnit2 from B", me3.invoke(context, new Object[] { "JUnit2" }));
+    Assert.assertEquals("Hello JUnit from B", me2.invoke(context, new Object[] { null }));
+    Assert.assertEquals("Hello  from B", me3.invoke(context, new Object[] { null }));
+}

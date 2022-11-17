@@ -1,0 +1,25 @@
+/**
+ * This method will be used to set the current state of the FilterMap
+ * representing the state of when filters should be applied.
+ * @param dispatcherString the dispatcher type which should
+ *  match this filter
+ */
+public void setDispatcher(String dispatcherString) {
+    String dispatcher = dispatcherString.toUpperCase(Locale.ENGLISH);
+    if (dispatcher.equals(DispatcherType.FORWARD.name())) {
+        // apply FORWARD to the global dispatcherMapping.
+        dispatcherMapping |= FORWARD;
+    } else if (dispatcher.equals(DispatcherType.INCLUDE.name())) {
+        // apply INCLUDE to the global dispatcherMapping.
+        dispatcherMapping |= INCLUDE;
+    } else if (dispatcher.equals(DispatcherType.REQUEST.name())) {
+        // apply REQUEST to the global dispatcherMapping.
+        dispatcherMapping |= REQUEST;
+    } else if (dispatcher.equals(DispatcherType.ERROR.name())) {
+        // apply ERROR to the global dispatcherMapping.
+        dispatcherMapping |= ERROR;
+    } else if (dispatcher.equals(DispatcherType.ASYNC.name())) {
+        // apply ERROR to the global dispatcherMapping.
+        dispatcherMapping |= ASYNC;
+    }
+}

@@ -1,0 +1,4 @@
+public CacheKey(ClassLoader cl) {
+    hash = cl.hashCode();
+    ref = new WeakReference<>(cl);
+}

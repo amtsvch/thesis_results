@@ -1,0 +1,23 @@
+static boolean isFunctionalInterface(Class<?> type) {
+    if (!type.isInterface()) {
+        return false;
+    }
+    boolean foundAbstractMethod = false;
+    Method[] methods = type.getMethods();
+    for (Method method : methods) {
+        if (Modifier.isAbstract(method.getModifiers())) {
+            // Abstract methods that override one of the public methods
+            // of Object don't count
+            if (overridesObjectMethod(method)) {
+                continue;
+            }
+            if (foundAbstractMethod) {
+                // Found more than one
+                return false;
+            } else {
+                foundAbstractMethod = true;
+            }
+        }
+    }
+    return foundAbstractMethod;
+}

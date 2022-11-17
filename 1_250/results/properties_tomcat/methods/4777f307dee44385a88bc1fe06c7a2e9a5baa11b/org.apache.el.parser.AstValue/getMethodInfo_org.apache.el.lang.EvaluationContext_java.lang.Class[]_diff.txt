@@ -1,0 +1,16 @@
+@Override                                                                                              @Override                                                                                           
+public // Interface el.parser.Node uses raw types (and is auto-generated)                              public // Interface el.parser.Node uses raw types (and is auto-generated)                           
+MethodInfo getMethodInfo(EvaluationContext ctx, @SuppressWarnings("rawtypes") Class[] paramTypes) th   MethodInfo getMethodInfo(EvaluationContext ctx, @SuppressWarnings("rawtypes") Class[] paramTypes) th
+Target t = getTarget(ctx);                                                                             Target t = getTarget(ctx);                                                                          
+Class&lt;?&gt;[] types = null;                                                                         Class&lt;?&gt;[] types = null;                                                                      
+if (isParametersProvided()) {                                                                          if (isParametersProvided()) {                                                                       
+if (isParametersProvided()) {                                                                        |                                                                                                     
+Object[] values = ((AstMethodParameters) this.jjtGetChild(this.jjtGetNumChildren() - 1)).getParamete   Object[] values = ((AstMethodParameters) this.jjtGetChild(this.jjtGetNumChildren() - 1)).getParamete
+types = getTypesFromValues(values);                                                                    types = getTypesFromValues(values);                                                                 
+} else {                                                                                               } else {                                                                                            
+types = paramTypes;                                                                                    types = paramTypes;                                                                                 
+}                                                                                                      }                                                                                                   
+}                                                                                                    |                                                                                                     
+Method m = ReflectionUtil.getMethod(ctx, t.base, t.property, types, null);                             Method m = ReflectionUtil.getMethod(ctx, t.base, t.property, types, null);                          
+return new MethodInfo(m.getName(), m.getReturnType(), m.getParameterTypes());                          return new MethodInfo(m.getName(), m.getReturnType(), m.getParameterTypes());                       
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,10 @@
+/**
+ * Set or replace the specified context attribute.
+ *
+ * @param name Name of the context attribute to set
+ * @param value Corresponding attribute value
+ */
+@Override
+public void setAttribute(String name, Object value) {
+    myAttributes.put(name, value);
+}

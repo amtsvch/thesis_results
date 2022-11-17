@@ -1,0 +1,25 @@
+@Override
+public Class<?> getType(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base != null || !(property instanceof String)) {
+        return null;
+    }
+    String beanName = (String) property;
+    try {
+        if (beanNameResolver.isNameResolved(beanName)) {
+            Class<?> result = beanNameResolver.getBean(beanName).getClass();
+            context.setPropertyResolved(base, property);
+            /*
+                 * No resolver level isReadOnly property for this resolver
+                 */
+            if (beanNameResolver.isReadOnly((String) property)) {
+                return null;
+            }
+            return result;
+        }
+    } catch (Throwable t) {
+        Util.handleThrowable(t);
+        throw new ELException(t);
+    }
+    return null;
+}

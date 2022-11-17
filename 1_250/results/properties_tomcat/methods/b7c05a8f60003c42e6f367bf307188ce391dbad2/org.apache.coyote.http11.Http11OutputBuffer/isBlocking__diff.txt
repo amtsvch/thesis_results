@@ -1,0 +1,7 @@
+/**
+ * Is standard Servlet blocking IO being used for output?
+ * @return <code>true</code> if this is blocking IO
+ */
+protected final boolean isBlocking() {
+    return response.getWriteListener() == null;
+}

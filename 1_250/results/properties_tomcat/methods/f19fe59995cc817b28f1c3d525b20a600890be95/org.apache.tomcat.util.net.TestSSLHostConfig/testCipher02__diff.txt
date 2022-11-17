@@ -1,0 +1,9 @@
+@Test
+public void testCipher02() {
+    SSLHostConfig hc = new SSLHostConfig();
+    Cipher c1 = Cipher.TLS_RSA_WITH_NULL_MD5;
+    Cipher c2 = Cipher.TLS_RSA_WITH_NULL_SHA;
+    // Two JSSE names
+    hc.setCiphers(c1.getJsseNames().iterator().next() + "," + c2.getJsseNames().iterator().next());
+    Assert.assertEquals(c1.getOpenSSLAlias() + ":" + c2.getOpenSSLAlias(), hc.getCiphers());
+}

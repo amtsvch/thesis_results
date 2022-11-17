@@ -1,0 +1,17 @@
+protected void closeWriter() {
+    writerLock.writeLock().lock();
+    try {
+        if (writer == null) {
+            return;
+        }
+        writer.write(getFormatter().getTail(this));
+        writer.flush();
+        writer.close();
+        writer = null;
+        date = null;
+    } catch (Exception e) {
+        reportError(null, e, ErrorManager.CLOSE_FAILURE);
+    } finally {
+        writerLock.writeLock().unlock();
+    }
+}

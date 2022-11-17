@@ -1,0 +1,7 @@
+@Override                                                                                              @Override                                                                                           
+public void setSecure(boolean secure) {                                                                public void setSecure(boolean secure) {                                                             
+if (!context.getState().equals(LifecycleState.STARTING_PREP)) {                                        if (!context.getState().equals(LifecycleState.STARTING_PREP)) {                                     
+throw new IllegalStateException(sm.getString("applicationSessionCookieConfig.ise", "secure", context   throw new IllegalStateException(sm.getString("applicationSessionCookieConfig.ise", "secure", context
+}                                                                                                      }                                                                                                   
+this.secure = secure;                                                                                | setAttribute(Constants.COOKIE_SECURE_ATTR, Boolean.toString(secure));                               
+}                                                                                                      }                                                                                                   

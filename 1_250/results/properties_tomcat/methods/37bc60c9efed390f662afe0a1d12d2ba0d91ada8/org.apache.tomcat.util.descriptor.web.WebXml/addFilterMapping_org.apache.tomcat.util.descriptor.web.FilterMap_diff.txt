@@ -1,0 +1,5 @@
+public void addFilterMapping(FilterMap filterMap) {
+    filterMap.setCharset(getCharset());
+    filterMaps.add(filterMap);
+    filterMappingNames.add(filterMap.getFilterName());
+}

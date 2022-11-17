@@ -1,0 +1,11 @@
+/**
+ * Tests that a valid property is resolved.
+ */
+@Test
+public void testGetType03() {
+    MapELResolver mapELResolver = new MapELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Class<?> result = mapELResolver.getType(context, new HashMap<>(), "test");
+    Assert.assertEquals(Object.class, result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

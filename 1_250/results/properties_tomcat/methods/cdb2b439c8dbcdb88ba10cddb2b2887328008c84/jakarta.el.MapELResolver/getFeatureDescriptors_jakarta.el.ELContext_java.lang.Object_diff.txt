@@ -1,0 +1,25 @@
+                                                                                                     | @Deprecated(forRemoval = true, since = "EL 5.0")                                                    
+@Override                                                                                              @Override                                                                                           
+public Iterator&lt;FeatureDescriptor&gt; getFeatureDescriptors(ELContext context, Object base) {       public Iterator&lt;FeatureDescriptor&gt; getFeatureDescriptors(ELContext context, Object base) {    
+if (base instanceof Map&lt;?, ?&gt;) {                                                                 if (base instanceof Map&lt;?, ?&gt;) {                                                              
+Iterator&lt;?&gt; itr = ((Map&lt;?, ?&gt;) base).keySet().iterator();                                  Iterator&lt;?&gt; itr = ((Map&lt;?, ?&gt;) base).keySet().iterator();                               
+List&lt;FeatureDescriptor&gt; feats = new ArrayList&lt;&gt;();                                         List&lt;FeatureDescriptor&gt; feats = new ArrayList&lt;&gt;();                                      
+Object key;                                                                                            Object key;                                                                                         
+FeatureDescriptor desc;                                                                                FeatureDescriptor desc;                                                                             
+while (itr.hasNext()) {                                                                                while (itr.hasNext()) {                                                                             
+key = itr.next();                                                                                      key = itr.next();                                                                                   
+desc = new FeatureDescriptor();                                                                        desc = new FeatureDescriptor();                                                                     
+desc.setDisplayName(key.toString());                                                                   desc.setDisplayName(key.toString());                                                                
+desc.setShortDescription("");                                                                          desc.setShortDescription("");                                                                       
+desc.setExpert(false);                                                                                 desc.setExpert(false);                                                                              
+desc.setHidden(false);                                                                                 desc.setHidden(false);                                                                              
+desc.setName(key.toString());                                                                          desc.setName(key.toString());                                                                       
+desc.setPreferred(true);                                                                               desc.setPreferred(true);                                                                            
+desc.setValue(RESOLVABLE_AT_DESIGN_TIME, Boolean.TRUE);                                                desc.setValue(RESOLVABLE_AT_DESIGN_TIME, Boolean.TRUE);                                             
+desc.setValue(TYPE, key.getClass());                                                                   desc.setValue(TYPE, key.getClass());                                                                
+feats.add(desc);                                                                                       feats.add(desc);                                                                                    
+}                                                                                                      }                                                                                                   
+return feats.iterator();                                                                               return feats.iterator();                                                                            
+}                                                                                                      }                                                                                                   
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   

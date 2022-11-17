@@ -1,0 +1,35 @@
+/*
+     * This class duplicates code in jakarta.el.Util. When making changes keep
+     * the code in sync.
+     */
+private static boolean isAssignableFrom(Class<?> src, Class<?> target) {
+    // src will always be an object
+    // Short-cut. null is always assignable to an object and in EL null
+    // can always be coerced to a valid value for a primitive
+    if (src == null) {
+        return true;
+    }
+    Class<?> targetClass;
+    if (target.isPrimitive()) {
+        if (target == Boolean.TYPE) {
+            targetClass = Boolean.class;
+        } else if (target == Character.TYPE) {
+            targetClass = Character.class;
+        } else if (target == Byte.TYPE) {
+            targetClass = Byte.class;
+        } else if (target == Short.TYPE) {
+            targetClass = Short.class;
+        } else if (target == Integer.TYPE) {
+            targetClass = Integer.class;
+        } else if (target == Long.TYPE) {
+            targetClass = Long.class;
+        } else if (target == Float.TYPE) {
+            targetClass = Float.class;
+        } else {
+            targetClass = Double.class;
+        }
+    } else {
+        targetClass = target;
+    }
+    return targetClass.isAssignableFrom(src);
+}

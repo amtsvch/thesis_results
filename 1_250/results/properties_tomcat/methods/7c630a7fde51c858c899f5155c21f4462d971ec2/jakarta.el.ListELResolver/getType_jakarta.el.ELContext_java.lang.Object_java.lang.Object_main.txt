@@ -1,0 +1,21 @@
+@Override
+public Class<?> getType(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base instanceof List<?>) {
+        context.setPropertyResolved(base, property);
+        List<?> list = (List<?>) base;
+        int idx = coerce(property);
+        if (idx < 0 || idx >= list.size()) {
+            throw new PropertyNotFoundException(new ArrayIndexOutOfBoundsException(idx).getMessage());
+        }
+        /*
+             * Not perfect as a custom list implementation may be read-only but
+             * consistent with isReadOnly().
+             */
+        if (list.getClass() == UNMODIFIABLE || readOnly) {
+            return null;
+        }
+        return Object.class;
+    }
+    return null;
+}

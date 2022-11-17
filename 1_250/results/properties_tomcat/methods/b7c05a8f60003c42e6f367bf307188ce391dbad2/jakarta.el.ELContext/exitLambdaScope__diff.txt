@@ -1,0 +1,9 @@
+/**
+ * Called after evaluating a lambda expression to signal that the arguments
+ * are no longer required.
+ *
+ * @since EL 3.0
+ */
+public void exitLambdaScope() {
+    lambdaArguments.pop();
+}

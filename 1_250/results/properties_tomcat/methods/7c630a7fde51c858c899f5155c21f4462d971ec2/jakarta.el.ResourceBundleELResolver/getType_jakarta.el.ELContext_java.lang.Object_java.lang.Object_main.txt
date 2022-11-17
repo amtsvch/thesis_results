@@ -1,0 +1,12 @@
+@Override
+public Class<?> getType(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base instanceof ResourceBundle) {
+        context.setPropertyResolved(base, property);
+        /*
+             * ResourceBundles are always read-only so fall-through to return
+             * null
+             */
+    }
+    return null;
+}

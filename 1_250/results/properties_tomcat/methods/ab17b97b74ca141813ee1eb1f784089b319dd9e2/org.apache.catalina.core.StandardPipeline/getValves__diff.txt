@@ -1,0 +1,18 @@
+/**
+ * Return the set of Valves in the pipeline associated with this
+ * Container, including the basic Valve (if any).  If there are no
+ * such Valves, a zero-length array is returned.
+ */
+@Override
+public Valve[] getValves() {
+    List<Valve> valveList = new ArrayList<>();
+    Valve current = first;
+    if (current == null) {
+        current = basic;
+    }
+    while (current != null) {
+        valveList.add(current);
+        current = current.getNext();
+    }
+    return valveList.toArray(new Valve[0]);
+}

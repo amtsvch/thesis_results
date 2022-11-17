@@ -1,0 +1,9 @@
+/**
+ * Tests that an exception is thrown when a coercion cannot be performed.
+ */
+@Test(expected = PropertyNotFoundException.class)
+public void testIsReadOnly04() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    resolver.isReadOnly(context, new TesterBean(BEAN_NAME), Integer.valueOf(0));
+}

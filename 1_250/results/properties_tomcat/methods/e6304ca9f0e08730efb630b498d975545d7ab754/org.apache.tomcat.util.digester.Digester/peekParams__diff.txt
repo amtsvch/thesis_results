@@ -1,0 +1,16 @@
+/**
+ * <p>Return the top object on the parameters stack without removing it.  If there are
+ * no objects on the stack, return <code>null</code>.</p>
+ *
+ * <p>The parameters stack is used to store <code>CallMethodRule</code> parameters.
+ * See {@link #params}.</p>
+ * @return the top object on the parameters stack
+ */
+public Object peekParams() {
+    try {
+        return params.peek();
+    } catch (EmptyStackException e) {
+        log.warn(sm.getString("digester.emptyStack"));
+        return null;
+    }
+}

@@ -1,0 +1,7 @@
+@Override
+public void setPath(String path) {
+    if (!context.getState().equals(LifecycleState.STARTING_PREP)) {
+        throw new IllegalStateException(sm.getString("applicationSessionCookieConfig.ise", "path", context.getPath()));
+    }
+    setAttribute(Constants.COOKIE_PATH_ATTR, path);
+}

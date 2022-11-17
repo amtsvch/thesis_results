@@ -1,0 +1,11 @@
+/**
+ * Reset counter used for validating the web.xml file.
+ */
+public void recycle() {
+    jspConfig.isJspConfigSet = false;
+    sessionConfig.isSessionConfigSet = false;
+    loginConfig.isLoginConfigSet = false;
+    name.isNameSet = false;
+    absoluteOrdering.isAbsoluteOrderingSet = false;
+    relativeOrdering.isRelativeOrderingSet = false;
+}

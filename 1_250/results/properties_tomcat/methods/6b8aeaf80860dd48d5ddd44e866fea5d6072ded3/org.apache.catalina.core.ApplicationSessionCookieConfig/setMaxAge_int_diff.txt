@@ -1,0 +1,7 @@
+@Override                                                                                              @Override                                                                                           
+public void setMaxAge(int maxAge) {                                                                    public void setMaxAge(int maxAge) {                                                                 
+if (!context.getState().equals(LifecycleState.STARTING_PREP)) {                                        if (!context.getState().equals(LifecycleState.STARTING_PREP)) {                                     
+throw new IllegalStateException(sm.getString("applicationSessionCookieConfig.ise", "max age", contex   throw new IllegalStateException(sm.getString("applicationSessionCookieConfig.ise", "max age", contex
+}                                                                                                      }                                                                                                   
+this.maxAge = maxAge;                                                                                | setAttribute(Constants.COOKIE_MAX_AGE_ATTR, Integer.toString(maxAge));                              
+}                                                                                                      }                                                                                                   

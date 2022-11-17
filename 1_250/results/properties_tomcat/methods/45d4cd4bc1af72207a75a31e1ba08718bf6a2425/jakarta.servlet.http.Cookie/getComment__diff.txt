@@ -1,0 +1,11 @@
+/**
+ * Returns the comment describing the purpose of this cookie, or
+ * <code>null</code> if the cookie has no comment.
+ *
+ * @return a <code>String</code> containing the comment, or
+ *         <code>null</code> if none
+ * @see #setComment
+ */
+public String getComment() {
+    return getAttribute(COMMENT);
+}

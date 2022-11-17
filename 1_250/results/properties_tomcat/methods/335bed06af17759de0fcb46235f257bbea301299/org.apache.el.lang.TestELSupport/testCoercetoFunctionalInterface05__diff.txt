@@ -1,0 +1,6 @@
+@Test(expected = ELException.class)
+public void testCoercetoFunctionalInterface05() throws Exception {
+    final ELProcessor elp = new ELProcessor();
+    elp.defineFunction("", "", "org.apache.el.lang.TestELSupport", "testPredicateC");
+    elp.eval("testPredicateC(x -> x > 50)");
+}

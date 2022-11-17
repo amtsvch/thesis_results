@@ -1,0 +1,26 @@
+@Test
+public void testDependenciesFig3() {
+    // Setup
+    Http2UpgradeHandler handler = new Http2UpgradeHandler(new Http2Protocol(), null, null, new TesterSocketWrapper());
+    Stream a = new Stream(Integer.valueOf(1), handler);
+    Stream b = new Stream(Integer.valueOf(2), handler);
+    Stream c = new Stream(Integer.valueOf(3), handler);
+    Stream d = new Stream(Integer.valueOf(4), handler);
+    b.rePrioritise(a, false, 16);
+    c.rePrioritise(a, false, 16);
+    // Action
+    d.rePrioritise(a, false, 16);
+    // Check parents
+    Assert.assertEquals(handler, a.getParentStream());
+    Assert.assertEquals(a, b.getParentStream());
+    Assert.assertEquals(a, c.getParentStream());
+    Assert.assertEquals(a, d.getParentStream());
+    // Check children
+    Assert.assertEquals(3, a.getChildStreams().size());
+    Assert.assertTrue(a.getChildStreams().contains(b));
+    Assert.assertTrue(a.getChildStreams().contains(c));
+    Assert.assertTrue(a.getChildStreams().contains(d));
+    Assert.assertEquals(0, b.getChildStreams().size());
+    Assert.assertEquals(0, c.getChildStreams().size());
+    Assert.assertEquals(0, d.getChildStreams().size());
+}

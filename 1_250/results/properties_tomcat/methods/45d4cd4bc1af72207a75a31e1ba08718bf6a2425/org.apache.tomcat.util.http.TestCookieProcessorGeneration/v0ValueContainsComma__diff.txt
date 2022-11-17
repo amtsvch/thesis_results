@@ -1,0 +1,4 @@
+@Test
+public void v0ValueContainsComma() {
+    doTest(new Cookie("foo", "a,b"), "foo=\"a,b\"; Version=1", null);
+}
