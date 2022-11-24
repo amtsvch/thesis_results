@@ -1,0 +1,4 @@
+@Override
+public Iterator<Entry<String, V>> iterator() {
+    return new EntryIterator<>(entrySet.iterator());
+}

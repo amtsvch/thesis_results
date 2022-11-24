@@ -1,0 +1,18 @@
+@Test
+public void testCrawlersSessionIdIsRemovedAfterSessionExpiry() throws IOException, ServletException {
+    CrawlerSessionManagerValve valve = new CrawlerSessionManagerValve();
+    valve.setCrawlerIps("216\\.58\\.206\\.174");
+    valve.setCrawlerUserAgents(valve.getCrawlerUserAgents());
+    valve.setNext(EasyMock.createMock(Valve.class));
+    valve.setSessionInactiveInterval(0);
+    StandardSession session = new StandardSession(TEST_MANAGER);
+    session.setId("id");
+    session.setValid(true);
+    Request request = createRequestExpectations("216.58.206.174", session, true);
+    EasyMock.replay(request);
+    valve.invoke(request, EasyMock.createMock(Response.class));
+    EasyMock.verify(request);
+    MatcherAssert.assertThat(valve.getClientIpSessionId().values(), CoreMatchers.hasItem("id"));
+    session.expire();
+    Assert.assertEquals(0, valve.getClientIpSessionId().values().size());
+}

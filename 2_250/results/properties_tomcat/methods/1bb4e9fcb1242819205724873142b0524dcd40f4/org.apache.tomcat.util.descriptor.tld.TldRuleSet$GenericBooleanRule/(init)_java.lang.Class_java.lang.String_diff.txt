@@ -1,0 +1,7 @@
+private GenericBooleanRule(Class<?> type, String setterName) {
+    try {
+        this.setter = type.getMethod(setterName, Boolean.TYPE);
+    } catch (NoSuchMethodException e) {
+        throw new IllegalArgumentException(e);
+    }
+}

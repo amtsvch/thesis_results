@@ -1,0 +1,7 @@
+@Test
+public void testGetNullKey() {
+    Object o1 = new Object();
+    CaseInsensitiveKeyMap<Object> map = new CaseInsensitiveKeyMap<>();
+    map.put("a", o1);
+    Assert.assertNull(map.get(null));
+}

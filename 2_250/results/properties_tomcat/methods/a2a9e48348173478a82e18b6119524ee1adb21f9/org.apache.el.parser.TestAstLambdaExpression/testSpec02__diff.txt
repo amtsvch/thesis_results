@@ -1,0 +1,6 @@
+@Test
+public void testSpec02() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("((x,y)->x+y)(1,2)", Integer.class);
+    Assert.assertEquals(Integer.valueOf(3), result);
+}

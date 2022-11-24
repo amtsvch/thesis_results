@@ -1,0 +1,14 @@
+@Test
+public void testSetCharacterEncoding08() {
+    Response response = setupResponse();
+    // Check multiple calls with different methods
+    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
+    response.setCharacterEncoding(UTF_8);
+    Assert.assertEquals(UTF_8, response.getCharacterEncoding());
+    response.setContentType(TEXT_ISO_8859_1);
+    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
+    response.setContentType(TEXT_UTF_8);
+    Assert.assertEquals(UTF_8, response.getCharacterEncoding());
+    response.setCharacterEncoding(ISO_8859_1);
+    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
+}

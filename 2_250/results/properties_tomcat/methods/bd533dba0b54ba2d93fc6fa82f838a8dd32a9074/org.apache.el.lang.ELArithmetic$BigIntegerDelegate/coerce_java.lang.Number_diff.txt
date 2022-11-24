@@ -1,0 +1,7 @@
+@Override                                                                                              @Override                                                                                           
+protected Number coerce(Number num) {                                                                  protected Number coerce(Number num) {                                                               
+if (num instanceof BigInteger)                                                                       | if (num instanceof BigInteger) {                                                                    
+return num;                                                                                            return num;                                                                                         
+                                                                                                     | }                                                                                                   
+return new BigInteger(num.toString());                                                                 return new BigInteger(num.toString());                                                              
+}                                                                                                      }                                                                                                   

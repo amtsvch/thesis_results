@@ -1,0 +1,25 @@
+/**                                                                                                    /**                                                                                                 
+* Perform the internal processing required to passivate                                                * Perform the internal processing required to passivate                                             
+* this session.                                                                                        * this session.                                                                                     
+*/                                                                                                     */                                                                                                  
+public void passivate() {                                                                              public void passivate() {                                                                           
+// Notify interested session event listeners                                                           // Notify interested session event listeners                                                        
+fireSessionEvent(Session.SESSION_PASSIVATED_EVENT, null);                                              fireSessionEvent(Session.SESSION_PASSIVATED_EVENT, null);                                           
+// Notify ActivationListeners                                                                          // Notify ActivationListeners                                                                       
+HttpSessionEvent event = null;                                                                         HttpSessionEvent event = null;                                                                      
+String[] keys = keys();                                                                                String[] keys = keys();                                                                             
+for (String key : keys) {                                                                              for (String key : keys) {                                                                           
+Object attribute = attributes.get(key);                                                                Object attribute = attributes.get(key);                                                             
+if (attribute instanceof HttpSessionActivationListener) {                                              if (attribute instanceof HttpSessionActivationListener) {                                           
+if (event == null)                                                                                   | if (event == null) {                                                                                
+event = new HttpSessionEvent(getSession());                                                            event = new HttpSessionEvent(getSession());                                                         
+                                                                                                     | }                                                                                                   
+try {                                                                                                  try {                                                                                               
+((HttpSessionActivationListener) attribute).sessionWillPassivate(event);                               ((HttpSessionActivationListener) attribute).sessionWillPassivate(event);                            
+} catch (Throwable t) {                                                                                } catch (Throwable t) {                                                                             
+ExceptionUtils.handleThrowable(t);                                                                     ExceptionUtils.handleThrowable(t);                                                                  
+manager.getContext().getLogger().error(sm.getString("standardSession.attributeEvent"), t);             manager.getContext().getLogger().error(sm.getString("standardSession.attributeEvent"), t);          
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

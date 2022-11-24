@@ -1,0 +1,35 @@
+@Test
+public void testKeySetImmutabilityAfterLocked() {
+    ((ParameterMap<String, String[]>) paramMap).setLocked(true);
+    final Set<String> keySet = paramMap.keySet();
+    try {
+        keySet.add("param4");
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        keySet.remove("param2");
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        keySet.removeIf((a) -> "param2".equals(a));
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        keySet.removeAll(Arrays.asList("param1", "param2"));
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        keySet.retainAll(Collections.emptyList());
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        keySet.clear();
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+}

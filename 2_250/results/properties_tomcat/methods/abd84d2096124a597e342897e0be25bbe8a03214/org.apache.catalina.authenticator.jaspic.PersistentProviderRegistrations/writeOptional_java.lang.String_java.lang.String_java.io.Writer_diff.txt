@@ -1,0 +1,7 @@
+private static void writeOptional(String name, String value, Writer writer) throws IOException {
+    if (value != null) {
+        writer.write(" " + name + "=\"");
+        writer.write(value);
+        writer.write("\"");
+    }
+}

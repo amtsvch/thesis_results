@@ -1,0 +1,13 @@
+@Test
+public void testRemove() {
+    Object o1 = new Object();
+    CaseInsensitiveKeyMap<Object> map = new CaseInsensitiveKeyMap<>();
+    map.put("a", o1);
+    Assert.assertFalse(map.isEmpty());
+    map.remove("A");
+    Assert.assertTrue(map.isEmpty());
+    map.put("A", o1);
+    Assert.assertFalse(map.isEmpty());
+    map.remove("a");
+    Assert.assertTrue(map.isEmpty());
+}

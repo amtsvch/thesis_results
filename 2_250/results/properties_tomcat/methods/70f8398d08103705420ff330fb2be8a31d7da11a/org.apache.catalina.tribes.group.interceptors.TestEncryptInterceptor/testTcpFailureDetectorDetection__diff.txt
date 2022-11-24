@@ -1,0 +1,15 @@
+@Test
+public void testTcpFailureDetectorDetection() {
+    src.setPrevious(new TcpFailureDetector());
+    try {
+        src.start(Channel.SND_TX_SEQ);
+        Assert.fail("EncryptInterceptor should detect TcpFailureDetector and throw an error");
+    } catch (EncryptInterceptor.ChannelConfigException cce) {
+        // Expected behavior
+    } catch (AssertionError ae) {
+        // This is the junit assertion being thrown
+        throw ae;
+    } catch (Throwable t) {
+        Assert.fail("EncryptionInterceptor should throw ChannelConfigException, not " + t.getClass().getName());
+    }
+}

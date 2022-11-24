@@ -1,0 +1,21 @@
+private void testVersionLoggerListenerAlignment(Set<String> keys, Locale locale) {
+    System.out.println("\n" + locale.getDisplayName());
+    StringManager sm = StringManager.getManager("org.apache.catalina.startup", locale);
+    int standardLength = -1;
+    for (String key : keys) {
+        String fullLine = sm.getString(key, "XXX");
+        // Provides a visual check but be aware CJK characters may be
+        // displayed using full width (1 CJK character uses the space of two
+        // ASCII characters) as assumed by this test or may use a narrower
+        // representation.
+        System.out.println(fullLine);
+        int insertIndex = fullLine.indexOf("XXX");
+        String preInsert = fullLine.substring(0, insertIndex);
+        int length = getFixedWidth(preInsert, locale);
+        if (standardLength == -1) {
+            standardLength = length;
+        } else {
+            Assert.assertEquals(locale.getDisplayName() + " - " + key, standardLength, length);
+        }
+    }
+}

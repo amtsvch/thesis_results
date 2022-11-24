@@ -1,0 +1,13 @@
+private void doTestNullClassName(boolean shouldOverrideExistingProvider, String layer, String appContext) {
+    AuthConfigFactory factory = new AuthConfigFactoryImpl();
+    if (shouldOverrideExistingProvider) {
+        factory.registerConfigProvider(SimpleAuthConfigProvider.class.getName(), null, layer, appContext, null);
+    }
+    String registrationId = factory.registerConfigProvider(null, null, layer, appContext, null);
+    factory.refresh();
+    String[] registrationIds = factory.getRegistrationIDs(null);
+    Set<String> ids = new HashSet<>(Arrays.asList(registrationIds));
+    Assert.assertTrue(ids.contains(registrationId));
+    AuthConfigProvider provider = factory.getConfigProvider(layer, appContext, null);
+    Assert.assertNull(provider);
+}

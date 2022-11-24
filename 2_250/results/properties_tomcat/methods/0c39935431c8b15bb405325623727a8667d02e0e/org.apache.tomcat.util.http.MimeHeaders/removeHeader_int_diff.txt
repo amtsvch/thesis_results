@@ -1,0 +1,11 @@
+/**
+ * reset and swap with last header
+ * @param idx the index of the header to remove.
+ */
+public void removeHeader(int idx) {
+    MimeHeaderField mh = headers[idx];
+    mh.recycle();
+    headers[idx] = headers[count - 1];
+    headers[count - 1] = mh;
+    count--;
+}

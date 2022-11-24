@@ -1,0 +1,15 @@
+/*                                                                                                     /*                                                                                                  
+* A collection of low level parse methods dealing with character in the EL                             * A collection of low level parse methods dealing with character in the EL                          
+* expression buffer.                                                                                   * expression buffer.                                                                                
+*/                                                                                                     */                                                                                                  
+private void skipSpaces() {                                                                            private void skipSpaces() {                                                                         
+int start = index;                                                                                     int start = index;                                                                                  
+while (hasNextChar()) {                                                                                while (hasNextChar()) {                                                                             
+char c = expression.charAt(index);                                                                     char c = expression.charAt(index);                                                                  
+if (c &gt; ' ')                                                                                      | if (c &gt; ' ') {                                                                                   
+break;                                                                                                 break;                                                                                              
+                                                                                                     | }                                                                                                   
+index++;                                                                                               index++;                                                                                            
+}                                                                                                      }                                                                                                   
+whiteSpace = expression.substring(start, index);                                                       whiteSpace = expression.substring(start, index);                                                    
+}                                                                                                      }                                                                                                   

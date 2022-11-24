@@ -1,0 +1,22 @@
+/**
+ * Called by the worker thread to return itself to the
+ * idle pool.
+ * @param worker The worker
+ */
+public void returnWorker(AbstractRxTask worker) {
+    if (running) {
+        synchronized (mutex) {
+            used.remove(worker);
+            // if ( idle.size() < minThreads && !idle.contains(worker)) idle.add(worker);
+            if (idle.size() < maxTasks && !idle.contains(worker)) {
+                // let max be the upper limit
+                idle.add(worker);
+            } else {
+                worker.close();
+            }
+            mutex.notifyAll();
+        }
+    } else {
+        worker.close();
+    }
+}

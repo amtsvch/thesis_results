@@ -1,0 +1,17 @@
+private void cancelKey(final SelectionKey key) {
+    if (log.isTraceEnabled()) {
+        log.trace("Adding key for cancel event:" + key);
+    }
+    ObjectReader reader = (ObjectReader) key.attachment();
+    if (reader != null) {
+        reader.setCancelled(true);
+        reader.finish();
+    }
+    Runnable cx = () -> {
+        if (log.isTraceEnabled()) {
+            log.trace("Cancelling key:" + key);
+        }
+        NioReceiver.cancelledKey(key);
+    };
+    receiver.addEvent(cx);
+}

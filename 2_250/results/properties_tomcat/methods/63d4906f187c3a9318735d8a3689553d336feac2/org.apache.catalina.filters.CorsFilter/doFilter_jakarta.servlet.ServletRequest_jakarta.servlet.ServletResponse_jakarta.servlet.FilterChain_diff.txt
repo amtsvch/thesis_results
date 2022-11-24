@@ -1,0 +1,35 @@
+@Override                                                                                              @Override                                                                                           
+public void doFilter(final ServletRequest servletRequest, final ServletResponse servletResponse, fin   public void doFilter(final ServletRequest servletRequest, final ServletResponse servletResponse, fin
+if (!(servletRequest instanceof HttpServletRequest) || !(servletResponse instanceof HttpServletRespo   if (!(servletRequest instanceof HttpServletRequest) || !(servletResponse instanceof HttpServletRespo
+throw new ServletException(sm.getString("corsFilter.onlyHttp"));                                       throw new ServletException(sm.getString("corsFilter.onlyHttp"));                                    
+}                                                                                                      }                                                                                                   
+// Safe to downcast at this point.                                                                     // Safe to downcast at this point.                                                                  
+HttpServletRequest request = (HttpServletRequest) servletRequest;                                      HttpServletRequest request = (HttpServletRequest) servletRequest;                                   
+HttpServletResponse response = (HttpServletResponse) servletResponse;                                  HttpServletResponse response = (HttpServletResponse) servletResponse;                               
+// Determines the CORS request type.                                                                   // Determines the CORS request type.                                                                
+CorsFilter.CORSRequestType requestType = checkRequestType(request);                                    CorsFilter.CORSRequestType requestType = checkRequestType(request);                                 
+// Adds CORS specific attributes to request.                                                           // Adds CORS specific attributes to request.                                                        
+if (decorateRequest) {                                                                               | if (isDecorateRequest()) {                                                                          
+CorsFilter.decorateCORSProperties(request, requestType);                                               CorsFilter.decorateCORSProperties(request, requestType);                                            
+}                                                                                                      }                                                                                                   
+switch(requestType) {                                                                                  switch(requestType) {                                                                               
+case SIMPLE:                                                                                           case SIMPLE:                                                                                        
+// Handles a Simple CORS request.                                                                      // Handles a Simple CORS request.                                                                   
+case ACTUAL:                                                                                           case ACTUAL:                                                                                        
+// Handles an Actual CORS request.                                                                     // Handles an Actual CORS request.                                                                  
+this.handleSimpleCORS(request, response, filterChain);                                                 this.handleSimpleCORS(request, response, filterChain);                                              
+break;                                                                                                 break;                                                                                              
+case PRE_FLIGHT:                                                                                       case PRE_FLIGHT:                                                                                    
+// Handles a Pre-flight CORS request.                                                                  // Handles a Pre-flight CORS request.                                                               
+this.handlePreflightCORS(request, response, filterChain);                                              this.handlePreflightCORS(request, response, filterChain);                                           
+break;                                                                                                 break;                                                                                              
+case NOT_CORS:                                                                                         case NOT_CORS:                                                                                      
+// Handles a Normal request that is not a cross-origin request.                                        // Handles a Normal request that is not a cross-origin request.                                     
+this.handleNonCORS(request, response, filterChain);                                                    this.handleNonCORS(request, response, filterChain);                                                 
+break;                                                                                                 break;                                                                                              
+default:                                                                                               default:                                                                                            
+// Handles a CORS request that violates specification.                                                 // Handles a CORS request that violates specification.                                              
+this.handleInvalidCORS(request, response, filterChain);                                                this.handleInvalidCORS(request, response, filterChain);                                             
+break;                                                                                                 break;                                                                                              
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

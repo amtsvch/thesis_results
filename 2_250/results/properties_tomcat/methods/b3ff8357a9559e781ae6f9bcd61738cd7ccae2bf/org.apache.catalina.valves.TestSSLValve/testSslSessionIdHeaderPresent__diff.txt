@@ -1,0 +1,7 @@
+@Test
+public void testSslSessionIdHeaderPresent() throws Exception {
+    String session = "ssl-session";
+    mockRequest.setHeader(valve.getSslSessionIdHeader(), session);
+    valve.invoke(mockRequest, null);
+    Assert.assertEquals(session, mockRequest.getAttribute(Globals.SSL_SESSION_ID_ATTR));
+}

@@ -1,0 +1,10 @@
+@Override
+public Object getValue(EvaluationContext ctx) throws ELException {
+    Set<Object> result = new HashSet<>();
+    if (children != null) {
+        for (Node child : children) {
+            result.add(child.getValue(ctx));
+        }
+    }
+    return result;
+}

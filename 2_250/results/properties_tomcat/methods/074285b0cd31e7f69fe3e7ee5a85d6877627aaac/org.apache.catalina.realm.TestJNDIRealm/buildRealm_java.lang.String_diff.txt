@@ -1,0 +1,14 @@
+private JNDIRealm buildRealm(String password) throws javax.naming.NamingException, NoSuchFieldException, IllegalAccessException, LifecycleException {
+    Context context = new TesterContext();
+    JNDIRealm realm = new JNDIRealm();
+    realm.setContainer(context);
+    realm.setUserSearch("");
+    // Usually everything is created in create() but that's not the case here
+    Field field = JNDIRealm.class.getDeclaredField("singleConnection");
+    field.setAccessible(true);
+    Field field2 = JNDIRealm.JNDIConnection.class.getDeclaredField("context");
+    field2.setAccessible(true);
+    field2.set(field.get(realm), mockDirContext(mockSearchResults(password)));
+    realm.start();
+    return realm;
+}

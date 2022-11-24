@@ -1,0 +1,14 @@
+// --------------------------------------------------------- Public Methods                            // --------------------------------------------------------- Public Methods                         
+/**                                                                                                    /**                                                                                                 
+* Add an HTTP request method to be explicitly part of this web resource                                * Add an HTTP request method to be explicitly part of this web resource                             
+* collection.                                                                                          * collection.                                                                                       
+* @param method The method                                                                             * @param method The method                                                                          
+*/                                                                                                     */                                                                                                  
+public void addMethod(String method) {                                                                 public void addMethod(String method) {                                                              
+if (method == null)                                                                                  | if (method == null) {                                                                               
+return;                                                                                                return;                                                                                             
+                                                                                                     | }                                                                                                   
+String[] results = Arrays.copyOf(methods, methods.length + 1);                                         String[] results = Arrays.copyOf(methods, methods.length + 1);                                      
+results[methods.length] = method;                                                                      results[methods.length] = method;                                                                   
+methods = results;                                                                                     methods = results;                                                                                  
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,16 @@
+/**                                                                                                    /**                                                                                                 
+* Sets the minimum time in seconds a session must be idle before it is                                 * Sets the minimum time in seconds a session must be idle before it is                              
+* eligible to be swapped to disk to keep the active session count below                                * eligible to be swapped to disk to keep the active session count below                             
+* maxActiveSessions. Setting to {@code -1} means sessions will not be                                  * maxActiveSessions. Setting to {@code -1} means sessions will not be                               
+* swapped out to keep the active session count down.                                                   * swapped out to keep the active session count down.                                                
+*                                                                                                      *                                                                                                   
+* @param min time in seconds before a possible swap out                                                * @param min time in seconds before a possible swap out                                             
+*/                                                                                                     */                                                                                                  
+public void setMinIdleSwap(int min) {                                                                  public void setMinIdleSwap(int min) {                                                               
+if (this.minIdleSwap == min)                                                                         | if (this.minIdleSwap == min) {                                                                      
+return;                                                                                                return;                                                                                             
+                                                                                                     | }                                                                                                   
+int oldMinIdleSwap = this.minIdleSwap;                                                                 int oldMinIdleSwap = this.minIdleSwap;                                                              
+this.minIdleSwap = min;                                                                                this.minIdleSwap = min;                                                                             
+support.firePropertyChange("minIdleSwap", Integer.valueOf(oldMinIdleSwap), Integer.valueOf(this.minI   support.firePropertyChange("minIdleSwap", Integer.valueOf(oldMinIdleSwap), Integer.valueOf(this.minI
+}                                                                                                      }                                                                                                   

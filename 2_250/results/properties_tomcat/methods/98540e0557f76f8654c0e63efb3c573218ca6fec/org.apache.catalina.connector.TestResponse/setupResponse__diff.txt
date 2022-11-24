@@ -1,0 +1,16 @@
+private Response setupResponse() {
+    Connector connector = new Connector();
+    org.apache.coyote.Response cResponse = new org.apache.coyote.Response();
+    Response response = new Response();
+    response.setCoyoteResponse(cResponse);
+    Request request = new Request(connector);
+    org.apache.coyote.Request cRequest = new org.apache.coyote.Request();
+    request.setCoyoteRequest(cRequest);
+    Context context = new TesterContext();
+    request.getMappingData().context = context;
+    response.setRequest(request);
+    context.addLocaleEncodingMappingParameter(Locale.ENGLISH.getLanguage(), ISO_8859_1);
+    context.addLocaleEncodingMappingParameter(Locale.CHINESE.getLanguage(), UTF_8);
+    context.addLocaleEncodingMappingParameter(UNDETERMINED.toLanguageTag(), UNKNOWN);
+    return response;
+}

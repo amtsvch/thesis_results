@@ -1,0 +1,22 @@
+/**                                                                                                    /**                                                                                                 
+* Starts up the channel. This can be called multiple times for individual services to start            * Starts up the channel. This can be called multiple times for individual services to start         
+* The svc parameter can be the logical or value of any constants                                       * The svc parameter can be the logical or value of any constants                                    
+* @param svc int value of &lt;BR&gt;                                                                   * @param svc int value of &lt;BR&gt;                                                                
+* DEFAULT - will start all services &lt;BR&gt;                                                         * DEFAULT - will start all services &lt;BR&gt;                                                      
+* MBR_RX_SEQ - starts the membership receiver &lt;BR&gt;                                               * MBR_RX_SEQ - starts the membership receiver &lt;BR&gt;                                            
+* MBR_TX_SEQ - starts the membership broadcaster &lt;BR&gt;                                            * MBR_TX_SEQ - starts the membership broadcaster &lt;BR&gt;                                         
+* SND_TX_SEQ - starts the replication transmitter&lt;BR&gt;                                            * SND_TX_SEQ - starts the replication transmitter&lt;BR&gt;                                         
+* SND_RX_SEQ - starts the replication receiver&lt;BR&gt;                                               * SND_RX_SEQ - starts the replication receiver&lt;BR&gt;                                            
+* @throws ChannelException if a startup error occurs or the service is already started.                * @throws ChannelException if a startup error occurs or the service is already started.             
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void start(int svc) throws ChannelException {                                                   public void start(int svc) throws ChannelException {                                                
+if (getNext() != null)                                                                               | if (getNext() != null) {                                                                            
+getNext().start(svc);                                                                                  getNext().start(svc);                                                                               
+                                                                                                     | }                                                                                                   
+// register jmx                                                                                        // register jmx                                                                                     
+JmxRegistry jmxRegistry = JmxRegistry.getRegistry(channel);                                            JmxRegistry jmxRegistry = JmxRegistry.getRegistry(channel);                                         
+if (jmxRegistry != null)                                                                             | if (jmxRegistry != null) {                                                                          
+this.oname = jmxRegistry.registerJmx(",component=Interceptor,interceptorName=" + getClass().getSimpl   this.oname = jmxRegistry.registerJmx(",component=Interceptor,interceptorName=" + getClass().getSimpl
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

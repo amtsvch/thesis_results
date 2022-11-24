@@ -1,0 +1,28 @@
+@Test
+public void testParserLiteralExpression() {
+    // Inspired by work on bug 45451, comments from kkolinko on the dev
+    // list and looking at the spec to find some edge cases
+    // '\' is only an escape character inside a StringLiteral
+    Assert.assertEquals("\\\\", evaluateExpression("\\\\"));
+    /*
+         * LiteralExpressions can only contain ${ or #{ if escaped with \
+         * \ is not an escape character in any other circumstances including \\
+         */
+    Assert.assertEquals("\\", evaluateExpression("\\"));
+    Assert.assertEquals("$", evaluateExpression("$"));
+    Assert.assertEquals("#", evaluateExpression("#"));
+    Assert.assertEquals("\\$", evaluateExpression("\\$"));
+    Assert.assertEquals("\\#", evaluateExpression("\\#"));
+    Assert.assertEquals("\\\\$", evaluateExpression("\\\\$"));
+    Assert.assertEquals("\\\\#", evaluateExpression("\\\\#"));
+    Assert.assertEquals("${", evaluateExpression("\\${"));
+    Assert.assertEquals("#{", evaluateExpression("\\#{"));
+    Assert.assertEquals("\\${", evaluateExpression("\\\\${"));
+    Assert.assertEquals("\\#{", evaluateExpression("\\\\#{"));
+    // '\' is only an escape for '${' and '#{'.
+    Assert.assertEquals("\\$", evaluateExpression("\\$"));
+    Assert.assertEquals("${", evaluateExpression("\\${"));
+    Assert.assertEquals("\\$a", evaluateExpression("\\$a"));
+    Assert.assertEquals("\\a", evaluateExpression("\\a"));
+    Assert.assertEquals("\\\\", evaluateExpression("\\\\"));
+}

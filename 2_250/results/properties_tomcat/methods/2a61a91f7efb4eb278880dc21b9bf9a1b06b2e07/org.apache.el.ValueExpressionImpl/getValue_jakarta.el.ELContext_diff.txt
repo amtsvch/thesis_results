@@ -1,0 +1,17 @@
+/*                                                                                                     /*                                                                                                  
+* (non-Javadoc)                                                                                        * (non-Javadoc)                                                                                     
+*                                                                                                      *                                                                                                   
+* @see jakarta.el.ValueExpression#getValue(jakarta.el.ELContext)                                       * @see jakarta.el.ValueExpression#getValue(jakarta.el.ELContext)                                    
+*/                                                                                                     */                                                                                                  
+                                                                                                     | @SuppressWarnings("unchecked")                                                                      
+@Override                                                                                              @Override                                                                                           
+public Object getValue(ELContext context) throws PropertyNotFoundException, ELException {            | public &lt;T&gt; T getValue(ELContext context) throws PropertyNotFoundException, ELException {      
+EvaluationContext ctx = new EvaluationContext(context, this.fnMapper, this.varMapper);                 EvaluationContext ctx = new EvaluationContext(context, this.fnMapper, this.varMapper);              
+context.notifyBeforeEvaluation(getExpressionString());                                                 context.notifyBeforeEvaluation(getExpressionString());                                              
+Object value = this.getNode().getValue(ctx);                                                           Object value = this.getNode().getValue(ctx);                                                        
+if (this.expectedType != null) {                                                                       if (this.expectedType != null) {                                                                    
+value = context.convertToType(value, this.expectedType);                                               value = context.convertToType(value, this.expectedType);                                            
+}                                                                                                      }                                                                                                   
+context.notifyAfterEvaluation(getExpressionString());                                                  context.notifyAfterEvaluation(getExpressionString());                                               
+return value;                                                                                        | return (T) value;                                                                                   
+}                                                                                                      }                                                                                                   

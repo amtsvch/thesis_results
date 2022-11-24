@@ -1,0 +1,27 @@
+/**
+ * Handles a CORS request that violates specification.
+ *
+ * @param request The {@link HttpServletRequest} object.
+ * @param response The {@link HttpServletResponse} object.
+ * @param filterChain The {@link FilterChain} object.
+ */
+private void handleInvalidCORS(final HttpServletRequest request, final HttpServletResponse response, final FilterChain filterChain) {
+    String origin = request.getHeader(CorsFilter.REQUEST_HEADER_ORIGIN);
+    String method = request.getMethod();
+    String accessControlRequestHeaders = request.getHeader(REQUEST_HEADER_ACCESS_CONTROL_REQUEST_HEADERS);
+    response.setContentType("text/plain");
+    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+    response.resetBuffer();
+    if (log.isDebugEnabled()) {
+        // Debug so no need for i18n
+        StringBuilder message = new StringBuilder("Invalid CORS request; Origin=");
+        message.append(origin);
+        message.append(";Method=");
+        message.append(method);
+        if (accessControlRequestHeaders != null) {
+            message.append(";Access-Control-Request-Headers=");
+            message.append(accessControlRequestHeaders);
+        }
+        log.debug(message.toString());
+    }
+}

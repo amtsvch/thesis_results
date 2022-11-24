@@ -1,0 +1,5 @@
+@Test
+public void disallowControlInName() {
+    // Bug 55917
+    test(true, "f\010o=bar");
+}

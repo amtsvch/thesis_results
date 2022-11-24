@@ -1,0 +1,7 @@
+@Test
+public void testEndWithLhexReverse() throws Exception {
+    String header = "Digest nc=10000000";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertEquals("10000000", result.get("nc"));
+}

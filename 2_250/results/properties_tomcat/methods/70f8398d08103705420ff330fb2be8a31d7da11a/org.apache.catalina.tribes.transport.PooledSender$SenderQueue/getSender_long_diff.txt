@@ -1,0 +1,29 @@
+public synchronized DataSender getSender(long timeout) {                                               public synchronized DataSender getSender(long timeout) {                                            
+long start = System.currentTimeMillis();                                                               long start = System.currentTimeMillis();                                                            
+while (true) {                                                                                         while (true) {                                                                                      
+if (!isOpen)                                                                                         | if (!isOpen) {                                                                                      
+throw new IllegalStateException(sm.getString("pooledSender.closed.queue"));                            throw new IllegalStateException(sm.getString("pooledSender.closed.queue"));                         
+                                                                                                     | }                                                                                                   
+DataSender sender = null;                                                                              DataSender sender = null;                                                                           
+if (notinuse.size() == 0 && inuse.size() &lt; limit) {                                                 if (notinuse.size() == 0 && inuse.size() &lt; limit) {                                              
+sender = parent.getNewDataSender();                                                                    sender = parent.getNewDataSender();                                                                 
+} else if (notinuse.size() &gt; 0) {                                                                   } else if (notinuse.size() &gt; 0) {                                                                
+sender = notinuse.remove(0);                                                                           sender = notinuse.remove(0);                                                                        
+}                                                                                                      }                                                                                                   
+if (sender != null) {                                                                                  if (sender != null) {                                                                               
+inuse.add(sender);                                                                                     inuse.add(sender);                                                                                  
+return sender;                                                                                         return sender;                                                                                      
+}                                                                                                      }                                                                                                   
+// end if                                                                                              // end if                                                                                           
+long delta = System.currentTimeMillis() - start;                                                       long delta = System.currentTimeMillis() - start;                                                    
+if (delta &gt; timeout && timeout &gt; 0)                                                            | if (delta &gt; timeout && timeout &gt; 0) {                                                         
+return null;                                                                                           return null;                                                                                        
+else {                                                                                               | } else {                                                                                            
+try {                                                                                                  try {                                                                                               
+wait(Math.max(timeout - delta, 1));                                                                    wait(Math.max(timeout - delta, 1));                                                                 
+} catch (InterruptedException x) {                                                                     } catch (InterruptedException x) {                                                                  
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+// end if                                                                                              // end if                                                                                           
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

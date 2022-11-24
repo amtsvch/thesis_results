@@ -1,0 +1,31 @@
+/**                                                                                                    /**                                                                                                 
+* Handles a CORS request of type {@link CORSRequestType}.SIMPLE.                                       * Handles a CORS request of type {@link CORSRequestType}.SIMPLE.                                    
+*                                                                                                      *                                                                                                   
+* @param request The {@link HttpServletRequest} object.                                                * @param request The {@link HttpServletRequest} object.                                             
+* @param response The {@link HttpServletResponse} object.                                              * @param response The {@link HttpServletResponse} object.                                           
+* @param filterChain The {@link FilterChain} object.                                                   * @param filterChain The {@link FilterChain} object.                                                
+* @throws IOException an IO error occurred                                                             * @throws IOException an IO error occurred                                                          
+* @throws ServletException Servlet error propagation                                                   * @throws ServletException Servlet error propagation                                                
+* @see &lt;a href="http://www.w3.org/TR/cors/#resource-requests"&gt;Simple                             * @see &lt;a href="http://www.w3.org/TR/cors/#resource-requests"&gt;Simple                          
+*      Cross-Origin Request, Actual Request, and Redirects&lt;/a&gt;                                   *      Cross-Origin Request, Actual Request, and Redirects&lt;/a&gt;                                
+*/                                                                                                     */                                                                                                  
+protected void handleSimpleCORS(final HttpServletRequest request, final HttpServletResponse response   protected void handleSimpleCORS(final HttpServletRequest request, final HttpServletResponse response
+CorsFilter.CORSRequestType requestType = checkRequestType(request);                                    CorsFilter.CORSRequestType requestType = checkRequestType(request);                                 
+if (!(requestType == CorsFilter.CORSRequestType.SIMPLE || requestType == CorsFilter.CORSRequestType.   if (!(requestType == CorsFilter.CORSRequestType.SIMPLE || requestType == CorsFilter.CORSRequestType.
+throw new IllegalArgumentException(sm.getString("corsFilter.wrongType2", CorsFilter.CORSRequestType.   throw new IllegalArgumentException(sm.getString("corsFilter.wrongType2", CorsFilter.CORSRequestType.
+}                                                                                                      }                                                                                                   
+final String origin = request.getHeader(CorsFilter.REQUEST_HEADER_ORIGIN);                             final String origin = request.getHeader(CorsFilter.REQUEST_HEADER_ORIGIN);                          
+final String method = request.getMethod();                                                             final String method = request.getMethod();                                                          
+// Section 6.1.2                                                                                       // Section 6.1.2                                                                                    
+if (!isOriginAllowed(origin)) {                                                                        if (!isOriginAllowed(origin)) {                                                                     
+handleInvalidCORS(request, response, filterChain);                                                     handleInvalidCORS(request, response, filterChain);                                                  
+return;                                                                                                return;                                                                                             
+}                                                                                                      }                                                                                                   
+if (!allowedHttpMethods.contains(method)) {                                                          | if (!getAllowedHttpMethods().contains(method)) {                                                    
+handleInvalidCORS(request, response, filterChain);                                                     handleInvalidCORS(request, response, filterChain);                                                  
+return;                                                                                                return;                                                                                             
+}                                                                                                      }                                                                                                   
+addStandardHeaders(request, response);                                                                 addStandardHeaders(request, response);                                                              
+// Forward the request down the filter chain.                                                          // Forward the request down the filter chain.                                                       
+filterChain.doFilter(request, response);                                                               filterChain.doFilter(request, response);                                                            
+}                                                                                                      }                                                                                                   

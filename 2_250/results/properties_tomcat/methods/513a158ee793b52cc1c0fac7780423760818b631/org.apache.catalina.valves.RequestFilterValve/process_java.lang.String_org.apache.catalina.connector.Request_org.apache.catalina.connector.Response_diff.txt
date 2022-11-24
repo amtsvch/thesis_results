@@ -1,0 +1,22 @@
+/**
+ * Perform the filtering that has been configured for this Valve, matching
+ * against the specified request property.
+ *
+ * @param property The request property on which to filter
+ * @param request The servlet request to be processed
+ * @param response The servlet response to be processed
+ *
+ * @exception IOException if an input/output error occurs
+ * @exception ServletException if a servlet error occurs
+ */
+protected void process(String property, Request request, Response response) throws IOException, ServletException {
+    if (isAllowed(property)) {
+        getNext().invoke(request, response);
+        return;
+    }
+    if (getLog().isDebugEnabled()) {
+        getLog().debug(sm.getString("requestFilterValve.deny", request.getRequestURI(), property));
+    }
+    // Deny this request
+    denyRequest(request, response);
+}

@@ -1,0 +1,6 @@
+@Test(expected = jakarta.websocket.DeploymentException.class)
+public void testEgMailingList04() throws Exception {
+    UriTemplate t = new UriTemplate("/a/{var1}/{var2}");
+    @SuppressWarnings("unused")
+    Map<String, String> result = t.match(new UriTemplate("/a//c"));
+}

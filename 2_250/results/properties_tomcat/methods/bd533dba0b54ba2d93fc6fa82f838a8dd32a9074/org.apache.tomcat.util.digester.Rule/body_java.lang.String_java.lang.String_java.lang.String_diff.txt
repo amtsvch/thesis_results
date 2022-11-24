@@ -1,0 +1,17 @@
+/**
+ * This method is called when the body of a matching XML element is
+ * encountered.  If the element has no body, this method is not called at
+ * all. The default implementation is a NO-OP.
+ *
+ * @param namespace the namespace URI of the matching element, or an empty
+ *                  string if the parser is not namespace aware or the
+ *                  element has no namespace
+ * @param name the local name if the parser is namespace aware, or just the
+ *             element name otherwise
+ * @param text The text of the body of this element
+ *
+ * @throws Exception if an error occurs while processing the event
+ */
+public void body(String namespace, String name, String text) throws Exception {
+    // NO-OP by default.
+}

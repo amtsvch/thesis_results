@@ -1,0 +1,6 @@
+private void doV1NameOnlyIsDropped(boolean useRfc6265) {
+    A.setVersion(1);
+    test(useRfc6265, "$Version=1;foo=;a=b; ; ", A);
+    test(useRfc6265, "$Version=1;foo= ;a=b; ; ", A);
+    test(useRfc6265, "$Version=1;foo;a=b; ; ", A);
+}

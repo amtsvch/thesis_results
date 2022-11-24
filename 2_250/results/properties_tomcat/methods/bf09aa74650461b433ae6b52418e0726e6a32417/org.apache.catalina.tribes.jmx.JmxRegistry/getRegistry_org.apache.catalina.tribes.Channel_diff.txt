@@ -1,0 +1,28 @@
+public static JmxRegistry getRegistry(Channel channel) {
+    if (channel == null || channel.getName() == null) {
+        return null;
+    }
+    JmxRegistry registry = registryCache.get(channel.getName());
+    if (registry != null) {
+        return registry;
+    }
+    if (!(channel instanceof JmxChannel)) {
+        return null;
+    }
+    JmxChannel jmxChannel = (JmxChannel) channel;
+    if (!jmxChannel.isJmxEnabled()) {
+        return null;
+    }
+    ObjectName baseOn = createBaseObjectName(jmxChannel.getJmxDomain(), jmxChannel.getJmxPrefix(), channel.getName());
+    if (baseOn == null) {
+        return null;
+    }
+    // create registry
+    registry = new JmxRegistry();
+    registry.baseOname = baseOn;
+    // It doesn't matter if existing object gets over-written. This object
+    // holds minimal state and that state will be the same for all objects
+    // created for the same channel.
+    registryCache.put(channel.getName(), registry);
+    return registry;
+}

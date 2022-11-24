@@ -1,0 +1,15 @@
+/**                                                                                                    /**                                                                                                 
+* Indicates to the browser whether the cookie should only be sent using a                              * Indicates to the browser whether the cookie should only be sent using a                           
+* secure protocol, such as HTTPS or SSL.                                                               * secure protocol, such as HTTPS or SSL.                                                            
+* &lt;p&gt;                                                                                            * &lt;p&gt;                                                                                         
+* The default value is &lt;code&gt;false&lt;/code&gt;.                                                 * The default value is &lt;code&gt;false&lt;/code&gt;.                                              
+*                                                                                                      *                                                                                                   
+* @param flag                                                                                          * @param flag                                                                                       
+*            if &lt;code&gt;true&lt;/code&gt;, sends the cookie from the browser to the                *            if &lt;code&gt;true&lt;/code&gt;, sends the cookie from the browser to the             
+*            server only when using a secure protocol; if                                              *            server only when using a secure protocol; if                                           
+*            &lt;code&gt;false&lt;/code&gt;, sent on any protocol                                      *            &lt;code&gt;false&lt;/code&gt;, sent on any protocol                                   
+* @see #getSecure                                                                                      * @see #getSecure                                                                                   
+*/                                                                                                     */                                                                                                  
+public void setSecure(boolean flag) {                                                                  public void setSecure(boolean flag) {                                                               
+secure = flag;                                                                                       | setAttributeInternal(SECURE, Boolean.toString(flag));                                               
+}                                                                                                      }                                                                                                   

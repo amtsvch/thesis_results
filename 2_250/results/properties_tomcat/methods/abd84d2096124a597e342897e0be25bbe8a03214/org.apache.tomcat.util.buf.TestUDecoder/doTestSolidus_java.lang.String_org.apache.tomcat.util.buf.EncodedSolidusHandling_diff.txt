@@ -1,0 +1,9 @@
+private String doTestSolidus(String input, EncodedSolidusHandling solidusHandling) throws IOException {
+    byte[] b = input.getBytes(StandardCharsets.UTF_8);
+    ByteChunk bc = new ByteChunk(16);
+    bc.setBytes(b, 0, b.length);
+    bc.setCharset(StandardCharsets.UTF_8);
+    UDecoder udecoder = new UDecoder();
+    udecoder.convert(bc, solidusHandling);
+    return bc.toString();
+}

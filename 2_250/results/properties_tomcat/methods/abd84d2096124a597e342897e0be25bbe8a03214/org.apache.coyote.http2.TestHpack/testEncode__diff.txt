@@ -1,0 +1,19 @@
+@Test
+public void testEncode() throws Exception {
+    MimeHeaders headers = new MimeHeaders();
+    headers.setValue("header1").setString("value1");
+    headers.setValue(":status").setString("200");
+    headers.setValue("header2").setString("value2");
+    ByteBuffer output = ByteBuffer.allocate(512);
+    HpackEncoder encoder = new HpackEncoder();
+    encoder.encode(headers, output);
+    output.flip();
+    // Size is supposed to be 33 without huffman, or 27 with it
+    // TODO: use the HpackHeaderFunction to enable huffman predictably
+    Assert.assertEquals(27, output.remaining());
+    output.clear();
+    encoder.encode(headers, output);
+    output.flip();
+    // Size is now 3 after using the table
+    Assert.assertEquals(3, output.remaining());
+}

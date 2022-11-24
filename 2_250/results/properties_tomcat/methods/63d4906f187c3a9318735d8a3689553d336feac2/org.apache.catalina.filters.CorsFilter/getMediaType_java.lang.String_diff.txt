@@ -1,0 +1,16 @@
+/**
+ * Return the lower case, trimmed value of the media type from the content
+ * type.
+ */
+private String getMediaType(String contentType) {
+    if (contentType == null) {
+        return null;
+    }
+    String result = contentType.toLowerCase(Locale.ENGLISH);
+    int firstSemiColonIndex = result.indexOf(';');
+    if (firstSemiColonIndex > -1) {
+        result = result.substring(0, firstSemiColonIndex);
+    }
+    result = result.trim();
+    return result;
+}

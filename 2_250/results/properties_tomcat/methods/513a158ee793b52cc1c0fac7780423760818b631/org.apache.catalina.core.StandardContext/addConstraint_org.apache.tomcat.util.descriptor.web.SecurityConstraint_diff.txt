@@ -1,0 +1,28 @@
+/**                                                                                                    /**                                                                                                 
+* Add a security constraint to the set for this web application.                                       * Add a security constraint to the set for this web application.                                    
+*                                                                                                      *                                                                                                   
+* @param constraint the new security constraint                                                        * @param constraint the new security constraint                                                     
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void addConstraint(SecurityConstraint constraint) {                                             public void addConstraint(SecurityConstraint constraint) {                                          
+// Validate the proposed constraint                                                                    // Validate the proposed constraint                                                                 
+SecurityCollection[] collections = constraint.findCollections();                                       SecurityCollection[] collections = constraint.findCollections();                                    
+for (SecurityCollection collection : collections) {                                                    for (SecurityCollection collection : collections) {                                                 
+String[] patterns = collection.findPatterns();                                                         String[] patterns = collection.findPatterns();                                                      
+for (int j = 0; j &lt; patterns.length; j++) {                                                         for (int j = 0; j &lt; patterns.length; j++) {                                                      
+patterns[j] = adjustURLPattern(patterns[j]);                                                           patterns[j] = adjustURLPattern(patterns[j]);                                                        
+if (!validateURLPattern(patterns[j]))                                                                | if (!validateURLPattern(patterns[j])) {                                                             
+throw new IllegalArgumentException(sm.getString("standardContext.securityConstraint.pattern", patter   throw new IllegalArgumentException(sm.getString("standardContext.securityConstraint.pattern", patter
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+if (collection.findMethods().length &gt; 0 && collection.findOmittedMethods().length &gt; 0) {         if (collection.findMethods().length &gt; 0 && collection.findOmittedMethods().length &gt; 0) {      
+throw new IllegalArgumentException(sm.getString("standardContext.securityConstraint.mixHttpMethod"))   throw new IllegalArgumentException(sm.getString("standardContext.securityConstraint.mixHttpMethod"))
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+// Add this constraint to the set for our web application                                              // Add this constraint to the set for our web application                                           
+synchronized (constraintsLock) {                                                                       synchronized (constraintsLock) {                                                                    
+SecurityConstraint[] results = Arrays.copyOf(constraints, constraints.length + 1);                     SecurityConstraint[] results = Arrays.copyOf(constraints, constraints.length + 1);                  
+results[constraints.length] = constraint;                                                              results[constraints.length] = constraint;                                                           
+constraints = results;                                                                                 constraints = results;                                                                              
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

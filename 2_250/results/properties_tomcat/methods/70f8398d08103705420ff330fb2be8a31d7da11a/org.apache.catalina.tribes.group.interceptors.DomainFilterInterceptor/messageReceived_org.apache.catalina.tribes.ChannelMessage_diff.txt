@@ -1,0 +1,13 @@
+@Override                                                                                              @Override                                                                                           
+public void messageReceived(ChannelMessage msg) {                                                      public void messageReceived(ChannelMessage msg) {                                                   
+if (Arrays.equals(domain, msg.getAddress().getDomain())) {                                             if (Arrays.equals(domain, msg.getAddress().getDomain())) {                                          
+super.messageReceived(msg);                                                                            super.messageReceived(msg);                                                                         
+} else {                                                                                               } else {                                                                                            
+if (logCounter.incrementAndGet() &gt;= logInterval) {                                                  if (logCounter.incrementAndGet() &gt;= logInterval) {                                               
+logCounter.set(0);                                                                                     logCounter.set(0);                                                                                  
+if (log.isWarnEnabled())                                                                             | if (log.isWarnEnabled()) {                                                                          
+log.warn(sm.getString("domainFilterInterceptor.message.refused", msg.getAddress()));                   log.warn(sm.getString("domainFilterInterceptor.message.refused", msg.getAddress()));                
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

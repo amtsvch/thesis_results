@@ -1,0 +1,7 @@
+@Test
+public void testWebresources() throws Exception {
+    File appDir = new File("test/webresources/dir1");
+    JspCServletContext context = new JspCServletContext(null, appDir.toURI().toURL(), null, false, false);
+    Assert.assertEquals(5, context.getEffectiveMajorVersion());
+    Assert.assertEquals(0, context.getEffectiveMinorVersion());
+}

@@ -1,0 +1,7 @@
+// -------------------- Removing data from the buffer --------------------
+public int subtract() throws IOException {
+    if (checkEof()) {
+        return -1;
+    }
+    return buff[start++];
+}

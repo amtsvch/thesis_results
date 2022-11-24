@@ -1,0 +1,3 @@
+public TldParser(boolean namespaceAware, boolean validation, RuleSet ruleSet, boolean blockExternal) {
+    digester = DigesterFactory.newDigester(validation, namespaceAware, ruleSet, blockExternal);
+}

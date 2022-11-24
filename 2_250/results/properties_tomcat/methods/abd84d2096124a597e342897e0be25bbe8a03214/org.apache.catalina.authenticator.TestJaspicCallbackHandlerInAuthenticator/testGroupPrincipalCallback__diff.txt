@@ -1,0 +1,14 @@
+@Test
+public void testGroupPrincipalCallback() throws Exception {
+    CallbackHandler callbackHandler = createCallbackHandler(null);
+    Subject clientSubject = new Subject();
+    CallerPrincipalCallback cpc = new CallerPrincipalCallback(clientSubject, "name");
+    GroupPrincipalCallback gpc = new GroupPrincipalCallback(clientSubject, new String[] { "group1", "group2" });
+    callbackHandler.handle(new Callback[] { cpc, gpc });
+    Set<Object> credentials = clientSubject.getPrivateCredentials();
+    Assert.assertTrue(credentials.size() == 1);
+    GenericPrincipal gp = (GenericPrincipal) credentials.iterator().next();
+    Assert.assertEquals("name", gp.getName());
+    Assert.assertTrue(gp.hasRole("group1"));
+    Assert.assertTrue(gp.hasRole("group2"));
+}

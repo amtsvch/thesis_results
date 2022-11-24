@@ -1,0 +1,4 @@
+@Override
+protected Number divide(Number num0, Number num1) {
+    return ((BigDecimal) num0).divide((BigDecimal) num1, RoundingMode.HALF_UP);
+}

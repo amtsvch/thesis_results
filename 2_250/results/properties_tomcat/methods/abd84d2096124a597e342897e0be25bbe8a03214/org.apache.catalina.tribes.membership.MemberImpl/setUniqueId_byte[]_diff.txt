@@ -1,0 +1,4 @@
+public synchronized void setUniqueId(byte[] uniqueId) {
+    this.uniqueId = uniqueId != null ? uniqueId : new byte[16];
+    getData(true, true);
+}

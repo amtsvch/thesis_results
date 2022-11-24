@@ -1,0 +1,6 @@
+@Test
+public void testConfigOnServerAuthConfig() throws Exception {
+    ServerAuthConfig serverAuthConfig = new SimpleServerAuthConfig(null, null, null, CONFIG_PROPERTIES);
+    ServerAuthContext serverAuthContext = serverAuthConfig.getAuthContext(null, null, null);
+    validateServerAuthContext(serverAuthContext);
+}

@@ -1,0 +1,15 @@
+public static ELResolver getDefaultResolver(ExpressionFactory factory) {
+    if (Constants.IS_SECURITY_ENABLED) {
+        CompositeELResolver defaultResolver = new CompositeELResolver();
+        defaultResolver.add(factory.getStreamELResolver());
+        defaultResolver.add(new StaticFieldELResolver());
+        defaultResolver.add(new MapELResolver());
+        defaultResolver.add(new ResourceBundleELResolver());
+        defaultResolver.add(new ListELResolver());
+        defaultResolver.add(new ArrayELResolver());
+        defaultResolver.add(new BeanELResolver());
+        return defaultResolver;
+    } else {
+        return DefaultResolver;
+    }
+}

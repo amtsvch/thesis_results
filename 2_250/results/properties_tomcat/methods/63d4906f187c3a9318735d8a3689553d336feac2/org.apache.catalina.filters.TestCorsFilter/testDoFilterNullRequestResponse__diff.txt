@@ -1,0 +1,7 @@
+@Test(expected = ServletException.class)
+public void testDoFilterNullRequestResponse() throws IOException, ServletException {
+    TesterHttpServletResponse response = new TesterHttpServletResponse();
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getDefaultFilterConfig());
+    corsFilter.doFilter(null, response, filterChain);
+}

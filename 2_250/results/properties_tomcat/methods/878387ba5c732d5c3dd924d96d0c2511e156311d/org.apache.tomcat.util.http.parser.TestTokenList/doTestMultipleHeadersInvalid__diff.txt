@@ -1,0 +1,17 @@
+@Test
+public void doTestMultipleHeadersInvalid() throws IOException {
+    Set<String> expectedTokens = new HashSet<>();
+    expectedTokens.add("bar");
+    expectedTokens.add("bar2");
+    expectedTokens.add("foo");
+    expectedTokens.add("foo2");
+    expectedTokens.add("foo3");
+    Set<String> inputs = new HashSet<>();
+    inputs.add("foo");
+    inputs.add("bar2, }}}, foo3");
+    inputs.add("bar, foo2");
+    Set<String> tokens = new HashSet<>();
+    boolean result = TokenList.parseTokenList(Collections.enumeration(inputs), tokens);
+    Assert.assertEquals(expectedTokens, tokens);
+    Assert.assertFalse(result);
+}

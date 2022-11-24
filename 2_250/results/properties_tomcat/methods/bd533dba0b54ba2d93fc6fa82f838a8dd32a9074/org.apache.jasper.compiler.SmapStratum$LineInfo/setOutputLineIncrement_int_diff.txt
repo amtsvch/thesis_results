@@ -1,0 +1,6 @@
+public void setOutputLineIncrement(int outputLineIncrement) {                                          public void setOutputLineIncrement(int outputLineIncrement) {                                       
+if (outputLineIncrement &lt; 0)                                                                      | if (outputLineIncrement &lt; 0) {                                                                   
+throw new IllegalArgumentException(Localizer.getMessage("jsp.error.negativeParameter", Integer.value   throw new IllegalArgumentException(Localizer.getMessage("jsp.error.negativeParameter", Integer.value
+                                                                                                     | }                                                                                                   
+this.outputLineIncrement = outputLineIncrement;                                                        this.outputLineIncrement = outputLineIncrement;                                                     
+}                                                                                                      }                                                                                                   

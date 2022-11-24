@@ -1,0 +1,7 @@
+@Test
+public void testCipher03() {
+    SSLHostConfig hc = new SSLHostConfig();
+    // Single OpenSSL alias
+    hc.setCiphers("ALL");
+    Assert.assertEquals("ALL", hc.getCiphers());
+}

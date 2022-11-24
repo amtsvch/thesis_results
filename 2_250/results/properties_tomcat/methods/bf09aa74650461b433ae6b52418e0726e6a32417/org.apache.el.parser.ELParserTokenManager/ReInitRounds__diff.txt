@@ -1,0 +1,7 @@
+private void ReInitRounds() {                                                                          private void ReInitRounds() {                                                                       
+int i;                                                                                                 int i;                                                                                              
+jjround = 0x80000001;                                                                                  jjround = 0x80000001;                                                                               
+for (i = 30; i-- &gt; 0; ) jjrounds[i] = 0x80000000;                                                 | for (i = 30; i-- &gt; 0; ) {                                                                        
+                                                                                                     | jjrounds[i] = 0x80000000;                                                                           
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

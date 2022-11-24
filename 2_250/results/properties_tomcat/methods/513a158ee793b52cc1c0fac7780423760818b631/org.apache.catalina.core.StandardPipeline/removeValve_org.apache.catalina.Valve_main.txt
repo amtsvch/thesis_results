@@ -1,0 +1,47 @@
+/**
+ * Remove the specified Valve from the pipeline associated with this
+ * Container, if it is found; otherwise, do nothing.  If the Valve is
+ * found and removed, the Valve's <code>setContainer(null)</code> method
+ * will be called if it implements <code>Contained</code>.
+ *
+ * @param valve Valve to be removed
+ */
+@Override
+public void removeValve(Valve valve) {
+    Valve current;
+    if (first == valve) {
+        first = first.getNext();
+        current = null;
+    } else {
+        current = first;
+    }
+    while (current != null) {
+        if (current.getNext() == valve) {
+            current.setNext(valve.getNext());
+            break;
+        }
+        current = current.getNext();
+    }
+    if (first == basic) {
+        first = null;
+    }
+    if (valve instanceof Contained) {
+        ((Contained) valve).setContainer(null);
+    }
+    if (valve instanceof Lifecycle) {
+        // Stop this valve if necessary
+        if (getState().isAvailable()) {
+            try {
+                ((Lifecycle) valve).stop();
+            } catch (LifecycleException e) {
+                log.error(sm.getString("standardPipeline.valve.stop"), e);
+            }
+        }
+        try {
+            ((Lifecycle) valve).destroy();
+        } catch (LifecycleException e) {
+            log.error(sm.getString("standardPipeline.valve.destroy"), e);
+        }
+    }
+    container.fireContainerEvent(Container.REMOVE_VALVE_EVENT, valve);
+}

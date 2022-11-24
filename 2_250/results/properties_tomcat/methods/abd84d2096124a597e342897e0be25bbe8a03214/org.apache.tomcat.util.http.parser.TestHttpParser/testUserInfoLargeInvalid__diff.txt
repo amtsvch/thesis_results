@@ -1,0 +1,4 @@
+@Test
+public void testUserInfoLargeInvalid() {
+    Assert.assertFalse(HttpParser.isUserInfo(Integer.MAX_VALUE));
+}

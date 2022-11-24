@@ -1,0 +1,9 @@
+/**
+ * Constructor identifying a TLD resource directly.
+ *
+ * @param url        the location of the TLD
+ * @param webappPath the web application path, if any, of the TLD
+ */
+public TldResourcePath(URL url, String webappPath) {
+    this(url, webappPath, null);
+}

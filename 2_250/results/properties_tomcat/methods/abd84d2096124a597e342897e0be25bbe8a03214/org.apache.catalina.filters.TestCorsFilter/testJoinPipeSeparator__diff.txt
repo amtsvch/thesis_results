@@ -1,0 +1,9 @@
+@Test
+public void testJoinPipeSeparator() {
+    Set<String> elements = new LinkedHashSet<>();
+    String separator = "|";
+    elements.add("world");
+    elements.add("peace");
+    String join = CorsFilter.join(elements, separator);
+    Assert.assertTrue("world|peace".equals(join));
+}

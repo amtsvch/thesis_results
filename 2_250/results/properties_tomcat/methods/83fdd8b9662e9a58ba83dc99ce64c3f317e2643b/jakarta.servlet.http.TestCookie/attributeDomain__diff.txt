@@ -1,0 +1,5 @@
+@Test
+public void attributeDomain() {
+    Cookie cookie = new Cookie("Domain", null);
+    Assert.assertEquals("Domain", cookie.getName());
+}

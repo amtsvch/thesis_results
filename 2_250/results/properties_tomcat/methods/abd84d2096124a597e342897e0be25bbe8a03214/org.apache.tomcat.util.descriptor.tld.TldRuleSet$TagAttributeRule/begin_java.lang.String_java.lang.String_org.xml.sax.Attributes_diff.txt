@@ -1,0 +1,14 @@
+@Override
+public void begin(String namespace, String name, Attributes attributes) throws Exception {
+    TaglibXml taglibXml = (TaglibXml) digester.peek(digester.getCount() - 1);
+    allowShortNames = "1.2".equals(taglibXml.getJspVersion());
+    Attribute attribute = new Attribute(allowShortNames);
+    digester.push(attribute);
+    StringBuilder code = digester.getGeneratedCode();
+    if (code != null) {
+        code.append(System.lineSeparator());
+        code.append(TldRuleSet.class.getName()).append(".Attribute ").append(digester.toVariableName(attribute)).append(" = new ");
+        code.append(TldRuleSet.class.getName()).append(".Attribute").append('(').append(Boolean.toString(allowShortNames));
+        code.append(");").append(System.lineSeparator());
+    }
+}

@@ -1,0 +1,17 @@
+@Before
+public void setUp() throws Exception {
+    payload = new byte[333];
+    Arrays.fill(payload, (byte) 1);
+    m1 = new MemberImpl("localhost", 3333, 1, payload);
+    m2 = new MemberImpl("localhost", 3333, 1);
+    payload = new byte[333];
+    Arrays.fill(payload, (byte) 2);
+    p1 = new MemberImpl("127.0.0.1", 3333, 1, payload);
+    p2 = new MemberImpl("localhost", 3331, 1, payload);
+    m1.setDomain(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+    m2.setDomain(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+    m1.setCommand(new byte[] { 1, 2, 4, 5, 6, 7, 8, 9 });
+    m2.setCommand(new byte[] { 1, 2, 4, 5, 6, 7, 8, 9 });
+    m1.setUdpPort(udpPort);
+    m2.setUdpPort(m1.getUdpPort());
+}

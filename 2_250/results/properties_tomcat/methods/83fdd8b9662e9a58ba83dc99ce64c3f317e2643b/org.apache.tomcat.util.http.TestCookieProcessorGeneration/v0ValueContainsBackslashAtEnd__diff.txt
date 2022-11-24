@@ -1,0 +1,6 @@
+@Test
+public void v0ValueContainsBackslashAtEnd() {
+    Cookie cookie = new Cookie("foo", "a\\");
+    doTestDefaults(cookie, "foo=\"a\\\\\"; Version=1", null);
+    doTestAllowSeparators(cookie, "foo=a\\", null);
+}

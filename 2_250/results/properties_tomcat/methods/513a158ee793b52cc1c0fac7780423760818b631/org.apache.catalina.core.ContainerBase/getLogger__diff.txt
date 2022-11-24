@@ -1,0 +1,11 @@
+/**                                                                                                    /**                                                                                                 
+* Return the Logger for this Container.                                                                * Return the Logger for this Container.                                                             
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public Log getLogger() {                                                                               public Log getLogger() {                                                                            
+if (logger != null)                                                                                  | if (logger != null) {                                                                               
+return logger;                                                                                         return logger;                                                                                      
+                                                                                                     | }                                                                                                   
+logger = LogFactory.getLog(getLogName());                                                              logger = LogFactory.getLog(getLogName());                                                           
+return logger;                                                                                         return logger;                                                                                      
+}                                                                                                      }                                                                                                   

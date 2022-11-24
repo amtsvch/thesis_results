@@ -1,0 +1,14 @@
+@Override
+public final String toString() {
+    StringBuilder sb = new StringBuilder();
+    Container parent = getParent();
+    if (parent != null) {
+        sb.append(parent.toString());
+        sb.append('.');
+    }
+    sb.append(this.getClass().getSimpleName());
+    sb.append('[');
+    sb.append(getName());
+    sb.append(']');
+    return sb.toString();
+}

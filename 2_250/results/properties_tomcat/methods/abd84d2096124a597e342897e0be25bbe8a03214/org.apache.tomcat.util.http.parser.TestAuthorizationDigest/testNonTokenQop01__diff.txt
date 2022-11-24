@@ -1,0 +1,7 @@
+@Test
+public void testNonTokenQop01() throws Exception {
+    String header = "Digest qop=au{th";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertNull(result);
+}

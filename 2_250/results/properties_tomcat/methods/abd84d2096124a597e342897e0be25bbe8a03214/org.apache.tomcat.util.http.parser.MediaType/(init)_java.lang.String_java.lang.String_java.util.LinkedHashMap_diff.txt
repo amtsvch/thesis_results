@@ -1,0 +1,10 @@
+protected MediaType(String type, String subtype, LinkedHashMap<String, String> parameters) {
+    this.type = type;
+    this.subtype = subtype;
+    this.parameters = parameters;
+    String cs = parameters.get("charset");
+    if (cs != null && cs.length() > 0 && cs.charAt(0) == '"') {
+        cs = HttpParser.unquote(cs);
+    }
+    this.charset = cs;
+}

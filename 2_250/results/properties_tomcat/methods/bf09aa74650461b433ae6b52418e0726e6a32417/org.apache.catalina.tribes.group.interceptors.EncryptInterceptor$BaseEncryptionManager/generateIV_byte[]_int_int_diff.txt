@@ -1,0 +1,3 @@
+protected AlgorithmParameterSpec generateIV(byte[] ivBytes, int offset, int length) {
+    return new IvParameterSpec(ivBytes, offset, length);
+}

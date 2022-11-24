@@ -1,0 +1,8 @@
+public void addMessageDestinationRef(MessageDestinationRef messageDestinationRef) {
+    if (messageDestinationRefs.containsKey(messageDestinationRef.getName())) {
+        // message-destination-ref names must be unique within a
+        // web(-fragment).xml
+        throw new IllegalArgumentException(sm.getString("webXml.duplicateMessageDestinationRef", messageDestinationRef.getName()));
+    }
+    messageDestinationRefs.put(messageDestinationRef.getName(), messageDestinationRef);
+}

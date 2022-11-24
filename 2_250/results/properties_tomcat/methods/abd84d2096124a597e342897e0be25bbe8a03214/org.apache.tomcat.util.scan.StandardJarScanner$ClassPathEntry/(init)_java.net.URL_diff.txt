@@ -1,0 +1,16 @@
+public ClassPathEntry(URL url) {
+    String path = url.getPath();
+    int end = path.lastIndexOf(Constants.JAR_EXT);
+    if (end != -1) {
+        jar = true;
+        int start = path.lastIndexOf('/', end);
+        name = path.substring(start + 1, end + 4);
+    } else {
+        jar = false;
+        if (path.endsWith("/")) {
+            path = path.substring(0, path.length() - 1);
+        }
+        int start = path.lastIndexOf('/');
+        name = path.substring(start + 1);
+    }
+}

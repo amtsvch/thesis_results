@@ -1,0 +1,11 @@
+/**
+ * Use specific constraints for specified methods and default
+ * HttpConstraintElement for all other methods.
+ * @param httpMethodConstraints Method constraints
+ * @throws IllegalArgumentException if a method name is specified more than
+ * once
+ */
+public ServletSecurityElement(Collection<HttpMethodConstraintElement> httpMethodConstraints) {
+    super();
+    addHttpMethodConstraints(httpMethodConstraints);
+}

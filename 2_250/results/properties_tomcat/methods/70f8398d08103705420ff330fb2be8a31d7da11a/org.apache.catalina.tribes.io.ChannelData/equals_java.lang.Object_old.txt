@@ -1,0 +1,12 @@
+/**
+ * Compares to ChannelData objects, only compares on getUniqueId().equals(o.getUniqueId())
+ * @param o Object
+ * @return boolean
+ */
+@Override
+public boolean equals(Object o) {
+    if (o instanceof ChannelData) {
+        return Arrays.equals(getUniqueId(), ((ChannelData) o).getUniqueId());
+    } else
+        return false;
+}

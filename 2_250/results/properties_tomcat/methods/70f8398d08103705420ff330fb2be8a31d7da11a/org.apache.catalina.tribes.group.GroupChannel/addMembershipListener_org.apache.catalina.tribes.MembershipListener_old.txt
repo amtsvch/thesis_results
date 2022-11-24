@@ -1,0 +1,10 @@
+/**
+ * Adds a membership listener to the channel.<br>
+ * Membership listeners are uniquely identified using the equals(Object) method
+ * @param membershipListener MembershipListener
+ */
+@Override
+public void addMembershipListener(MembershipListener membershipListener) {
+    if (!this.membershipListeners.contains(membershipListener))
+        this.membershipListeners.add(membershipListener);
+}

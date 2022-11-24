@@ -1,0 +1,7 @@
+public void addWelcomeFile(String welcomeFile) {
+    if (replaceWelcomeFiles) {
+        welcomeFiles.clear();
+        replaceWelcomeFiles = false;
+    }
+    welcomeFiles.add(welcomeFile);
+}

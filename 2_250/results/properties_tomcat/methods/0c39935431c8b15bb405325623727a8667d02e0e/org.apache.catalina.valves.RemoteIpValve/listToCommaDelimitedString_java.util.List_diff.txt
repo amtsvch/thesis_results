@@ -1,0 +1,25 @@
+/**                                                                                                    /**                                                                                                 
+* Convert an array of strings in a comma delimited string                                              * Convert an array of strings in a comma delimited string                                           
+* @param stringList The string list to convert                                                         * @param stringList The string list to convert                                                      
+* @return The concatenated string                                                                      * @return The concatenated string                                                                   
+                                                                                                     | *                                                                                                   
+                                                                                                     | * @deprecated Unused. This will be removed in Tomcat 10.1.x onwards.                                
+                                                                                                     | *             Use {@link StringUtils#join(java.util.Collection)} instead                            
+*/                                                                                                     */                                                                                                  
+                                                                                                     | @Deprecated                                                                                         
+protected static String listToCommaDelimitedString(List&lt;String&gt; stringList) {                    protected static String listToCommaDelimitedString(List&lt;String&gt; stringList) {                 
+if (stringList == null) {                                                                              if (stringList == null) {                                                                           
+return "";                                                                                             return "";                                                                                          
+}                                                                                                      }                                                                                                   
+StringBuilder result = new StringBuilder();                                                            StringBuilder result = new StringBuilder();                                                         
+for (Iterator&lt;String&gt; it = stringList.iterator(); it.hasNext(); ) {                              for (Iterator&lt;String&gt; it = stringList.iterator(); it.hasNext(); ) {                           
+Object element = it.next();                                                                            Object element = it.next();                                                                         
+if (element != null) {                                                                                 if (element != null) {                                                                              
+result.append(element);                                                                                result.append(element);                                                                             
+if (it.hasNext()) {                                                                                    if (it.hasNext()) {                                                                                 
+result.append(", ");                                                                                   result.append(", ");                                                                                
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+return result.toString();                                                                              return result.toString();                                                                           
+}                                                                                                      }                                                                                                   

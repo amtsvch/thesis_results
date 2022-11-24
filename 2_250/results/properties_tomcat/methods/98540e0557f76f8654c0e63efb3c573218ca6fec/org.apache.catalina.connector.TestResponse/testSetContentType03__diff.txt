@@ -1,0 +1,11 @@
+@Test
+public void testSetContentType03() throws IOException {
+    Response response = setupResponse();
+    // Check after commit
+    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
+    response.setContentType(TEXT_UTF_8);
+    Assert.assertEquals(UTF_8, response.getCharacterEncoding());
+    response.flushBuffer();
+    response.setContentType(TEXT_ISO_8859_1);
+    Assert.assertEquals(UTF_8, response.getCharacterEncoding());
+}

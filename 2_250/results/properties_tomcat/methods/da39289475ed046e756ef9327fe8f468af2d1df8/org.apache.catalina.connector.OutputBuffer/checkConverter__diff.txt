@@ -1,0 +1,22 @@
+public void checkConverter() throws IOException {
+    if (conv != null) {
+        return;
+    }
+    Charset charset = null;
+    if (coyoteResponse != null) {
+        charset = coyoteResponse.getCharset();
+    }
+    if (charset == null) {
+        if (coyoteResponse.getCharacterEncoding() != null) {
+            // setCharacterEncoding() was called with an invalid character set
+            // Trigger an UnsupportedEncodingException
+            charset = B2CConverter.getCharset(coyoteResponse.getCharacterEncoding());
+        }
+        charset = org.apache.coyote.Constants.DEFAULT_BODY_CHARSET;
+    }
+    conv = encoders.get(charset);
+    if (conv == null) {
+        conv = createConverter(charset);
+        encoders.put(charset, conv);
+    }
+}

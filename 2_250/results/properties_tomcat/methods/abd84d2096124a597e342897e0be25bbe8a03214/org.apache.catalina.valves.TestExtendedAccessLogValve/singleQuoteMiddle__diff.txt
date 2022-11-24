@@ -1,0 +1,4 @@
+@Test
+public void singleQuoteMiddle() {
+    Assert.assertEquals("\"foo'bar\"", ExtendedAccessLogValve.wrap("foo'bar"));
+}

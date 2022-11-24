@@ -1,0 +1,12 @@
+@Test
+public void testBug55454() throws IOException {
+    String input = "text/html;;charset=UTF-8";
+    StringReader sr = new StringReader(input);
+    MediaType m = MediaType.parseMediaType(sr);
+    Assert.assertEquals("text", m.getType());
+    Assert.assertEquals("html", m.getSubtype());
+    Assert.assertTrue(m.getParameterCount() == 1);
+    Assert.assertEquals("UTF-8", m.getParameterValue("charset"));
+    Assert.assertEquals("UTF-8", m.getCharset());
+    Assert.assertEquals("text/html;charset=UTF-8", m.toString());
+}

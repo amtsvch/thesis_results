@@ -1,0 +1,18 @@
+/**                                                                                                    /**                                                                                                 
+* Check a role.                                                                                        * Check a role.                                                                                     
+*                                                                                                      *                                                                                                   
+* @param role Role name to be checked                                                                  * @param role Role name to be checked                                                               
+* @return &lt;code&gt;true&lt;/code&gt; if the specified role is permitted access to                   * @return &lt;code&gt;true&lt;/code&gt; if the specified role is permitted access to                
+* the resources protected by this security constraint.                                                 * the resources protected by this security constraint.                                              
+*/                                                                                                     */                                                                                                  
+public boolean findAuthRole(String role) {                                                             public boolean findAuthRole(String role) {                                                          
+if (role == null)                                                                                    | if (role == null) {                                                                                 
+return false;                                                                                          return false;                                                                                       
+                                                                                                     | }                                                                                                   
+for (String authRole : authRoles) {                                                                    for (String authRole : authRoles) {                                                                 
+if (role.equals(authRole))                                                                           | if (role.equals(authRole)) {                                                                        
+return true;                                                                                           return true;                                                                                        
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+return false;                                                                                          return false;                                                                                       
+}                                                                                                      }                                                                                                   

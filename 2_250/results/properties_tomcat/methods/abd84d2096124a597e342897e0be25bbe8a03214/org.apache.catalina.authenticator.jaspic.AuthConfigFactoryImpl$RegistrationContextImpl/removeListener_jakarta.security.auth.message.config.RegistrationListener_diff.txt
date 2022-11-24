@@ -1,0 +1,10 @@
+private boolean removeListener(RegistrationListener listener) {
+    boolean result = false;
+    for (RegistrationListenerWrapper wrapper : listeners) {
+        if (wrapper.getListener().equals(listener)) {
+            listeners.remove(wrapper);
+            result = true;
+        }
+    }
+    return result;
+}

@@ -1,0 +1,28 @@
+/**
+ * Use protected so unit tests can access this method directly.
+ * @param msg The message
+ * @param reason The reason
+ */
+protected static void appendCloseReasonWithTruncation(ByteBuffer msg, String reason) {
+    // Once the close code has been added there are a maximum of 123 bytes
+    // left for the reason phrase. If it is truncated then care needs to be
+    // taken to ensure the bytes are not truncated in the middle of a
+    // multi-byte UTF-8 character.
+    byte[] reasonBytes = reason.getBytes(StandardCharsets.UTF_8);
+    if (reasonBytes.length <= 123) {
+        // No need to truncate
+        msg.put(reasonBytes);
+    } else {
+        // Need to truncate
+        int remaining = 123 - ELLIPSIS_BYTES_LEN;
+        int pos = 0;
+        byte[] bytesNext = reason.substring(pos, pos + 1).getBytes(StandardCharsets.UTF_8);
+        while (remaining >= bytesNext.length) {
+            msg.put(bytesNext);
+            remaining -= bytesNext.length;
+            pos++;
+            bytesNext = reason.substring(pos, pos + 1).getBytes(StandardCharsets.UTF_8);
+        }
+        msg.put(ELLIPSIS_BYTES);
+    }
+}

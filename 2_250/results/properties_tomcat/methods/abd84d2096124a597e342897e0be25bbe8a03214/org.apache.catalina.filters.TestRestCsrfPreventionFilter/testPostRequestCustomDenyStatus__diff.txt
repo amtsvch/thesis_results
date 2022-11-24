@@ -1,0 +1,7 @@
+@Test
+public void testPostRequestCustomDenyStatus() throws Exception {
+    setRequestExpectations(POST_METHOD, null, null);
+    filter.setDenyStatus(HttpServletResponse.SC_BAD_REQUEST);
+    filter.doFilter(request, response, filterChain);
+    verifyDenyResponse(HttpServletResponse.SC_BAD_REQUEST);
+}

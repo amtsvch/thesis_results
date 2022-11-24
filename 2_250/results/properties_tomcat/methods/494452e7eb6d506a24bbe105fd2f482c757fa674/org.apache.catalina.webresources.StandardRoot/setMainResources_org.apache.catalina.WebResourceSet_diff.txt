@@ -1,0 +1,9 @@
+/**
+ * For unit testing.
+ * @param main The main resources
+ */
+protected final void setMainResources(WebResourceSet main) {
+    this.main = main;
+    mainResources.clear();
+    mainResources.add(main);
+}

@@ -1,0 +1,10 @@
+@Test(expected = NumberFormatException.class)
+public void testSslCipherUserKeySizeHeaderBadFormat() throws Exception {
+    mockRequest.setHeader(valve.getSslCipherUserKeySizeHeader(), "not-an-integer");
+    try {
+        valve.invoke(mockRequest, null);
+    } catch (NumberFormatException e) {
+        Assert.assertNull(mockRequest.getAttribute(Globals.KEY_SIZE_ATTR));
+        throw e;
+    }
+}

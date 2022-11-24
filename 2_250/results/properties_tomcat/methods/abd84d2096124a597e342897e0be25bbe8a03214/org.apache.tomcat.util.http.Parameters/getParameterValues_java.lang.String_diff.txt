@@ -1,0 +1,12 @@
+// -------------------- Data access --------------------
+// Access to the current name/values, no side effect ( processing ).
+// You must explicitly call handleQueryParameters and the post methods.
+public String[] getParameterValues(String name) {
+    handleQueryParameters();
+    // no "facade"
+    ArrayList<String> values = paramHashValues.get(name);
+    if (values == null) {
+        return null;
+    }
+    return values.toArray(new String[0]);
+}

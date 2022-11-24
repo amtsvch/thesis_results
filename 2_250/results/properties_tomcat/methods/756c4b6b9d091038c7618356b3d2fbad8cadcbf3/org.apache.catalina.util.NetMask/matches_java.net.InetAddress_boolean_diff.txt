@@ -1,0 +1,73 @@
+/**
+ * Test if a given address matches this netmask.
+ *
+ * @param addr The {@link java.net.InetAddress} to test
+ * @param checkedPort Indicates, whether we already checked the port
+ * @return true on match, false otherwise
+ */
+public boolean matches(final InetAddress addr, boolean checkedPort) {
+    if (!checkedPort && foundPort) {
+        return false;
+    }
+    final byte[] candidate = addr.getAddress();
+    /*
+         * OK, remember that a CIDR prefix tells the number of BITS which should
+         * be equal between this NetMask's recorded address (netaddr) and the
+         * candidate address. One byte is 8 bits, no matter what, and IP
+         * addresses, whether they be IPv4 or IPv6, are big endian, aka MSB,
+         * Most Significant Byte (first).
+         *
+         * We therefore need to get the byte array of the candidate address,
+         * compare as many bytes of the candidate address with the recorded
+         * address as the CIDR prefix tells us to (that is, CIDR / 8), and then
+         * deal with the remaining bits -- if any.
+         *
+         * But prior to that, a simple test can be done: we deal with IP
+         * addresses here, which means IPv4 and IPv6. IPv4 addresses are encoded
+         * on 4 bytes, IPv6 addresses are encoded on 16 bytes. If the candidate
+         * address length is different than this NetMask's address, we don't
+         * have a match.
+         */
+    if (candidate.length != netaddr.length) {
+        return false;
+    }
+    /*
+         * Now do the byte-compare. The constructor has recorded the number of
+         * bytes to compare in nrBytes, use that. If any of the byte we have to
+         * compare is different than what we expect, we don't have a match.
+         *
+         * If, on the opposite, after this loop, all bytes have been deemed
+         * equal, then the loop variable i will point to the byte right after
+         * that -- which we will need...
+         */
+    int i = 0;
+    for (; i < nrBytes; i++) {
+        if (netaddr[i] != candidate[i]) {
+            return false;
+        }
+    }
+    /*
+         * ... if there are bits left to test. There aren't any if lastByteShift
+         * is set to 0.
+         */
+    if (lastByteShift == 0) {
+        return true;
+    }
+    /*
+         * If it is not 0, however, we must test for the relevant bits in the
+         * next byte (whatever is in the bytes after that doesn't matter). We do
+         * it this way (remember that lastByteShift contains the amount of bits
+         * we should _right_ shift the last byte):
+         *
+         * - grab both bytes at index i, both from the netmask address and the
+         * candidate address; - xor them both.
+         *
+         * After the xor, it means that all the remaining bits of the CIDR
+         * should be set to 0...
+         */
+    final int lastByte = netaddr[i] ^ candidate[i];
+    /*
+         * ... Which means that right shifting by lastByteShift should be 0.
+         */
+    return lastByte >> lastByteShift == 0;
+}

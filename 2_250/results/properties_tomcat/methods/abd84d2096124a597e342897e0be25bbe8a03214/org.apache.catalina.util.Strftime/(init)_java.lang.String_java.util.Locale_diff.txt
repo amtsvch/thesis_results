@@ -1,0 +1,10 @@
+/**
+ * Create an instance of this date formatting class
+ *
+ * @param origFormat the strftime-style formatting string
+ * @param locale the locale to use for locale-specific conversions
+ */
+public Strftime(String origFormat, Locale locale) {
+    String convertedFormat = convertDateFormat(origFormat);
+    simpleDateFormat = new SimpleDateFormat(convertedFormat, locale);
+}

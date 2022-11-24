@@ -1,0 +1,6 @@
+@Test
+public void testEgMailingList03() throws Exception {
+    UriTemplate t = new UriTemplate("/a/{var}");
+    Map<String, String> result = t.match(new UriTemplate("/a"));
+    Assert.assertNull(result);
+}

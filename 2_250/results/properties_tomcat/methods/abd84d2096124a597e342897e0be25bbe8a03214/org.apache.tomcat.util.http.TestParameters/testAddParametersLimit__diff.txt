@@ -1,0 +1,52 @@
+@Test
+public void testAddParametersLimit() {
+    Parameters p = new Parameters();
+    p.setLimit(2);
+    // Empty at this point
+    Enumeration<String> names = p.getParameterNames();
+    Assert.assertFalse(names.hasMoreElements());
+    String[] values = p.getParameterValues("foo1");
+    Assert.assertNull(values);
+    // Add a parameter
+    p.addParameter("foo1", "value1");
+    names = p.getParameterNames();
+    Assert.assertTrue(names.hasMoreElements());
+    Assert.assertEquals("foo1", names.nextElement());
+    Assert.assertFalse(names.hasMoreElements());
+    values = p.getParameterValues("foo1");
+    Assert.assertEquals(1, values.length);
+    Assert.assertEquals("value1", values[0]);
+    // Add another parameter
+    p.addParameter("foo2", "value2");
+    names = p.getParameterNames();
+    Assert.assertTrue(names.hasMoreElements());
+    Assert.assertEquals("foo1", names.nextElement());
+    Assert.assertEquals("foo2", names.nextElement());
+    Assert.assertFalse(names.hasMoreElements());
+    values = p.getParameterValues("foo1");
+    Assert.assertEquals(1, values.length);
+    Assert.assertEquals("value1", values[0]);
+    values = p.getParameterValues("foo2");
+    Assert.assertEquals(1, values.length);
+    Assert.assertEquals("value2", values[0]);
+    // Add another parameter
+    IllegalStateException e = null;
+    try {
+        p.addParameter("foo3", "value3");
+    } catch (IllegalStateException ise) {
+        e = ise;
+    }
+    Assert.assertNotNull(e);
+    // Check current parameters remain unaffected
+    names = p.getParameterNames();
+    Assert.assertTrue(names.hasMoreElements());
+    Assert.assertEquals("foo1", names.nextElement());
+    Assert.assertEquals("foo2", names.nextElement());
+    Assert.assertFalse(names.hasMoreElements());
+    values = p.getParameterValues("foo1");
+    Assert.assertEquals(1, values.length);
+    Assert.assertEquals("value1", values[0]);
+    values = p.getParameterValues("foo2");
+    Assert.assertEquals(1, values.length);
+    Assert.assertEquals("value2", values[0]);
+}

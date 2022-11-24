@@ -1,0 +1,32 @@
+/**                                                                                                    /**                                                                                                 
+* Inform the listeners about the new session.                                                          * Inform the listeners about the new session.                                                       
+*/                                                                                                     */                                                                                                  
+public void tellNew() {                                                                                public void tellNew() {                                                                             
+// Notify interested session event listeners                                                           // Notify interested session event listeners                                                        
+fireSessionEvent(Session.SESSION_CREATED_EVENT, null);                                                 fireSessionEvent(Session.SESSION_CREATED_EVENT, null);                                              
+// Notify interested application event listeners                                                       // Notify interested application event listeners                                                    
+Context context = manager.getContext();                                                                Context context = manager.getContext();                                                             
+Object[] listeners = context.getApplicationLifecycleListeners();                                       Object[] listeners = context.getApplicationLifecycleListeners();                                    
+if (listeners != null && listeners.length &gt; 0) {                                                    if (listeners != null && listeners.length &gt; 0) {                                                 
+HttpSessionEvent event = new HttpSessionEvent(getSession());                                           HttpSessionEvent event = new HttpSessionEvent(getSession());                                        
+for (Object o : listeners) {                                                                           for (Object o : listeners) {                                                                        
+if (!(o instanceof HttpSessionListener))                                                             | if (!(o instanceof HttpSessionListener)) {                                                          
+continue;                                                                                              continue;                                                                                           
+                                                                                                     | }                                                                                                   
+HttpSessionListener listener = (HttpSessionListener) o;                                                HttpSessionListener listener = (HttpSessionListener) o;                                             
+try {                                                                                                  try {                                                                                               
+context.fireContainerEvent("beforeSessionCreated", listener);                                          context.fireContainerEvent("beforeSessionCreated", listener);                                       
+listener.sessionCreated(event);                                                                        listener.sessionCreated(event);                                                                     
+context.fireContainerEvent("afterSessionCreated", listener);                                           context.fireContainerEvent("afterSessionCreated", listener);                                        
+} catch (Throwable t) {                                                                                } catch (Throwable t) {                                                                             
+ExceptionUtils.handleThrowable(t);                                                                     ExceptionUtils.handleThrowable(t);                                                                  
+try {                                                                                                  try {                                                                                               
+context.fireContainerEvent("afterSessionCreated", listener);                                           context.fireContainerEvent("afterSessionCreated", listener);                                        
+} catch (Exception e) {                                                                                } catch (Exception e) {                                                                             
+// Ignore                                                                                              // Ignore                                                                                           
+}                                                                                                      }                                                                                                   
+manager.getContext().getLogger().error(sm.getString("standardSession.sessionEvent"), t);               manager.getContext().getLogger().error(sm.getString("standardSession.sessionEvent"), t);            
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

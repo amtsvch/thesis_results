@@ -1,0 +1,11 @@
+@Test
+public void testSslClientCertBadFormat() throws Exception {
+    String[] linesDeleted = Arrays.copyOf(CERTIFICATE_LINES, CERTIFICATE_LINES.length / 2);
+    String deleted = certificateSingleLine(linesDeleted, " ");
+    mockRequest.setHeader(valve.getSslClientCertHeader(), deleted);
+    TesterLogValidationFilter f = TesterLogValidationFilter.add(Level.WARNING, null, "java.security.cert.CertificateException", "org.apache.catalina.valves.SSLValve");
+    valve.invoke(mockRequest, null);
+    EasyMock.verify(mockNext);
+    Assert.assertNull(mockRequest.getAttribute(Globals.CERTIFICATES_ATTR));
+    Assert.assertEquals(1, f.getMessageCount());
+}

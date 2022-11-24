@@ -1,0 +1,5 @@
+// Test for all the classes and interfaces in StandardContext's type hierarchy
+@Test
+public void testIsInstanceStandardContext01() {
+    Assert.assertTrue(IntrospectionUtils.isInstance(StandardContext.class, "org.apache.catalina.core.StandardContext"));
+}

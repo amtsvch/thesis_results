@@ -1,0 +1,21 @@
+/**                                                                                                    /**                                                                                                 
+* Create and return a &lt;code&gt;ModelMBeanOperationInfo&lt;/code&gt; object that                     * Create and return a &lt;code&gt;ModelMBeanOperationInfo&lt;/code&gt; object that                  
+* corresponds to the attribute described by this instance.                                             * corresponds to the attribute described by this instance.                                          
+* @return the operation info                                                                           * @return the operation info                                                                        
+*/                                                                                                     */                                                                                                  
+MBeanOperationInfo createOperationInfo() {                                                             MBeanOperationInfo createOperationInfo() {                                                          
+// Return our cached information (if any)                                                              // Return our cached information (if any)                                                           
+if (info == null) {                                                                                    if (info == null) {                                                                                 
+// Create and return a new information object                                                          // Create and return a new information object                                                       
+int impact = MBeanOperationInfo.UNKNOWN;                                                               int impact = MBeanOperationInfo.UNKNOWN;                                                            
+if ("ACTION".equals(getImpact()))                                                                    | if ("ACTION".equals(getImpact())) {                                                                 
+impact = MBeanOperationInfo.ACTION;                                                                    impact = MBeanOperationInfo.ACTION;                                                                 
+else if ("ACTION_INFO".equals(getImpact()))                                                          | } else if ("ACTION_INFO".equals(getImpact())) {                                                     
+impact = MBeanOperationInfo.ACTION_INFO;                                                               impact = MBeanOperationInfo.ACTION_INFO;                                                            
+else if ("INFO".equals(getImpact()))                                                                 | } else if ("INFO".equals(getImpact())) {                                                            
+impact = MBeanOperationInfo.INFO;                                                                      impact = MBeanOperationInfo.INFO;                                                                   
+                                                                                                     | }                                                                                                   
+info = new MBeanOperationInfo(getName(), getDescription(), getMBeanParameterInfo(), getReturnType(),   info = new MBeanOperationInfo(getName(), getDescription(), getMBeanParameterInfo(), getReturnType(),
+}                                                                                                      }                                                                                                   
+return (MBeanOperationInfo) info;                                                                      return (MBeanOperationInfo) info;                                                                   
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,12 @@
+private URL getWebappConfigFileFromDirectory(File docBase, String contextName) {
+    URL result = null;
+    File webAppContextXml = new File(docBase, Constants.ApplicationContextXml);
+    if (webAppContextXml.exists()) {
+        try {
+            result = webAppContextXml.toURI().toURL();
+        } catch (MalformedURLException e) {
+            Logger.getLogger(getLoggerName(getHost(), contextName)).log(Level.WARNING, sm.getString("tomcat.noContextXml", docBase), e);
+        }
+    }
+    return result;
+}

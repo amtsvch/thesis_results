@@ -1,0 +1,16 @@
+/**                                                                                                    /**                                                                                                 
+* Converts the given object to the given type. This default implementation                             * Converts the given object to the given type. This default implementation                          
+* always returns &lt;code&gt;null&lt;/code&gt;.                                                        * always returns &lt;code&gt;null&lt;/code&gt;.                                                     
+*                                                                                                      *                                                                                                   
+* @param context The EL context for this evaluation                                                    * @param context The EL context for this evaluation                                                 
+* @param obj     The object to convert                                                                 * @param obj     The object to convert                                                              
+* @param type    The type to which the object should be converted                                      * @param type    The type to which the object should be converted                                   
+*                                                                                                      *                                                                                                   
+* @return Always &lt;code&gt;null&lt;/code&gt;                                                         * @return Always &lt;code&gt;null&lt;/code&gt;                                                      
+*                                                                                                      *                                                                                                   
+* @since EL 3.0                                                                                        * @since EL 3.0                                                                                     
+*/                                                                                                     */                                                                                                  
+public Object convertToType(ELContext context, Object obj, Class&lt;?&gt; type) {                    | public &lt;T&gt; T convertToType(ELContext context, Object obj, Class&lt;T&gt; type) {              
+context.setPropertyResolved(false);                                                                    context.setPropertyResolved(false);                                                                 
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   

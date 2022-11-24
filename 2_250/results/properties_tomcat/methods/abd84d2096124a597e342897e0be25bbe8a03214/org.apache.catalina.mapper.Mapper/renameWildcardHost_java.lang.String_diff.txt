@@ -1,0 +1,14 @@
+/*
+     * To simplify the mapping process, wild card hosts take the form
+     * ".apache.org" rather than "*.apache.org" internally. However, for ease
+     * of use the external form remains "*.apache.org". Any host name passed
+     * into this class needs to be passed through this method to rename and
+     * wild card host names from the external to internal form.
+     */
+private static String renameWildcardHost(String hostName) {
+    if (hostName != null && hostName.startsWith("*.")) {
+        return hostName.substring(1);
+    } else {
+        return hostName;
+    }
+}

@@ -1,0 +1,26 @@
+private Cipher(int id, String openSSLAlias, KeyExchange kx, Authentication au, Encryption enc, MessageDigest mac, Protocol protocol, boolean export, EncryptionLevel level, boolean fipsCompatible, int strength_bits, int alg_bits, String[] jsseAltNames, String[] openSSlAltNames) {
+    this.id = id;
+    this.openSSLAlias = openSSLAlias;
+    if (openSSlAltNames != null && openSSlAltNames.length != 0) {
+        Set<String> altNames = new HashSet<>(Arrays.asList(openSSlAltNames));
+        this.openSSLAltNames = Collections.unmodifiableSet(altNames);
+    } else {
+        this.openSSLAltNames = Collections.emptySet();
+    }
+    Set<String> jsseNames = new LinkedHashSet<>();
+    if (jsseAltNames != null && jsseAltNames.length != 0) {
+        jsseNames.addAll(Arrays.asList(jsseAltNames));
+    }
+    jsseNames.add(name());
+    this.jsseNames = Collections.unmodifiableSet(jsseNames);
+    this.kx = kx;
+    this.au = au;
+    this.enc = enc;
+    this.mac = mac;
+    this.protocol = protocol;
+    this.export = export;
+    this.level = level;
+    this.fipsCompatible = fipsCompatible;
+    this.strength_bits = strength_bits;
+    this.alg_bits = alg_bits;
+}

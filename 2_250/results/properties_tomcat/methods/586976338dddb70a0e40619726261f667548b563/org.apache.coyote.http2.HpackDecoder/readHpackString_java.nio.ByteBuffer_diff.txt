@@ -1,0 +1,19 @@
+private String readHpackString(ByteBuffer buffer) throws HpackException {                              private String readHpackString(ByteBuffer buffer) throws HpackException {                           
+if (!buffer.hasRemaining()) {                                                                          if (!buffer.hasRemaining()) {                                                                       
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   
+byte data = buffer.get(buffer.position());                                                             byte data = buffer.get(buffer.position());                                                          
+int length = Hpack.decodeInteger(buffer, 7);                                                           int length = Hpack.decodeInteger(buffer, 7);                                                        
+if (buffer.remaining() &lt; length) {                                                                | if (buffer.remaining() &lt; length || length == -1) {                                               
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   
+boolean huffman = (data & 0b10000000) != 0;                                                            boolean huffman = (data & 0b10000000) != 0;                                                         
+if (huffman) {                                                                                         if (huffman) {                                                                                      
+return readHuffmanString(length, buffer);                                                              return readHuffmanString(length, buffer);                                                           
+}                                                                                                      }                                                                                                   
+StringBuilder stringBuilder = new StringBuilder(length);                                               StringBuilder stringBuilder = new StringBuilder(length);                                            
+for (int i = 0; i &lt; length; ++i) {                                                                  for (int i = 0; i &lt; length; ++i) {                                                               
+stringBuilder.append((char) buffer.get());                                                             stringBuilder.append((char) buffer.get());                                                          
+}                                                                                                      }                                                                                                   
+return stringBuilder.toString();                                                                       return stringBuilder.toString();                                                                    
+}                                                                                                      }                                                                                                   

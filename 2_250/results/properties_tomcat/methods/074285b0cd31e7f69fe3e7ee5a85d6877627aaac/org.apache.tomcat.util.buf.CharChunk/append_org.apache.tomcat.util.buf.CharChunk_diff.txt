@@ -1,0 +1,3 @@
+public void append(CharChunk src) throws IOException {
+    append(src.getBuffer(), src.getOffset(), src.getLength());
+}

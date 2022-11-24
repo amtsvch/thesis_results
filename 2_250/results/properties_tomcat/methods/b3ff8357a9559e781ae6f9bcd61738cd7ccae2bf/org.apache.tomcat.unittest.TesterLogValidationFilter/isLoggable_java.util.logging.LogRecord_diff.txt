@@ -1,0 +1,27 @@
+@Override
+public boolean isLoggable(LogRecord record) {
+    if (targetLevel != null) {
+        Level level = record.getLevel();
+        if (targetLevel != level) {
+            return true;
+        }
+    }
+    if (targetMessage != null) {
+        String msg = record.getMessage();
+        if (msg == null || !msg.contains(targetMessage)) {
+            return true;
+        }
+    }
+    if (targetThrowableString != null) {
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        record.getThrown().printStackTrace(pw);
+        pw.close();
+        String throwableString = sw.toString();
+        if (!throwableString.contains(targetThrowableString)) {
+            return true;
+        }
+    }
+    messageCount.incrementAndGet();
+    return true;
+}

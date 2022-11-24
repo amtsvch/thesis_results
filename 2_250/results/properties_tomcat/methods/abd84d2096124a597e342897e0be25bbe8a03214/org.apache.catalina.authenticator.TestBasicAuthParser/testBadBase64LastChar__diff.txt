@@ -1,0 +1,16 @@
+/*
+     * "-" is not a legal base64 character. The RFC says it must be
+     * ignored by the decoder. This is a very strange case because the
+     * next character is a pad, which terminates the string normally.
+     * It is likely (but not certain) the decoded password will be
+     * damaged and subsequent authentication will fail.
+     */
+@Test
+public void testBadBase64LastChar() throws Exception {
+    final String BASE64_CRIB = "dXNlcmlkOnNlY3JldA-=";
+    final String POSSIBLY_DAMAGED_PWD = "secret";
+    final BasicAuthHeader AUTH_HEADER = new BasicAuthHeader(NICE_METHOD, BASE64_CRIB);
+    BasicAuthenticator.BasicCredentials credentials = new BasicAuthenticator.BasicCredentials(AUTH_HEADER.getHeader(), StandardCharsets.UTF_8, true);
+    Assert.assertEquals(USER_NAME, credentials.getUsername());
+    Assert.assertEquals(POSSIBLY_DAMAGED_PWD, credentials.getPassword());
+}

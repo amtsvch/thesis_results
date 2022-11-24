@@ -1,0 +1,6 @@
+public void setCommitted(boolean v) {
+    if (v && !this.committed) {
+        this.commitTimeNanos = System.nanoTime();
+    }
+    this.committed = v;
+}

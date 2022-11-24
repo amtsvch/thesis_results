@@ -1,0 +1,8 @@
+private static String certificateSingleLine(String[] lines, String separator) {
+    StringBuilder singleSpaced = new StringBuilder();
+    for (String current : lines) {
+        singleSpaced.append(current).append(separator);
+    }
+    singleSpaced.deleteCharAt(singleSpaced.length() - 1);
+    return singleSpaced.toString();
+}

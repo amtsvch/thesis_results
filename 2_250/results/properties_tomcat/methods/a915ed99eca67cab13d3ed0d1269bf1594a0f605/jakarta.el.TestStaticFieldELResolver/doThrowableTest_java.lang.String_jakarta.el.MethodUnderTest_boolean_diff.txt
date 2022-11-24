@@ -1,0 +1,38 @@
+private void doThrowableTest(String trigger, MethodUnderTest method, boolean checkCause) {
+    StaticFieldELResolver resolver = new StaticFieldELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    ELException exception = null;
+    try {
+        switch(method) {
+            case GET_VALUE:
+                {
+                    resolver.getValue(context, new ELClass(TesterClass.class), trigger);
+                    break;
+                }
+            case GET_TYPE:
+                {
+                    resolver.getType(context, new ELClass(TesterClass.class), trigger);
+                    break;
+                }
+            case INVOKE:
+                {
+                    resolver.invoke(context, new ELClass(TesterClass.class), trigger, new Class<?>[] { String.class }, new Object[] { "test" });
+                    break;
+                }
+            default:
+                {
+                    // Should never happen
+                    Assert.fail("Missing case for method");
+                }
+        }
+    } catch (PropertyNotFoundException | MethodNotFoundException e) {
+        exception = e;
+    }
+    Assert.assertTrue(context.isPropertyResolved());
+    Assert.assertNotNull(exception);
+    if (checkCause) {
+        // Can't be null due to assertion above
+        Throwable cause = exception.getCause();
+        Assert.assertNotNull(cause);
+    }
+}

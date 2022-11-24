@@ -1,0 +1,17 @@
+public void reset() {                                                                                  public void reset() {                                                                               
+if (isConnected() && readbuf == null) {                                                                if (isConnected() && readbuf == null) {                                                             
+readbuf = getReadBuffer();                                                                             readbuf = getReadBuffer();                                                                          
+}                                                                                                      }                                                                                                   
+if (readbuf != null)                                                                                 | if (readbuf != null) {                                                                              
+readbuf.clear();                                                                                       readbuf.clear();                                                                                    
+if (writebuf != null)                                                                                | }                                                                                                   
+                                                                                                     | if (writebuf != null) {                                                                             
+writebuf.clear();                                                                                      writebuf.clear();                                                                                   
+                                                                                                     | }                                                                                                   
+current = null;                                                                                        current = null;                                                                                     
+ackbuf.clear();                                                                                        ackbuf.clear();                                                                                     
+remaining = 0;                                                                                         remaining = 0;                                                                                      
+complete = false;                                                                                      complete = false;                                                                                   
+setAttempt(0);                                                                                         setAttempt(0);                                                                                      
+setUdpBased(false);                                                                                    setUdpBased(false);                                                                                 
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,5 @@
+// ------------------------------------------------ HTTP specific properties
+// ------------------------------------------ passed through to the EndPoint
+public boolean isSSLEnabled() {
+    return getEndpoint().isSSLEnabled();
+}

@@ -1,0 +1,22 @@
+/**
+ * Set the regular expression used to test for denied requests for this
+ * Valve, if any.
+ *
+ * @param deny The new deny expression
+ */
+public void setDeny(String deny) {
+    if (deny == null || deny.length() == 0) {
+        this.deny = null;
+        denyValue = null;
+        denyValid = true;
+    } else {
+        boolean success = false;
+        try {
+            denyValue = deny;
+            this.deny = Pattern.compile(deny);
+            success = true;
+        } finally {
+            denyValid = success;
+        }
+    }
+}

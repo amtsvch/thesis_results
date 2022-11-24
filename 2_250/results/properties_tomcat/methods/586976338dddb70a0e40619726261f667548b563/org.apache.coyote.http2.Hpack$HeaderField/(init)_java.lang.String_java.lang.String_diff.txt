@@ -1,0 +1,9 @@
+HeaderField(String name, String value) {
+    this.name = name;
+    this.value = value;
+    if (value != null) {
+        this.size = 32 + name.length() + value.length();
+    } else {
+        this.size = -1;
+    }
+}

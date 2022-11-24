@@ -1,0 +1,6 @@
+@Test
+public void testSimple01() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("{'a':'1','b':'2','c':'3'}", Map.class);
+    Assert.assertEquals(simpleMap, result);
+}

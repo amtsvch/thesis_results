@@ -1,0 +1,6 @@
+@Test
+public void testDecorateCORSPropertiesCORSRequestTypeNotCORS() {
+    TesterHttpServletRequest request = new TesterHttpServletRequest();
+    CorsFilter.decorateCORSProperties(request, CorsFilter.CORSRequestType.NOT_CORS);
+    Assert.assertFalse(((Boolean) request.getAttribute(CorsFilter.HTTP_REQUEST_ATTRIBUTE_IS_CORS_REQUEST)).booleanValue());
+}

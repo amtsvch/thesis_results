@@ -1,0 +1,10 @@
+/**
+ * Return the set of roles that are permitted access to the resources
+ * protected by this security constraint.  If none have been defined,
+ * a zero-length array is returned (which implies that all authenticated
+ * users are permitted access).
+ * @return the roles array
+ */
+public String[] findAuthRoles() {
+    return authRoles;
+}

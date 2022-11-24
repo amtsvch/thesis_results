@@ -1,0 +1,6 @@
+@Test(expected = ELException.class)
+public void testReduceLambda02() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("[].stream().reduce((x,y)->x+y)", Object.class);
+    ((Optional) result).get();
+}

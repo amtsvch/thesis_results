@@ -1,0 +1,11 @@
+@Test
+public void testPut() {
+    Object o1 = new Object();
+    Object o2 = new Object();
+    CaseInsensitiveKeyMap<Object> map = new CaseInsensitiveKeyMap<>();
+    map.put("a", o1);
+    Object o = map.put("A", o2);
+    Assert.assertEquals(o1, o);
+    Assert.assertEquals(o2, map.get("a"));
+    Assert.assertEquals(o2, map.get("A"));
+}

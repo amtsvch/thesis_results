@@ -1,0 +1,4 @@
+public Enumeration<String> getParameterNames() {
+    handleQueryParameters();
+    return Collections.enumeration(paramHashValues.keySet());
+}

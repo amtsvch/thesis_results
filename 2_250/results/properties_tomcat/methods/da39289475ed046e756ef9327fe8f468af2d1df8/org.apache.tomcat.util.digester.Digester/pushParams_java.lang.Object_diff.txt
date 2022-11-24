@@ -1,0 +1,14 @@
+/**
+ * <p>Push a new object onto the top of the parameters stack.</p>
+ *
+ * <p>The parameters stack is used to store <code>CallMethodRule</code> parameters.
+ * See {@link #params}.</p>
+ *
+ * @param object The new object
+ */
+public void pushParams(Object object) {
+    if (log.isTraceEnabled()) {
+        log.trace("Pushing params");
+    }
+    params.push(object);
+}

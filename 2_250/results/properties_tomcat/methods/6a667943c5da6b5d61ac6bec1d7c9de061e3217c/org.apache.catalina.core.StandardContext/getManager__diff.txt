@@ -1,0 +1,10 @@
+@Override
+public Manager getManager() {
+    Lock readLock = managerLock.readLock();
+    readLock.lock();
+    try {
+        return manager;
+    } finally {
+        readLock.unlock();
+    }
+}

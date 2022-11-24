@@ -1,0 +1,16 @@
+/**
+ * Finds the class with the given name if it has previously been
+ * loaded and cached by this class loader, and return the Class object.
+ * If this class has not been cached, return <code>null</code>.
+ *
+ * @param name The binary name of the resource to return
+ * @return a loaded class
+ */
+protected Class<?> findLoadedClass0(String name) {
+    String path = binaryNameToPath(name, true);
+    ResourceEntry entry = resourceEntries.get(path);
+    if (entry != null) {
+        return entry.loadedClass;
+    }
+    return null;
+}

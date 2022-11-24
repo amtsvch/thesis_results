@@ -1,0 +1,6 @@
+@Test
+public void testAdd02() {
+    ELProcessor processor = new ELProcessor();
+    Long result = processor.eval("null + null");
+    Assert.assertEquals(Long.valueOf(0), result);
+}

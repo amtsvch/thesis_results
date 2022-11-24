@@ -1,0 +1,38 @@
+/*
+     * This class duplicates code in jakarta.el.Util. When making changes keep
+     * the code in sync.
+     */
+private static Method getMethod(Class<?> type, Object base, Method m) {
+    JreCompat jreCompat = JreCompat.getInstance();
+    // If base is null, method MUST be static
+    // If base is non-null, method may be static or non-static
+    if (m == null || (Modifier.isPublic(type.getModifiers()) && (jreCompat.canAccess(base, m) || base != null && jreCompat.canAccess(null, m)))) {
+        return m;
+    }
+    Class<?>[] interfaces = type.getInterfaces();
+    Method mp = null;
+    for (Class<?> iface : interfaces) {
+        try {
+            mp = iface.getMethod(m.getName(), m.getParameterTypes());
+            mp = getMethod(mp.getDeclaringClass(), base, mp);
+            if (mp != null) {
+                return mp;
+            }
+        } catch (NoSuchMethodException e) {
+            // Ignore
+        }
+    }
+    Class<?> sup = type.getSuperclass();
+    if (sup != null) {
+        try {
+            mp = sup.getMethod(m.getName(), m.getParameterTypes());
+            mp = getMethod(mp.getDeclaringClass(), base, mp);
+            if (mp != null) {
+                return mp;
+            }
+        } catch (NoSuchMethodException e) {
+            // Ignore
+        }
+    }
+    return null;
+}

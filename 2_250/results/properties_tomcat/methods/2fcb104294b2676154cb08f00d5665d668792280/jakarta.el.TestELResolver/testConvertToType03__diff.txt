@@ -1,0 +1,7 @@
+@Test
+public void testConvertToType03() {
+    ELContext context = new TesterELContext(new TesterELResolverOne());
+    ValueExpression ve = ELManager.getExpressionFactory().createValueExpression(context, "2", String.class);
+    String result = (String) ve.getValue(context);
+    Assert.assertEquals("2", result);
+}

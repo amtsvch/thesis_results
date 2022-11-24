@@ -1,0 +1,4 @@
+@Override
+public void sendMessage(Member[] destination, ChannelMessage msg, InterceptorPayload payload) throws ChannelException {
+    dest.messageReceived(msg);
+}

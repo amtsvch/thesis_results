@@ -1,0 +1,49 @@
+/*
+     * Once inside EL, no need to unquote or convert anything. The EL is
+     * terminated by '}'. The only other valid location for '}' is inside a
+     * StringLiteral. The literals are delimited by '\'' or '\"'. The only other
+     * valid location for '\'' or '\"' is also inside a StringLiteral. A quote
+     * character inside a StringLiteral must be escaped if the same quote
+     * character is used to delimit the StringLiteral.
+     */
+private void parseEL() {
+    boolean endEL = false;
+    boolean insideLiteral = false;
+    char literalQuote = 0;
+    while (i < size && !endEL) {
+        char ch;
+        if (quoteAttributeEL) {
+            ch = nextChar();
+        } else {
+            ch = input.charAt(i++);
+        }
+        if (ch == '\'' || ch == '\"') {
+            if (insideLiteral) {
+                if (literalQuote == ch) {
+                    insideLiteral = false;
+                }
+            } else {
+                insideLiteral = true;
+                literalQuote = ch;
+            }
+            result.append(ch);
+        } else if (ch == '\\') {
+            result.append(ch);
+            if (insideLiteral && size < i) {
+                if (quoteAttributeEL) {
+                    ch = nextChar();
+                } else {
+                    ch = input.charAt(i++);
+                }
+                result.append(ch);
+            }
+        } else if (ch == '}') {
+            if (!insideLiteral) {
+                endEL = true;
+            }
+            result.append(ch);
+        } else {
+            result.append(ch);
+        }
+    }
+}

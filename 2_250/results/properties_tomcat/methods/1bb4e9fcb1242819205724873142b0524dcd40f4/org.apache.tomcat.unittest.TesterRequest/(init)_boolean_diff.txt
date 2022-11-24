@@ -1,0 +1,15 @@
+public TesterRequest(boolean withSession) {
+    super(null);
+    context = new TesterContext();
+    servletContext = new TesterServletContext();
+    context.setServletContext(servletContext);
+    if (withSession) {
+        Set<SessionTrackingMode> modes = new HashSet<>();
+        modes.add(SessionTrackingMode.URL);
+        modes.add(SessionTrackingMode.COOKIE);
+        servletContext.setSessionTrackingModes(modes);
+        session = new StandardSession(null);
+        session.setId("1234", false);
+        session.setValid(true);
+    }
+}

@@ -1,0 +1,6 @@
+public void setInputStartLine(int inputStartLine) {                                                    public void setInputStartLine(int inputStartLine) {                                                 
+if (inputStartLine &lt; 0)                                                                           | if (inputStartLine &lt; 0) {                                                                        
+throw new IllegalArgumentException(Localizer.getMessage("jsp.error.negativeParameter", Integer.value   throw new IllegalArgumentException(Localizer.getMessage("jsp.error.negativeParameter", Integer.value
+                                                                                                     | }                                                                                                   
+this.inputStartLine = inputStartLine;                                                                  this.inputStartLine = inputStartLine;                                                               
+}                                                                                                      }                                                                                                   

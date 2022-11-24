@@ -1,0 +1,12 @@
+@Override
+public ValueReference getValueReference(EvaluationContext ctx) {
+    VariableMapper varMapper = ctx.getVariableMapper();
+    if (varMapper == null) {
+        return null;
+    }
+    ValueExpression expr = varMapper.resolveVariable(this.image);
+    if (expr == null) {
+        return null;
+    }
+    return expr.getValueReference(ctx);
+}

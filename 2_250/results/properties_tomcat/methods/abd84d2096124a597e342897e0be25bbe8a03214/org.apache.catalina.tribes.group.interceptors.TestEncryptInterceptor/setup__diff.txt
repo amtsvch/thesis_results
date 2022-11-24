@@ -1,0 +1,9 @@
+@Before
+public void setup() {
+    src = new EncryptInterceptor();
+    src.setEncryptionKey(encryptionKey128);
+    dest = new EncryptInterceptor();
+    dest.setEncryptionKey(encryptionKey128);
+    src.setNext(new PipedInterceptor(dest));
+    dest.setPrevious(new ValueCaptureInterceptor());
+}

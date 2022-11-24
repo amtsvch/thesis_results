@@ -1,0 +1,4 @@
+@Test
+public void testZeroKeyLength() throws NoSuchAlgorithmException {
+    doTest(PASSWORDS[0], ALGORITHMS[0], SALTLENGTHS[0], ITERATIONS[0], 0, false);
+}

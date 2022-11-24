@@ -1,0 +1,14 @@
+public XByteBuffer getBuffer(int minSize, boolean discard) {                                           public XByteBuffer getBuffer(int minSize, boolean discard) {                                        
+XByteBuffer buffer = queue.poll();                                                                     XByteBuffer buffer = queue.poll();                                                                  
+if (buffer != null)                                                                                  | if (buffer != null) {                                                                               
+size.addAndGet(-buffer.getCapacity());                                                                 size.addAndGet(-buffer.getCapacity());                                                              
+if (buffer == null)                                                                                  | }                                                                                                   
+                                                                                                     | if (buffer == null) {                                                                               
+buffer = new XByteBuffer(minSize, discard);                                                            buffer = new XByteBuffer(minSize, discard);                                                         
+else if (buffer.getCapacity() &lt;= minSize)                                                         | } else if (buffer.getCapacity() &lt;= minSize) {                                                    
+buffer.expand(minSize);                                                                                buffer.expand(minSize);                                                                             
+                                                                                                     | }                                                                                                   
+buffer.setDiscard(discard);                                                                            buffer.setDiscard(discard);                                                                         
+buffer.reset();                                                                                        buffer.reset();                                                                                     
+return buffer;                                                                                         return buffer;                                                                                      
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,5 @@
+@Test
+public void testResetAfterClose() throws Exception {
+    Method m = InputStream.class.getMethod("reset", (Class<?>[]) null);
+    testMethodAfterClose(m, (Object[]) null);
+}

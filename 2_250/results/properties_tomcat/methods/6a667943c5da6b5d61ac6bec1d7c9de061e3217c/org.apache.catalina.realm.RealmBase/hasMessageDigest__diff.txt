@@ -1,0 +1,8 @@
+// ------------------------------------------------------ Protected Methods
+protected boolean hasMessageDigest() {
+    CredentialHandler ch = credentialHandler;
+    if (ch instanceof MessageDigestCredentialHandler) {
+        return ((MessageDigestCredentialHandler) ch).getAlgorithm() != null;
+    }
+    return false;
+}

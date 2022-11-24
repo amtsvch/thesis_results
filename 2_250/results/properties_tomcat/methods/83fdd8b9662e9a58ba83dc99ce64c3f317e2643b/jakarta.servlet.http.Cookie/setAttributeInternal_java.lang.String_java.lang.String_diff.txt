@@ -1,0 +1,11 @@
+                                                                                                     | private void setAttributeInternal(String name, String value) {                                      
+                                                                                                     | if (attributes == null) {                                                                           
+                                                                                                     | if (value == null) {                                                                                
+                                                                                                     | return;                                                                                             
+                                                                                                     | } else {                                                                                            
+                                                                                                     | // Case insensitive keys but retain case used                                                       
+                                                                                                     | attributes = new TreeMap&lt;&gt;(String.CASE_INSENSITIVE_ORDER);                                    
+                                                                                                     | }                                                                                                   
+                                                                                                     | }                                                                                                   
+                                                                                                     | attributes.put(name, value);                                                                        
+                                                                                                     | }                                                                                                   

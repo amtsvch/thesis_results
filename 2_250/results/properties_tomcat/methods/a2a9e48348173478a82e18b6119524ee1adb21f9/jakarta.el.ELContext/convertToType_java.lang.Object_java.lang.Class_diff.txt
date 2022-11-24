@@ -1,0 +1,29 @@
+/**                                                                                                    /**                                                                                                 
+* Coerce the supplied object to the requested type.                                                    * Coerce the supplied object to the requested type.                                                 
+*                                                                                                      *                                                                                                   
+* @param obj  The object to be coerced                                                                 * @param obj  The object to be coerced                                                              
+* @param type The type to which the object should be coerced                                           * @param type The type to which the object should be coerced                                        
+*                                                                                                      *                                                                                                   
+* @return An instance of the requested type.                                                           * @return An instance of the requested type.                                                        
+*                                                                                                      *                                                                                                   
+* @throws ELException                                                                                  * @throws ELException                                                                               
+*              If the conversion fails                                                                 *              If the conversion fails                                                              
+*                                                                                                      *                                                                                                   
+* @since EL 3.0                                                                                        * @since EL 3.0                                                                                     
+*/                                                                                                     */                                                                                                  
+public Object convertToType(Object obj, Class&lt;?&gt; type) {                                       | public &lt;T&gt; T convertToType(Object obj, Class&lt;T&gt; type) {                                 
+boolean originalResolved = isPropertyResolved();                                                       boolean originalResolved = isPropertyResolved();                                                    
+setPropertyResolved(false);                                                                            setPropertyResolved(false);                                                                         
+try {                                                                                                  try {                                                                                               
+ELResolver resolver = getELResolver();                                                                 ELResolver resolver = getELResolver();                                                              
+if (resolver != null) {                                                                                if (resolver != null) {                                                                             
+Object result = resolver.convertToType(this, obj, type);                                             | T result = resolver.convertToType(this, obj, type);                                                 
+if (isPropertyResolved()) {                                                                            if (isPropertyResolved()) {                                                                         
+return result;                                                                                         return result;                                                                                      
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+} finally {                                                                                            } finally {                                                                                         
+setPropertyResolved(originalResolved);                                                                 setPropertyResolved(originalResolved);                                                              
+}                                                                                                      }                                                                                                   
+return ELManager.getExpressionFactory().coerceToType(obj, type);                                       return ELManager.getExpressionFactory().coerceToType(obj, type);                                    
+}                                                                                                      }                                                                                                   

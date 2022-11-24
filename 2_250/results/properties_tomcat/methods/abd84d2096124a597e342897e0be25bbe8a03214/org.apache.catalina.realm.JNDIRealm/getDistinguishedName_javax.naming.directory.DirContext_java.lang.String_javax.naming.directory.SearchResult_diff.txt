@@ -1,0 +1,51 @@
+/**
+ * Returns the distinguished name of a search result.
+ *
+ * @param context Our DirContext
+ * @param base The base DN
+ * @param result The search result
+ * @return String containing the distinguished name
+ * @exception NamingException if a directory server error occurs
+ */
+protected String getDistinguishedName(DirContext context, String base, SearchResult result) throws NamingException {
+    // Get the entry's distinguished name.  For relative results, this means
+    // we need to composite a name with the base name, the context name, and
+    // the result name.  For non-relative names, use the returned name.
+    String resultName = result.getName();
+    Name name;
+    if (result.isRelative()) {
+        if (containerLog.isTraceEnabled()) {
+            containerLog.trace("  search returned relative name: " + resultName);
+        }
+        NameParser parser = context.getNameParser("");
+        Name contextName = parser.parse(context.getNameInNamespace());
+        Name baseName = parser.parse(base);
+        // Bugzilla 32269
+        Name entryName = parser.parse(new CompositeName(resultName).get(0));
+        name = contextName.addAll(baseName);
+        name = name.addAll(entryName);
+    } else {
+        if (containerLog.isTraceEnabled()) {
+            containerLog.trace("  search returned absolute name: " + resultName);
+        }
+        try {
+            // Normalize the name by running it through the name parser.
+            NameParser parser = context.getNameParser("");
+            URI userNameUri = new URI(resultName);
+            String pathComponent = userNameUri.getPath();
+            // Should not ever have an empty path component, since that is /{DN}
+            if (pathComponent.length() < 1) {
+                throw new InvalidNameException("Search returned unparseable absolute name: " + resultName);
+            }
+            name = parser.parse(pathComponent.substring(1));
+        } catch (URISyntaxException e) {
+            throw new InvalidNameException("Search returned unparseable absolute name: " + resultName);
+        }
+    }
+    if (getForceDnHexEscape()) {
+        // Bug 63026
+        return convertToHexEscape(name.toString());
+    } else {
+        return name.toString();
+    }
+}

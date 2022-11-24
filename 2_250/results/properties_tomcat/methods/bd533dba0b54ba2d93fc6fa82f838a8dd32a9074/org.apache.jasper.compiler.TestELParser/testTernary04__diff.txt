@@ -1,0 +1,4 @@
+@Test
+public void testTernary04() throws JasperException {
+    doTestParser(" ${ a eq 1 ? true : false } ", null);
+}

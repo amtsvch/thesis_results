@@ -1,0 +1,12 @@
+@Test
+public void testCheckPreFlightRequestTypeOriginNotAllowed() throws ServletException, IOException {
+    TesterHttpServletRequest request = new TesterHttpServletRequest();
+    TesterHttpServletResponse response = new TesterHttpServletResponse();
+    request.setHeader(CorsFilter.REQUEST_HEADER_ORIGIN, "www.ebay.com");
+    request.setHeader(CorsFilter.REQUEST_HEADER_ACCESS_CONTROL_REQUEST_METHOD, "PUT");
+    request.setMethod("OPTIONS");
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getSecureFilterConfig());
+    corsFilter.doFilter(request, response, filterChain);
+    Assert.assertEquals(HttpServletResponse.SC_FORBIDDEN, response.getStatus());
+}

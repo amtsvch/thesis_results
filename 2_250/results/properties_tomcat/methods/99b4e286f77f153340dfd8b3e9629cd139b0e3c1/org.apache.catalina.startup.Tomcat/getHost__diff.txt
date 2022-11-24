@@ -1,0 +1,10 @@
+public Host getHost() {
+    Engine engine = getEngine();
+    if (engine.findChildren().length > 0) {
+        return (Host) engine.findChildren()[0];
+    }
+    Host host = new StandardHost();
+    host.setName(hostname);
+    getEngine().addChild(host);
+    return host;
+}

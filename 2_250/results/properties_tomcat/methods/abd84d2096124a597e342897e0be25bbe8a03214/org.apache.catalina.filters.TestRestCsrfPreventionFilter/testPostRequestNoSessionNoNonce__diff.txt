@@ -1,0 +1,6 @@
+@Test
+public void testPostRequestNoSessionNoNonce() throws Exception {
+    setRequestExpectations(POST_METHOD, null, null);
+    filter.doFilter(request, response, filterChain);
+    verifyDenyResponse(HttpServletResponse.SC_FORBIDDEN);
+}

@@ -1,0 +1,10 @@
+@Test
+public void testSetCharacterEncoding05() {
+    Response response = setupResponse();
+    // Check calling with null
+    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
+    response.setCharacterEncoding(UTF_8);
+    Assert.assertEquals(UTF_8, response.getCharacterEncoding());
+    response.setCharacterEncoding(null);
+    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
+}

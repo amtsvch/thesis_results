@@ -1,0 +1,13 @@
+/**
+ * Sub-classes wishing to perform additional initialization should override
+ * this method, ensuring that super.initInternal() is the first call in the
+ * overriding method.
+ */
+@Override
+protected void initInternal() throws LifecycleException {
+    // If oname is not null then registration has already happened via
+    // preRegister().
+    if (oname == null) {
+        oname = register(this, getObjectNameKeyProperties());
+    }
+}

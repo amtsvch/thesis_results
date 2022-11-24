@@ -1,0 +1,6 @@
+@Test
+public void testSimple1() throws Exception {
+    SSIMediator mediator = new SSIMediator(new TesterSSIExternalResolver(), LAST_MODIFIED);
+    ExpressionParseTree ept = new ExpressionParseTree("a = a", mediator);
+    Assert.assertTrue(ept.evaluateTree());
+}

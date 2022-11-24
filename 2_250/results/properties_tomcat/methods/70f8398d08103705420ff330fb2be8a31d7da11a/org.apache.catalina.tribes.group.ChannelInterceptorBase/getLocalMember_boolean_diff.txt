@@ -1,0 +1,13 @@
+/**                                                                                                    /**                                                                                                 
+* Return the member that represents this node.                                                         * Return the member that represents this node.                                                      
+*                                                                                                      *                                                                                                   
+* @return Member                                                                                       * @return Member                                                                                    
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public Member getLocalMember(boolean incAlive) {                                                       public Member getLocalMember(boolean incAlive) {                                                    
+if (getNext() != null)                                                                               | if (getNext() != null) {                                                                            
+return getNext().getLocalMember(incAlive);                                                             return getNext().getLocalMember(incAlive);                                                          
+else                                                                                                 | } else {                                                                                            
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

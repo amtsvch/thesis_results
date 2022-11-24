@@ -1,0 +1,26 @@
+// --------------------------------------------------------- Public Methods
+/**
+ * Add a new Connector to the set of defined Connectors, and associate it
+ * with this Service's Container.
+ *
+ * @param connector The Connector to be added
+ */
+@Override
+public void addConnector(Connector connector) {
+    synchronized (connectorsLock) {
+        connector.setService(this);
+        Connector[] results = new Connector[connectors.length + 1];
+        System.arraycopy(connectors, 0, results, 0, connectors.length);
+        results[connectors.length] = connector;
+        connectors = results;
+    }
+    try {
+        if (getState().isAvailable()) {
+            connector.start();
+        }
+    } catch (LifecycleException e) {
+        throw new IllegalArgumentException(sm.getString("standardService.connector.startFailed", connector), e);
+    }
+    // Report this property change to interested listeners
+    support.firePropertyChange("connector", null, connector);
+}

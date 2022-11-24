@@ -1,0 +1,7 @@
+public void addTaglib(String uri, String location) {
+    if (taglibs.containsKey(uri)) {
+        // Taglib URIs must be unique within a web(-fragment).xml
+        throw new IllegalArgumentException(sm.getString("webXml.duplicateTaglibUri", uri));
+    }
+    taglibs.put(uri, location);
+}

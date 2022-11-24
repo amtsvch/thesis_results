@@ -1,0 +1,4 @@
+public Object getValue(String expression, Class&lt;?&gt; expectedType) {                             | public &lt;T&gt; T getValue(String expression, Class&lt;T&gt; expectedType) {                       
+ValueExpression ve = factory.createValueExpression(context, bracket(expression), expectedType);        ValueExpression ve = factory.createValueExpression(context, bracket(expression), expectedType);     
+return ve.getValue(context);                                                                           return ve.getValue(context);                                                                        
+}                                                                                                      }                                                                                                   

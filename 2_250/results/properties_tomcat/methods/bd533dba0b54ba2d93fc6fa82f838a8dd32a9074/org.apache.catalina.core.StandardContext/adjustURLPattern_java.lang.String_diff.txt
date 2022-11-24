@@ -1,0 +1,25 @@
+// ------------------------------------------------------ Protected Methods
+/**
+ * Adjust the URL pattern to begin with a leading slash, if appropriate
+ * (i.e. we are running a servlet 2.2 application).  Otherwise, return
+ * the specified URL pattern unchanged.
+ *
+ * @param urlPattern The URL pattern to be adjusted (if needed)
+ *  and returned
+ * @return the URL pattern with a leading slash if needed
+ */
+protected String adjustURLPattern(String urlPattern) {
+    if (urlPattern == null) {
+        return urlPattern;
+    }
+    if (urlPattern.startsWith("/") || urlPattern.startsWith("*.")) {
+        return urlPattern;
+    }
+    if (!isServlet22()) {
+        return urlPattern;
+    }
+    if (log.isDebugEnabled()) {
+        log.debug(sm.getString("standardContext.urlPattern.patternWarning", urlPattern));
+    }
+    return "/" + urlPattern;
+}

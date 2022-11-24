@@ -1,0 +1,4 @@
+@Test
+public void testRequestTargetLargeInvalid() {
+    Assert.assertTrue(HttpParser.isNotRequestTarget(Integer.MAX_VALUE));
+}

@@ -1,0 +1,6 @@
+@Test
+public void testDefineFunctionMethod01() throws Exception {
+    ELProcessor elp = new ELProcessor();
+    elp.defineFunction("fn", "toBoolean", Boolean.class.getMethod("valueOf", String.class));
+    Assert.assertEquals(Boolean.valueOf(true), elp.eval("fn:toBoolean(true)"));
+}

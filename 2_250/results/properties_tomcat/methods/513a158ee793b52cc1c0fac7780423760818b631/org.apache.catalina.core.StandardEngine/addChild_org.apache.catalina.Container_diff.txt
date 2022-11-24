@@ -1,0 +1,14 @@
+// --------------------------------------------------------- Public Methods                            // --------------------------------------------------------- Public Methods                         
+/**                                                                                                    /**                                                                                                 
+* Add a child Container, only if the proposed child is an implementation                               * Add a child Container, only if the proposed child is an implementation                            
+* of Host.                                                                                             * of Host.                                                                                          
+*                                                                                                      *                                                                                                   
+* @param child Child container to be added                                                             * @param child Child container to be added                                                          
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void addChild(Container child) {                                                                public void addChild(Container child) {                                                             
+if (!(child instanceof Host))                                                                        | if (!(child instanceof Host)) {                                                                     
+throw new IllegalArgumentException(sm.getString("standardEngine.notHost"));                            throw new IllegalArgumentException(sm.getString("standardEngine.notHost"));                         
+                                                                                                     | }                                                                                                   
+super.addChild(child);                                                                                 super.addChild(child);                                                                              
+}                                                                                                      }                                                                                                   

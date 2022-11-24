@@ -1,0 +1,7 @@
+private void doTestVary(String input, Set<String> expectedTokens, boolean expectedResult) throws IOException {
+    StringReader reader = new StringReader(input);
+    Set<String> tokens = new HashSet<>();
+    boolean result = TokenList.parseTokenList(reader, tokens);
+    Assert.assertEquals(expectedTokens, tokens);
+    Assert.assertEquals(Boolean.valueOf(expectedResult), Boolean.valueOf(result));
+}

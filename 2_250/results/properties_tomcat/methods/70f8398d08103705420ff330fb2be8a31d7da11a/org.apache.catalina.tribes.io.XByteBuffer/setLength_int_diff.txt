@@ -1,0 +1,6 @@
+public void setLength(int size) {                                                                      public void setLength(int size) {                                                                   
+if (size &gt; buf.length)                                                                            | if (size &gt; buf.length) {                                                                         
+throw new ArrayIndexOutOfBoundsException(sm.getString("xByteBuffer.size.larger.buffer"));              throw new ArrayIndexOutOfBoundsException(sm.getString("xByteBuffer.size.larger.buffer"));           
+                                                                                                     | }                                                                                                   
+bufSize = size;                                                                                        bufSize = size;                                                                                     
+}                                                                                                      }                                                                                                   

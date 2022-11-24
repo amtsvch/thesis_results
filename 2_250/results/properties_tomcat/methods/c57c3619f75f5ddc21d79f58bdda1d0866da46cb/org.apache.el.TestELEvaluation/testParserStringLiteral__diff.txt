@@ -1,0 +1,31 @@
+@Test
+public void testParserStringLiteral() {
+    // Inspired by work on bug 45451, comments from kkolinko on the dev
+    // list and looking at the spec to find some edge cases
+    // The only characters that can be escaped inside a String literal
+    // are \ " and '. # and $ are not escaped inside a String literal.
+    Assert.assertEquals("\\", evaluateExpression("${'\\\\'}"));
+    Assert.assertEquals("\\", evaluateExpression("${\"\\\\\"}"));
+    Assert.assertEquals("\\\"'$#", evaluateExpression("${'\\\\\\\"\\'$#'}"));
+    Assert.assertEquals("\\\"'$#", evaluateExpression("${\"\\\\\\\"\\'$#\"}"));
+    // Trying to quote # or $ should throw an error
+    Exception e = null;
+    try {
+        evaluateExpression("${'\\$'}");
+    } catch (ELException el) {
+        e = el;
+    }
+    Assert.assertNotNull(e);
+    Assert.assertEquals("\\$", evaluateExpression("${'\\\\$'}"));
+    Assert.assertEquals("\\\\$", evaluateExpression("${'\\\\\\\\$'}"));
+    // Can use ''' inside '"' when quoting with '"' and vice versa without
+    // escaping
+    Assert.assertEquals("\\\"", evaluateExpression("${'\\\\\"'}"));
+    Assert.assertEquals("\"\\", evaluateExpression("${'\"\\\\'}"));
+    Assert.assertEquals("\\'", evaluateExpression("${'\\\\\\''}"));
+    Assert.assertEquals("'\\", evaluateExpression("${'\\'\\\\'}"));
+    Assert.assertEquals("\\'", evaluateExpression("${\"\\\\'\"}"));
+    Assert.assertEquals("'\\", evaluateExpression("${\"'\\\\\"}"));
+    Assert.assertEquals("\\\"", evaluateExpression("${\"\\\\\\\"\"}"));
+    Assert.assertEquals("\"\\", evaluateExpression("${\"\\\"\\\\\"}"));
+}

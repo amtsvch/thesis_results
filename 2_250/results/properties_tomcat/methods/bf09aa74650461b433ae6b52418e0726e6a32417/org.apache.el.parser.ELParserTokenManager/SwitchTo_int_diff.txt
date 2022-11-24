@@ -1,0 +1,10 @@
+/**                                                                                                    /**                                                                                                 
+* Switch to specified lex state.                                                                       * Switch to specified lex state.                                                                    
+*/                                                                                                     */                                                                                                  
+public void SwitchTo(int lexState) {                                                                   public void SwitchTo(int lexState) {                                                                
+if (lexState &gt;= 3 || lexState &lt; 0)                                                             | if (lexState &gt;= 3 || lexState &lt; 0) {                                                          
+throw new TokenMgrError("Error: Ignoring invalid lexical state : " + lexState + ". State unchanged."   throw new TokenMgrError("Error: Ignoring invalid lexical state : " + lexState + ". State unchanged."
+else                                                                                                 | } else {                                                                                            
+curLexState = lexState;                                                                                curLexState = lexState;                                                                             
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

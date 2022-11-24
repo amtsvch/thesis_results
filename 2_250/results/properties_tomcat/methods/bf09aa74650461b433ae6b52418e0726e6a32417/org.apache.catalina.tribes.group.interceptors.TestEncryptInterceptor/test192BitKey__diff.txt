@@ -1,0 +1,10 @@
+@Test
+public void test192BitKey() throws Exception {
+    Assume.assumeTrue("Skipping test192BitKey because the JVM does not support it", 192 <= Cipher.getMaxAllowedKeyLength("AES"));
+    src.setEncryptionKey(encryptionKey192);
+    dest.setEncryptionKey(encryptionKey192);
+    src.start(Channel.SND_TX_SEQ);
+    dest.start(Channel.SND_TX_SEQ);
+    String testInput = "The quick brown fox jumps over the lazy dog.";
+    Assert.assertEquals("Failed to set custom provider name", testInput, roundTrip(testInput, src, dest));
+}

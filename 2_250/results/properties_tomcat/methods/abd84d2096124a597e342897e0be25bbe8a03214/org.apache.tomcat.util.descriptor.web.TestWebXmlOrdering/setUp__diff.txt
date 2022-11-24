@@ -1,0 +1,24 @@
+@Before
+public void setUp() {
+    app = new WebXml();
+    a = new WebXml();
+    a.setName("a");
+    b = new WebXml();
+    b.setName("b");
+    c = new WebXml();
+    c.setName("c");
+    d = new WebXml();
+    d.setName("d");
+    e = new WebXml();
+    e.setName("e");
+    f = new WebXml();
+    f.setName("f");
+    // Control the input order
+    fragments = new LinkedHashMap<>();
+    fragments.put("a", a);
+    fragments.put("b", b);
+    fragments.put("c", c);
+    fragments.put("d", d);
+    fragments.put("e", e);
+    fragments.put("f", f);
+}

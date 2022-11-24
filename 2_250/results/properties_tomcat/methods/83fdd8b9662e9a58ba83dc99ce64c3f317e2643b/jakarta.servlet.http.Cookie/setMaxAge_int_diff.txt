@@ -1,0 +1,20 @@
+/**                                                                                                    /**                                                                                                 
+* Sets the maximum age of the cookie in seconds.                                                       * Sets the maximum age of the cookie in seconds.                                                    
+* &lt;p&gt;                                                                                            * &lt;p&gt;                                                                                         
+* A positive value indicates that the cookie will expire after that many                               * A positive value indicates that the cookie will expire after that many                            
+* seconds have passed. Note that the value is the &lt;i&gt;maximum&lt;/i&gt; age when                  * seconds have passed. Note that the value is the &lt;i&gt;maximum&lt;/i&gt; age when               
+* the cookie will expire, not the cookie's current age.                                                * the cookie will expire, not the cookie's current age.                                             
+* &lt;p&gt;                                                                                            * &lt;p&gt;                                                                                         
+* A negative value means that the cookie is not stored persistently and                                * A negative value means that the cookie is not stored persistently and                             
+* will be deleted when the Web browser exits. A zero value causes the                                  * will be deleted when the Web browser exits. A zero value causes the                               
+* cookie to be deleted.                                                                                * cookie to be deleted.                                                                             
+*                                                                                                      *                                                                                                   
+* @param expiry                                                                                        * @param expiry                                                                                     
+*            an integer specifying the maximum age of the cookie in                                    *            an integer specifying the maximum age of the cookie in                                 
+*            seconds; if negative, means the cookie is not stored; if zero,                            *            seconds; if negative, means the cookie is not stored; if zero,                         
+*            deletes the cookie                                                                        *            deletes the cookie                                                                     
+* @see #getMaxAge                                                                                      * @see #getMaxAge                                                                                   
+*/                                                                                                     */                                                                                                  
+public void setMaxAge(int expiry) {                                                                    public void setMaxAge(int expiry) {                                                                 
+maxAge = expiry;                                                                                     | setAttributeInternal(MAX_AGE, Integer.toString(expiry));                                            
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,13 @@
+public void importPackage(String name) {
+    // Import ambiguity is handled at resolution, not at import
+    // Whether the package exists is not checked,
+    // a) for sake of performance when used in JSPs (BZ 57142),
+    // b) java.lang.Package.getPackage(name) is not reliable (BZ 57574),
+    // c) such check is not required by specification.
+    Set<String> preloaded = standardPackages.get(name);
+    if (preloaded == null) {
+        packageNames.put(name, Collections.emptySet());
+    } else {
+        packageNames.put(name, preloaded);
+    }
+}

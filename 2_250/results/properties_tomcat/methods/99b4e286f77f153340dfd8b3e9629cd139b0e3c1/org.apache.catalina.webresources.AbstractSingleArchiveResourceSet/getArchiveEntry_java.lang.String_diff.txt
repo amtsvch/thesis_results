@@ -1,0 +1,15 @@
+@Override
+protected JarEntry getArchiveEntry(String pathInArchive) {
+    JarFile jarFile = null;
+    try {
+        jarFile = openJarFile();
+        return jarFile.getJarEntry(pathInArchive);
+    } catch (IOException ioe) {
+        // Should never happen
+        throw new IllegalStateException(ioe);
+    } finally {
+        if (jarFile != null) {
+            closeJarFile();
+        }
+    }
+}

@@ -1,0 +1,21 @@
+/*
+     * See Bug 58284
+     */
+@Test
+public void serializeSkipsNonSerializableAttributes() throws Exception {
+    final String nonSerializableKey = "nonSerializable";
+    final String nestedNonSerializableKey = "nestedNonSerializable";
+    final String serializableKey = "serializable";
+    final Object serializableValue = "foo";
+    StandardSession s1 = new StandardSession(TEST_MANAGER);
+    s1.setValid(true);
+    Map<String, NonSerializable> value = new HashMap<>();
+    value.put("key", new NonSerializable());
+    s1.setAttribute(nestedNonSerializableKey, value);
+    s1.setAttribute(serializableKey, serializableValue);
+    s1.setAttribute(nonSerializableKey, new NonSerializable());
+    StandardSession s2 = serializeThenDeserialize(s1);
+    Assert.assertNull(s2.getAttribute(nestedNonSerializableKey));
+    Assert.assertNull(s2.getAttribute(nonSerializableKey));
+    Assert.assertEquals(serializableValue, s2.getAttribute(serializableKey));
+}

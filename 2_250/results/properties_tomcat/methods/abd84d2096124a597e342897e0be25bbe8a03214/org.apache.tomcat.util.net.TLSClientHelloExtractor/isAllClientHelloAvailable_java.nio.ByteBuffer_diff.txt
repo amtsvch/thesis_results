@@ -1,0 +1,6 @@
+private static boolean isAllClientHelloAvailable(ByteBuffer bb) {
+    // Next three bytes (unsigned) are the size of the client hello. We need
+    // all of it.
+    int size = ((bb.get() & 0xFF) << 16) + ((bb.get() & 0xFF) << 8) + (bb.get() & 0xFF);
+    return isAvailable(bb, size);
+}

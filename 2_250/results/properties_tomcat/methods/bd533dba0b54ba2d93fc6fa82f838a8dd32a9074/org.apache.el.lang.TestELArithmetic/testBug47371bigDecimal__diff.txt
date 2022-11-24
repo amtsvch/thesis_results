@@ -1,0 +1,4 @@
+@Test
+public void testBug47371bigDecimal() throws Exception {
+    Assert.assertEquals(BigDecimal.valueOf(1), ELArithmetic.add("", BigDecimal.valueOf(1)));
+}

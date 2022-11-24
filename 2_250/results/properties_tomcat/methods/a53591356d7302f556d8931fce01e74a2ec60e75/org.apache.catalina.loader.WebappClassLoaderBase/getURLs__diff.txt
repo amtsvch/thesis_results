@@ -1,0 +1,17 @@
+/**
+ * {@inheritDoc}
+ * <p>
+ * Note that list of URLs returned by this method may not be complete. The
+ * web application class loader accesses class loader resources via the
+ * {@link WebResourceRoot} which supports the arbitrary mapping of
+ * additional files, directories and contents of JAR files under
+ * WEB-INF/classes. Any such resources will not be included in the URLs
+ * returned here.
+ */
+@Override
+public URL[] getURLs() {
+    ArrayList<URL> result = new ArrayList<>();
+    result.addAll(localRepositories);
+    result.addAll(Arrays.asList(super.getURLs()));
+    return result.toArray(new URL[0]);
+}

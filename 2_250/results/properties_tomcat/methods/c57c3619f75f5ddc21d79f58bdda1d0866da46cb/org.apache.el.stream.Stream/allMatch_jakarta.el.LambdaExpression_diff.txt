@@ -1,0 +1,10 @@
+public Optional allMatch(LambdaExpression le) {
+    if (!iterator.hasNext()) {
+        return Optional.EMPTY;
+    }
+    Boolean match = Boolean.TRUE;
+    while (match.booleanValue() && iterator.hasNext()) {
+        match = (Boolean) le.invoke(iterator.next());
+    }
+    return new Optional(match);
+}

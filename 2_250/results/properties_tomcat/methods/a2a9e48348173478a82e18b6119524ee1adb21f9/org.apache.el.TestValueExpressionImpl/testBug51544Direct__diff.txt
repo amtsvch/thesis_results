@@ -1,0 +1,14 @@
+/*
+     * Test using list directly as variable.
+     */
+@Test
+public void testBug51544Direct() throws Exception {
+    ExpressionFactory factory = ExpressionFactory.newInstance();
+    ELContext context = new ELContextImpl(factory);
+    List<?> list = Collections.emptyList();
+    ValueExpression var = factory.createValueExpression(list, List.class);
+    context.getVariableMapper().setVariable("list", var);
+    ValueExpression ve = factory.createValueExpression(context, "${list.size()}", Integer.class);
+    Integer result = (Integer) ve.getValue(context);
+    Assert.assertEquals(Integer.valueOf(0), result);
+}

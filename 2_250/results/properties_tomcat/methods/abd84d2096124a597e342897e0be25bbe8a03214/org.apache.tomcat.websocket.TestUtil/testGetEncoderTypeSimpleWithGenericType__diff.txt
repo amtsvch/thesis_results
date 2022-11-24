@@ -1,0 +1,4 @@
+@Test
+public void testGetEncoderTypeSimpleWithGenericType() {
+    Assert.assertEquals(List.class, Util.getEncoderType(SimpleEncoderWithGenericType.class));
+}

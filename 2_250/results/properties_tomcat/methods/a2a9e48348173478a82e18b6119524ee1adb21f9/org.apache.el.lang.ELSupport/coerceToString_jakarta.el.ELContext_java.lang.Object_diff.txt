@@ -1,0 +1,28 @@
+/**
+ * Coerce an object to a string.
+ * @param ctx the context in which this conversion is taking place
+ * @param obj the object to convert
+ * @return the String value of the object
+ */
+public static final String coerceToString(final ELContext ctx, final Object obj) {
+    if (ctx != null) {
+        boolean originalIsPropertyResolved = ctx.isPropertyResolved();
+        try {
+            Object result = ctx.getELResolver().convertToType(ctx, obj, String.class);
+            if (ctx.isPropertyResolved()) {
+                return (String) result;
+            }
+        } finally {
+            ctx.setPropertyResolved(originalIsPropertyResolved);
+        }
+    }
+    if (obj == null) {
+        return "";
+    } else if (obj instanceof String) {
+        return (String) obj;
+    } else if (obj instanceof Enum<?>) {
+        return ((Enum<?>) obj).name();
+    } else {
+        return obj.toString();
+    }
+}

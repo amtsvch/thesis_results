@@ -1,0 +1,12 @@
+/**
+ * Return the Context within which this Request is being processed.
+ * <p>
+ * This is available as soon as the appropriate Context is identified.
+ * Note that availability of a Context allows <code>getContextPath()</code>
+ * to return a value, and thus enables parsing of the request URI.
+ *
+ * @return the Context mapped with the request
+ */
+public Context getContext() {
+    return mappingData.context;
+}

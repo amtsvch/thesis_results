@@ -1,0 +1,28 @@
+public static JmxRegistry getRegistry(Channel channel) {                                               public static JmxRegistry getRegistry(Channel channel) {                                            
+if (channel == null || channel.getName() == null) {                                                    if (channel == null || channel.getName() == null) {                                                 
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   
+JmxRegistry registry = registryCache.get(channel.getName());                                           JmxRegistry registry = registryCache.get(channel.getName());                                        
+if (registry != null)                                                                                | if (registry != null) {                                                                             
+return registry;                                                                                       return registry;                                                                                    
+if (!(channel instanceof JmxChannel))                                                                | }                                                                                                   
+                                                                                                     | if (!(channel instanceof JmxChannel)) {                                                             
+return null;                                                                                           return null;                                                                                        
+                                                                                                     | }                                                                                                   
+JmxChannel jmxChannel = (JmxChannel) channel;                                                          JmxChannel jmxChannel = (JmxChannel) channel;                                                       
+if (!jmxChannel.isJmxEnabled())                                                                      | if (!jmxChannel.isJmxEnabled()) {                                                                   
+return null;                                                                                           return null;                                                                                        
+                                                                                                     | }                                                                                                   
+ObjectName baseOn = createBaseObjectName(jmxChannel.getJmxDomain(), jmxChannel.getJmxPrefix(), chann   ObjectName baseOn = createBaseObjectName(jmxChannel.getJmxDomain(), jmxChannel.getJmxPrefix(), chann
+if (baseOn == null)                                                                                  | if (baseOn == null) {                                                                               
+return null;                                                                                           return null;                                                                                        
+                                                                                                     | }                                                                                                   
+// create registry                                                                                     // create registry                                                                                  
+registry = new JmxRegistry();                                                                          registry = new JmxRegistry();                                                                       
+registry.baseOname = baseOn;                                                                           registry.baseOname = baseOn;                                                                        
+// It doesn't matter if existing object gets over-written. This object                                 // It doesn't matter if existing object gets over-written. This object                              
+// holds minimal state and that state will be the same for all objects                                 // holds minimal state and that state will be the same for all objects                              
+// created for the same channel.                                                                       // created for the same channel.                                                                    
+registryCache.put(channel.getName(), registry);                                                        registryCache.put(channel.getName(), registry);                                                     
+return registry;                                                                                       return registry;                                                                                    
+}                                                                                                      }                                                                                                   

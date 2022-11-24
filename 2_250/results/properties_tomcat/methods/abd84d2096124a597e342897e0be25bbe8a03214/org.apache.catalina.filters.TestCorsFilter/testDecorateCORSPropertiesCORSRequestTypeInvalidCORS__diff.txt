@@ -1,0 +1,6 @@
+@Test
+public void testDecorateCORSPropertiesCORSRequestTypeInvalidCORS() {
+    TesterHttpServletRequest request = new TesterHttpServletRequest();
+    CorsFilter.decorateCORSProperties(request, CorsFilter.CORSRequestType.INVALID_CORS);
+    Assert.assertNull(request.getAttribute(CorsFilter.HTTP_REQUEST_ATTRIBUTE_IS_CORS_REQUEST));
+}

@@ -1,0 +1,5 @@
+@Test
+public void testAbsolutePathRelaxedLargeInvalid() {
+    HttpParser httpParser = new HttpParser(null, null);
+    Assert.assertFalse(httpParser.isAbsolutePathRelaxed(Integer.MAX_VALUE));
+}

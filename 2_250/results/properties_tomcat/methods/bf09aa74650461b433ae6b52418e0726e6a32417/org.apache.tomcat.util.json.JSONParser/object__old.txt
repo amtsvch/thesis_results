@@ -1,0 +1,55 @@
+final public java.util.LinkedHashMap<String, Object> object() throws ParseException {
+    final java.util.LinkedHashMap<String, Object> map = new java.util.LinkedHashMap<String, Object>();
+    String key;
+    Object value;
+    jj_consume_token(BRACE_OPEN);
+    switch(jj_nt.kind) {
+        case NUMBER_INTEGER:
+        case NUMBER_DECIMAL:
+        case TRUE:
+        case FALSE:
+        case NULL:
+        case STRING_SINGLE_EMPTY:
+        case STRING_DOUBLE_EMPTY:
+        case STRING_SINGLE_NONEMPTY:
+        case STRING_DOUBLE_NONEMPTY:
+        case SYMBOL:
+            {
+                key = objectKey();
+                jj_consume_token(COLON);
+                value = anything();
+                map.put(key, value);
+                key = null;
+                value = null;
+                label_1: while (true) {
+                    switch(jj_nt.kind) {
+                        case COMMA:
+                            {
+                                ;
+                                break;
+                            }
+                        default:
+                            jj_la1[3] = jj_gen;
+                            break label_1;
+                    }
+                    jj_consume_token(COMMA);
+                    key = objectKey();
+                    jj_consume_token(COLON);
+                    value = anything();
+                    map.put(key, value);
+                    key = null;
+                    value = null;
+                }
+                break;
+            }
+        default:
+            jj_la1[4] = jj_gen;
+            ;
+    }
+    jj_consume_token(BRACE_CLOSE);
+    {
+        if ("" != null)
+            return map;
+    }
+    throw new Error("Missing return statement in function");
+}

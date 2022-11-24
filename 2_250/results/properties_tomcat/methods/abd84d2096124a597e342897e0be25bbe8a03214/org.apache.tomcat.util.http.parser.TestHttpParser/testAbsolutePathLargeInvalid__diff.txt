@@ -1,0 +1,4 @@
+@Test
+public void testAbsolutePathLargeInvalid() {
+    Assert.assertFalse(HttpParser.isAbsolutePath(Integer.MAX_VALUE));
+}

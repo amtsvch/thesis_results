@@ -1,0 +1,6 @@
+@Test
+public void testBug57855d() {
+    MethodExpression me = factory.createMethodExpression(context, "${beanB.echo}", null, new Class[] { String.class });
+    Object r = me.invoke(context, new String[] { "aaa" });
+    Assert.assertEquals("aaa", r.toString());
+}

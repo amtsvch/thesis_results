@@ -1,0 +1,7 @@
+/**
+ * Tests varargs that come after an opening argument.
+ */
+@Test
+public void testJoinDelimited() {
+    Assert.assertEquals(foo.joinDelimited("-", "foo", "bar", "baz"), beanELResolver.invoke(elContext, foo, "joinDelimited", null, new Object[] { "-", "foo", "bar", "baz" }));
+}

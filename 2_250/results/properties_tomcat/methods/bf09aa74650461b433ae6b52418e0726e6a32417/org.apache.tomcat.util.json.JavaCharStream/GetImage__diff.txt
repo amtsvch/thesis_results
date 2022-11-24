@@ -1,0 +1,10 @@
+/**                                                                                                    /**                                                                                                 
+* @return token image as String                                                                        * @return token image as String                                                                     
+*/                                                                                                     */                                                                                                  
+public String GetImage() {                                                                             public String GetImage() {                                                                          
+if (bufpos &gt;= tokenBegin)                                                                         | if (bufpos &gt;= tokenBegin) {                                                                      
+return new String(buffer, tokenBegin, bufpos - tokenBegin + 1);                                        return new String(buffer, tokenBegin, bufpos - tokenBegin + 1);                                     
+else                                                                                                 | } else {                                                                                            
+return new String(buffer, tokenBegin, bufsize - tokenBegin) + new String(buffer, 0, bufpos + 1);       return new String(buffer, tokenBegin, bufsize - tokenBegin) + new String(buffer, 0, bufpos + 1);    
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

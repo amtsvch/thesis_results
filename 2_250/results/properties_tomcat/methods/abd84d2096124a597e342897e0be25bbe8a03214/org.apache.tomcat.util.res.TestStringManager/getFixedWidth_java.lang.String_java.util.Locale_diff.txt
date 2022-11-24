@@ -1,0 +1,19 @@
+private int getFixedWidth(String s, Locale l) {
+    if (CJK_LOCALES.contains(l)) {
+        // This isn't perfect but it is good enough for this test.
+        // The test assumes CJK characters are all displayed double width
+        // Ubuntu uses double width characters by default.
+        // Eclipse uses 1.5 width characters by default.
+        int len = 0;
+        for (char c : s.toCharArray()) {
+            if (c < 128) {
+                len++;
+            } else {
+                len += 2;
+            }
+        }
+        return len;
+    } else {
+        return s.length();
+    }
+}

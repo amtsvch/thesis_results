@@ -1,0 +1,9 @@
+@Test
+public void testHeaderNamesCaseInsensitivity() {
+    RemoteIpFilter.XForwardedRequest request = new RemoteIpFilter.XForwardedRequest(new MockHttpServletRequest());
+    request.setHeader("myheader", "lower Case");
+    request.setHeader("MYHEADER", "UPPER CASE");
+    request.setHeader("MyHeader", "Camel Case");
+    Assert.assertEquals(1, request.headers.size());
+    Assert.assertEquals("Camel Case", request.getHeader("myheader"));
+}

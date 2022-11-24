@@ -1,0 +1,9 @@
+@Test
+public void testSslClientCertIgnoredBegin() throws Exception {
+    String[] linesBegin = Arrays.copyOf(CERTIFICATE_LINES, CERTIFICATE_LINES.length);
+    linesBegin[0] = "3fisjcme3kdsakasdfsadkafsd3";
+    String begin = certificateSingleLine(linesBegin, " ");
+    mockRequest.setHeader(valve.getSslClientCertHeader(), begin);
+    valve.invoke(mockRequest, null);
+    assertCertificateParsed();
+}

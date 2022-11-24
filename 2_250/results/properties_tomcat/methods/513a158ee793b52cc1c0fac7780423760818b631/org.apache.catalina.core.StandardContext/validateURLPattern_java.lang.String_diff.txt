@@ -1,0 +1,32 @@
+/**                                                                                                    /**                                                                                                 
+* Validate the syntax of a proposed &lt;code&gt;&lt;url-pattern&gt;&lt;/code&gt;                       * Validate the syntax of a proposed &lt;code&gt;&lt;url-pattern&gt;&lt;/code&gt;                    
+* for conformance with specification requirements.                                                     * for conformance with specification requirements.                                                  
+*                                                                                                      *                                                                                                   
+* @param urlPattern URL pattern to be validated                                                        * @param urlPattern URL pattern to be validated                                                     
+* @return &lt;code&gt;true&lt;/code&gt; if the URL pattern is conformant                               * @return &lt;code&gt;true&lt;/code&gt; if the URL pattern is conformant                            
+*/                                                                                                     */                                                                                                  
+private boolean validateURLPattern(String urlPattern) {                                                private boolean validateURLPattern(String urlPattern) {                                             
+if (urlPattern == null)                                                                              | if (urlPattern == null) {                                                                           
+return false;                                                                                          return false;                                                                                       
+                                                                                                     | }                                                                                                   
+if (urlPattern.indexOf('\n') &gt;= 0 || urlPattern.indexOf('\r') &gt;= 0) {                            if (urlPattern.indexOf('\n') &gt;= 0 || urlPattern.indexOf('\r') &gt;= 0) {                         
+return false;                                                                                          return false;                                                                                       
+}                                                                                                      }                                                                                                   
+if (urlPattern.equals("")) {                                                                           if (urlPattern.equals("")) {                                                                        
+return true;                                                                                           return true;                                                                                        
+}                                                                                                      }                                                                                                   
+if (urlPattern.startsWith("*.")) {                                                                     if (urlPattern.startsWith("*.")) {                                                                  
+if (urlPattern.indexOf('/') &lt; 0) {                                                                  if (urlPattern.indexOf('/') &lt; 0) {                                                               
+checkUnusualURLPattern(urlPattern);                                                                    checkUnusualURLPattern(urlPattern);                                                                 
+return true;                                                                                           return true;                                                                                        
+} else                                                                                               | } else {                                                                                            
+return false;                                                                                          return false;                                                                                       
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+if (urlPattern.startsWith("/") && !urlPattern.contains("*.")) {                                        if (urlPattern.startsWith("/") && !urlPattern.contains("*.")) {                                     
+checkUnusualURLPattern(urlPattern);                                                                    checkUnusualURLPattern(urlPattern);                                                                 
+return true;                                                                                           return true;                                                                                        
+} else                                                                                               | } else {                                                                                            
+return false;                                                                                          return false;                                                                                       
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

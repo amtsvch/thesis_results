@@ -1,0 +1,36 @@
+// ------------------------------------------------------ Protected Methods
+/**
+ * Swap idle sessions out to Store if they are idle too long.
+ */
+protected void processMaxIdleSwaps() {
+    if (!getState().isAvailable() || maxIdleSwap < 0) {
+        return;
+    }
+    Session[] sessions = findSessions();
+    // Swap out all sessions idle longer than maxIdleSwap
+    if (maxIdleSwap >= 0) {
+        for (Session value : sessions) {
+            StandardSession session = (StandardSession) value;
+            synchronized (session) {
+                if (!session.isValid()) {
+                    continue;
+                }
+                int timeIdle = (int) (session.getIdleTimeInternal() / 1000L);
+                if (timeIdle >= maxIdleSwap && timeIdle >= minIdleSwap) {
+                    if (session.accessCount != null && session.accessCount.get() > 0) {
+                        // Session is currently being accessed - skip it
+                        continue;
+                    }
+                    if (log.isDebugEnabled()) {
+                        log.debug(sm.getString("persistentManager.swapMaxIdle", session.getIdInternal(), Integer.valueOf(timeIdle)));
+                    }
+                    try {
+                        swapOut(session);
+                    } catch (IOException e) {
+                        // This is logged in writeSession()
+                    }
+                }
+            }
+        }
+    }
+}

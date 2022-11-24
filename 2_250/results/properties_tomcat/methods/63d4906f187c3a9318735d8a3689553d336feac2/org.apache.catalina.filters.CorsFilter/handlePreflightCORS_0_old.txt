@@ -1,0 +1,54 @@
+/**
+ * Handles CORS pre-flight request.
+ *
+ * @param request The {@link HttpServletRequest} object.
+ * @param response The {@link HttpServletResponse} object.
+ * @param filterChain The {@link FilterChain} object.
+ * @throws IOException an IO error occurred
+ * @throws ServletException Servlet error propagation
+ */
+protected void handlePreflightCORS(final HttpServletRequest request, final HttpServletResponse response, final FilterChain filterChain) throws IOException, ServletException {
+    CORSRequestType requestType = checkRequestType(request);
+    if (requestType != CORSRequestType.PRE_FLIGHT) {
+        throw new IllegalArgumentException(sm.getString("corsFilter.wrongType1", CORSRequestType.PRE_FLIGHT.name().toLowerCase(Locale.ENGLISH)));
+    }
+    final String origin = request.getHeader(CorsFilter.REQUEST_HEADER_ORIGIN);
+    // Section 6.2.2
+    if (!isOriginAllowed(origin)) {
+        handleInvalidCORS(request, response, filterChain);
+        return;
+    }
+    // Section 6.2.3
+    String accessControlRequestMethod = request.getHeader(CorsFilter.REQUEST_HEADER_ACCESS_CONTROL_REQUEST_METHOD);
+    if (accessControlRequestMethod == null) {
+        handleInvalidCORS(request, response, filterChain);
+        return;
+    } else {
+        accessControlRequestMethod = accessControlRequestMethod.trim();
+    }
+    // Section 6.2.4
+    String accessControlRequestHeadersHeader = request.getHeader(CorsFilter.REQUEST_HEADER_ACCESS_CONTROL_REQUEST_HEADERS);
+    List<String> accessControlRequestHeaders = new LinkedList<>();
+    if (accessControlRequestHeadersHeader != null && !accessControlRequestHeadersHeader.trim().isEmpty()) {
+        String[] headers = accessControlRequestHeadersHeader.trim().split(",");
+        for (String header : headers) {
+            accessControlRequestHeaders.add(header.trim().toLowerCase(Locale.ENGLISH));
+        }
+    }
+    // Section 6.2.5
+    if (!allowedHttpMethods.contains(accessControlRequestMethod)) {
+        handleInvalidCORS(request, response, filterChain);
+        return;
+    }
+    // Section 6.2.6
+    if (!accessControlRequestHeaders.isEmpty()) {
+        for (String header : accessControlRequestHeaders) {
+            if (!allowedHttpHeaders.contains(header)) {
+                handleInvalidCORS(request, response, filterChain);
+                return;
+            }
+        }
+    }
+    addStandardHeaders(request, response);
+    // Do not forward the request down the filter chain.
+}

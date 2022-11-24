@@ -1,0 +1,9 @@
+/**
+ * Flush bytes or chars contained in the buffer.
+ *
+ * @throws IOException An underlying IOException occurred
+ */
+@Override
+public void flush() throws IOException {
+    doFlush(true);
+}

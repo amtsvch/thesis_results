@@ -1,0 +1,10 @@
+/**
+ * Set response status code that is used to reject denied request. If none
+ * set, the default value of 403 will be used.
+ *
+ * @param denyStatus
+ *            HTTP status code
+ */
+public void setDenyStatus(int denyStatus) {
+    this.denyStatus = denyStatus;
+}

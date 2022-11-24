@@ -1,0 +1,10 @@
+@Test
+public void testSetLocale01() {
+    Response response = setupResponse();
+    // Check multiple calls
+    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
+    response.setLocale(Locale.CHINESE);
+    Assert.assertEquals(UTF_8, response.getCharacterEncoding());
+    response.setLocale(Locale.ENGLISH);
+    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
+}

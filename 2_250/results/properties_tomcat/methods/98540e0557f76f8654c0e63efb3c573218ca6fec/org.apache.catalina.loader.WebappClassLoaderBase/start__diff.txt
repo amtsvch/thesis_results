@@ -1,0 +1,23 @@
+/**
+ * Start the class loader.
+ *
+ * @exception LifecycleException if a lifecycle error occurs
+ */
+@Override
+public void start() throws LifecycleException {
+    state = LifecycleState.STARTING_PREP;
+    WebResource[] classesResources = resources.getResources("/WEB-INF/classes");
+    for (WebResource classes : classesResources) {
+        if (classes.isDirectory() && classes.canRead()) {
+            localRepositories.add(classes.getURL());
+        }
+    }
+    WebResource[] jars = resources.listResources("/WEB-INF/lib");
+    for (WebResource jar : jars) {
+        if (jar.getName().endsWith(".jar") && jar.isFile() && jar.canRead()) {
+            localRepositories.add(jar.getURL());
+            jarModificationTimes.put(jar.getName(), Long.valueOf(jar.getLastModified()));
+        }
+    }
+    state = LifecycleState.STARTED;
+}

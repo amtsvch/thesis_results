@@ -1,0 +1,21 @@
+WsServerContainer(ServletContext servletContext) {
+    this.servletContext = servletContext;
+    setInstanceManager((InstanceManager) servletContext.getAttribute(InstanceManager.class.getName()));
+    // Configure servlet context wide defaults
+    String value = servletContext.getInitParameter(Constants.BINARY_BUFFER_SIZE_SERVLET_CONTEXT_INIT_PARAM);
+    if (value != null) {
+        setDefaultMaxBinaryMessageBufferSize(Integer.parseInt(value));
+    }
+    value = servletContext.getInitParameter(Constants.TEXT_BUFFER_SIZE_SERVLET_CONTEXT_INIT_PARAM);
+    if (value != null) {
+        setDefaultMaxTextMessageBufferSize(Integer.parseInt(value));
+    }
+    value = servletContext.getInitParameter(Constants.ENFORCE_NO_ADD_AFTER_HANDSHAKE_CONTEXT_INIT_PARAM);
+    if (value != null) {
+        setEnforceNoAddAfterHandshake(Boolean.parseBoolean(value));
+    }
+    FilterRegistration.Dynamic fr = servletContext.addFilter("Tomcat WebSocket (JSR356) Filter", new WsFilter());
+    fr.setAsyncSupported(true);
+    EnumSet<DispatcherType> types = EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD);
+    fr.addMappingForUrlPatterns(types, true, "/*");
+}

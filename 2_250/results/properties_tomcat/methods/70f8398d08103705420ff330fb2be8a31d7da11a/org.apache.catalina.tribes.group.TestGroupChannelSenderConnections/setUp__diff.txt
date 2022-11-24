@@ -1,0 +1,15 @@
+@Before
+@Override
+public void setUp() throws Exception {
+    super.setUp();
+    for (int i = 0; i < channels.length; i++) {
+        channels[i] = new GroupChannel();
+        channels[i].getMembershipService().setPayload(("Channel-" + (i + 1)).getBytes("ASCII"));
+        listeners[i] = new TestMsgListener(("Listener-" + (i + 1)));
+        channels[i].addChannelListener(listeners[i]);
+    }
+    TesterUtil.addRandomDomain(channels);
+    for (ManagedChannel channel : channels) {
+        channel.start(Channel.SND_RX_SEQ | Channel.SND_TX_SEQ);
+    }
+}

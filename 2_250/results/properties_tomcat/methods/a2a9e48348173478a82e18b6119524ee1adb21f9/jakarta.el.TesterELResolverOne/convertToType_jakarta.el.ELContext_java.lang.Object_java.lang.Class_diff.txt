@@ -1,0 +1,10 @@
+@Override                                                                                              @Override                                                                                           
+public Object convertToType(ELContext context, Object obj, Class&lt;?&gt; type) {                    | public &lt;T&gt; T convertToType(ELContext context, Object obj, Class&lt;T&gt; type) {              
+if ("1".equals(obj) && type == String.class) {                                                         if ("1".equals(obj) && type == String.class) {                                                      
+context.setPropertyResolved(obj, type);                                                                context.setPropertyResolved(obj, type);                                                             
+return "ONE";                                                                                        | @SuppressWarnings("unchecked")                                                                      
+                                                                                                     | T result = (T) "ONE";                                                                               
+                                                                                                     | return result;                                                                                      
+}                                                                                                      }                                                                                                   
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   

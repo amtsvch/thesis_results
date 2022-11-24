@@ -1,0 +1,23 @@
+@Override                                                                                              @Override                                                                                           
+public void run() {                                                                                    public void run() {                                                                                 
+while (doRunSender) {                                                                                  while (doRunSender) {                                                                               
+try {                                                                                                  try {                                                                                               
+send(true);                                                                                            send(true);                                                                                         
+errorCounter = 0;                                                                                      errorCounter = 0;                                                                                   
+} catch (Exception x) {                                                                                } catch (Exception x) {                                                                             
+if (errorCounter == 0)                                                                               | if (errorCounter == 0) {                                                                            
+log.warn(sm.getString("mcastServiceImpl.send.failed"), x);                                             log.warn(sm.getString("mcastServiceImpl.send.failed"), x);                                          
+else                                                                                                 | } else {                                                                                            
+log.debug("Unable to send mcast message.", x);                                                         log.debug("Unable to send mcast message.", x);                                                      
+                                                                                                     | }                                                                                                   
+if ((++errorCounter) &gt;= recoveryCounter) {                                                          if ((++errorCounter) &gt;= recoveryCounter) {                                                       
+errorCounter = 0;                                                                                      errorCounter = 0;                                                                                   
+RecoveryThread.recover(McastServiceImpl.this);                                                         RecoveryThread.recover(McastServiceImpl.this);                                                      
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+try {                                                                                                  try {                                                                                               
+Thread.sleep(time);                                                                                    Thread.sleep(time);                                                                                 
+} catch (Exception ignore) {                                                                           } catch (Exception ignore) {                                                                        
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

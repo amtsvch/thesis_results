@@ -1,0 +1,11 @@
+/**                                                                                                    /**                                                                                                 
+* Gets the flag that controls if this cookie will be hidden from scripts on                            * Gets the flag that controls if this cookie will be hidden from scripts on                         
+* the client side.                                                                                     * the client side.                                                                                  
+*                                                                                                      *                                                                                                   
+* @return  &lt;code&gt;true&lt;/code&gt; if the cookie is hidden from scripts, else                    * @return  &lt;code&gt;true&lt;/code&gt; if the cookie is hidden from scripts, else                 
+*          &lt;code&gt;false&lt;/code&gt;                                                              *          &lt;code&gt;false&lt;/code&gt;                                                           
+* @since Servlet 3.0                                                                                   * @since Servlet 3.0                                                                                
+*/                                                                                                     */                                                                                                  
+public boolean isHttpOnly() {                                                                          public boolean isHttpOnly() {                                                                       
+return httpOnly;                                                                                     | return Boolean.parseBoolean(getAttribute(HTTP_ONLY));                                               
+}                                                                                                      }                                                                                                   

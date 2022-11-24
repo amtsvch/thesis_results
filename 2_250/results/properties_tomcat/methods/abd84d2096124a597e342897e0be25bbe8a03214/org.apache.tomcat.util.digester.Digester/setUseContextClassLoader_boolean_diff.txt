@@ -1,0 +1,12 @@
+/**
+ * Determine whether to use the Context ClassLoader (the one found by
+ * calling <code>Thread.currentThread().getContextClassLoader()</code>)
+ * to resolve/load classes that are defined in various rules.  If not
+ * using Context ClassLoader, then the class-loading defaults to
+ * using the calling-class' ClassLoader.
+ *
+ * @param use determines whether to use Context ClassLoader.
+ */
+public void setUseContextClassLoader(boolean use) {
+    useContextClassLoader = use;
+}

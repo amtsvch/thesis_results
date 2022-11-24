@@ -1,0 +1,15 @@
+protected String formatDate(Date date, TimeZone timeZone) {
+    String retVal;
+    if (timeZone != null) {
+        // we temporarily change strftime. Since SSIMediator is inherently
+        // single-threaded, this
+        // isn't a problem
+        TimeZone oldTimeZone = strftime.getTimeZone();
+        strftime.setTimeZone(timeZone);
+        retVal = strftime.format(date);
+        strftime.setTimeZone(oldTimeZone);
+    } else {
+        retVal = strftime.format(date);
+    }
+    return retVal;
+}

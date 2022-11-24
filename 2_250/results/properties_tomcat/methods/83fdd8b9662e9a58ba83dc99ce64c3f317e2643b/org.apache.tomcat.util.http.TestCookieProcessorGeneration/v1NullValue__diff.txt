@@ -1,0 +1,6 @@
+@Test
+public void v1NullValue() {
+    Cookie cookie = new Cookie("foo", null);
+    cookie.setVersion(1);
+    doTest(cookie, "foo=\"\"; Version=1", "foo=");
+}

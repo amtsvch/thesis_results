@@ -1,0 +1,13 @@
+public void init() throws IOException {                                                                public void init() throws IOException {                                                             
+setupSocket();                                                                                         setupSocket();                                                                                      
+sendPacket = new DatagramPacket(new byte[MAX_PACKET_SIZE], MAX_PACKET_SIZE);                           sendPacket = new DatagramPacket(new byte[MAX_PACKET_SIZE], MAX_PACKET_SIZE);                        
+sendPacket.setAddress(address);                                                                        sendPacket.setAddress(address);                                                                     
+sendPacket.setPort(port);                                                                              sendPacket.setPort(port);                                                                           
+receivePacket = new DatagramPacket(new byte[MAX_PACKET_SIZE], MAX_PACKET_SIZE);                        receivePacket = new DatagramPacket(new byte[MAX_PACKET_SIZE], MAX_PACKET_SIZE);                     
+receivePacket.setAddress(address);                                                                     receivePacket.setAddress(address);                                                                  
+receivePacket.setPort(port);                                                                           receivePacket.setPort(port);                                                                        
+member.setCommand(new byte[0]);                                                                        member.setCommand(new byte[0]);                                                                     
+if (membership == null)                                                                              | if (membership == null) {                                                                           
+membership = new Membership(member);                                                                   membership = new Membership(member);                                                                
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

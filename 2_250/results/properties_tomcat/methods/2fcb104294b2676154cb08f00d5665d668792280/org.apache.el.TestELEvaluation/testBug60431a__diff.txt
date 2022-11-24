@@ -1,0 +1,4 @@
+@Test
+public void testBug60431a() {
+    Assert.assertEquals("OK", evaluateExpression("${fn:concat('O','K')}"));
+}

@@ -1,0 +1,18 @@
+@Override
+public Object getValue(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base == null || property == null) {
+        return null;
+    }
+    context.setPropertyResolved(base, property);
+    Method m = this.property(context, base, property).read(context, base);
+    try {
+        return m.invoke(base, (Object[]) null);
+    } catch (InvocationTargetException e) {
+        Throwable cause = e.getCause();
+        Util.handleThrowable(cause);
+        throw new ELException(Util.message(context, "propertyReadError", base.getClass().getName(), property.toString()), cause);
+    } catch (Exception e) {
+        throw new ELException(e);
+    }
+}

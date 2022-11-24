@@ -1,0 +1,5 @@
+@Test(expected = IllegalStateException.class)
+public void testSetHttpOnlyNotInitPhase() {
+    context.setState(LifecycleState.STARTED);
+    applicationSessionCookieConfig.setHttpOnly(true);
+}

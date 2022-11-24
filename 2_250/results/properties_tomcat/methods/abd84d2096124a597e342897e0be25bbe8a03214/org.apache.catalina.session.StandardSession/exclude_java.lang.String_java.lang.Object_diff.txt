@@ -1,0 +1,32 @@
+/**
+ * Should the given session attribute be excluded? This implementation
+ * checks:
+ * <ul>
+ * <li>{@link Constants#excludedAttributeNames}</li>
+ * <li>{@link Manager#willAttributeDistribute(String, Object)}</li>
+ * </ul>
+ * Note: This method deliberately does not check
+ *       {@link #isAttributeDistributable(String, Object)} which is kept
+ *       separate to support the checks required in
+ *       {@link #setAttribute(String, Object, boolean)}
+ *
+ * @param name  The attribute name
+ * @param value The attribute value
+ *
+ * @return {@code true} if the attribute should be excluded from
+ *         distribution, otherwise {@code false}
+ */
+protected boolean exclude(String name, Object value) {
+    if (Constants.excludedAttributeNames.contains(name)) {
+        return true;
+    }
+    // Manager is required for remaining check
+    Manager manager = getManager();
+    if (manager == null) {
+        // Manager may be null during replication of new sessions in a
+        // cluster. Avoid the NPE.
+        return false;
+    }
+    // Last check so use a short-cut
+    return !manager.willAttributeDistribute(name, value);
+}

@@ -1,0 +1,8 @@
+@Test
+public void testBug54060c() throws Exception {
+    String header = "Digest username=\"mthornton\", qop=auth";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertEquals("mthornton", result.get("username"));
+    Assert.assertEquals("auth", result.get("qop"));
+}

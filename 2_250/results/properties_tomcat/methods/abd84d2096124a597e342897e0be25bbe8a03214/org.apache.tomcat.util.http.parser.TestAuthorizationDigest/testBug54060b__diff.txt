@@ -1,0 +1,16 @@
+@Test
+public void testBug54060b() throws Exception {
+    String header = "Digest username=\"mthornton\", " + "realm=\"optrak.com\", " + "nonce=\"1351427480964:a01c16fed5168d72a2b5267395a2022e\", " + "uri=\"/files\", " + "algorithm=MD5, " + "response=\"f310c44b87efc0bc0a7aab7096fd36b6\", " + "opaque=\"DB85C1A73933A7EB586D10E4BF2924EF\", " + "cnonce=\"MHg3ZjA3ZGMwMTUwMTA6NzI2OToxMzUxNDI3NDgw\", " + "nc=00000001, " + "qop=auth";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertEquals("mthornton", result.get("username"));
+    Assert.assertEquals("optrak.com", result.get("realm"));
+    Assert.assertEquals("1351427480964:a01c16fed5168d72a2b5267395a2022e", result.get("nonce"));
+    Assert.assertEquals("/files", result.get("uri"));
+    Assert.assertEquals("MD5", result.get("algorithm"));
+    Assert.assertEquals("f310c44b87efc0bc0a7aab7096fd36b6", result.get("response"));
+    Assert.assertEquals("DB85C1A73933A7EB586D10E4BF2924EF", result.get("opaque"));
+    Assert.assertEquals("MHg3ZjA3ZGMwMTUwMTA6NzI2OToxMzUxNDI3NDgw", result.get("cnonce"));
+    Assert.assertEquals("00000001", result.get("nc"));
+    Assert.assertEquals("auth", result.get("qop"));
+}

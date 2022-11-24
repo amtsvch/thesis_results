@@ -1,0 +1,13 @@
+public AbstractSingleArchiveResourceSet(WebResourceRoot root, String webAppMount, String base, String internalPath) throws IllegalArgumentException {
+    setRoot(root);
+    setWebAppMount(webAppMount);
+    setBase(base);
+    setInternalPath(internalPath);
+    if (getRoot().getState().isAvailable()) {
+        try {
+            start();
+        } catch (LifecycleException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+}

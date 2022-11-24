@@ -1,0 +1,11 @@
+/**                                                                                                    /**                                                                                                 
+* Returns the first interceptor of the stack. Useful for traversal.                                    * Returns the first interceptor of the stack. Useful for traversal.                                 
+* @return ChannelInterceptor                                                                           * @return ChannelInterceptor                                                                        
+*/                                                                                                     */                                                                                                  
+public ChannelInterceptor getFirstInterceptor() {                                                      public ChannelInterceptor getFirstInterceptor() {                                                   
+if (interceptors != null)                                                                            | if (interceptors != null) {                                                                         
+return interceptors;                                                                                   return interceptors;                                                                                
+else                                                                                                 | } else {                                                                                            
+return coordinator;                                                                                    return coordinator;                                                                                 
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

@@ -1,0 +1,5 @@
+@Test
+public void testCoerceNullToNumber() {
+    Object output = ELSupport.coerceToType(null, null, Number.class);
+    Assert.assertNull(output);
+}

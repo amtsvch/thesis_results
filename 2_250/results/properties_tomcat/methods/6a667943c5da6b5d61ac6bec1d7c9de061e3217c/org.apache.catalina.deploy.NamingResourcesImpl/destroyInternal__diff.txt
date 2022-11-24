@@ -1,0 +1,29 @@
+@Override
+protected void destroyInternal() throws LifecycleException {
+    // Set this before we de-register currently known naming resources to
+    // avoid timing issues. Duplication de-registration is not an issue.
+    resourceRequireExplicitRegistration = false;
+    // Destroy in reverse order to create, although it should not matter
+    for (ContextResourceLink crl : resourceLinks.values()) {
+        try {
+            MBeanUtils.destroyMBean(crl);
+        } catch (Exception e) {
+            log.warn(sm.getString("namingResources.mbeanDestroyFail", crl.getName()), e);
+        }
+    }
+    for (ContextEnvironment ce : envs.values()) {
+        try {
+            MBeanUtils.destroyMBean(ce);
+        } catch (Exception e) {
+            log.warn(sm.getString("namingResources.mbeanDestroyFail", ce.getName()), e);
+        }
+    }
+    for (ContextResource cr : resources.values()) {
+        try {
+            MBeanUtils.destroyMBean(cr);
+        } catch (Exception e) {
+            log.warn(sm.getString("namingResources.mbeanDestroyFail", cr.getName()), e);
+        }
+    }
+    super.destroyInternal();
+}

@@ -1,0 +1,11 @@
+@Test
+public void testFindBytes() throws UnsupportedEncodingException {
+    byte[] bytes = "Hello\u00a0world".getBytes("ISO-8859-1");
+    final int len = bytes.length;
+    Assert.assertEquals(0, ByteChunk.findBytes(bytes, 0, len, new byte[] { 'H' }));
+    Assert.assertEquals(5, ByteChunk.findBytes(bytes, 0, len, new byte[] { (byte) '\u00a0', 'x' }));
+    Assert.assertEquals(5, ByteChunk.findBytes(bytes, 0, len - 4, new byte[] { 'x', (byte) '\u00a0' }));
+    Assert.assertEquals(len - 1, ByteChunk.findBytes(bytes, 2, len, new byte[] { 'x', 'd' }));
+    Assert.assertEquals(1, ByteChunk.findBytes(bytes, 0, len, new byte[] { 'o', 'e' }));
+    Assert.assertEquals(-1, ByteChunk.findBytes(bytes, 2, 5, new byte[] { 'w' }));
+}

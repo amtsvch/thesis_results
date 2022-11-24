@@ -1,0 +1,6 @@
+@Test
+public void v1DQuoteInValueRfc6265() {
+    A.setVersion(1);
+    // Incorrectly escaped.
+    test(true, "$Version=1;foo=\"b\"ar\";a=b", A);
+}

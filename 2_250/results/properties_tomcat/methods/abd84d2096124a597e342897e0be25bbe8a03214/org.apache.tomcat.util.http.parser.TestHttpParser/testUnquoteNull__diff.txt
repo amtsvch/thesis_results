@@ -1,0 +1,4 @@
+@Test
+public void testUnquoteNull() {
+    Assert.assertNull(HttpParser.unquote(null));
+}

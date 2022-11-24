@@ -1,0 +1,6 @@
+@Test(expected = NullPointerException.class)
+public void testPutNullKey() {
+    Object o1 = new Object();
+    CaseInsensitiveKeyMap<Object> map = new CaseInsensitiveKeyMap<>();
+    map.put(null, o1);
+}

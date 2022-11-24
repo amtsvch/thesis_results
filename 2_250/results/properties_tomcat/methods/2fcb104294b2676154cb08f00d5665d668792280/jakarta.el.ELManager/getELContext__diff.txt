@@ -1,0 +1,6 @@
+public StandardELContext getELContext() {
+    if (context == null) {
+        context = new StandardELContext(getExpressionFactory());
+    }
+    return context;
+}

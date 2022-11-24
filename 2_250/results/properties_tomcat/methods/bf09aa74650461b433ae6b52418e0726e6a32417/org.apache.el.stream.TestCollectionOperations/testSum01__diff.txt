@@ -1,0 +1,6 @@
+@Test
+public void testSum01() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("[1,2,3,4,5].stream().sum()", Object.class);
+    Assert.assertTrue("Result: " + result.toString(), ELSupport.equals(null, Long.valueOf(15), result));
+}

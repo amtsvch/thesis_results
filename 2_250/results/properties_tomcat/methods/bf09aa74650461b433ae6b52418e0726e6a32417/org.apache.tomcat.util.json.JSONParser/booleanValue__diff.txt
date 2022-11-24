@@ -1,0 +1,27 @@
+final public Boolean booleanValue() throws ParseException {                                            final public Boolean booleanValue() throws ParseException {                                         
+Boolean b;                                                                                             Boolean b;                                                                                          
+switch(jj_nt.kind) {                                                                                   switch(jj_nt.kind) {                                                                                
+case TRUE:                                                                                             case TRUE:                                                                                          
+{                                                                                                      {                                                                                                   
+jj_consume_token(TRUE);                                                                                jj_consume_token(TRUE);                                                                             
+b = Boolean.TRUE;                                                                                      b = Boolean.TRUE;                                                                                   
+break;                                                                                                 break;                                                                                              
+}                                                                                                      }                                                                                                   
+case FALSE:                                                                                            case FALSE:                                                                                         
+{                                                                                                      {                                                                                                   
+jj_consume_token(FALSE);                                                                               jj_consume_token(FALSE);                                                                            
+b = Boolean.FALSE;                                                                                     b = Boolean.FALSE;                                                                                  
+break;                                                                                                 break;                                                                                              
+}                                                                                                      }                                                                                                   
+default:                                                                                               default:                                                                                            
+jj_la1[8] = jj_gen;                                                                                    jj_la1[8] = jj_gen;                                                                                 
+jj_consume_token(-1);                                                                                  jj_consume_token(-1);                                                                               
+throw new ParseException();                                                                            throw new ParseException();                                                                         
+}                                                                                                      }                                                                                                   
+{                                                                                                      {                                                                                                   
+if ("" != null)                                                                                      | if ("" != null) {                                                                                   
+return b;                                                                                              return b;                                                                                           
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+throw new Error("Missing return statement in function");                                               throw new Error("Missing return statement in function");                                            
+}                                                                                                      }                                                                                                   

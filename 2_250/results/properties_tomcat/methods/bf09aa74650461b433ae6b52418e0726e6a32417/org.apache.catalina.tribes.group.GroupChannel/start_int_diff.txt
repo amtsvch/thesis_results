@@ -1,0 +1,25 @@
+/**
+ * Starts the channel.
+ * @param svc int - what service to start
+ * @throws ChannelException Start error
+ * @see org.apache.catalina.tribes.Channel#start(int)
+ */
+@Override
+public synchronized void start(int svc) throws ChannelException {
+    setupDefaultStack();
+    if (optionCheck) {
+        checkOptionFlags();
+    }
+    // register jmx
+    JmxRegistry jmxRegistry = JmxRegistry.getRegistry(this);
+    if (jmxRegistry != null) {
+        this.oname = jmxRegistry.registerJmx(",component=Channel", this);
+    }
+    if (utilityExecutor == null) {
+        log.warn(sm.getString("groupChannel.warn.noUtilityExecutor"));
+        utilityExecutor = new ScheduledThreadPoolExecutor(1);
+        ownExecutor = true;
+    }
+    super.start(svc);
+    monitorFuture = utilityExecutor.scheduleWithFixedDelay(this::startHeartbeat, 0, 60, TimeUnit.SECONDS);
+}

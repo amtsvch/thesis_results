@@ -1,0 +1,9 @@
+@Override
+public String getHeader(String name) {
+    List<String> list = headers.get(name);
+    if (list != null) {
+        return list.get(0);
+        // return CorsFilter.join(new HashSet<>(list), ",");
+    }
+    return null;
+}

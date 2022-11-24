@@ -1,0 +1,11 @@
+@Test
+public void testMultipleMessages() throws Exception {
+    src.start(Channel.SND_TX_SEQ);
+    dest.start(Channel.SND_TX_SEQ);
+    String testInput = "The quick brown fox jumps over the lazy dog.";
+    Assert.assertEquals("Basic roundtrip failed", testInput, roundTrip(testInput, src, dest));
+    Assert.assertEquals("Second roundtrip failed", testInput, roundTrip(testInput, src, dest));
+    Assert.assertEquals("Third roundtrip failed", testInput, roundTrip(testInput, src, dest));
+    Assert.assertEquals("Fourth roundtrip failed", testInput, roundTrip(testInput, src, dest));
+    Assert.assertEquals("Fifth roundtrip failed", testInput, roundTrip(testInput, src, dest));
+}

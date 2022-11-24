@@ -1,0 +1,8 @@
+private void doV1TestMaxAge(int age, String expectedLegacy, String expectedRfc6265) {
+    LegacyCookieProcessor legacy = new LegacyCookieProcessor();
+    legacy.setAlwaysAddExpires(false);
+    Cookie cookie = new Cookie("foo", "bar");
+    cookie.setVersion(1);
+    cookie.setMaxAge(age);
+    doTest(cookie, legacy, expectedLegacy, new Rfc6265CookieProcessor(), expectedRfc6265);
+}

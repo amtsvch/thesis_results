@@ -1,0 +1,10 @@
+@Test
+public void testCharsetQuoted() throws IOException {
+    StringBuilder sb = new StringBuilder();
+    sb.append(TYPES);
+    sb.append(PARAM_CHARSET_QUOTED);
+    StringReader sr = new StringReader(sb.toString());
+    MediaType m = MediaType.parseMediaType(sr);
+    Assert.assertEquals(CHARSET_WS, m.getCharset());
+    Assert.assertEquals(TYPES.replaceAll(" ", ""), m.toStringNoCharset());
+}

@@ -1,0 +1,27 @@
+@Override
+public void destroy() throws Exception {
+    if (getLog().isInfoEnabled()) {
+        getLog().info(sm.getString("abstractProtocolHandler.destroy", getName()));
+        logPortOffset();
+    }
+    try {
+        endpoint.destroy();
+    } finally {
+        if (oname != null) {
+            if (mserver == null) {
+                Registry.getRegistry(null, null).unregisterComponent(oname);
+            } else {
+                // Possibly registered with a different MBeanServer
+                try {
+                    mserver.unregisterMBean(oname);
+                } catch (MBeanRegistrationException | InstanceNotFoundException e) {
+                    getLog().info(sm.getString("abstractProtocol.mbeanDeregistrationFailed", oname, mserver));
+                }
+            }
+        }
+        ObjectName rgOname = getGlobalRequestProcessorMBeanName();
+        if (rgOname != null) {
+            Registry.getRegistry(null, null).unregisterComponent(rgOname);
+        }
+    }
+}

@@ -1,0 +1,87 @@
+/**
+ * Parse configuration lines like
+ * '{@code access plus 1 month 15 days 2 hours}' or
+ * '{@code modification 1 day 2 hours 5 seconds}'
+ *
+ * @param inputLine the input
+ * @return the parsed expires
+ */
+protected ExpiresConfiguration parseExpiresConfiguration(String inputLine) {
+    String line = inputLine.trim();
+    StringTokenizer tokenizer = new StringTokenizer(line, " ");
+    String currentToken;
+    try {
+        currentToken = tokenizer.nextToken();
+    } catch (NoSuchElementException e) {
+        throw new IllegalStateException(sm.getString("expiresFilter.startingPointNotFound", line));
+    }
+    StartingPoint startingPoint;
+    if ("access".equalsIgnoreCase(currentToken) || "now".equalsIgnoreCase(currentToken)) {
+        startingPoint = StartingPoint.ACCESS_TIME;
+    } else if ("modification".equalsIgnoreCase(currentToken)) {
+        startingPoint = StartingPoint.LAST_MODIFICATION_TIME;
+    } else if (!tokenizer.hasMoreTokens() && startsWithIgnoreCase(currentToken, "a")) {
+        startingPoint = StartingPoint.ACCESS_TIME;
+        // trick : convert duration configuration from old to new style
+        tokenizer = new StringTokenizer(currentToken.substring(1) + " seconds", " ");
+    } else if (!tokenizer.hasMoreTokens() && startsWithIgnoreCase(currentToken, "m")) {
+        startingPoint = StartingPoint.LAST_MODIFICATION_TIME;
+        // trick : convert duration configuration from old to new style
+        tokenizer = new StringTokenizer(currentToken.substring(1) + " seconds", " ");
+    } else {
+        throw new IllegalStateException(sm.getString("expiresFilter.startingPointInvalid", currentToken, line));
+    }
+    try {
+        currentToken = tokenizer.nextToken();
+    } catch (NoSuchElementException e) {
+        throw new IllegalStateException(sm.getString("expiresFilter.noDurationFound", line));
+    }
+    if ("plus".equalsIgnoreCase(currentToken)) {
+        // skip
+        try {
+            currentToken = tokenizer.nextToken();
+        } catch (NoSuchElementException e) {
+            throw new IllegalStateException(sm.getString("expiresFilter.noDurationFound", line));
+        }
+    }
+    List<Duration> durations = new ArrayList<>();
+    while (currentToken != null) {
+        int amount;
+        try {
+            amount = Integer.parseInt(currentToken);
+        } catch (NumberFormatException e) {
+            throw new IllegalStateException(sm.getString("expiresFilter.invalidDurationNumber", currentToken, line));
+        }
+        try {
+            currentToken = tokenizer.nextToken();
+        } catch (NoSuchElementException e) {
+            throw new IllegalStateException(sm.getString("expiresFilter.noDurationUnitAfterAmount", Integer.valueOf(amount), line));
+        }
+        DurationUnit durationUnit;
+        if ("year".equalsIgnoreCase(currentToken) || "years".equalsIgnoreCase(currentToken)) {
+            durationUnit = DurationUnit.YEAR;
+        } else if ("month".equalsIgnoreCase(currentToken) || "months".equalsIgnoreCase(currentToken)) {
+            durationUnit = DurationUnit.MONTH;
+        } else if ("week".equalsIgnoreCase(currentToken) || "weeks".equalsIgnoreCase(currentToken)) {
+            durationUnit = DurationUnit.WEEK;
+        } else if ("day".equalsIgnoreCase(currentToken) || "days".equalsIgnoreCase(currentToken)) {
+            durationUnit = DurationUnit.DAY;
+        } else if ("hour".equalsIgnoreCase(currentToken) || "hours".equalsIgnoreCase(currentToken)) {
+            durationUnit = DurationUnit.HOUR;
+        } else if ("minute".equalsIgnoreCase(currentToken) || "minutes".equalsIgnoreCase(currentToken)) {
+            durationUnit = DurationUnit.MINUTE;
+        } else if ("second".equalsIgnoreCase(currentToken) || "seconds".equalsIgnoreCase(currentToken)) {
+            durationUnit = DurationUnit.SECOND;
+        } else {
+            throw new IllegalStateException(sm.getString("expiresFilter.invalidDurationUnit", currentToken, line));
+        }
+        Duration duration = new Duration(amount, durationUnit);
+        durations.add(duration);
+        if (tokenizer.hasMoreTokens()) {
+            currentToken = tokenizer.nextToken();
+        } else {
+            currentToken = null;
+        }
+    }
+    return new ExpiresConfiguration(startingPoint, durations);
+}

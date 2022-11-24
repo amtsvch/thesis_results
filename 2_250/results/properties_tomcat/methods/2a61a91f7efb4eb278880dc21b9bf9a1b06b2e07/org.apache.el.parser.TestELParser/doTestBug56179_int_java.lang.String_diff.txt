@@ -1,0 +1,19 @@
+private void doTestBug56179(int parenthesesCount, String innerExpr) {
+    ExpressionFactory factory = ExpressionFactory.newInstance();
+    ELContext context = new ELContextImpl(factory);
+    ValueExpression var = factory.createValueExpression(Boolean.TRUE, Boolean.class);
+    context.getVariableMapper().setVariable("test", var);
+    StringBuilder expr = new StringBuilder();
+    expr.append("${");
+    for (int i = 0; i < parenthesesCount; i++) {
+        expr.append("(");
+    }
+    expr.append(innerExpr);
+    for (int i = 0; i < parenthesesCount; i++) {
+        expr.append(")");
+    }
+    expr.append("}");
+    ValueExpression ve = factory.createValueExpression(context, expr.toString(), String.class);
+    String result = (String) ve.getValue(context);
+    Assert.assertEquals("true", result);
+}

@@ -1,0 +1,15 @@
+@Override
+public Object getValue(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base instanceof ResourceBundle) {
+        context.setPropertyResolved(base, property);
+        if (property != null) {
+            try {
+                return ((ResourceBundle) base).getObject(property.toString());
+            } catch (MissingResourceException mre) {
+                return "???" + property.toString() + "???";
+            }
+        }
+    }
+    return null;
+}

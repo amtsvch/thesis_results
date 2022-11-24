@@ -1,0 +1,11 @@
+/**
+ * {@inheritDoc}
+ * <p>
+ * <b>Use this method with caution</b>. If the input Map contains duplicate
+ * keys when the keys are compared in a case insensitive manner then some
+ * values will be lost when inserting via this method.
+ */
+@Override
+public void putAll(Map<? extends String, ? extends V> m) {
+    super.putAll(m);
+}

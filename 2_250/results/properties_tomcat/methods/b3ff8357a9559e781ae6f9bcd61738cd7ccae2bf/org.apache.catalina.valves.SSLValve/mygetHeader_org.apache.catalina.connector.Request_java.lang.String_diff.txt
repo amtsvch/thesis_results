@@ -1,0 +1,11 @@
+public String mygetHeader(Request request, String header) {
+    String strcert0 = request.getHeader(header);
+    if (strcert0 == null) {
+        return null;
+    }
+    /* mod_header writes "(null)" when the ssl variable is no filled */
+    if ("(null)".equals(strcert0)) {
+        return null;
+    }
+    return strcert0;
+}

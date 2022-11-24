@@ -1,0 +1,9 @@
+@Test
+public void testParseAuthParamB() throws Exception {
+    // Test for HttpParser.readTokenOrQuotedString()
+    // auth-param = token "=" ( token | quoted-string )
+    String header = "Digest a=\"b\"";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertEquals("b", result.get("a"));
+}

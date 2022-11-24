@@ -1,0 +1,5 @@
+@Test(expected = jakarta.websocket.DeploymentException.class)
+public void testBasicPrefix() throws Exception {
+    @SuppressWarnings("unused")
+    UriTemplate t = new UriTemplate("/x{a}/y{b}");
+}

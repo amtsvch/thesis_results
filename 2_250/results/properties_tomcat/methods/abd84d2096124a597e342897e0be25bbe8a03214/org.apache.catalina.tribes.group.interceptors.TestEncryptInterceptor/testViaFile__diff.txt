@@ -1,0 +1,24 @@
+@Test
+public void testViaFile() throws Exception {
+    src.start(Channel.SND_TX_SEQ);
+    src.setNext(new ValueCaptureInterceptor());
+    String testInput = "The quick brown fox jumps over the lazy dog.";
+    ChannelData msg = new ChannelData(false);
+    msg.setMessage(new XByteBuffer(testInput.getBytes("UTF-8"), false));
+    src.sendMessage(null, msg, null);
+    byte[] bytes = ((ValueCaptureInterceptor) src.getNext()).getValue();
+    try (FileOutputStream out = new FileOutputStream(MESSAGE_FILE)) {
+        out.write(bytes);
+    }
+    dest.start(Channel.SND_TX_SEQ);
+    bytes = new byte[8192];
+    int read;
+    try (FileInputStream in = new FileInputStream(MESSAGE_FILE)) {
+        read = in.read(bytes);
+    }
+    msg = new ChannelData(false);
+    XByteBuffer xbb = new XByteBuffer(read, false);
+    xbb.append(bytes, 0, read);
+    msg.setMessage(xbb);
+    dest.messageReceived(msg);
+}

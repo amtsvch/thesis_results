@@ -1,0 +1,7 @@
+public MatchResult(int exact, int assignable, int coercible, int varArgs, boolean bridge) {          | public MatchResult(int exactCount, int assignableCount, int coercibleCount, int varArgsCount, boolea
+this.exact = exact;                                                                                  | this.exactCount = exactCount;                                                                       
+this.assignable = assignable;                                                                        | this.assignableCount = assignableCount;                                                             
+this.coercible = coercible;                                                                          | this.coercibleCount = coercibleCount;                                                               
+this.varArgs = varArgs;                                                                              | this.varArgsCount = varArgsCount;                                                                   
+this.bridge = bridge;                                                                                  this.bridge = bridge;                                                                               
+}                                                                                                      }                                                                                                   

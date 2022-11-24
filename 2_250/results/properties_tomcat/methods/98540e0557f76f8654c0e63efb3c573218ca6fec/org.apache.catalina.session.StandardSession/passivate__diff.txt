@@ -1,0 +1,25 @@
+/**
+ * Perform the internal processing required to passivate
+ * this session.
+ */
+public void passivate() {
+    // Notify interested session event listeners
+    fireSessionEvent(Session.SESSION_PASSIVATED_EVENT, null);
+    // Notify ActivationListeners
+    HttpSessionEvent event = null;
+    String[] keys = keys();
+    for (String key : keys) {
+        Object attribute = attributes.get(key);
+        if (attribute instanceof HttpSessionActivationListener) {
+            if (event == null) {
+                event = new HttpSessionEvent(getSession());
+            }
+            try {
+                ((HttpSessionActivationListener) attribute).sessionWillPassivate(event);
+            } catch (Throwable t) {
+                ExceptionUtils.handleThrowable(t);
+                manager.getContext().getLogger().error(sm.getString("standardSession.attributeEvent"), t);
+            }
+        }
+    }
+}

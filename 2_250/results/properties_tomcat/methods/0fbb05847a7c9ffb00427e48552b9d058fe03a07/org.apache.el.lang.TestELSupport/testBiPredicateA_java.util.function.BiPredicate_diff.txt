@@ -1,0 +1,8 @@
+public static String testBiPredicateA(BiPredicate<TestEnumC, Boolean> filter) {
+    // Mainly interested in if these coerce correctly
+    if (filter.test(TestEnumC.VALA1, Boolean.TRUE)) {
+        return "PASS";
+    } else {
+        return "BLOCK";
+    }
+}

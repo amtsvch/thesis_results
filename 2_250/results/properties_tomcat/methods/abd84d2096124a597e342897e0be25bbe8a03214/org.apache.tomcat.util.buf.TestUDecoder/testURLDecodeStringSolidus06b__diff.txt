@@ -1,0 +1,5 @@
+@Test
+public void testURLDecodeStringSolidus06b() throws IOException {
+    String result = doTestSolidus("%2fxx%20xx", EncodedSolidusHandling.PASS_THROUGH);
+    Assert.assertEquals("%2fxx xx", result);
+}

@@ -1,0 +1,9 @@
+/**
+ * Return the member that represents this node.
+ *
+ * @return Member
+ */
+@Override
+public Member getLocalMember(boolean incAlive) {
+    return this.getMembershipService().getLocalMember(incAlive);
+}

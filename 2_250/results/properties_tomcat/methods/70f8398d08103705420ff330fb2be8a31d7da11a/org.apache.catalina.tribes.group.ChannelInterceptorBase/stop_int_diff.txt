@@ -1,0 +1,22 @@
+/**                                                                                                    /**                                                                                                 
+* Shuts down the channel. This can be called multiple times for individual services to shutdown        * Shuts down the channel. This can be called multiple times for individual services to shutdown     
+* The svc parameter can be the logical or value of any constants                                       * The svc parameter can be the logical or value of any constants                                    
+* @param svc int value of &lt;BR&gt;                                                                   * @param svc int value of &lt;BR&gt;                                                                
+* DEFAULT - will shutdown all services &lt;BR&gt;                                                      * DEFAULT - will shutdown all services &lt;BR&gt;                                                   
+* MBR_RX_SEQ - stops the membership receiver &lt;BR&gt;                                                * MBR_RX_SEQ - stops the membership receiver &lt;BR&gt;                                             
+* MBR_TX_SEQ - stops the membership broadcaster &lt;BR&gt;                                             * MBR_TX_SEQ - stops the membership broadcaster &lt;BR&gt;                                          
+* SND_TX_SEQ - stops the replication transmitter&lt;BR&gt;                                             * SND_TX_SEQ - stops the replication transmitter&lt;BR&gt;                                          
+* SND_RX_SEQ - stops the replication receiver&lt;BR&gt;                                                * SND_RX_SEQ - stops the replication receiver&lt;BR&gt;                                             
+* @throws ChannelException if a startup error occurs or the service is already started.                * @throws ChannelException if a startup error occurs or the service is already started.             
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void stop(int svc) throws ChannelException {                                                    public void stop(int svc) throws ChannelException {                                                 
+if (getNext() != null)                                                                               | if (getNext() != null) {                                                                            
+getNext().stop(svc);                                                                                   getNext().stop(svc);                                                                                
+                                                                                                     | }                                                                                                   
+if (oname != null) {                                                                                   if (oname != null) {                                                                                
+JmxRegistry.getRegistry(channel).unregisterJmx(oname);                                                 JmxRegistry.getRegistry(channel).unregisterJmx(oname);                                              
+oname = null;                                                                                          oname = null;                                                                                       
+}                                                                                                      }                                                                                                   
+channel = null;                                                                                        channel = null;                                                                                     
+}                                                                                                      }                                                                                                   

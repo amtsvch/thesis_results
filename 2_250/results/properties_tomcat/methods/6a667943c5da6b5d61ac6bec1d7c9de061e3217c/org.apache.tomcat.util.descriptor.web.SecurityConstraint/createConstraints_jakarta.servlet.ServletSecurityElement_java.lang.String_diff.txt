@@ -1,0 +1,33 @@
+/**
+ * Convert a {@link ServletSecurityElement} to an array of
+ * {@link SecurityConstraint}(s).
+ *
+ * @param element       The element to be converted
+ * @param urlPattern    The url pattern that the element should be applied
+ *                      to
+ * @return              The (possibly zero length) array of constraints that
+ *                      are the equivalent to the input
+ */
+public static SecurityConstraint[] createConstraints(ServletSecurityElement element, String urlPattern) {
+    Set<SecurityConstraint> result = new HashSet<>();
+    // Add the per method constraints
+    Collection<HttpMethodConstraintElement> methods = element.getHttpMethodConstraints();
+    for (HttpMethodConstraintElement methodElement : methods) {
+        SecurityConstraint constraint = createConstraint(methodElement, urlPattern, true);
+        // There will always be a single collection
+        SecurityCollection collection = constraint.findCollections()[0];
+        collection.addMethod(methodElement.getMethodName());
+        result.add(constraint);
+    }
+    // Add the constraint for all the other methods
+    SecurityConstraint constraint = createConstraint(element, urlPattern, false);
+    if (constraint != null) {
+        // There will always be a single collection
+        SecurityCollection collection = constraint.findCollections()[0];
+        for (String name : element.getMethodNames()) {
+            collection.addOmittedMethod(name);
+        }
+        result.add(constraint);
+    }
+    return result.toArray(new SecurityConstraint[0]);
+}

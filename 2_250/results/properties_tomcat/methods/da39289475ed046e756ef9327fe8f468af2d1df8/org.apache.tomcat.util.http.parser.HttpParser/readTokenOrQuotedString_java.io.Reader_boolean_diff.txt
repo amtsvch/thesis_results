@@ -1,0 +1,9 @@
+static String readTokenOrQuotedString(Reader input, boolean returnQuoted) throws IOException {
+    // Peek at next character to enable correct method to be called
+    int c = skipLws(input);
+    if (c == '"') {
+        return readQuotedString(input, returnQuoted);
+    } else {
+        return readToken(input);
+    }
+}

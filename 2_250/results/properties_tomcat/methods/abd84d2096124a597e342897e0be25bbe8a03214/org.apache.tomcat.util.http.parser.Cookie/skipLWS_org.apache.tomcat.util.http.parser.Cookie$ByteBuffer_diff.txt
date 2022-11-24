@@ -1,0 +1,9 @@
+private static void skipLWS(ByteBuffer bb) {
+    while (bb.hasRemaining()) {
+        byte b = bb.get();
+        if (b != TAB_BYTE && b != SPACE_BYTE) {
+            bb.rewind();
+            break;
+        }
+    }
+}

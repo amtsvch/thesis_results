@@ -1,0 +1,12 @@
+@Override
+public void setValue(EvaluationContext ctx, Object value) throws ELException {
+    Target t = getTarget(ctx);
+    ctx.setPropertyResolved(false);
+    ELResolver resolver = ctx.getELResolver();
+    // coerce to the expected type
+    Class<?> targetClass = resolver.getType(ctx, t.base, t.property);
+    resolver.setValue(ctx, t.base, t.property, ELSupport.coerceToType(ctx, value, targetClass));
+    if (!ctx.isPropertyResolved()) {
+        throw new PropertyNotFoundException(MessageFactory.get("error.resolver.unhandled", t.base, t.property));
+    }
+}

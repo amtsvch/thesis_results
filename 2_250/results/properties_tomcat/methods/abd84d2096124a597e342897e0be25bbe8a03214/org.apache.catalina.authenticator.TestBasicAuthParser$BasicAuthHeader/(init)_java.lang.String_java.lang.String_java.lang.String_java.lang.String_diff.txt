@@ -1,0 +1,21 @@
+/*
+         * This method creates valid base64 blobs with optional trailing data
+         */
+private BasicAuthHeader(String method, String username, String password, String extraBlob) {
+    prefix(method);
+    String userCredentials = ((password == null) || (password.length() < 1)) ? username : username + ":" + password;
+    byte[] credentialsBytes = userCredentials.getBytes(StandardCharsets.ISO_8859_1);
+    String base64auth = Base64.encodeBase64String(credentialsBytes);
+    byte[] base64Bytes = base64auth.getBytes(StandardCharsets.ISO_8859_1);
+    byte[] extraBytes = ((extraBlob == null) || (extraBlob.length() < 1)) ? null : extraBlob.getBytes(StandardCharsets.ISO_8859_1);
+    try {
+        authHeader.append(base64Bytes, 0, base64Bytes.length);
+        if (extraBytes != null) {
+            authHeader.append(extraBytes, 0, extraBytes.length);
+        }
+    } catch (IOException ioe) {
+        throw new IllegalStateException("unable to extend ByteChunk:" + ioe.getMessage());
+    }
+    // emulate tomcat server - offset points to method in header
+    authHeader.setOffset(initialOffset);
+}

@@ -1,0 +1,5 @@
+@Test
+public void testPostRequestMultipleValidNoncesAsParameterValidPath() throws Exception {
+    setRequestExpectations(POST_METHOD, session, null, new String[] { NONCE, NONCE }, ACCEPTED_PATH1);
+    testPostRequestParamsScenarios(NONCE, false, true);
+}

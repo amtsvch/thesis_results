@@ -1,0 +1,5 @@
+@Test
+public void testPostRequestSessionNoNonce2() throws Exception {
+    setRequestExpectations(POST_METHOD, session, null);
+    testPostRequestHeaderScenarios(NONCE, true);
+}

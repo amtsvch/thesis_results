@@ -1,0 +1,23 @@
+public TagAttributeInfo toTagAttributeInfo() {
+    if (fragment) {
+        // JSP8.5.2: for a fragment type is fixed and rexprvalue is true
+        type = "jakarta.servlet.jsp.tagext.JspFragment";
+        requestTime = true;
+    } else if (deferredValue) {
+        type = "jakarta.el.ValueExpression";
+        if (expectedTypeName == null) {
+            expectedTypeName = "java.lang.Object";
+        }
+    } else if (deferredMethod) {
+        type = "jakarta.el.MethodExpression";
+        if (methodSignature == null) {
+            methodSignature = "java.lang.Object method()";
+        }
+    }
+    // According to JSP spec, for static values (those determined at
+    // translation time) the type is fixed at java.lang.String.
+    if (!requestTime && type == null) {
+        type = "java.lang.String";
+    }
+    return new TagAttributeInfo(name, required, type, requestTime, fragment, description, deferredValue, deferredMethod, expectedTypeName, methodSignature);
+}

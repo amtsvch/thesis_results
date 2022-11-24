@@ -1,0 +1,24 @@
+private ContextVersion findContextVersion(String hostName, String contextPath, String version, boolean silent) {
+    MappedHost host = exactFind(hosts, hostName);
+    if (host == null || host.isAlias()) {
+        if (!silent) {
+            log.error(sm.getString("mapper.findContext.noHostOrAlias", hostName));
+        }
+        return null;
+    }
+    MappedContext context = exactFind(host.contextList.contexts, contextPath);
+    if (context == null) {
+        if (!silent) {
+            log.error(sm.getString("mapper.findContext.noContext", contextPath));
+        }
+        return null;
+    }
+    ContextVersion contextVersion = exactFind(context.versions, version);
+    if (contextVersion == null) {
+        if (!silent) {
+            log.error(sm.getString("mapper.findContext.noContextVersion", contextPath, version));
+        }
+        return null;
+    }
+    return contextVersion;
+}

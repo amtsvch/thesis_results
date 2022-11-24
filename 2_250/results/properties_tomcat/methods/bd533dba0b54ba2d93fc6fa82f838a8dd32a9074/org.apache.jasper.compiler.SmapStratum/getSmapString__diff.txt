@@ -1,0 +1,6 @@
+public String getSmapString() {
+    if (outputFileName == null) {
+        throw new IllegalStateException();
+    }
+    return getSmapStringInternal();
+}

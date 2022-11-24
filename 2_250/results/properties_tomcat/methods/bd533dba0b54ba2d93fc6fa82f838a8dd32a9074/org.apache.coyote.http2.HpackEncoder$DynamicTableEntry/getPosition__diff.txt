@@ -1,0 +1,4 @@
+@Override
+int getPosition() {
+    return super.getPosition() + entryPositionCounter + Hpack.STATIC_TABLE_LENGTH;
+}

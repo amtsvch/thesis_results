@@ -1,0 +1,16 @@
+/**                                                                                                    /**                                                                                                 
+* Checks if the Origin is allowed to make a CORS request.                                              * Checks if the Origin is allowed to make a CORS request.                                           
+*                                                                                                      *                                                                                                   
+* @param origin                                                                                        * @param origin                                                                                     
+*            The Origin.                                                                               *            The Origin.                                                                            
+* @return &lt;code&gt;true&lt;/code&gt; if origin is allowed; &lt;code&gt;false&lt;/code&gt;           * @return &lt;code&gt;true&lt;/code&gt; if origin is allowed; &lt;code&gt;false&lt;/code&gt;        
+*         otherwise.                                                                                   *         otherwise.                                                                                
+*/                                                                                                     */                                                                                                  
+private boolean isOriginAllowed(final String origin) {                                                 private boolean isOriginAllowed(final String origin) {                                              
+if (anyOriginAllowed) {                                                                              | if (isAnyOriginAllowed()) {                                                                         
+return true;                                                                                           return true;                                                                                        
+}                                                                                                      }                                                                                                   
+// If 'Origin' header is a case-sensitive match of any of allowed                                      // If 'Origin' header is a case-sensitive match of any of allowed                                   
+// origins, then return true, else return false.                                                       // origins, then return true, else return false.                                                    
+return allowedOrigins.contains(origin);                                                              | return getAllowedOrigins().contains(origin);                                                        
+}                                                                                                      }                                                                                                   

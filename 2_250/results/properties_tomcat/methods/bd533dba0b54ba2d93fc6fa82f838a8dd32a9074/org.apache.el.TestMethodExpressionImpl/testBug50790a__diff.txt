@@ -1,0 +1,6 @@
+@Test
+public void testBug50790a() throws Exception {
+    ValueExpression ve = factory.createValueExpression(context, "#{beanAA.name.contains(beanA.name)}", java.lang.Boolean.class);
+    Boolean actual = (Boolean) ve.getValue(context);
+    Assert.assertEquals(Boolean.TRUE, actual);
+}

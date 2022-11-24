@@ -1,0 +1,4 @@
+@Test
+public void testIsInstanceStandardContext06() {
+    Assert.assertTrue(IntrospectionUtils.isInstance(StandardContext.class, "org.apache.catalina.JmxEnabled"));
+}

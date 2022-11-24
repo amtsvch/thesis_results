@@ -1,0 +1,9 @@
+@Test
+public void testMultiple02() throws Exception {
+    List<AcceptLanguage> actual = AcceptLanguage.parse(new StringReader("en; q= 0.05,fr;q=0.5"));
+    Assert.assertEquals(2, actual.size());
+    Assert.assertEquals(L_EN, actual.get(0).getLocale());
+    Assert.assertEquals(Q0_050, actual.get(0).getQuality(), 0.0001);
+    Assert.assertEquals(L_FR, actual.get(1).getLocale());
+    Assert.assertEquals(Q0_500, actual.get(1).getQuality(), 0.0001);
+}

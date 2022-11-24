@@ -1,0 +1,5 @@
+@Test(expected = IllegalStateException.class)
+public void testSetNameNotInitPhase() {
+    context.setState(LifecycleState.STARTED);
+    applicationSessionCookieConfig.setName("test");
+}

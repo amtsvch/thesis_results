@@ -1,0 +1,20 @@
+/**
+ * <p>
+ * The proxiesHeader directive specifies a header into which mod_remoteip will collect a list of all of the intermediate client IP
+ * addresses trusted to resolve the actual remote IP. Note that intermediate RemoteIPTrustedProxy addresses are recorded in this header,
+ * while any intermediate RemoteIPInternalProxy addresses are discarded.
+ * </p>
+ * <p>
+ * Name of the http header that holds the list of trusted proxies that has been traversed by the http request.
+ * </p>
+ * <p>
+ * The value of this header can be comma delimited.
+ * </p>
+ * <p>
+ * Default value : <code>X-Forwarded-By</code>
+ * </p>
+ * @param proxiesHeader The header name
+ */
+public void setProxiesHeader(String proxiesHeader) {
+    this.proxiesHeader = proxiesHeader;
+}

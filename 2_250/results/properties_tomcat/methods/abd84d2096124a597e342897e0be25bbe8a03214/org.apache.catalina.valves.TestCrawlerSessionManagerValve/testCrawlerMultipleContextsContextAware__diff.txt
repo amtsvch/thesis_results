@@ -1,0 +1,10 @@
+@Test
+public void testCrawlerMultipleContextsContextAware() throws Exception {
+    CrawlerSessionManagerValve valve = new CrawlerSessionManagerValve();
+    valve.setCrawlerUserAgents(valve.getCrawlerUserAgents());
+    valve.setHostAware(true);
+    valve.setContextAware(true);
+    valve.setNext(EasyMock.createMock(Valve.class));
+    verifyCrawlingContext(valve, "/examples");
+    verifyCrawlingContext(valve, null);
+}

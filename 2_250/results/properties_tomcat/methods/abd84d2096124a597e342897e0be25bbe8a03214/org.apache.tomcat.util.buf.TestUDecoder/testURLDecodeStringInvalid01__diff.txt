@@ -1,0 +1,5 @@
+@Test(expected = IllegalArgumentException.class)
+public void testURLDecodeStringInvalid01() {
+    // %n rather than %nn should throw an IAE according to the Javadoc
+    UDecoder.URLDecode("%5xxxxx", StandardCharsets.UTF_8);
+}

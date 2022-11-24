@@ -1,0 +1,11 @@
+/**                                                                                                    /**                                                                                                 
+* Adds a membership listener to the channel.&lt;br&gt;                                                 * Adds a membership listener to the channel.&lt;br&gt;                                              
+* Membership listeners are uniquely identified using the equals(Object) method                         * Membership listeners are uniquely identified using the equals(Object) method                      
+* @param membershipListener MembershipListener                                                         * @param membershipListener MembershipListener                                                      
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void addMembershipListener(MembershipListener membershipListener) {                             public void addMembershipListener(MembershipListener membershipListener) {                          
+if (!this.membershipListeners.contains(membershipListener))                                          | if (!this.membershipListeners.contains(membershipListener)) {                                       
+this.membershipListeners.add(membershipListener);                                                      this.membershipListeners.add(membershipListener);                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

@@ -1,0 +1,11 @@
+@Override                                                                                              @Override                                                                                           
+public void addPostConstructMethod(String clazz, String method) {                                      public void addPostConstructMethod(String clazz, String method) {                                   
+if (clazz == null || method == null)                                                                 | if (clazz == null || method == null) {                                                              
+throw new IllegalArgumentException(sm.getString("standardContext.postconstruct.required"));            throw new IllegalArgumentException(sm.getString("standardContext.postconstruct.required"));         
+if (postConstructMethods.get(clazz) != null)                                                         | }                                                                                                   
+                                                                                                     | if (postConstructMethods.get(clazz) != null) {                                                      
+throw new IllegalArgumentException(sm.getString("standardContext.postconstruct.duplicate", clazz));    throw new IllegalArgumentException(sm.getString("standardContext.postconstruct.duplicate", clazz)); 
+                                                                                                     | }                                                                                                   
+postConstructMethods.put(clazz, method);                                                               postConstructMethods.put(clazz, method);                                                            
+fireContainerEvent("addPostConstructMethod", clazz);                                                   fireContainerEvent("addPostConstructMethod", clazz);                                                
+}                                                                                                      }                                                                                                   

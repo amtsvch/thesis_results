@@ -1,0 +1,11 @@
+/**
+ * Returns whether or not the {@code octet} is in the Base64 alphabet.
+ *
+ * @param octet
+ *            The value to test
+ * @return {@code true} if the value is defined in the the Base64 alphabet {@code false} otherwise.
+ */
+@Override
+protected boolean isInAlphabet(final byte octet) {
+    return octet >= 0 && octet < decodeTable.length && decodeTable[octet] != -1;
+}

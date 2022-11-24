@@ -1,0 +1,8 @@
+@Test
+public void testGet() {
+    Object o1 = new Object();
+    CaseInsensitiveKeyMap<Object> map = new CaseInsensitiveKeyMap<>();
+    map.put("a", o1);
+    Assert.assertEquals(o1, map.get("a"));
+    Assert.assertEquals(o1, map.get("A"));
+}

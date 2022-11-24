@@ -1,0 +1,6 @@
+@Test
+public void testMissingNullTccl() {
+    Thread.currentThread().setContextClassLoader(null);
+    StringManager sm = StringManager.getManager("org.does.not.exist");
+    Assert.assertNull(sm.getLocale());
+}

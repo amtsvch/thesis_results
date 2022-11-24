@@ -1,0 +1,5 @@
+@Override
+public void save(Session session) throws IOException {
+    sessions.put(session.getId(), session);
+    savedIds.add(session.getId());
+}

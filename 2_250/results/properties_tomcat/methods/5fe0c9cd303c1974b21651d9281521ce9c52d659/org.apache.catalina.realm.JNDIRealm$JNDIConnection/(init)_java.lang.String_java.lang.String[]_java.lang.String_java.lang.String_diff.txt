@@ -1,0 +1,26 @@
+                                                                                                     | public JNDIConnection(String userSearch, String[] userPatternArray, String roleBase, String roleSear
+                                                                                                     | if (userSearch == null) {                                                                           
+                                                                                                     | userSearchFormat = null;                                                                            
+                                                                                                     | } else {                                                                                            
+                                                                                                     | userSearchFormat = new MessageFormat(userSearch);                                                   
+                                                                                                     | }                                                                                                   
+                                                                                                     | if (userPatternArray == null) {                                                                     
+                                                                                                     | userPatternFormatArray = null;                                                                      
+                                                                                                     | } else {                                                                                            
+                                                                                                     | int len = userPatternArray.length;                                                                  
+                                                                                                     | userPatternFormatArray = new MessageFormat[len];                                                    
+                                                                                                     | for (int i = 0; i &lt; len; i++) {                                                                  
+                                                                                                     | userPatternFormatArray[i] = new MessageFormat(userPatternArray[i]);                                 
+                                                                                                     | }                                                                                                   
+                                                                                                     | }                                                                                                   
+                                                                                                     | if (roleBase == null) {                                                                             
+                                                                                                     | roleBaseFormat = null;                                                                              
+                                                                                                     | } else {                                                                                            
+                                                                                                     | roleBaseFormat = new MessageFormat(roleBase);                                                       
+                                                                                                     | }                                                                                                   
+                                                                                                     | if (roleSearch == null) {                                                                           
+                                                                                                     | roleFormat = null;                                                                                  
+                                                                                                     | } else {                                                                                            
+                                                                                                     | roleFormat = new MessageFormat(roleSearch);                                                         
+                                                                                                     | }                                                                                                   
+                                                                                                     | }                                                                                                   

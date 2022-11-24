@@ -1,0 +1,24 @@
+private TableEntry findInTable(String headerName, String value) {
+    TableEntry[] staticTable = ENCODING_STATIC_TABLE.get(headerName);
+    if (staticTable != null) {
+        for (TableEntry st : staticTable) {
+            if (st.value != null && st.value.equals(value)) {
+                // todo: some form of lookup?
+                return st;
+            }
+        }
+    }
+    List<TableEntry> dynamic = dynamicTable.get(headerName);
+    if (dynamic != null) {
+        for (TableEntry st : dynamic) {
+            if (st.value.equals(value)) {
+                // todo: some form of lookup?
+                return st;
+            }
+        }
+    }
+    if (staticTable != null) {
+        return staticTable[0];
+    }
+    return null;
+}

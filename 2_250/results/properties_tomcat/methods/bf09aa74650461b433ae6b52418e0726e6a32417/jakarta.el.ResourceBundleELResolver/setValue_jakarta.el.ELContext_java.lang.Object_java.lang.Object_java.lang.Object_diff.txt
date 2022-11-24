@@ -1,0 +1,8 @@
+@Override
+public void setValue(ELContext context, Object base, Object property, Object value) {
+    Objects.requireNonNull(context);
+    if (base instanceof ResourceBundle) {
+        context.setPropertyResolved(base, property);
+        throw new PropertyNotWritableException(Util.message(context, "resolverNotWriteable", base.getClass().getName()));
+    }
+}

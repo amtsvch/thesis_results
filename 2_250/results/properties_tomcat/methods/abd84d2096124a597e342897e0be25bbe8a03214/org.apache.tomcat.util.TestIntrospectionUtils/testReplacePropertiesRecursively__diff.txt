@@ -1,0 +1,6 @@
+@Test
+public void testReplacePropertiesRecursively() {
+    Properties properties = new Properties();
+    properties.setProperty("replaceMe", "something ${replaceMe}");
+    IntrospectionUtils.replaceProperties("${replaceMe}", properties, null, null);
+}

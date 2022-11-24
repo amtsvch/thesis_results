@@ -1,0 +1,10 @@
+static ClassLoader getContextClassLoader() {
+    ClassLoader tccl;
+    if (System.getSecurityManager() != null) {
+        PrivilegedAction<ClassLoader> pa = new PrivilegedGetTccl();
+        tccl = AccessController.doPrivileged(pa);
+    } else {
+        tccl = Thread.currentThread().getContextClassLoader();
+    }
+    return tccl;
+}

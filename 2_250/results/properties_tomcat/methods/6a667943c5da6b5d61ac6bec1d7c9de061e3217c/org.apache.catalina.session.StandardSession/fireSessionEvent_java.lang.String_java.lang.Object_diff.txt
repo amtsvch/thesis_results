@@ -1,0 +1,22 @@
+// ------------------------------------------------------ Protected Methods                            // ------------------------------------------------------ Protected Methods                         
+/**                                                                                                    /**                                                                                                 
+* Notify all session event listeners that a particular event has                                       * Notify all session event listeners that a particular event has                                    
+* occurred for this Session.  The default implementation performs                                      * occurred for this Session.  The default implementation performs                                   
+* this notification synchronously using the calling thread.                                            * this notification synchronously using the calling thread.                                         
+*                                                                                                      *                                                                                                   
+* @param type Event type                                                                               * @param type Event type                                                                            
+* @param data Event data                                                                               * @param data Event data                                                                            
+*/                                                                                                     */                                                                                                  
+public void fireSessionEvent(String type, Object data) {                                               public void fireSessionEvent(String type, Object data) {                                            
+if (listeners.size() &lt; 1)                                                                         | if (listeners.size() &lt; 1) {                                                                      
+return;                                                                                                return;                                                                                             
+                                                                                                     | }                                                                                                   
+SessionEvent event = new SessionEvent(this, type, data);                                               SessionEvent event = new SessionEvent(this, type, data);                                            
+SessionListener[] list = new SessionListener[0];                                                       SessionListener[] list = new SessionListener[0];                                                    
+synchronized (listeners) {                                                                             synchronized (listeners) {                                                                          
+list = listeners.toArray(list);                                                                        list = listeners.toArray(list);                                                                     
+}                                                                                                      }                                                                                                   
+for (SessionListener sessionListener : list) {                                                         for (SessionListener sessionListener : list) {                                                      
+sessionListener.sessionEvent(event);                                                                   sessionListener.sessionEvent(event);                                                                
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

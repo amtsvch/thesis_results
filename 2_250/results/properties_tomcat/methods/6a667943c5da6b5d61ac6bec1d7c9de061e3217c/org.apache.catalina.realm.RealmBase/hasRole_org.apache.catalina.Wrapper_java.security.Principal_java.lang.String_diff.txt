@@ -1,0 +1,32 @@
+/**                                                                                                    /**                                                                                                 
+* {@inheritDoc}                                                                                        * {@inheritDoc}                                                                                     
+*                                                                                                      *                                                                                                   
+* This method or {@link #hasRoleInternal(Principal,                                                    * This method or {@link #hasRoleInternal(Principal,                                                 
+* String)} can be overridden by Realm implementations, but the default is                              * String)} can be overridden by Realm implementations, but the default is                           
+* adequate when an instance of &lt;code&gt;GenericPrincipal&lt;/code&gt; is used to                    * adequate when an instance of &lt;code&gt;GenericPrincipal&lt;/code&gt; is used to                 
+* represent authenticated Principals from this Realm.                                                  * represent authenticated Principals from this Realm.                                               
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public boolean hasRole(Wrapper wrapper, Principal principal, String role) {                            public boolean hasRole(Wrapper wrapper, Principal principal, String role) {                         
+// Check for a role alias                                                                              // Check for a role alias                                                                           
+if (wrapper != null) {                                                                                 if (wrapper != null) {                                                                              
+String realRole = wrapper.findSecurityReference(role);                                                 String realRole = wrapper.findSecurityReference(role);                                              
+if (realRole != null) {                                                                                if (realRole != null) {                                                                             
+role = realRole;                                                                                       role = realRole;                                                                                    
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+// Should be overridden in JAASRealm - to avoid pretty inefficient conversions                         // Should be overridden in JAASRealm - to avoid pretty inefficient conversions                      
+if (principal == null || role == null) {                                                               if (principal == null || role == null) {                                                            
+return false;                                                                                          return false;                                                                                       
+}                                                                                                      }                                                                                                   
+boolean result = hasRoleInternal(principal, role);                                                     boolean result = hasRoleInternal(principal, role);                                                  
+if (log.isDebugEnabled()) {                                                                            if (log.isDebugEnabled()) {                                                                         
+String name = principal.getName();                                                                     String name = principal.getName();                                                                  
+if (result)                                                                                          | if (result) {                                                                                       
+log.debug(sm.getString("realmBase.hasRoleSuccess", name, role));                                       log.debug(sm.getString("realmBase.hasRoleSuccess", name, role));                                    
+else                                                                                                 | } else {                                                                                            
+log.debug(sm.getString("realmBase.hasRoleFailure", name, role));                                       log.debug(sm.getString("realmBase.hasRoleFailure", name, role));                                    
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+return result;                                                                                         return result;                                                                                      
+}                                                                                                      }                                                                                                   

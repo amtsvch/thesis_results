@@ -1,0 +1,4 @@
+@Test
+public void testDoFilterSameHostWithOrigin02() throws IOException, ServletException {
+    doTestDoFilterSameHostWithOrigin01("http://localhost:8080", "https", "localhost", 8080, true);
+}

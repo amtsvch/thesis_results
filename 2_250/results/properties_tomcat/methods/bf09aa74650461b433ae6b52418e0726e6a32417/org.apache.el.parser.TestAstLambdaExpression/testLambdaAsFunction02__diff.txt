@@ -1,0 +1,6 @@
+@Test
+public void testLambdaAsFunction02() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("v = (()->y->2-y); v()(1)", Integer.class);
+    Assert.assertEquals(Integer.valueOf(1), result);
+}

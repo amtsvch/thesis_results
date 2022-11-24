@@ -1,0 +1,6 @@
+private void doV1TokenValue(boolean useRfc6265) {
+    FOO.setVersion(1);
+    A.setVersion(1);
+    test(useRfc6265, "$Version=1; foo=bar;a=b", FOO, A);
+    test(useRfc6265, "$Version=1;foo=bar;a=b; ; ", FOO, A);
+}

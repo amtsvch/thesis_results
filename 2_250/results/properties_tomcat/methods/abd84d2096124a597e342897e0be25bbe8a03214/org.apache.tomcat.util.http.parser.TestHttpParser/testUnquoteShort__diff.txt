@@ -1,0 +1,5 @@
+@Test
+public void testUnquoteShort() {
+    String shortText = "a";
+    Assert.assertEquals(shortText, HttpParser.unquote(shortText));
+}

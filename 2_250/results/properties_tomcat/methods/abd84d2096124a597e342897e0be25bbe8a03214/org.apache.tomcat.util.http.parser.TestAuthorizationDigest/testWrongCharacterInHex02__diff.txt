@@ -1,0 +1,7 @@
+@Test
+public void testWrongCharacterInHex02() throws Exception {
+    String header = "Digest nc=aaa\u044f";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertNull(result);
+}

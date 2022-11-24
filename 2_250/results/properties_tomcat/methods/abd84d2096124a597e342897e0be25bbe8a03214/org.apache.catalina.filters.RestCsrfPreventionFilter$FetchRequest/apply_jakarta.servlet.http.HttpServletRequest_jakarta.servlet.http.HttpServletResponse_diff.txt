@@ -1,0 +1,12 @@
+@Override
+public boolean apply(HttpServletRequest request, HttpServletResponse response) {
+    if (fetchRequest.test(nonceFromRequestHeader.getNonce(request, Constants.CSRF_REST_NONCE_HEADER_NAME))) {
+        String nonceFromSessionStr = nonceFromSession.getNonce(request.getSession(false), Constants.CSRF_REST_NONCE_SESSION_ATTR_NAME);
+        if (nonceFromSessionStr == null) {
+            nonceFromSessionStr = generateNonce();
+            nonceToSession.setNonce(Objects.requireNonNull(request.getSession(true)), Constants.CSRF_REST_NONCE_SESSION_ATTR_NAME, nonceFromSessionStr);
+        }
+        nonceToResponse.setNonce(response, Constants.CSRF_REST_NONCE_HEADER_NAME, nonceFromSessionStr);
+    }
+    return true;
+}

@@ -1,0 +1,30 @@
+final public String doubleQuoteString() throws ParseException {
+    switch(jj_nt.kind) {
+        case STRING_DOUBLE_EMPTY:
+            {
+                jj_consume_token(STRING_DOUBLE_EMPTY);
+                {
+                    if ("" != null) {
+                        return "";
+                    }
+                }
+                break;
+            }
+        case STRING_DOUBLE_NONEMPTY:
+            {
+                jj_consume_token(STRING_DOUBLE_NONEMPTY);
+                String image = token.image;
+                {
+                    if ("" != null) {
+                        return image.substring(1, image.length() - 1);
+                    }
+                }
+                break;
+            }
+        default:
+            jj_la1[11] = jj_gen;
+            jj_consume_token(-1);
+            throw new ParseException();
+    }
+    throw new Error("Missing return statement in function");
+}

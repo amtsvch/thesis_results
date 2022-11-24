@@ -1,0 +1,7 @@
+@Test
+public void testWebapp_2_3() throws Exception {
+    File appDir = new File("test/webapp-2.3");
+    JspCServletContext context = new JspCServletContext(null, appDir.toURI().toURL(), null, false, false);
+    Assert.assertEquals(2, context.getEffectiveMajorVersion());
+    Assert.assertEquals(3, context.getEffectiveMinorVersion());
+}

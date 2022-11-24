@@ -1,0 +1,7 @@
+@Test(expected = MethodNotFoundException.class)
+public void testInvokeVarargs15() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Object result = resolver.invoke(context, new TesterBean(BEAN_NAME), "getNameVarargs", new Class<?>[] { Boolean.class, ArrayList.class }, new Object[] { Boolean.TRUE, new ArrayList<>() });
+    Assert.assertEquals(BEAN_NAME, result);
+}

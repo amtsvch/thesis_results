@@ -1,0 +1,16 @@
+private Token jj_consume_token(int kind) throws ParseException {                                       private Token jj_consume_token(int kind) throws ParseException {                                    
+Token oldToken = token;                                                                                Token oldToken = token;                                                                             
+if ((token = jj_nt).next != null)                                                                    | if ((token = jj_nt).next != null) {                                                                 
+jj_nt = jj_nt.next;                                                                                    jj_nt = jj_nt.next;                                                                                 
+else                                                                                                 | } else {                                                                                            
+jj_nt = jj_nt.next = token_source.getNextToken();                                                      jj_nt = jj_nt.next = token_source.getNextToken();                                                   
+                                                                                                     | }                                                                                                   
+if (token.kind == kind) {                                                                              if (token.kind == kind) {                                                                           
+jj_gen++;                                                                                              jj_gen++;                                                                                           
+return token;                                                                                          return token;                                                                                       
+}                                                                                                      }                                                                                                   
+jj_nt = token;                                                                                         jj_nt = token;                                                                                      
+token = oldToken;                                                                                      token = oldToken;                                                                                   
+jj_kind = kind;                                                                                        jj_kind = kind;                                                                                     
+throw generateParseException();                                                                        throw generateParseException();                                                                     
+}                                                                                                      }                                                                                                   

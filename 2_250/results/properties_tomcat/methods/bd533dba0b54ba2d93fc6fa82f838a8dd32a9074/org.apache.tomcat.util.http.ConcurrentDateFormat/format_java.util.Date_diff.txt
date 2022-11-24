@@ -1,0 +1,9 @@
+public String format(Date date) {
+    SimpleDateFormat sdf = queue.poll();
+    if (sdf == null) {
+        sdf = createInstance();
+    }
+    String result = sdf.format(date);
+    queue.add(sdf);
+    return result;
+}

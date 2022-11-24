@@ -1,0 +1,16 @@
+/**                                                                                                    /**                                                                                                 
+* {@inheritDoc}                                                                                        * {@inheritDoc}                                                                                     
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void setId(String id, boolean notify) {                                                         public void setId(String id, boolean notify) {                                                      
+if ((this.id != null) && (manager != null))                                                          | if ((this.id != null) && (manager != null)) {                                                       
+manager.remove(this);                                                                                  manager.remove(this);                                                                               
+                                                                                                     | }                                                                                                   
+this.id = id;                                                                                          this.id = id;                                                                                       
+if (manager != null)                                                                                 | if (manager != null) {                                                                              
+manager.add(this);                                                                                     manager.add(this);                                                                                  
+                                                                                                     | }                                                                                                   
+if (notify) {                                                                                          if (notify) {                                                                                       
+tellNew();                                                                                             tellNew();                                                                                          
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

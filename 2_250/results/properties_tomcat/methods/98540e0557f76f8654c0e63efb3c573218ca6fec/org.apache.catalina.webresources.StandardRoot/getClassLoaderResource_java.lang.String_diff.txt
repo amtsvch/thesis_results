@@ -1,0 +1,4 @@
+@Override
+public WebResource getClassLoaderResource(String path) {
+    return getResource("/WEB-INF/classes" + path, true, true);
+}

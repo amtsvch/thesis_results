@@ -1,0 +1,5 @@
+@Override
+protected AlgorithmParameterSpec generateIV(byte[] bytes, int offset, int length) {
+    // See class javadoc for explanation of this magic number (128)
+    return new GCMParameterSpec(128, bytes, offset, length);
+}

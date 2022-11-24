@@ -1,0 +1,8 @@
+@Test
+public void testMultipleWithInvalidMiddle2() throws IOException {
+    Set<String> expected = new HashSet<>();
+    expected.add("bar");
+    expected.add("foo");
+    expected.add("host");
+    doTestVary("Host, OK {{{, Foo, Bar", expected, false);
+}

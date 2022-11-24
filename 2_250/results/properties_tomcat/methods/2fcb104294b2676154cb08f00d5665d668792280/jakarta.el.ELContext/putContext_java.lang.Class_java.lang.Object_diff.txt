@@ -1,0 +1,17 @@
+/**
+ * Add an object to this EL context under the given key.
+ *
+ * @param key           The key under which to store the object
+ * @param contextObject The object to add
+ *
+ * @throws NullPointerException
+ *              If the supplied key or context is <code>null</code>
+ */
+public void putContext(Class<?> key, Object contextObject) {
+    Objects.requireNonNull(key);
+    Objects.requireNonNull(contextObject);
+    if (this.map == null) {
+        this.map = new HashMap<>();
+    }
+    this.map.put(key, contextObject);
+}

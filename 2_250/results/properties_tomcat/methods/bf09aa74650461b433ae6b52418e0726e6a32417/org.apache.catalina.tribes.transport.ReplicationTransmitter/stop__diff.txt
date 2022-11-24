@@ -1,0 +1,14 @@
+/**
+ * stop the sender and deregister mbeans (transmitter, senders)
+ *
+ * @see org.apache.catalina.tribes.ChannelSender#stop()
+ */
+@Override
+public synchronized void stop() {
+    getTransport().disconnect();
+    if (oname != null) {
+        JmxRegistry.getRegistry(channel).unregisterJmx(oname);
+        oname = null;
+    }
+    channel = null;
+}

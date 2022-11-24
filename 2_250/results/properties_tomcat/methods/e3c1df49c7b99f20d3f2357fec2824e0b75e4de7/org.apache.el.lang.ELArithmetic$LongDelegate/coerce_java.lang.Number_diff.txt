@@ -1,0 +1,7 @@
+@Override
+protected Number coerce(Number num) {
+    if (num instanceof Long) {
+        return num;
+    }
+    return Long.valueOf(num.longValue());
+}

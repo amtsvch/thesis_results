@@ -1,0 +1,22 @@
+/**
+ * Return a new StringBuilder containing the same contents as the
+ * input buffer, except that data of form ${varname} have been
+ * replaced by the value of that var as defined in the system property.
+ */
+private StringBuilder updateBodyText(StringBuilder bodyText) {
+    String in = bodyText.toString();
+    String out;
+    try {
+        out = IntrospectionUtils.replaceProperties(in, null, source, getClassLoader());
+    } catch (Exception e) {
+        // return unchanged data
+        return bodyText;
+    }
+    if (out == in) {
+        // No substitutions required. Don't waste memory creating
+        // a new buffer
+        return bodyText;
+    } else {
+        return new StringBuilder(out);
+    }
+}

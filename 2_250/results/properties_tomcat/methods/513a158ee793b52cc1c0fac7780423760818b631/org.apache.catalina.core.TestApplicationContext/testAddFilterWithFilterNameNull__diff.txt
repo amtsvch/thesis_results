@@ -1,0 +1,4 @@
+@Test(expected = IllegalArgumentException.class)
+public void testAddFilterWithFilterNameNull() throws LifecycleException {
+    getServletContext().addFilter(null, (Filter) null);
+}

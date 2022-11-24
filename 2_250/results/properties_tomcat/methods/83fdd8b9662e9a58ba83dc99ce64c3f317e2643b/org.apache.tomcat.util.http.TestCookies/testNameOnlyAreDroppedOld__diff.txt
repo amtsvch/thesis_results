@@ -1,0 +1,17 @@
+@Test
+public void testNameOnlyAreDroppedOld() {
+    test(false, "foo=;a=b; ;", A);
+    test(false, "foo;a=b; ;", A);
+    test(false, "foo;a=b;bar", A);
+    test(false, "foo;a=b;bar;", A);
+    test(false, "foo;a=b;bar ", A);
+    test(false, "foo;a=b;bar ;", A);
+    // Bug 49000
+    Cookie fred = new Cookie("fred", "1");
+    Cookie jim = new Cookie("jim", "2");
+    Cookie george = new Cookie("george", "3");
+    test(false, "fred=1; jim=2; bob", fred, jim);
+    test(false, "fred=1; jim=2; bob; george=3", fred, jim, george);
+    test(false, "fred=1; jim=2; bob=; george=3", fred, jim, george);
+    test(false, "fred=1; jim=2; bob=", fred, jim);
+}

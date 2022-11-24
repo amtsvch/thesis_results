@@ -1,0 +1,4 @@
+@Test
+public void testIsInstanceStandardContext10() {
+    Assert.assertTrue(IntrospectionUtils.isInstance(StandardContext.class, "javax.management.NotificationEmitter"));
+}

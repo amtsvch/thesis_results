@@ -1,0 +1,14 @@
+// ----------------------------------------------------- DTDHandler Methods
+/**
+ * Receive notification of a notation declaration event.
+ *
+ * @param name The notation name
+ * @param publicId The public identifier (if any)
+ * @param systemId The system identifier (if any)
+ */
+@Override
+public void notationDecl(String name, String publicId, String systemId) {
+    if (saxLog.isDebugEnabled()) {
+        saxLog.debug("notationDecl(" + name + "," + publicId + "," + systemId + ")");
+    }
+}

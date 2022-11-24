@@ -1,0 +1,11 @@
+public void setClusterReceiver(ChannelReceiver clusterReceiver) {                                      public void setClusterReceiver(ChannelReceiver clusterReceiver) {                                   
+if (clusterReceiver != null) {                                                                         if (clusterReceiver != null) {                                                                      
+this.clusterReceiver = clusterReceiver;                                                                this.clusterReceiver = clusterReceiver;                                                             
+this.clusterReceiver.setMessageListener(this);                                                         this.clusterReceiver.setMessageListener(this);                                                      
+} else {                                                                                               } else {                                                                                            
+if (this.clusterReceiver != null)                                                                    | if (this.clusterReceiver != null) {                                                                 
+this.clusterReceiver.setMessageListener(null);                                                         this.clusterReceiver.setMessageListener(null);                                                      
+                                                                                                     | }                                                                                                   
+this.clusterReceiver = null;                                                                           this.clusterReceiver = null;                                                                        
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

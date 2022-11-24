@@ -1,0 +1,9 @@
+@Test
+public void testLax() {
+    SameSiteCookies attribute = SameSiteCookies.LAX;
+    Assert.assertEquals("Lax", attribute.getValue());
+    Assert.assertEquals(SameSiteCookies.LAX, attribute);
+    Assert.assertNotEquals(SameSiteCookies.UNSET, attribute);
+    Assert.assertNotEquals(SameSiteCookies.NONE, attribute);
+    Assert.assertNotEquals(SameSiteCookies.STRICT, attribute);
+}

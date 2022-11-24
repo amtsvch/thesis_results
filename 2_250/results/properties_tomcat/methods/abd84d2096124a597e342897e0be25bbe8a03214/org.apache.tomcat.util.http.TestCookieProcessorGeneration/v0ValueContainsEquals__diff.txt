@@ -1,0 +1,6 @@
+@Test
+public void v0ValueContainsEquals() {
+    Cookie cookie = new Cookie("foo", "a=b");
+    doTestDefaults(cookie, "foo=\"a=b\"; Version=1", "foo=a=b");
+    doTestAllowSeparators(cookie, "foo=a=b", "foo=a=b");
+}

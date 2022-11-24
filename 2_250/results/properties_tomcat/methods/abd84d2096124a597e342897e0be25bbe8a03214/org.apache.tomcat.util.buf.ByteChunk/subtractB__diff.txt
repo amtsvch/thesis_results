@@ -1,0 +1,6 @@
+public byte subtractB() throws IOException {
+    if (checkEof()) {
+        return -1;
+    }
+    return buff[start++];
+}

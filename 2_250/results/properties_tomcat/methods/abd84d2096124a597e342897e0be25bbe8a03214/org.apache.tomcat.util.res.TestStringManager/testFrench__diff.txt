@@ -1,0 +1,5 @@
+@Test
+public void testFrench() {
+    StringManager sm = StringManager.getManager(PACKAGE_NAME, Locale.FRENCH);
+    Assert.assertEquals(Locale.FRENCH, sm.getLocale());
+}

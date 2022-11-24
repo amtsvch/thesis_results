@@ -1,0 +1,5 @@
+@Before
+public final void setup() throws LifecycleException {
+    resourceRoot = getWebResourceRoot();
+    resourceRoot.start();
+}

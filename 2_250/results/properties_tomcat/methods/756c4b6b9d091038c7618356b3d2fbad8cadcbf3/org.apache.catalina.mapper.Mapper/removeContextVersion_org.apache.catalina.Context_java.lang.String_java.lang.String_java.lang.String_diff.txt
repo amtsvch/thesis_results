@@ -1,0 +1,36 @@
+/**
+ * Remove a context from an existing host.
+ *
+ * @param ctxt      The actual context
+ * @param hostName  Virtual host name this context belongs to
+ * @param path      Context path
+ * @param version   Context version
+ */
+public void removeContextVersion(Context ctxt, String hostName, String path, String version) {
+    hostName = renameWildcardHost(hostName);
+    contextObjectToContextVersionMap.remove(ctxt);
+    MappedHost host = exactFind(hosts, hostName);
+    if (host == null || host.isAlias()) {
+        return;
+    }
+    synchronized (host) {
+        ContextList contextList = host.contextList;
+        MappedContext context = exactFind(contextList.contexts, path);
+        if (context == null) {
+            return;
+        }
+        ContextVersion[] contextVersions = context.versions;
+        ContextVersion[] newContextVersions = new ContextVersion[contextVersions.length - 1];
+        if (removeMap(contextVersions, newContextVersions, version)) {
+            if (newContextVersions.length == 0) {
+                // Remove the context
+                ContextList newContextList = contextList.removeContext(path);
+                if (newContextList != null) {
+                    updateContextList(host, newContextList);
+                }
+            } else {
+                context.versions = newContextVersions;
+            }
+        }
+    }
+}

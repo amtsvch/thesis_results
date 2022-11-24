@@ -1,0 +1,9 @@
+private void writeHuffmanEncodableValue(ByteBuffer target, String headerName, String val) {
+    if (hpackHeaderFunction.shouldUseHuffman(headerName, val)) {
+        if (!HPackHuffman.encode(target, val, false)) {
+            writeValueString(target, val);
+        }
+    } else {
+        writeValueString(target, val);
+    }
+}

@@ -1,0 +1,10 @@
+/**
+ * {@inheritDoc}
+ *
+ * @exception IllegalStateException if this map is currently locked
+ */
+@Override
+public V put(K key, V value) {
+    checkLocked();
+    return delegatedMap.put(key, value);
+}

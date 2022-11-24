@@ -1,0 +1,16 @@
+private void doTestMultipleHeadersValid(boolean withNull) throws IOException {
+    Set<String> expectedTokens = new HashSet<>();
+    expectedTokens.add("bar");
+    expectedTokens.add("foo");
+    expectedTokens.add("foo2");
+    Set<String> inputs = new HashSet<>();
+    inputs.add("foo");
+    if (withNull) {
+        inputs.add(null);
+    }
+    inputs.add("bar, foo2");
+    Set<String> tokens = new HashSet<>();
+    boolean result = TokenList.parseTokenList(Collections.enumeration(inputs), tokens);
+    Assert.assertEquals(expectedTokens, tokens);
+    Assert.assertTrue(result);
+}

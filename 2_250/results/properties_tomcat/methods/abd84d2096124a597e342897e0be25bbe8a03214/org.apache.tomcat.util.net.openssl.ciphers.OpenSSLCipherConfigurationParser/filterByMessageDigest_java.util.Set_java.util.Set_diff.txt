@@ -1,0 +1,3 @@
+static Set<Cipher> filterByMessageDigest(Set<Cipher> ciphers, Set<MessageDigest> mac) {
+    return filter(ciphers, null, null, null, null, null, mac);
+}

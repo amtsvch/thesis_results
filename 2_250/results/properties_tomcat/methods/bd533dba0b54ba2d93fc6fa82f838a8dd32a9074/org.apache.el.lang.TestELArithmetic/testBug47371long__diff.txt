@@ -1,0 +1,4 @@
+@Test
+public void testBug47371long() throws Exception {
+    Assert.assertEquals(Long.valueOf(1), ELArithmetic.add("", Integer.valueOf(1)));
+}

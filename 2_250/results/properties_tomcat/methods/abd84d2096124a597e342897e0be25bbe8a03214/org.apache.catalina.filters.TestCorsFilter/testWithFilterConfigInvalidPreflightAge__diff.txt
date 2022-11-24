@@ -1,0 +1,5 @@
+@Test(expected = ServletException.class)
+public void testWithFilterConfigInvalidPreflightAge() throws ServletException {
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getFilterConfigInvalidMaxPreflightAge());
+}

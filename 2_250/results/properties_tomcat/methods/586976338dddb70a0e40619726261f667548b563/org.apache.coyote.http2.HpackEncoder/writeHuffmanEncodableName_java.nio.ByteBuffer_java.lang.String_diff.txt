@@ -1,0 +1,13 @@
+private void writeHuffmanEncodableName(ByteBuffer target, String headerName) {
+    if (hpackHeaderFunction.shouldUseHuffman(headerName)) {
+        if (HPackHuffman.encode(target, headerName, true)) {
+            return;
+        }
+    }
+    // to use encodeInteger we need to place the first byte in the buffer.
+    target.put((byte) 0);
+    Hpack.encodeInteger(target, headerName.length(), 7);
+    for (int j = 0; j < headerName.length(); ++j) {
+        target.put((byte) Hpack.toLower(headerName.charAt(j)));
+    }
+}

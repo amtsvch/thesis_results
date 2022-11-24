@@ -1,0 +1,12 @@
+/**
+ * Will a {@link LifecycleException} thrown by a sub-class during
+ * {@link #initInternal()}, {@link #startInternal()},
+ * {@link #stopInternal()} or {@link #destroyInternal()} be re-thrown for
+ * the caller to handle or will it be logged instead?
+ *
+ * @return {@code true} if the exception will be re-thrown, otherwise
+ *         {@code false}
+ */
+public boolean getThrowOnFailure() {
+    return throwOnFailure;
+}

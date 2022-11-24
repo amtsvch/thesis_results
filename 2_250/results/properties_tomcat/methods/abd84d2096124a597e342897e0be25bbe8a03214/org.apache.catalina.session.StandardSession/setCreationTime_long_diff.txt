@@ -1,0 +1,12 @@
+/**
+ * Set the creation time for this session.  This method is called by the
+ * Manager when an existing Session instance is reused.
+ *
+ * @param time The new creation time
+ */
+@Override
+public void setCreationTime(long time) {
+    this.creationTime = time;
+    this.lastAccessedTime = time;
+    this.thisAccessedTime = time;
+}

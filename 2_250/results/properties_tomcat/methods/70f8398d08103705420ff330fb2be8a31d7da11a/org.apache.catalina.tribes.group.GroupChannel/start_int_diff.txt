@@ -1,0 +1,25 @@
+/**                                                                                                    /**                                                                                                 
+* Starts the channel.                                                                                  * Starts the channel.                                                                               
+* @param svc int - what service to start                                                               * @param svc int - what service to start                                                            
+* @throws ChannelException Start error                                                                 * @throws ChannelException Start error                                                              
+* @see org.apache.catalina.tribes.Channel#start(int)                                                   * @see org.apache.catalina.tribes.Channel#start(int)                                                
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public synchronized void start(int svc) throws ChannelException {                                      public synchronized void start(int svc) throws ChannelException {                                   
+setupDefaultStack();                                                                                   setupDefaultStack();                                                                                
+if (optionCheck)                                                                                     | if (optionCheck) {                                                                                  
+checkOptionFlags();                                                                                    checkOptionFlags();                                                                                 
+                                                                                                     | }                                                                                                   
+// register jmx                                                                                        // register jmx                                                                                     
+JmxRegistry jmxRegistry = JmxRegistry.getRegistry(this);                                               JmxRegistry jmxRegistry = JmxRegistry.getRegistry(this);                                            
+if (jmxRegistry != null)                                                                             | if (jmxRegistry != null) {                                                                          
+this.oname = jmxRegistry.registerJmx(",component=Channel", this);                                      this.oname = jmxRegistry.registerJmx(",component=Channel", this);                                   
+                                                                                                     | }                                                                                                   
+if (utilityExecutor == null) {                                                                         if (utilityExecutor == null) {                                                                      
+log.warn(sm.getString("groupChannel.warn.noUtilityExecutor"));                                         log.warn(sm.getString("groupChannel.warn.noUtilityExecutor"));                                      
+utilityExecutor = new ScheduledThreadPoolExecutor(1);                                                  utilityExecutor = new ScheduledThreadPoolExecutor(1);                                               
+ownExecutor = true;                                                                                    ownExecutor = true;                                                                                 
+}                                                                                                      }                                                                                                   
+super.start(svc);                                                                                      super.start(svc);                                                                                   
+monitorFuture = utilityExecutor.scheduleWithFixedDelay(this::startHeartbeat, 0, 60, TimeUnit.SECONDS   monitorFuture = utilityExecutor.scheduleWithFixedDelay(this::startHeartbeat, 0, 60, TimeUnit.SECONDS
+}                                                                                                      }                                                                                                   

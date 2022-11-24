@@ -1,0 +1,6 @@
+@Test
+public void testCount01() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("[1,2,3,4,5].stream().count()", Object.class);
+    Assert.assertTrue("Result: " + result.toString(), ELSupport.equals(null, Long.valueOf(5), result));
+}

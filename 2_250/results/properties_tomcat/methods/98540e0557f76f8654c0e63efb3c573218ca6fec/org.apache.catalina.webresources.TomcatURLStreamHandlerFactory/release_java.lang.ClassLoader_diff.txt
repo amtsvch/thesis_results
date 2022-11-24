@@ -1,0 +1,26 @@
+/**
+ * Release references to any user provided factories that have been loaded
+ * using the provided class loader. Called during web application stop to
+ * prevent memory leaks.
+ *
+ * @param classLoader The class loader to release
+ */
+public static void release(ClassLoader classLoader) {
+    if (instance == null) {
+        return;
+    }
+    List<URLStreamHandlerFactory> factories = instance.userFactories;
+    for (URLStreamHandlerFactory factory : factories) {
+        ClassLoader factoryLoader = factory.getClass().getClassLoader();
+        while (factoryLoader != null) {
+            if (classLoader.equals(factoryLoader)) {
+                // Implementation note: userFactories is a
+                // CopyOnWriteArrayList, so items are removed with
+                // List.remove() instead of usual Iterator.remove()
+                factories.remove(factory);
+                break;
+            }
+            factoryLoader = factoryLoader.getParent();
+        }
+    }
+}

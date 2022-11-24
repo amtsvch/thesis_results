@@ -1,0 +1,22 @@
+@Override                                                                                              @Override                                                                                           
+public boolean offer(Runnable o) {                                                                     public boolean offer(Runnable o) {                                                                  
+// we can't do any checks                                                                              // we can't do any checks                                                                           
+if (parent == null)                                                                                  | if (parent == null) {                                                                               
+return super.offer(o);                                                                                 return super.offer(o);                                                                              
+                                                                                                     | }                                                                                                   
+// we are maxed out on threads, simply queue the object                                                // we are maxed out on threads, simply queue the object                                             
+if (parent.getPoolSize() == parent.getMaximumPoolSize())                                             | if (parent.getPoolSize() == parent.getMaximumPoolSize()) {                                          
+return super.offer(o);                                                                                 return super.offer(o);                                                                              
+                                                                                                     | }                                                                                                   
+// we have idle threads, just add it to the queue                                                      // we have idle threads, just add it to the queue                                                   
+// this is an approximation, so it could use some tuning                                               // this is an approximation, so it could use some tuning                                            
+if (parent.getActiveCount() &lt; (parent.getPoolSize()))                                             | if (parent.getActiveCount() &lt; (parent.getPoolSize())) {                                          
+return super.offer(o);                                                                                 return super.offer(o);                                                                              
+                                                                                                     | }                                                                                                   
+// if we have less threads than maximum force creation of a new thread                                 // if we have less threads than maximum force creation of a new thread                              
+if (parent.getPoolSize() &lt; parent.getMaximumPoolSize())                                           | if (parent.getPoolSize() &lt; parent.getMaximumPoolSize()) {                                        
+return false;                                                                                          return false;                                                                                       
+                                                                                                     | }                                                                                                   
+// if we reached here, we need to add it to the queue                                                  // if we reached here, we need to add it to the queue                                               
+return super.offer(o);                                                                                 return super.offer(o);                                                                              
+}                                                                                                      }                                                                                                   

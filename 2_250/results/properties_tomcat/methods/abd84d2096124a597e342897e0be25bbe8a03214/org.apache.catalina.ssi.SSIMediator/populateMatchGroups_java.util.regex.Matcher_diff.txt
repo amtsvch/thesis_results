@@ -1,0 +1,10 @@
+protected void populateMatchGroups(Matcher matcher) {
+    lastMatchCount = matcher.groupCount();
+    // $0 is not used
+    if (lastMatchCount == 0) {
+        return;
+    }
+    for (int i = 1; i <= lastMatchCount; i++) {
+        setVariableValue(Integer.toString(i), matcher.group(i));
+    }
+}

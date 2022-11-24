@@ -1,0 +1,10 @@
+private TableEntry(String name, String value, int position) {
+    this.name = name;
+    this.value = value;
+    this.position = position;
+    if (value != null) {
+        this.size = 32 + name.length() + value.length();
+    } else {
+        this.size = -1;
+    }
+}

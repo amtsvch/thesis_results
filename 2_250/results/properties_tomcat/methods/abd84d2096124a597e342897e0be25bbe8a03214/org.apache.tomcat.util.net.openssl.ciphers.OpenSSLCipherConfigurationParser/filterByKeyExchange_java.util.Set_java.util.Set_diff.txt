@@ -1,0 +1,3 @@
+static LinkedHashSet<Cipher> filterByKeyExchange(Set<Cipher> ciphers, Set<KeyExchange> kx) {
+    return filter(ciphers, null, kx, null, null, null, null);
+}

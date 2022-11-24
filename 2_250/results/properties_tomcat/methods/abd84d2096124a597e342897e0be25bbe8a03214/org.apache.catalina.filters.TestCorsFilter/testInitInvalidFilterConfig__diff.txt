@@ -1,0 +1,7 @@
+@Test(expected = ServletException.class)
+public void testInitInvalidFilterConfig() throws ServletException {
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getFilterConfigInvalidMaxPreflightAge());
+    // If we don't get an exception at this point, then all mocked objects
+    // worked as expected.
+}

@@ -1,0 +1,6 @@
+@Test
+public void testSimple02() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("{}", Map.class);
+    Assert.assertEquals(Collections.EMPTY_MAP, result);
+}

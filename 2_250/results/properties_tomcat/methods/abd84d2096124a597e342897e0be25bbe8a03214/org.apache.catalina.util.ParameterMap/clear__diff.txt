@@ -1,0 +1,10 @@
+/**
+ * {@inheritDoc}
+ *
+ * @exception IllegalStateException if this map is currently locked
+ */
+@Override
+public void clear() {
+    checkLocked();
+    delegatedMap.clear();
+}

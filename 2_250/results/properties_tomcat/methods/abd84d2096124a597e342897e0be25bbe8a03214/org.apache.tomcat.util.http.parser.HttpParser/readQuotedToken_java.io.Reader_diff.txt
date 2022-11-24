@@ -1,0 +1,47 @@
+/**
+ * Token can be read unambiguously with or without surrounding quotes so
+ * this parsing method for token permits optional surrounding double quotes.
+ * This is not defined in any RFC. It is a special case to handle data from
+ * buggy clients (known buggy clients for DIGEST auth include Microsoft IE 8
+ * &amp; 9, Apple Safari for OSX and iOS) that add quotes to values that
+ * should be tokens.
+ *
+ * @return the token if one was found, null if data other than a token or
+ *         quoted token was found or null if the end of data was reached
+ *         before a quoted token was terminated
+ */
+static String readQuotedToken(Reader input) throws IOException {
+    StringBuilder result = new StringBuilder();
+    boolean quoted = false;
+    skipLws(input);
+    input.mark(1);
+    int c = input.read();
+    if (c == '"') {
+        quoted = true;
+    } else if (c == -1 || !isToken(c)) {
+        return null;
+    } else {
+        result.append((char) c);
+    }
+    input.mark(1);
+    c = input.read();
+    while (c != -1 && isToken(c)) {
+        result.append((char) c);
+        input.mark(1);
+        c = input.read();
+    }
+    if (quoted) {
+        if (c != '"') {
+            return null;
+        }
+    } else {
+        // Use mark(1)/reset() rather than skip(-1) since skip() is a NOP
+        // once the end of the String has been reached.
+        input.reset();
+    }
+    if (c != -1 && result.length() == 0) {
+        return null;
+    } else {
+        return result.toString();
+    }
+}

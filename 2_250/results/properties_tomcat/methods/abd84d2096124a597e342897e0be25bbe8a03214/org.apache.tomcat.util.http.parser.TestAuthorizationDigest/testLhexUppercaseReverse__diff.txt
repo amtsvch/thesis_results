@@ -1,0 +1,7 @@
+@Test
+public void testLhexUppercaseReverse() throws Exception {
+    String header = "Digest nc=FEDCBA00";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertEquals("fedcba00", result.get("nc"));
+}

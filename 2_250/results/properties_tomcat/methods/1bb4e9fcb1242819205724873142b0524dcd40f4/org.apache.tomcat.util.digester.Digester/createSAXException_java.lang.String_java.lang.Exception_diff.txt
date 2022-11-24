@@ -1,0 +1,35 @@
+/**
+ * Create a SAX exception which also understands about the location in
+ * the digester file where the exception occurs
+ * @param message The error message
+ * @param e The root cause
+ * @return the new exception
+ */
+public SAXException createSAXException(String message, Exception e) {
+    if ((e != null) && (e instanceof InvocationTargetException)) {
+        Throwable t = e.getCause();
+        if (t instanceof ThreadDeath) {
+            throw (ThreadDeath) t;
+        }
+        if (t instanceof VirtualMachineError) {
+            throw (VirtualMachineError) t;
+        }
+        if (t instanceof Exception) {
+            e = (Exception) t;
+        }
+    }
+    if (locator != null) {
+        String error = sm.getString("digester.errorLocation", Integer.valueOf(locator.getLineNumber()), Integer.valueOf(locator.getColumnNumber()), message);
+        if (e != null) {
+            return new SAXParseException(error, locator, e);
+        } else {
+            return new SAXParseException(error, locator);
+        }
+    }
+    log.error(sm.getString("digester.noLocator"));
+    if (e != null) {
+        return new SAXException(message, e);
+    } else {
+        return new SAXException(message);
+    }
+}

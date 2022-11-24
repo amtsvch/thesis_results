@@ -1,0 +1,8 @@
+private int getRsv(MessagePart uncompressedMessagePart) {
+    int result = uncompressedMessagePart.getRsv();
+    if (!firstCompressedFrameWritten) {
+        result += RSV_BITMASK;
+        firstCompressedFrameWritten = true;
+    }
+    return result;
+}

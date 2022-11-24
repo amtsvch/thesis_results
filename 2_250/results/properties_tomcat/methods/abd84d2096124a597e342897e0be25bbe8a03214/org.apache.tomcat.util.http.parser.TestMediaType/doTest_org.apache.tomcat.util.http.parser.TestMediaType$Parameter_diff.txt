@@ -1,0 +1,5 @@
+private void doTest(Parameter... parameters) throws IOException {
+    for (String lws : LWS_VALUES) {
+        doTest(lws, parameters);
+    }
+}

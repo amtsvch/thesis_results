@@ -1,0 +1,8 @@
+/**
+ * Creates a GroupChannel. This constructor will also
+ * add the first interceptor in the GroupChannel.<br>
+ * The first interceptor is always the channel itself.
+ */
+public GroupChannel() {
+    addInterceptor(this);
+}

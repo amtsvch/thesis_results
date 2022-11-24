@@ -1,0 +1,5 @@
+@Test(expected = jakarta.websocket.DeploymentException.class)
+public void testQuote1() throws Exception {
+    UriTemplate t = new UriTemplate("/.{a}");
+    t.match(new UriTemplate("/yfoo"));
+}

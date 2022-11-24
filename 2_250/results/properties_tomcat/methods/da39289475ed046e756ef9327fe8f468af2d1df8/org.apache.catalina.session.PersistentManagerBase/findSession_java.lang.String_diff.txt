@@ -1,0 +1,33 @@
+/**
+ * {@inheritDoc}
+ * <p>
+ * This method checks the persistence store if persistence is enabled,
+ * otherwise just uses the functionality from ManagerBase.
+ */
+@Override
+public Session findSession(String id) throws IOException {
+    Session session = super.findSession(id);
+    // OK, at this point, we're not sure if another thread is trying to
+    // remove the session or not so the only way around this is to lock it
+    // (or attempt to) and then try to get it by this session id again. If
+    // the other code ran swapOut, then we should get a null back during
+    // this run, and if not, we lock it out so we can access the session
+    // safely.
+    if (session != null) {
+        synchronized (session) {
+            session = super.findSession(session.getIdInternal());
+            if (session != null) {
+                // To keep any external calling code from messing up the
+                // concurrency.
+                session.access();
+                session.endAccess();
+            }
+        }
+    }
+    if (session != null) {
+        return session;
+    }
+    // See if the Session is in the Store
+    session = swapIn(id);
+    return session;
+}

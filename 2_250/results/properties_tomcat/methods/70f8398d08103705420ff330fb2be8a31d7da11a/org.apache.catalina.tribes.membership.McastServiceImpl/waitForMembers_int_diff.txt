@@ -1,0 +1,13 @@
+private void waitForMembers(int level) {                                                               private void waitForMembers(int level) {                                                            
+long memberwait = sendFrequency * 2;                                                                   long memberwait = sendFrequency * 2;                                                                
+if (log.isInfoEnabled())                                                                             | if (log.isInfoEnabled()) {                                                                          
+log.info(sm.getString("mcastServiceImpl.waitForMembers.start", Long.toString(memberwait), Integer.to   log.info(sm.getString("mcastServiceImpl.waitForMembers.start", Long.toString(memberwait), Integer.to
+                                                                                                     | }                                                                                                   
+try {                                                                                                  try {                                                                                               
+Thread.sleep(memberwait);                                                                              Thread.sleep(memberwait);                                                                           
+} catch (InterruptedException ignore) {                                                                } catch (InterruptedException ignore) {                                                             
+}                                                                                                      }                                                                                                   
+if (log.isInfoEnabled())                                                                             | if (log.isInfoEnabled()) {                                                                          
+log.info(sm.getString("mcastServiceImpl.waitForMembers.done", Integer.toString(level)));               log.info(sm.getString("mcastServiceImpl.waitForMembers.done", Integer.toString(level)));            
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

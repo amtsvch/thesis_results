@@ -1,0 +1,7 @@
+@Test                                                                                                  @Test                                                                                               
+public void testEval03() {                                                                             public void testEval03() {                                                                          
+ELProcessor elp = new ELProcessor();                                                                   ELProcessor elp = new ELProcessor();                                                                
+// Note \ is escaped as \\ in Java source code                                                         // Note \ is escaped as \\ in Java source code                                                      
+String result = (String) elp.eval("'\\\\'");                                                         | String result = elp.eval("'\\\\'");                                                                 
+Assert.assertEquals("\\", result);                                                                     Assert.assertEquals("\\", result);                                                                  
+}                                                                                                      }                                                                                                   

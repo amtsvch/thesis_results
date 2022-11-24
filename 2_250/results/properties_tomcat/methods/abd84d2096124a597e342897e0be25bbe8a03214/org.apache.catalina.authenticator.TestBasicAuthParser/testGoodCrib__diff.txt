@@ -1,0 +1,8 @@
+@Test
+public void testGoodCrib() throws Exception {
+    final String BASE64_CRIB = "dXNlcmlkOnNlY3JldA==";
+    final BasicAuthHeader AUTH_HEADER = new BasicAuthHeader(NICE_METHOD, BASE64_CRIB);
+    BasicAuthenticator.BasicCredentials credentials = new BasicAuthenticator.BasicCredentials(AUTH_HEADER.getHeader(), StandardCharsets.UTF_8, true);
+    Assert.assertEquals(USER_NAME, credentials.getUsername());
+    Assert.assertEquals(PASSWORD, credentials.getPassword());
+}

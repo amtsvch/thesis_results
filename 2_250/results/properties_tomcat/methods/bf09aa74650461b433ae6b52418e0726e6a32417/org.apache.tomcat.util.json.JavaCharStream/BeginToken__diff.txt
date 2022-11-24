@@ -1,0 +1,16 @@
+/**                                                                                                    /**                                                                                                 
+* @return starting character for token.                                                                * @return starting character for token.                                                             
+*/                                                                                                     */                                                                                                  
+public char BeginToken() throws java.io.IOException {                                                  public char BeginToken() throws java.io.IOException {                                               
+if (inBuf &gt; 0) {                                                                                    if (inBuf &gt; 0) {                                                                                 
+--inBuf;                                                                                               --inBuf;                                                                                            
+if (++bufpos == bufsize)                                                                             | if (++bufpos == bufsize) {                                                                          
+bufpos = 0;                                                                                            bufpos = 0;                                                                                         
+                                                                                                     | }                                                                                                   
+tokenBegin = bufpos;                                                                                   tokenBegin = bufpos;                                                                                
+return buffer[bufpos];                                                                                 return buffer[bufpos];                                                                              
+}                                                                                                      }                                                                                                   
+tokenBegin = 0;                                                                                        tokenBegin = 0;                                                                                     
+bufpos = -1;                                                                                           bufpos = -1;                                                                                        
+return readChar();                                                                                     return readChar();                                                                                  
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,26 @@
+/**
+ * Parses an enumeration of header values of the form 1#token, forcing all
+ * parsed values to lower case.
+ *
+ * @param inputs     The headers to parse
+ * @param collection The Collection (usually a list or a set) to which the
+ *                       parsed tokens should be added
+ *
+ * @return {@code} true if the header values were parsed cleanly and at
+ *         least one token was found, otherwise {@code false} (e.g. if a
+ *         non-token value was encountered)
+ *
+ * @throws IOException If an I/O error occurs reading the header
+ */
+public static boolean parseTokenList(Enumeration<String> inputs, Collection<String> collection) throws IOException {
+    boolean result = true;
+    while (inputs.hasMoreElements()) {
+        String nextHeaderValue = inputs.nextElement();
+        if (nextHeaderValue != null) {
+            if (!TokenList.parseTokenList(new StringReader(nextHeaderValue), collection)) {
+                result = false;
+            }
+        }
+    }
+    return result;
+}

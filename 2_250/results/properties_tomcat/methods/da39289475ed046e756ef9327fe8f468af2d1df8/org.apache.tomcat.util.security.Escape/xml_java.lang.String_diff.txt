@@ -1,0 +1,11 @@
+/**
+ * Escape content for use in XML.
+ *
+ * @param content   The content to escape
+ *
+ * @return  The escaped content or {@code null} if the content was
+ *          {@code null}
+ */
+public static String xml(String content) {
+    return xml(null, content);
+}

@@ -1,0 +1,6 @@
+@Test
+public void strictNamingImpliesRFC2109() {
+    // Needs to be something RFC6265 allows, but strict naming does not.
+    @SuppressWarnings("unused")
+    Cookie cookie = new Cookie("$Foo", null);
+}

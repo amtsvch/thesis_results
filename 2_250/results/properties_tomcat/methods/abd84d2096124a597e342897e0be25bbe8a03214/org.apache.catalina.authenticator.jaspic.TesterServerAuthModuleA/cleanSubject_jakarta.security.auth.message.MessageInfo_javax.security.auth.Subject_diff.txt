@@ -1,0 +1,6 @@
+@SuppressWarnings("unchecked")
+@Override
+public void cleanSubject(MessageInfo messageInfo, Subject subject) throws AuthException {
+    trace.append("cleanSubject()-");
+    messageInfo.getMap().put("trace", trace.toString());
+}

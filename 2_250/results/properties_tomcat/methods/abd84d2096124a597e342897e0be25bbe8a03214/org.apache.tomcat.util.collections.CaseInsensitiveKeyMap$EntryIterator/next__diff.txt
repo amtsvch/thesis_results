@@ -1,0 +1,5 @@
+@Override
+public Entry<String, V> next() {
+    Entry<Key, V> entry = iterator.next();
+    return new EntryImpl<>(entry.getKey().getKey(), entry.getValue());
+}

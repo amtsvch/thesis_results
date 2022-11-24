@@ -1,0 +1,5 @@
+@Test(expected = AuthException.class)
+public void testConfigNone() throws Exception {
+    ServerAuthConfig serverAuthConfig = new SimpleServerAuthConfig(null, null, null, null);
+    serverAuthConfig.getAuthContext(null, null, null);
+}

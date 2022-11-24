@@ -1,0 +1,8 @@
+@Test
+public void testBug53062p() throws Exception {
+    Request req = new TesterRequest();
+    Response resp = new Response();
+    resp.setRequest(req);
+    String result = resp.toAbsolute("./..#/../..");
+    Assert.assertEquals("http://localhost:8080/level1/#/../..", result);
+}

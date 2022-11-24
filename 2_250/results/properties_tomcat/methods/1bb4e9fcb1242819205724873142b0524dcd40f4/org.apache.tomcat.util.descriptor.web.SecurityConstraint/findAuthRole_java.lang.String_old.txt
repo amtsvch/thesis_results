@@ -1,0 +1,16 @@
+/**
+ * Check a role.
+ *
+ * @param role Role name to be checked
+ * @return <code>true</code> if the specified role is permitted access to
+ * the resources protected by this security constraint.
+ */
+public boolean findAuthRole(String role) {
+    if (role == null)
+        return false;
+    for (String authRole : authRoles) {
+        if (role.equals(authRole))
+            return true;
+    }
+    return false;
+}

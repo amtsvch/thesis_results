@@ -1,0 +1,7 @@
+@Test
+public void testWrongCharacterInToken() throws Exception {
+    String header = "Digest \u044f";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertNull(result);
+}

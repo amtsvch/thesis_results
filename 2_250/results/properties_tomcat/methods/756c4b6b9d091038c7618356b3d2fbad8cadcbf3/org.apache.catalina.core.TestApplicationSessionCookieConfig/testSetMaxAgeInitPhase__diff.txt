@@ -1,0 +1,6 @@
+@Test
+public void testSetMaxAgeInitPhase() {
+    context.setState(LifecycleState.STARTING_PREP);
+    applicationSessionCookieConfig.setMaxAge(1);
+    Assert.assertTrue(applicationSessionCookieConfig.getMaxAge() == 1);
+}

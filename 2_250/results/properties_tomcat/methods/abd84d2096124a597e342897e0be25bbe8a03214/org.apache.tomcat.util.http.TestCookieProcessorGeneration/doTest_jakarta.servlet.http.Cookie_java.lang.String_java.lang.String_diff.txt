@@ -1,0 +1,4 @@
+private void doTest(Cookie cookie, String expectedLegacy, String expectedRfc6265) {
+    doTestDefaults(cookie, expectedLegacy, expectedRfc6265);
+    doTestAllowSeparators(cookie, expectedLegacy, expectedRfc6265);
+}

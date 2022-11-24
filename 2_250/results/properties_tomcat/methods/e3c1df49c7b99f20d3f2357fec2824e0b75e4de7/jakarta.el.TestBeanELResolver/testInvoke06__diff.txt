@@ -1,0 +1,9 @@
+/**
+ * Tests that a call to a non existing method will throw an exception.
+ */
+@Test(expected = MethodNotFoundException.class)
+public void testInvoke06() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    resolver.invoke(context, new TesterBean(BEAN_NAME), METHOD03_NAME, new Class<?>[] {}, new Object[] {});
+}

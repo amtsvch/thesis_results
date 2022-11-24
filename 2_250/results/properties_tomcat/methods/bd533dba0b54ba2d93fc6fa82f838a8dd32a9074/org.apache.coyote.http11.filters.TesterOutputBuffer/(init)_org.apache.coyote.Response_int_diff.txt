@@ -1,0 +1,4 @@
+public TesterOutputBuffer(Response response, int headerBufferSize) {
+    super(response, headerBufferSize);
+    outputStreamOutputBuffer = new OutputStreamOutputBuffer();
+}

@@ -1,0 +1,13 @@
+/**                                                                                                    /**                                                                                                 
+* Add an HTTP request method to the methods explicitly excluded from this                              * Add an HTTP request method to the methods explicitly excluded from this                           
+* web resource collection.                                                                             * web resource collection.                                                                          
+* @param method The method                                                                             * @param method The method                                                                          
+*/                                                                                                     */                                                                                                  
+public void addOmittedMethod(String method) {                                                          public void addOmittedMethod(String method) {                                                       
+if (method == null)                                                                                  | if (method == null) {                                                                               
+return;                                                                                                return;                                                                                             
+                                                                                                     | }                                                                                                   
+String[] results = Arrays.copyOf(omittedMethods, omittedMethods.length + 1);                           String[] results = Arrays.copyOf(omittedMethods, omittedMethods.length + 1);                        
+results[omittedMethods.length] = method;                                                               results[omittedMethods.length] = method;                                                            
+omittedMethods = results;                                                                              omittedMethods = results;                                                                           
+}                                                                                                      }                                                                                                   

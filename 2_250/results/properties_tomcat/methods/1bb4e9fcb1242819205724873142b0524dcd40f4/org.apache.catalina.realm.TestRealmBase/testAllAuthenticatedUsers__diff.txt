@@ -1,0 +1,9 @@
+@Test
+public void testAllAuthenticatedUsers() throws IOException {
+    List<String> userRoles = new ArrayList<>();
+    List<String> constraintRoles = new ArrayList<>();
+    List<String> applicationRoles = new ArrayList<>();
+    // Configure this test
+    constraintRoles.add(SecurityConstraint.ROLE_ALL_AUTHENTICATED_USERS);
+    doRoleTest(userRoles, constraintRoles, applicationRoles, true);
+}

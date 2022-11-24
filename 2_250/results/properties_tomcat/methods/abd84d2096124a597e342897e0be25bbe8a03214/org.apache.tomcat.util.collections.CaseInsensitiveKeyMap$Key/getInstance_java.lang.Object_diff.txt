@@ -1,0 +1,6 @@
+public static Key getInstance(Object o) {
+    if (o instanceof String) {
+        return new Key((String) o);
+    }
+    return null;
+}

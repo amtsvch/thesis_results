@@ -1,0 +1,10 @@
+@Test
+public void testBasic() throws Exception {
+    UriTemplate t = new UriTemplate("/{a}/{b}");
+    Map<String, String> result = t.match(new UriTemplate("/foo/bar"));
+    Assert.assertEquals(2, result.size());
+    Assert.assertTrue(result.containsKey("a"));
+    Assert.assertTrue(result.containsKey("b"));
+    Assert.assertEquals("foo", result.get("a"));
+    Assert.assertEquals("bar", result.get("b"));
+}

@@ -1,0 +1,4 @@
+@Test
+public void testBug47371bigInteger() throws Exception {
+    Assert.assertEquals(BigInteger.valueOf(0), ELArithmetic.multiply("", BigInteger.valueOf(1)));
+}

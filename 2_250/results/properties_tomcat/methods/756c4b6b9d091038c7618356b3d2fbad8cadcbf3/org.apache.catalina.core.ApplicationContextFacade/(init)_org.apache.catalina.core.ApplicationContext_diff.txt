@@ -1,0 +1,14 @@
+// ----------------------------------------------------------- Constructors
+/**
+ * Construct a new instance of this class, associated with the specified
+ * Context instance.
+ *
+ * @param context The associated Context instance
+ */
+public ApplicationContextFacade(ApplicationContext context) {
+    super();
+    this.context = context;
+    classCache = new HashMap<>();
+    objectCache = new ConcurrentHashMap<>();
+    initClassCache();
+}

@@ -1,0 +1,15 @@
+/*
+     * Confirm the Basic parser tolerates excess white space after
+     * the authentication method.
+     *
+     * RFC2617 does not define the separation syntax between the auth-scheme
+     * and basic-credentials tokens. Tomcat tolerates any amount of white
+     * (within the limits of HTTP header sizes).
+     */
+@Test
+public void testAuthMethodExtraLeadingSpace() throws Exception {
+    final BasicAuthHeader AUTH_HEADER = new BasicAuthHeader(NICE_METHOD + " ", USER_NAME, PASSWORD);
+    final BasicAuthenticator.BasicCredentials credentials = new BasicAuthenticator.BasicCredentials(AUTH_HEADER.getHeader(), StandardCharsets.UTF_8, true);
+    Assert.assertEquals(USER_NAME, credentials.getUsername());
+    Assert.assertEquals(PASSWORD, credentials.getPassword());
+}

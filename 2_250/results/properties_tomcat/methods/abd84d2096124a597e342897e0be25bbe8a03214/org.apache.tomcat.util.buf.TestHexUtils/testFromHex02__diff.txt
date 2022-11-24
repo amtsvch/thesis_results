@@ -1,0 +1,5 @@
+@Test(expected = IllegalArgumentException.class)
+public void testFromHex02() {
+    // Odd number of hex characters
+    HexUtils.fromHexString("aaa");
+}

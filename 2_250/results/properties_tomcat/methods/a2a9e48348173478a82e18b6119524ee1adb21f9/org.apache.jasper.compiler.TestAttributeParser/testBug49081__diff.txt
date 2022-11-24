@@ -1,0 +1,4 @@
+@Test
+public void testBug49081() {
+    Assert.assertEquals("#2", evalAttr("#${1+1}", '\"'));
+}

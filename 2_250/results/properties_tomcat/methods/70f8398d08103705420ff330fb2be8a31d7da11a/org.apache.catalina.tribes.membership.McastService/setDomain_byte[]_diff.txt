@@ -1,0 +1,14 @@
+@Override                                                                                              @Override                                                                                           
+public void setDomain(byte[] domain) {                                                                 public void setDomain(byte[] domain) {                                                              
+this.domain = domain;                                                                                  this.domain = domain;                                                                               
+if (localMember != null) {                                                                             if (localMember != null) {                                                                          
+localMember.setDomain(domain);                                                                         localMember.setDomain(domain);                                                                      
+try {                                                                                                  try {                                                                                               
+if (impl != null)                                                                                    | if (impl != null) {                                                                                 
+impl.send(false);                                                                                      impl.send(false);                                                                                   
+                                                                                                     | }                                                                                                   
+} catch (Exception x) {                                                                                } catch (Exception x) {                                                                             
+log.error(sm.getString("McastService.domain"), x);                                                     log.error(sm.getString("McastService.domain"), x);                                                  
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,7 @@
+public void setConfiguration(String configuration) throws Exception {
+    if (containerLog == null) {
+        containerLog = LogFactory.getLog(getContainer().getLogName() + ".rewrite");
+    }
+    maps.clear();
+    parse(new BufferedReader(new StringReader(configuration)));
+}

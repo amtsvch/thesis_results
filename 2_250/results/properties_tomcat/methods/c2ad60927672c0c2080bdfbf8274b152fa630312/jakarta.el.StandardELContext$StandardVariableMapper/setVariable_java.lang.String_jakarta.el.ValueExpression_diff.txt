@@ -1,0 +1,11 @@
+@Override                                                                                              @Override                                                                                           
+public ValueExpression setVariable(String variable, ValueExpression expression) {                      public ValueExpression setVariable(String variable, ValueExpression expression) {                   
+if (vars == null)                                                                                    | if (vars == null) {                                                                                 
+vars = new HashMap&lt;&gt;();                                                                          vars = new HashMap&lt;&gt;();                                                                       
+                                                                                                     | }                                                                                                   
+if (expression == null) {                                                                              if (expression == null) {                                                                           
+return vars.remove(variable);                                                                          return vars.remove(variable);                                                                       
+} else {                                                                                               } else {                                                                                            
+return vars.put(variable, expression);                                                                 return vars.put(variable, expression);                                                              
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

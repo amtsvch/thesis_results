@@ -1,0 +1,14 @@
+/*
+     * (non-Javadoc)
+     *
+     * @see jakarta.el.FunctionMapper#resolveFunction(java.lang.String,
+     *      java.lang.String)
+     */
+@Override
+public Method resolveFunction(String prefix, String localName) {
+    Function f = this.functions.get(prefix + ":" + localName);
+    if (f == null) {
+        return null;
+    }
+    return f.getMethod();
+}

@@ -1,0 +1,9 @@
+@Test
+public void testKeySetContains() {
+    Object o1 = new Object();
+    CaseInsensitiveKeyMap<Object> map = new CaseInsensitiveKeyMap<>();
+    map.put("a", o1);
+    Set<String> keys = map.keySet();
+    Assert.assertTrue(keys.contains("a"));
+    Assert.assertTrue(keys.contains("A"));
+}

@@ -1,0 +1,14 @@
+@Test
+public void testGCM() throws Exception {
+    try {
+        src.setEncryptionAlgorithm("AES/GCM/PKCS5Padding");
+        src.start(Channel.SND_TX_SEQ);
+        dest.setEncryptionAlgorithm("AES/GCM/PKCS5Padding");
+        dest.start(Channel.SND_TX_SEQ);
+    } catch (ChannelException ce) {
+        Assume.assumeFalse("Skipping testGCM due to lack of JVM support", ce.getCause() instanceof NoSuchAlgorithmException && ce.getCause().getMessage().contains("GCM"));
+        throw ce;
+    }
+    String testInput = "The quick brown fox jumps over the lazy dog.";
+    Assert.assertEquals("Failed in GCM mode", testInput, roundTrip(testInput, src, dest));
+}

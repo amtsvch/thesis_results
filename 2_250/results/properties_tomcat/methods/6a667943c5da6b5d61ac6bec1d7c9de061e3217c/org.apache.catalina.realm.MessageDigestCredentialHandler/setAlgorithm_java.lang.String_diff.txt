@@ -1,0 +1,5 @@
+@Override
+public void setAlgorithm(String algorithm) throws NoSuchAlgorithmException {
+    ConcurrentMessageDigest.init(algorithm);
+    this.algorithm = algorithm;
+}

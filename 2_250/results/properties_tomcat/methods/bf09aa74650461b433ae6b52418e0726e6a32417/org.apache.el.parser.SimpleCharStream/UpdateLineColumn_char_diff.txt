@@ -1,0 +1,30 @@
+protected void UpdateLineColumn(char c) {                                                              protected void UpdateLineColumn(char c) {                                                           
+column++;                                                                                              column++;                                                                                           
+if (prevCharIsLF) {                                                                                    if (prevCharIsLF) {                                                                                 
+prevCharIsLF = false;                                                                                  prevCharIsLF = false;                                                                               
+line += (column = 1);                                                                                  line += (column = 1);                                                                               
+} else if (prevCharIsCR) {                                                                             } else if (prevCharIsCR) {                                                                          
+prevCharIsCR = false;                                                                                  prevCharIsCR = false;                                                                               
+if (c == '\n') {                                                                                       if (c == '\n') {                                                                                    
+prevCharIsLF = true;                                                                                   prevCharIsLF = true;                                                                                
+} else                                                                                               | } else {                                                                                            
+line += (column = 1);                                                                                  line += (column = 1);                                                                               
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+switch(c) {                                                                                            switch(c) {                                                                                         
+case '\r':                                                                                             case '\r':                                                                                          
+prevCharIsCR = true;                                                                                   prevCharIsCR = true;                                                                                
+break;                                                                                                 break;                                                                                              
+case '\n':                                                                                             case '\n':                                                                                          
+prevCharIsLF = true;                                                                                   prevCharIsLF = true;                                                                                
+break;                                                                                                 break;                                                                                              
+case '\t':                                                                                             case '\t':                                                                                          
+column--;                                                                                              column--;                                                                                           
+column += (tabSize - (column % tabSize));                                                              column += (tabSize - (column % tabSize));                                                           
+break;                                                                                                 break;                                                                                              
+default:                                                                                               default:                                                                                            
+break;                                                                                                 break;                                                                                              
+}                                                                                                      }                                                                                                   
+bufline[bufpos] = line;                                                                                bufline[bufpos] = line;                                                                             
+bufcolumn[bufpos] = column;                                                                            bufcolumn[bufpos] = column;                                                                         
+}                                                                                                      }                                                                                                   

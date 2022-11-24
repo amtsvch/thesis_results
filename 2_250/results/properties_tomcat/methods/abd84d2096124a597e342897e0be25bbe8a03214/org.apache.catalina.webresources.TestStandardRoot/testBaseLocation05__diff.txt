@@ -1,0 +1,4 @@
+@Test(expected = IllegalArgumentException.class)
+public void testBaseLocation05() throws Exception {
+    doTestBaseLocation(new URL("http://localhost:8080/foo"), null, null);
+}

@@ -1,0 +1,8 @@
+public void setVariable(String variable, String expression) {
+    if (expression == null) {
+        manager.setVariable(variable, null);
+    } else {
+        ValueExpression ve = factory.createValueExpression(context, bracket(expression), Object.class);
+        manager.setVariable(variable, ve);
+    }
+}

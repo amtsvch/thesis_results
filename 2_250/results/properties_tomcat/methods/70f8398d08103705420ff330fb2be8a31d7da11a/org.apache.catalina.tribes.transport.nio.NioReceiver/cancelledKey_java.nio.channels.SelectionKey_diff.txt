@@ -1,0 +1,34 @@
+public static void cancelledKey(SelectionKey key) {                                                    public static void cancelledKey(SelectionKey key) {                                                 
+ObjectReader reader = (ObjectReader) key.attachment();                                                 ObjectReader reader = (ObjectReader) key.attachment();                                              
+if (reader != null) {                                                                                  if (reader != null) {                                                                               
+reader.setCancelled(true);                                                                             reader.setCancelled(true);                                                                          
+reader.finish();                                                                                       reader.finish();                                                                                    
+}                                                                                                      }                                                                                                   
+key.cancel();                                                                                          key.cancel();                                                                                       
+key.attach(null);                                                                                      key.attach(null);                                                                                   
+if (key.channel() instanceof SocketChannel)                                                          | if (key.channel() instanceof SocketChannel) {                                                       
+try {                                                                                                  try {                                                                                               
+((SocketChannel) key.channel()).socket().close();                                                      ((SocketChannel) key.channel()).socket().close();                                                   
+} catch (IOException e) {                                                                              } catch (IOException e) {                                                                           
+if (log.isDebugEnabled())                                                                            | if (log.isDebugEnabled()) {                                                                         
+log.debug("", e);                                                                                      log.debug("", e);                                                                                   
+}                                                                                                      }                                                                                                   
+if (key.channel() instanceof DatagramChannel)                                                        | }                                                                                                   
+                                                                                                     | }                                                                                                   
+                                                                                                     | if (key.channel() instanceof DatagramChannel) {                                                     
+try {                                                                                                  try {                                                                                               
+((DatagramChannel) key.channel()).socket().close();                                                    ((DatagramChannel) key.channel()).socket().close();                                                 
+} catch (Exception e) {                                                                                } catch (Exception e) {                                                                             
+if (log.isDebugEnabled())                                                                            | if (log.isDebugEnabled()) {                                                                         
+log.debug("", e);                                                                                      log.debug("", e);                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+                                                                                                     | }                                                                                                   
+try {                                                                                                  try {                                                                                               
+key.channel().close();                                                                                 key.channel().close();                                                                              
+} catch (IOException e) {                                                                              } catch (IOException e) {                                                                           
+if (log.isDebugEnabled())                                                                            | if (log.isDebugEnabled()) {                                                                         
+log.debug("", e);                                                                                      log.debug("", e);                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

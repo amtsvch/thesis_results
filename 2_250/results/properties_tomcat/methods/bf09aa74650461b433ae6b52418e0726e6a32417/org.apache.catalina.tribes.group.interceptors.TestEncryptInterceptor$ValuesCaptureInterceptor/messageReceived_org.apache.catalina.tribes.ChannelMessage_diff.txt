@@ -1,0 +1,6 @@
+@Override
+public void messageReceived(ChannelMessage msg) {
+    synchronized (messages) {
+        messages.add(msg.getMessage().getBytes());
+    }
+}

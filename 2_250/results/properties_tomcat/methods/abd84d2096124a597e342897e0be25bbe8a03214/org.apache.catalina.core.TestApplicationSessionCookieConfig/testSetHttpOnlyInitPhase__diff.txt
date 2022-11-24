@@ -1,0 +1,6 @@
+@Test
+public void testSetHttpOnlyInitPhase() {
+    context.setState(LifecycleState.STARTING_PREP);
+    applicationSessionCookieConfig.setHttpOnly(true);
+    Assert.assertTrue(applicationSessionCookieConfig.isHttpOnly());
+}

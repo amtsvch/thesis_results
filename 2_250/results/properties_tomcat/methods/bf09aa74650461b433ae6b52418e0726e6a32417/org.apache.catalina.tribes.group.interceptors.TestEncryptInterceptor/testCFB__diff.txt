@@ -1,0 +1,9 @@
+@Test
+public void testCFB() throws Exception {
+    src.setEncryptionAlgorithm("AES/CFB/PKCS5Padding");
+    src.start(Channel.SND_TX_SEQ);
+    dest.setEncryptionAlgorithm("AES/CFB/PKCS5Padding");
+    dest.start(Channel.SND_TX_SEQ);
+    String testInput = "The quick brown fox jumps over the lazy dog.";
+    Assert.assertEquals("Failed in CFB mode", testInput, roundTrip(testInput, src, dest));
+}

@@ -1,0 +1,12 @@
+@Override
+public <T> T convertToType(ELContext context, Object obj, Class<T> type) {
+    context.setPropertyResolved(false);
+    int sz = this.size;
+    for (int i = 0; i < sz; i++) {
+        T result = this.resolvers[i].convertToType(context, obj, type);
+        if (context.isPropertyResolved()) {
+            return result;
+        }
+    }
+    return null;
+}

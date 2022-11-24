@@ -1,0 +1,20 @@
+@Override
+public void unbind(boolean usePrivilegedAction, ClassLoader originalClassLoader) {
+    if (originalClassLoader == null) {
+        return;
+    }
+    if (threadBindingListener != null) {
+        try {
+            threadBindingListener.unbind();
+        } catch (Throwable t) {
+            ExceptionUtils.handleThrowable(t);
+            log.error(sm.getString("standardContext.threadBindingListenerError", getName()), t);
+        }
+    }
+    if (usePrivilegedAction) {
+        PrivilegedAction<Void> pa = new PrivilegedSetTccl(originalClassLoader);
+        AccessController.doPrivileged(pa);
+    } else {
+        Thread.currentThread().setContextClassLoader(originalClassLoader);
+    }
+}

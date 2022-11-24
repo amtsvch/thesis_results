@@ -1,0 +1,12 @@
+@Test
+public void testInvokeWithSuperAAABBB() {
+    MethodExpression me13 = factory.createMethodExpression(context, "${beanC.sayHello(beanAAA,beanBBB)}", null, null);
+    Exception e = null;
+    try {
+        me13.invoke(context, null);
+    } catch (Exception e1) {
+        e = e1;
+    }
+    // Expected to fail
+    Assert.assertNotNull(e);
+}

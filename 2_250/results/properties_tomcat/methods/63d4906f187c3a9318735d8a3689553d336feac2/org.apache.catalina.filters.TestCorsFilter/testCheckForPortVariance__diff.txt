@@ -1,0 +1,18 @@
+/*
+     * "http://tomcat.apache.org" is an allowed origin and
+     * "http://tomcat.apache.org:8080" is not, because ports doesn't match
+     *
+     * @throws ServletException
+     * @throws IOException
+     */
+@Test
+public void testCheckForPortVariance() throws ServletException, IOException {
+    TesterHttpServletRequest request = new TesterHttpServletRequest();
+    TesterHttpServletResponse response = new TesterHttpServletResponse();
+    request.setHeader(CorsFilter.REQUEST_HEADER_ORIGIN, "http://tomcat.apache.org:8080");
+    request.setMethod("GET");
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getSpecificOriginFilterConfig());
+    corsFilter.doFilter(request, response, filterChain);
+    Assert.assertEquals(HttpServletResponse.SC_FORBIDDEN, response.getStatus());
+}

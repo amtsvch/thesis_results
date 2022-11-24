@@ -1,0 +1,9 @@
+@Override
+public synchronized void disconnect() {
+    setConnected(false);
+    try {
+        close();
+    } catch (Exception x) {
+        // Ignore
+    }
+}

@@ -1,0 +1,31 @@
+public static final Number coerceToNumber(final ELContext ctx, final Object obj, final Class<?> type) throws ELException {
+    if (ctx != null) {
+        boolean originalIsPropertyResolved = ctx.isPropertyResolved();
+        try {
+            Object result = ctx.getELResolver().convertToType(ctx, obj, type);
+            if (ctx.isPropertyResolved()) {
+                return (Number) result;
+            }
+        } finally {
+            ctx.setPropertyResolved(originalIsPropertyResolved);
+        }
+    }
+    if (!COERCE_TO_ZERO) {
+        if (obj == null && !type.isPrimitive()) {
+            return null;
+        }
+    }
+    if (obj == null || "".equals(obj)) {
+        return coerceToNumber(ZERO, type);
+    }
+    if (obj instanceof String) {
+        return coerceToNumber((String) obj, type);
+    }
+    if (ELArithmetic.isNumber(obj)) {
+        return coerceToNumber((Number) obj, type);
+    }
+    if (obj instanceof Character) {
+        return coerceToNumber(Short.valueOf((short) ((Character) obj).charValue()), type);
+    }
+    throw new ELException(MessageFactory.get("error.convert", obj, obj.getClass(), type));
+}

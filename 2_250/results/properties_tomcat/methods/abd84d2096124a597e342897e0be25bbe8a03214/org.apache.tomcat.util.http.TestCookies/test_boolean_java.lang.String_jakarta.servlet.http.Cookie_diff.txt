@@ -1,0 +1,27 @@
+private void test(boolean useRfc6265, String header, Cookie... expected) {
+    MimeHeaders mimeHeaders = new MimeHeaders();
+    ServerCookies serverCookies = new ServerCookies(4);
+    CookieProcessor cookieProcessor;
+    if (useRfc6265) {
+        cookieProcessor = new Rfc6265CookieProcessor();
+    } else {
+        cookieProcessor = new LegacyCookieProcessor();
+    }
+    MessageBytes cookieHeaderValue = mimeHeaders.addValue("Cookie");
+    byte[] bytes = header.getBytes(StandardCharsets.UTF_8);
+    cookieHeaderValue.setBytes(bytes, 0, bytes.length);
+    cookieProcessor.parseCookieHeader(mimeHeaders, serverCookies);
+    Assert.assertEquals(expected.length, serverCookies.getCookieCount());
+    for (int i = 0; i < expected.length; i++) {
+        Cookie cookie = expected[i];
+        ServerCookie actual = serverCookies.getCookie(i);
+        Assert.assertEquals(cookie.getVersion(), actual.getVersion());
+        Assert.assertEquals(cookie.getName(), actual.getName().toString());
+        actual.getValue().getByteChunk().setCharset(StandardCharsets.UTF_8);
+        Assert.assertEquals(cookie.getValue(), org.apache.tomcat.util.http.parser.Cookie.unescapeCookieValueRfc2109(actual.getValue().toString()));
+        if (cookie.getVersion() == 1) {
+            Assert.assertEquals(cookie.getDomain(), actual.getDomain().toString());
+            Assert.assertEquals(cookie.getPath(), actual.getPath().toString());
+        }
+    }
+}

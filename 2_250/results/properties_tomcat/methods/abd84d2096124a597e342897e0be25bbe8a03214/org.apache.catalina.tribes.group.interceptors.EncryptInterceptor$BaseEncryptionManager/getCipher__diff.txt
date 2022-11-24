@@ -1,0 +1,7 @@
+private Cipher getCipher() throws GeneralSecurityException {
+    Cipher cipher = cipherPool.poll();
+    if (null == cipher) {
+        cipher = createCipher();
+    }
+    return cipher;
+}

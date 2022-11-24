@@ -1,0 +1,7 @@
+private String getOrder(Set<WebXml> ordered) {
+    StringBuilder sb = new StringBuilder(ordered.size());
+    for (WebXml webXml : ordered) {
+        sb.append(webXml.getName());
+    }
+    return sb.toString();
+}

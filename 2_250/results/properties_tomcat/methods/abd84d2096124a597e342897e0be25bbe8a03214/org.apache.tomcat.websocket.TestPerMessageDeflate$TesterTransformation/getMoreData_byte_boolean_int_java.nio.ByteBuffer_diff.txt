@@ -1,0 +1,8 @@
+@Override
+public TransformationResult getMoreData(byte opCode, boolean fin, int rsv, ByteBuffer dest) throws IOException {
+    if (data == null) {
+        return TransformationResult.UNDERFLOW;
+    }
+    dest.put(data);
+    return TransformationResult.END_OF_FRAME;
+}

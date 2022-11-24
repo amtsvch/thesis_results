@@ -1,0 +1,7 @@
+@Test(expected = IllegalStateException.class)
+public void testNoInit() throws Exception {
+    // Need to use a different algorithm to the other tests otherwise if one
+    // of the other tests is called first it will initialise the
+    // ConcurrentDigest for that algorithm.
+    ConcurrentMessageDigest.digest(SHA512, new byte[8]);
+}

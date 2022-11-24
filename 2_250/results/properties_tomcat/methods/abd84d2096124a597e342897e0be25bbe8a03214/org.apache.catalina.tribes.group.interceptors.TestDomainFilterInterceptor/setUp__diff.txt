@@ -1,0 +1,12 @@
+@Before
+public void setUp() throws Exception {
+    for (int i = 0; i < channels.length; i++) {
+        channels[i] = new GroupChannel();
+        channels[i].getMembershipService().setPayload(("Channel-" + (i + 1)).getBytes("ASCII"));
+        listeners[i] = new TestMbrListener(("Listener-" + (i + 1)));
+        channels[i].addMembershipListener(listeners[i]);
+        DomainFilterInterceptor filter = new DomainFilterInterceptor();
+        filter.setDomain(UUIDGenerator.randomUUID(false));
+        channels[i].addInterceptor(filter);
+    }
+}

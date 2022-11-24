@@ -1,0 +1,7 @@
+@Test
+public void testStringRepresentationOfIntValue() {
+    String options = "multicast, async";
+    SimpleTcpCluster cluster = new SimpleTcpCluster();
+    cluster.setChannelSendOptions(options);
+    Assert.assertEquals(options, cluster.getChannelSendOptionsName());
+}

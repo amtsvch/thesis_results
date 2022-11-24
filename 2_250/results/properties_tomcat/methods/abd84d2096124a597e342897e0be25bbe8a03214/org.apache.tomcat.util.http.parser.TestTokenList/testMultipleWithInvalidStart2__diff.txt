@@ -1,0 +1,8 @@
+@Test
+public void testMultipleWithInvalidStart2() throws IOException {
+    Set<String> expected = new HashSet<>();
+    expected.add("bar");
+    expected.add("foo");
+    expected.add("host");
+    doTestVary("OK {{{, Host, Foo, Bar", expected, false);
+}

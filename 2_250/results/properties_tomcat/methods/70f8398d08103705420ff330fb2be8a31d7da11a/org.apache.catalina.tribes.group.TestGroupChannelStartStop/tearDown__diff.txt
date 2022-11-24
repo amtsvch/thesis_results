@@ -1,0 +1,8 @@
+@After
+public void tearDown() throws Exception {
+    try {
+        channel.stop(Channel.DEFAULT);
+    } catch (Exception ignore) {
+        // Ignore
+    }
+}

@@ -1,0 +1,5 @@
+@Override
+public synchronized void disconnect() {
+    queue.close();
+    setConnected(false);
+}

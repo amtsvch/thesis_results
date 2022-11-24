@@ -1,0 +1,5 @@
+private void doV1SingleQuotesAreValidTokenCharacters(boolean useRfc6265) {
+    FOO.setVersion(1);
+    FOO.setValue("'bar'");
+    test(useRfc6265, "$Version=1; foo='bar'", FOO);
+}

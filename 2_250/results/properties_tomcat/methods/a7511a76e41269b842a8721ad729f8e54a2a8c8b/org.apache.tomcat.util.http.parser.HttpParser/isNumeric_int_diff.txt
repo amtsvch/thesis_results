@@ -1,0 +1,9 @@
+public static boolean isNumeric(int c) {
+    // Fast for valid numeric characters, slower for some incorrect
+    // ones
+    try {
+        return IS_NUMERIC[c];
+    } catch (ArrayIndexOutOfBoundsException ex) {
+        return false;
+    }
+}

@@ -1,0 +1,15 @@
+/**                                                                                                    /**                                                                                                 
+* Sets lineFileID.  Should be called only when different from                                          * Sets lineFileID.  Should be called only when different from                                       
+* that of prior LineInfo object (in any given context) or 0                                            * that of prior LineInfo object (in any given context) or 0                                         
+* if the current LineInfo has no (logical) predecessor.                                                * if the current LineInfo has no (logical) predecessor.                                             
+* &lt;code&gt;LineInfo&lt;/code&gt; will print this file number no matter what.                        * &lt;code&gt;LineInfo&lt;/code&gt; will print this file number no matter what.                     
+*                                                                                                      *                                                                                                   
+* @param lineFileID The new line file ID                                                               * @param lineFileID The new line file ID                                                            
+*/                                                                                                     */                                                                                                  
+public void setLineFileID(int lineFileID) {                                                            public void setLineFileID(int lineFileID) {                                                         
+if (lineFileID &lt; 0)                                                                               | if (lineFileID &lt; 0) {                                                                            
+throw new IllegalArgumentException(Localizer.getMessage("jsp.error.negativeParameter", Integer.value   throw new IllegalArgumentException(Localizer.getMessage("jsp.error.negativeParameter", Integer.value
+                                                                                                     | }                                                                                                   
+this.lineFileID = lineFileID;                                                                          this.lineFileID = lineFileID;                                                                       
+this.lineFileIDSet = true;                                                                             this.lineFileIDSet = true;                                                                          
+}                                                                                                      }                                                                                                   

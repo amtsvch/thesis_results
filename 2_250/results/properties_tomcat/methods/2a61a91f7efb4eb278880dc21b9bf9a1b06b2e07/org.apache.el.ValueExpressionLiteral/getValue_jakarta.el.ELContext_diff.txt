@@ -1,0 +1,13 @@
+                                                                                                     | @SuppressWarnings("unchecked")                                                                      
+@Override                                                                                              @Override                                                                                           
+public Object getValue(ELContext context) {                                                          | public &lt;T&gt; T getValue(ELContext context) {                                                    
+context.notifyBeforeEvaluation(getExpressionString());                                                 context.notifyBeforeEvaluation(getExpressionString());                                              
+Object result;                                                                                         Object result;                                                                                      
+if (this.expectedType != null) {                                                                       if (this.expectedType != null) {                                                                    
+result = context.convertToType(this.value, this.expectedType);                                         result = context.convertToType(this.value, this.expectedType);                                      
+} else {                                                                                               } else {                                                                                            
+result = this.value;                                                                                   result = this.value;                                                                                
+}                                                                                                      }                                                                                                   
+context.notifyAfterEvaluation(getExpressionString());                                                  context.notifyAfterEvaluation(getExpressionString());                                               
+return result;                                                                                       | return (T) result;                                                                                  
+}                                                                                                      }                                                                                                   

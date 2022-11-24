@@ -1,0 +1,4 @@
+@Test
+public void testHttpProtocolLargeInvalid() {
+    Assert.assertFalse(HttpParser.isHttpProtocol(Integer.MAX_VALUE));
+}

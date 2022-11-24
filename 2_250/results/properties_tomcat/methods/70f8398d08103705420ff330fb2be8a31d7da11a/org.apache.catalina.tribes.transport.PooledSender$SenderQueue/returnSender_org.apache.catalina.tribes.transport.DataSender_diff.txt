@@ -1,0 +1,21 @@
+public synchronized void returnSender(DataSender sender) {                                             public synchronized void returnSender(DataSender sender) {                                          
+if (!isOpen) {                                                                                         if (!isOpen) {                                                                                      
+sender.disconnect();                                                                                   sender.disconnect();                                                                                
+return;                                                                                                return;                                                                                             
+}                                                                                                      }                                                                                                   
+// to do                                                                                               // to do                                                                                            
+inuse.remove(sender);                                                                                  inuse.remove(sender);                                                                               
+// just in case the limit has changed                                                                  // just in case the limit has changed                                                               
+if (notinuse.size() &lt; this.getLimit())                                                            | if (notinuse.size() &lt; this.getLimit()) {                                                         
+notinuse.add(sender);                                                                                  notinuse.add(sender);                                                                               
+else                                                                                                 | } else {                                                                                            
+try {                                                                                                  try {                                                                                               
+sender.disconnect();                                                                                   sender.disconnect();                                                                                
+} catch (Exception e) {                                                                                } catch (Exception e) {                                                                             
+if (log.isDebugEnabled()) {                                                                            if (log.isDebugEnabled()) {                                                                         
+log.debug(sm.getString("PooledSender.senderDisconnectFail"), e);                                       log.debug(sm.getString("PooledSender.senderDisconnectFail"), e);                                    
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+notifyAll();                                                                                           notifyAll();                                                                                        
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,21 @@
+/**
+ * Overrides the character encoding used in the body of the response. This
+ * method must be called prior to writing output using getWriter().
+ *
+ * @param characterEncoding The name of character encoding.
+ *
+ * @throws UnsupportedEncodingException If the specified name is not
+ *         recognised
+ */
+public void setCharacterEncoding(String characterEncoding) throws UnsupportedEncodingException {
+    if (isCommitted()) {
+        return;
+    }
+    if (characterEncoding == null) {
+        this.charset = null;
+        this.characterEncoding = null;
+        return;
+    }
+    this.characterEncoding = characterEncoding;
+    this.charset = B2CConverter.getCharset(characterEncoding);
+}

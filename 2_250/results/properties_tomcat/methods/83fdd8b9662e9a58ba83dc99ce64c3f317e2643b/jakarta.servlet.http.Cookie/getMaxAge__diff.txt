@@ -1,0 +1,17 @@
+/**                                                                                                    /**                                                                                                 
+* Returns the maximum age of the cookie, specified in seconds, By default,                             * Returns the maximum age of the cookie, specified in seconds, By default,                          
+* &lt;code&gt;-1&lt;/code&gt; indicating the cookie will persist until browser                         * &lt;code&gt;-1&lt;/code&gt; indicating the cookie will persist until browser                      
+* shutdown.                                                                                            * shutdown.                                                                                         
+*                                                                                                      *                                                                                                   
+* @return an integer specifying the maximum age of the cookie in seconds; if                           * @return an integer specifying the maximum age of the cookie in seconds; if                        
+*         negative, means the cookie persists until browser shutdown                                   *         negative, means the cookie persists until browser shutdown                                
+* @see #setMaxAge                                                                                      * @see #setMaxAge                                                                                   
+*/                                                                                                     */                                                                                                  
+public int getMaxAge() {                                                                               public int getMaxAge() {                                                                            
+return maxAge;                                                                                       | String maxAge = getAttribute(MAX_AGE);                                                              
+                                                                                                     | if (maxAge == null) {                                                                               
+                                                                                                     | return -1;                                                                                          
+                                                                                                     | } else {                                                                                            
+                                                                                                     | return Integer.parseInt(maxAge);                                                                    
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

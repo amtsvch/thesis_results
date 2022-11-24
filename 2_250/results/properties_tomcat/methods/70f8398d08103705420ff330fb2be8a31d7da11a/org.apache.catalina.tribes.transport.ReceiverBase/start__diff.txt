@@ -1,0 +1,17 @@
+@Override                                                                                              @Override                                                                                           
+public void start() throws IOException {                                                               public void start() throws IOException {                                                            
+if (executor == null) {                                                                                if (executor == null) {                                                                             
+// executor = new ThreadPoolExecutor(minThreads,maxThreads,60,TimeUnit.SECONDS,new LinkedBlockingQue   // executor = new ThreadPoolExecutor(minThreads,maxThreads,60,TimeUnit.SECONDS,new LinkedBlockingQue
+String channelName = "";                                                                               String channelName = "";                                                                            
+if (channel.getName() != null)                                                                       | if (channel.getName() != null) {                                                                    
+channelName = "[" + channel.getName() + "]";                                                           channelName = "[" + channel.getName() + "]";                                                        
+                                                                                                     | }                                                                                                   
+TaskThreadFactory tf = new TaskThreadFactory("Tribes-Task-Receiver" + channelName + "-");              TaskThreadFactory tf = new TaskThreadFactory("Tribes-Task-Receiver" + channelName + "-");           
+executor = ExecutorFactory.newThreadPool(minThreads, maxThreads, maxIdleTime, TimeUnit.MILLISECONDS,   executor = ExecutorFactory.newThreadPool(minThreads, maxThreads, maxIdleTime, TimeUnit.MILLISECONDS,
+}                                                                                                      }                                                                                                   
+// register jmx                                                                                        // register jmx                                                                                     
+JmxRegistry jmxRegistry = JmxRegistry.getRegistry(channel);                                            JmxRegistry jmxRegistry = JmxRegistry.getRegistry(channel);                                         
+if (jmxRegistry != null)                                                                             | if (jmxRegistry != null) {                                                                          
+this.oname = jmxRegistry.registerJmx(",component=Receiver", this);                                     this.oname = jmxRegistry.registerJmx(",component=Receiver", this);                                  
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

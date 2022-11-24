@@ -1,0 +1,12 @@
+@Override
+public Object getValue(ELContext context, Object base, Object property) {
+    context.setPropertyResolved(false);
+    int sz = this.size;
+    for (int i = 0; i < sz; i++) {
+        Object result = this.resolvers[i].getValue(context, base, property);
+        if (context.isPropertyResolved()) {
+            return result;
+        }
+    }
+    return null;
+}

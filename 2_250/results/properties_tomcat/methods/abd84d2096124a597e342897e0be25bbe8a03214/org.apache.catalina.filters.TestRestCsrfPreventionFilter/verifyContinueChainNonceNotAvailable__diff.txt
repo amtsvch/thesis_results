@@ -1,0 +1,4 @@
+private void verifyContinueChainNonceNotAvailable() {
+    Assert.assertNull(response.getHeader(Constants.CSRF_REST_NONCE_HEADER_NAME));
+    verifyContinueChain();
+}

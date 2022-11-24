@@ -1,0 +1,6 @@
+private static void appendElement(StringBuilder sb, String indent, String elementName, Object value)   private static void appendElement(StringBuilder sb, String indent, String elementName, Object value)
+if (value == null)                                                                                   | if (value == null) {                                                                                
+return;                                                                                                return;                                                                                             
+                                                                                                     | }                                                                                                   
+appendElement(sb, indent, elementName, value.toString());                                              appendElement(sb, indent, elementName, value.toString());                                           
+}                                                                                                      }                                                                                                   

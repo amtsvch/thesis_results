@@ -1,0 +1,9 @@
+public void setHeader(String name, String value) {                                                     public void setHeader(String name, String value) {                                                  
+char cc = name.charAt(0);                                                                              char cc = name.charAt(0);                                                                           
+if (cc == 'C' || cc == 'c') {                                                                          if (cc == 'C' || cc == 'c') {                                                                       
+if (checkSpecialHeader(name, value))                                                                 | if (checkSpecialHeader(name, value)) {                                                              
+return;                                                                                                return;                                                                                             
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+headers.setValue(name).setString(value);                                                               headers.setValue(name).setString(value);                                                            
+}                                                                                                      }                                                                                                   

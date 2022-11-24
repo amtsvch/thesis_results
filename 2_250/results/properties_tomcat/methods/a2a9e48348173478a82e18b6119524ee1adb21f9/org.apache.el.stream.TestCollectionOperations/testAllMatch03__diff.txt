@@ -1,0 +1,6 @@
+@Test
+public void testAllMatch03() {
+    ELProcessor processor = new ELProcessor();
+    Optional result = (Optional) processor.getValue("[1,2,3,4,5].stream().allMatch(x->x>10)", Object.class);
+    Assert.assertEquals(Boolean.FALSE, result.get());
+}

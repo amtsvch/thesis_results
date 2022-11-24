@@ -1,0 +1,14 @@
+/**                                                                                                    /**                                                                                                 
+* Is the specified pattern part of this web resource collection?                                       * Is the specified pattern part of this web resource collection?                                    
+*                                                                                                      *                                                                                                   
+* @param pattern Pattern to be compared                                                                * @param pattern Pattern to be compared                                                             
+* @return &lt;code&gt;true&lt;/code&gt; if the pattern is part of the collection                       * @return &lt;code&gt;true&lt;/code&gt; if the pattern is part of the collection                    
+*/                                                                                                     */                                                                                                  
+public boolean findPattern(String pattern) {                                                           public boolean findPattern(String pattern) {                                                        
+for (String s : patterns) {                                                                            for (String s : patterns) {                                                                         
+if (s.equals(pattern))                                                                               | if (s.equals(pattern)) {                                                                            
+return true;                                                                                           return true;                                                                                        
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+return false;                                                                                          return false;                                                                                       
+}                                                                                                      }                                                                                                   

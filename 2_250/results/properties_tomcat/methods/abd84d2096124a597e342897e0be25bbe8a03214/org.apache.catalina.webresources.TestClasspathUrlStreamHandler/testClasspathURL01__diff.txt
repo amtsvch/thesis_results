@@ -1,0 +1,9 @@
+@Test
+public void testClasspathURL01() throws IOException {
+    URL u = new URL("classpath:/org/apache/catalina/webresources/LocalStrings.properties");
+    InputStream is = u.openStream();
+    Properties p = new Properties();
+    p.load(is);
+    String msg = (String) p.get("dirResourceSet.writeNpe");
+    Assert.assertEquals("The input stream may not be null", msg);
+}

@@ -1,0 +1,9 @@
+/**
+ * Test operator precedence (+= before >).
+ */
+@Test
+public void testPrecedence03() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("10 > 2 += 3", String.class);
+    Assert.assertEquals("false", result);
+}

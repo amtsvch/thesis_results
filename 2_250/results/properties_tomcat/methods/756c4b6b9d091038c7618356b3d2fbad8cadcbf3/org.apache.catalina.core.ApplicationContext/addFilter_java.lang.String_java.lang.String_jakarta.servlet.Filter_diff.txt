@@ -1,0 +1,28 @@
+private FilterRegistration.Dynamic addFilter(String filterName, String filterClass, Filter filter) throws IllegalStateException {
+    if (filterName == null || filterName.equals("")) {
+        throw new IllegalArgumentException(sm.getString("applicationContext.invalidFilterName", filterName));
+    }
+    if (!context.getState().equals(LifecycleState.STARTING_PREP)) {
+        // TODO Spec breaking enhancement to ignore this restriction
+        throw new IllegalStateException(sm.getString("applicationContext.addFilter.ise", getContextPath()));
+    }
+    FilterDef filterDef = context.findFilterDef(filterName);
+    // Assume a 'complete' FilterRegistration is one that has a class and
+    // a name
+    if (filterDef == null) {
+        filterDef = new FilterDef();
+        filterDef.setFilterName(filterName);
+        context.addFilterDef(filterDef);
+    } else {
+        if (filterDef.getFilterName() != null && filterDef.getFilterClass() != null) {
+            return null;
+        }
+    }
+    if (filter == null) {
+        filterDef.setFilterClass(filterClass);
+    } else {
+        filterDef.setFilterClass(filter.getClass().getName());
+        filterDef.setFilter(filter);
+    }
+    return new ApplicationFilterRegistration(filterDef, context);
+}

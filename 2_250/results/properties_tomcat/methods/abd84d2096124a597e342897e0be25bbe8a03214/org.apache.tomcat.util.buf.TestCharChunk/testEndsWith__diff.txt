@@ -1,0 +1,12 @@
+@Test
+public void testEndsWith() {
+    CharChunk cc = new CharChunk();
+    Assert.assertFalse(cc.endsWith("test"));
+    cc.setChars("xxtestxx".toCharArray(), 2, 4);
+    Assert.assertTrue(cc.endsWith(""));
+    Assert.assertTrue(cc.endsWith("t"));
+    Assert.assertTrue(cc.endsWith("st"));
+    Assert.assertTrue(cc.endsWith("test"));
+    Assert.assertFalse(cc.endsWith("x"));
+    Assert.assertFalse(cc.endsWith("xxtest"));
+}

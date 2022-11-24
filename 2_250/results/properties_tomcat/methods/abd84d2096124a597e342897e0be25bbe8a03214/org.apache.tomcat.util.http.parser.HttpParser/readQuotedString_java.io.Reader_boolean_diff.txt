@@ -1,0 +1,35 @@
+/**
+ * @return the quoted string if one was found, null if data other than a
+ *         quoted string was found or null if the end of data was reached
+ *         before the quoted string was terminated
+ */
+static String readQuotedString(Reader input, boolean returnQuoted) throws IOException {
+    skipLws(input);
+    int c = input.read();
+    if (c != '"') {
+        return null;
+    }
+    StringBuilder result = new StringBuilder();
+    if (returnQuoted) {
+        result.append('\"');
+    }
+    c = input.read();
+    while (c != '"') {
+        if (c == -1) {
+            return null;
+        } else if (c == '\\') {
+            c = input.read();
+            if (returnQuoted) {
+                result.append('\\');
+            }
+            result.append((char) c);
+        } else {
+            result.append((char) c);
+        }
+        c = input.read();
+    }
+    if (returnQuoted) {
+        result.append('\"');
+    }
+    return result.toString();
+}

@@ -1,0 +1,4 @@
+@Override
+protected Principal getPrincipal(String username) {
+    return new GenericPrincipal(username, roles.get(username));
+}

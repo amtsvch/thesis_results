@@ -1,0 +1,15 @@
+@Override
+public void destroy() throws Exception {
+    // There may be upgrade protocols with their own MBeans. These need to
+    // be de-registered.
+    ObjectName rgOname = getGlobalRequestProcessorMBeanName();
+    if (rgOname != null) {
+        Registry registry = Registry.getRegistry(null, null);
+        ObjectName query = new ObjectName(rgOname.getCanonicalName() + ",Upgrade=*");
+        Set<ObjectInstance> upgrades = registry.getMBeanServer().queryMBeans(query, null);
+        for (ObjectInstance upgrade : upgrades) {
+            registry.unregisterComponent(upgrade.getObjectName());
+        }
+    }
+    super.destroy();
+}

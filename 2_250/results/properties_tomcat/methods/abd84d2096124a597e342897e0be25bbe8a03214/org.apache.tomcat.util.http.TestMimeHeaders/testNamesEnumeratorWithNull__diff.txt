@@ -1,0 +1,16 @@
+@Test
+public void testNamesEnumeratorWithNull() {
+    MimeHeaders mh = new MimeHeaders();
+    mh.setValue(HEADER_NAME_A);
+    mh.setValue(null);
+    mh.setValue(HEADER_NAME_C);
+    Set<String> expected = new HashSet<>();
+    expected.add(HEADER_NAME_A);
+    expected.add(null);
+    expected.add(HEADER_NAME_C);
+    Enumeration<String> names = mh.names();
+    while (names.hasMoreElements()) {
+        Assert.assertTrue(expected.remove(names.nextElement()));
+    }
+    Assert.assertFalse(names.hasMoreElements());
+}

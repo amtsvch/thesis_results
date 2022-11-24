@@ -1,0 +1,11 @@
+/**
+ * Set the maximum number of active Sessions allowed, or -1 for
+ * no limit.
+ *
+ * @param max The new maximum number of sessions
+ */
+public void setMaxActiveSessions(int max) {
+    int oldMaxActiveSessions = this.maxActiveSessions;
+    this.maxActiveSessions = max;
+    support.firePropertyChange("maxActiveSessions", Integer.valueOf(oldMaxActiveSessions), Integer.valueOf(this.maxActiveSessions));
+}

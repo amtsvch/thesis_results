@@ -1,0 +1,13 @@
+/**
+ * Resolves all pending opp nodes on the stack until the next group marker
+ * is reached.
+ */
+private void resolveGroup() {
+    OppNode top = null;
+    while ((top = oppStack.remove(0)) != null) {
+        // Let it fill its branches
+        top.popValues(nodeStack);
+        // Stick it on the resolved node stack
+        nodeStack.add(0, top);
+    }
+}

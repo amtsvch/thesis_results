@@ -1,0 +1,15 @@
+/**
+ * Return the child Container, associated with this Container, with
+ * the specified name (if any); otherwise, return <code>null</code>
+ *
+ * @param name Name of the child Container to be retrieved
+ */
+@Override
+public Container findChild(String name) {
+    if (name == null) {
+        return null;
+    }
+    synchronized (children) {
+        return children.get(name);
+    }
+}

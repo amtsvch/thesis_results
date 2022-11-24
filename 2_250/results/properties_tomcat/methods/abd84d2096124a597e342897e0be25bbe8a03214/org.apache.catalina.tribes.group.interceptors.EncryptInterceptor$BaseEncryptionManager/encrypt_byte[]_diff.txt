@@ -1,0 +1,35 @@
+/**
+ * Encrypts the input <code>bytes</code> into two separate byte arrays:
+ * one for the random initialization vector (IV) used for this message,
+ * and the second one containing the actual encrypted payload.
+ *
+ * This method returns a pair of byte arrays instead of a single
+ * concatenated one to reduce the number of byte buffers created
+ * and copied during the whole operation -- including message re-building.
+ *
+ * @param bytes The data to encrypt.
+ *
+ * @return The IV in [0] and the encrypted data in [1].
+ *
+ * @throws GeneralSecurityException If the input data cannot be encrypted.
+ */
+private byte[][] encrypt(byte[] bytes) throws GeneralSecurityException {
+    Cipher cipher = null;
+    // Always use a random IV For cipher setup.
+    // The recipient doesn't need the (matching) IV because we will always
+    // pre-pad messages with the IV as a nonce.
+    byte[] iv = generateIVBytes();
+    try {
+        cipher = getCipher();
+        cipher.init(Cipher.ENCRYPT_MODE, getSecretKey(), generateIV(iv, 0, getIVSize()));
+        // Prepend the IV to the beginning of the encrypted data
+        byte[][] data = new byte[2][];
+        data[0] = iv;
+        data[1] = cipher.doFinal(bytes);
+        return data;
+    } finally {
+        if (null != cipher) {
+            returnCipher(cipher);
+        }
+    }
+}

@@ -1,0 +1,15 @@
+/**
+ * Calls {@link String#getBytes(Charset)}
+ *
+ * @param string
+ *            The string to encode (if null, return null).
+ * @param charset
+ *            The {@link Charset} to encode the {@code String}
+ * @return the encoded bytes
+ */
+private static byte[] getBytes(final String string, final Charset charset) {
+    if (string == null) {
+        return null;
+    }
+    return string.getBytes(charset);
+}

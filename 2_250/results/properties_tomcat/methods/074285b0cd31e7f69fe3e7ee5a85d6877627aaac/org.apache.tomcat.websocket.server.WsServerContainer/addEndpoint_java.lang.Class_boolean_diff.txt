@@ -1,0 +1,30 @@
+void addEndpoint(Class<?> pojo, boolean fromAnnotatedPojo) throws DeploymentException {
+    if (deploymentFailed) {
+        throw new DeploymentException(sm.getString("serverContainer.failedDeployment", servletContext.getContextPath(), servletContext.getVirtualServerName()));
+    }
+    ServerEndpointConfig sec;
+    try {
+        ServerEndpoint annotation = pojo.getAnnotation(ServerEndpoint.class);
+        if (annotation == null) {
+            throw new DeploymentException(sm.getString("serverContainer.missingAnnotation", pojo.getName()));
+        }
+        String path = annotation.value();
+        // Validate encoders
+        validateEncoders(annotation.encoders(), getInstanceManager(Thread.currentThread().getContextClassLoader()));
+        // ServerEndpointConfig
+        Class<? extends Configurator> configuratorClazz = annotation.configurator();
+        Configurator configurator = null;
+        if (!configuratorClazz.equals(Configurator.class)) {
+            try {
+                configurator = annotation.configurator().getConstructor().newInstance();
+            } catch (ReflectiveOperationException e) {
+                throw new DeploymentException(sm.getString("serverContainer.configuratorFail", annotation.configurator().getName(), pojo.getClass().getName()), e);
+            }
+        }
+        sec = ServerEndpointConfig.Builder.create(pojo, path).decoders(Arrays.asList(annotation.decoders())).encoders(Arrays.asList(annotation.encoders())).subprotocols(Arrays.asList(annotation.subprotocols())).configurator(configurator).build();
+    } catch (DeploymentException de) {
+        failDeployment();
+        throw de;
+    }
+    addEndpoint(sec, fromAnnotatedPojo);
+}

@@ -1,0 +1,15 @@
+@Override
+public Class<?> getType(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base != null && base.getClass().isArray()) {
+        context.setPropertyResolved(base, property);
+        try {
+            int idx = coerce(property);
+            checkBounds(base, idx);
+        } catch (IllegalArgumentException e) {
+            // ignore
+        }
+        return base.getClass().getComponentType();
+    }
+    return null;
+}

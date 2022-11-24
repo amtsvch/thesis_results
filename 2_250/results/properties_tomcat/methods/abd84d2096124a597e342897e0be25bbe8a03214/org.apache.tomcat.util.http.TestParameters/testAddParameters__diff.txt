@@ -1,0 +1,33 @@
+@Test
+public void testAddParameters() {
+    Parameters p = new Parameters();
+    // Empty at this point
+    Enumeration<String> names = p.getParameterNames();
+    Assert.assertFalse(names.hasMoreElements());
+    String[] values = p.getParameterValues("foo");
+    Assert.assertNull(values);
+    // Add a parameter with two values
+    p.addParameter("foo", "value1");
+    p.addParameter("foo", "value2");
+    names = p.getParameterNames();
+    Assert.assertTrue(names.hasMoreElements());
+    Assert.assertEquals("foo", names.nextElement());
+    Assert.assertFalse(names.hasMoreElements());
+    values = p.getParameterValues("foo");
+    Assert.assertEquals(2, values.length);
+    Assert.assertEquals("value1", values[0]);
+    Assert.assertEquals("value2", values[1]);
+    // Add two more values
+    p.addParameter("foo", "value3");
+    p.addParameter("foo", "value4");
+    names = p.getParameterNames();
+    Assert.assertTrue(names.hasMoreElements());
+    Assert.assertEquals("foo", names.nextElement());
+    Assert.assertFalse(names.hasMoreElements());
+    values = p.getParameterValues("foo");
+    Assert.assertEquals(4, values.length);
+    Assert.assertEquals("value1", values[0]);
+    Assert.assertEquals("value2", values[1]);
+    Assert.assertEquals("value3", values[2]);
+    Assert.assertEquals("value4", values[3]);
+}

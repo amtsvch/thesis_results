@@ -1,0 +1,33 @@
+/**
+ * Create a new connection to the directory server.
+ * @param connection The directory server connection wrapper
+ * @throws NamingException if a directory server error occurs
+ */
+protected void open(JNDIConnection connection) throws NamingException {
+    ClassLoader ocl = null;
+    try {
+        if (!isUseContextClassLoader()) {
+            ocl = Thread.currentThread().getContextClassLoader();
+            Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
+        }
+        // Ensure that we have a directory context available
+        connection.context = createDirContext(getDirectoryContextEnvironment());
+    } catch (Exception e) {
+        if (alternateURL == null || alternateURL.length() == 0) {
+            // No alternate URL. Re-throw the exception.
+            throw e;
+        }
+        connectionAttempt = 1;
+        // log the first exception.
+        containerLog.info(sm.getString("jndiRealm.exception.retry"), e);
+        // Try connecting to the alternate url.
+        connection.context = createDirContext(getDirectoryContextEnvironment());
+    } finally {
+        // reset it in case the connection times out.
+        // the primary may come back.
+        connectionAttempt = 0;
+        if (!isUseContextClassLoader()) {
+            Thread.currentThread().setContextClassLoader(ocl);
+        }
+    }
+}

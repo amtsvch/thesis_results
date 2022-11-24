@@ -1,0 +1,51 @@
+final public java.util.ArrayList<Object> list() throws ParseException {
+    final java.util.ArrayList<Object> list = new java.util.ArrayList<Object>();
+    Object value;
+    jj_consume_token(BRACKET_OPEN);
+    switch(jj_nt.kind) {
+        case BRACE_OPEN:
+        case BRACKET_OPEN:
+        case NUMBER_INTEGER:
+        case NUMBER_DECIMAL:
+        case TRUE:
+        case FALSE:
+        case NULL:
+        case STRING_SINGLE_EMPTY:
+        case STRING_DOUBLE_EMPTY:
+        case STRING_SINGLE_NONEMPTY:
+        case STRING_DOUBLE_NONEMPTY:
+            {
+                value = anything();
+                list.add(value);
+                value = null;
+                label_2: while (true) {
+                    switch(jj_nt.kind) {
+                        case COMMA:
+                            {
+                                ;
+                                break;
+                            }
+                        default:
+                            jj_la1[5] = jj_gen;
+                            break label_2;
+                    }
+                    jj_consume_token(COMMA);
+                    value = anything();
+                    list.add(value);
+                    value = null;
+                }
+                break;
+            }
+        default:
+            jj_la1[6] = jj_gen;
+            ;
+    }
+    jj_consume_token(BRACKET_CLOSE);
+    list.trimToSize();
+    {
+        if ("" != null) {
+            return list;
+        }
+    }
+    throw new Error("Missing return statement in function");
+}

@@ -1,0 +1,7 @@
+@Test
+public void testLargePayload() throws Exception {
+    src.start(Channel.SND_TX_SEQ);
+    dest.start(Channel.SND_TX_SEQ);
+    byte[] bytes = new byte[1024 * 1024];
+    Assert.assertArrayEquals("Huge payload roundtrip failed", bytes, roundTrip(bytes, src, dest));
+}

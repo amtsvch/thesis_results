@@ -1,0 +1,7 @@
+private void completeConnect() {
+    // we connected, register ourselves for writing
+    setConnected(true);
+    connecting = false;
+    setRequestCount(0);
+    setConnectTime(System.currentTimeMillis());
+}

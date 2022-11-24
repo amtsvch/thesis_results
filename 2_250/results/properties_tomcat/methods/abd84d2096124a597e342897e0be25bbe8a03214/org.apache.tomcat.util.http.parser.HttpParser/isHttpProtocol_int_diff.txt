@@ -1,0 +1,9 @@
+public static boolean isHttpProtocol(int c) {
+    // Fast for valid HTTP protocol characters, slower for some incorrect
+    // ones
+    try {
+        return IS_HTTP_PROTOCOL[c];
+    } catch (ArrayIndexOutOfBoundsException ex) {
+        return false;
+    }
+}

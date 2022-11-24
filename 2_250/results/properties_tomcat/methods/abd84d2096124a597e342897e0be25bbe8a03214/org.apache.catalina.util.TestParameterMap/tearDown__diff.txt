@@ -1,0 +1,9 @@
+@After
+public void tearDown() {
+    Assert.assertTrue(paramMap.containsKey("param1"));
+    Assert.assertArrayEquals(TEST_PARAM_VALUES_1, paramMap.get("param1"));
+    Assert.assertTrue(paramMap.containsKey("param2"));
+    Assert.assertArrayEquals(TEST_PARAM_VALUES_2_UPDATED, paramMap.get("param2"));
+    Assert.assertFalse(paramMap.containsKey("param3"));
+    Assert.assertNull(paramMap.get("param3"));
+}

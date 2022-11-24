@@ -1,0 +1,8 @@
+@Override
+public V put(String key, V value) {
+    Key caseInsensitiveKey = Key.getInstance(key);
+    if (caseInsensitiveKey == null) {
+        throw new NullPointerException(sm.getString("caseInsensitiveKeyMap.nullKey"));
+    }
+    return map.put(caseInsensitiveKey, value);
+}

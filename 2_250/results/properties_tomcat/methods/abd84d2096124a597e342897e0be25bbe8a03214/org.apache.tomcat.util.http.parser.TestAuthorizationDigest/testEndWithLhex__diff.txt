@@ -1,0 +1,7 @@
+@Test
+public void testEndWithLhex() throws Exception {
+    String header = "Digest nc=00000001";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertEquals("00000001", result.get("nc"));
+}

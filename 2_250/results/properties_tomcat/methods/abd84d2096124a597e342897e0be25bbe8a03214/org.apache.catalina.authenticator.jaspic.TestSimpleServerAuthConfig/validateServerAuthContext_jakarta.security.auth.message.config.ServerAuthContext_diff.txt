@@ -1,0 +1,5 @@
+private void validateServerAuthContext(ServerAuthContext serverAuthContext) throws Exception {
+    MessageInfo msgInfo = new TesterMessageInfo();
+    serverAuthContext.cleanSubject(msgInfo, null);
+    Assert.assertEquals("init()-cleanSubject()-", msgInfo.getMap().get("trace"));
+}

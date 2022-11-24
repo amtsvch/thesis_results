@@ -1,0 +1,13 @@
+@Override                                                                                              @Override                                                                                           
+public void messageReceived(ChannelMessage msg) {                                                      public void messageReceived(ChannelMessage msg) {                                                   
+if (rxStart == 0)                                                                                    | if (rxStart == 0) {                                                                                 
+rxStart = System.currentTimeMillis();                                                                  rxStart = System.currentTimeMillis();                                                               
+                                                                                                     | }                                                                                                   
+long bytes = XByteBuffer.getDataPackageLength(((ChannelData) msg).getDataPackageLength());             long bytes = XByteBuffer.getDataPackageLength(((ChannelData) msg).getDataPackageLength());          
+mbRx += bytes / (1024d * 1024d);                                                                       mbRx += bytes / (1024d * 1024d);                                                                    
+msgRxCnt.addAndGet(1);                                                                                 msgRxCnt.addAndGet(1);                                                                              
+if (msgRxCnt.get() % interval == 0)                                                                  | if (msgRxCnt.get() % interval == 0) {                                                               
+report(timeTx);                                                                                        report(timeTx);                                                                                     
+                                                                                                     | }                                                                                                   
+super.messageReceived(msg);                                                                            super.messageReceived(msg);                                                                         
+}                                                                                                      }                                                                                                   

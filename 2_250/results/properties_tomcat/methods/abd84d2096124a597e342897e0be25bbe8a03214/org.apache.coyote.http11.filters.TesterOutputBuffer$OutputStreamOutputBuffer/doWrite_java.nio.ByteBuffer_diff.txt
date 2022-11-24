@@ -1,0 +1,7 @@
+@Override
+public int doWrite(ByteBuffer chunk) throws IOException {
+    int length = chunk.remaining();
+    outputStream.write(chunk.array(), chunk.arrayOffset() + chunk.position(), length);
+    byteCount += length;
+    return length;
+}

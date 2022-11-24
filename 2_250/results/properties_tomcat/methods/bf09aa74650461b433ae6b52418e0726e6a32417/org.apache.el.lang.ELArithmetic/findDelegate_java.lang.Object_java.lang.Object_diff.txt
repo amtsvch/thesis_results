@@ -1,0 +1,18 @@
+private static ELArithmetic findDelegate(final Object obj0, final Object obj1) {
+    if (obj0 == null && obj1 == null) {
+        return null;
+    }
+    if (BIGDECIMAL.matches(obj0, obj1)) {
+        return BIGDECIMAL;
+    } else if (DOUBLE.matches(obj0, obj1)) {
+        if (BIGINTEGER.matches(obj0, obj1)) {
+            return BIGDECIMAL;
+        } else {
+            return DOUBLE;
+        }
+    } else if (BIGINTEGER.matches(obj0, obj1)) {
+        return BIGINTEGER;
+    } else {
+        return LONG;
+    }
+}

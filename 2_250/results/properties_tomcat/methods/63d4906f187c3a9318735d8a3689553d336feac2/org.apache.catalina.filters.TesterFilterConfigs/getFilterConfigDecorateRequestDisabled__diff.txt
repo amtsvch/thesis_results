@@ -1,0 +1,10 @@
+public static FilterConfig getFilterConfigDecorateRequestDisabled() {
+    final String allowedHttpHeaders = CorsFilter.DEFAULT_ALLOWED_HTTP_HEADERS;
+    final String allowedHttpMethods = CorsFilter.DEFAULT_ALLOWED_HTTP_METHODS;
+    final String allowedOrigins = ANY_ORIGIN;
+    final String exposedHeaders = CorsFilter.DEFAULT_EXPOSED_HEADERS;
+    final String supportCredentials = CorsFilter.DEFAULT_SUPPORTS_CREDENTIALS;
+    final String preflightMaxAge = CorsFilter.DEFAULT_PREFLIGHT_MAXAGE;
+    final String decorateRequest = "false";
+    return generateFilterConfig(allowedHttpHeaders, allowedHttpMethods, allowedOrigins, exposedHeaders, supportCredentials, preflightMaxAge, decorateRequest);
+}

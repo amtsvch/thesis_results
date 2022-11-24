@@ -1,0 +1,29 @@
+private static BaseEncryptionManager createEncryptionManager(String algorithm, byte[] encryptionKey, String providerName) throws NoSuchAlgorithmException, NoSuchPaddingException, NoSuchProviderException {
+    if (null == encryptionKey) {
+        throw new IllegalStateException(sm.getString("encryptInterceptor.key.required"));
+    }
+    String algorithmName;
+    String algorithmMode;
+    // We need to break-apart the algorithm name e.g. AES/CBC/PKCS5Padding
+    // take just the algorithm part.
+    int pos = algorithm.indexOf('/');
+    if (pos >= 0) {
+        algorithmName = algorithm.substring(0, pos);
+        int pos2 = algorithm.indexOf('/', pos + 1);
+        if (pos2 >= 0) {
+            algorithmMode = algorithm.substring(pos + 1, pos2);
+        } else {
+            algorithmMode = "CBC";
+        }
+    } else {
+        algorithmName = algorithm;
+        algorithmMode = "CBC";
+    }
+    if ("GCM".equalsIgnoreCase(algorithmMode)) {
+        return new GCMEncryptionManager(algorithm, new SecretKeySpec(encryptionKey, algorithmName), providerName);
+    } else if ("CBC".equalsIgnoreCase(algorithmMode) || "OFB".equalsIgnoreCase(algorithmMode) || "CFB".equalsIgnoreCase(algorithmMode)) {
+        return new BaseEncryptionManager(algorithm, new SecretKeySpec(encryptionKey, algorithmName), providerName);
+    } else {
+        throw new IllegalArgumentException(sm.getString("encryptInterceptor.algorithm.unsupported-mode", algorithmMode));
+    }
+}

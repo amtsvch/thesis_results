@@ -1,0 +1,16 @@
+@Test
+public void testIndexOf_Char() throws UnsupportedEncodingException {
+    byte[] bytes = "Hello\u00a0world".getBytes("ISO-8859-1");
+    final int len = bytes.length;
+    ByteChunk bc = new ByteChunk();
+    bc.setBytes(bytes, 0, len);
+    Assert.assertEquals(0, bc.indexOf('H', 0));
+    Assert.assertEquals(6, bc.indexOf('w', 0));
+    // Does not work outside of 0-127
+    Assert.assertEquals(-1, bc.indexOf('\u00a0', 0));
+    bc.setBytes(bytes, 6, 5);
+    Assert.assertEquals(1, bc.indexOf('o', 0));
+    bc.setBytes(bytes, 6, 2);
+    Assert.assertEquals(0, bc.indexOf('w', 0));
+    Assert.assertEquals(-1, bc.indexOf('d', 0));
+}

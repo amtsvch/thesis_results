@@ -1,0 +1,9 @@
+public void addPatternDecoded(String pattern) {                                                        public void addPatternDecoded(String pattern) {                                                     
+if (pattern == null)                                                                                 | if (pattern == null) {                                                                              
+return;                                                                                                return;                                                                                             
+                                                                                                     | }                                                                                                   
+String decodedPattern = UDecoder.URLDecode(pattern, getCharset());                                     String decodedPattern = UDecoder.URLDecode(pattern, getCharset());                                  
+String[] results = Arrays.copyOf(patterns, patterns.length + 1);                                       String[] results = Arrays.copyOf(patterns, patterns.length + 1);                                    
+results[patterns.length] = decodedPattern;                                                             results[patterns.length] = decodedPattern;                                                          
+patterns = results;                                                                                    patterns = results;                                                                                 
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,7 @@
+@Test
+public void testToBytesAfterRecycle() {
+    MessageBytes mb = MessageBytes.newInstance();
+    mb.setString("foo");
+    mb.recycle();
+    mb.toBytes();
+}

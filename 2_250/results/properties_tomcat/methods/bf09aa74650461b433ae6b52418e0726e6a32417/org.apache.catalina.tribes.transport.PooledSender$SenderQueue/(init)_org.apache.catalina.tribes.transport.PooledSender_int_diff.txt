@@ -1,0 +1,6 @@
+public SenderQueue(PooledSender parent, int limit) {
+    this.limit = limit;
+    this.parent = parent;
+    notinuse = new java.util.LinkedList<>();
+    inuse = new java.util.LinkedList<>();
+}

@@ -1,0 +1,9 @@
+public static Method[] findMethods(Class&lt;?&gt; c) {                                                 public static Method[] findMethods(Class&lt;?&gt; c) {                                              
+Method[] methods = objectMethods.get(c);                                                               Method[] methods = objectMethods.get(c);                                                            
+if (methods != null)                                                                                 | if (methods != null) {                                                                              
+return methods;                                                                                        return methods;                                                                                     
+                                                                                                     | }                                                                                                   
+methods = c.getMethods();                                                                              methods = c.getMethods();                                                                           
+objectMethods.put(c, methods);                                                                         objectMethods.put(c, methods);                                                                      
+return methods;                                                                                        return methods;                                                                                     
+}                                                                                                      }                                                                                                   

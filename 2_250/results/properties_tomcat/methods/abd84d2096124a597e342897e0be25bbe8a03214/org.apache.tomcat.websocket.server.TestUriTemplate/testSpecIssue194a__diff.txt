@@ -1,0 +1,5 @@
+@Test(expected = jakarta.websocket.DeploymentException.class)
+public void testSpecIssue194a() throws Exception {
+    @SuppressWarnings("unused")
+    UriTemplate t = new UriTemplate("/a/../b");
+}

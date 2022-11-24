@@ -1,0 +1,25 @@
+/**                                                                                                    /**                                                                                                 
+* Create a new connection wrapper, along with the                                                      * Create a new connection wrapper, along with the                                                   
+* message formats.                                                                                     * message formats.                                                                                  
+* @return the new connection                                                                           * @return the new connection                                                                        
+*/                                                                                                     */                                                                                                  
+protected JNDIConnection create() {                                                                    protected JNDIConnection create() {                                                                 
+JNDIConnection connection = new JNDIConnection();                                                    | return new JNDIConnection(userSearch, userPatternArray, roleBase, roleSearch);                      
+if (userSearch != null) {                                                                            |                                                                                                     
+connection.userSearchFormat = new MessageFormat(userSearch);                                         |                                                                                                     
+}                                                                                                      }                                                                                                   
+if (userPattern != null) {                                                                           |                                                                                                     
+int len = userPatternArray.length;                                                                   |                                                                                                     
+connection.userPatternFormatArray = new MessageFormat[len];                                          |                                                                                                     
+for (int i = 0; i &lt; len; i++) {                                                                   |                                                                                                     
+connection.userPatternFormatArray[i] = new MessageFormat(userPatternArray[i]);                       |                                                                                                     
+}                                                                                                    |                                                                                                     
+}                                                                                                    |                                                                                                     
+if (roleBase != null) {                                                                              |                                                                                                     
+connection.roleBaseFormat = new MessageFormat(roleBase);                                             |                                                                                                     
+}                                                                                                    |                                                                                                     
+if (roleSearch != null) {                                                                            |                                                                                                     
+connection.roleFormat = new MessageFormat(roleSearch);                                               |                                                                                                     
+}                                                                                                    |                                                                                                     
+return connection;                                                                                   |                                                                                                     
+}                                                                                                    |                                                                                                     

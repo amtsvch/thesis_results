@@ -1,0 +1,6 @@
+public C2BConverter(Charset charset) {
+    encoder = charset.newEncoder();
+    encoder.onUnmappableCharacter(CodingErrorAction.REPLACE).onMalformedInput(CodingErrorAction.REPLACE);
+    char[] left = new char[4];
+    leftovers = CharBuffer.wrap(left);
+}

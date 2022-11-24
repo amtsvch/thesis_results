@@ -1,0 +1,17 @@
+/**
+ * Add a mapping associated with the Wrapper.
+ *
+ * @param mapping The new wrapper mapping
+ */
+@Override
+public void addMapping(String mapping) {
+    mappingsLock.writeLock().lock();
+    try {
+        mappings.add(mapping);
+    } finally {
+        mappingsLock.writeLock().unlock();
+    }
+    if (parent.getState().equals(LifecycleState.STARTED)) {
+        fireContainerEvent(ADD_MAPPING_EVENT, mapping);
+    }
+}

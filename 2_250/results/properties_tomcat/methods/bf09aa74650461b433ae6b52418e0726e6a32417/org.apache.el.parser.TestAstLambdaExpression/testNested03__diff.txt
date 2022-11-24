@@ -1,0 +1,6 @@
+@Test(expected = ELException.class)
+public void testNested03() {
+    ELProcessor processor = new ELProcessor();
+    // More method parameters than there are nested lambda expressions
+    processor.getValue("(()->y->()->2-y)()(1)()()", Integer.class);
+}

@@ -1,0 +1,20 @@
+/**
+ * Constructs an event that notifies an object that it has been bound to or
+ * unbound from a session. To receive the event, the object must implement
+ * {@link HttpSessionBindingListener}.
+ *
+ * @param session
+ *            the session to which the object is bound or unbound
+ * @param name
+ *            the name with which the object is bound or unbound
+ * @param value
+ *            the object that is bound or unbound
+ * @see #getName()
+ * @see #getSession()
+ * @see #getValue()
+ */
+public HttpSessionBindingEvent(HttpSession session, String name, Object value) {
+    super(session);
+    this.name = name;
+    this.value = value;
+}

@@ -1,0 +1,35 @@
+/**                                                                                                    /**                                                                                                 
+* Encrypts the input &lt;code&gt;bytes&lt;/code&gt; into two separate byte arrays:                     * Encrypts the input &lt;code&gt;bytes&lt;/code&gt; into two separate byte arrays:                  
+* one for the random initialization vector (IV) used for this message,                                 * one for the random initialization vector (IV) used for this message,                              
+* and the second one containing the actual encrypted payload.                                          * and the second one containing the actual encrypted payload.                                       
+*                                                                                                      *                                                                                                   
+* This method returns a pair of byte arrays instead of a single                                        * This method returns a pair of byte arrays instead of a single                                     
+* concatenated one to reduce the number of byte buffers created                                        * concatenated one to reduce the number of byte buffers created                                     
+* and copied during the whole operation -- including message re-building.                              * and copied during the whole operation -- including message re-building.                           
+*                                                                                                      *                                                                                                   
+* @param bytes The data to encrypt.                                                                    * @param bytes The data to encrypt.                                                                 
+*                                                                                                      *                                                                                                   
+* @return The IV in [0] and the encrypted data in [1].                                                 * @return The IV in [0] and the encrypted data in [1].                                              
+*                                                                                                      *                                                                                                   
+* @throws GeneralSecurityException If the input data cannot be encrypted.                              * @throws GeneralSecurityException If the input data cannot be encrypted.                           
+*/                                                                                                     */                                                                                                  
+private byte[][] encrypt(byte[] bytes) throws GeneralSecurityException {                               private byte[][] encrypt(byte[] bytes) throws GeneralSecurityException {                            
+Cipher cipher = null;                                                                                  Cipher cipher = null;                                                                               
+// Always use a random IV For cipher setup.                                                            // Always use a random IV For cipher setup.                                                         
+// The recipient doesn't need the (matching) IV because we will always                                 // The recipient doesn't need the (matching) IV because we will always                              
+// pre-pad messages with the IV as a nonce.                                                            // pre-pad messages with the IV as a nonce.                                                         
+byte[] iv = generateIVBytes();                                                                         byte[] iv = generateIVBytes();                                                                      
+try {                                                                                                  try {                                                                                               
+cipher = getCipher();                                                                                  cipher = getCipher();                                                                               
+cipher.init(Cipher.ENCRYPT_MODE, getSecretKey(), generateIV(iv, 0, getIVSize()));                      cipher.init(Cipher.ENCRYPT_MODE, getSecretKey(), generateIV(iv, 0, getIVSize()));                   
+// Prepend the IV to the beginning of the encrypted data                                               // Prepend the IV to the beginning of the encrypted data                                            
+byte[][] data = new byte[2][];                                                                         byte[][] data = new byte[2][];                                                                      
+data[0] = iv;                                                                                          data[0] = iv;                                                                                       
+data[1] = cipher.doFinal(bytes);                                                                       data[1] = cipher.doFinal(bytes);                                                                    
+return data;                                                                                           return data;                                                                                        
+} finally {                                                                                            } finally {                                                                                         
+if (null != cipher)                                                                                  | if (null != cipher) {                                                                               
+returnCipher(cipher);                                                                                  returnCipher(cipher);                                                                               
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

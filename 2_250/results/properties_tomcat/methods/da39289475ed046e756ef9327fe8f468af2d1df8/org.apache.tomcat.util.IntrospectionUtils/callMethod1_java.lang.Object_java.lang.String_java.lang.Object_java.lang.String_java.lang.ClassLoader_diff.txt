@@ -1,0 +1,24 @@
+public static Object callMethod1(Object target, String methodN, Object param1, String typeParam1, Cl   public static Object callMethod1(Object target, String methodN, Object param1, String typeParam1, Cl
+if (target == null || methodN == null || param1 == null) {                                             if (target == null || methodN == null || param1 == null) {                                          
+throw new IllegalArgumentException(sm.getString("introspectionUtils.nullParameter"));                  throw new IllegalArgumentException(sm.getString("introspectionUtils.nullParameter"));               
+}                                                                                                      }                                                                                                   
+if (log.isDebugEnabled())                                                                            | if (log.isDebugEnabled()) {                                                                         
+log.debug("IntrospectionUtils: callMethod1 " + target.getClass().getName() + " " + param1.getClass()   log.debug("IntrospectionUtils: callMethod1 " + target.getClass().getName() + " " + param1.getClass()
+                                                                                                     | }                                                                                                   
+Class&lt;?&gt;[] params = new Class[1];                                                                Class&lt;?&gt;[] params = new Class[1];                                                             
+if (typeParam1 == null)                                                                              | if (typeParam1 == null) {                                                                           
+params[0] = param1.getClass();                                                                         params[0] = param1.getClass();                                                                      
+else                                                                                                 | } else {                                                                                            
+params[0] = cl.loadClass(typeParam1);                                                                  params[0] = cl.loadClass(typeParam1);                                                               
+                                                                                                     | }                                                                                                   
+Method m = findMethod(target.getClass(), methodN, params);                                             Method m = findMethod(target.getClass(), methodN, params);                                          
+if (m == null)                                                                                       | if (m == null) {                                                                                    
+throw new NoSuchMethodException(target.getClass().getName() + " " + methodN);                          throw new NoSuchMethodException(target.getClass().getName() + " " + methodN);                       
+                                                                                                     | }                                                                                                   
+try {                                                                                                  try {                                                                                               
+return m.invoke(target, new Object[] { param1 });                                                      return m.invoke(target, new Object[] { param1 });                                                   
+} catch (InvocationTargetException ie) {                                                               } catch (InvocationTargetException ie) {                                                            
+ExceptionUtils.handleThrowable(ie.getCause());                                                         ExceptionUtils.handleThrowable(ie.getCause());                                                      
+throw ie;                                                                                              throw ie;                                                                                           
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

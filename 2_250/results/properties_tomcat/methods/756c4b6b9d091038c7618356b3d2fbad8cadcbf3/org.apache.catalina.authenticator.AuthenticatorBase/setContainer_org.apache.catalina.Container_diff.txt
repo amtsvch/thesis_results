@@ -1,0 +1,14 @@
+/**
+ * Set the Container to which this Valve is attached.
+ *
+ * @param container
+ *            The container to which we are attached
+ */
+@Override
+public void setContainer(Container container) {
+    if (container != null && !(container instanceof Context)) {
+        throw new IllegalArgumentException(sm.getString("authenticator.notContext"));
+    }
+    super.setContainer(container);
+    this.context = (Context) container;
+}

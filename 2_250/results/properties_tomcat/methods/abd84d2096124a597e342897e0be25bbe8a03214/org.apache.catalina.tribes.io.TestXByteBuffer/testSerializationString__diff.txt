@@ -1,0 +1,8 @@
+@Test
+public void testSerializationString() throws Exception {
+    String test = "This is as test.";
+    byte[] msg = XByteBuffer.serialize(test);
+    Object obj = XByteBuffer.deserialize(msg);
+    assertThat(obj, instanceOf(String.class));
+    Assert.assertEquals(test, obj);
+}

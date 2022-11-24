@@ -1,0 +1,42 @@
+/**
+ * Notify interested listeners that attribute has been assigned a value.
+ *
+ * @param name Attribute name
+ * @param value New attribute value
+ * @param oldValue Old attribute value
+ */
+private void notifyAttributeAssigned(String name, Object value, Object oldValue) {
+    Context context = getContext();
+    if (context == null) {
+        return;
+    }
+    Object[] listeners = context.getApplicationEventListeners();
+    if ((listeners == null) || (listeners.length == 0)) {
+        return;
+    }
+    boolean replaced = (oldValue != null);
+    ServletRequestAttributeEvent event = null;
+    if (replaced) {
+        event = new ServletRequestAttributeEvent(context.getServletContext(), getRequest(), name, oldValue);
+    } else {
+        event = new ServletRequestAttributeEvent(context.getServletContext(), getRequest(), name, value);
+    }
+    for (Object o : listeners) {
+        if (!(o instanceof ServletRequestAttributeListener)) {
+            continue;
+        }
+        ServletRequestAttributeListener listener = (ServletRequestAttributeListener) o;
+        try {
+            if (replaced) {
+                listener.attributeReplaced(event);
+            } else {
+                listener.attributeAdded(event);
+            }
+        } catch (Throwable t) {
+            ExceptionUtils.handleThrowable(t);
+            // Error valve will pick this exception up and display it to user
+            attributes.put(RequestDispatcher.ERROR_EXCEPTION, t);
+            context.getLogger().error(sm.getString("coyoteRequest.attributeEvent"), t);
+        }
+    }
+}

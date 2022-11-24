@@ -1,0 +1,13 @@
+@Override
+public void setDomain(byte[] domain) {
+    this.domain = domain;
+    if (localMember != null) {
+        localMember.setDomain(domain);
+        try {
+            if (impl != null)
+                impl.send(false);
+        } catch (Exception x) {
+            log.error(sm.getString("McastService.domain"), x);
+        }
+    }
+}

@@ -1,0 +1,10 @@
+/**
+ * Gets the size, in bytes, of the initialization vector for the
+ * cipher being used. The IV size is often, but not always, the block
+ * size for the cipher.
+ *
+ * @return The size of the initialization vector for this algorithm.
+ */
+protected int getIVSize() {
+    return blockSize;
+}

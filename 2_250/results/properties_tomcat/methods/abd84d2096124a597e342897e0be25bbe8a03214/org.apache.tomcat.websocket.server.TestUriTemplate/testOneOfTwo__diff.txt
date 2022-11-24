@@ -1,0 +1,6 @@
+@Test
+public void testOneOfTwo() throws Exception {
+    UriTemplate t = new UriTemplate("/{a}/{b}");
+    Map<String, String> result = t.match(new UriTemplate("/foo"));
+    Assert.assertNull(result);
+}

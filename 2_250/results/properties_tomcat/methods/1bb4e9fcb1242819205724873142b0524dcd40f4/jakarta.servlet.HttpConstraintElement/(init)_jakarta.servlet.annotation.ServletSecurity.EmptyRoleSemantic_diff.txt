@@ -1,0 +1,12 @@
+/**
+ * Construct a constraint with an empty role semantic. Typically used with
+ * {@link EmptyRoleSemantic#DENY}.
+ *
+ * @param emptyRoleSemantic The empty role semantic to apply to the newly
+ *                          created constraint
+ */
+public HttpConstraintElement(EmptyRoleSemantic emptyRoleSemantic) {
+    this.emptyRoleSemantic = emptyRoleSemantic;
+    this.transportGuarantee = TransportGuarantee.NONE;
+    this.rolesAllowed = new String[0];
+}

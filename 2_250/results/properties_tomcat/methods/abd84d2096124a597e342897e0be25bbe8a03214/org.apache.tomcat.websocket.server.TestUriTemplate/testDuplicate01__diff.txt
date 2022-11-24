@@ -1,0 +1,5 @@
+@Test(expected = jakarta.websocket.DeploymentException.class)
+public void testDuplicate01() throws Exception {
+    @SuppressWarnings("unused")
+    UriTemplate t = new UriTemplate("/{var}/{var}");
+}

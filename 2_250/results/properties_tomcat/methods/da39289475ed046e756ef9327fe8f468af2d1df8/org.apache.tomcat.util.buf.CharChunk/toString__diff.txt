@@ -1,0 +1,10 @@
+// -------------------- Conversion and getters --------------------
+@Override
+public String toString() {
+    if (isNull()) {
+        return null;
+    } else if (end - start == 0) {
+        return "";
+    }
+    return StringCache.toString(this);
+}

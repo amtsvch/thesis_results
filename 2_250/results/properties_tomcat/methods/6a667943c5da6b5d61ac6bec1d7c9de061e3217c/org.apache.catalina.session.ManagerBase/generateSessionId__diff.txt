@@ -1,0 +1,17 @@
+/**
+ * Generate and return a new session identifier.
+ * @return a new session id
+ */
+protected String generateSessionId() {
+    String result = null;
+    do {
+        if (result != null) {
+            // Not thread-safe but if one of multiple increments is lost
+            // that is not a big deal since the fact that there was any
+            // duplicate is a much bigger issue.
+            duplicates++;
+        }
+        result = sessionIdGenerator.generateSessionId();
+    } while (sessions.containsKey(result));
+    return result;
+}

@@ -1,0 +1,11 @@
+/**
+ * Resolves any variable references and returns the value string.
+ *
+ * @return the value string
+ */
+public String getValue() {
+    if (resolved == null) {
+        resolved = ssiMediator.substituteVariables(value.toString());
+    }
+    return resolved;
+}

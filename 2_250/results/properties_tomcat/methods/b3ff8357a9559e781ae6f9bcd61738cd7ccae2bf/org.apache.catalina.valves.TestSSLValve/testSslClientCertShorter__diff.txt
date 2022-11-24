@@ -1,0 +1,9 @@
+@Test
+public void testSslClientCertShorter() throws Exception {
+    mockRequest.setHeader(valve.getSslClientCertHeader(), "shorter than hell");
+    TesterLogValidationFilter f = TesterLogValidationFilter.add(null, "", null, "org.apache.catalina.valves.SSLValve");
+    valve.invoke(mockRequest, null);
+    EasyMock.verify(mockNext);
+    Assert.assertNull(mockRequest.getAttribute(Globals.CERTIFICATES_ATTR));
+    Assert.assertEquals(0, f.getMessageCount());
+}

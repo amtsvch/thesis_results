@@ -1,0 +1,18 @@
+private void doTest(String lws, Parameter... parameters) throws IOException {
+    StringBuilder sb = new StringBuilder();
+    sb.append(TYPES);
+    for (Parameter p : parameters) {
+        sb.append(p.toString(lws));
+    }
+    StringReader sr = new StringReader(sb.toString());
+    MediaType m = MediaType.parseMediaType(sr);
+    // Check all expected parameters are present
+    Assert.assertTrue(m.getParameterCount() == parameters.length);
+    // Check the types
+    Assert.assertEquals(TYPE.trim(), m.getType());
+    Assert.assertEquals(SUBTYPE.trim(), m.getSubtype());
+    // Check the parameters
+    for (Parameter parameter : parameters) {
+        Assert.assertEquals(parameter.getValue().trim(), m.getParameterValue(parameter.getName().trim()));
+    }
+}

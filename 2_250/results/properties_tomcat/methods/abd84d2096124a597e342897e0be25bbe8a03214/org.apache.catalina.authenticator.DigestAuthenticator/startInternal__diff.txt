@@ -1,0 +1,36 @@
+// ------------------------------------------------------- Lifecycle Methods                           // ------------------------------------------------------- Lifecycle Methods                        
+@Override                                                                                              @Override                                                                                           
+protected synchronized void startInternal() throws LifecycleException {                                protected synchronized void startInternal() throws LifecycleException {                             
+super.startInternal();                                                                                 super.startInternal();                                                                              
+// Generate a random secret key                                                                        // Generate a random secret key                                                                     
+if (getKey() == null) {                                                                                if (getKey() == null) {                                                                             
+setKey(sessionIdGenerator.generateSessionId());                                                        setKey(sessionIdGenerator.generateSessionId());                                                     
+}                                                                                                      }                                                                                                   
+// Generate the opaque string the same way                                                             // Generate the opaque string the same way                                                          
+if (getOpaque() == null) {                                                                             if (getOpaque() == null) {                                                                          
+setOpaque(sessionIdGenerator.generateSessionId());                                                     setOpaque(sessionIdGenerator.generateSessionId());                                                  
+}                                                                                                      }                                                                                                   
+nonces = new LinkedHashMap&lt;String, DigestAuthenticator.NonceInfo&gt;() {                          | nonces = new LinkedHashMap&lt;&gt;() {                                                              
+                                                                                                                                                                                                           
+private static final long serialVersionUID = 1L;                                                       private static final long serialVersionUID = 1L;                                                    
+                                                                                                                                                                                                           
+private static final long LOG_SUPPRESS_TIME = 5 * 60 * 1000;                                           private static final long LOG_SUPPRESS_TIME = 5 * 60 * 1000;                                        
+                                                                                                                                                                                                           
+private long lastLog = 0;                                                                              private long lastLog = 0;                                                                           
+                                                                                                                                                                                                           
+@Override                                                                                              @Override                                                                                           
+protected boolean removeEldestEntry(Map.Entry&lt;String, NonceInfo&gt; eldest) {                       protected boolean removeEldestEntry(Map.Entry&lt;String, NonceInfo&gt; eldest) {                    
+// This is called from a sync so keep it simple                                                        // This is called from a sync so keep it simple                                                     
+long currentTime = System.currentTimeMillis();                                                         long currentTime = System.currentTimeMillis();                                                      
+if (size() &gt; getNonceCacheSize()) {                                                                 if (size() &gt; getNonceCacheSize()) {                                                              
+if (lastLog &lt; currentTime && currentTime - eldest.getValue().getTimestamp() &lt; getNonceValidity   if (lastLog &lt; currentTime && currentTime - eldest.getValue().getTimestamp() &lt; getNonceValidity
+// Replay attack is possible                                                                           // Replay attack is possible                                                                        
+log.warn(sm.getString("digestAuthenticator.cacheRemove"));                                             log.warn(sm.getString("digestAuthenticator.cacheRemove"));                                          
+lastLog = currentTime + LOG_SUPPRESS_TIME;                                                             lastLog = currentTime + LOG_SUPPRESS_TIME;                                                          
+}                                                                                                      }                                                                                                   
+return true;                                                                                           return true;                                                                                        
+}                                                                                                      }                                                                                                   
+return false;                                                                                          return false;                                                                                       
+}                                                                                                      }                                                                                                   
+};                                                                                                     };                                                                                                  
+}                                                                                                      }                                                                                                   

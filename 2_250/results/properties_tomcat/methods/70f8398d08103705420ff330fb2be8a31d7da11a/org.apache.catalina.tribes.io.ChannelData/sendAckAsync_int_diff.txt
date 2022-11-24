@@ -1,0 +1,11 @@
+/**
+ * Utility method, returns true if the options flag indicates that an ack
+ * is to be sent after the message has been received but not yet processed
+ * @param options int - the options for the message
+ * @return boolean
+ * @see org.apache.catalina.tribes.Channel#SEND_OPTIONS_USE_ACK
+ * @see org.apache.catalina.tribes.Channel#SEND_OPTIONS_SYNCHRONIZED_ACK
+ */
+public static boolean sendAckAsync(int options) {
+    return ((Channel.SEND_OPTIONS_USE_ACK & options) == Channel.SEND_OPTIONS_USE_ACK) && ((Channel.SEND_OPTIONS_SYNCHRONIZED_ACK & options) != Channel.SEND_OPTIONS_SYNCHRONIZED_ACK);
+}

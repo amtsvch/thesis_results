@@ -1,0 +1,71 @@
+@Override
+public void start(int level) throws java.lang.Exception {
+    hasProperty(properties, "mcastPort");
+    hasProperty(properties, "mcastAddress");
+    hasProperty(properties, "memberDropTime");
+    hasProperty(properties, "mcastFrequency");
+    hasProperty(properties, "tcpListenPort");
+    hasProperty(properties, "tcpListenHost");
+    hasProperty(properties, "tcpSecurePort");
+    hasProperty(properties, "udpListenPort");
+    if (impl != null) {
+        impl.start(level);
+        return;
+    }
+    String host = getProperties().getProperty("tcpListenHost");
+    int port = Integer.parseInt(getProperties().getProperty("tcpListenPort"));
+    int securePort = Integer.parseInt(getProperties().getProperty("tcpSecurePort"));
+    int udpPort = Integer.parseInt(getProperties().getProperty("udpListenPort"));
+    if (localMember == null) {
+        localMember = new MemberImpl(host, port, 100);
+        localMember.setUniqueId(UUIDGenerator.randomUUID(true));
+        localMember.setLocal(true);
+    } else {
+        localMember.setHostname(host);
+        localMember.setPort(port);
+        localMember.setMemberAliveTime(100);
+    }
+    localMember.setSecurePort(securePort);
+    localMember.setUdpPort(udpPort);
+    if (this.payload != null)
+        localMember.setPayload(payload);
+    if (this.domain != null)
+        localMember.setDomain(domain);
+    localMember.setServiceStartTime(System.currentTimeMillis());
+    java.net.InetAddress bind = null;
+    if (properties.getProperty("mcastBindAddress") != null) {
+        bind = java.net.InetAddress.getByName(properties.getProperty("mcastBindAddress"));
+    }
+    int ttl = -1;
+    int soTimeout = -1;
+    if (properties.getProperty("mcastTTL") != null) {
+        try {
+            ttl = Integer.parseInt(properties.getProperty("mcastTTL"));
+        } catch (Exception x) {
+            log.error(sm.getString("McastService.parseTTL", properties.getProperty("mcastTTL")), x);
+        }
+    }
+    if (properties.getProperty("mcastSoTimeout") != null) {
+        try {
+            soTimeout = Integer.parseInt(properties.getProperty("mcastSoTimeout"));
+        } catch (Exception x) {
+            log.error(sm.getString("McastService.parseSoTimeout", properties.getProperty("mcastSoTimeout")), x);
+        }
+    }
+    impl = new McastServiceImpl(localMember, Long.parseLong(properties.getProperty("mcastFrequency")), Long.parseLong(properties.getProperty("memberDropTime")), Integer.parseInt(properties.getProperty("mcastPort")), bind, java.net.InetAddress.getByName(properties.getProperty("mcastAddress")), ttl, soTimeout, this, this, Boolean.parseBoolean(properties.getProperty("localLoopbackDisabled")));
+    impl.setMembershipService(this);
+    String value = properties.getProperty("recoveryEnabled");
+    boolean recEnabled = Boolean.parseBoolean(value);
+    impl.setRecoveryEnabled(recEnabled);
+    int recCnt = Integer.parseInt(properties.getProperty("recoveryCounter"));
+    impl.setRecoveryCounter(recCnt);
+    long recSlpTime = Long.parseLong(properties.getProperty("recoverySleepTime"));
+    impl.setRecoverySleepTime(recSlpTime);
+    impl.setChannel(channel);
+    impl.start(level);
+    // register jmx
+    JmxRegistry jmxRegistry = JmxRegistry.getRegistry(channel);
+    if (jmxRegistry != null) {
+        this.oname = jmxRegistry.registerJmx(",component=Membership", this);
+    }
+}

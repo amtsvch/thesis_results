@@ -1,0 +1,7 @@
+@Test
+public void testLhexUppercase() throws Exception {
+    String header = "Digest nc=00ABCDEF";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertEquals("00abcdef", result.get("nc"));
+}

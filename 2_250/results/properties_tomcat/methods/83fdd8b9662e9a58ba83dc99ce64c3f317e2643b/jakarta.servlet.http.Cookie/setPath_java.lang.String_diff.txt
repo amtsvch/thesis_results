@@ -1,0 +1,20 @@
+/**                                                                                                    /**                                                                                                 
+* Specifies a path for the cookie to which the client should return the                                * Specifies a path for the cookie to which the client should return the                             
+* cookie.                                                                                              * cookie.                                                                                           
+* &lt;p&gt;                                                                                            * &lt;p&gt;                                                                                         
+* The cookie is visible to all the pages in the directory you specify, and                             * The cookie is visible to all the pages in the directory you specify, and                          
+* all the pages in that directory's subdirectories. A cookie's path must                               * all the pages in that directory's subdirectories. A cookie's path must                            
+* include the servlet that set the cookie, for example, &lt;i&gt;/catalog&lt;/i&gt;,                   * include the servlet that set the cookie, for example, &lt;i&gt;/catalog&lt;/i&gt;,                
+* which makes the cookie visible to all directories on the server under                                * which makes the cookie visible to all directories on the server under                             
+* &lt;i&gt;/catalog&lt;/i&gt;.                                                                         * &lt;i&gt;/catalog&lt;/i&gt;.                                                                      
+* &lt;p&gt;                                                                                            * &lt;p&gt;                                                                                         
+* Consult RFC 2109 (available on the Internet) for more information on                                 * Consult RFC 2109 (available on the Internet) for more information on                              
+* setting path names for cookies.                                                                      * setting path names for cookies.                                                                   
+*                                                                                                      *                                                                                                   
+* @param uri                                                                                           * @param uri                                                                                        
+*            a &lt;code&gt;String&lt;/code&gt; specifying a path                                       *            a &lt;code&gt;String&lt;/code&gt; specifying a path                                    
+* @see #getPath                                                                                        * @see #getPath                                                                                     
+*/                                                                                                     */                                                                                                  
+public void setPath(String uri) {                                                                      public void setPath(String uri) {                                                                   
+path = uri;                                                                                          | setAttributeInternal(PATH, uri);                                                                    
+}                                                                                                      }                                                                                                   

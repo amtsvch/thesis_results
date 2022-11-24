@@ -1,0 +1,7 @@
+@Test
+public void testUnclosedQuotedLhex() throws Exception {
+    String header = "Digest nc=\"00000001";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertNull(result);
+}

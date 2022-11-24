@@ -1,0 +1,4 @@
+@Override
+public final void error(Object message, Throwable t) {
+    log(Level.SEVERE, String.valueOf(message), t);
+}

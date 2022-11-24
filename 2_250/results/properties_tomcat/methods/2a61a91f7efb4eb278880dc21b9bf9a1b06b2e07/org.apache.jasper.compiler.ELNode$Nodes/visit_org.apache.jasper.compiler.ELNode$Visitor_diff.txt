@@ -1,0 +1,12 @@
+/**
+ * Visit the nodes in the list with the supplied visitor.
+ *
+ * @param v The visitor used
+ *
+ * @throws JasperException if an error occurs while visiting a node
+ */
+public void visit(Visitor v) throws JasperException {
+    for (ELNode n : list) {
+        n.accept(v);
+    }
+}

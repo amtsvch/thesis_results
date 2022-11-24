@@ -1,0 +1,9 @@
+@Test
+public void testAddValidWithAll() {
+    TesterResponse response = new TesterResponse();
+    response.getCoyoteResponse();
+    response.addHeader("vary", "host");
+    List<String> expected = new ArrayList<>();
+    expected.add("*");
+    doTestAddVaryFieldName(response, "*", expected);
+}

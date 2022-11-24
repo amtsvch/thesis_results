@@ -1,0 +1,7 @@
+@Test
+public void testUnquoteEscaped() {
+    // Note: Test string is also Java escaped
+    String shortText = "\"ab\\\"ab\"";
+    String result = "ab\"ab";
+    Assert.assertEquals(result, HttpParser.unquote(shortText));
+}

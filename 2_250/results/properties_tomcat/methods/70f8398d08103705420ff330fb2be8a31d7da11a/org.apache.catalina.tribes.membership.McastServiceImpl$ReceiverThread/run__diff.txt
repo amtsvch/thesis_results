@@ -1,0 +1,31 @@
+@Override                                                                                              @Override                                                                                           
+public void run() {                                                                                    public void run() {                                                                                 
+while (doRunReceiver) {                                                                                while (doRunReceiver) {                                                                             
+try {                                                                                                  try {                                                                                               
+receive();                                                                                             receive();                                                                                          
+errorCounter = 0;                                                                                      errorCounter = 0;                                                                                   
+} catch (ArrayIndexOutOfBoundsException ax) {                                                          } catch (ArrayIndexOutOfBoundsException ax) {                                                       
+// we can ignore this, as it means we have an invalid package                                          // we can ignore this, as it means we have an invalid package                                       
+// but we will log it to debug                                                                         // but we will log it to debug                                                                      
+if (log.isDebugEnabled())                                                                            | if (log.isDebugEnabled()) {                                                                         
+log.debug("Invalid member mcast package.", ax);                                                        log.debug("Invalid member mcast package.", ax);                                                     
+                                                                                                     | }                                                                                                   
+} catch (Exception x) {                                                                                } catch (Exception x) {                                                                             
+if (errorCounter == 0 && doRunReceiver)                                                              | if (errorCounter == 0 && doRunReceiver) {                                                           
+log.warn(sm.getString("mcastServiceImpl.error.receiving"), x);                                         log.warn(sm.getString("mcastServiceImpl.error.receiving"), x);                                      
+else if (log.isDebugEnabled())                                                                       | } else if (log.isDebugEnabled()) {                                                                  
+log.debug("Error receiving mcast package" + (doRunReceiver ? ". Sleeping 500ms" : "."), x);            log.debug("Error receiving mcast package" + (doRunReceiver ? ". Sleeping 500ms" : "."), x);         
+                                                                                                     | }                                                                                                   
+if (doRunReceiver) {                                                                                   if (doRunReceiver) {                                                                                
+try {                                                                                                  try {                                                                                               
+Thread.sleep(500);                                                                                     Thread.sleep(500);                                                                                  
+} catch (Exception ignore) {                                                                           } catch (Exception ignore) {                                                                        
+}                                                                                                      }                                                                                                   
+if ((++errorCounter) &gt;= recoveryCounter) {                                                          if ((++errorCounter) &gt;= recoveryCounter) {                                                       
+errorCounter = 0;                                                                                      errorCounter = 0;                                                                                   
+RecoveryThread.recover(McastServiceImpl.this);                                                         RecoveryThread.recover(McastServiceImpl.this);                                                      
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

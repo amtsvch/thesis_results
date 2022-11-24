@@ -1,0 +1,30 @@
+@Test
+public void testLiteral() {
+    // Inspired by work on bug 45451, comments from kkolinko on the dev
+    // list and looking at the spec to find some edge cases
+    // '\' is only an escape character inside a StringLiteral
+    // Attribute escaping does not apply inside EL expressions
+    Assert.assertEquals("\\", evalAttr("${'\\\\'}", '\"'));
+    // Can use ''' inside '"' when quoting with '"' and vice versa without
+    // escaping
+    Assert.assertEquals("\\\"", evalAttr("${'\\\\\"'}", '\"'));
+    Assert.assertEquals("\"\\", evalAttr("${'\\\"\\\\'}", '\"'));
+    Assert.assertEquals("\\'", evalAttr("${'\\\\\\''}", '\"'));
+    Assert.assertEquals("'\\", evalAttr("${'\\'\\\\'}", '\"'));
+    // Quoting <% and %>
+    Assert.assertEquals("hello <% world", evalAttr("hello <\\% world", '\"'));
+    Assert.assertEquals("hello %> world", evalAttr("hello %> world", '\"'));
+    // Test that the end of literal in EL expression is recognized in
+    // parseEL(), be it quoted with single or double quotes. That is, that
+    // AttributeParser correctly switches between parseLiteral and parseEL
+    // methods.
+    // 
+    // The test is based on the difference in how the '\' character is printed:
+    // when in parseLiteral \\${ will be printed as ${'\'}${, but if we are still
+    // inside of parseEL it will be printed as \${, thus preventing the EL
+    // expression that follows from being evaluated.
+    // 
+    Assert.assertEquals("foo\\bar\\baz", evalAttr("${\'foo\'}\\\\${\'bar\'}\\\\${\'baz\'}", '\"'));
+    Assert.assertEquals("foo\\bar\\baz", evalAttr("${\'foo\'}\\\\${\"bar\"}\\\\${\'baz\'}", '\"'));
+    Assert.assertEquals("foo\\bar\\baz", evalAttr("${\"foo\"}\\\\${\'bar\'}\\\\${\"baz\"}", '\"'));
+}

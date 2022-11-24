@@ -1,0 +1,6 @@
+@Test
+public void testBug56425b() {
+    ELProcessor processor = new ELProcessor();
+    processor.defineBean("string", "Not used. Any value is fine here");
+    Assert.assertEquals("5", processor.eval("string.valueOf(5)"));
+}

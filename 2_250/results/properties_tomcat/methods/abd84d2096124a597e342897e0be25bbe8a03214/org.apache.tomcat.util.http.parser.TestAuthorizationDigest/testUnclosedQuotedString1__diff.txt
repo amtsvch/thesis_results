@@ -1,0 +1,7 @@
+@Test
+public void testUnclosedQuotedString1() throws Exception {
+    String header = "Digest username=\"test";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertNull(result);
+}

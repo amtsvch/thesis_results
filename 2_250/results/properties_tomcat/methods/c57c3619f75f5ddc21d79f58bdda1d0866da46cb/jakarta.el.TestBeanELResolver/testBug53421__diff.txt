@@ -1,0 +1,21 @@
+@Test
+public void testBug53421() {
+    ExpressionFactory factory = ExpressionFactory.newInstance();
+    ELContext context = new ELContextImpl(factory);
+    Bean bean = new Bean();
+    ValueExpression varBean = factory.createValueExpression(bean, Bean.class);
+    context.getVariableMapper().setVariable("bean", varBean);
+    ValueExpression ve = factory.createValueExpression(context, "${bean.valueA}", String.class);
+    Exception e = null;
+    try {
+        ve.getValue(context);
+    } catch (PropertyNotFoundException pnfe) {
+        e = pnfe;
+    }
+    assertThat("Wrong exception type", e, instanceOf(PropertyNotFoundException.class));
+    String type = Bean.class.getName();
+    // Not possible due to test above
+    @SuppressWarnings("null")
+    String msg = e.getMessage();
+    Assert.assertTrue("No reference to type [" + type + "] where property cannot be found in [" + msg + "]", msg.contains(type));
+}

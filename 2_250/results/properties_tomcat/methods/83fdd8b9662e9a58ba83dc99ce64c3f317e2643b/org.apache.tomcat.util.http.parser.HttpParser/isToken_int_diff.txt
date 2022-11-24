@@ -1,0 +1,8 @@
+public static boolean isToken(int c) {
+    // Fast for correct values, slower for incorrect ones
+    try {
+        return IS_TOKEN[c];
+    } catch (ArrayIndexOutOfBoundsException ex) {
+        return false;
+    }
+}

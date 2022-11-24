@@ -1,0 +1,4 @@
+@Test(expected = IllegalArgumentException.class)
+public void testSetFilterNameNull() {
+    new FilterDef().setFilterName(null);
+}

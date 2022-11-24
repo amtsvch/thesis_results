@@ -1,0 +1,18 @@
+/**
+ * Convert an array of ints into a comma delimited string
+ * @param ints The int array
+ * @return a comma separated string
+ */
+protected static String intsToCommaDelimitedString(int[] ints) {
+    if (ints == null) {
+        return "";
+    }
+    StringBuilder result = new StringBuilder();
+    for (int i = 0; i < ints.length; i++) {
+        result.append(ints[i]);
+        if (i < (ints.length - 1)) {
+            result.append(", ");
+        }
+    }
+    return result.toString();
+}

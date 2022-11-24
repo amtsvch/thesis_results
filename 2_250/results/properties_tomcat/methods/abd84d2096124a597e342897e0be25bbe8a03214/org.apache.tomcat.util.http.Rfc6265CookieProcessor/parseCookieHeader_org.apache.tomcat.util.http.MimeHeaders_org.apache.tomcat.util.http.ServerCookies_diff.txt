@@ -1,0 +1,29 @@
+@Override
+public void parseCookieHeader(MimeHeaders headers, ServerCookies serverCookies) {
+    if (headers == null) {
+        // nothing to process
+        return;
+    }
+    // process each "cookie" header
+    int pos = headers.findHeader("Cookie", 0);
+    while (pos >= 0) {
+        MessageBytes cookieValue = headers.getValue(pos);
+        if (cookieValue != null && !cookieValue.isNull()) {
+            if (cookieValue.getType() != MessageBytes.T_BYTES) {
+                if (log.isDebugEnabled()) {
+                    Exception e = new Exception();
+                    // TODO: Review this in light of HTTP/2
+                    log.debug("Cookies: Parsing cookie as String. Expected bytes.", e);
+                }
+                cookieValue.toBytes();
+            }
+            if (log.isDebugEnabled()) {
+                log.debug("Cookies: Parsing b[]: " + cookieValue.toString());
+            }
+            ByteChunk bc = cookieValue.getByteChunk();
+            Cookie.parseCookie(bc.getBytes(), bc.getOffset(), bc.getLength(), serverCookies);
+        }
+        // search from the next position
+        pos = headers.findHeader("Cookie", ++pos);
+    }
+}

@@ -1,0 +1,4 @@
+@Test
+public void testGetEncoderTypeSubclass() {
+    Assert.assertEquals(String.class, Util.getEncoderType(SubSimpleEncoder.class));
+}

@@ -1,0 +1,4 @@
+@Test
+public void testBug54370d() {
+    ReflectionUtil.getMethod(null, BASE, "testD", new Class[] { null }, new Object[] { null });
+}

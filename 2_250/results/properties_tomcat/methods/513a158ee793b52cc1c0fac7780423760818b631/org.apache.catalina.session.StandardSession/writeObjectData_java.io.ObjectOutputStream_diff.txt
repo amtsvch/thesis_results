@@ -1,0 +1,12 @@
+/**
+ * Write a serialized version of the contents of this session object to
+ * the specified object output stream, without requiring that the
+ * StandardSession itself have been serialized.
+ *
+ * @param stream The object output stream to write to
+ *
+ * @exception IOException if an input/output error occurs
+ */
+public void writeObjectData(ObjectOutputStream stream) throws IOException {
+    doWriteObject(stream);
+}

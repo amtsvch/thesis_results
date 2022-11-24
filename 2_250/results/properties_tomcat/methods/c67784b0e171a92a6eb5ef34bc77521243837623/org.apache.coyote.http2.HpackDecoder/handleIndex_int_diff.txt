@@ -1,0 +1,18 @@
+/**                                                                                                    /**                                                                                                 
+* Handle an indexed header representation                                                              * Handle an indexed header representation                                                           
+*                                                                                                      *                                                                                                   
+* @param index The index                                                                               * @param index The index                                                                            
+* @throws HpackException                                                                               * @throws HpackException                                                                            
+*/                                                                                                     */                                                                                                  
+private void handleIndex(int index) throws HpackException {                                            private void handleIndex(int index) throws HpackException {                                         
+if (index &lt;= Hpack.STATIC_TABLE_LENGTH) {                                                           if (index &lt;= Hpack.STATIC_TABLE_LENGTH) {                                                        
+addStaticTableEntry(index);                                                                            addStaticTableEntry(index);                                                                         
+} else {                                                                                               } else {                                                                                            
+int adjustedIndex = getRealIndex(index - Hpack.STATIC_TABLE_LENGTH);                                   int adjustedIndex = getRealIndex(index - Hpack.STATIC_TABLE_LENGTH);                                
+                                                                                                     | if (log.isDebugEnabled()) {                                                                         
+                                                                                                     | log.debug(sm.getString("hpackdecoder.useDynamic", Integer.valueOf(adjustedIndex)));                 
+                                                                                                     | }                                                                                                   
+Hpack.HeaderField headerField = headerTable[adjustedIndex];                                            Hpack.HeaderField headerField = headerTable[adjustedIndex];                                         
+emitHeader(headerField.name, headerField.value);                                                       emitHeader(headerField.name, headerField.value);                                                    
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

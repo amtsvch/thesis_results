@@ -1,0 +1,14 @@
+/**
+ * Sets lineFileID.  Should be called only when different from
+ * that of prior LineInfo object (in any given context) or 0
+ * if the current LineInfo has no (logical) predecessor.
+ * <code>LineInfo</code> will print this file number no matter what.
+ *
+ * @param lineFileID The new line file ID
+ */
+public void setLineFileID(int lineFileID) {
+    if (lineFileID < 0)
+        throw new IllegalArgumentException(Localizer.getMessage("jsp.error.negativeParameter", Integer.valueOf(lineFileID)));
+    this.lineFileID = lineFileID;
+    this.lineFileIDSet = true;
+}

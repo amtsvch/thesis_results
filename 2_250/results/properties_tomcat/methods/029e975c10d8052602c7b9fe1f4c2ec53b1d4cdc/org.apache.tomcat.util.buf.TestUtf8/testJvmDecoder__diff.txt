@@ -1,0 +1,16 @@
+@Test
+public void testJvmDecoder() {
+    CharsetDecoder decoder = StandardCharsets.UTF_8.newDecoder();
+    int testCount = 0;
+    try {
+        for (Utf8TestCase testCase : TEST_CASES) {
+            doTest(decoder, testCase, testCase.flagsJvm);
+            testCount++;
+        }
+    } finally {
+        System.err.println("Workarounds added to " + workAroundCount + " tests to account for known JVM bugs");
+        if (testCount < TEST_CASES.size()) {
+            System.err.println("Executed " + testCount + " of " + TEST_CASES.size() + " UTF-8 tests before " + "encountering a failure");
+        }
+    }
+}

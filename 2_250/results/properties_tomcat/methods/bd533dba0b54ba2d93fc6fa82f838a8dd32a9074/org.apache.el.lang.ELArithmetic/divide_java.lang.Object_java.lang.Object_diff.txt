@@ -1,0 +1,16 @@
+public static final Number divide(final Object obj0, final Object obj1) {                              public static final Number divide(final Object obj0, final Object obj1) {                           
+if (obj0 == null && obj1 == null) {                                                                    if (obj0 == null && obj1 == null) {                                                                 
+return ZERO;                                                                                           return ZERO;                                                                                        
+}                                                                                                      }                                                                                                   
+final ELArithmetic delegate;                                                                           final ELArithmetic delegate;                                                                        
+if (BIGDECIMAL.matches(obj0, obj1))                                                                  | if (BIGDECIMAL.matches(obj0, obj1)) {                                                               
+delegate = BIGDECIMAL;                                                                                 delegate = BIGDECIMAL;                                                                              
+else if (BIGINTEGER.matches(obj0, obj1))                                                             | } else if (BIGINTEGER.matches(obj0, obj1)) {                                                        
+delegate = BIGDECIMAL;                                                                                 delegate = BIGDECIMAL;                                                                              
+else                                                                                                 | } else {                                                                                            
+delegate = DOUBLE;                                                                                     delegate = DOUBLE;                                                                                  
+                                                                                                     | }                                                                                                   
+Number num0 = delegate.coerce(obj0);                                                                   Number num0 = delegate.coerce(obj0);                                                                
+Number num1 = delegate.coerce(obj1);                                                                   Number num1 = delegate.coerce(obj1);                                                                
+return delegate.divide(num0, num1);                                                                    return delegate.divide(num0, num1);                                                                 
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,6 @@
+@Test
+public void testDefineFunctionName02() throws Exception {
+    ELProcessor elp = new ELProcessor();
+    elp.defineFunction("fn", "test", "java.lang.Integer", "Integer valueOf(int)");
+    Assert.assertEquals(Integer.valueOf(1), elp.eval("fn:test(1)"));
+}

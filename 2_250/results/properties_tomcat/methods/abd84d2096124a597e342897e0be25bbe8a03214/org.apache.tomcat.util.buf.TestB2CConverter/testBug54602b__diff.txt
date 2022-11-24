@@ -1,0 +1,10 @@
+@Test(expected = MalformedInputException.class)
+public void testBug54602b() throws Exception {
+    // Check partial input is rejected
+    B2CConverter conv = new B2CConverter(StandardCharsets.UTF_8);
+    ByteChunk bc = new ByteChunk();
+    CharChunk cc = new CharChunk();
+    bc.append(UTF8_PARTIAL, 0, UTF8_PARTIAL.length);
+    cc.allocate(bc.getLength(), -1);
+    conv.convert(bc, cc, true);
+}

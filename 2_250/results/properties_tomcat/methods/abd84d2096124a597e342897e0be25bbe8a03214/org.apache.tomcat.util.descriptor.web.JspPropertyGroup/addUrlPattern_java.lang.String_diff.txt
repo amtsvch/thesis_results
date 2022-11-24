@@ -1,0 +1,3 @@
+public void addUrlPattern(String urlPattern) {
+    addUrlPatternDecoded(UDecoder.URLDecode(urlPattern, getCharset()));
+}

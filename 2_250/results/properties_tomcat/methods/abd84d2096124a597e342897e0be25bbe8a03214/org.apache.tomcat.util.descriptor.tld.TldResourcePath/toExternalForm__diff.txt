@@ -1,0 +1,14 @@
+/**
+ * Return the external form of the URL representing this TLD.
+ * This can be used as a canonical location for the TLD itself, for example,
+ * as the systemId to use when parsing its XML.
+ *
+ * @return the external form of the URL representing this TLD
+ */
+public String toExternalForm() {
+    if (entryName == null) {
+        return url.toExternalForm();
+    } else {
+        return "jar:" + url.toExternalForm() + "!/" + entryName;
+    }
+}

@@ -1,0 +1,8 @@
+@Test
+public void testDefineFunctionName03() throws Exception {
+    TesterFunctions.resetCallList();
+    ELProcessor elp = new ELProcessor();
+    elp.defineFunction("fn", "test", "jakarta.el.TesterFunctions", "void doIt()");
+    elp.eval("fn:test()");
+    Assert.assertEquals("A", TesterFunctions.getCallList());
+}

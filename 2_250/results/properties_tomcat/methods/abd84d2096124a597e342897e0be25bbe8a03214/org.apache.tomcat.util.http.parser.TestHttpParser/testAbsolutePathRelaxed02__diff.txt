@@ -1,0 +1,5 @@
+@Test
+public void testAbsolutePathRelaxed02() {
+    HttpParser httpParser = new HttpParser("{", null);
+    Assert.assertTrue(httpParser.isAbsolutePathRelaxed('{'));
+}

@@ -1,0 +1,4 @@
+@Test(expected = IllegalArgumentException.class)
+public void testAddServletWithServletNameEmptyString() throws LifecycleException {
+    getServletContext().addServlet("", (Servlet) null);
+}

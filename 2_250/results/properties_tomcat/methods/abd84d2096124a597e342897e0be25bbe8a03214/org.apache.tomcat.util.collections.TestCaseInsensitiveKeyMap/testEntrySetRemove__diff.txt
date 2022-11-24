@@ -1,0 +1,13 @@
+@Test
+public void testEntrySetRemove() {
+    Object o1 = new Object();
+    CaseInsensitiveKeyMap<Object> map = new CaseInsensitiveKeyMap<>();
+    map.put("a", o1);
+    Iterator<Entry<String, Object>> iter = map.entrySet().iterator();
+    Assert.assertTrue(iter.hasNext());
+    Entry<String, Object> entry = iter.next();
+    Assert.assertEquals("a", entry.getKey());
+    Assert.assertEquals(o1, entry.getValue());
+    iter.remove();
+    Assert.assertTrue(map.isEmpty());
+}

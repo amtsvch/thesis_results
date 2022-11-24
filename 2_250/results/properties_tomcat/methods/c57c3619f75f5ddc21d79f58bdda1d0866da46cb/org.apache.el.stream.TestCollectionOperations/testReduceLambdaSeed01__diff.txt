@@ -1,0 +1,6 @@
+@Test
+public void testReduceLambdaSeed01() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("[1,2,3,4,5].stream().reduce(10, (x,y)->x+y)", Object.class);
+    Assert.assertEquals(Long.valueOf(25), result);
+}

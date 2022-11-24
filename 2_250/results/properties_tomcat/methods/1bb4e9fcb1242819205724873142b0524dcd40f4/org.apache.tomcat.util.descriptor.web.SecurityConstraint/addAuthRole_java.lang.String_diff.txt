@@ -1,0 +1,24 @@
+// --------------------------------------------------------- Public Methods                            // --------------------------------------------------------- Public Methods                         
+/**                                                                                                    /**                                                                                                 
+* Add an authorization role, which is a role name that will be                                         * Add an authorization role, which is a role name that will be                                      
+* permitted access to the resources protected by this security constraint.                             * permitted access to the resources protected by this security constraint.                          
+*                                                                                                      *                                                                                                   
+* @param authRole Role name to be added                                                                * @param authRole Role name to be added                                                             
+*/                                                                                                     */                                                                                                  
+public void addAuthRole(String authRole) {                                                             public void addAuthRole(String authRole) {                                                          
+if (authRole == null)                                                                                | if (authRole == null) {                                                                             
+return;                                                                                                return;                                                                                             
+                                                                                                     | }                                                                                                   
+if (ROLE_ALL_ROLES.equals(authRole)) {                                                                 if (ROLE_ALL_ROLES.equals(authRole)) {                                                              
+allRoles = true;                                                                                       allRoles = true;                                                                                    
+return;                                                                                                return;                                                                                             
+}                                                                                                      }                                                                                                   
+if (ROLE_ALL_AUTHENTICATED_USERS.equals(authRole)) {                                                   if (ROLE_ALL_AUTHENTICATED_USERS.equals(authRole)) {                                                
+authenticatedUsers = true;                                                                             authenticatedUsers = true;                                                                          
+return;                                                                                                return;                                                                                             
+}                                                                                                      }                                                                                                   
+String[] results = Arrays.copyOf(authRoles, authRoles.length + 1);                                     String[] results = Arrays.copyOf(authRoles, authRoles.length + 1);                                  
+results[authRoles.length] = authRole;                                                                  results[authRoles.length] = authRole;                                                               
+authRoles = results;                                                                                   authRoles = results;                                                                                
+authConstraint = true;                                                                                 authConstraint = true;                                                                              
+}                                                                                                      }                                                                                                   

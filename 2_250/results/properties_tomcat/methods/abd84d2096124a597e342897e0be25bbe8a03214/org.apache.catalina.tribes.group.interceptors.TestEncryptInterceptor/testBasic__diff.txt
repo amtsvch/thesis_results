@@ -1,0 +1,7 @@
+@Test
+public void testBasic() throws Exception {
+    src.start(Channel.SND_TX_SEQ);
+    dest.start(Channel.SND_TX_SEQ);
+    String testInput = "The quick brown fox jumps over the lazy dog.";
+    Assert.assertEquals("Basic roundtrip failed", testInput, roundTrip(testInput, src, dest));
+}

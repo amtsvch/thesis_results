@@ -1,0 +1,30 @@
+public static byte[] digest(String algorithm, int iterations, byte[]... input) {
+    Queue<MessageDigest> queue = queues.get(algorithm);
+    if (queue == null) {
+        throw new IllegalStateException(sm.getString("concurrentMessageDigest.noDigest"));
+    }
+    MessageDigest md = queue.poll();
+    if (md == null) {
+        try {
+            md = MessageDigest.getInstance(algorithm);
+        } catch (NoSuchAlgorithmException e) {
+            // Ignore. Impossible if init() has been successfully called
+            // first.
+            throw new IllegalStateException(sm.getString("concurrentMessageDigest.noDigest"), e);
+        }
+    }
+    // Round 1
+    for (byte[] bytes : input) {
+        md.update(bytes);
+    }
+    byte[] result = md.digest();
+    // Subsequent rounds
+    if (iterations > 1) {
+        for (int i = 1; i < iterations; i++) {
+            md.update(result);
+            result = md.digest();
+        }
+    }
+    queue.add(md);
+    return result;
+}

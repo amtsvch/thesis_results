@@ -1,0 +1,8 @@
+public static boolean isHex(int c) {
+    // Fast for correct values, slower for some incorrect ones
+    try {
+        return IS_HEX[c];
+    } catch (ArrayIndexOutOfBoundsException ex) {
+        return false;
+    }
+}

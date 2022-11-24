@@ -1,0 +1,14 @@
+// ------------------------------------------------ Session Package Methods
+/**
+ * Read a serialized version of the contents of this session object from
+ * the specified object input stream, without requiring that the
+ * StandardSession itself have been serialized.
+ *
+ * @param stream The object input stream to read from
+ *
+ * @exception ClassNotFoundException if an unknown class is specified
+ * @exception IOException if an input/output error occurs
+ */
+public void readObjectData(ObjectInputStream stream) throws ClassNotFoundException, IOException {
+    doReadObject(stream);
+}

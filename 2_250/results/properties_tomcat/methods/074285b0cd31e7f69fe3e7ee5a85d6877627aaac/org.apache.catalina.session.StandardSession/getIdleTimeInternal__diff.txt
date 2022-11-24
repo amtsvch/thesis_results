@@ -1,0 +1,15 @@
+/**
+ * Return the idle time from last client access time without invalidation check
+ * @see #getIdleTime()
+ */
+@Override
+public long getIdleTimeInternal() {
+    long timeNow = System.currentTimeMillis();
+    long timeIdle;
+    if (lastAccessAtStart) {
+        timeIdle = timeNow - lastAccessedTime;
+    } else {
+        timeIdle = timeNow - thisAccessedTime;
+    }
+    return timeIdle;
+}

@@ -1,0 +1,21 @@
+/**
+ * Add a child Container, only if the proposed child is an implementation
+ * of Context.
+ *
+ * @param child Child container to be added
+ */
+@Override
+public void addChild(Container child) {
+    if (!(child instanceof Context)) {
+        throw new IllegalArgumentException(sm.getString("standardHost.notContext"));
+    }
+    child.addLifecycleListener(new MemoryLeakTrackingListener());
+    // Avoid NPE for case where Context is defined in server.xml with only a
+    // docBase
+    Context context = (Context) child;
+    if (context.getPath() == null) {
+        ContextName cn = new ContextName(context.getDocBase(), true);
+        context.setPath(cn.getPath());
+    }
+    super.addChild(child);
+}

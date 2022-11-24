@@ -1,0 +1,9 @@
+@Test(expected = UnsupportedEncodingException.class)
+public void testSetLocale05() throws IOException {
+    Response response = setupResponse();
+    // Check calling with an unknown character set and writer
+    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
+    response.setLocale(UNDETERMINED);
+    Assert.assertEquals(UNKNOWN, response.getCharacterEncoding());
+    response.getWriter();
+}

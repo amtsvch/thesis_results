@@ -1,0 +1,5 @@
+@Test(expected = IllegalStateException.class)
+public void testSetCommentNotInitPhase() {
+    context.setState(LifecycleState.STARTED);
+    applicationSessionCookieConfig.setComment("test");
+}

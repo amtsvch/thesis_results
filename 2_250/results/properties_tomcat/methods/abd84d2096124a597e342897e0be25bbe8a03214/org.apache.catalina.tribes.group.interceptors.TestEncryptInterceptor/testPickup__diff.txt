@@ -1,0 +1,19 @@
+@Test
+public void testPickup() throws Exception {
+    File file = new File(MESSAGE_FILE);
+    if (!file.exists()) {
+        System.err.println("File message.bin does not exist. Skipping test.");
+        return;
+    }
+    dest.start(Channel.SND_TX_SEQ);
+    byte[] bytes = new byte[8192];
+    int read;
+    try (FileInputStream in = new FileInputStream(file)) {
+        read = in.read(bytes);
+    }
+    ChannelData msg = new ChannelData(false);
+    XByteBuffer xbb = new XByteBuffer(read, false);
+    xbb.append(bytes, 0, read);
+    msg.setMessage(xbb);
+    dest.messageReceived(msg);
+}

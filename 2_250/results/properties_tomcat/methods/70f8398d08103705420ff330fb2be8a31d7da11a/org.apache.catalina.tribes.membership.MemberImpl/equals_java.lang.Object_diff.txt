@@ -1,0 +1,13 @@
+/**                                                                                                    /**                                                                                                 
+* Returns true if the param o is a McastMember with the same name                                      * Returns true if the param o is a McastMember with the same name                                   
+*                                                                                                      *                                                                                                   
+* @param o The object to test for equality                                                             * @param o The object to test for equality                                                          
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public boolean equals(Object o) {                                                                      public boolean equals(Object o) {                                                                   
+if (o instanceof MemberImpl) {                                                                         if (o instanceof MemberImpl) {                                                                      
+return Arrays.equals(this.getHost(), ((MemberImpl) o).getHost()) && this.getPort() == ((MemberImpl)    return Arrays.equals(this.getHost(), ((MemberImpl) o).getHost()) && this.getPort() == ((MemberImpl) 
+} else                                                                                               | } else {                                                                                            
+return false;                                                                                          return false;                                                                                       
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

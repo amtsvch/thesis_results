@@ -1,0 +1,9 @@
+@Test
+public void getLocaleMultipleHeaders01() throws Exception {
+    TesterRequest req = new TesterRequest();
+    req.addHeader("accept-language", "en;q=0.5");
+    req.addHeader("accept-language", "en-gb");
+    Locale actual = req.getLocale();
+    Locale expected = Locale.forLanguageTag("en-gb");
+    Assert.assertEquals(expected, actual);
+}

@@ -1,0 +1,4 @@
+@Test
+public void testBaseLocation04() throws Exception {
+    doTestBaseLocation(new URL("jar:" + fileUrl + "!/bar/bar"), file.getAbsolutePath(), "bar/bar");
+}

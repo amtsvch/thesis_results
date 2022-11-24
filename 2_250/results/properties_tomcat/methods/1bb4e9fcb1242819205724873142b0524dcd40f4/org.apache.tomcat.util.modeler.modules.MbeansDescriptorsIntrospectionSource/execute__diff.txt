@@ -1,0 +1,15 @@
+public void execute() throws Exception {                                                               public void execute() throws Exception {                                                            
+if (registry == null)                                                                                | if (registry == null) {                                                                             
+registry = Registry.getRegistry(null, null);                                                           registry = Registry.getRegistry(null, null);                                                        
+                                                                                                     | }                                                                                                   
+try {                                                                                                  try {                                                                                               
+ManagedBean managed = createManagedBean(registry, null, (Class&lt;?&gt;) source, type);                ManagedBean managed = createManagedBean(registry, null, (Class&lt;?&gt;) source, type);             
+if (managed == null)                                                                                 | if (managed == null) {                                                                              
+return;                                                                                                return;                                                                                             
+                                                                                                     | }                                                                                                   
+managed.setName(type);                                                                                 managed.setName(type);                                                                              
+registry.addManagedBean(managed);                                                                      registry.addManagedBean(managed);                                                                   
+} catch (Exception ex) {                                                                               } catch (Exception ex) {                                                                            
+log.error(sm.getString("modules.readDescriptorsError"), ex);                                           log.error(sm.getString("modules.readDescriptorsError"), ex);                                        
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

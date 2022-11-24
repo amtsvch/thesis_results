@@ -1,0 +1,5 @@
+@Test
+public void testMalformed11() throws Exception {
+    List<AcceptLanguage> actual = AcceptLanguage.parse(new StringReader("en-gb;q=1a0"));
+    Assert.assertEquals(0, actual.size());
+}

@@ -1,0 +1,9 @@
+// Ambiguous because the Strings coerce to both Boolean and Integer hence                            | @Test                                                                                               
+// both varargs methods match.                                                                       |                                                                                                     
+@Test(expected = MethodNotFoundException.class)                                                      |                                                                                                     
+public void testInvokeVarargsCoerce13() {                                                              public void testInvokeVarargsCoerce13() {                                                           
+BeanELResolver resolver = new BeanELResolver();                                                        BeanELResolver resolver = new BeanELResolver();                                                     
+ELContext context = new StandardELContext(ELManager.getExpressionFactory());                           ELContext context = new StandardELContext(ELManager.getExpressionFactory());                        
+Object result = resolver.invoke(context, new TesterBean(BEAN_NAME), "getNameVarargs", new Class&lt;?   Object result = resolver.invoke(context, new TesterBean(BEAN_NAME), "getNameVarargs", new Class&lt;?
+Assert.assertEquals(BEAN_NAME, result);                                                                Assert.assertEquals(BEAN_NAME, result);                                                             
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,6 @@
+@Before
+public void setUp() throws Exception {
+    valve.setNext(mockNext);
+    mockNext.invoke(mockRequest, null);
+    EasyMock.replay(mockNext);
+}

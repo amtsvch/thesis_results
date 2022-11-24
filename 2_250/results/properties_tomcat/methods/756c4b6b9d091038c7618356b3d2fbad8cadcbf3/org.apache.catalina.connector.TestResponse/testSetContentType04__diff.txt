@@ -1,0 +1,10 @@
+@Test
+public void testSetContentType04() {
+    Response response = setupResponse();
+    // Check calling with null
+    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
+    response.setContentType(TEXT_UTF_8);
+    Assert.assertEquals(UTF_8, response.getCharacterEncoding());
+    response.setContentType(null);
+    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
+}

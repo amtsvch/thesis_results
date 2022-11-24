@@ -1,0 +1,4 @@
+@Test
+public void testEscape01() {
+    Assert.assertEquals("$${", evaluateExpression("$\\${"));
+}

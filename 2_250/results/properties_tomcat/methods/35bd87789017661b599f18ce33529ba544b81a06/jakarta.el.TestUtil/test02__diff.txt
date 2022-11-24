@@ -1,0 +1,7 @@
+@Test                                                                                                  @Test                                                                                               
+public void test02() {                                                                                 public void test02() {                                                                              
+ELProcessor processor = new ELProcessor();                                                             ELProcessor processor = new ELProcessor();                                                          
+processor.getELManager().importClass("java.util.Date");                                                processor.getELManager().importClass("java.util.Date");                                             
+Date result = (Date) processor.eval("Date(86400)");                                                  | Date result = processor.eval("Date(86400)");                                                        
+Assert.assertEquals(86400, result.getTime());                                                          Assert.assertEquals(86400, result.getTime());                                                       
+}                                                                                                      }                                                                                                   

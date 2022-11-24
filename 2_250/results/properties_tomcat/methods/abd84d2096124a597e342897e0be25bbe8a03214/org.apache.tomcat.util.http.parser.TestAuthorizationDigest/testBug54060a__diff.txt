@@ -1,0 +1,15 @@
+@Test
+public void testBug54060a() throws Exception {
+    String header = "Digest username=\"mthornton\", " + "realm=\"optrak.com\", " + "nonce=\"1351427243671:c1d6360150712149bae931a3ed7cb498\", " + "uri=\"/files/junk.txt\", " + "response=\"c5c2410bfc46753e83a8f007888b0d2e\", " + "opaque=\"DB85C1A73933A7EB586D10E4BF2924EF\", " + "qop=auth, " + "nc=00000001, " + "cnonce=\"9926cb3c334ede11\"";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertEquals("mthornton", result.get("username"));
+    Assert.assertEquals("optrak.com", result.get("realm"));
+    Assert.assertEquals("1351427243671:c1d6360150712149bae931a3ed7cb498", result.get("nonce"));
+    Assert.assertEquals("/files/junk.txt", result.get("uri"));
+    Assert.assertEquals("c5c2410bfc46753e83a8f007888b0d2e", result.get("response"));
+    Assert.assertEquals("DB85C1A73933A7EB586D10E4BF2924EF", result.get("opaque"));
+    Assert.assertEquals("auth", result.get("qop"));
+    Assert.assertEquals("00000001", result.get("nc"));
+    Assert.assertEquals("9926cb3c334ede11", result.get("cnonce"));
+}

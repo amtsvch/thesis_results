@@ -1,0 +1,19 @@
+/**
+ * Given a starting position after an initial quote character, this gets
+ * the position of the end quote. This escapes anything after a '\' char
+ * JVK RFC 2616
+ */
+private static final int getQuotedValueEndPosition(byte[] bytes, int off, int end) {
+    int pos = off;
+    while (pos < end) {
+        if (bytes[pos] == '"') {
+            return pos;
+        } else if (bytes[pos] == '\\' && pos < (end - 1)) {
+            pos += 2;
+        } else {
+            pos++;
+        }
+    }
+    // Error, we have reached the end of the header w/o a end quote
+    return end;
+}

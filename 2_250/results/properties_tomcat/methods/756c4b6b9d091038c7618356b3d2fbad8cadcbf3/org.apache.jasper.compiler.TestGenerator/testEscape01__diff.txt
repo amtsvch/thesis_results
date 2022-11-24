@@ -1,0 +1,5 @@
+@Test
+public void testEscape01() {
+    String result = Generator.escape("\"\\\n\r");
+    Assert.assertEquals("\\\"\\\\\\n\\r", result);
+}

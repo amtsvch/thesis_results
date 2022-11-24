@@ -1,0 +1,6 @@
+public AsyncContextImpl(Request request) {
+    if (log.isDebugEnabled()) {
+        logDebug("Constructor");
+    }
+    this.request = request;
+}

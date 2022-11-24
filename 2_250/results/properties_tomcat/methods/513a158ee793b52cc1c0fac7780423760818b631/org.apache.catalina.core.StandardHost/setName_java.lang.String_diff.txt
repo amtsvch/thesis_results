@@ -1,0 +1,19 @@
+/**                                                                                                    /**                                                                                                 
+* Set the canonical, fully qualified, name of the virtual host                                         * Set the canonical, fully qualified, name of the virtual host                                      
+* this Container represents.                                                                           * this Container represents.                                                                        
+*                                                                                                      *                                                                                                   
+* @param name Virtual host name                                                                        * @param name Virtual host name                                                                     
+*                                                                                                      *                                                                                                   
+* @exception IllegalArgumentException if name is null                                                  * @exception IllegalArgumentException if name is null                                               
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void setName(String name) {                                                                     public void setName(String name) {                                                                  
+if (name == null)                                                                                    | if (name == null) {                                                                                 
+throw new IllegalArgumentException(sm.getString("standardHost.nullName"));                             throw new IllegalArgumentException(sm.getString("standardHost.nullName"));                          
+                                                                                                     | }                                                                                                   
+// Internally all names are lower case                                                                 // Internally all names are lower case                                                              
+name = name.toLowerCase(Locale.ENGLISH);                                                               name = name.toLowerCase(Locale.ENGLISH);                                                            
+String oldName = this.name;                                                                            String oldName = this.name;                                                                         
+this.name = name;                                                                                      this.name = name;                                                                                   
+support.firePropertyChange("name", oldName, this.name);                                                support.firePropertyChange("name", oldName, this.name);                                             
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,4 @@
+@Test
+public void testLiteral() throws JasperException {
+    doTestParser("${'foo'}", "foo");
+}

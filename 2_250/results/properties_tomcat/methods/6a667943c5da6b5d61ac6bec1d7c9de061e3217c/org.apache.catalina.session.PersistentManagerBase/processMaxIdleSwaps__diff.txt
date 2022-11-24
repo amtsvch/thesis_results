@@ -1,0 +1,36 @@
+// ------------------------------------------------------ Protected Methods                            // ------------------------------------------------------ Protected Methods                         
+/**                                                                                                    /**                                                                                                 
+* Swap idle sessions out to Store if they are idle too long.                                           * Swap idle sessions out to Store if they are idle too long.                                        
+*/                                                                                                     */                                                                                                  
+protected void processMaxIdleSwaps() {                                                                 protected void processMaxIdleSwaps() {                                                              
+if (!getState().isAvailable() || maxIdleSwap &lt; 0)                                                 | if (!getState().isAvailable() || maxIdleSwap &lt; 0) {                                              
+return;                                                                                                return;                                                                                             
+                                                                                                     | }                                                                                                   
+Session[] sessions = findSessions();                                                                   Session[] sessions = findSessions();                                                                
+// Swap out all sessions idle longer than maxIdleSwap                                                  // Swap out all sessions idle longer than maxIdleSwap                                               
+if (maxIdleSwap &gt;= 0) {                                                                             if (maxIdleSwap &gt;= 0) {                                                                          
+for (Session value : sessions) {                                                                       for (Session value : sessions) {                                                                    
+StandardSession session = (StandardSession) value;                                                     StandardSession session = (StandardSession) value;                                                  
+synchronized (session) {                                                                               synchronized (session) {                                                                            
+if (!session.isValid())                                                                              | if (!session.isValid()) {                                                                           
+continue;                                                                                              continue;                                                                                           
+                                                                                                     | }                                                                                                   
+int timeIdle = (int) (session.getIdleTimeInternal() / 1000L);                                          int timeIdle = (int) (session.getIdleTimeInternal() / 1000L);                                       
+if (timeIdle &gt;= maxIdleSwap && timeIdle &gt;= minIdleSwap) {                                        if (timeIdle &gt;= maxIdleSwap && timeIdle &gt;= minIdleSwap) {                                     
+if (session.accessCount != null && session.accessCount.get() &gt; 0) {                                 if (session.accessCount != null && session.accessCount.get() &gt; 0) {                              
+// Session is currently being accessed - skip it                                                       // Session is currently being accessed - skip it                                                    
+continue;                                                                                              continue;                                                                                           
+}                                                                                                      }                                                                                                   
+if (log.isDebugEnabled())                                                                            | if (log.isDebugEnabled()) {                                                                         
+log.debug(sm.getString("persistentManager.swapMaxIdle", session.getIdInternal(), Integer.valueOf(tim   log.debug(sm.getString("persistentManager.swapMaxIdle", session.getIdInternal(), Integer.valueOf(tim
+                                                                                                     | }                                                                                                   
+try {                                                                                                  try {                                                                                               
+swapOut(session);                                                                                      swapOut(session);                                                                                   
+} catch (IOException e) {                                                                              } catch (IOException e) {                                                                           
+// This is logged in writeSession()                                                                    // This is logged in writeSession()                                                                 
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

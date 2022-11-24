@@ -1,0 +1,9 @@
+@Test
+public void testSetValueStringIgnoresCase01() {
+    MimeHeaders mh = new MimeHeaders();
+    mh.setValue(HEADER_NAME_LC_STRING).setString(HEADER_NAME_LC_STRING);
+    mh.setValue(HEADER_NAME_UC_STRING).setString(HEADER_NAME_UC_STRING);
+    Assert.assertEquals(HEADER_NAME_UC_STRING, mh.getValue(HEADER_NAME_UC_STRING).toString());
+    Assert.assertEquals(HEADER_NAME_UC_STRING, mh.getValue(HEADER_NAME_LC_STRING).toString());
+    Assert.assertEquals(HEADER_NAME_UC_STRING, mh.getValue(HEADER_NAME_MIXED_STRING).toString());
+}

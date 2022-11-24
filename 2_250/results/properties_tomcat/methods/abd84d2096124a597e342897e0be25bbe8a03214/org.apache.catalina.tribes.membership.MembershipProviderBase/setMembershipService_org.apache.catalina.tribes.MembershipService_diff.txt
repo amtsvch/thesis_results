@@ -1,0 +1,5 @@
+@Override
+public void setMembershipService(MembershipService service) {
+    this.service = service;
+    executor = service.getChannel().getUtilityExecutor();
+}

@@ -1,0 +1,5 @@
+public static TesterLogValidationFilter add(Level targetLevel, String targetMessage, String targetThrowableString, String loggerName) {
+    TesterLogValidationFilter f = new TesterLogValidationFilter(targetLevel, targetMessage, targetThrowableString);
+    LogManager.getLogManager().getLogger(loggerName).setFilter(f);
+    return f;
+}

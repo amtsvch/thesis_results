@@ -1,0 +1,11 @@
+private void resizeIfRequired() {
+    if (filledTableSlots == headerTable.length) {
+        // we only grow slowly
+        Hpack.HeaderField[] newArray = new Hpack.HeaderField[headerTable.length + 10];
+        for (int i = 0; i < headerTable.length; ++i) {
+            newArray[i] = headerTable[(firstSlotPosition + i) % headerTable.length];
+        }
+        firstSlotPosition = 0;
+        headerTable = newArray;
+    }
+}

@@ -1,0 +1,8 @@
+private String encodeUrl(String input) {
+    try {
+        return URLEncoder.encode(input, "UTF-8");
+    } catch (UnsupportedEncodingException e) {
+        // Impossible. UTF-8 is a required character set
+        return null;
+    }
+}

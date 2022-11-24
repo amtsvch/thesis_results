@@ -1,0 +1,24 @@
+/**                                                                                                    /**                                                                                                 
+* Add an output filter to the active filters for the current response.                                 * Add an output filter to the active filters for the current response.                              
+* &lt;p&gt;                                                                                            * &lt;p&gt;                                                                                         
+* The filter does not have to be present in {@link #getFilters()}.                                     * The filter does not have to be present in {@link #getFilters()}.                                  
+* &lt;p&gt;                                                                                            * &lt;p&gt;                                                                                         
+* A filter can only be added to a response once. If the filter has already                             * A filter can only be added to a response once. If the filter has already                          
+* been added to this response then this method will be a NO-OP.                                        * been added to this response then this method will be a NO-OP.                                     
+*                                                                                                      *                                                                                                   
+* @param filter The filter to add                                                                      * @param filter The filter to add                                                                   
+*/                                                                                                     */                                                                                                  
+public void addActiveFilter(OutputFilter filter) {                                                     public void addActiveFilter(OutputFilter filter) {                                                  
+if (lastActiveFilter == -1) {                                                                          if (lastActiveFilter == -1) {                                                                       
+filter.setBuffer(outputStreamOutputBuffer);                                                            filter.setBuffer(outputStreamOutputBuffer);                                                         
+} else {                                                                                               } else {                                                                                            
+for (int i = 0; i &lt;= lastActiveFilter; i++) {                                                       for (int i = 0; i &lt;= lastActiveFilter; i++) {                                                    
+if (activeFilters[i] == filter)                                                                      | if (activeFilters[i] == filter) {                                                                   
+return;                                                                                                return;                                                                                             
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+filter.setBuffer(activeFilters[lastActiveFilter]);                                                     filter.setBuffer(activeFilters[lastActiveFilter]);                                                  
+}                                                                                                      }                                                                                                   
+activeFilters[++lastActiveFilter] = filter;                                                            activeFilters[++lastActiveFilter] = filter;                                                         
+filter.setResponse(response);                                                                          filter.setResponse(response);                                                                       
+}                                                                                                      }                                                                                                   

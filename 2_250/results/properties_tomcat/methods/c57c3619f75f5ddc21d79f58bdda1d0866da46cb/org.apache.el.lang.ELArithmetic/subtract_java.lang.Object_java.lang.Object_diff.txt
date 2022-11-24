@@ -1,0 +1,9 @@
+public static final Number subtract(final Object obj0, final Object obj1) {
+    final ELArithmetic delegate = findDelegate(obj0, obj1);
+    if (delegate == null) {
+        return Long.valueOf(0);
+    }
+    Number num0 = delegate.coerce(obj0);
+    Number num1 = delegate.coerce(obj1);
+    return delegate.subtract(num0, num1);
+}

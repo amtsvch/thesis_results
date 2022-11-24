@@ -1,0 +1,22 @@
+/**
+ * keepalive
+ *
+ * @return boolean
+ * TODO Implement this org.apache.catalina.tribes.transport.DataSender method
+ */
+@Override
+public boolean keepalive() {
+    boolean disconnect = false;
+    if (isUdpBased()) {
+        // always disconnect UDP, TODO optimize the keepalive handling
+        disconnect = true;
+    } else if (keepAliveCount >= 0 && requestCount > keepAliveCount) {
+        disconnect = true;
+    } else if (keepAliveTime >= 0 && (System.currentTimeMillis() - connectTime) > keepAliveTime) {
+        disconnect = true;
+    }
+    if (disconnect) {
+        disconnect();
+    }
+    return disconnect;
+}

@@ -1,0 +1,61 @@
+@Override
+public TransformationResult getMoreData(byte opCode, boolean fin, int rsv, ByteBuffer dest) throws IOException {
+    // Control frames are never compressed and may appear in the middle of
+    // a WebSocket method. Pass them straight through.
+    if (Util.isControl(opCode)) {
+        return next.getMoreData(opCode, fin, rsv, dest);
+    }
+    if (!Util.isContinuation(opCode)) {
+        // First frame in new message
+        skipDecompression = (rsv & RSV_BITMASK) == 0;
+    }
+    // Pass uncompressed frames straight through.
+    if (skipDecompression) {
+        return next.getMoreData(opCode, fin, rsv, dest);
+    }
+    int written;
+    boolean usedEomBytes = false;
+    while (dest.remaining() > 0 || usedEomBytes) {
+        // Space available in destination. Try and fill it.
+        try {
+            written = inflater.inflate(dest.array(), dest.arrayOffset() + dest.position(), dest.remaining());
+        } catch (DataFormatException e) {
+            throw new IOException(sm.getString("perMessageDeflate.deflateFailed"), e);
+        } catch (NullPointerException e) {
+            throw new IOException(sm.getString("perMessageDeflate.alreadyClosed"), e);
+        }
+        dest.position(dest.position() + written);
+        if (inflater.needsInput() && !usedEomBytes) {
+            readBuffer.clear();
+            TransformationResult nextResult = next.getMoreData(opCode, fin, (rsv ^ RSV_BITMASK), readBuffer);
+            inflater.setInput(readBuffer.array(), readBuffer.arrayOffset(), readBuffer.position());
+            if (dest.hasRemaining()) {
+                if (TransformationResult.UNDERFLOW.equals(nextResult)) {
+                    return nextResult;
+                } else if (TransformationResult.END_OF_FRAME.equals(nextResult) && readBuffer.position() == 0) {
+                    if (fin) {
+                        inflater.setInput(EOM_BYTES);
+                        usedEomBytes = true;
+                    } else {
+                        return TransformationResult.END_OF_FRAME;
+                    }
+                }
+            } else if (readBuffer.position() > 0) {
+                return TransformationResult.OVERFLOW;
+            } else if (fin) {
+                inflater.setInput(EOM_BYTES);
+                usedEomBytes = true;
+            }
+        } else if (written == 0) {
+            if (fin && (isServer && !clientContextTakeover || !isServer && !serverContextTakeover)) {
+                try {
+                    inflater.reset();
+                } catch (NullPointerException e) {
+                    throw new IOException(sm.getString("perMessageDeflate.alreadyClosed"), e);
+                }
+            }
+            return TransformationResult.END_OF_FRAME;
+        }
+    }
+    return TransformationResult.OVERFLOW;
+}

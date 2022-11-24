@@ -1,0 +1,32 @@
+/**
+ * Validate the syntax of a proposed <code>&lt;url-pattern&gt;</code>
+ * for conformance with specification requirements.
+ *
+ * @param urlPattern URL pattern to be validated
+ * @return <code>true</code> if the URL pattern is conformant
+ */
+private boolean validateURLPattern(String urlPattern) {
+    if (urlPattern == null) {
+        return false;
+    }
+    if (urlPattern.indexOf('\n') >= 0 || urlPattern.indexOf('\r') >= 0) {
+        return false;
+    }
+    if (urlPattern.equals("")) {
+        return true;
+    }
+    if (urlPattern.startsWith("*.")) {
+        if (urlPattern.indexOf('/') < 0) {
+            checkUnusualURLPattern(urlPattern);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    if (urlPattern.startsWith("/") && !urlPattern.contains("*.")) {
+        checkUnusualURLPattern(urlPattern);
+        return true;
+    } else {
+        return false;
+    }
+}

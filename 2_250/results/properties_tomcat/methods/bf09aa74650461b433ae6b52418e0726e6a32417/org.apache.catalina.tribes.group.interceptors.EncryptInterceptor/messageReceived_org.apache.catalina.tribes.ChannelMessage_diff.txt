@@ -1,0 +1,14 @@
+@Override
+public void messageReceived(ChannelMessage msg) {
+    try {
+        byte[] data = msg.getMessage().getBytes();
+        data = encryptionManager.decrypt(data);
+        XByteBuffer xbb = msg.getMessage();
+        // Completely replace the message with the decrypted one
+        xbb.clear();
+        xbb.append(data, 0, data.length);
+        super.messageReceived(msg);
+    } catch (GeneralSecurityException gse) {
+        log.error(sm.getString("encryptInterceptor.decrypt.failed"), gse);
+    }
+}

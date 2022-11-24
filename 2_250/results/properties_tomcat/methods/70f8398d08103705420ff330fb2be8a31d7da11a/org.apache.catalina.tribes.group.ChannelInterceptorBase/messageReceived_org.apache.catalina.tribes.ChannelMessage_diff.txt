@@ -1,0 +1,6 @@
+@Override                                                                                              @Override                                                                                           
+public void messageReceived(ChannelMessage msg) {                                                      public void messageReceived(ChannelMessage msg) {                                                   
+if (getPrevious() != null)                                                                           | if (getPrevious() != null) {                                                                        
+getPrevious().messageReceived(msg);                                                                    getPrevious().messageReceived(msg);                                                                 
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

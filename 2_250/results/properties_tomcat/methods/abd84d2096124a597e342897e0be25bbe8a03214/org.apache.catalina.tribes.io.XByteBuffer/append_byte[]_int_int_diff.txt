@@ -1,0 +1,21 @@
+public boolean append(byte[] b, int off, int len) {
+    if ((off < 0) || (off > b.length) || (len < 0) || ((off + len) > b.length) || ((off + len) < 0)) {
+        throw new IndexOutOfBoundsException();
+    } else if (len == 0) {
+        return false;
+    }
+    int newcount = bufSize + len;
+    if (newcount > buf.length) {
+        expand(newcount);
+    }
+    System.arraycopy(b, off, buf, bufSize, len);
+    bufSize = newcount;
+    if (discard) {
+        if (bufSize > START_DATA.length && (firstIndexOf(buf, 0, START_DATA) == -1)) {
+            bufSize = 0;
+            log.error(sm.getString("xByteBuffer.discarded.invalidHeader"));
+            return false;
+        }
+    }
+    return true;
+}

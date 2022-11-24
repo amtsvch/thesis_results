@@ -1,0 +1,96 @@
+/**
+ * Encodes the given string into the buffer. If there is not enough space in
+ * the buffer, or the encoded version is bigger than the original it will
+ * return false and not modify the buffers position.
+ *
+ * @param buffer   The buffer to encode into
+ * @param toEncode The string to encode
+ * @param forceLowercase If the string should be encoded in lower case
+ * @return true if encoding succeeded
+ */
+public static boolean encode(ByteBuffer buffer, String toEncode, boolean forceLowercase) {
+    if (buffer.remaining() <= toEncode.length()) {
+        return false;
+    }
+    int start = buffer.position();
+    // this sucks, but we need to put the length first
+    // and we don't really have any option but to calculate it in advance to make sure we have left enough room
+    // so we end up iterating twice
+    int length = 0;
+    for (int i = 0; i < toEncode.length(); ++i) {
+        char c = toEncode.charAt(i);
+        if (c > 255) {
+            throw new IllegalArgumentException(sm.getString("hpack.invalidCharacter", Character.toString(c), Integer.valueOf(c)));
+        }
+        if (forceLowercase) {
+            c = Hpack.toLower(c);
+        }
+        HuffmanCode code = HUFFMAN_CODES[c];
+        length += code.length;
+    }
+    int byteLength = length / 8 + (length % 8 == 0 ? 0 : 1);
+    buffer.put((byte) (1 << 7));
+    Hpack.encodeInteger(buffer, byteLength, 7);
+    int bytePos = 0;
+    byte currentBufferByte = 0;
+    for (int i = 0; i < toEncode.length(); ++i) {
+        char c = toEncode.charAt(i);
+        if (forceLowercase) {
+            c = Hpack.toLower(c);
+        }
+        HuffmanCode code = HUFFMAN_CODES[c];
+        if (code.length + bytePos <= 8) {
+            // it fits in the current byte
+            currentBufferByte |= ((code.value & 0xFF) << 8 - (code.length + bytePos));
+            bytePos += code.length;
+        } else {
+            // it does not fit, it may need up to 4 bytes
+            int val = code.value;
+            int rem = code.length;
+            while (rem > 0) {
+                if (!buffer.hasRemaining()) {
+                    buffer.position(start);
+                    return false;
+                }
+                int remainingInByte = 8 - bytePos;
+                if (rem > remainingInByte) {
+                    currentBufferByte |= (val >> (rem - remainingInByte));
+                } else {
+                    currentBufferByte |= (val << (remainingInByte - rem));
+                }
+                if (rem > remainingInByte) {
+                    buffer.put(currentBufferByte);
+                    currentBufferByte = 0;
+                    bytePos = 0;
+                } else {
+                    bytePos = rem;
+                }
+                rem -= remainingInByte;
+            }
+        }
+        if (bytePos == 8) {
+            if (!buffer.hasRemaining()) {
+                buffer.position(start);
+                return false;
+            }
+            buffer.put(currentBufferByte);
+            currentBufferByte = 0;
+            bytePos = 0;
+        }
+        if (buffer.position() - start > toEncode.length()) {
+            // the encoded version is longer than the original
+            // just return false
+            buffer.position(start);
+            return false;
+        }
+    }
+    if (bytePos > 0) {
+        // add the EOS bytes if we have not finished on a single byte
+        if (!buffer.hasRemaining()) {
+            buffer.position(start);
+            return false;
+        }
+        buffer.put((byte) (currentBufferByte | ((0xFF) >> bytePos)));
+    }
+    return true;
+}

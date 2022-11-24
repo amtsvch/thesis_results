@@ -1,0 +1,18 @@
+@Test
+public void testVersionLoggerListenerAlignment() throws Exception {
+    // Get full list of properties from English
+    InputStream is = TestStringManager.class.getClassLoader().getResourceAsStream("org/apache/catalina/startup/LocalStrings.properties");
+    Properties props = new Properties();
+    props.load(is);
+    Set<String> versionLoggerListenerKeys = new HashSet<>();
+    for (Object key : props.keySet()) {
+        if (key instanceof String) {
+            if (((String) key).startsWith("versionLoggerListener.")) {
+                versionLoggerListenerKeys.add((String) key);
+            }
+        }
+    }
+    for (Locale locale : ALL_LOCALES) {
+        testVersionLoggerListenerAlignment(versionLoggerListenerKeys, locale);
+    }
+}

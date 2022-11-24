@@ -1,0 +1,10 @@
+/*
+     * POJO programmatic followed by programmatic duplicate.
+     */
+@Test(expected = DeploymentException.class)
+public void testDuplicatePaths23() throws Exception {
+    WsServerContainer sc = new WsServerContainer(new TesterServletContext());
+    ServerEndpointConfig configA = ServerEndpointConfig.Builder.create(PojoTemplate.class, "/foo/{a}").build();
+    sc.addEndpoint(PojoTemplate.class);
+    sc.addEndpoint(configA);
+}

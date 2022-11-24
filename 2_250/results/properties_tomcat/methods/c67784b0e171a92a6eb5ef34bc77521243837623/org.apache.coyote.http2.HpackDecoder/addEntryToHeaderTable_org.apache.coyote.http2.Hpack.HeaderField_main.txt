@@ -1,0 +1,40 @@
+private void addEntryToHeaderTable(Hpack.HeaderField entry) {
+    if (entry.size > maxMemorySizeSoft) {
+        if (log.isDebugEnabled()) {
+            log.debug(sm.getString("hpackdecoder.clearDynamic"));
+        }
+        // it is to big to fit, so we just completely clear the table.
+        while (filledTableSlots > 0) {
+            headerTable[firstSlotPosition] = null;
+            firstSlotPosition++;
+            if (firstSlotPosition == headerTable.length) {
+                firstSlotPosition = 0;
+            }
+            filledTableSlots--;
+        }
+        currentMemorySize = 0;
+        return;
+    }
+    resizeIfRequired();
+    int newTableSlots = filledTableSlots + 1;
+    int tableLength = headerTable.length;
+    int index = (firstSlotPosition + filledTableSlots) % tableLength;
+    if (log.isDebugEnabled()) {
+        log.debug(sm.getString("hpackdecoder.addDynamic", Integer.valueOf(index), entry.name, entry.value));
+    }
+    headerTable[index] = entry;
+    int newSize = currentMemorySize + entry.size;
+    while (newSize > maxMemorySizeSoft) {
+        int clearIndex = firstSlotPosition;
+        firstSlotPosition++;
+        if (firstSlotPosition == tableLength) {
+            firstSlotPosition = 0;
+        }
+        Hpack.HeaderField oldData = headerTable[clearIndex];
+        headerTable[clearIndex] = null;
+        newSize -= oldData.size;
+        newTableSlots--;
+    }
+    this.filledTableSlots = newTableSlots;
+    currentMemorySize = newSize;
+}

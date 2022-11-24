@@ -1,0 +1,6 @@
+public void setInputLineCount(int inputLineCount) {                                                    public void setInputLineCount(int inputLineCount) {                                                 
+if (inputLineCount &lt; 0)                                                                           | if (inputLineCount &lt; 0) {                                                                        
+throw new IllegalArgumentException(Localizer.getMessage("jsp.error.negativeParameter", Integer.value   throw new IllegalArgumentException(Localizer.getMessage("jsp.error.negativeParameter", Integer.value
+                                                                                                     | }                                                                                                   
+this.inputLineCount = inputLineCount;                                                                  this.inputLineCount = inputLineCount;                                                               
+}                                                                                                      }                                                                                                   

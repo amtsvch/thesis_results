@@ -1,0 +1,11 @@
+/**                                                                                                    /**                                                                                                 
+* Resolves any variable references and returns the value string.                                       * Resolves any variable references and returns the value string.                                    
+*                                                                                                      *                                                                                                   
+* @return the value string                                                                             * @return the value string                                                                          
+*/                                                                                                     */                                                                                                  
+public String getValue() {                                                                             public String getValue() {                                                                          
+if (resolved == null)                                                                                | if (resolved == null) {                                                                             
+resolved = ssiMediator.substituteVariables(value.toString());                                          resolved = ssiMediator.substituteVariables(value.toString());                                       
+                                                                                                     | }                                                                                                   
+return resolved;                                                                                       return resolved;                                                                                    
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,17 @@
+/**                                                                                                    /**                                                                                                 
+* Add a mapping associated with the Wrapper.                                                           * Add a mapping associated with the Wrapper.                                                        
+*                                                                                                      *                                                                                                   
+* @param mapping The new wrapper mapping                                                               * @param mapping The new wrapper mapping                                                            
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void addMapping(String mapping) {                                                               public void addMapping(String mapping) {                                                            
+mappingsLock.writeLock().lock();                                                                       mappingsLock.writeLock().lock();                                                                    
+try {                                                                                                  try {                                                                                               
+mappings.add(mapping);                                                                                 mappings.add(mapping);                                                                              
+} finally {                                                                                            } finally {                                                                                         
+mappingsLock.writeLock().unlock();                                                                     mappingsLock.writeLock().unlock();                                                                  
+}                                                                                                      }                                                                                                   
+if (parent.getState().equals(LifecycleState.STARTED))                                                | if (parent.getState().equals(LifecycleState.STARTED)) {                                             
+fireContainerEvent(ADD_MAPPING_EVENT, mapping);                                                        fireContainerEvent(ADD_MAPPING_EVENT, mapping);                                                     
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

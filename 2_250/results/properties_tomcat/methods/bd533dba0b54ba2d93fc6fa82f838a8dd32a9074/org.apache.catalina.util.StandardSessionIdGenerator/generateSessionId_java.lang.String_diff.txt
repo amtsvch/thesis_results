@@ -1,0 +1,36 @@
+@Override                                                                                              @Override                                                                                           
+public String generateSessionId(String route) {                                                        public String generateSessionId(String route) {                                                     
+byte[] random = new byte[16];                                                                          byte[] random = new byte[16];                                                                       
+int sessionIdLength = getSessionIdLength();                                                            int sessionIdLength = getSessionIdLength();                                                         
+// Render the result as a String of hexadecimal digits                                                 // Render the result as a String of hexadecimal digits                                              
+// Start with enough space for sessionIdLength and medium route size                                   // Start with enough space for sessionIdLength and medium route size                                
+StringBuilder buffer = new StringBuilder(2 * sessionIdLength + 20);                                    StringBuilder buffer = new StringBuilder(2 * sessionIdLength + 20);                                 
+int resultLenBytes = 0;                                                                                int resultLenBytes = 0;                                                                             
+while (resultLenBytes &lt; sessionIdLength) {                                                          while (resultLenBytes &lt; sessionIdLength) {                                                       
+getRandomBytes(random);                                                                                getRandomBytes(random);                                                                             
+for (int j = 0; j &lt; random.length && resultLenBytes &lt; sessionIdLength; j++) {                    for (int j = 0; j &lt; random.length && resultLenBytes &lt; sessionIdLength; j++) {                 
+byte b1 = (byte) ((random[j] & 0xf0) &gt;&gt; 4);                                                      byte b1 = (byte) ((random[j] & 0xf0) &gt;&gt; 4);                                                   
+byte b2 = (byte) (random[j] & 0x0f);                                                                   byte b2 = (byte) (random[j] & 0x0f);                                                                
+if (b1 &lt; 10)                                                                                      | if (b1 &lt; 10) {                                                                                   
+buffer.append((char) ('0' + b1));                                                                      buffer.append((char) ('0' + b1));                                                                   
+else                                                                                                 | } else {                                                                                            
+buffer.append((char) ('A' + (b1 - 10)));                                                               buffer.append((char) ('A' + (b1 - 10)));                                                            
+if (b2 &lt; 10)                                                                                      | }                                                                                                   
+                                                                                                     | if (b2 &lt; 10) {                                                                                   
+buffer.append((char) ('0' + b2));                                                                      buffer.append((char) ('0' + b2));                                                                   
+else                                                                                                 | } else {                                                                                            
+buffer.append((char) ('A' + (b2 - 10)));                                                               buffer.append((char) ('A' + (b2 - 10)));                                                            
+                                                                                                     | }                                                                                                   
+resultLenBytes++;                                                                                      resultLenBytes++;                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+if (route != null && route.length() &gt; 0) {                                                          if (route != null && route.length() &gt; 0) {                                                       
+buffer.append('.').append(route);                                                                      buffer.append('.').append(route);                                                                   
+} else {                                                                                               } else {                                                                                            
+String jvmRoute = getJvmRoute();                                                                       String jvmRoute = getJvmRoute();                                                                    
+if (jvmRoute != null && jvmRoute.length() &gt; 0) {                                                    if (jvmRoute != null && jvmRoute.length() &gt; 0) {                                                 
+buffer.append('.').append(jvmRoute);                                                                   buffer.append('.').append(jvmRoute);                                                                
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+return buffer.toString();                                                                              return buffer.toString();                                                                           
+}                                                                                                      }                                                                                                   

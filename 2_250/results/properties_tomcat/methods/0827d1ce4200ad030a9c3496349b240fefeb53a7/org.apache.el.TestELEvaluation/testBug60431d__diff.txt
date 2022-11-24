@@ -1,0 +1,4 @@
+@Test
+public void testBug60431d() {
+    Assert.assertEquals("OK", evaluateExpression("${fn:concat2('OK')}"));
+}

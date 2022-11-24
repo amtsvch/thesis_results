@@ -1,0 +1,5 @@
+@Test(expected = IllegalStateException.class)
+public void testSetSecureNotInitPhase() {
+    context.setState(LifecycleState.STARTED);
+    applicationSessionCookieConfig.setSecure(true);
+}

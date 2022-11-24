@@ -1,0 +1,8 @@
+// ------------------------------------------ HttpSession Protected Methods
+/**
+ * @return the <code>isValid</code> flag for this session without any expiration
+ * check.
+ */
+protected boolean isValidInternal() {
+    return this.isValid;
+}

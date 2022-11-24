@@ -1,0 +1,8 @@
+/**
+ * Retrieve the JvmRoute for the enclosing Engine.
+ * @return the JvmRoute or null.
+ */
+public String getJvmRoute() {
+    Engine e = getEngine();
+    return e == null ? null : e.getJvmRoute();
+}

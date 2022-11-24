@@ -1,0 +1,31 @@
+/**
+ * Handles a CORS request of type {@link CORSRequestType}.SIMPLE.
+ *
+ * @param request The {@link HttpServletRequest} object.
+ * @param response The {@link HttpServletResponse} object.
+ * @param filterChain The {@link FilterChain} object.
+ * @throws IOException an IO error occurred
+ * @throws ServletException Servlet error propagation
+ * @see <a href="http://www.w3.org/TR/cors/#resource-requests">Simple
+ *      Cross-Origin Request, Actual Request, and Redirects</a>
+ */
+protected void handleSimpleCORS(final HttpServletRequest request, final HttpServletResponse response, final FilterChain filterChain) throws IOException, ServletException {
+    CorsFilter.CORSRequestType requestType = checkRequestType(request);
+    if (!(requestType == CorsFilter.CORSRequestType.SIMPLE || requestType == CorsFilter.CORSRequestType.ACTUAL)) {
+        throw new IllegalArgumentException(sm.getString("corsFilter.wrongType2", CorsFilter.CORSRequestType.SIMPLE, CorsFilter.CORSRequestType.ACTUAL));
+    }
+    final String origin = request.getHeader(CorsFilter.REQUEST_HEADER_ORIGIN);
+    final String method = request.getMethod();
+    // Section 6.1.2
+    if (!isOriginAllowed(origin)) {
+        handleInvalidCORS(request, response, filterChain);
+        return;
+    }
+    if (!getAllowedHttpMethods().contains(method)) {
+        handleInvalidCORS(request, response, filterChain);
+        return;
+    }
+    addStandardHeaders(request, response);
+    // Forward the request down the filter chain.
+    filterChain.doFilter(request, response);
+}

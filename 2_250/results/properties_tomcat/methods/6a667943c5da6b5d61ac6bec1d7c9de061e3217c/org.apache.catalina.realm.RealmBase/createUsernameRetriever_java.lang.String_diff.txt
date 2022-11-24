@@ -1,0 +1,14 @@
+private static X509UsernameRetriever createUsernameRetriever(String className) throws LifecycleExcep   private static X509UsernameRetriever createUsernameRetriever(String className) throws LifecycleExcep
+if (null == className || className.trim().isEmpty())                                                 | if (null == className || className.trim().isEmpty()) {                                              
+return new X509SubjectDnRetriever();                                                                   return new X509SubjectDnRetriever();                                                                
+                                                                                                     | }                                                                                                   
+try {                                                                                                  try {                                                                                               
+@SuppressWarnings("unchecked")                                                                         @SuppressWarnings("unchecked")                                                                      
+Class&lt;? extends X509UsernameRetriever&gt; clazz = (Class&lt;? extends X509UsernameRetriever&gt;)    Class&lt;? extends X509UsernameRetriever&gt; clazz = (Class&lt;? extends X509UsernameRetriever&gt;) 
+return clazz.getConstructor().newInstance();                                                           return clazz.getConstructor().newInstance();                                                        
+} catch (ReflectiveOperationException e) {                                                             } catch (ReflectiveOperationException e) {                                                          
+throw new LifecycleException(sm.getString("realmBase.createUsernameRetriever.newInstance", className   throw new LifecycleException(sm.getString("realmBase.createUsernameRetriever.newInstance", className
+} catch (ClassCastException e) {                                                                       } catch (ClassCastException e) {                                                                    
+throw new LifecycleException(sm.getString("realmBase.createUsernameRetriever.ClassCastException", cl   throw new LifecycleException(sm.getString("realmBase.createUsernameRetriever.ClassCastException", cl
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

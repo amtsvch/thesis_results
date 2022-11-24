@@ -1,0 +1,27 @@
+/**
+ * Process notification of the beginning of the document being reached.
+ *
+ * @exception SAXException if a parsing error is to be reported
+ */
+@Override
+public void startDocument() throws SAXException {
+    if (saxLog.isDebugEnabled()) {
+        saxLog.debug("startDocument()");
+    }
+    if (locator instanceof Locator2) {
+        if (root instanceof DocumentProperties.Charset) {
+            String enc = ((Locator2) locator).getEncoding();
+            if (enc != null) {
+                try {
+                    ((DocumentProperties.Charset) root).setCharset(B2CConverter.getCharset(enc));
+                } catch (UnsupportedEncodingException e) {
+                    log.warn(sm.getString("digester.encodingInvalid", enc), e);
+                }
+            }
+        }
+    }
+    // ensure that the digester is properly configured, as
+    // the digester could be used as a SAX ContentHandler
+    // rather than via the parse() methods.
+    configure();
+}

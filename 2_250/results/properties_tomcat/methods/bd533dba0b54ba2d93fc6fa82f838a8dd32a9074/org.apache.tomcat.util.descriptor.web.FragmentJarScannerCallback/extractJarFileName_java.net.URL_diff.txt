@@ -1,0 +1,9 @@
+private String extractJarFileName(URL input) {
+    String url = input.toString();
+    if (url.endsWith("!/")) {
+        // Remove it
+        url = url.substring(0, url.length() - 2);
+    }
+    // File name will now be whatever is after the final /
+    return url.substring(url.lastIndexOf('/') + 1);
+}

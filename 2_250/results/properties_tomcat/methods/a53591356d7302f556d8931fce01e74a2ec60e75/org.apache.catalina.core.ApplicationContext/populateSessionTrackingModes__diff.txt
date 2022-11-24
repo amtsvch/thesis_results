@@ -1,0 +1,19 @@
+private void populateSessionTrackingModes() {
+    // URL re-writing is always enabled by default
+    defaultSessionTrackingModes = EnumSet.of(SessionTrackingMode.URL);
+    supportedSessionTrackingModes = EnumSet.of(SessionTrackingMode.URL);
+    if (context.getCookies()) {
+        defaultSessionTrackingModes.add(SessionTrackingMode.COOKIE);
+        supportedSessionTrackingModes.add(SessionTrackingMode.COOKIE);
+    }
+    // SSL not enabled by default as it can only used on its own
+    // Context > Host > Engine > Service
+    Connector[] connectors = service.findConnectors();
+    // Need at least one SSL enabled connector to use the SSL session ID.
+    for (Connector connector : connectors) {
+        if (Boolean.TRUE.equals(connector.getProperty("SSLEnabled"))) {
+            supportedSessionTrackingModes.add(SessionTrackingMode.SSL);
+            break;
+        }
+    }
+}

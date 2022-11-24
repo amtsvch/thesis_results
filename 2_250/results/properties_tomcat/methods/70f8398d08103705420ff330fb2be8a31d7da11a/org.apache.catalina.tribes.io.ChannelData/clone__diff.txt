@@ -1,0 +1,18 @@
+/**
+ * Create a shallow clone, only the data gets recreated
+ * @return ClusterData
+ */
+@Override
+public ChannelData clone() {
+    ChannelData clone;
+    try {
+        clone = (ChannelData) super.clone();
+    } catch (CloneNotSupportedException e) {
+        // Cannot happen
+        throw new AssertionError();
+    }
+    if (this.message != null) {
+        clone.message = new XByteBuffer(this.message.getBytesDirect(), false);
+    }
+    return clone;
+}

@@ -1,0 +1,4 @@
+public synchronized void setDomain(byte[] domain) {
+    this.domain = domain != null ? domain : new byte[0];
+    getData(true, true);
+}

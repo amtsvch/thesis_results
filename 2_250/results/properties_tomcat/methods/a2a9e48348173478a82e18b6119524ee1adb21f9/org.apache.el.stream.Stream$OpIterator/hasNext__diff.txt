@@ -1,0 +1,8 @@
+@Override
+public boolean hasNext() {
+    if (foundNext) {
+        return true;
+    }
+    findNext();
+    return foundNext;
+}

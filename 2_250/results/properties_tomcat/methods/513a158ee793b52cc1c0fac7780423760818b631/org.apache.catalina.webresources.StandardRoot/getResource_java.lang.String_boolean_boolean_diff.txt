@@ -1,0 +1,10 @@
+protected WebResource getResource(String path, boolean validate, boolean useClassLoaderResources) {
+    if (validate) {
+        path = validate(path);
+    }
+    if (isCachingAllowed()) {
+        return cache.getResource(path, useClassLoaderResources);
+    } else {
+        return getResourceInternal(path, useClassLoaderResources);
+    }
+}

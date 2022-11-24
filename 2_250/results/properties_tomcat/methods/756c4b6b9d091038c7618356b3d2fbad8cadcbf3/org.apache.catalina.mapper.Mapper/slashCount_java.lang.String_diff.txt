@@ -1,0 +1,11 @@
+/**
+ * Return the slash count in a given string.
+ */
+private static final int slashCount(String name) {
+    int pos = -1;
+    int count = 0;
+    while ((pos = name.indexOf('/', pos + 1)) != -1) {
+        count++;
+    }
+    return count;
+}

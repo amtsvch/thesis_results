@@ -1,0 +1,58 @@
+@Test
+public void testMapImmutabilityAfterLocked() {
+    ((ParameterMap<String, String[]>) paramMap).setLocked(true);
+    try {
+        String[] updatedParamValues22 = new String[] { "value2-updated-2" };
+        paramMap.put("param2", updatedParamValues22);
+        Assert.fail("ParameterMap is not locked.");
+    } catch (IllegalStateException expectedException) {
+    }
+    try {
+        String[] updatedParamValues22 = new String[] { "value2-updated-2" };
+        paramMap.putIfAbsent("param22", updatedParamValues22);
+        Assert.fail("ParameterMap is not locked.");
+    } catch (IllegalStateException expectedException) {
+    }
+    try {
+        final Map<String, String[]> additionalParams = new HashMap<>();
+        additionalParams.put("param4", new String[] { "value4" });
+        paramMap.putAll(additionalParams);
+        Assert.fail("ParameterMap is not locked.");
+    } catch (IllegalStateException expectedException) {
+    }
+    try {
+        paramMap.merge("param2", new String[] { "value2-merged" }, (a, b) -> (b));
+        Assert.fail("ParameterMap is not locked.");
+    } catch (IllegalStateException expectedException) {
+    }
+    try {
+        paramMap.remove("param2");
+        Assert.fail("ParameterMap is not locked.");
+    } catch (IllegalStateException expectedException) {
+    }
+    try {
+        paramMap.remove("param2", TEST_PARAM_VALUES_2_UPDATED);
+        Assert.fail("ParameterMap is not locked.");
+    } catch (IllegalStateException expectedException) {
+    }
+    try {
+        paramMap.replace("param2", new String[] { "value2-replaced" });
+        Assert.fail("ParameterMap is not locked.");
+    } catch (IllegalStateException expectedException) {
+    }
+    try {
+        paramMap.replace("param2", TEST_PARAM_VALUES_2_UPDATED, new String[] { "value2-replaced" });
+        Assert.fail("ParameterMap is not locked.");
+    } catch (IllegalStateException expectedException) {
+    }
+    try {
+        paramMap.replaceAll((a, b) -> TEST_PARAM_VALUES_REPLACED);
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        paramMap.clear();
+        Assert.fail("ParameterMap is not locked.");
+    } catch (IllegalStateException expectedException) {
+    }
+}

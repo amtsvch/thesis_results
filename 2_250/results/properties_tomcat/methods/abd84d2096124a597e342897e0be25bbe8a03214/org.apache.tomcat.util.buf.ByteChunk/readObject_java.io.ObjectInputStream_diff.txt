@@ -1,0 +1,4 @@
+private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
+    ois.defaultReadObject();
+    this.charset = Charset.forName(ois.readUTF());
+}

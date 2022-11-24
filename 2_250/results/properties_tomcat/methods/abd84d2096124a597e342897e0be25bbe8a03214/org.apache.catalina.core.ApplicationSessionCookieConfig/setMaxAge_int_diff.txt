@@ -1,0 +1,7 @@
+@Override
+public void setMaxAge(int maxAge) {
+    if (!context.getState().equals(LifecycleState.STARTING_PREP)) {
+        throw new IllegalStateException(sm.getString("applicationSessionCookieConfig.ise", "max age", context.getPath()));
+    }
+    this.maxAge = maxAge;
+}

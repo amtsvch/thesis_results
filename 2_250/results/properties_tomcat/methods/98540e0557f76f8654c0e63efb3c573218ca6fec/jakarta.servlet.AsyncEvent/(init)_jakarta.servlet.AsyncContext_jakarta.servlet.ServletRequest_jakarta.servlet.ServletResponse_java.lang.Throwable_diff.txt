@@ -1,0 +1,14 @@
+/**
+ * Creates an instance using the provide parameters.
+ *
+ * @param context   The asynchronous context associated with the event
+ * @param request   The request associated with the event
+ * @param response  The response associated with the event
+ * @param throwable The throwable associated with the event
+ */
+public AsyncEvent(AsyncContext context, ServletRequest request, ServletResponse response, Throwable throwable) {
+    this.context = context;
+    this.request = request;
+    this.response = response;
+    this.throwable = throwable;
+}

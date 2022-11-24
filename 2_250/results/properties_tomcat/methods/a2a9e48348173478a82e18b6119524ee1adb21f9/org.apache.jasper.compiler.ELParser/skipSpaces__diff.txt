@@ -1,0 +1,14 @@
+/*
+     * A collection of low level parse methods dealing with character in the EL
+     * expression buffer.
+     */
+private void skipSpaces() {
+    int start = index;
+    while (hasNextChar()) {
+        char c = expression.charAt(index);
+        if (c > ' ')
+            break;
+        index++;
+    }
+    whiteSpace = expression.substring(start, index);
+}

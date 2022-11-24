@@ -1,0 +1,10 @@
+// *********************************************************************
+// Methods to add mapping information
+/**
+ * Adds record of a new file, by filename.
+ *
+ * @param filename the filename to add, unqualified by path.
+ */
+public void addFile(String filename) {
+    addFile(filename, filename);
+}

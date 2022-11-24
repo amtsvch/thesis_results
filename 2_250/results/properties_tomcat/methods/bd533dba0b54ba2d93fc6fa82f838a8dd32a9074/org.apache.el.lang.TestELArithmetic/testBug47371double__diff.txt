@@ -1,0 +1,4 @@
+@Test
+public void testBug47371double() throws Exception {
+    Assert.assertEquals(Double.valueOf(7), ELArithmetic.add("", Double.valueOf(7)));
+}

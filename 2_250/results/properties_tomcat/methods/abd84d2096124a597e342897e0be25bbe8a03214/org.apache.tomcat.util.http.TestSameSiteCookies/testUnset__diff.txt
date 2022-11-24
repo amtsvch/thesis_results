@@ -1,0 +1,9 @@
+@Test
+public void testUnset() {
+    SameSiteCookies attribute = SameSiteCookies.UNSET;
+    Assert.assertEquals("Unset", attribute.getValue());
+    Assert.assertEquals(SameSiteCookies.UNSET, attribute);
+    Assert.assertNotEquals(SameSiteCookies.NONE, attribute);
+    Assert.assertNotEquals(SameSiteCookies.LAX, attribute);
+    Assert.assertNotEquals(SameSiteCookies.STRICT, attribute);
+}

@@ -1,0 +1,12 @@
+/**
+ * @return the Internet Protocol (IP) port number of the interface
+ * on which the request was received.
+ */
+@Override
+public int getLocalPort() {
+    if (localPort == -1) {
+        coyoteRequest.action(ActionCode.REQ_LOCALPORT_ATTRIBUTE, coyoteRequest);
+        localPort = coyoteRequest.getLocalPort();
+    }
+    return localPort;
+}

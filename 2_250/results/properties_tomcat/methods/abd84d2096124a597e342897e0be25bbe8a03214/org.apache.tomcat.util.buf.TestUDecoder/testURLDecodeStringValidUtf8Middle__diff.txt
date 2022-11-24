@@ -1,0 +1,5 @@
+@Test
+public void testURLDecodeStringValidUtf8Middle() {
+    String result = UDecoder.URLDecode("xx%c3%aaxx", StandardCharsets.UTF_8);
+    Assert.assertEquals("xx\u00eaxx", result);
+}

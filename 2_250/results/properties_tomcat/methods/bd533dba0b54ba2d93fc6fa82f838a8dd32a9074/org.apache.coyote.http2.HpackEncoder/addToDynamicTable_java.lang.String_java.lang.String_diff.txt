@@ -1,0 +1,16 @@
+private void addToDynamicTable(String headerName, String val) {
+    int pos = entryPositionCounter++;
+    DynamicTableEntry d = new DynamicTableEntry(headerName, val, -pos);
+    List<TableEntry> existing = dynamicTable.get(headerName);
+    if (existing == null) {
+        dynamicTable.put(headerName, existing = new ArrayList<>(1));
+    }
+    existing.add(d);
+    evictionQueue.add(d);
+    currentTableSize += d.getSize();
+    runEvictionIfRequired();
+    if (entryPositionCounter == Integer.MAX_VALUE) {
+        // prevent rollover
+        preventPositionRollover();
+    }
+}

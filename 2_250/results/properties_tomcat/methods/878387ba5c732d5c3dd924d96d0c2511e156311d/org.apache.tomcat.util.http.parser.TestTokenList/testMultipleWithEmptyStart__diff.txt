@@ -1,0 +1,8 @@
+@Test                                                                                                  @Test                                                                                               
+public void testMultipleWithEmptyStart() throws IOException {                                          public void testMultipleWithEmptyStart() throws IOException {                                       
+Set&lt;String&gt; expected = new HashSet&lt;&gt;();                                                    Set&lt;String&gt; expected = new HashSet&lt;&gt;();                                                 
+expected.add("bar");                                                                                   expected.add("bar");                                                                                
+expected.add("foo");                                                                                   expected.add("foo");                                                                                
+expected.add("host");                                                                                  expected.add("host");                                                                               
+doTestVary(",Host, Foo, Bar", expected, false);                                                      | doTestVary(",Host, Foo, Bar", expected, true);                                                      
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,15 @@
+@Test
+public void testToValidAttribute() {
+    Assert.assertEquals(SameSiteCookies.fromString("unset"), SameSiteCookies.UNSET);
+    Assert.assertEquals(SameSiteCookies.fromString("Unset"), SameSiteCookies.UNSET);
+    Assert.assertEquals(SameSiteCookies.fromString("UNSET"), SameSiteCookies.UNSET);
+    Assert.assertEquals(SameSiteCookies.fromString("none"), SameSiteCookies.NONE);
+    Assert.assertEquals(SameSiteCookies.fromString("None"), SameSiteCookies.NONE);
+    Assert.assertEquals(SameSiteCookies.fromString("NONE"), SameSiteCookies.NONE);
+    Assert.assertEquals(SameSiteCookies.fromString("lax"), SameSiteCookies.LAX);
+    Assert.assertEquals(SameSiteCookies.fromString("Lax"), SameSiteCookies.LAX);
+    Assert.assertEquals(SameSiteCookies.fromString("LAX"), SameSiteCookies.LAX);
+    Assert.assertEquals(SameSiteCookies.fromString("strict"), SameSiteCookies.STRICT);
+    Assert.assertEquals(SameSiteCookies.fromString("Strict"), SameSiteCookies.STRICT);
+    Assert.assertEquals(SameSiteCookies.fromString("STRICT"), SameSiteCookies.STRICT);
+}

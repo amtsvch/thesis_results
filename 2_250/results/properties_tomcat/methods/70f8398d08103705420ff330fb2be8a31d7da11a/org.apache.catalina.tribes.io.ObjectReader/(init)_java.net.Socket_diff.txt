@@ -1,0 +1,13 @@
+/**
+ * Creates an <code>ObjectReader</code> for a TCP socket
+ * @param socket Socket
+ */
+public ObjectReader(Socket socket) {
+    try {
+        this.buffer = new XByteBuffer(socket.getReceiveBufferSize(), true);
+    } catch (IOException x) {
+        // unable to get buffer size
+        log.warn(sm.getString("objectReader.retrieveFailed.socketReceiverBufferSize"));
+        this.buffer = new XByteBuffer(43800, true);
+    }
+}

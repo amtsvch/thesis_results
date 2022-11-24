@@ -1,0 +1,49 @@
+/**
+ * Start associated {@link ClassLoader} and implement the requirements
+ * of {@link org.apache.catalina.util.LifecycleBase#startInternal()}.
+ *
+ * @exception LifecycleException if this component detects a fatal error
+ *  that prevents this component from being used
+ */
+@Override
+protected void startInternal() throws LifecycleException {
+    if (log.isDebugEnabled())
+        log.debug(sm.getString("webappLoader.starting"));
+    if (context.getResources() == null) {
+        log.info(sm.getString("webappLoader.noResources", context));
+        setState(LifecycleState.STARTING);
+        return;
+    }
+    // Construct a class loader based on our current repositories list
+    try {
+        classLoader = createClassLoader();
+        classLoader.setResources(context.getResources());
+        classLoader.setDelegate(this.delegate);
+        // Set Jakarta class converter
+        if (getJakartaConverter() != null) {
+            EESpecProfile profile = null;
+            try {
+                profile = EESpecProfile.valueOf(getJakartaConverter());
+            } catch (IllegalArgumentException ignored) {
+                // Use default value
+                log.warn(sm.getString("webappLoader.unknownProfile", getJakartaConverter()));
+            }
+            classLoader.addTransformer((profile != null) ? new ClassConverter(profile) : new ClassConverter());
+        }
+        // Configure our repositories
+        setClassPath();
+        setPermissions();
+        classLoader.start();
+        String contextName = context.getName();
+        if (!contextName.startsWith("/")) {
+            contextName = "/" + contextName;
+        }
+        ObjectName cloname = new ObjectName(context.getDomain() + ":type=" + classLoader.getClass().getSimpleName() + ",host=" + context.getParent().getName() + ",context=" + contextName);
+        Registry.getRegistry(null, null).registerComponent(classLoader, cloname, null);
+    } catch (Throwable t) {
+        t = ExceptionUtils.unwrapInvocationTargetException(t);
+        ExceptionUtils.handleThrowable(t);
+        throw new LifecycleException(sm.getString("webappLoader.startError"), t);
+    }
+    setState(LifecycleState.STARTING);
+}

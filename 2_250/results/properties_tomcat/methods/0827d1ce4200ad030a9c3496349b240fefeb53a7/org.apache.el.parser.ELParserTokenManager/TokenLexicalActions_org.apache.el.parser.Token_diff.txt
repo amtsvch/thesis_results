@@ -1,0 +1,26 @@
+void TokenLexicalActions(Token matchedToken) {
+    switch(jjmatchedKind) {
+        case 2:
+            image.append(jjstrLiteralImages[2]);
+            lengthOfMatch = jjstrLiteralImages[2].length();
+            deque.push(DEFAULT);
+            break;
+        case 3:
+            image.append(jjstrLiteralImages[3]);
+            lengthOfMatch = jjstrLiteralImages[3].length();
+            deque.push(DEFAULT);
+            break;
+        case 8:
+            image.append(jjstrLiteralImages[8]);
+            lengthOfMatch = jjstrLiteralImages[8].length();
+            deque.push(curLexState);
+            break;
+        case 9:
+            image.append(jjstrLiteralImages[9]);
+            lengthOfMatch = jjstrLiteralImages[9].length();
+            SwitchTo(deque.pop());
+            break;
+        default:
+            break;
+    }
+}

@@ -1,0 +1,24 @@
+public void send(boolean checkexpired, DatagramPacket packet) throws IOException {                     public void send(boolean checkexpired, DatagramPacket packet) throws IOException {                  
+checkexpired = (checkexpired && (packet == null));                                                     checkexpired = (checkexpired && (packet == null));                                                  
+// ignore if we haven't started the sender                                                             // ignore if we haven't started the sender                                                          
+// if ( (startLevel&Channel.MBR_TX_SEQ) != Channel.MBR_TX_SEQ ) return;                                // if ( (startLevel&Channel.MBR_TX_SEQ) != Channel.MBR_TX_SEQ ) return;                             
+if (packet == null) {                                                                                  if (packet == null) {                                                                               
+member.inc();                                                                                          member.inc();                                                                                       
+if (log.isTraceEnabled()) {                                                                            if (log.isTraceEnabled()) {                                                                         
+log.trace("Mcast send ping from member " + member);                                                    log.trace("Mcast send ping from member " + member);                                                 
+}                                                                                                      }                                                                                                   
+byte[] data = member.getData();                                                                        byte[] data = member.getData();                                                                     
+packet = new DatagramPacket(data, data.length);                                                        packet = new DatagramPacket(data, data.length);                                                     
+} else if (log.isTraceEnabled()) {                                                                     } else if (log.isTraceEnabled()) {                                                                  
+log.trace("Sending message broadcast " + packet.getLength() + " bytes from " + member);                log.trace("Sending message broadcast " + packet.getLength() + " bytes from " + member);             
+}                                                                                                      }                                                                                                   
+packet.setAddress(address);                                                                            packet.setAddress(address);                                                                         
+packet.setPort(port);                                                                                  packet.setPort(port);                                                                               
+// TODO this operation is not thread safe                                                              // TODO this operation is not thread safe                                                           
+synchronized (sendLock) {                                                                              synchronized (sendLock) {                                                                           
+socket.send(packet);                                                                                   socket.send(packet);                                                                                
+}                                                                                                      }                                                                                                   
+if (checkexpired)                                                                                    | if (checkexpired) {                                                                                 
+checkExpired();                                                                                        checkExpired();                                                                                     
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

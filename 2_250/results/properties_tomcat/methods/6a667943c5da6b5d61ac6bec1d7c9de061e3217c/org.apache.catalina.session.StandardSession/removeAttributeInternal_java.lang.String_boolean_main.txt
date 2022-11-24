@@ -1,0 +1,59 @@
+/**
+ * Remove the object bound with the specified name from this session.  If
+ * the session does not have an object bound with this name, this method
+ * does nothing.
+ * <p>
+ * After this method executes, and if the object implements
+ * <code>HttpSessionBindingListener</code>, the container calls
+ * <code>valueUnbound()</code> on the object.
+ *
+ * @param name Name of the object to remove from this session.
+ * @param notify Should we notify interested listeners that this
+ *  attribute is being removed?
+ */
+protected void removeAttributeInternal(String name, boolean notify) {
+    // Avoid NPE
+    if (name == null) {
+        return;
+    }
+    // Remove this attribute from our collection
+    Object value = attributes.remove(name);
+    // Do we need to do valueUnbound() and attributeRemoved() notification?
+    if (!notify || (value == null)) {
+        return;
+    }
+    // Call the valueUnbound() method if necessary
+    HttpSessionBindingEvent event = null;
+    if (value instanceof HttpSessionBindingListener) {
+        event = new HttpSessionBindingEvent(getSession(), name, value);
+        ((HttpSessionBindingListener) value).valueUnbound(event);
+    }
+    // Notify interested application event listeners
+    Context context = manager.getContext();
+    Object[] listeners = context.getApplicationEventListeners();
+    if (listeners == null) {
+        return;
+    }
+    for (Object o : listeners) {
+        if (!(o instanceof HttpSessionAttributeListener)) {
+            continue;
+        }
+        HttpSessionAttributeListener listener = (HttpSessionAttributeListener) o;
+        try {
+            context.fireContainerEvent("beforeSessionAttributeRemoved", listener);
+            if (event == null) {
+                event = new HttpSessionBindingEvent(getSession(), name, value);
+            }
+            listener.attributeRemoved(event);
+            context.fireContainerEvent("afterSessionAttributeRemoved", listener);
+        } catch (Throwable t) {
+            ExceptionUtils.handleThrowable(t);
+            try {
+                context.fireContainerEvent("afterSessionAttributeRemoved", listener);
+            } catch (Exception e) {
+                // Ignore
+            }
+            manager.getContext().getLogger().error(sm.getString("standardSession.attributeEvent"), t);
+        }
+    }
+}

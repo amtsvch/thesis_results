@@ -1,0 +1,9 @@
+@Test
+public void testAddAllWithAll() {
+    TesterResponse response = new TesterResponse();
+    response.getCoyoteResponse();
+    response.addHeader("vary", "*");
+    List<String> expected = new ArrayList<>();
+    expected.add("*");
+    doTestAddVaryFieldName(response, "*", expected);
+}

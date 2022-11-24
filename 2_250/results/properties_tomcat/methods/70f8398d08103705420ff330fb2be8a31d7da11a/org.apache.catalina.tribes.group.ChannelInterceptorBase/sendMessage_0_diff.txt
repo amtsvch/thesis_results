@@ -1,0 +1,6 @@
+@Override                                                                                              @Override                                                                                           
+public void sendMessage(Member[] destination, ChannelMessage msg, InterceptorPayload payload) throws   public void sendMessage(Member[] destination, ChannelMessage msg, InterceptorPayload payload) throws
+if (getNext() != null)                                                                               | if (getNext() != null) {                                                                            
+getNext().sendMessage(destination, msg, payload);                                                      getNext().sendMessage(destination, msg, payload);                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

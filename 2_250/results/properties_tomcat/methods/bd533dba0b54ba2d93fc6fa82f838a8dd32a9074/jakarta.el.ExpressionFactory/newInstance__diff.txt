@@ -1,0 +1,15 @@
+/**
+ * Create a new {@link ExpressionFactory}. The class to use is determined by
+ * the following search order:
+ * <ol>
+ * <li>services API (META-INF/services/jakarta.el.ExpressionFactory)</li>
+ * <li>$JRE_HOME/lib/el.properties - key jakarta.el.ExpressionFactory</li>
+ * <li>jakarta.el.ExpressionFactory</li>
+ * <li>Platform default implementation -
+ *     org.apache.el.ExpressionFactoryImpl</li>
+ * </ol>
+ * @return the new ExpressionFactory
+ */
+public static ExpressionFactory newInstance() {
+    return newInstance(null);
+}

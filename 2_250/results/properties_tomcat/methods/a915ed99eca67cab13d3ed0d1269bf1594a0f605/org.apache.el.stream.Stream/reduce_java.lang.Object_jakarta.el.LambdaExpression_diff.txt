@@ -1,0 +1,7 @@
+public Object reduce(Object seed, LambdaExpression le) {
+    Object result = seed;
+    while (iterator.hasNext()) {
+        result = le.invoke(result, iterator.next());
+    }
+    return result;
+}

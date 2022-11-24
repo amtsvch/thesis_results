@@ -1,0 +1,7 @@
+@Test
+public void testSkipSemicolonOrComma() {
+    // V1 cookies can also use commas to separate cookies
+    FOO.setVersion(1);
+    A.setVersion(1);
+    test(true, "$Version=1;x\tx=yyy,foo=bar;a=b", FOO, A);
+}

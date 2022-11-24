@@ -1,0 +1,6 @@
+protected char ReadByte() throws java.io.IOException {                                                 protected char ReadByte() throws java.io.IOException {                                              
+if (++nextCharInd &gt;= maxNextCharInd)                                                              | if (++nextCharInd &gt;= maxNextCharInd) {                                                           
+FillBuff();                                                                                            FillBuff();                                                                                         
+                                                                                                     | }                                                                                                   
+return nextCharBuf[nextCharInd];                                                                       return nextCharBuf[nextCharInd];                                                                    
+}                                                                                                      }                                                                                                   

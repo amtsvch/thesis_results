@@ -1,0 +1,6 @@
+public RxTaskPool(int maxTasks, int minTasks, TaskCreator creator) throws Exception {
+    // fill up the pool with worker threads
+    this.maxTasks = maxTasks;
+    this.minTasks = minTasks;
+    this.creator = creator;
+}

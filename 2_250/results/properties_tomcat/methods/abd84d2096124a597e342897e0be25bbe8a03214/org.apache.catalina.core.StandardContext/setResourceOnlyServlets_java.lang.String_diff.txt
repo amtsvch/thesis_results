@@ -1,0 +1,13 @@
+@Override
+public void setResourceOnlyServlets(String resourceOnlyServlets) {
+    this.resourceOnlyServlets.clear();
+    if (resourceOnlyServlets == null) {
+        return;
+    }
+    for (String servletName : resourceOnlyServlets.split(",")) {
+        servletName = servletName.trim();
+        if (servletName.length() > 0) {
+            this.resourceOnlyServlets.add(servletName);
+        }
+    }
+}

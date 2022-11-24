@@ -1,0 +1,6 @@
+@Override
+protected void startInternal() throws LifecycleException {
+    // Ensure SecureRandom has been initialised
+    generateSessionId();
+    setState(LifecycleState.STARTING);
+}

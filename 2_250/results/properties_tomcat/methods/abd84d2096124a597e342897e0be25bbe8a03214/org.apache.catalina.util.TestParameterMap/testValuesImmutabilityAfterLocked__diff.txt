@@ -1,0 +1,44 @@
+@Test
+public void testValuesImmutabilityAfterLocked() {
+    ((ParameterMap<String, String[]>) paramMap).setLocked(true);
+    final Collection<String[]> valuesCol = paramMap.values();
+    try {
+        valuesCol.add(new String[] { "value4" });
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        List<String[]> list = new ArrayList<>();
+        list.add(new String[] { "value4" });
+        valuesCol.addAll(list);
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        valuesCol.remove(TEST_PARAM_VALUES_1);
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        valuesCol.removeIf((a) -> true);
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        List<String[]> list = new ArrayList<>();
+        list.add(TEST_PARAM_VALUES_1);
+        valuesCol.removeAll(list);
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        valuesCol.retainAll(Collections.emptyList());
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        valuesCol.clear();
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+}

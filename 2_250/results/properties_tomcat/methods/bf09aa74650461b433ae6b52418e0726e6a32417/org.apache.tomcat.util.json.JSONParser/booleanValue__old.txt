@@ -1,0 +1,26 @@
+final public Boolean booleanValue() throws ParseException {
+    Boolean b;
+    switch(jj_nt.kind) {
+        case TRUE:
+            {
+                jj_consume_token(TRUE);
+                b = Boolean.TRUE;
+                break;
+            }
+        case FALSE:
+            {
+                jj_consume_token(FALSE);
+                b = Boolean.FALSE;
+                break;
+            }
+        default:
+            jj_la1[8] = jj_gen;
+            jj_consume_token(-1);
+            throw new ParseException();
+    }
+    {
+        if ("" != null)
+            return b;
+    }
+    throw new Error("Missing return statement in function");
+}

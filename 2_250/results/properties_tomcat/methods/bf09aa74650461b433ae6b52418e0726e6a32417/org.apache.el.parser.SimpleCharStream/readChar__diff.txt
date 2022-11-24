@@ -1,0 +1,18 @@
+/**                                                                                                    /**                                                                                                 
+* Read a character.                                                                                    * Read a character.                                                                                 
+*/                                                                                                     */                                                                                                  
+public char readChar() throws java.io.IOException {                                                    public char readChar() throws java.io.IOException {                                                 
+if (inBuf &gt; 0) {                                                                                    if (inBuf &gt; 0) {                                                                                 
+--inBuf;                                                                                               --inBuf;                                                                                            
+if (++bufpos == bufsize)                                                                             | if (++bufpos == bufsize) {                                                                          
+bufpos = 0;                                                                                            bufpos = 0;                                                                                         
+                                                                                                     | }                                                                                                   
+return buffer[bufpos];                                                                                 return buffer[bufpos];                                                                              
+}                                                                                                      }                                                                                                   
+if (++bufpos &gt;= maxNextCharInd)                                                                   | if (++bufpos &gt;= maxNextCharInd) {                                                                
+FillBuff();                                                                                            FillBuff();                                                                                         
+                                                                                                     | }                                                                                                   
+char c = buffer[bufpos];                                                                               char c = buffer[bufpos];                                                                            
+UpdateLineColumn(c);                                                                                   UpdateLineColumn(c);                                                                                
+return c;                                                                                              return c;                                                                                           
+}                                                                                                      }                                                                                                   

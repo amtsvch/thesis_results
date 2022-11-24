@@ -1,0 +1,9 @@
+public boolean isNotRequestTargetRelaxed(int c) {
+    // Fast for valid request target characters, slower for some incorrect
+    // ones
+    try {
+        return IS_NOT_REQUEST_TARGET[c];
+    } catch (ArrayIndexOutOfBoundsException ex) {
+        return true;
+    }
+}

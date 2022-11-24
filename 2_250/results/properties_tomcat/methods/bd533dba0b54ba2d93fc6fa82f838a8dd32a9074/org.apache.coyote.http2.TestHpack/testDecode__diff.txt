@@ -1,0 +1,24 @@
+@Test
+public void testDecode() throws Exception {
+    MimeHeaders headers = new MimeHeaders();
+    headers.setValue("header1").setString("value1");
+    headers.setValue(":status").setString("200");
+    headers.setValue("header2").setString("value2");
+    ByteBuffer output = ByteBuffer.allocate(512);
+    HpackEncoder encoder = new HpackEncoder();
+    encoder.encode(headers, output);
+    output.flip();
+    MimeHeaders headers2 = new MimeHeaders();
+    HpackDecoder decoder = new HpackDecoder();
+    decoder.setHeaderEmitter(new HeadersListener(headers2));
+    decoder.decode(output);
+    // Redo (table is supposed to be updated)
+    output.clear();
+    encoder.encode(headers, output);
+    output.flip();
+    headers2.recycle();
+    Assert.assertEquals(3, output.remaining());
+    // Check that the decoder is using the table right
+    decoder.decode(output);
+    Assert.assertEquals("value2", headers2.getHeader("header2"));
+}

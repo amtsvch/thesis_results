@@ -1,0 +1,8 @@
+@Test
+public void testParserBug45511() {
+    // Test cases provided by OP
+    Assert.assertEquals("true", evaluateExpression("${empty ('')}"));
+    Assert.assertEquals("true", evaluateExpression("${empty('')}"));
+    Assert.assertEquals("false", evaluateExpression("${(true) and (false)}"));
+    Assert.assertEquals("false", evaluateExpression("${(true)and(false)}"));
+}

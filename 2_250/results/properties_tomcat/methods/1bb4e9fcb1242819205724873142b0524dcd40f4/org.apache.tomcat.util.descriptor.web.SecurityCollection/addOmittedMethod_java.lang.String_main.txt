@@ -1,0 +1,13 @@
+/**
+ * Add an HTTP request method to the methods explicitly excluded from this
+ * web resource collection.
+ * @param method The method
+ */
+public void addOmittedMethod(String method) {
+    if (method == null) {
+        return;
+    }
+    String[] results = Arrays.copyOf(omittedMethods, omittedMethods.length + 1);
+    results[omittedMethods.length] = method;
+    omittedMethods = results;
+}

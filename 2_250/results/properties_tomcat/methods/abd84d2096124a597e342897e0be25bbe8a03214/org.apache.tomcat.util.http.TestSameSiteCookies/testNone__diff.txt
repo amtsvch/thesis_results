@@ -1,0 +1,9 @@
+@Test
+public void testNone() {
+    SameSiteCookies attribute = SameSiteCookies.NONE;
+    Assert.assertEquals("None", attribute.getValue());
+    Assert.assertEquals(SameSiteCookies.NONE, attribute);
+    Assert.assertNotEquals(SameSiteCookies.UNSET, attribute);
+    Assert.assertNotEquals(SameSiteCookies.LAX, attribute);
+    Assert.assertNotEquals(SameSiteCookies.STRICT, attribute);
+}

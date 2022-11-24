@@ -1,0 +1,14 @@
+private static X509UsernameRetriever createUsernameRetriever(String className) throws LifecycleException {
+    if (null == className || className.trim().isEmpty()) {
+        return new X509SubjectDnRetriever();
+    }
+    try {
+        @SuppressWarnings("unchecked")
+        Class<? extends X509UsernameRetriever> clazz = (Class<? extends X509UsernameRetriever>) Class.forName(className);
+        return clazz.getConstructor().newInstance();
+    } catch (ReflectiveOperationException e) {
+        throw new LifecycleException(sm.getString("realmBase.createUsernameRetriever.newInstance", className), e);
+    } catch (ClassCastException e) {
+        throw new LifecycleException(sm.getString("realmBase.createUsernameRetriever.ClassCastException", className), e);
+    }
+}

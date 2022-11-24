@@ -1,0 +1,17 @@
+@Test
+public void testFindUncoveredHttpMethods11() {
+    SecurityConstraint[] result = SecurityConstraint.findUncoveredHttpMethods(new SecurityConstraint[] { GET_ONLY, POST_ONLY }, true, DUMMY_LOG);
+    Assert.assertEquals(1, result.length);
+    // Should be a deny constraint
+    Assert.assertTrue(result[0].getAuthConstraint());
+    // Should have a single collection
+    Assert.assertEquals(1, result[0].findCollections().length);
+    SecurityCollection sc = result[0].findCollections()[0];
+    // Should list GET and POST as omitted methods
+    Assert.assertEquals(0, sc.findMethods().length);
+    Assert.assertEquals(2, sc.findOmittedMethods().length);
+    HashSet<String> omittedMethods = new HashSet<>();
+    omittedMethods.addAll(Arrays.asList(sc.findOmittedMethods()));
+    Assert.assertTrue(omittedMethods.remove("GET"));
+    Assert.assertTrue(omittedMethods.remove("POST"));
+}

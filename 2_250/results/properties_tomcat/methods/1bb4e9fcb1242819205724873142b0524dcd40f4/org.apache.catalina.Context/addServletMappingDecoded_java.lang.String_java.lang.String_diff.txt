@@ -1,0 +1,10 @@
+/**
+ * Add a new servlet mapping, replacing any existing mapping for
+ * the specified pattern.
+ *
+ * @param pattern URL pattern to be mapped
+ * @param name Name of the corresponding servlet to execute
+ */
+public default void addServletMappingDecoded(String pattern, String name) {
+    addServletMappingDecoded(pattern, name, false);
+}

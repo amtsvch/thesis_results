@@ -1,0 +1,5 @@
+@Test(expected = IllegalArgumentException.class)
+public void testURLDecodeStringInvalid02() {
+    // Edge case trying to trigger ArrayIndexOutOfBoundsException
+    UDecoder.URLDecode("%5", StandardCharsets.UTF_8);
+}

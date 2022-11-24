@@ -1,0 +1,5 @@
+public BeanProperty(Class<?> owner, PropertyDescriptor descriptor) {
+    this.owner = owner;
+    this.descriptor = descriptor;
+    this.type = descriptor.getPropertyType();
+}

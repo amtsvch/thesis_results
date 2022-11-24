@@ -1,0 +1,8 @@
+public SenderThread(long time) {                                                                       public SenderThread(long time) {                                                                    
+this.time = time;                                                                                      this.time = time;                                                                                   
+String channelName = "";                                                                               String channelName = "";                                                                            
+if (channel.getName() != null)                                                                       | if (channel.getName() != null) {                                                                    
+channelName = "[" + channel.getName() + "]";                                                           channelName = "[" + channel.getName() + "]";                                                        
+                                                                                                     | }                                                                                                   
+setName("Tribes-MembershipSender" + channelName);                                                      setName("Tribes-MembershipSender" + channelName);                                                   
+}                                                                                                      }                                                                                                   

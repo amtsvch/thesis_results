@@ -1,0 +1,8 @@
+/**
+ * Register a set of Rule instances defined in a RuleSet.
+ *
+ * @param ruleSet The RuleSet instance to configure from
+ */
+public void addRuleSet(RuleSet ruleSet) {
+    ruleSet.addRuleInstances(this);
+}

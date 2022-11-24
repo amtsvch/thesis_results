@@ -1,0 +1,8 @@
+@Override
+public void putContext(Class<?> key, Object contextObject) {
+    if (wrappedContext == null) {
+        super.putContext(key, contextObject);
+    } else {
+        wrappedContext.putContext(key, contextObject);
+    }
+}

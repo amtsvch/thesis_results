@@ -1,0 +1,12 @@
+@Test
+public void testCharset() throws IOException {
+    StringBuilder sb = new StringBuilder();
+    sb.append(TYPES);
+    sb.append(PARAM_CHARSET);
+    sb.append(PARAM_TOKEN);
+    StringReader sr = new StringReader(sb.toString());
+    MediaType m = MediaType.parseMediaType(sr);
+    Assert.assertEquals("foo/bar;charset=UTF-8;a=b", m.toString());
+    Assert.assertEquals(CHARSET, m.getCharset());
+    Assert.assertEquals("foo/bar;a=b", m.toStringNoCharset());
+}

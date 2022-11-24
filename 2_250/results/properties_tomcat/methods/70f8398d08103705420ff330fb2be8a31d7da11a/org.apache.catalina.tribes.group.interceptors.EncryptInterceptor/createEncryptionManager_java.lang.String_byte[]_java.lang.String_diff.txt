@@ -1,0 +1,29 @@
+private static BaseEncryptionManager createEncryptionManager(String algorithm, byte[] encryptionKey,   private static BaseEncryptionManager createEncryptionManager(String algorithm, byte[] encryptionKey,
+if (null == encryptionKey)                                                                           | if (null == encryptionKey) {                                                                        
+throw new IllegalStateException(sm.getString("encryptInterceptor.key.required"));                      throw new IllegalStateException(sm.getString("encryptInterceptor.key.required"));                   
+                                                                                                     | }                                                                                                   
+String algorithmName;                                                                                  String algorithmName;                                                                               
+String algorithmMode;                                                                                  String algorithmMode;                                                                               
+// We need to break-apart the algorithm name e.g. AES/CBC/PKCS5Padding                                 // We need to break-apart the algorithm name e.g. AES/CBC/PKCS5Padding                              
+// take just the algorithm part.                                                                       // take just the algorithm part.                                                                    
+int pos = algorithm.indexOf('/');                                                                      int pos = algorithm.indexOf('/');                                                                   
+if (pos &gt;= 0) {                                                                                     if (pos &gt;= 0) {                                                                                  
+algorithmName = algorithm.substring(0, pos);                                                           algorithmName = algorithm.substring(0, pos);                                                        
+int pos2 = algorithm.indexOf('/', pos + 1);                                                            int pos2 = algorithm.indexOf('/', pos + 1);                                                         
+if (pos2 &gt;= 0) {                                                                                    if (pos2 &gt;= 0) {                                                                                 
+algorithmMode = algorithm.substring(pos + 1, pos2);                                                    algorithmMode = algorithm.substring(pos + 1, pos2);                                                 
+} else {                                                                                               } else {                                                                                            
+algorithmMode = "CBC";                                                                                 algorithmMode = "CBC";                                                                              
+}                                                                                                      }                                                                                                   
+} else {                                                                                               } else {                                                                                            
+algorithmName = algorithm;                                                                             algorithmName = algorithm;                                                                          
+algorithmMode = "CBC";                                                                                 algorithmMode = "CBC";                                                                              
+}                                                                                                      }                                                                                                   
+if ("GCM".equalsIgnoreCase(algorithmMode))                                                           | if ("GCM".equalsIgnoreCase(algorithmMode)) {                                                        
+return new GCMEncryptionManager(algorithm, new SecretKeySpec(encryptionKey, algorithmName), provider   return new GCMEncryptionManager(algorithm, new SecretKeySpec(encryptionKey, algorithmName), provider
+else if ("CBC".equalsIgnoreCase(algorithmMode) || "OFB".equalsIgnoreCase(algorithmMode) || "CFB".equ | } else if ("CBC".equalsIgnoreCase(algorithmMode) || "OFB".equalsIgnoreCase(algorithmMode) || "CFB".e
+return new BaseEncryptionManager(algorithm, new SecretKeySpec(encryptionKey, algorithmName), provide   return new BaseEncryptionManager(algorithm, new SecretKeySpec(encryptionKey, algorithmName), provide
+else                                                                                                 | } else {                                                                                            
+throw new IllegalArgumentException(sm.getString("encryptInterceptor.algorithm.unsupported-mode", alg   throw new IllegalArgumentException(sm.getString("encryptInterceptor.algorithm.unsupported-mode", alg
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

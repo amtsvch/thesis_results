@@ -1,0 +1,14 @@
+@Test
+public void bug56848() throws Exception {
+    List<AcceptLanguage> actual = AcceptLanguage.parse(new StringReader("zh-hant-CN;q=0.5,zh-hans-TW;q=0.05"));
+    Assert.assertEquals(2, actual.size());
+    Locale.Builder b = new Locale.Builder();
+    b.setLanguage("zh").setRegion("CN").setScript("hant");
+    Locale l1 = b.build();
+    b.clear().setLanguage("zh").setRegion("TW").setScript("hans");
+    Locale l2 = b.build();
+    Assert.assertEquals(l1, actual.get(0).getLocale());
+    Assert.assertEquals(Q0_500, actual.get(0).getQuality(), 0.0001);
+    Assert.assertEquals(l2, actual.get(1).getLocale());
+    Assert.assertEquals(Q0_050, actual.get(1).getQuality(), 0.0001);
+}

@@ -1,0 +1,6 @@
+@Test                                                                                                  @Test                                                                                               
+public void testMultiply02() {                                                                         public void testMultiply02() {                                                                      
+ELProcessor processor = new ELProcessor();                                                             ELProcessor processor = new ELProcessor();                                                          
+Object result = processor.eval("null * null");                                                       | Long result = processor.eval("null * null");                                                        
+Assert.assertEquals(Long.valueOf(0), result);                                                          Assert.assertEquals(Long.valueOf(0), result);                                                       
+}                                                                                                      }                                                                                                   

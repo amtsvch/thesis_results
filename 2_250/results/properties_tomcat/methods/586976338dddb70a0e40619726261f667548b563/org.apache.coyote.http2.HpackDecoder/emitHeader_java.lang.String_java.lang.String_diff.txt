@@ -1,0 +1,21 @@
+private void emitHeader(String name, String value) throws HpackException {
+    // Header names are forced to lower case
+    if ("cookie".equals(name)) {
+        // Only count the cookie header once since HTTP/2 splits it into
+        // multiple headers to aid compression
+        if (!countedCookie) {
+            headerCount++;
+            countedCookie = true;
+        }
+    } else {
+        headerCount++;
+    }
+    // Overhead will vary. The main concern is that lots of small headers
+    // trigger the limiting mechanism correctly. Therefore, use an overhead
+    // estimate of 3 which is the worst case for small headers.
+    int inc = 3 + name.length() + value.length();
+    headerSize += inc;
+    if (!isHeaderCountExceeded() && !isHeaderSizeExceeded(0)) {
+        headerEmitter.emitHeader(name, value);
+    }
+}

@@ -1,0 +1,38 @@
+/**
+ * Validates the option flags that each interceptor is using and reports
+ * an error if two interceptor share the same flag.
+ * @throws ChannelException Error with option flag
+ */
+protected void checkOptionFlags() throws ChannelException {
+    StringBuilder conflicts = new StringBuilder();
+    ChannelInterceptor first = interceptors;
+    while (first != null) {
+        int flag = first.getOptionFlag();
+        if (flag != 0) {
+            ChannelInterceptor next = first.getNext();
+            while (next != null) {
+                int nflag = next.getOptionFlag();
+                if (nflag != 0 && (((flag & nflag) == flag) || ((flag & nflag) == nflag))) {
+                    conflicts.append('[');
+                    conflicts.append(first.getClass().getName());
+                    conflicts.append(':');
+                    conflicts.append(flag);
+                    conflicts.append(" == ");
+                    conflicts.append(next.getClass().getName());
+                    conflicts.append(':');
+                    conflicts.append(nflag);
+                    conflicts.append("] ");
+                }
+                // end if
+                next = next.getNext();
+            }
+            // while
+        }
+        // end if
+        first = first.getNext();
+    }
+    // while
+    if (conflicts.length() > 0) {
+        throw new ChannelException(sm.getString("groupChannel.optionFlag.conflict", conflicts.toString()));
+    }
+}

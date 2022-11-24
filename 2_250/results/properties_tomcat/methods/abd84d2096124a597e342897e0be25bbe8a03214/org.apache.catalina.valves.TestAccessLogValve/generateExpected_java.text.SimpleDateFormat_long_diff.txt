@@ -1,0 +1,3 @@
+private String generateExpected(SimpleDateFormat sdf, long secs) {
+    return sdf.format(new Date(secs * 1000));
+}

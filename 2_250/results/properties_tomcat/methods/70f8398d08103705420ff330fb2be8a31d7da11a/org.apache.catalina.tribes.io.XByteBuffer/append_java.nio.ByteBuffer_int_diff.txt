@@ -1,0 +1,23 @@
+/**
+ * Appends the data to the buffer. If the data is incorrectly formatted, ie, the data should always start with the
+ * header, false will be returned and the data will be discarded.
+ * @param b - bytes to be appended
+ * @param len - the number of bytes to append.
+ * @return true if the data was appended correctly. Returns false if the package is incorrect, ie missing header or something, or the length of data is 0
+ */
+public boolean append(ByteBuffer b, int len) {
+    int newcount = bufSize + len;
+    if (newcount > buf.length) {
+        expand(newcount);
+    }
+    b.get(buf, bufSize, len);
+    bufSize = newcount;
+    if (discard) {
+        if (bufSize > START_DATA.length && (firstIndexOf(buf, 0, START_DATA) == -1)) {
+            bufSize = 0;
+            log.error(sm.getString("xByteBuffer.discarded.invalidHeader"));
+            return false;
+        }
+    }
+    return true;
+}

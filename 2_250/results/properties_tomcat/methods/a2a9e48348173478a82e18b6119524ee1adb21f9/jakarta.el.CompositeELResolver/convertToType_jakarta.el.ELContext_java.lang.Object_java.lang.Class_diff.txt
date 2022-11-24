@@ -1,0 +1,12 @@
+@Override                                                                                              @Override                                                                                           
+public Object convertToType(ELContext context, Object obj, Class&lt;?&gt; type) {                    | public &lt;T&gt; T convertToType(ELContext context, Object obj, Class&lt;T&gt; type) {              
+context.setPropertyResolved(false);                                                                    context.setPropertyResolved(false);                                                                 
+int sz = this.size;                                                                                    int sz = this.size;                                                                                 
+for (int i = 0; i &lt; sz; i++) {                                                                      for (int i = 0; i &lt; sz; i++) {                                                                   
+Object result = this.resolvers[i].convertToType(context, obj, type);                                 | T result = this.resolvers[i].convertToType(context, obj, type);                                     
+if (context.isPropertyResolved()) {                                                                    if (context.isPropertyResolved()) {                                                                 
+return result;                                                                                         return result;                                                                                      
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   

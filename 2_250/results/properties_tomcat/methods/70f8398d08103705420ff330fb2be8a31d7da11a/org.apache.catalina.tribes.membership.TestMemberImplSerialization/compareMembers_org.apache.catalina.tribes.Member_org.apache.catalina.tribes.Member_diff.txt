@@ -1,0 +1,8 @@
+public boolean compareMembers(Member impl1, Member impl2) {
+    boolean result = true;
+    result = result && Arrays.equals(impl1.getHost(), impl2.getHost());
+    result = result && Arrays.equals(impl1.getPayload(), impl2.getPayload());
+    result = result && Arrays.equals(impl1.getUniqueId(), impl2.getUniqueId());
+    result = result && impl1.getPort() == impl2.getPort();
+    return result;
+}

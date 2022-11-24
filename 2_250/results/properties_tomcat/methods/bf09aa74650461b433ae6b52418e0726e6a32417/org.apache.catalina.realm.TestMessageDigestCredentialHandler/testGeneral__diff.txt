@@ -1,0 +1,10 @@
+@Test                                                                                                  @Test                                                                                               
+public void testGeneral() throws Exception {                                                           public void testGeneral() throws Exception {                                                        
+for (String digest : DIGESTS) {                                                                        for (String digest : DIGESTS) {                                                                     
+for (int saltLength = 0; saltLength &lt; 20; saltLength++) {                                           for (int saltLength = 0; saltLength &lt; 20; saltLength++) {                                        
+for (int iterations = 1; iterations &lt; 100; iterations += 10) doTest(digest, saltLength, iteration | for (int iterations = 1; iterations &lt; 100; iterations += 10) {                                   
+                                                                                                     | doTest(digest, saltLength, iterations);                                                             
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

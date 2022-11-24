@@ -1,0 +1,8 @@
+/**
+ * Creates a new parser for the specified expression.
+ * @param expr The expression
+ */
+public ExpressionTokenizer(String expr) {
+    this.expr = expr.trim().toCharArray();
+    this.length = this.expr.length;
+}

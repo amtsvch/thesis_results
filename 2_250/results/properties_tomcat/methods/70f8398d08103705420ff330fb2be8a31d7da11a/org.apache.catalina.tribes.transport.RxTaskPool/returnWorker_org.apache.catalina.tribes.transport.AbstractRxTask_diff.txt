@@ -1,0 +1,23 @@
+/**                                                                                                    /**                                                                                                 
+* Called by the worker thread to return itself to the                                                  * Called by the worker thread to return itself to the                                               
+* idle pool.                                                                                           * idle pool.                                                                                        
+* @param worker The worker                                                                             * @param worker The worker                                                                          
+*/                                                                                                     */                                                                                                  
+public void returnWorker(AbstractRxTask worker) {                                                      public void returnWorker(AbstractRxTask worker) {                                                   
+if (running) {                                                                                         if (running) {                                                                                      
+synchronized (mutex) {                                                                                 synchronized (mutex) {                                                                              
+used.remove(worker);                                                                                   used.remove(worker);                                                                                
+// if ( idle.size() &lt; minThreads && !idle.contains(worker)) idle.add(worker);                       // if ( idle.size() &lt; minThreads && !idle.contains(worker)) idle.add(worker);                    
+if (// let max be the upper limit                                                                    | if (idle.size() &lt; maxTasks && !idle.contains(worker)) {                                          
+idle.size() &lt; maxTasks && !idle.contains(worker))                                                 |                                                                                                     
+// let max be the upper limit                                                                          // let max be the upper limit                                                                       
+idle.add(worker);                                                                                      idle.add(worker);                                                                                   
+else {                                                                                               | } else {                                                                                            
+worker.close();                                                                                        worker.close();                                                                                     
+}                                                                                                      }                                                                                                   
+mutex.notifyAll();                                                                                     mutex.notifyAll();                                                                                  
+}                                                                                                      }                                                                                                   
+} else {                                                                                               } else {                                                                                            
+worker.close();                                                                                        worker.close();                                                                                     
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,42 @@
+/**
+ * Checks whether the provided credential matches the stored credential when
+ * the stored credential is in the form salt$iteration-count$credential
+ *
+ * @param inputCredentials  The input credential
+ * @param storedCredentials The stored credential
+ *
+ * @return <code>true</code> if they match, otherwise <code>false</code>
+ */
+protected boolean matchesSaltIterationsEncoded(String inputCredentials, String storedCredentials) {
+    if (storedCredentials == null) {
+        // Stored credentials are invalid
+        // This may be expected if nested credential handlers are being used
+        logInvalidStoredCredentials(null);
+        return false;
+    }
+    int sep1 = storedCredentials.indexOf('$');
+    int sep2 = storedCredentials.indexOf('$', sep1 + 1);
+    if (sep1 < 0 || sep2 < 0) {
+        // Stored credentials are invalid
+        // This may be expected if nested credential handlers are being used
+        logInvalidStoredCredentials(storedCredentials);
+        return false;
+    }
+    String hexSalt = storedCredentials.substring(0, sep1);
+    int iterations = Integer.parseInt(storedCredentials.substring(sep1 + 1, sep2));
+    String storedHexEncoded = storedCredentials.substring(sep2 + 1);
+    byte[] salt;
+    try {
+        salt = HexUtils.fromHexString(hexSalt);
+    } catch (IllegalArgumentException iae) {
+        logInvalidStoredCredentials(storedCredentials);
+        return false;
+    }
+    String inputHexEncoded = mutate(inputCredentials, salt, iterations, HexUtils.fromHexString(storedHexEncoded).length * Byte.SIZE);
+    if (inputHexEncoded == null) {
+        // Failed to mutate user credentials. Automatic fail.
+        // Root cause should be logged by mutate()
+        return false;
+    }
+    return storedHexEncoded.equalsIgnoreCase(inputHexEncoded);
+}

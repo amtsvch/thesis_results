@@ -1,0 +1,58 @@
+// loop forever waiting for work to do
+@Override
+public synchronized void run() {
+    if (buffer == null) {
+        int size = getRxBufSize();
+        if (key.channel() instanceof DatagramChannel) {
+            size = ChannelReceiver.MAX_UDP_SIZE;
+        }
+        if ((getOptions() & OPTION_DIRECT_BUFFER) == OPTION_DIRECT_BUFFER) {
+            buffer = ByteBuffer.allocateDirect(size);
+        } else {
+            buffer = ByteBuffer.allocate(size);
+        }
+    } else {
+        buffer.clear();
+    }
+    if (key == null) {
+        // just in case
+        return;
+    }
+    if (log.isTraceEnabled()) {
+        log.trace("Servicing key:" + key);
+    }
+    try {
+        ObjectReader reader = (ObjectReader) key.attachment();
+        if (reader == null) {
+            if (log.isTraceEnabled()) {
+                log.trace("No object reader, cancelling:" + key);
+            }
+            cancelKey(key);
+        } else {
+            if (log.isTraceEnabled()) {
+                log.trace("Draining channel:" + key);
+            }
+            drainChannel(key, reader);
+        }
+    } catch (Exception e) {
+        // this is common, since the sockets on the other
+        // end expire after a certain time.
+        if (e instanceof CancelledKeyException) {
+            // do nothing
+        } else if (e instanceof IOException) {
+            // don't spew out stack traces for IO exceptions unless debug is enabled.
+            if (log.isDebugEnabled()) {
+                log.debug("IOException in replication worker, unable to drain channel. Probable cause: Keep alive socket closed[" + e.getMessage() + "].", e);
+            } else {
+                log.warn(sm.getString("nioReplicationTask.unable.drainChannel.ioe", e.getMessage()));
+            }
+        } else if (log.isErrorEnabled()) {
+            // this is a real error, log it.
+            log.error(sm.getString("nioReplicationTask.exception.drainChannel"), e);
+        }
+        cancelKey(key);
+    }
+    key = null;
+    // done, ready for more, return to pool
+    getTaskPool().returnWorker(this);
+}

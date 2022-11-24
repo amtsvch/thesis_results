@@ -1,0 +1,11 @@
+/**
+ * Set the maximum time interval, in seconds, between client requests
+ * before the servlet container will invalidate the session.  A zero or
+ * negative time indicates that the session should never time out.
+ *
+ * @param interval The new maximum interval
+ */
+@Override
+public void setMaxInactiveInterval(int interval) {
+    this.maxInactiveInterval = interval;
+}

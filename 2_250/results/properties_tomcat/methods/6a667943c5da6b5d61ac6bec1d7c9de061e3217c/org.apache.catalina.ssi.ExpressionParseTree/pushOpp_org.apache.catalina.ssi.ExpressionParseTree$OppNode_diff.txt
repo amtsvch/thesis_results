@@ -1,0 +1,36 @@
+/**                                                                                                    /**                                                                                                 
+* Pushes a new operator onto the opp stack, resolving existing opps as                                 * Pushes a new operator onto the opp stack, resolving existing opps as                              
+* needed.                                                                                              * needed.                                                                                           
+* @param node The operator node                                                                        * @param node The operator node                                                                     
+*/                                                                                                     */                                                                                                  
+private void pushOpp(OppNode node) {                                                                   private void pushOpp(OppNode node) {                                                                
+// If node is null then it's just a group marker                                                       // If node is null then it's just a group marker                                                    
+if (node == null) {                                                                                    if (node == null) {                                                                                 
+oppStack.add(0, node);                                                                                 oppStack.add(0, node);                                                                              
+return;                                                                                                return;                                                                                             
+}                                                                                                      }                                                                                                   
+while (true) {                                                                                         while (true) {                                                                                      
+if (oppStack.size() == 0)                                                                            | if (oppStack.size() == 0) {                                                                         
+break;                                                                                                 break;                                                                                              
+                                                                                                     | }                                                                                                   
+OppNode top = oppStack.get(0);                                                                         OppNode top = oppStack.get(0);                                                                      
+// If the top is a spacer then don't pop                                                               // If the top is a spacer then don't pop                                                            
+// anything                                                                                            // anything                                                                                         
+if (top == null)                                                                                     | if (top == null) {                                                                                  
+break;                                                                                                 break;                                                                                              
+                                                                                                     | }                                                                                                   
+// If the top node has a lower precedence then                                                         // If the top node has a lower precedence then                                                      
+// let it stay                                                                                         // let it stay                                                                                      
+if (top.getPrecedence() &lt; node.getPrecedence())                                                   | if (top.getPrecedence() &lt; node.getPrecedence()) {                                                
+break;                                                                                                 break;                                                                                              
+                                                                                                     | }                                                                                                   
+// Remove the top node                                                                                 // Remove the top node                                                                              
+oppStack.remove(0);                                                                                    oppStack.remove(0);                                                                                 
+// Let it fill its branches                                                                            // Let it fill its branches                                                                         
+top.popValues(nodeStack);                                                                              top.popValues(nodeStack);                                                                           
+// Stick it on the resolved node stack                                                                 // Stick it on the resolved node stack                                                              
+nodeStack.add(0, top);                                                                                 nodeStack.add(0, top);                                                                              
+}                                                                                                      }                                                                                                   
+// Add the new node to the opp stack                                                                   // Add the new node to the opp stack                                                                
+oppStack.add(0, node);                                                                                 oppStack.add(0, node);                                                                              
+}                                                                                                      }                                                                                                   

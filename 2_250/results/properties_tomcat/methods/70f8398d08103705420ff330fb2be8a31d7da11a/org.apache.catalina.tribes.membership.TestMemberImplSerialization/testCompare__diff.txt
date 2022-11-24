@@ -1,0 +1,10 @@
+@Test
+public void testCompare() throws Exception {
+    Assert.assertTrue(m1.equals(m2));
+    Assert.assertTrue(m2.equals(m1));
+    Assert.assertTrue(p1.equals(m2));
+    Assert.assertFalse(m1.equals(p2));
+    Assert.assertFalse(m1.equals(p2));
+    Assert.assertFalse(m2.equals(p2));
+    Assert.assertFalse(p1.equals(p2));
+}

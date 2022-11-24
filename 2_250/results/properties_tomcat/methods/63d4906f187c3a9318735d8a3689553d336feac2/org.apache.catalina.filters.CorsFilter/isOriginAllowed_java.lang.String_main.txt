@@ -1,0 +1,16 @@
+/**
+ * Checks if the Origin is allowed to make a CORS request.
+ *
+ * @param origin
+ *            The Origin.
+ * @return <code>true</code> if origin is allowed; <code>false</code>
+ *         otherwise.
+ */
+private boolean isOriginAllowed(final String origin) {
+    if (isAnyOriginAllowed()) {
+        return true;
+    }
+    // If 'Origin' header is a case-sensitive match of any of allowed
+    // origins, then return true, else return false.
+    return getAllowedOrigins().contains(origin);
+}

@@ -1,0 +1,5 @@
+@Test
+public void attributeSecure() {
+    Cookie cookie = new Cookie("Secure", null);
+    Assert.assertEquals("Secure", cookie.getName());
+}

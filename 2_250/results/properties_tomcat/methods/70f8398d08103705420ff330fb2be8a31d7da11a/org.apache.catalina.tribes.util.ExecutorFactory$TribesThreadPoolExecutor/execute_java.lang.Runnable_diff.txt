@@ -1,0 +1,13 @@
+@Override
+public void execute(Runnable command) {
+    try {
+        super.execute(command);
+    } catch (RejectedExecutionException rx) {
+        if (super.getQueue() instanceof TaskQueue) {
+            TaskQueue queue = (TaskQueue) super.getQueue();
+            if (!queue.force(command)) {
+                throw new RejectedExecutionException(sm.getString("executorFactory.queue.full"));
+            }
+        }
+    }
+}

@@ -1,0 +1,3 @@
+public static Serializable deserialize(byte[] data, int offset, int length) throws IOException, ClassNotFoundException, ClassCastException {
+    return deserialize(data, offset, length, null);
+}

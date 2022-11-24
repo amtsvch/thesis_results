@@ -1,0 +1,18 @@
+@Test
+public void testBug52811() throws IOException {
+    String input = "multipart/related;boundary=1_4F50BD36_CDF8C28;" + "Start=\"<31671603.smil>\";" + "Type=\"application/smil;charset=UTF-8\"";
+    StringReader sr = new StringReader(input);
+    MediaType m = MediaType.parseMediaType(sr);
+    // Check the types
+    Assert.assertEquals("multipart", m.getType());
+    Assert.assertEquals("related", m.getSubtype());
+    // Check the parameters
+    Assert.assertTrue(m.getParameterCount() == 3);
+    Assert.assertEquals("1_4F50BD36_CDF8C28", m.getParameterValue("boundary"));
+    Assert.assertEquals("\"<31671603.smil>\"", m.getParameterValue("Start"));
+    Assert.assertEquals("\"application/smil;charset=UTF-8\"", m.getParameterValue("Type"));
+    String expected = "multipart/related;boundary=1_4F50BD36_CDF8C28;" + "start=\"<31671603.smil>\";" + "type=\"application/smil;charset=UTF-8\"";
+    Assert.assertEquals(expected, m.toString());
+    Assert.assertEquals(expected, m.toStringNoCharset());
+    Assert.assertNull(m.getCharset());
+}

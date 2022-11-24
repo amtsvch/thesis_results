@@ -1,0 +1,16 @@
+protected byte[] generateIVBytes() {                                                                   protected byte[] generateIVBytes() {                                                                
+byte[] ivBytes = new byte[getIVSize()];                                                                byte[] ivBytes = new byte[getIVSize()];                                                             
+SecureRandom random = null;                                                                            SecureRandom random = null;                                                                         
+try {                                                                                                  try {                                                                                               
+random = getRandom();                                                                                  random = getRandom();                                                                               
+// Always use a random IV For cipher setup.                                                            // Always use a random IV For cipher setup.                                                         
+// The recipient doesn't need the (matching) IV because we will always                                 // The recipient doesn't need the (matching) IV because we will always                              
+// pre-pad messages with the IV as a nonce.                                                            // pre-pad messages with the IV as a nonce.                                                         
+random.nextBytes(ivBytes);                                                                             random.nextBytes(ivBytes);                                                                          
+return ivBytes;                                                                                        return ivBytes;                                                                                     
+} finally {                                                                                            } finally {                                                                                         
+if (null != random)                                                                                  | if (null != random) {                                                                               
+returnRandom(random);                                                                                  returnRandom(random);                                                                               
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

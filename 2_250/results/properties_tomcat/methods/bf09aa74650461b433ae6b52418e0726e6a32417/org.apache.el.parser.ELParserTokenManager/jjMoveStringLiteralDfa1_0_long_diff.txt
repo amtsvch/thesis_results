@@ -1,0 +1,20 @@
+private int jjMoveStringLiteralDfa1_0(long active0) {                                                  private int jjMoveStringLiteralDfa1_0(long active0) {                                               
+try {                                                                                                  try {                                                                                               
+curChar = input_stream.readChar();                                                                     curChar = input_stream.readChar();                                                                  
+} catch (java.io.IOException e) {                                                                      } catch (java.io.IOException e) {                                                                   
+jjStopStringLiteralDfa_0(0, active0);                                                                  jjStopStringLiteralDfa_0(0, active0);                                                               
+return 1;                                                                                              return 1;                                                                                           
+}                                                                                                      }                                                                                                   
+switch(curChar) {                                                                                      switch(curChar) {                                                                                   
+case 123:                                                                                              case 123:                                                                                           
+if ((active0 & 0x4L) != 0L)                                                                          | if ((active0 & 0x4L) != 0L) {                                                                       
+return jjStopAtPos(1, 2);                                                                              return jjStopAtPos(1, 2);                                                                           
+else if ((active0 & 0x8L) != 0L)                                                                     | } else if ((active0 & 0x8L) != 0L) {                                                                
+return jjStopAtPos(1, 3);                                                                              return jjStopAtPos(1, 3);                                                                           
+                                                                                                     | }                                                                                                   
+break;                                                                                                 break;                                                                                              
+default:                                                                                               default:                                                                                            
+break;                                                                                                 break;                                                                                              
+}                                                                                                      }                                                                                                   
+return jjStartNfa_0(0, active0);                                                                       return jjStartNfa_0(0, active0);                                                                    
+}                                                                                                      }                                                                                                   

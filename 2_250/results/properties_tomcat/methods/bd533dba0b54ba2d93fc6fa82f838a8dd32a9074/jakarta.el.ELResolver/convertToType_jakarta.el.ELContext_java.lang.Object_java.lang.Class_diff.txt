@@ -1,0 +1,17 @@
+/**
+ * Converts the given object to the given type. This default implementation
+ * always returns <code>null</code>.
+ * @param <T>     The type to which the object should be converted
+ *
+ * @param context The EL context for this evaluation
+ * @param obj     The object to convert
+ * @param type    The type to which the object should be converted
+ *
+ * @return Always <code>null</code>
+ *
+ * @since EL 3.0
+ */
+public <T> T convertToType(ELContext context, Object obj, Class<T> type) {
+    context.setPropertyResolved(false);
+    return null;
+}

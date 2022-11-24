@@ -1,0 +1,6 @@
+private void doTestSolidus(String input, String expected) throws IOException {
+    for (EncodedSolidusHandling solidusHandling : EncodedSolidusHandling.values()) {
+        String result = doTestSolidus(input, solidusHandling);
+        Assert.assertEquals(expected, result);
+    }
+}

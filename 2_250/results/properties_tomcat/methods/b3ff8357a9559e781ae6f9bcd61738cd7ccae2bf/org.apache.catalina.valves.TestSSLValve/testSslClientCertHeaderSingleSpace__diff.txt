@@ -1,0 +1,7 @@
+@Test
+public void testSslClientCertHeaderSingleSpace() throws Exception {
+    String singleSpaced = certificateSingleLine(" ");
+    mockRequest.setHeader(valve.getSslClientCertHeader(), singleSpaced);
+    valve.invoke(mockRequest, null);
+    assertCertificateParsed();
+}

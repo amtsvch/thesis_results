@@ -1,0 +1,8 @@
+private void doTestVarArgsBeanF(String expression, Function&lt;TesterBeanF, String&gt; func) {         private void doTestVarArgsBeanF(String expression, Function&lt;TesterBeanF, String&gt; func) {      
+ELProcessor elp = new ELProcessor();                                                                   ELProcessor elp = new ELProcessor();                                                                
+elp.defineBean("apple", TesterEnum.APPLE);                                                             elp.defineBean("apple", TesterEnum.APPLE);                                                          
+elp.defineBean("beanF", new TesterBeanF());                                                            elp.defineBean("beanF", new TesterBeanF());                                                         
+String elResult = (String) elp.eval(expression);                                                     | String elResult = elp.eval(expression);                                                             
+String javaResult = func.apply(new TesterBeanF());                                                     String javaResult = func.apply(new TesterBeanF());                                                  
+Assert.assertEquals(javaResult, elResult);                                                             Assert.assertEquals(javaResult, elResult);                                                          
+}                                                                                                      }                                                                                                   

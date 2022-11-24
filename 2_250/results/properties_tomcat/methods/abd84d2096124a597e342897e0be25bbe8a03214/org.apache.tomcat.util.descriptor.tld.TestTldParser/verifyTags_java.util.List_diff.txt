@@ -1,0 +1,7 @@
+private void verifyTags(List<TagXml> tags) {
+    Assert.assertEquals(1, tags.size());
+    TagXml tag = tags.get(0);
+    Assert.assertEquals("Echo", tag.getName());
+    Assert.assertEquals("org.apache.jasper.compiler.TestValidator$Echo", tag.getTagClass());
+    Assert.assertEquals("empty", tag.getBodyContent());
+}

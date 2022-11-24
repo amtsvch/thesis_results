@@ -1,0 +1,4 @@
+@Test
+public void testTernary10() throws JasperException {
+    doTestParser(" ${!empty my:link(foo)} ", null);
+}

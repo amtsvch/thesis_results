@@ -1,0 +1,14 @@
+@Override
+public Object getValue(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base instanceof List<?>) {
+        context.setPropertyResolved(base, property);
+        List<?> list = (List<?>) base;
+        int idx = coerce(property);
+        if (idx < 0 || idx >= list.size()) {
+            return null;
+        }
+        return list.get(idx);
+    }
+    return null;
+}

@@ -1,0 +1,8 @@
+private void configureDatagraChannel() throws IOException {
+    datagramChannel.configureBlocking(false);
+    datagramChannel.socket().setSendBufferSize(getUdpTxBufSize());
+    datagramChannel.socket().setReceiveBufferSize(getUdpRxBufSize());
+    datagramChannel.socket().setReuseAddress(getSoReuseAddress());
+    datagramChannel.socket().setSoTimeout(getTimeout());
+    datagramChannel.socket().setTrafficClass(getSoTrafficClass());
+}

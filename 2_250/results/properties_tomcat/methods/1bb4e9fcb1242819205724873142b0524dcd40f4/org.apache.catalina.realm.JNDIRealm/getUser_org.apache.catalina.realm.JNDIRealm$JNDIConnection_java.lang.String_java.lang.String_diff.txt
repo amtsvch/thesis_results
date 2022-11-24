@@ -1,0 +1,16 @@
+/**
+ * Return a User object containing information about the user
+ * with the specified username, if found in the directory;
+ * otherwise return <code>null</code>.
+ *
+ * @param connection The directory context
+ * @param username Username to be looked up
+ * @param credentials User credentials (optional)
+ * @return the User object
+ * @exception NamingException if a directory server error occurs
+ *
+ * @see #getUser(JNDIConnection, String, String, int)
+ */
+protected User getUser(JNDIConnection connection, String username, String credentials) throws NamingException {
+    return getUser(connection, username, credentials, -1);
+}

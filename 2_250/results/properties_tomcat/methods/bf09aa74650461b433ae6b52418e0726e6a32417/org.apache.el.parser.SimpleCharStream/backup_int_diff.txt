@@ -1,0 +1,9 @@
+/**                                                                                                    /**                                                                                                 
+* Backup a number of characters.                                                                       * Backup a number of characters.                                                                    
+*/                                                                                                     */                                                                                                  
+public void backup(int amount) {                                                                       public void backup(int amount) {                                                                    
+inBuf += amount;                                                                                       inBuf += amount;                                                                                    
+if ((bufpos -= amount) &lt; 0)                                                                       | if ((bufpos -= amount) &lt; 0) {                                                                    
+bufpos += bufsize;                                                                                     bufpos += bufsize;                                                                                  
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

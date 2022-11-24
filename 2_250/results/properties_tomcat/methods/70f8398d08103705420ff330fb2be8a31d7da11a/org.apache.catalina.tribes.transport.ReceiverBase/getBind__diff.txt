@@ -1,0 +1,19 @@
+/**                                                                                                    /**                                                                                                 
+* @return Returns the bind.                                                                            * @return Returns the bind.                                                                         
+*/                                                                                                     */                                                                                                  
+public InetAddress getBind() {                                                                         public InetAddress getBind() {                                                                      
+if (bind == null) {                                                                                    if (bind == null) {                                                                                 
+try {                                                                                                  try {                                                                                               
+if ("auto".equals(host)) {                                                                             if ("auto".equals(host)) {                                                                          
+host = java.net.InetAddress.getLocalHost().getHostAddress();                                           host = java.net.InetAddress.getLocalHost().getHostAddress();                                        
+}                                                                                                      }                                                                                                   
+if (log.isDebugEnabled())                                                                            | if (log.isDebugEnabled()) {                                                                         
+log.debug("Starting replication listener on address:" + host);                                         log.debug("Starting replication listener on address:" + host);                                      
+                                                                                                     | }                                                                                                   
+bind = java.net.InetAddress.getByName(host);                                                           bind = java.net.InetAddress.getByName(host);                                                        
+} catch (IOException ioe) {                                                                            } catch (IOException ioe) {                                                                         
+log.error(sm.getString("receiverBase.bind.failed", host), ioe);                                        log.error(sm.getString("receiverBase.bind.failed", host), ioe);                                     
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+return bind;                                                                                           return bind;                                                                                        
+}                                                                                                      }                                                                                                   

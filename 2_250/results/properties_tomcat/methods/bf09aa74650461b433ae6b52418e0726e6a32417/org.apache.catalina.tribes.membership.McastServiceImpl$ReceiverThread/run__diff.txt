@@ -1,0 +1,31 @@
+@Override
+public void run() {
+    while (doRunReceiver) {
+        try {
+            receive();
+            errorCounter = 0;
+        } catch (ArrayIndexOutOfBoundsException ax) {
+            // we can ignore this, as it means we have an invalid package
+            // but we will log it to debug
+            if (log.isDebugEnabled()) {
+                log.debug("Invalid member mcast package.", ax);
+            }
+        } catch (Exception x) {
+            if (errorCounter == 0 && doRunReceiver) {
+                log.warn(sm.getString("mcastServiceImpl.error.receiving"), x);
+            } else if (log.isDebugEnabled()) {
+                log.debug("Error receiving mcast package" + (doRunReceiver ? ". Sleeping 500ms" : "."), x);
+            }
+            if (doRunReceiver) {
+                try {
+                    Thread.sleep(500);
+                } catch (Exception ignore) {
+                }
+                if ((++errorCounter) >= recoveryCounter) {
+                    errorCounter = 0;
+                    RecoveryThread.recover(McastServiceImpl.this);
+                }
+            }
+        }
+    }
+}

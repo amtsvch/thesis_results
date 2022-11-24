@@ -1,0 +1,16 @@
+/**                                                                                                    /**                                                                                                 
+* Append new bytes to buffer.                                                                          * Append new bytes to buffer.                                                                       
+* @see XByteBuffer#countPackages()                                                                     * @see XByteBuffer#countPackages()                                                                  
+* @param data new transfer buffer                                                                      * @param data new transfer buffer                                                                   
+* @param len length in buffer                                                                          * @param len length in buffer                                                                       
+* @param count whether to return the count                                                             * @param count whether to return the count                                                          
+* @return number of messages that was sent to callback (or -1 if count == false)                       * @return number of messages that was sent to callback (or -1 if count == false)                    
+*/                                                                                                     */                                                                                                  
+public int append(ByteBuffer data, int len, boolean count) {                                           public int append(ByteBuffer data, int len, boolean count) {                                        
+buffer.append(data, len);                                                                              buffer.append(data, len);                                                                           
+int pkgCnt = -1;                                                                                       int pkgCnt = -1;                                                                                    
+if (count)                                                                                           | if (count) {                                                                                        
+pkgCnt = buffer.countPackages();                                                                       pkgCnt = buffer.countPackages();                                                                    
+                                                                                                     | }                                                                                                   
+return pkgCnt;                                                                                         return pkgCnt;                                                                                      
+}                                                                                                      }                                                                                                   

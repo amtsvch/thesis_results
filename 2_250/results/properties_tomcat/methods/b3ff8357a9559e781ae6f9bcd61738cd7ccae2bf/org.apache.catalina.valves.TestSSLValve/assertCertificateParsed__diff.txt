@@ -1,0 +1,9 @@
+private void assertCertificateParsed() throws Exception {
+    TesterLogValidationFilter f = TesterLogValidationFilter.add(null, "", null, "org.apache.catalina.valves.SSLValve");
+    EasyMock.verify(mockNext);
+    X509Certificate[] certificates = (X509Certificate[]) mockRequest.getAttribute(Globals.CERTIFICATES_ATTR);
+    Assert.assertNotNull(certificates);
+    Assert.assertEquals(1, certificates.length);
+    Assert.assertNotNull(certificates[0]);
+    Assert.assertEquals(0, f.getMessageCount());
+}

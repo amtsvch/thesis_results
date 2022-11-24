@@ -1,0 +1,40 @@
+final public Object value() throws ParseException {
+    Object x;
+    switch(jj_nt.kind) {
+        case STRING_SINGLE_EMPTY:
+        case STRING_DOUBLE_EMPTY:
+        case STRING_SINGLE_NONEMPTY:
+        case STRING_DOUBLE_NONEMPTY:
+            {
+                x = string();
+                break;
+            }
+        case NUMBER_INTEGER:
+        case NUMBER_DECIMAL:
+            {
+                x = number();
+                break;
+            }
+        case TRUE:
+        case FALSE:
+            {
+                x = booleanValue();
+                break;
+            }
+        case NULL:
+            {
+                x = nullValue();
+                break;
+            }
+        default:
+            jj_la1[7] = jj_gen;
+            jj_consume_token(-1);
+            throw new ParseException();
+    }
+    {
+        if ("" != null) {
+            return x;
+        }
+    }
+    throw new Error("Missing return statement in function");
+}

@@ -1,0 +1,15 @@
+/**
+ * Find the position of the last slash in the given char chunk.
+ */
+private static final int lastSlash(CharChunk name) {
+    char[] c = name.getBuffer();
+    int end = name.getEnd();
+    int start = name.getStart();
+    int pos = end;
+    while (pos > start) {
+        if (c[--pos] == '/') {
+            break;
+        }
+    }
+    return pos;
+}

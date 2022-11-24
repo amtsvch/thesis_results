@@ -1,0 +1,10 @@
+/**
+ * Set the configuration source used by Tomcat to locate various
+ * configuration resources.
+ * @param source The source
+ */
+public static final void setSource(ConfigurationSource source) {
+    if (ConfigFileLoader.source == null) {
+        ConfigFileLoader.source = source;
+    }
+}

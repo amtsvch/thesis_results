@@ -1,0 +1,7 @@
+@Test
+public void testContainsValue() {
+    Object o1 = new Object();
+    CaseInsensitiveKeyMap<Object> map = new CaseInsensitiveKeyMap<>();
+    map.put("a", o1);
+    Assert.assertTrue(map.containsValue(o1));
+}

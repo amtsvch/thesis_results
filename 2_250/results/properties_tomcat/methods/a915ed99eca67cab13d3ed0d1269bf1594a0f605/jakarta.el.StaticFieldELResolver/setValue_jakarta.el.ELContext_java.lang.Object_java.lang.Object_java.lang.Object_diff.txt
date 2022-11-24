@@ -1,0 +1,9 @@
+@Override
+public void setValue(ELContext context, Object base, Object property, Object value) {
+    Objects.requireNonNull(context);
+    if (base instanceof ELClass && property instanceof String) {
+        Class<?> clazz = ((ELClass) base).getKlass();
+        String name = (String) property;
+        throw new PropertyNotWritableException(Util.message(context, "staticFieldELResolver.notWriteable", name, clazz.getName()));
+    }
+}

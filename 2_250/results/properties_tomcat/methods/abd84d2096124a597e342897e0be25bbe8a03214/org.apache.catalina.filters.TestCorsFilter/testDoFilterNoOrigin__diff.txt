@@ -1,0 +1,16 @@
+/*
+     * Negative test, when a CORS request arrives, with no origin header.
+     */
+@Test
+public void testDoFilterNoOrigin() throws IOException, ServletException {
+    TesterHttpServletRequest request = new TesterHttpServletRequest();
+    request.setMethod("POST");
+    request.setContentType("text/plain");
+    TesterHttpServletResponse response = new TesterHttpServletResponse();
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getDefaultFilterConfig());
+    CorsFilter.CORSRequestType requestType = corsFilter.checkRequestType(request);
+    Assert.assertEquals(CorsFilter.CORSRequestType.NOT_CORS, requestType);
+    corsFilter.doFilter(request, response, filterChain);
+    Assert.assertFalse(((Boolean) request.getAttribute(CorsFilter.HTTP_REQUEST_ATTRIBUTE_IS_CORS_REQUEST)).booleanValue());
+}

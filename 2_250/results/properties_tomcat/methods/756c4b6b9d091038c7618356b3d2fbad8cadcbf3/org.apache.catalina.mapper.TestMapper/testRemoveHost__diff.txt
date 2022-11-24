@@ -1,0 +1,29 @@
+@Test
+public void testRemoveHost() {
+    Assert.assertEquals(19, mapper.hosts.length);
+    mapper.removeHostAlias("iowejoiejfoiew");
+    mapper.removeHost("iowejoiejfoiew_alias");
+    // No change
+    Assert.assertEquals(19, mapper.hosts.length);
+    mapper.removeHostAlias("iowejoiejfoiew_alias");
+    // Removed
+    Assert.assertEquals(18, mapper.hosts.length);
+    mapper.addHostAlias("iowejoiejfoiew", "iowejoiejfoiew_alias");
+    Assert.assertEquals(19, mapper.hosts.length);
+    final int iowPos = 4;
+    Mapper.MappedHost hostMapping = mapper.hosts[iowPos];
+    Mapper.MappedHost aliasMapping = mapper.hosts[iowPos + 1];
+    Assert.assertEquals("iowejoiejfoiew_alias", aliasMapping.name);
+    Assert.assertTrue(aliasMapping.isAlias());
+    Assert.assertSame(hostMapping.object, aliasMapping.object);
+    Assert.assertEquals("iowejoiejfoiew", hostMapping.getRealHostName());
+    Assert.assertEquals("iowejoiejfoiew", aliasMapping.getRealHostName());
+    Assert.assertSame(hostMapping, hostMapping.getRealHost());
+    Assert.assertSame(hostMapping, aliasMapping.getRealHost());
+    mapper.removeHost("iowejoiejfoiew");
+    // Both host and alias removed
+    Assert.assertEquals(17, mapper.hosts.length);
+    for (Mapper.MappedHost host : mapper.hosts) {
+        Assert.assertTrue(host.name, !host.name.startsWith("iowejoiejfoiew"));
+    }
+}

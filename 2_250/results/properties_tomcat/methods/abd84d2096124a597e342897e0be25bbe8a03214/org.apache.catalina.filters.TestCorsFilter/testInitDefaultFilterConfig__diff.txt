@@ -1,0 +1,35 @@
+@Test
+public void testInitDefaultFilterConfig() throws IOException, ServletException {
+    TesterHttpServletRequest request = new TesterHttpServletRequest();
+    request.setHeader(CorsFilter.REQUEST_HEADER_ORIGIN, TesterFilterConfigs.HTTPS_WWW_APACHE_ORG);
+    request.setMethod("GET");
+    TesterHttpServletResponse response = new TesterHttpServletResponse();
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(new FilterConfig() {
+
+        @Override
+        public ServletContext getServletContext() {
+            return null;
+        }
+
+        @Override
+        public Enumeration<String> getInitParameterNames() {
+            return null;
+        }
+
+        @Override
+        public String getInitParameter(String name) {
+            return null;
+        }
+
+        @Override
+        public String getFilterName() {
+            return null;
+        }
+    });
+    corsFilter.doFilter(request, response, filterChain);
+    Assert.assertNull(response.getHeader(CorsFilter.RESPONSE_HEADER_ACCESS_CONTROL_ALLOW_ORIGIN));
+    Assert.assertTrue(((Boolean) request.getAttribute(CorsFilter.HTTP_REQUEST_ATTRIBUTE_IS_CORS_REQUEST)).booleanValue());
+    Assert.assertTrue(request.getAttribute(CorsFilter.HTTP_REQUEST_ATTRIBUTE_ORIGIN).equals(TesterFilterConfigs.HTTPS_WWW_APACHE_ORG));
+    Assert.assertTrue(request.getAttribute(CorsFilter.HTTP_REQUEST_ATTRIBUTE_REQUEST_TYPE).equals(CorsFilter.CORSRequestType.SIMPLE.name().toLowerCase(Locale.ENGLISH)));
+}

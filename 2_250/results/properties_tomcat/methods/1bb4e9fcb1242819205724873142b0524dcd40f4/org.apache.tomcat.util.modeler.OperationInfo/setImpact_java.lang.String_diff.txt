@@ -1,0 +1,7 @@
+public void setImpact(String impact) {                                                                 public void setImpact(String impact) {                                                              
+if (impact == null)                                                                                  | if (impact == null) {                                                                               
+this.impact = null;                                                                                    this.impact = null;                                                                                 
+else                                                                                                 | } else {                                                                                            
+this.impact = impact.toUpperCase(Locale.ENGLISH);                                                      this.impact = impact.toUpperCase(Locale.ENGLISH);                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

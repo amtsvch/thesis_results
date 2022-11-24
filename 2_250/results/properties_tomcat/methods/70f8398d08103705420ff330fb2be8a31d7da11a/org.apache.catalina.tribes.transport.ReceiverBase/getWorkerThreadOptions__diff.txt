@@ -1,0 +1,7 @@
+public int getWorkerThreadOptions() {                                                                  public int getWorkerThreadOptions() {                                                               
+int options = 0;                                                                                       int options = 0;                                                                                    
+if (getDirect())                                                                                     | if (getDirect()) {                                                                                  
+options = options | OPTION_DIRECT_BUFFER;                                                              options = options | OPTION_DIRECT_BUFFER;                                                           
+                                                                                                     | }                                                                                                   
+return options;                                                                                        return options;                                                                                     
+}                                                                                                      }                                                                                                   

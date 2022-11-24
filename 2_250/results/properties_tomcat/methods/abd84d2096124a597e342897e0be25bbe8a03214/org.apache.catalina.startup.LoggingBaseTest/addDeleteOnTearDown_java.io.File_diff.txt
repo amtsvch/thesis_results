@@ -1,0 +1,10 @@
+/**
+ * Schedule the given file or directory to be deleted during after-test
+ * cleanup.
+ *
+ * @param file
+ *            File or directory
+ */
+public void addDeleteOnTearDown(File file) {
+    deleteOnTearDown.add(file);
+}

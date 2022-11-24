@@ -1,0 +1,11 @@
+public Optional reduce(LambdaExpression le) {
+    Object seed = null;
+    if (iterator.hasNext()) {
+        seed = iterator.next();
+    }
+    if (seed == null) {
+        return Optional.EMPTY;
+    } else {
+        return new Optional(reduce(seed, le));
+    }
+}

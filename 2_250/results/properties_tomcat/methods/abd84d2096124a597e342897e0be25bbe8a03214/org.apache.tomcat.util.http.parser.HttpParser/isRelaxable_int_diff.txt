@@ -1,0 +1,9 @@
+private static boolean isRelaxable(int c) {
+    // Fast for valid user info characters, slower for some incorrect
+    // ones
+    try {
+        return IS_RELAXABLE[c];
+    } catch (ArrayIndexOutOfBoundsException ex) {
+        return false;
+    }
+}

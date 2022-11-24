@@ -1,0 +1,28 @@
+/**
+ * Add a security constraint to the set for this web application.
+ *
+ * @param constraint the new security constraint
+ */
+@Override
+public void addConstraint(SecurityConstraint constraint) {
+    // Validate the proposed constraint
+    SecurityCollection[] collections = constraint.findCollections();
+    for (SecurityCollection collection : collections) {
+        String[] patterns = collection.findPatterns();
+        for (int j = 0; j < patterns.length; j++) {
+            patterns[j] = adjustURLPattern(patterns[j]);
+            if (!validateURLPattern(patterns[j])) {
+                throw new IllegalArgumentException(sm.getString("standardContext.securityConstraint.pattern", patterns[j]));
+            }
+        }
+        if (collection.findMethods().length > 0 && collection.findOmittedMethods().length > 0) {
+            throw new IllegalArgumentException(sm.getString("standardContext.securityConstraint.mixHttpMethod"));
+        }
+    }
+    // Add this constraint to the set for our web application
+    synchronized (constraintsLock) {
+        SecurityConstraint[] results = Arrays.copyOf(constraints, constraints.length + 1);
+        results[constraints.length] = constraint;
+        constraints = results;
+    }
+}

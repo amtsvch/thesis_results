@@ -1,0 +1,11 @@
+/**                                                                                                    /**                                                                                                 
+* Sets the flag that controls if this cookie will be hidden from scripts on                            * Sets the flag that controls if this cookie will be hidden from scripts on                         
+* the client side.                                                                                     * the client side.                                                                                  
+*                                                                                                      *                                                                                                   
+* @param httpOnly  The new value of the flag                                                           * @param httpOnly  The new value of the flag                                                        
+*                                                                                                      *                                                                                                   
+* @since Servlet 3.0                                                                                   * @since Servlet 3.0                                                                                
+*/                                                                                                     */                                                                                                  
+public void setHttpOnly(boolean httpOnly) {                                                            public void setHttpOnly(boolean httpOnly) {                                                         
+this.httpOnly = httpOnly;                                                                            | setAttributeInternal(HTTP_ONLY, Boolean.toString(httpOnly));                                        
+}                                                                                                      }                                                                                                   

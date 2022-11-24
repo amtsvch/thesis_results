@@ -1,0 +1,24 @@
+/**
+ * @return the current LineInfo as a String, print all values only when
+ *         appropriate (but LineInfoID if and only if it's been
+ *         specified, as its necessity is sensitive to context).
+ */
+public String getString() {
+    if (inputStartLine == -1 || outputStartLine == -1) {
+        throw new IllegalStateException();
+    }
+    StringBuilder out = new StringBuilder();
+    out.append(inputStartLine);
+    if (lineFileIDSet) {
+        out.append("#" + lineFileID);
+    }
+    if (inputLineCount != 1) {
+        out.append("," + inputLineCount);
+    }
+    out.append(":" + outputStartLine);
+    if (outputLineIncrement != 1) {
+        out.append("," + outputLineIncrement);
+    }
+    out.append('\n');
+    return out.toString();
+}

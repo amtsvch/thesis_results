@@ -1,0 +1,6 @@
+@Test
+public void testCoerceToType14() {
+    PropertyEditorManager.registerEditor(TesterType.class, TesterTypeEditorNoError.class);
+    Object result = ELManager.getExpressionFactory().coerceToType("Foo", TesterType.class);
+    Assert.assertEquals("Foo", ((TesterType) result).getValue());
+}

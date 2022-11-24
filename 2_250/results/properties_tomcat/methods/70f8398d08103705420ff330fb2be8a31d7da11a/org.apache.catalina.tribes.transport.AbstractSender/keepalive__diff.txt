@@ -1,0 +1,23 @@
+/**                                                                                                    /**                                                                                                 
+* keepalive                                                                                            * keepalive                                                                                         
+*                                                                                                      *                                                                                                   
+* @return boolean                                                                                      * @return boolean                                                                                   
+* TODO Implement this org.apache.catalina.tribes.transport.DataSender method                           * TODO Implement this org.apache.catalina.tribes.transport.DataSender method                        
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public boolean keepalive() {                                                                           public boolean keepalive() {                                                                        
+boolean disconnect = false;                                                                            boolean disconnect = false;                                                                         
+if (// always disconnect UDP, TODO optimize the keepalive handling                                   | if (isUdpBased()) {                                                                                 
+isUdpBased())                                                                                        |                                                                                                     
+// always disconnect UDP, TODO optimize the keepalive handling                                         // always disconnect UDP, TODO optimize the keepalive handling                                      
+disconnect = true;                                                                                     disconnect = true;                                                                                  
+else if (keepAliveCount &gt;= 0 && requestCount &gt; keepAliveCount)                                 | } else if (keepAliveCount &gt;= 0 && requestCount &gt; keepAliveCount) {                            
+disconnect = true;                                                                                     disconnect = true;                                                                                  
+else if (keepAliveTime &gt;= 0 && (System.currentTimeMillis() - connectTime) &gt; keepAliveTime)     | } else if (keepAliveTime &gt;= 0 && (System.currentTimeMillis() - connectTime) &gt; keepAliveTime) {
+disconnect = true;                                                                                     disconnect = true;                                                                                  
+if (disconnect)                                                                                      | }                                                                                                   
+                                                                                                     | if (disconnect) {                                                                                   
+disconnect();                                                                                          disconnect();                                                                                       
+                                                                                                     | }                                                                                                   
+return disconnect;                                                                                     return disconnect;                                                                                  
+}                                                                                                      }                                                                                                   

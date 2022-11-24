@@ -1,0 +1,11 @@
+/**                                                                                                    /**                                                                                                 
+* Returns the comment describing the purpose of this cookie, or                                        * Returns the comment describing the purpose of this cookie, or                                     
+* &lt;code&gt;null&lt;/code&gt; if the cookie has no comment.                                          * &lt;code&gt;null&lt;/code&gt; if the cookie has no comment.                                       
+*                                                                                                      *                                                                                                   
+* @return a &lt;code&gt;String&lt;/code&gt; containing the comment, or                                 * @return a &lt;code&gt;String&lt;/code&gt; containing the comment, or                              
+*         &lt;code&gt;null&lt;/code&gt; if none                                                        *         &lt;code&gt;null&lt;/code&gt; if none                                                     
+* @see #setComment                                                                                     * @see #setComment                                                                                  
+*/                                                                                                     */                                                                                                  
+public String getComment() {                                                                           public String getComment() {                                                                        
+return comment;                                                                                      | return getAttribute(COMMENT);                                                                       
+}                                                                                                      }                                                                                                   

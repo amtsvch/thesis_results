@@ -1,0 +1,12 @@
+@Test
+public void testPutAll() {
+    Object o1 = new Object();
+    Object o2 = new Object();
+    Map<String, Object> source = new HashMap<>();
+    source.put("a", o1);
+    source.put("A", o2);
+    CaseInsensitiveKeyMap<Object> map = new CaseInsensitiveKeyMap<>();
+    map.putAll(source);
+    Assert.assertEquals(1, map.size());
+    Assert.assertTrue(map.containsValue(o1) != map.containsValue(o2));
+}

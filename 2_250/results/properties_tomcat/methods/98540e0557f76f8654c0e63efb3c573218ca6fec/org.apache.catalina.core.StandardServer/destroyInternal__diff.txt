@@ -1,0 +1,16 @@
+@Override
+protected void destroyInternal() throws LifecycleException {
+    // Destroy our defined Services
+    for (Service service : services) {
+        service.destroy();
+    }
+    globalNamingResources.destroy();
+    unregister(onameMBeanFactory);
+    unregister(onameStringCache);
+    if (utilityExecutor != null) {
+        utilityExecutor.shutdownNow();
+        unregister("type=UtilityExecutor");
+        utilityExecutor = null;
+    }
+    super.destroyInternal();
+}

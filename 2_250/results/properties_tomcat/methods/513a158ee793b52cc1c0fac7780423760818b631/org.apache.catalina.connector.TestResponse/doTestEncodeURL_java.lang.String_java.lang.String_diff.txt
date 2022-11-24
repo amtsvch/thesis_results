@@ -1,0 +1,9 @@
+private void doTestEncodeURL(String location, String expected) {
+    Request req = new TesterRequest(true);
+    req.setRequestedSessionId("1234");
+    req.setRequestedSessionURL(true);
+    Response resp = new Response();
+    resp.setRequest(req);
+    String result = resp.encodeURL(location);
+    Assert.assertEquals(expected, result);
+}

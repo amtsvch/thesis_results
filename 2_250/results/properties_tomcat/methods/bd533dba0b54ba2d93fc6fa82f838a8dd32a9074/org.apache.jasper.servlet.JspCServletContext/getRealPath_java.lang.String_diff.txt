@@ -1,0 +1,22 @@
+/**                                                                                                    /**                                                                                                 
+* Return the real path for the specified context-relative                                              * Return the real path for the specified context-relative                                           
+* virtual path.                                                                                        * virtual path.                                                                                     
+*                                                                                                      *                                                                                                   
+* @param path The context-relative virtual path to resolve                                             * @param path The context-relative virtual path to resolve                                          
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public String getRealPath(String path) {                                                               public String getRealPath(String path) {                                                            
+if (!myResourceBaseURL.getProtocol().equals("file"))                                                 | if (!myResourceBaseURL.getProtocol().equals("file")) {                                              
+return null;                                                                                           return null;                                                                                        
+if (!path.startsWith("/"))                                                                           | }                                                                                                   
+                                                                                                     | if (!path.startsWith("/")) {                                                                        
+return null;                                                                                           return null;                                                                                        
+                                                                                                     | }                                                                                                   
+try {                                                                                                  try {                                                                                               
+File f = new File(getResource(path).toURI());                                                          File f = new File(getResource(path).toURI());                                                       
+return f.getAbsolutePath();                                                                            return f.getAbsolutePath();                                                                         
+} catch (Throwable t) {                                                                                } catch (Throwable t) {                                                                             
+ExceptionUtils.handleThrowable(t);                                                                     ExceptionUtils.handleThrowable(t);                                                                  
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

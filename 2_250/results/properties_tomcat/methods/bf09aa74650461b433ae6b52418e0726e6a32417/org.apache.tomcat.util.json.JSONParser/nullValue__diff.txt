@@ -1,0 +1,9 @@
+final public Object nullValue() throws ParseException {                                                final public Object nullValue() throws ParseException {                                             
+jj_consume_token(NULL);                                                                                jj_consume_token(NULL);                                                                             
+{                                                                                                      {                                                                                                   
+if ("" != null)                                                                                      | if ("" != null) {                                                                                   
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+throw new Error("Missing return statement in function");                                               throw new Error("Missing return statement in function");                                            
+}                                                                                                      }                                                                                                   

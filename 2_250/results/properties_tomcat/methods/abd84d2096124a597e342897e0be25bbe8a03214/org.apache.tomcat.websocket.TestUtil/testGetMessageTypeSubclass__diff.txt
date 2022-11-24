@@ -1,0 +1,4 @@
+@Test
+public void testGetMessageTypeSubclass() {
+    Assert.assertEquals(String.class, Util.getMessageType(new SubSimpleMessageHandler()));
+}

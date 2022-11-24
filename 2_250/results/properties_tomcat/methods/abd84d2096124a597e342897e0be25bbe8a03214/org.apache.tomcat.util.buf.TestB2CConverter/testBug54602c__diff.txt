@@ -1,0 +1,17 @@
+@Test
+public void testBug54602c() throws Exception {
+    // Check partial input is rejected once it is known to be all available
+    B2CConverter conv = new B2CConverter(StandardCharsets.UTF_8);
+    ByteChunk bc = new ByteChunk();
+    CharChunk cc = new CharChunk();
+    bc.append(UTF8_PARTIAL, 0, UTF8_PARTIAL.length);
+    cc.allocate(bc.getLength(), -1);
+    conv.convert(bc, cc, false);
+    Exception e = null;
+    try {
+        conv.convert(bc, cc, true);
+    } catch (MalformedInputException mie) {
+        e = mie;
+    }
+    Assert.assertNotNull(e);
+}

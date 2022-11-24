@@ -1,0 +1,9 @@
+public static boolean isUserInfo(int c) {
+    // Fast for valid user info characters, slower for some incorrect
+    // ones
+    try {
+        return IS_USERINFO[c];
+    } catch (ArrayIndexOutOfBoundsException ex) {
+        return false;
+    }
+}

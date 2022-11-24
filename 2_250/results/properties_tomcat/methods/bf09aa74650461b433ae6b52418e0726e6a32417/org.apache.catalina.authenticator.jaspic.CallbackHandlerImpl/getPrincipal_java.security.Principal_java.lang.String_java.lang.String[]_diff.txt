@@ -1,0 +1,19 @@
+private Principal getPrincipal(Principal principal, String name, String[] groups) {
+    // If the Principal is cached in the session JASPIC may simply return it
+    if (principal instanceof GenericPrincipal) {
+        return principal;
+    }
+    if (name == null && principal != null) {
+        name = principal.getName();
+    }
+    if (name == null) {
+        return null;
+    }
+    List<String> roles;
+    if (groups == null || groups.length == 0) {
+        roles = Collections.emptyList();
+    } else {
+        roles = Arrays.asList(groups);
+    }
+    return new GenericPrincipal(name, roles, principal);
+}

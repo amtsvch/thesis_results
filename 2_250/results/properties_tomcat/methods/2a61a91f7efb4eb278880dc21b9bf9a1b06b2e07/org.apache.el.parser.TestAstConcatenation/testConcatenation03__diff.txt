@@ -1,0 +1,9 @@
+/**
+ * Test string concatenation with whitespace.
+ */
+@Test
+public void testConcatenation03() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("' a' += ' b '", String.class);
+    Assert.assertEquals(" a b ", result);
+}

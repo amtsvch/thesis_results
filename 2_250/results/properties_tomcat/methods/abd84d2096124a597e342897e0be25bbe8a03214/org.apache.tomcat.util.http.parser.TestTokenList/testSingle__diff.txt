@@ -1,0 +1,6 @@
+@Test
+public void testSingle() throws IOException {
+    Set<String> expected = new HashSet<>();
+    expected.add("host");
+    doTestVary("Host", expected, true);
+}

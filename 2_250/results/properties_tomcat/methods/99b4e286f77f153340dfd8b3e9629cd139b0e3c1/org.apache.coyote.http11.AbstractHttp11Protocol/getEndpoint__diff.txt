@@ -1,0 +1,9 @@
+/**
+ * {@inheritDoc}
+ * <p>
+ * Over-ridden here to make the method visible to nested classes.
+ */
+@Override
+protected AbstractEndpoint<S, ?> getEndpoint() {
+    return super.getEndpoint();
+}

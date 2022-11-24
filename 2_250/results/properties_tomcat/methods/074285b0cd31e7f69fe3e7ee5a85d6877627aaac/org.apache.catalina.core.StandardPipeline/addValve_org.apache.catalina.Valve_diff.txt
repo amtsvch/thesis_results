@@ -1,0 +1,52 @@
+/**
+ * <p>Add a new Valve to the end of the pipeline associated with this
+ * Container.  Prior to adding the Valve, the Valve's
+ * <code>setContainer()</code> method will be called, if it implements
+ * <code>Contained</code>, with the owning Container as an argument.
+ * The method may throw an
+ * <code>IllegalArgumentException</code> if this Valve chooses not to
+ * be associated with this Container, or <code>IllegalStateException</code>
+ * if it is already associated with a different Container.</p>
+ *
+ * @param valve Valve to be added
+ *
+ * @exception IllegalArgumentException if this Container refused to
+ *  accept the specified Valve
+ * @exception IllegalArgumentException if the specified Valve refuses to be
+ *  associated with this Container
+ * @exception IllegalStateException if the specified Valve is already
+ *  associated with a different Container
+ */
+@Override
+public void addValve(Valve valve) {
+    // Validate that we can add this Valve
+    if (valve instanceof Contained) {
+        ((Contained) valve).setContainer(this.container);
+    }
+    // Start the new component if necessary
+    if (getState().isAvailable()) {
+        if (valve instanceof Lifecycle) {
+            try {
+                ((Lifecycle) valve).start();
+            } catch (LifecycleException e) {
+                log.error(sm.getString("standardPipeline.valve.start"), e);
+            }
+        }
+    }
+    // Add this Valve to the set associated with this Pipeline
+    if (first == null) {
+        first = valve;
+        valve.setNext(basic);
+    } else {
+        Valve current = first;
+        while (current != null) {
+            if (current.getNext() == basic) {
+                current.setNext(valve);
+                valve.setNext(basic);
+                break;
+            }
+            current = current.getNext();
+        }
+    }
+    container.fireContainerEvent(Container.ADD_VALVE_EVENT, valve);
+}

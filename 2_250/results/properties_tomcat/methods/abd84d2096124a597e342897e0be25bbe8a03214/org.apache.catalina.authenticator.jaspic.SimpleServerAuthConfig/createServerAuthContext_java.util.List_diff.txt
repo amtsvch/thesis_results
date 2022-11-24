@@ -1,0 +1,3 @@
+protected ServerAuthContext createServerAuthContext(List<ServerAuthModule> modules) {
+    return new SimpleServerAuthContext(modules);
+}

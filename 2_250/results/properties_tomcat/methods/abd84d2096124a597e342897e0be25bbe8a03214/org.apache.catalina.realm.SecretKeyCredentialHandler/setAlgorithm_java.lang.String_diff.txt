@@ -1,0 +1,5 @@
+@Override
+public void setAlgorithm(String algorithm) throws NoSuchAlgorithmException {
+    SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance(algorithm);
+    this.secretKeyFactory = secretKeyFactory;
+}

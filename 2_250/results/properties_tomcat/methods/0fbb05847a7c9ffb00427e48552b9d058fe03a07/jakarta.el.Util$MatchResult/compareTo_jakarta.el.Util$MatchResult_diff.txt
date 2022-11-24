@@ -1,0 +1,22 @@
+@Override                                                                                              @Override                                                                                           
+public int compareTo(MatchResult o) {                                                                  public int compareTo(MatchResult o) {                                                               
+int cmp = Integer.compare(this.getExact(), o.getExact());                                            | int cmp = Integer.compare(this.getExactCount(), o.getExactCount());                                 
+if (cmp == 0) {                                                                                        if (cmp == 0) {                                                                                     
+cmp = Integer.compare(this.getAssignable(), o.getAssignable());                                      | cmp = Integer.compare(this.getAssignableCount(), o.getAssignableCount());                           
+if (cmp == 0) {                                                                                        if (cmp == 0) {                                                                                     
+cmp = Integer.compare(this.getCoercible(), o.getCoercible());                                        | cmp = Integer.compare(this.getCoercibleCount(), o.getCoercibleCount());                             
+if (cmp == 0) {                                                                                        if (cmp == 0) {                                                                                     
+// Fewer var args matches are better                                                                   // Fewer var args matches are better                                                                
+cmp = Integer.compare(o.getVarArgs(), this.getVarArgs());                                            | cmp = Integer.compare(o.getVarArgsCount(), this.getVarArgsCount());                                 
+if (cmp == 0) {                                                                                        if (cmp == 0) {                                                                                     
+// The nature of bridge methods is such that it actually                                               // The nature of bridge methods is such that it actually                                            
+// doesn't matter which one we pick as long as we pick                                                 // doesn't matter which one we pick as long as we pick                                              
+// one. That said, pick the 'right' one (the non-bridge                                                // one. That said, pick the 'right' one (the non-bridge                                             
+// one) anyway.                                                                                        // one) anyway.                                                                                     
+cmp = Boolean.compare(o.isBridge(), this.isBridge());                                                  cmp = Boolean.compare(o.isBridge(), this.isBridge());                                               
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+return cmp;                                                                                            return cmp;                                                                                         
+}                                                                                                      }                                                                                                   

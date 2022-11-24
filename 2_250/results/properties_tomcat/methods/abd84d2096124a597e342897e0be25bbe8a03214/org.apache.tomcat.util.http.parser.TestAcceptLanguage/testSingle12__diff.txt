@@ -1,0 +1,7 @@
+@Test
+public void testSingle12() throws Exception {
+    List<AcceptLanguage> actual = AcceptLanguage.parse(new StringReader("en-gb; q =\t1\t"));
+    Assert.assertEquals(1, actual.size());
+    Assert.assertEquals(L_EN_GB, actual.get(0).getLocale());
+    Assert.assertEquals(Q1_000, actual.get(0).getQuality(), 0.0001);
+}

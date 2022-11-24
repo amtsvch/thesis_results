@@ -1,0 +1,5 @@
+@Test
+public void testEmptyArray() throws Exception {
+    Object obj = XByteBuffer.deserialize(new byte[0]);
+    Assert.assertNull(obj);
+}

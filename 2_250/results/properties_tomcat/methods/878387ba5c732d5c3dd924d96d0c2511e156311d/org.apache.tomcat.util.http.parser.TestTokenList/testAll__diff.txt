@@ -1,0 +1,6 @@
+@Test
+public void testAll() throws IOException {
+    Set<String> expected = new HashSet<>();
+    expected.add("*");
+    doTestVary("*", expected, true);
+}

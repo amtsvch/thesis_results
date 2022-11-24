@@ -1,0 +1,15 @@
+/**                                                                                                    /**                                                                                                 
+* Add a new web resource collection to those protected by this                                         * Add a new web resource collection to those protected by this                                      
+* security constraint.                                                                                 * security constraint.                                                                              
+*                                                                                                      *                                                                                                   
+* @param collection The new web resource collection                                                    * @param collection The new web resource collection                                                 
+*/                                                                                                     */                                                                                                  
+public void addCollection(SecurityCollection collection) {                                             public void addCollection(SecurityCollection collection) {                                          
+if (collection == null)                                                                              | if (collection == null) {                                                                           
+return;                                                                                                return;                                                                                             
+                                                                                                     | }                                                                                                   
+collection.setCharset(getCharset());                                                                   collection.setCharset(getCharset());                                                                
+SecurityCollection[] results = Arrays.copyOf(collections, collections.length + 1);                     SecurityCollection[] results = Arrays.copyOf(collections, collections.length + 1);                  
+results[collections.length] = collection;                                                              results[collections.length] = collection;                                                           
+collections = results;                                                                                 collections = results;                                                                              
+}                                                                                                      }                                                                                                   

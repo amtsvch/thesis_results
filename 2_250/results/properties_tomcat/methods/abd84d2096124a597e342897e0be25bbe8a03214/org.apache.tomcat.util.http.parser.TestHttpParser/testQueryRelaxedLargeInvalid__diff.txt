@@ -1,0 +1,5 @@
+@Test
+public void testQueryRelaxedLargeInvalid() {
+    HttpParser httpParser = new HttpParser(null, null);
+    Assert.assertFalse(httpParser.isQueryRelaxed(Integer.MAX_VALUE));
+}

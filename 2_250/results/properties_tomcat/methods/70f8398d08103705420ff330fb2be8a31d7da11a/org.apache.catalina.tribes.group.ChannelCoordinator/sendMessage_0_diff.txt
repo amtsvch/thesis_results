@@ -1,0 +1,20 @@
+/**                                                                                                    /**                                                                                                 
+* Send a message to one or more members in the cluster                                                 * Send a message to one or more members in the cluster                                              
+* @param destination Member[] - the destinations, null or zero length means all                        * @param destination Member[] - the destinations, null or zero length means all                     
+* @param msg ClusterMessage - the message to send                                                      * @param msg ClusterMessage - the message to send                                                   
+* @param payload TBA                                                                                   * @param payload TBA                                                                                
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void sendMessage(Member[] destination, ChannelMessage msg, InterceptorPayload payload) throws   public void sendMessage(Member[] destination, ChannelMessage msg, InterceptorPayload payload) throws
+if (destination == null)                                                                             | if (destination == null) {                                                                          
+destination = membershipService.getMembers();                                                          destination = membershipService.getMembers();                                                       
+                                                                                                     | }                                                                                                   
+if ((msg.getOptions() & Channel.SEND_OPTIONS_MULTICAST) == Channel.SEND_OPTIONS_MULTICAST) {           if ((msg.getOptions() & Channel.SEND_OPTIONS_MULTICAST) == Channel.SEND_OPTIONS_MULTICAST) {        
+membershipService.broadcast(msg);                                                                      membershipService.broadcast(msg);                                                                   
+} else {                                                                                               } else {                                                                                            
+clusterSender.sendMessage(msg, destination);                                                           clusterSender.sendMessage(msg, destination);                                                        
+}                                                                                                      }                                                                                                   
+if (Logs.MESSAGES.isTraceEnabled()) {                                                                  if (Logs.MESSAGES.isTraceEnabled()) {                                                               
+Logs.MESSAGES.trace("ChannelCoordinator - Sent msg:" + new UniqueId(msg.getUniqueId()) + " at " + ne   Logs.MESSAGES.trace("ChannelCoordinator - Sent msg:" + new UniqueId(msg.getUniqueId()) + " at " + ne
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

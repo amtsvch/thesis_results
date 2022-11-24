@@ -1,0 +1,10 @@
+@Test
+public void testClientCertProviderNotFound() throws Exception {
+    EasyMock.expect(mockRequest.getConnector().getProperty("clientCertProvider")).andStubReturn("wontBeFound");
+    EasyMock.replay(mockRequest.getConnector());
+    mockRequest.setHeader(valve.getSslClientCertHeader(), certificateSingleLine(" "));
+    TesterLogValidationFilter f = TesterLogValidationFilter.add(Level.SEVERE, null, "java.security.NoSuchProviderException", "org.apache.catalina.valves.SSLValve");
+    valve.invoke(mockRequest, null);
+    Assert.assertNull(mockRequest.getAttribute(Globals.CERTIFICATES_ATTR));
+    Assert.assertEquals(1, f.getMessageCount());
+}

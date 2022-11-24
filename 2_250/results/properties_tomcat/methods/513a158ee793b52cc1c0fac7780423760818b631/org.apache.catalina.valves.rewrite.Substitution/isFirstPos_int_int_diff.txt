@@ -1,0 +1,23 @@
+/**
+ * Checks whether the first int is non negative and smaller than any non negative other int
+ * given with {@code others}.
+ *
+ * @param testPos
+ *            integer to test against
+ * @param others
+ *            list of integers that are paired against {@code testPos}. Any
+ *            negative integer will be ignored.
+ * @return {@code true} if {@code testPos} is not negative and is less then any given other
+ *         integer, {@code false} otherwise
+ */
+private boolean isFirstPos(int testPos, int... others) {
+    if (testPos < 0) {
+        return false;
+    }
+    for (int other : others) {
+        if (other >= 0 && other < testPos) {
+            return false;
+        }
+    }
+    return true;
+}

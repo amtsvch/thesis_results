@@ -1,0 +1,14 @@
+public LruCache(final int cacheSize) {                                                                 public LruCache(final int cacheSize) {                                                              
+cache = new LinkedHashMap&lt;T, T&gt;() {                                                            | cache = new LinkedHashMap&lt;&gt;() {                                                               
+                                                                                                                                                                                                           
+private static final long serialVersionUID = 1L;                                                       private static final long serialVersionUID = 1L;                                                    
+                                                                                                                                                                                                           
+@Override                                                                                              @Override                                                                                           
+protected boolean removeEldestEntry(Map.Entry&lt;T, T&gt; eldest) {                                    protected boolean removeEldestEntry(Map.Entry&lt;T, T&gt; eldest) {                                 
+if (size() &gt; cacheSize) {                                                                           if (size() &gt; cacheSize) {                                                                        
+return true;                                                                                           return true;                                                                                        
+}                                                                                                      }                                                                                                   
+return false;                                                                                          return false;                                                                                       
+}                                                                                                      }                                                                                                   
+};                                                                                                     };                                                                                                  
+}                                                                                                      }                                                                                                   

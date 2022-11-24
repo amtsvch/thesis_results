@@ -1,0 +1,9 @@
+private InputStream getWrappedClosedInputStream() throws IOException {
+    StandardRoot root = new StandardRoot();
+    root.setCachingAllowed(false);
+    JarResourceSet jarResourceSet = new JarResourceSet(root, "/", "test/webresources/non-static-resources.jar", "/");
+    WebResource webResource = jarResourceSet.getResource("/META-INF/MANIFEST.MF");
+    InputStream wrapped = webResource.getInputStream();
+    wrapped.close();
+    return wrapped;
+}

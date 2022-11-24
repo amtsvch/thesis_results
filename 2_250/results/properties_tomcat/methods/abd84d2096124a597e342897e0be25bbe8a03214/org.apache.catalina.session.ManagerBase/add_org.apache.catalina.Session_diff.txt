@@ -1,0 +1,12 @@
+@Override
+public void add(Session session) {
+    sessions.put(session.getIdInternal(), session);
+    int size = getActiveSessions();
+    if (size > maxActive) {
+        synchronized (maxActiveUpdateLock) {
+            if (size > maxActive) {
+                maxActive = size;
+            }
+        }
+    }
+}

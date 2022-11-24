@@ -1,0 +1,19 @@
+@Test
+public void testProcessParametersByteArrayIntInt() {
+    doTestProcessParametersByteArrayIntInt(-1, SIMPLE);
+    doTestProcessParametersByteArrayIntInt(-1, SIMPLE_MULTIPLE);
+    doTestProcessParametersByteArrayIntInt(-1, NO_VALUE);
+    doTestProcessParametersByteArrayIntInt(-1, EMPTY_VALUE);
+    doTestProcessParametersByteArrayIntInt(-1, EMPTY);
+    doTestProcessParametersByteArrayIntInt(-1, UTF8);
+    doTestProcessParametersByteArrayIntInt(-1, SIMPLE, SIMPLE_MULTIPLE, NO_VALUE, EMPTY_VALUE, EMPTY, UTF8);
+    doTestProcessParametersByteArrayIntInt(-1, SIMPLE_MULTIPLE, NO_VALUE, EMPTY_VALUE, EMPTY, UTF8, SIMPLE);
+    doTestProcessParametersByteArrayIntInt(-1, NO_VALUE, EMPTY_VALUE, EMPTY, UTF8, SIMPLE, SIMPLE_MULTIPLE);
+    doTestProcessParametersByteArrayIntInt(-1, EMPTY_VALUE, EMPTY, UTF8, SIMPLE, SIMPLE_MULTIPLE, NO_VALUE);
+    doTestProcessParametersByteArrayIntInt(-1, EMPTY, UTF8, SIMPLE, SIMPLE_MULTIPLE, NO_VALUE, EMPTY_VALUE);
+    doTestProcessParametersByteArrayIntInt(-1, UTF8, SIMPLE, SIMPLE_MULTIPLE, NO_VALUE, EMPTY_VALUE, EMPTY);
+    doTestProcessParametersByteArrayIntInt(1, SIMPLE, NO_VALUE, EMPTY_VALUE, UTF8);
+    doTestProcessParametersByteArrayIntInt(2, SIMPLE, NO_VALUE, EMPTY_VALUE, UTF8);
+    doTestProcessParametersByteArrayIntInt(3, SIMPLE, NO_VALUE, EMPTY_VALUE, UTF8);
+    doTestProcessParametersByteArrayIntInt(4, SIMPLE, NO_VALUE, EMPTY_VALUE, UTF8);
+}

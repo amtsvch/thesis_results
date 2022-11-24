@@ -1,0 +1,14 @@
+/**                                                                                                    /**                                                                                                 
+* start the sender and register transmitter mbean                                                      * start the sender and register transmitter mbean                                                   
+*                                                                                                      *                                                                                                   
+* @see org.apache.catalina.tribes.ChannelSender#start()                                                * @see org.apache.catalina.tribes.ChannelSender#start()                                             
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void start() throws java.io.IOException {                                                       public void start() throws java.io.IOException {                                                    
+getTransport().connect();                                                                              getTransport().connect();                                                                           
+// register jmx                                                                                        // register jmx                                                                                     
+JmxRegistry jmxRegistry = JmxRegistry.getRegistry(channel);                                            JmxRegistry jmxRegistry = JmxRegistry.getRegistry(channel);                                         
+if (jmxRegistry != null)                                                                             | if (jmxRegistry != null) {                                                                          
+this.oname = jmxRegistry.registerJmx(",component=Sender", transport);                                  this.oname = jmxRegistry.registerJmx(",component=Sender", transport);                               
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

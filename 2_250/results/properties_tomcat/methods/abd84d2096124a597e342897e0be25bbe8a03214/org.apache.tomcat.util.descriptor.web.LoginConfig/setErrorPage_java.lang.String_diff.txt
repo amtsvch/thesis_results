@@ -1,0 +1,6 @@
+public void setErrorPage(String errorPage) {
+    // if ((errorPage == null) || !errorPage.startsWith("/"))
+    // throw new IllegalArgumentException
+    // ("Error Page resource path must start with a '/'");
+    this.errorPage = UDecoder.URLDecode(errorPage, getCharset());
+}

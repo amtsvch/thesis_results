@@ -1,0 +1,16 @@
+protected byte[] generateIVBytes() {
+    byte[] ivBytes = new byte[getIVSize()];
+    SecureRandom random = null;
+    try {
+        random = getRandom();
+        // Always use a random IV For cipher setup.
+        // The recipient doesn't need the (matching) IV because we will always
+        // pre-pad messages with the IV as a nonce.
+        random.nextBytes(ivBytes);
+        return ivBytes;
+    } finally {
+        if (null != random) {
+            returnRandom(random);
+        }
+    }
+}

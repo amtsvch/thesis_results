@@ -1,0 +1,57 @@
+/*
+     * This method gets the next unquoted character and looks for
+     * - literals that need to be converted for EL processing
+     *   \ -> type{'\\'}
+     *   $ -> type{'$'}
+     *   # -> type{'#'}
+     * - start of EL
+     *   ${
+     *   #{
+     * Note all the examples above *do not* include the escaping required to use
+     * the values in Java code.
+     */
+private void parseLiteral() {
+    boolean foundEL = false;
+    while (i < size && !foundEL) {
+        char ch = nextChar();
+        if (!isELIgnored && ch == '\\') {
+            if (type == 0) {
+                result.append("\\");
+            } else {
+                result.append(type);
+                result.append("{'\\\\'}");
+            }
+        } else if (!isELIgnored && ch == '$' && lastChEscaped) {
+            if (type == 0) {
+                result.append("\\$");
+            } else {
+                result.append(type);
+                result.append("{'$'}");
+            }
+        } else if (!isELIgnored && ch == '#' && lastChEscaped) {
+            // Note if isDeferredSyntaxAllowedAsLiteral==true, \# will
+            // not be treated as an escape
+            if (type == 0) {
+                result.append("\\#");
+            } else {
+                result.append(type);
+                result.append("{'#'}");
+            }
+        } else if (ch == type) {
+            if (i < size) {
+                char next = input.charAt(i);
+                if (next == '{') {
+                    foundEL = true;
+                    // Move back to start of EL
+                    i--;
+                } else {
+                    result.append(ch);
+                }
+            } else {
+                result.append(ch);
+            }
+        } else {
+            result.append(ch);
+        }
+    }
+}

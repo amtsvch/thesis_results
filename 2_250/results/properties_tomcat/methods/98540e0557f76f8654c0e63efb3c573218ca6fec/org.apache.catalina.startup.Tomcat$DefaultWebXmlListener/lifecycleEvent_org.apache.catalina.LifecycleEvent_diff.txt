@@ -1,0 +1,6 @@
+@Override
+public void lifecycleEvent(LifecycleEvent event) {
+    if (Lifecycle.BEFORE_START_EVENT.equals(event.getType())) {
+        initWebappDefaults((Context) event.getLifecycle());
+    }
+}

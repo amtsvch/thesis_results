@@ -1,0 +1,5 @@
+@Test
+public void testTernary05() throws JasperException {
+    // Note this is invalid EL
+    doTestParser("${aeq1?true:false}", null);
+}

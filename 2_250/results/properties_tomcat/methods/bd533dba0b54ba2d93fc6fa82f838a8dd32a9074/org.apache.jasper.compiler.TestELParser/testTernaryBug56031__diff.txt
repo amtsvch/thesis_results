@@ -1,0 +1,4 @@
+@Test
+public void testTernaryBug56031() throws JasperException {
+    doTestParser("${my:link(!empty registration ? registration : '/test/registration')}", null);
+}

@@ -1,0 +1,4 @@
+@Test(expected = IllegalArgumentException.class)
+public void testSetServletNameNull() {
+    new ServletDef().setServletName(null);
+}

@@ -1,0 +1,24 @@
+private void emitHeader(String name, String value) throws HpackException {                             private void emitHeader(String name, String value) throws HpackException {                          
+// Header names are forced to lower case                                                               // Header names are forced to lower case                                                            
+if ("cookie".equals(name)) {                                                                           if ("cookie".equals(name)) {                                                                        
+// Only count the cookie header once since HTTP/2 splits it into                                       // Only count the cookie header once since HTTP/2 splits it into                                    
+// multiple headers to aid compression                                                                 // multiple headers to aid compression                                                              
+if (!countedCookie) {                                                                                  if (!countedCookie) {                                                                               
+headerCount++;                                                                                         headerCount++;                                                                                      
+countedCookie = true;                                                                                  countedCookie = true;                                                                               
+}                                                                                                      }                                                                                                   
+} else {                                                                                               } else {                                                                                            
+headerCount++;                                                                                         headerCount++;                                                                                      
+}                                                                                                      }                                                                                                   
+// Overhead will vary. The main concern is that lots of small headers                                  // Overhead will vary. The main concern is that lots of small headers                               
+// trigger the limiting mechanism correctly. Therefore, use an overhead                                // trigger the limiting mechanism correctly. Therefore, use an overhead                             
+// estimate of 3 which is the worst case for small headers.                                            // estimate of 3 which is the worst case for small headers.                                         
+int inc = 3 + name.length() + value.length();                                                          int inc = 3 + name.length() + value.length();                                                       
+headerSize += inc;                                                                                     headerSize += inc;                                                                                  
+if (!isHeaderCountExceeded() && !isHeaderSizeExceeded(0)) {                                            if (!isHeaderCountExceeded() && !isHeaderSizeExceeded(0)) {                                         
+                                                                                                     | if (log.isDebugEnabled()) {                                                                         
+                                                                                                     | log.debug(sm.getString("hpackdecoder.emitHeader", name, value));                                    
+                                                                                                     | }                                                                                                   
+headerEmitter.emitHeader(name, value);                                                                 headerEmitter.emitHeader(name, value);                                                              
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

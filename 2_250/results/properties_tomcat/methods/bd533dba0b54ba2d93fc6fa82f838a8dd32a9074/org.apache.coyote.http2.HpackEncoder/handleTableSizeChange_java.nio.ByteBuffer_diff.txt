@@ -1,0 +1,15 @@
+private void handleTableSizeChange(ByteBuffer target) {
+    if (newMaxHeaderSize == -1) {
+        return;
+    }
+    if (minNewMaxHeaderSize != newMaxHeaderSize) {
+        target.put((byte) (1 << 5));
+        Hpack.encodeInteger(target, minNewMaxHeaderSize, 5);
+    }
+    target.put((byte) (1 << 5));
+    Hpack.encodeInteger(target, newMaxHeaderSize, 5);
+    maxTableSize = newMaxHeaderSize;
+    runEvictionIfRequired();
+    newMaxHeaderSize = -1;
+    minNewMaxHeaderSize = -1;
+}

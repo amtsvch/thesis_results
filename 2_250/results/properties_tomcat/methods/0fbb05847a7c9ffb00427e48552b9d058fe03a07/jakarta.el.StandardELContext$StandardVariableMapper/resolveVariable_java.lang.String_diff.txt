@@ -1,0 +1,7 @@
+@Override
+public ValueExpression resolveVariable(String variable) {
+    if (vars == null) {
+        return null;
+    }
+    return vars.get(variable);
+}

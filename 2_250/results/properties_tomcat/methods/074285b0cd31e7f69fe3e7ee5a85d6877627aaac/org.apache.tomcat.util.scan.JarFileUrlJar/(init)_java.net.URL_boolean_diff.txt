@@ -1,0 +1,20 @@
+public JarFileUrlJar(URL url, boolean startsWithJar) throws IOException {
+    if (startsWithJar) {
+        // jar:file:...
+        JarURLConnection jarConn = (JarURLConnection) url.openConnection();
+        jarConn.setUseCaches(false);
+        jarFile = jarConn.getJarFile();
+        jarFileURL = jarConn.getJarFileURL();
+    } else {
+        // file:...
+        File f;
+        try {
+            f = new File(url.toURI());
+        } catch (URISyntaxException e) {
+            throw new IOException(e);
+        }
+        jarFile = JreCompat.getInstance().jarFileNewInstance(f);
+        jarFileURL = url;
+    }
+    multiRelease = JreCompat.getInstance().jarFileIsMultiRelease(jarFile);
+}

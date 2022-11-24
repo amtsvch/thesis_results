@@ -1,0 +1,15 @@
+/**
+ * Return the <code>HttpSession</code> for which this object
+ * is the facade.
+ */
+@Override
+public HttpSession getSession() {
+    if (facade == null) {
+        if (SecurityUtil.isPackageProtectionEnabled()) {
+            facade = AccessController.doPrivileged(new PrivilegedNewSessionFacade(this));
+        } else {
+            facade = new StandardSessionFacade(this);
+        }
+    }
+    return facade;
+}

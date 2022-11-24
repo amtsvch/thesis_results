@@ -1,0 +1,10 @@
+/**
+ * Gets the encryption algorithm being used to encrypt and decrypt channel
+ * messages.
+ *
+ * @return The algorithm being used, including the algorithm mode and padding.
+ */
+@Override
+public String getEncryptionAlgorithm() {
+    return encryptionAlgorithm;
+}

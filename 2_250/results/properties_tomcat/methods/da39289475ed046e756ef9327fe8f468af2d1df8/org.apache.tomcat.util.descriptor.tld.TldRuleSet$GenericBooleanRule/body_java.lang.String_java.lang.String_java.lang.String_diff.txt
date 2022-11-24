@@ -1,0 +1,14 @@
+@Override
+public void body(String namespace, String name, String text) throws Exception {
+    if (null != text) {
+        text = text.trim();
+    }
+    boolean value = "true".equalsIgnoreCase(text) || "yes".equalsIgnoreCase(text);
+    setter.invoke(digester.peek(), Boolean.valueOf(value));
+    StringBuilder code = digester.getGeneratedCode();
+    if (code != null) {
+        code.append(digester.toVariableName(digester.peek())).append('.').append(setter.getName());
+        code.append('(').append(Boolean.valueOf(value)).append(");");
+        code.append(System.lineSeparator());
+    }
+}

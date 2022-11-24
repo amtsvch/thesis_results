@@ -1,0 +1,21 @@
+// ----------------------------------------------------------                                          // ----------------------------------------------------------                                       
+/**                                                                                                    /**                                                                                                 
+* Register the given channel with the given selector for                                               * Register the given channel with the given selector for                                            
+* the given operations of interest                                                                     * the given operations of interest                                                                  
+* @param selector The selector to use                                                                  * @param selector The selector to use                                                               
+* @param channel The channel                                                                           * @param channel The channel                                                                        
+* @param ops The operations to register                                                                * @param ops The operations to register                                                             
+* @param attach Attachment object                                                                      * @param attach Attachment object                                                                   
+* @throws Exception IO error with channel                                                              * @throws Exception IO error with channel                                                           
+*/                                                                                                     */                                                                                                  
+protected void registerChannel(Selector selector, SelectableChannel channel, int ops, Object attach)   protected void registerChannel(Selector selector, SelectableChannel channel, int ops, Object attach)
+                                                                                                     | if (channel == null) {                                                                              
+// could happen                                                                                        // could happen                                                                                     
+if (channel == null)                                                                                 |                                                                                                     
+return;                                                                                                return;                                                                                             
+                                                                                                     | }                                                                                                   
+// set the new channel non-blocking                                                                    // set the new channel non-blocking                                                                 
+channel.configureBlocking(false);                                                                      channel.configureBlocking(false);                                                                   
+// register it with the selector                                                                       // register it with the selector                                                                    
+channel.register(selector, ops, attach);                                                               channel.register(selector, ops, attach);                                                            
+}                                                                                                      }                                                                                                   

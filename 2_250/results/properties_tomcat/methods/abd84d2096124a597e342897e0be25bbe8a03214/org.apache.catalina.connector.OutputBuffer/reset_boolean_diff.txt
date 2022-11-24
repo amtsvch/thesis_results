@@ -1,0 +1,13 @@
+public void reset(boolean resetWriterStreamFlags) {
+    clear(bb);
+    clear(cb);
+    bytesWritten = 0;
+    charsWritten = 0;
+    if (resetWriterStreamFlags) {
+        if (conv != null) {
+            conv.recycle();
+        }
+        conv = null;
+    }
+    initial = true;
+}

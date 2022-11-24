@@ -1,0 +1,8 @@
+@Test
+public void testWebFragmentsAbsoluteWrongFragmentName() {
+    app.addAbsoluteOrdering("a");
+    app.addAbsoluteOrdering("z");
+    Set<WebXml> ordered = WebXml.orderWebFragments(app, fragments, null);
+    Assert.assertEquals(1, ordered.size());
+    Assert.assertEquals(fragments.get("a"), ordered.toArray()[0]);
+}

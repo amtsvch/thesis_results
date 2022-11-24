@@ -1,0 +1,4 @@
+@Test
+public void testGetEncoderTypeGenericMultipleSubclassSwap() {
+    Assert.assertEquals(String.class, Util.getEncoderType(GenericMultipleSubSubSwapEncoder.class));
+}

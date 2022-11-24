@@ -1,0 +1,8 @@
+@Test
+public void testParsePublicIdVersion22() {
+    WebXml webxml = new WebXml();
+    webxml.setPublicId(XmlIdentifiers.WEB_22_PUBLIC);
+    Assert.assertEquals(2, webxml.getMajorVersion());
+    Assert.assertEquals(2, webxml.getMinorVersion());
+    Assert.assertEquals("2.2", webxml.getVersion());
+}

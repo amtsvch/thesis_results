@@ -1,0 +1,26 @@
+/**                                                                                                    /**                                                                                                 
+* Open (if necessary) and return a connection to the configured                                        * Open (if necessary) and return a connection to the configured                                     
+* directory server for this Realm.                                                                     * directory server for this Realm.                                                                  
+* @return the connection                                                                               * @return the connection                                                                            
+* @exception NamingException if a directory server error occurs                                        * @exception NamingException if a directory server error occurs                                     
+*/                                                                                                     */                                                                                                  
+protected JNDIConnection get() throws NamingException {                                                protected JNDIConnection get() throws NamingException {                                             
+JNDIConnection connection = null;                                                                      JNDIConnection connection = null;                                                                   
+// Use the pool if available, otherwise use the single connection                                      // Use the pool if available, otherwise use the single connection                                   
+if (connectionPool != null) {                                                                          if (connectionPool != null) {                                                                       
+connection = connectionPool.pop();                                                                     connection = connectionPool.pop();                                                                  
+if (connection == null) {                                                                              if (connection == null) {                                                                           
+connection = create();                                                                                 connection = create();                                                                              
+}                                                                                                      }                                                                                                   
+} else {                                                                                               } else {                                                                                            
+singleConnectionLock.lock();                                                                           singleConnectionLock.lock();                                                                        
+                                                                                                     | if (singleConnection == null) {                                                                     
+                                                                                                     | singleConnection = create();                                                                        
+                                                                                                     | }                                                                                                   
+connection = singleConnection;                                                                         connection = singleConnection;                                                                      
+}                                                                                                      }                                                                                                   
+if (connection.context == null) {                                                                      if (connection.context == null) {                                                                   
+open(connection);                                                                                      open(connection);                                                                                   
+}                                                                                                      }                                                                                                   
+return connection;                                                                                     return connection;                                                                                  
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,13 @@
+@Test
+public void test01() {
+    // Formerly part of the main() method in SmapGenerator
+    SmapStratum s = new SmapStratum();
+    s.addFile("foo.jsp");
+    s.addFile("bar.jsp", "/foo/foo/bar.jsp");
+    s.addLineData(1, "foo.jsp", 1, 1, 1);
+    s.addLineData(2, "foo.jsp", 1, 6, 1);
+    s.addLineData(3, "foo.jsp", 2, 10, 5);
+    s.addLineData(20, "/foo/foo/bar.jsp", 1, 30, 1);
+    s.setOutputFileName("foo.java");
+    Assert.assertEquals("SMAP\n" + "foo.java\n" + "JSP\n" + "*S JSP\n" + "*F\n" + "+ 0 foo.jsp\n" + "foo.jsp\n" + "+ 1 bar.jsp\n" + "foo/foo/bar.jsp\n" + "*L\n" + "1:1\n" + "2:6\n" + "3,2:10,5\n" + "20#1:30\n" + "*E\n", s.getSmapString());
+}

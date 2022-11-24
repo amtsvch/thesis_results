@@ -1,0 +1,12 @@
+/**
+ * Escape content for use in XML.
+ *
+ * @param ifNull    The value to return if content is {@code null}
+ * @param content   The content to escape
+ *
+ * @return  The escaped content or the value of {@code ifNull} if the
+ *          content was {@code null}
+ */
+public static String xml(String ifNull, String content) {
+    return xml(ifNull, false, content);
+}

@@ -1,0 +1,12 @@
+/**
+ * Returns <code>true</code> if the browser is sending cookies only over a
+ * secure protocol, or <code>false</code> if the browser can send cookies
+ * using any protocol.
+ *
+ * @return <code>true</code> if the browser uses a secure protocol;
+ *         otherwise, <code>true</code>
+ * @see #setSecure
+ */
+public boolean getSecure() {
+    return Boolean.parseBoolean(getAttribute(SECURE));
+}

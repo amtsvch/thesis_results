@@ -1,0 +1,7 @@
+@Test
+public void testSslCipherHeaderPresent() throws Exception {
+    String cipher = "ciphered-with";
+    mockRequest.setHeader(valve.getSslCipherHeader(), cipher);
+    valve.invoke(mockRequest, null);
+    Assert.assertEquals(cipher, mockRequest.getAttribute(Globals.CIPHER_SUITE_ATTR));
+}

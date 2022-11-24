@@ -1,0 +1,5 @@
+public static String get(final String key, final Object... args) {
+    String value = get(key);
+    MessageFormat mf = new MessageFormat(value);
+    return mf.format(args, new StringBuffer(), null).toString();
+}

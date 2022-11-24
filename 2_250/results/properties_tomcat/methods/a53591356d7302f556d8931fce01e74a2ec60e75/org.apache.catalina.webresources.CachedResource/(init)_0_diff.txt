@@ -1,0 +1,8 @@
+public CachedResource(Cache cache, StandardRoot root, String path, long ttl, int objectMaxSizeBytes, boolean usesClassLoaderResources) {
+    this.cache = cache;
+    this.root = root;
+    this.webAppPath = path;
+    this.ttl = ttl;
+    this.objectMaxSizeBytes = objectMaxSizeBytes;
+    this.usesClassLoaderResources = usesClassLoaderResources;
+}

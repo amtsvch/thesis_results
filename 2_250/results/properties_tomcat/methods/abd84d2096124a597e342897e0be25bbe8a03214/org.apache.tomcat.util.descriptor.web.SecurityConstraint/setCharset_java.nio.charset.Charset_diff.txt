@@ -1,0 +1,7 @@
+@Override
+public void setCharset(Charset charset) {
+    super.setCharset(charset);
+    for (SecurityCollection collection : collections) {
+        collection.setCharset(getCharset());
+    }
+}

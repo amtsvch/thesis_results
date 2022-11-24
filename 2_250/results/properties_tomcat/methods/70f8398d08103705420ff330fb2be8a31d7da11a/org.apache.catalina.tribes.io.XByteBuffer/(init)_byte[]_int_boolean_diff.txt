@@ -1,0 +1,7 @@
+public XByteBuffer(byte[] data, int size, boolean discard) {
+    int length = Math.max(data.length, size);
+    buf = new byte[length];
+    System.arraycopy(data, 0, buf, 0, data.length);
+    bufSize = data.length;
+    this.discard = discard;
+}

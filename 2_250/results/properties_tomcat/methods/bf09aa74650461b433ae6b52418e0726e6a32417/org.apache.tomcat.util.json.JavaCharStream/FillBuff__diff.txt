@@ -1,0 +1,24 @@
+protected void FillBuff() throws java.io.IOException {                                                 protected void FillBuff() throws java.io.IOException {                                              
+int i;                                                                                                 int i;                                                                                              
+if (maxNextCharInd == 4096)                                                                          | if (maxNextCharInd == 4096) {                                                                       
+maxNextCharInd = nextCharInd = 0;                                                                      maxNextCharInd = nextCharInd = 0;                                                                   
+                                                                                                     | }                                                                                                   
+try {                                                                                                  try {                                                                                               
+if ((i = inputStream.read(nextCharBuf, maxNextCharInd, 4096 - maxNextCharInd)) == -1) {                if ((i = inputStream.read(nextCharBuf, maxNextCharInd, 4096 - maxNextCharInd)) == -1) {             
+inputStream.close();                                                                                   inputStream.close();                                                                                
+throw new java.io.IOException();                                                                       throw new java.io.IOException();                                                                    
+} else                                                                                               | } else {                                                                                            
+maxNextCharInd += i;                                                                                   maxNextCharInd += i;                                                                                
+                                                                                                     | }                                                                                                   
+return;                                                                                                return;                                                                                             
+} catch (java.io.IOException e) {                                                                      } catch (java.io.IOException e) {                                                                   
+if (bufpos != 0) {                                                                                     if (bufpos != 0) {                                                                                  
+--bufpos;                                                                                              --bufpos;                                                                                           
+backup(0);                                                                                             backup(0);                                                                                          
+} else {                                                                                               } else {                                                                                            
+bufline[bufpos] = line;                                                                                bufline[bufpos] = line;                                                                             
+bufcolumn[bufpos] = column;                                                                            bufcolumn[bufpos] = column;                                                                         
+}                                                                                                      }                                                                                                   
+throw e;                                                                                               throw e;                                                                                            
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

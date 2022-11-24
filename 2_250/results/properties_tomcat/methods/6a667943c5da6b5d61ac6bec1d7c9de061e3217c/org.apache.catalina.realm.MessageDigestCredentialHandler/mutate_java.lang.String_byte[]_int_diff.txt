@@ -1,0 +1,15 @@
+@Override
+protected String mutate(String inputCredentials, byte[] salt, int iterations) {
+    if (algorithm == null) {
+        return inputCredentials;
+    } else {
+        byte[] inputCredentialbytes = inputCredentials.getBytes(encoding);
+        byte[] userDigest;
+        if (salt == null) {
+            userDigest = ConcurrentMessageDigest.digest(algorithm, iterations, inputCredentialbytes);
+        } else {
+            userDigest = ConcurrentMessageDigest.digest(algorithm, iterations, salt, inputCredentialbytes);
+        }
+        return HexUtils.toHexString(userDigest);
+    }
+}

@@ -1,0 +1,12 @@
+/**
+ * Constructor used for an Alias
+ *
+ * @param alias    The alias of the virtual host
+ * @param realHost The host the alias points to
+ */
+public MappedHost(String alias, MappedHost realHost) {
+    super(alias, realHost.object);
+    this.realHost = realHost;
+    this.contextList = realHost.contextList;
+    this.aliases = null;
+}

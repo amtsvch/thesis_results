@@ -1,0 +1,8 @@
+@Override                                                                                              @Override                                                                                           
+public void messageDataReceived(ChannelMessage data) {                                                 public void messageDataReceived(ChannelMessage data) {                                              
+if (this.listener != null) {                                                                           if (this.listener != null) {                                                                        
+if (listener.accept(data))                                                                           | if (listener.accept(data)) {                                                                        
+listener.messageReceived(data);                                                                        listener.messageReceived(data);                                                                     
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

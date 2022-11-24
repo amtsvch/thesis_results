@@ -1,0 +1,6 @@
+@Override                                                                                              @Override                                                                                           
+public void report(double timeTx) {                                                                    public void report(double timeTx) {                                                                 
+if (log.isInfoEnabled())                                                                             | if (log.isInfoEnabled()) {                                                                          
+log.info(sm.getString("throughputInterceptor.report", msgTxCnt, df.format(mbTx), df.format(mbAppTx),   log.info(sm.getString("throughputInterceptor.report", msgTxCnt, df.format(mbTx), df.format(mbAppTx),
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

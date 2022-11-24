@@ -1,0 +1,13 @@
+/**                                                                                                    /**                                                                                                 
+* Compares to ChannelData objects, only compares on getUniqueId().equals(o.getUniqueId())              * Compares to ChannelData objects, only compares on getUniqueId().equals(o.getUniqueId())           
+* @param o Object                                                                                      * @param o Object                                                                                   
+* @return boolean                                                                                      * @return boolean                                                                                   
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public boolean equals(Object o) {                                                                      public boolean equals(Object o) {                                                                   
+if (o instanceof ChannelData) {                                                                        if (o instanceof ChannelData) {                                                                     
+return Arrays.equals(getUniqueId(), ((ChannelData) o).getUniqueId());                                  return Arrays.equals(getUniqueId(), ((ChannelData) o).getUniqueId());                               
+} else                                                                                               | } else {                                                                                            
+return false;                                                                                          return false;                                                                                       
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

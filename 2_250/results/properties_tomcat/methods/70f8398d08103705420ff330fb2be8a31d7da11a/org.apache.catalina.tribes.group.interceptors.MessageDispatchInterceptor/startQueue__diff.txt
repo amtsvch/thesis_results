@@ -1,0 +1,11 @@
+public void startQueue() {                                                                             public void startQueue() {                                                                          
+if (run) {                                                                                             if (run) {                                                                                          
+return;                                                                                                return;                                                                                             
+}                                                                                                      }                                                                                                   
+String channelName = "";                                                                               String channelName = "";                                                                            
+if (getChannel().getName() != null)                                                                  | if (getChannel().getName() != null) {                                                               
+channelName = "[" + getChannel().getName() + "]";                                                      channelName = "[" + getChannel().getName() + "]";                                                   
+                                                                                                     | }                                                                                                   
+executor = ExecutorFactory.newThreadPool(maxSpareThreads, maxThreads, keepAliveTime, TimeUnit.MILLIS   executor = ExecutorFactory.newThreadPool(maxSpareThreads, maxThreads, keepAliveTime, TimeUnit.MILLIS
+run = true;                                                                                            run = true;                                                                                         
+}                                                                                                      }                                                                                                   

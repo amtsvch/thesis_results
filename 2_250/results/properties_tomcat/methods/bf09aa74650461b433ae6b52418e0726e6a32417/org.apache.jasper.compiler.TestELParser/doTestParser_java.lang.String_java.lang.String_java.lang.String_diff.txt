@@ -1,0 +1,30 @@
+private void doTestParser(String input, String expectedResult, String expectedBuilderOutput) throws JasperException {
+    ELException elException = null;
+    String elResult = null;
+    // Don't try and evaluate expressions that depend on variables or functions
+    if (expectedResult != null) {
+        try {
+            ELManager manager = new ELManager();
+            ELContext context = manager.getELContext();
+            ExpressionFactory factory = ELManager.getExpressionFactory();
+            ValueExpression ve = factory.createValueExpression(context, input, String.class);
+            elResult = ve.getValue(context).toString();
+            Assert.assertEquals(expectedResult, elResult);
+        } catch (ELException ele) {
+            elException = ele;
+        }
+    }
+    Nodes nodes = null;
+    try {
+        nodes = ELParser.parse(input, false);
+        Assert.assertNull(elException);
+    } catch (IllegalArgumentException iae) {
+        Assert.assertNotNull(elResult, elException);
+        // Not strictly true but enables us to report both
+        iae.initCause(elException);
+        throw iae;
+    }
+    TextBuilder textBuilder = new TextBuilder(false);
+    nodes.visit(textBuilder);
+    Assert.assertEquals(expectedBuilderOutput, textBuilder.getText());
+}

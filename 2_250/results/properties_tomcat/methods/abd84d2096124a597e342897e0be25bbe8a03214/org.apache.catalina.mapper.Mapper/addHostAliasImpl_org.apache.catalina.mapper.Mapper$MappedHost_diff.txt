@@ -1,0 +1,26 @@
+private synchronized boolean addHostAliasImpl(MappedHost newAlias) {
+    MappedHost[] newHosts = new MappedHost[hosts.length + 1];
+    if (insertMap(hosts, newHosts, newAlias)) {
+        hosts = newHosts;
+        if (newAlias.name.equals(defaultHostName)) {
+            defaultHost = newAlias;
+        }
+        if (log.isDebugEnabled()) {
+            log.debug(sm.getString("mapper.addHostAlias.success", newAlias.name, newAlias.getRealHostName()));
+        }
+        return true;
+    } else {
+        MappedHost duplicate = hosts[find(hosts, newAlias.name)];
+        if (duplicate.getRealHost() == newAlias.getRealHost()) {
+            // A duplicate Alias for the same Host.
+            // A harmless redundancy. E.g.
+            // <Host name="localhost"><Alias>localhost</Alias></Host>
+            if (log.isDebugEnabled()) {
+                log.debug(sm.getString("mapper.addHostAlias.sameHost", newAlias.name, newAlias.getRealHostName()));
+            }
+            return false;
+        }
+        log.error(sm.getString("mapper.duplicateHostAlias", newAlias.name, newAlias.getRealHostName(), duplicate.getRealHostName()));
+        return false;
+    }
+}

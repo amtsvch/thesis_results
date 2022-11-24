@@ -1,0 +1,8 @@
+/**
+ * Constructs a new membership
+ * @param local - has to be the name of the local member. Used to filter the local member from the cluster membership
+ * @param includeLocal - TBA
+ */
+public Membership(Member local, boolean includeLocal) {
+    this(local, new MemberComparator(), includeLocal);
+}

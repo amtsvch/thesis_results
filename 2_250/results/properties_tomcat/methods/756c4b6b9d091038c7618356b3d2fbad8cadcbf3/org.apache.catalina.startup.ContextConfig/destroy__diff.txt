@@ -1,0 +1,21 @@
+/**
+ * Process a "destroy" event for this Context.
+ */
+protected synchronized void destroy() {
+    // Called from StandardContext.destroy()
+    if (log.isDebugEnabled()) {
+        log.debug(sm.getString("contextConfig.destroy"));
+    }
+    // Skip clearing the work directory if Tomcat is being shutdown
+    Server s = getServer();
+    if (s != null && !s.getState().isAvailable()) {
+        return;
+    }
+    // Changed to getWorkPath per Bugzilla 35819.
+    if (context instanceof StandardContext) {
+        String workDir = ((StandardContext) context).getWorkPath();
+        if (workDir != null) {
+            ExpandWar.delete(new File(workDir));
+        }
+    }
+}

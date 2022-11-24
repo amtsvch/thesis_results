@@ -1,0 +1,6 @@
+@Override
+public synchronized void connect() throws IOException {
+    // do nothing, happens in the socket sender itself
+    queue.open();
+    setConnected(true);
+}

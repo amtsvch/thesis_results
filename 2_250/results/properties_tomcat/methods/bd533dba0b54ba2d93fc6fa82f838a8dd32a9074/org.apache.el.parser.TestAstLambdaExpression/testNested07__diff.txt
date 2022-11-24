@@ -1,0 +1,6 @@
+@Test
+public void testNested07() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("()->()->()->42", Integer.class);
+    Assert.assertEquals(Integer.valueOf(42), result);
+}

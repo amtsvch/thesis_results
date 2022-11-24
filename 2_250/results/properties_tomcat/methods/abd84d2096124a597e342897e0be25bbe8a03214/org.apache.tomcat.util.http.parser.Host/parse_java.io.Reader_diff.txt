@@ -1,0 +1,20 @@
+private static int parse(Reader reader) {
+    try {
+        reader.mark(1);
+        int first = reader.read();
+        reader.reset();
+        if (HttpParser.isAlpha(first)) {
+            return HttpParser.readHostDomainName(reader);
+        } else if (HttpParser.isNumeric(first)) {
+            return HttpParser.readHostIPv4(reader, false);
+        } else if ('[' == first) {
+            return HttpParser.readHostIPv6(reader);
+        } else {
+            // Invalid
+            throw new IllegalArgumentException();
+        }
+    } catch (IOException ioe) {
+        // Should never happen
+        throw new IllegalArgumentException(ioe);
+    }
+}

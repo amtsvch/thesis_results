@@ -1,0 +1,5 @@
+@After
+public final void teardown() throws LifecycleException {
+    resourceRoot.stop();
+    resourceRoot.destroy();
+}

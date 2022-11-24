@@ -1,0 +1,24 @@
+/**                                                                                                    /**                                                                                                 
+* Decrypts the input &lt;code&gt;bytes&lt;/code&gt;.                                                   * Decrypts the input &lt;code&gt;bytes&lt;/code&gt;.                                                
+*                                                                                                      *                                                                                                   
+* @param bytes The data to decrypt.                                                                    * @param bytes The data to decrypt.                                                                 
+*                                                                                                      *                                                                                                   
+* @return The decrypted data.                                                                          * @return The decrypted data.                                                                       
+*                                                                                                      *                                                                                                   
+* @throws GeneralSecurityException If the input data cannot be decrypted.                              * @throws GeneralSecurityException If the input data cannot be decrypted.                           
+*/                                                                                                     */                                                                                                  
+private byte[] decrypt(byte[] bytes) throws GeneralSecurityException {                                 private byte[] decrypt(byte[] bytes) throws GeneralSecurityException {                              
+Cipher cipher = null;                                                                                  Cipher cipher = null;                                                                               
+int ivSize = getIVSize();                                                                              int ivSize = getIVSize();                                                                           
+AlgorithmParameterSpec IV = generateIV(bytes, 0, ivSize);                                              AlgorithmParameterSpec IV = generateIV(bytes, 0, ivSize);                                           
+try {                                                                                                  try {                                                                                               
+cipher = getCipher();                                                                                  cipher = getCipher();                                                                               
+cipher.init(Cipher.DECRYPT_MODE, getSecretKey(), IV);                                                  cipher.init(Cipher.DECRYPT_MODE, getSecretKey(), IV);                                               
+// Decrypt remainder of the message.                                                                   // Decrypt remainder of the message.                                                                
+return cipher.doFinal(bytes, ivSize, bytes.length - ivSize);                                           return cipher.doFinal(bytes, ivSize, bytes.length - ivSize);                                        
+} finally {                                                                                            } finally {                                                                                         
+if (null != cipher)                                                                                  | if (null != cipher) {                                                                               
+returnCipher(cipher);                                                                                  returnCipher(cipher);                                                                               
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

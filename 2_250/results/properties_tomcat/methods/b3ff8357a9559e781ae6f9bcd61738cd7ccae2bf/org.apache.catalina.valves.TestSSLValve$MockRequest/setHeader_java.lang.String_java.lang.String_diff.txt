@@ -1,0 +1,3 @@
+public void setHeader(String header, String value) {
+    getCoyoteRequest().getMimeHeaders().setValue(header).setString(value);
+}

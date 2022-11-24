@@ -1,0 +1,9 @@
+public static boolean isAlpha(int c) {
+    // Fast for valid alpha characters, slower for some incorrect
+    // ones
+    try {
+        return IS_ALPHA[c];
+    } catch (ArrayIndexOutOfBoundsException ex) {
+        return false;
+    }
+}

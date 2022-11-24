@@ -1,0 +1,5 @@
+@Test(expected = IllegalStateException.class)
+public void testSetMaxAgeNotInitPhase() {
+    context.setState(LifecycleState.STARTED);
+    applicationSessionCookieConfig.setMaxAge(1);
+}

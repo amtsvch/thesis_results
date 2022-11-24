@@ -1,0 +1,16 @@
+/**
+ * Constructs a new servlet exception when the servlet needs to throw an
+ * exception and include a message about the "root cause" exception that
+ * interfered with its normal operation, including a description message.
+ *
+ * @param message
+ *            a <code>String</code> containing the text of the exception
+ *            message
+ * @param rootCause
+ *            the <code>Throwable</code> exception that interfered with the
+ *            servlet's normal operation, making this servlet exception
+ *            necessary
+ */
+public ServletException(String message, Throwable rootCause) {
+    super(message, rootCause);
+}

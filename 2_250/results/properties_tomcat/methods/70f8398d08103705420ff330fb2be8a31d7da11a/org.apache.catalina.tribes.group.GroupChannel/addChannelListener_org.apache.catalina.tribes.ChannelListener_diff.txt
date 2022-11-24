@@ -1,0 +1,13 @@
+/**
+ * Adds a channel listener to the channel.<br>
+ * Channel listeners are uniquely identified using the equals(Object) method
+ * @param channelListener ChannelListener
+ */
+@Override
+public void addChannelListener(ChannelListener channelListener) {
+    if (!this.channelListeners.contains(channelListener)) {
+        this.channelListeners.add(channelListener);
+    } else {
+        throw new IllegalArgumentException(sm.getString("groupChannel.listener.alreadyExist", channelListener, channelListener.getClass().getName()));
+    }
+}

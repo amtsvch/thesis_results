@@ -1,0 +1,75 @@
+@Override
+public synchronized void sendMessage(Member[] destination, ChannelMessage msg) throws ChannelException {
+    long start = System.currentTimeMillis();
+    this.setUdpBased((msg.getOptions() & Channel.SEND_OPTIONS_UDP) == Channel.SEND_OPTIONS_UDP);
+    byte[] data = XByteBuffer.createDataPackage((ChannelData) msg);
+    NioSender[] senders = setupForSend(destination);
+    connect(senders);
+    setData(senders, data);
+    int remaining = senders.length;
+    ChannelException cx = null;
+    try {
+        // loop until complete, an error happens, or we timeout
+        long delta = System.currentTimeMillis() - start;
+        boolean waitForAck = (Channel.SEND_OPTIONS_USE_ACK & msg.getOptions()) == Channel.SEND_OPTIONS_USE_ACK;
+        while ((remaining > 0) && (delta < getTimeout())) {
+            try {
+                SendResult result = doLoop(selectTimeout, getMaxRetryAttempts(), waitForAck, msg);
+                remaining -= result.getCompleted();
+                if (result.getFailed() != null) {
+                    remaining -= result.getFailed().getFaultyMembers().length;
+                    if (cx == null) {
+                        cx = result.getFailed();
+                    } else {
+                        cx.addFaultyMember(result.getFailed().getFaultyMembers());
+                    }
+                }
+            } catch (Exception x) {
+                if (log.isTraceEnabled()) {
+                    log.trace("Error sending message", x);
+                }
+                if (cx == null) {
+                    if (x instanceof ChannelException) {
+                        cx = (ChannelException) x;
+                    } else {
+                        cx = new ChannelException(sm.getString("parallelNioSender.send.failed"), x);
+                    }
+                }
+                for (NioSender sender : senders) {
+                    if (!sender.isComplete()) {
+                        cx.addFaultyMember(sender.getDestination(), x);
+                    }
+                }
+                throw cx;
+            }
+            delta = System.currentTimeMillis() - start;
+        }
+        if (remaining > 0) {
+            // timeout has occurred
+            ChannelException cxtimeout = new ChannelException(sm.getString("parallelNioSender.operation.timedout", Long.toString(getTimeout())));
+            if (cx == null) {
+                cx = new ChannelException(sm.getString("parallelNioSender.operation.timedout", Long.toString(getTimeout())));
+            }
+            for (NioSender sender : senders) {
+                if (!sender.isComplete()) {
+                    cx.addFaultyMember(sender.getDestination(), cxtimeout);
+                }
+            }
+            throw cx;
+        } else if (cx != null) {
+            // there was an error
+            throw cx;
+        }
+    } catch (Exception x) {
+        try {
+            this.disconnect();
+        } catch (Exception e) {
+            // Ignore
+        }
+        if (x instanceof ChannelException) {
+            throw (ChannelException) x;
+        } else {
+            throw new ChannelException(x);
+        }
+    }
+}

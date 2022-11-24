@@ -1,0 +1,7 @@
+@Test
+public void testNonTokenDirective2() throws Exception {
+    String header = "Digest a=b,{name=test";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertNull(result);
+}

@@ -1,0 +1,9 @@
+/**
+ * Set the Valve that follows this one in the pipeline it is part of.
+ *
+ * @param valve The new next valve
+ */
+@Override
+public void setNext(Valve valve) {
+    this.next = valve;
+}

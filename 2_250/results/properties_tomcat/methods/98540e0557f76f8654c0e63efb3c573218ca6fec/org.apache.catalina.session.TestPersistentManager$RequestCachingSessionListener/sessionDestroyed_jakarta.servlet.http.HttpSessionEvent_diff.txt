@@ -1,0 +1,4 @@
+@Override
+public void sessionDestroyed(HttpSessionEvent se) {
+    request.getSession(false);
+}

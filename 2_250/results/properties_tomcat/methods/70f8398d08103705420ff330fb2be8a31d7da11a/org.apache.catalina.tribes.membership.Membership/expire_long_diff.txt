@@ -1,0 +1,34 @@
+/**
+ * Runs a refresh cycle and returns a list of members that has expired.
+ * This also removes the members from the membership, in such a way that
+ * getMembers() = getMembers() - expire()
+ * @param maxtime - the max time a member can remain unannounced before it is considered dead.
+ * @return the list of expired members
+ */
+public Member[] expire(long maxtime) {
+    synchronized (membersLock) {
+        if (!hasMembers()) {
+            return EMPTY_MEMBERS;
+        }
+        ArrayList<Member> list = null;
+        for (MbrEntry entry : map.values()) {
+            if (entry.hasExpired(maxtime)) {
+                if (list == null) {
+                    // Only need a list when members are expired (smaller gc)
+                    list = new java.util.ArrayList<>();
+                }
+                list.add(entry.getMember());
+            }
+        }
+        if (list != null) {
+            Member[] result = new Member[list.size()];
+            list.toArray(result);
+            for (Member member : result) {
+                removeMember(member);
+            }
+            return result;
+        } else {
+            return EMPTY_MEMBERS;
+        }
+    }
+}

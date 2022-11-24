@@ -1,0 +1,50 @@
+/**
+ * Parses a header of the form 1#token, forcing all parsed values to lower
+ * case. This is typically used when header values are case-insensitive.
+ *
+ * @param input      The header to parse
+ * @param collection The Collection (usually a list of a set) to which the
+ *                       parsed tokens should be added
+ *
+ * @return {@code} true if the header was parsed cleanly, otherwise
+ *         {@code false} (e.g. if a non-token value was encountered)
+ *
+ * @throws IOException If an I/O error occurs reading the header
+ */
+public static boolean parseTokenList(Reader input, Collection<String> collection) throws IOException {
+    boolean invalid = false;
+    boolean valid = false;
+    do {
+        String fieldName = HttpParser.readToken(input);
+        if (fieldName == null) {
+            // Invalid field-name, skip to the next one
+            invalid = true;
+            HttpParser.skipUntil(input, 0, ',');
+            continue;
+        }
+        if (fieldName.length() == 0) {
+            // Unexpected EOF. Should have been a token.
+            invalid = true;
+            break;
+        }
+        SkipResult skipResult = HttpParser.skipConstant(input, ",");
+        if (skipResult == SkipResult.EOF) {
+            // EOF
+            valid = true;
+            collection.add(fieldName.toLowerCase(Locale.ENGLISH));
+            break;
+        } else if (skipResult == SkipResult.FOUND) {
+            valid = true;
+            collection.add(fieldName.toLowerCase(Locale.ENGLISH));
+            continue;
+        } else {
+            // Not a token - ignore it
+            invalid = true;
+            HttpParser.skipUntil(input, 0, ',');
+            continue;
+        }
+    } while (true);
+    // Only return true if at least one valid token was read and no invalid
+    // entries were found
+    return valid && !invalid;
+}

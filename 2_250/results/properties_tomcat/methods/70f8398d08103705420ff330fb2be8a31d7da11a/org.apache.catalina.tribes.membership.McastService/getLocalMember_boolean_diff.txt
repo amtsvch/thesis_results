@@ -1,0 +1,10 @@
+/**                                                                                                    /**                                                                                                 
+* {@inheritDoc}                                                                                        * {@inheritDoc}                                                                                     
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public Member getLocalMember(boolean alive) {                                                          public Member getLocalMember(boolean alive) {                                                       
+if (alive && localMember != null && impl != null)                                                    | if (alive && localMember != null && impl != null) {                                                 
+localMember.setMemberAliveTime(System.currentTimeMillis() - impl.getServiceStartTime());               localMember.setMemberAliveTime(System.currentTimeMillis() - impl.getServiceStartTime());            
+                                                                                                     | }                                                                                                   
+return localMember;                                                                                    return localMember;                                                                                 
+}                                                                                                      }                                                                                                   

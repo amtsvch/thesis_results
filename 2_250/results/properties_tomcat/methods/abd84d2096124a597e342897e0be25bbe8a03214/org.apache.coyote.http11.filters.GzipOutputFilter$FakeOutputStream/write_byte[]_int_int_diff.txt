@@ -1,0 +1,4 @@
+@Override
+public void write(byte[] b, int off, int len) throws IOException {
+    buffer.doWrite(ByteBuffer.wrap(b, off, len));
+}

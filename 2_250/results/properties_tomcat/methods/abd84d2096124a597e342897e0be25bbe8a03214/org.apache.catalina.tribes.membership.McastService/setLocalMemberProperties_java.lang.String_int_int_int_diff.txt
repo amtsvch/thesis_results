@@ -1,0 +1,27 @@
+/**
+ * {@inheritDoc}
+ */
+@Override
+public void setLocalMemberProperties(String listenHost, int listenPort, int securePort, int udpPort) {
+    properties.setProperty("tcpListenHost", listenHost);
+    properties.setProperty("tcpListenPort", String.valueOf(listenPort));
+    properties.setProperty("udpListenPort", String.valueOf(udpPort));
+    properties.setProperty("tcpSecurePort", String.valueOf(securePort));
+    try {
+        if (localMember != null) {
+            localMember.setHostname(listenHost);
+            localMember.setPort(listenPort);
+        } else {
+            localMember = new MemberImpl(listenHost, listenPort, 0);
+            localMember.setUniqueId(UUIDGenerator.randomUUID(true));
+            localMember.setPayload(getPayload());
+            localMember.setDomain(getDomain());
+            localMember.setLocal(true);
+        }
+        localMember.setSecurePort(securePort);
+        localMember.setUdpPort(udpPort);
+        localMember.getData(true, true);
+    } catch (IOException x) {
+        throw new IllegalArgumentException(x);
+    }
+}

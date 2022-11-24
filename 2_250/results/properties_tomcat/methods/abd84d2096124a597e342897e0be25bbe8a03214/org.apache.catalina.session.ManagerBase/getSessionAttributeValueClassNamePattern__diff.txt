@@ -1,0 +1,11 @@
+/**
+ * Provides {@link #getSessionAttributeValueClassNameFilter()} as a
+ * pre-compiled regular expression pattern.
+ *
+ * @return The pre-compiled pattern used to filter session attributes based
+ *         on the implementation class name of the value. {@code null} means
+ *         no filter is applied.
+ */
+protected Pattern getSessionAttributeValueClassNamePattern() {
+    return sessionAttributeValueClassNamePattern;
+}

@@ -1,0 +1,55 @@
+/**
+ * LHEX can be read unambiguously with or without surrounding quotes so this
+ * parsing method for LHEX permits optional surrounding double quotes. Some
+ * buggy clients (libwww-perl for DIGEST auth) are known to send quoted LHEX
+ * when the specification requires just LHEX.
+ *
+ * <p>
+ * LHEX are, literally, lower-case hexadecimal digits. This implementation
+ * allows for upper-case digits as well, converting the returned value to
+ * lower-case.
+ *
+ * @return  the sequence of LHEX (minus any surrounding quotes) if any was
+ *          found, or <code>null</code> if data other LHEX was found
+ */
+static String readLhex(Reader input) throws IOException {
+    StringBuilder result = new StringBuilder();
+    boolean quoted = false;
+    skipLws(input);
+    input.mark(1);
+    int c = input.read();
+    if (c == '"') {
+        quoted = true;
+    } else if (c == -1 || !isHex(c)) {
+        return null;
+    } else {
+        if ('A' <= c && c <= 'F') {
+            c -= ('A' - 'a');
+        }
+        result.append((char) c);
+    }
+    input.mark(1);
+    c = input.read();
+    while (c != -1 && isHex(c)) {
+        if ('A' <= c && c <= 'F') {
+            c -= ('A' - 'a');
+        }
+        result.append((char) c);
+        input.mark(1);
+        c = input.read();
+    }
+    if (quoted) {
+        if (c != '"') {
+            return null;
+        }
+    } else {
+        // Use mark(1)/reset() rather than skip(-1) since skip() is a NOP
+        // once the end of the String has been reached.
+        input.reset();
+    }
+    if (c != -1 && result.length() == 0) {
+        return null;
+    } else {
+        return result.toString();
+    }
+}

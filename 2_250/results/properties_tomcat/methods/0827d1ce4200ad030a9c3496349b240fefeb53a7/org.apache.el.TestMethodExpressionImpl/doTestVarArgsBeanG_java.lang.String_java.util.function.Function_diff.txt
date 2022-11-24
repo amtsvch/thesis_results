@@ -1,0 +1,8 @@
+private void doTestVarArgsBeanG(String expression, Function<TesterBeanG, String> func) {
+    ELProcessor elp = new ELProcessor();
+    elp.defineBean("apple", TesterEnum.APPLE);
+    elp.defineBean("beanG", new TesterBeanG());
+    String elResult = elp.eval(expression);
+    String javaResult = func.apply(new TesterBeanG());
+    Assert.assertEquals(javaResult, elResult);
+}

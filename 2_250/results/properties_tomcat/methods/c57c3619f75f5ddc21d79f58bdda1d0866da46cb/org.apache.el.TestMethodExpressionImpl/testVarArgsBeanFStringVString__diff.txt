@@ -1,0 +1,4 @@
+@Test
+public void testVarArgsBeanFStringVString() {
+    doTestVarArgsBeanF("beanF.doTest('apple','apple','apple')", (a) -> a.doTest("apple", "apple", "apple"));
+}

@@ -1,0 +1,21 @@
+@Test
+public void testOrderWebFragmentsAbsoluteOthersStart() {
+    app.addAbsoluteOrdering(WebXml.ORDER_OTHERS);
+    app.addAbsoluteOrdering("b");
+    app.addAbsoluteOrdering("d");
+    Set<WebXml> others = new HashSet<>();
+    others.add(a);
+    others.add(c);
+    others.add(e);
+    others.add(f);
+    Set<WebXml> ordered = WebXml.orderWebFragments(app, fragments, null);
+    Iterator<WebXml> iter = ordered.iterator();
+    while (others.size() > 0) {
+        WebXml o = iter.next();
+        Assert.assertTrue(others.contains(o));
+        others.remove(o);
+    }
+    Assert.assertEquals(b, iter.next());
+    Assert.assertEquals(d, iter.next());
+    Assert.assertFalse(iter.hasNext());
+}

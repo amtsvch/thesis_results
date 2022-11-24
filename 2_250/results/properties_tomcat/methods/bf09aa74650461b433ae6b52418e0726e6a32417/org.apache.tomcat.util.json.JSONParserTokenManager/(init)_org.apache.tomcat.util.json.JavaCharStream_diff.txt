@@ -1,0 +1,9 @@
+/**                                                                                                    /**                                                                                                 
+* Constructor.                                                                                         * Constructor.                                                                                      
+*/                                                                                                     */                                                                                                  
+public JSONParserTokenManager(JavaCharStream stream) {                                                 public JSONParserTokenManager(JavaCharStream stream) {                                              
+if (JavaCharStream.staticFlag)                                                                       | if (JavaCharStream.staticFlag) {                                                                    
+throw new Error("ERROR: Cannot use a static CharStream class with a non-static lexical analyzer.");    throw new Error("ERROR: Cannot use a static CharStream class with a non-static lexical analyzer."); 
+                                                                                                     | }                                                                                                   
+input_stream = stream;                                                                                 input_stream = stream;                                                                              
+}                                                                                                      }                                                                                                   

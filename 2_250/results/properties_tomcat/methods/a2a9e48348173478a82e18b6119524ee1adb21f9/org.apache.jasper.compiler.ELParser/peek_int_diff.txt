@@ -1,0 +1,7 @@
+private char peek(int advance) {
+    int target = index + advance;
+    if (target >= expression.length()) {
+        return (char) -1;
+    }
+    return expression.charAt(target);
+}

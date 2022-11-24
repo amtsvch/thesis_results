@@ -1,0 +1,11 @@
+private void startNewMessage() throws IOException {
+    firstCompressedFrameWritten = false;
+    emptyMessage = true;
+    if (isServer && !serverContextTakeover || !isServer && !clientContextTakeover) {
+        try {
+            deflater.reset();
+        } catch (NullPointerException e) {
+            throw new IOException(sm.getString("perMessageDeflate.alreadyClosed"), e);
+        }
+    }
+}

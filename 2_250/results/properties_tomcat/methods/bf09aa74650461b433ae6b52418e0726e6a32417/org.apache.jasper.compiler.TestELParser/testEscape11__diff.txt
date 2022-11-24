@@ -1,0 +1,5 @@
+@Test
+public void testEscape11() throws JasperException {
+    // Bug 56612
+    doTestParser("${'\\'\\''}", "''");
+}

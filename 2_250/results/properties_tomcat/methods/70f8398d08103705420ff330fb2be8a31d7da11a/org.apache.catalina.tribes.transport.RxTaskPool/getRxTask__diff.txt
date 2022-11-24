@@ -1,0 +1,33 @@
+/**                                                                                                    /**                                                                                                 
+* Find an idle worker thread, if any.  Could return null.                                              * Find an idle worker thread, if any.  Could return null.                                           
+* @return a worker                                                                                     * @return a worker                                                                                  
+*/                                                                                                     */                                                                                                  
+public AbstractRxTask getRxTask() {                                                                    public AbstractRxTask getRxTask() {                                                                 
+AbstractRxTask worker = null;                                                                          AbstractRxTask worker = null;                                                                       
+synchronized (mutex) {                                                                                 synchronized (mutex) {                                                                              
+while (worker == null && running) {                                                                    while (worker == null && running) {                                                                 
+if (idle.size() &gt; 0) {                                                                              if (idle.size() &gt; 0) {                                                                           
+try {                                                                                                  try {                                                                                               
+worker = idle.remove(0);                                                                               worker = idle.remove(0);                                                                            
+} catch (java.util.NoSuchElementException x) {                                                         } catch (java.util.NoSuchElementException x) {                                                      
+// this means that there are no available workers                                                      // this means that there are no available workers                                                   
+worker = null;                                                                                         worker = null;                                                                                      
+}                                                                                                      }                                                                                                   
+} else if (used.size() &lt; this.maxTasks && creator != null) {                                        } else if (used.size() &lt; this.maxTasks && creator != null) {                                     
+worker = creator.createRxTask();                                                                       worker = creator.createRxTask();                                                                    
+configureTask(worker);                                                                                 configureTask(worker);                                                                              
+} else {                                                                                               } else {                                                                                            
+try {                                                                                                  try {                                                                                               
+mutex.wait();                                                                                          mutex.wait();                                                                                       
+} catch (java.lang.InterruptedException x) {                                                           } catch (java.lang.InterruptedException x) {                                                        
+Thread.currentThread().interrupt();                                                                    Thread.currentThread().interrupt();                                                                 
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+// while                                                                                               // while                                                                                            
+if (worker != null)                                                                                  | if (worker != null) {                                                                               
+used.add(worker);                                                                                      used.add(worker);                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+return worker;                                                                                         return worker;                                                                                      
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,8 @@
+/**
+ * Has the internal repository associated with this Loader been modified,
+ * such that the loaded classes should be reloaded?
+ */
+@Override
+public boolean modified() {
+    return classLoader != null ? classLoader.modified() : false;
+}

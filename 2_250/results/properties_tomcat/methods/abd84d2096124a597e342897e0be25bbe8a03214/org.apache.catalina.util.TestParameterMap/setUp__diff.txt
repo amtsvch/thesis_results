@@ -1,0 +1,28 @@
+@Before
+public void setUp() {
+    paramMap = new ParameterMap<>();
+    paramMap.put("param1", TEST_PARAM_VALUES_1);
+    paramMap.put("param2", TEST_PARAM_VALUES_2);
+    paramMap.put("param3", TEST_PARAM_VALUES_3);
+    Assert.assertTrue(paramMap.containsKey("param1"));
+    Assert.assertArrayEquals(TEST_PARAM_VALUES_1, paramMap.get("param1"));
+    Assert.assertTrue(paramMap.containsKey("param2"));
+    Assert.assertArrayEquals(TEST_PARAM_VALUES_2, paramMap.get("param2"));
+    Assert.assertTrue(paramMap.containsKey("param3"));
+    Assert.assertArrayEquals(TEST_PARAM_VALUES_3, paramMap.get("param3"));
+    final Set<String> keySet = paramMap.keySet();
+    Assert.assertTrue(keySet.contains("param1"));
+    Assert.assertTrue(keySet.contains("param2"));
+    Assert.assertTrue(keySet.contains("param3"));
+    paramMap.put("param2", TEST_PARAM_VALUES_2_UPDATED);
+    paramMap.remove("param3");
+    Assert.assertTrue(paramMap.containsKey("param1"));
+    Assert.assertArrayEquals(TEST_PARAM_VALUES_1, paramMap.get("param1"));
+    Assert.assertTrue(paramMap.containsKey("param2"));
+    Assert.assertArrayEquals(TEST_PARAM_VALUES_2_UPDATED, paramMap.get("param2"));
+    Assert.assertFalse(paramMap.containsKey("param3"));
+    Assert.assertNull(paramMap.get("param3"));
+    Assert.assertTrue(keySet.contains("param1"));
+    Assert.assertTrue(keySet.contains("param2"));
+    Assert.assertFalse(keySet.contains("param3"));
+}

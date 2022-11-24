@@ -1,0 +1,29 @@
+/**
+ * Test the quoting requirements of JSP attributes. This doesn't make use of
+ * EL. See {@link #testBug45451()} for a test that combines JSP attribute
+ * quoting and EL quoting.
+ */
+@Test
+public void testBug45015() {
+    // Warning: Java String quoting vs. JSP attribute quoting
+    Assert.assertEquals("hello 'world'", evalAttr("hello 'world'", '\"'));
+    Assert.assertEquals("hello 'world", evalAttr("hello 'world", '\"'));
+    Assert.assertEquals("hello world'", evalAttr("hello world'", '\"'));
+    Assert.assertEquals("hello world'", evalAttr("hello world\\'", '\"'));
+    Assert.assertEquals("hello world\"", evalAttr("hello world\\\"", '\"'));
+    Assert.assertEquals("hello \"world\"", evalAttr("hello \"world\"", '\"'));
+    Assert.assertEquals("hello \"world", evalAttr("hello \"world", '\"'));
+    Assert.assertEquals("hello world\"", evalAttr("hello world\"", '\"'));
+    Assert.assertEquals("hello world'", evalAttr("hello world\\'", '\"'));
+    Assert.assertEquals("hello world\"", evalAttr("hello world\\\"", '\"'));
+    Assert.assertEquals("hello 'world'", evalAttr("hello 'world'", '\''));
+    Assert.assertEquals("hello 'world", evalAttr("hello 'world", '\''));
+    Assert.assertEquals("hello world'", evalAttr("hello world'", '\''));
+    Assert.assertEquals("hello world'", evalAttr("hello world\\'", '\''));
+    Assert.assertEquals("hello world\"", evalAttr("hello world\\\"", '\''));
+    Assert.assertEquals("hello \"world\"", evalAttr("hello \"world\"", '\''));
+    Assert.assertEquals("hello \"world", evalAttr("hello \"world", '\''));
+    Assert.assertEquals("hello world\"", evalAttr("hello world\"", '\''));
+    Assert.assertEquals("hello world'", evalAttr("hello world\\'", '\''));
+    Assert.assertEquals("hello world\"", evalAttr("hello world\\\"", '\''));
+}

@@ -1,0 +1,28 @@
+@Override
+public void setUp() throws Exception {
+    super.setUp();
+    // Configure a context with digest auth and a single protected resource
+    Tomcat tomcat = getTomcatInstance();
+    // No file system docBase required
+    Context ctxt = tomcat.addContext(CONTEXT_PATH, null);
+    // Add protected servlet
+    Tomcat.addServlet(ctxt, "TesterServlet", new TesterServlet());
+    ctxt.addServletMappingDecoded(URI, "TesterServlet");
+    SecurityCollection collection = new SecurityCollection();
+    collection.addPatternDecoded(URI);
+    SecurityConstraint sc = new SecurityConstraint();
+    sc.addAuthRole(ROLE);
+    sc.addCollection(collection);
+    ctxt.addConstraint(sc);
+    // Configure the Realm
+    TesterMapRealm realm = new TesterMapRealm();
+    realm.addUser(USER, PWD);
+    realm.addUserRole(USER, ROLE);
+    ctxt.setRealm(realm);
+    // Configure the authenticator
+    LoginConfig lc = new LoginConfig();
+    lc.setAuthMethod("DIGEST");
+    lc.setRealmName(REALM);
+    ctxt.setLoginConfig(lc);
+    ctxt.getPipeline().addValve(new DigestAuthenticator());
+}

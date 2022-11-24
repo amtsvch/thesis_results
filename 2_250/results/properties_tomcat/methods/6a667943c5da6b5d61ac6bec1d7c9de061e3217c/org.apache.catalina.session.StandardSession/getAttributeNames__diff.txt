@@ -1,0 +1,15 @@
+/**                                                                                                    /**                                                                                                 
+* Return an &lt;code&gt;Enumeration&lt;/code&gt; of &lt;code&gt;String&lt;/code&gt; objects            * Return an &lt;code&gt;Enumeration&lt;/code&gt; of &lt;code&gt;String&lt;/code&gt; objects         
+* containing the names of the objects bound to this session.                                           * containing the names of the objects bound to this session.                                        
+*                                                                                                      *                                                                                                   
+* @exception IllegalStateException if this method is called on an                                      * @exception IllegalStateException if this method is called on an                                   
+*  invalidated session                                                                                 *  invalidated session                                                                              
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public Enumeration&lt;String&gt; getAttributeNames() {                                                 public Enumeration&lt;String&gt; getAttributeNames() {                                              
+if (!isValidInternal())                                                                              | if (!isValidInternal()) {                                                                           
+throw new IllegalStateException(sm.getString("standardSession.getAttributeNames.ise"));                throw new IllegalStateException(sm.getString("standardSession.getAttributeNames.ise"));             
+                                                                                                     | }                                                                                                   
+Set&lt;String&gt; names = new HashSet&lt;&gt;(attributes.keySet());                                    Set&lt;String&gt; names = new HashSet&lt;&gt;(attributes.keySet());                                 
+return Collections.enumeration(names);                                                                 return Collections.enumeration(names);                                                              
+}                                                                                                      }                                                                                                   

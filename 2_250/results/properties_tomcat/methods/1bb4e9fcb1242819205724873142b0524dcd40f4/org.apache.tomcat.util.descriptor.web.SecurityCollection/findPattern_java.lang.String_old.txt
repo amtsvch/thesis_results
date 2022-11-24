@@ -1,0 +1,13 @@
+/**
+ * Is the specified pattern part of this web resource collection?
+ *
+ * @param pattern Pattern to be compared
+ * @return <code>true</code> if the pattern is part of the collection
+ */
+public boolean findPattern(String pattern) {
+    for (String s : patterns) {
+        if (s.equals(pattern))
+            return true;
+    }
+    return false;
+}

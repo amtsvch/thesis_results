@@ -1,0 +1,18 @@
+/**
+ * Remove the session from the Manager's list of active
+ * sessions and write it out to the Store. If the session
+ * is past its expiration or invalid, this method does
+ * nothing.
+ *
+ * @param session The Session to write out
+ * @throws IOException an IO error occurred
+ */
+protected void swapOut(Session session) throws IOException {
+    if (store == null || !session.isValid()) {
+        return;
+    }
+    ((StandardSession) session).passivate();
+    writeSession(session);
+    super.remove(session, true);
+    session.recycle();
+}

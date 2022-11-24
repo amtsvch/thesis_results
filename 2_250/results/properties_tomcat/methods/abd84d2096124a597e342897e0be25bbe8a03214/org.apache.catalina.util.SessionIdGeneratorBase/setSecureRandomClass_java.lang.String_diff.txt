@@ -1,0 +1,10 @@
+/**
+ * Specify a non-default {@link SecureRandom} implementation to use. The
+ * implementation must be self-seeding and have a zero-argument constructor.
+ * If not specified, an instance of {@link SecureRandom} will be generated.
+ *
+ * @param secureRandomClass The fully-qualified class name
+ */
+public void setSecureRandomClass(String secureRandomClass) {
+    this.secureRandomClass = secureRandomClass;
+}

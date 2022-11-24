@@ -1,0 +1,10 @@
+@Override
+protected Number add(Number num0, Number num1) {
+    // could only be one of these
+    if (num0 instanceof BigDecimal) {
+        return ((BigDecimal) num0).add(new BigDecimal(num1.doubleValue()));
+    } else if (num1 instanceof BigDecimal) {
+        return ((new BigDecimal(num0.doubleValue()).add((BigDecimal) num1)));
+    }
+    return Double.valueOf(num0.doubleValue() + num1.doubleValue());
+}

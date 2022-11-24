@@ -1,0 +1,32 @@
+@Test
+public void testClone() throws Exception {
+    Member m1 = new MemberImpl("localhost", 1, 1000);
+    Member m2 = new MemberImpl("localhost", 2, 1000);
+    Member m3 = new MemberImpl("localhost", 3, 1000);
+    Membership original = new Membership(m1);
+    original.addMember(m2);
+    original.addMember(m3);
+    Membership clone = original.clone();
+    Assert.assertFalse(original == clone);
+    Assert.assertTrue(original.getClass() == clone.getClass());
+    Assert.assertTrue(original.local == clone.local);
+    Assert.assertFalse(original.map == clone.map);
+    Assert.assertTrue(original.map.size() == clone.map.size());
+    Iterator<Entry<Member, MbrEntry>> originalEntries = original.map.entrySet().iterator();
+    Iterator<Entry<Member, MbrEntry>> cloneEntries = clone.map.entrySet().iterator();
+    while (originalEntries.hasNext()) {
+        Entry<Member, MbrEntry> originalEntry = originalEntries.next();
+        Entry<Member, MbrEntry> cloneEntry = cloneEntries.next();
+        Assert.assertTrue(originalEntry.getKey() == cloneEntry.getKey());
+        Assert.assertTrue(originalEntry.getValue() == cloneEntry.getValue());
+    }
+    Assert.assertTrue(original.memberComparator == clone.memberComparator);
+    Assert.assertFalse(original.members == clone.members);
+    Assert.assertArrayEquals(original.members, clone.members);
+    // Need to use reflection to access lock since it is a private field
+    Field f = Membership.class.getDeclaredField("membersLock");
+    f.setAccessible(true);
+    Object originalLock = f.get(original);
+    Object cloneLock = f.get(clone);
+    Assert.assertFalse(originalLock == cloneLock);
+}

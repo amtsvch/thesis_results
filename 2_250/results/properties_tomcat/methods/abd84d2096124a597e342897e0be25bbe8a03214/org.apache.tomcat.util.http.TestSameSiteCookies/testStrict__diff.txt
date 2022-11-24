@@ -1,0 +1,9 @@
+@Test
+public void testStrict() {
+    SameSiteCookies attribute = SameSiteCookies.STRICT;
+    Assert.assertEquals("Strict", attribute.getValue());
+    Assert.assertEquals(SameSiteCookies.STRICT, attribute);
+    Assert.assertNotEquals(SameSiteCookies.UNSET, attribute);
+    Assert.assertNotEquals(SameSiteCookies.NONE, attribute);
+    Assert.assertNotEquals(SameSiteCookies.LAX, attribute);
+}

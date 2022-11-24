@@ -1,0 +1,12 @@
+/**
+ * @return <code>true</code> if naming should be used.
+ */
+private boolean isUseNaming() {
+    boolean useNaming = true;
+    // Reading the "catalina.useNaming" environment variable
+    String useNamingProperty = System.getProperty("catalina.useNaming");
+    if ((useNamingProperty != null) && (useNamingProperty.equals("false"))) {
+        useNaming = false;
+    }
+    return useNaming;
+}

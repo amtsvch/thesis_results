@@ -1,0 +1,13 @@
+public void setScope(String scopeName) {
+    switch(scopeName) {
+        case "NESTED":
+            scope = VariableInfo.NESTED;
+            break;
+        case "AT_BEGIN":
+            scope = VariableInfo.AT_BEGIN;
+            break;
+        case "AT_END":
+            scope = VariableInfo.AT_END;
+            break;
+    }
+}

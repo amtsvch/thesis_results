@@ -1,0 +1,9 @@
+/**
+ * Default constraint is permit with no transport guarantee.
+ */
+public HttpConstraintElement() {
+    // Default constructor
+    this.emptyRoleSemantic = EmptyRoleSemantic.PERMIT;
+    this.transportGuarantee = TransportGuarantee.NONE;
+    this.rolesAllowed = new String[0];
+}

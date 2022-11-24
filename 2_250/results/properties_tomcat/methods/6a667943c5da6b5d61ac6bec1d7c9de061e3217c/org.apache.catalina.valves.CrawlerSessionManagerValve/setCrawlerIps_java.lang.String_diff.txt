@@ -1,0 +1,15 @@
+/**
+ * Specify the regular expression (using {@link Pattern}) that will be used
+ * to identify crawlers based on their IP address. The default is no crawler
+ * IPs.
+ *
+ * @param crawlerIps The regular expression using {@link Pattern}
+ */
+public void setCrawlerIps(String crawlerIps) {
+    this.crawlerIps = crawlerIps;
+    if (crawlerIps == null || crawlerIps.length() == 0) {
+        ipPattern = null;
+    } else {
+        ipPattern = Pattern.compile(crawlerIps);
+    }
+}

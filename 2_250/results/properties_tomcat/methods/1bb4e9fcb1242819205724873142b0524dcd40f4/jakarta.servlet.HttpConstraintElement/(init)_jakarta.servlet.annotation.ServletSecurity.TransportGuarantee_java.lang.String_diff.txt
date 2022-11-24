@@ -1,0 +1,13 @@
+/**
+ * Construct a constraint with a transport guarantee and roles.
+ *
+ * @param transportGuarantee The transport guarantee to apply to the newly
+ *                           created constraint
+ * @param rolesAllowed       The roles to associate with the newly created
+ *                           constraint
+ */
+public HttpConstraintElement(TransportGuarantee transportGuarantee, String... rolesAllowed) {
+    this.emptyRoleSemantic = EmptyRoleSemantic.PERMIT;
+    this.transportGuarantee = transportGuarantee;
+    this.rolesAllowed = rolesAllowed;
+}

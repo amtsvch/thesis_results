@@ -1,0 +1,17 @@
+/**                                                                                                    /**                                                                                                 
+* Find and return the managed bean definition for the specified bean name,                             * Find and return the managed bean definition for the specified bean name,                          
+* if any; otherwise return &lt;code&gt;null&lt;/code&gt;.                                              * if any; otherwise return &lt;code&gt;null&lt;/code&gt;.                                           
+*                                                                                                      *                                                                                                   
+* @param name Name of the managed bean to be returned. Since 1.1, both                                 * @param name Name of the managed bean to be returned. Since 1.1, both                              
+*            short names or the full name of the class can be used.                                    *            short names or the full name of the class can be used.                                 
+* @return the managed bean                                                                             * @return the managed bean                                                                          
+* @since 1.0                                                                                           * @since 1.0                                                                                        
+*/                                                                                                     */                                                                                                  
+public ManagedBean findManagedBean(String name) {                                                      public ManagedBean findManagedBean(String name) {                                                   
+// XXX Group ?? Use Group + Type                                                                       // XXX Group ?? Use Group + Type                                                                    
+ManagedBean mb = descriptors.get(name);                                                                ManagedBean mb = descriptors.get(name);                                                             
+if (mb == null)                                                                                      | if (mb == null) {                                                                                   
+mb = descriptorsByClass.get(name);                                                                     mb = descriptorsByClass.get(name);                                                                  
+                                                                                                     | }                                                                                                   
+return mb;                                                                                             return mb;                                                                                          
+}                                                                                                      }                                                                                                   

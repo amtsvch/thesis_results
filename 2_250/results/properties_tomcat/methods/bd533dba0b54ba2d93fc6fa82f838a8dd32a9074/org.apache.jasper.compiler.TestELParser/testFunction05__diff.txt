@@ -1,0 +1,4 @@
+@Test
+public void testFunction05() throws JasperException {
+    doTestParser("${do:it(x, '\\\\y',z)}", null);
+}

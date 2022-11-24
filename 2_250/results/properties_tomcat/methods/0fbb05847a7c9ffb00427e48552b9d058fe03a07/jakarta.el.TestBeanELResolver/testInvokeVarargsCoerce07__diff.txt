@@ -1,0 +1,7 @@
+@Test
+public void testInvokeVarargsCoerce07() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Object result = resolver.invoke(context, new TesterBean(BEAN_NAME), "getNameVarargs", new Class<?>[] { null }, null);
+    Assert.assertEquals(BEAN_NAME, result);
+}

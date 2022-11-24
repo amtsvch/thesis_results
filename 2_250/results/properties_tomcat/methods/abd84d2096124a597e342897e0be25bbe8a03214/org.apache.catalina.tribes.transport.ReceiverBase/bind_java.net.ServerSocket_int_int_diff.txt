@@ -1,0 +1,33 @@
+/**
+ * Attempts to bind using the provided port and if that fails attempts to
+ * bind to each of the ports from portstart to (portstart + retries -1)
+ * until either there are no more ports or the bind is successful. The
+ * address to bind to is obtained via a call to {link {@link #getBind()}.
+ * @param socket        The socket to bind
+ * @param portstart     Starting port for bind attempts
+ * @param retries       Number of times to attempt to bind (port incremented
+ *                      between attempts)
+ * @throws IOException Socket bind error
+ */
+protected void bind(ServerSocket socket, int portstart, int retries) throws IOException {
+    synchronized (bindLock) {
+        InetSocketAddress addr = null;
+        int port = portstart;
+        while (retries > 0) {
+            try {
+                addr = new InetSocketAddress(getBind(), port);
+                socket.bind(addr);
+                setPort(port);
+                log.info(sm.getString("receiverBase.socket.bind", addr));
+                retries = 0;
+            } catch (IOException x) {
+                retries--;
+                if (retries <= 0) {
+                    log.info(sm.getString("receiverBase.unable.bind", addr));
+                    throw x;
+                }
+                port++;
+            }
+        }
+    }
+}

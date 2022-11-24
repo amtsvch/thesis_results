@@ -1,0 +1,5 @@
+@Test
+public void testBug57855c() {
+    MethodExpression me = factory.createMethodExpression(context, "${beanB.echo}", null, new Class[] { String.class });
+    me.invoke(context, null);
+}

@@ -1,0 +1,10 @@
+@Override
+public Class<?> getType(EvaluationContext ctx) throws ELException {
+    Target t = getTarget(ctx);
+    ctx.setPropertyResolved(false);
+    Class<?> result = ctx.getELResolver().getType(ctx, t.base, t.property);
+    if (!ctx.isPropertyResolved()) {
+        throw new PropertyNotFoundException(MessageFactory.get("error.resolver.unhandled", t.base, t.property));
+    }
+    return result;
+}

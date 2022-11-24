@@ -1,0 +1,4 @@
+@Test(expected = CharConversionException.class)
+public void testURLDecodeStringSolidus06a() throws IOException {
+    doTestSolidus("%2fxx%20xx", EncodedSolidusHandling.REJECT);
+}

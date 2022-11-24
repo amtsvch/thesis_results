@@ -1,0 +1,5 @@
+@Test
+public void rfc2109Version0Old() {
+    // rfc2109 semantically does not allow $Version to be 0 but it is valid syntax
+    test(false, "$Version=0;foo=bar", FOO);
+}

@@ -1,0 +1,27 @@
+/**                                                                                                    /**                                                                                                 
+* Configure associated class loader permissions.                                                       * Configure associated class loader permissions.                                                    
+*/                                                                                                     */                                                                                                  
+private void setPermissions() {                                                                        private void setPermissions() {                                                                     
+if (!Globals.IS_SECURITY_ENABLED)                                                                    | if (!Globals.IS_SECURITY_ENABLED) {                                                                 
+return;                                                                                                return;                                                                                             
+if (context == null)                                                                                 | }                                                                                                   
+                                                                                                     | if (context == null) {                                                                              
+return;                                                                                                return;                                                                                             
+                                                                                                     | }                                                                                                   
+// Tell the class loader the root of the context                                                       // Tell the class loader the root of the context                                                    
+ServletContext servletContext = context.getServletContext();                                           ServletContext servletContext = context.getServletContext();                                        
+// Assigning permissions for the work directory                                                        // Assigning permissions for the work directory                                                     
+File workDir = (File) servletContext.getAttribute(ServletContext.TEMPDIR);                             File workDir = (File) servletContext.getAttribute(ServletContext.TEMPDIR);                          
+if (workDir != null) {                                                                                 if (workDir != null) {                                                                              
+try {                                                                                                  try {                                                                                               
+String workDirPath = workDir.getCanonicalPath();                                                       String workDirPath = workDir.getCanonicalPath();                                                    
+classLoader.addPermission(new FilePermission(workDirPath, "read,write"));                              classLoader.addPermission(new FilePermission(workDirPath, "read,write"));                           
+classLoader.addPermission(new FilePermission(workDirPath + File.separator + "-", "read,write,delete"   classLoader.addPermission(new FilePermission(workDirPath + File.separator + "-", "read,write,delete"
+} catch (IOException e) {                                                                              } catch (IOException e) {                                                                           
+// Ignore                                                                                              // Ignore                                                                                           
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+for (URL url : context.getResources().getBaseUrls()) {                                                 for (URL url : context.getResources().getBaseUrls()) {                                              
+classLoader.addPermission(url);                                                                        classLoader.addPermission(url);                                                                     
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

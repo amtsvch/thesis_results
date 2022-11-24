@@ -1,0 +1,28 @@
+/**
+ * Translates the name of an option to its integer value.  Valid option names are "asynchronous" (alias "async"),
+ * "byte_message" (alias "byte"), "multicast", "secure", "synchronized_ack" (alias "sync"), "udp", "use_ack"
+ * @param opt The name of the option
+ * @return the int value of the passed option name
+ */
+public static int getSendOptionValue(String opt) {
+    switch(opt) {
+        case "asynchronous":
+        case "async":
+            return SEND_OPTIONS_ASYNCHRONOUS;
+        case "byte_message":
+        case "byte":
+            return SEND_OPTIONS_BYTE_MESSAGE;
+        case "multicast":
+            return SEND_OPTIONS_MULTICAST;
+        case "secure":
+            return SEND_OPTIONS_SECURE;
+        case "synchronized_ack":
+        case "sync":
+            return SEND_OPTIONS_SYNCHRONIZED_ACK;
+        case "udp":
+            return SEND_OPTIONS_UDP;
+        case "use_ack":
+            return SEND_OPTIONS_USE_ACK;
+    }
+    throw new IllegalArgumentException(String.format("[%s] is not a valid option", opt));
+}

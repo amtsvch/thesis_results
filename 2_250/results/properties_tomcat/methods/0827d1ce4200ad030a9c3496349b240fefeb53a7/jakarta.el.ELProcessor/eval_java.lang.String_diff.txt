@@ -1,0 +1,5 @@
+public <T> T eval(String expression) {
+    @SuppressWarnings("unchecked")
+    T result = (T) getValue(expression, Object.class);
+    return result;
+}

@@ -1,0 +1,99 @@
+/**
+ * Perform the internal processing required to invalidate this session,
+ * without triggering an exception if the session has already expired.
+ *
+ * @param notify Should we notify listeners about the demise of
+ *  this session?
+ */
+public void expire(boolean notify) {
+    // Check to see if session has already been invalidated.
+    // Do not check expiring at this point as expire should not return until
+    // isValid is false
+    if (!isValid) {
+        return;
+    }
+    synchronized (this) {
+        // Check again, now we are inside the sync so this code only runs once
+        // Double check locking - isValid needs to be volatile
+        // The check of expiring is to ensure that an infinite loop is not
+        // entered as per bug 56339
+        if (expiring || !isValid) {
+            return;
+        }
+        if (manager == null) {
+            return;
+        }
+        // Mark this session as "being expired"
+        expiring = true;
+        // Notify interested application event listeners
+        // FIXME - Assumes we call listeners in reverse order
+        Context context = manager.getContext();
+        // The call to expire() may not have been triggered by the webapp.
+        // Make sure the webapp's class loader is set when calling the
+        // listeners
+        if (notify) {
+            ClassLoader oldContextClassLoader = null;
+            try {
+                oldContextClassLoader = context.bind(Globals.IS_SECURITY_ENABLED, null);
+                Object[] listeners = context.getApplicationLifecycleListeners();
+                if (listeners != null && listeners.length > 0) {
+                    HttpSessionEvent event = new HttpSessionEvent(getSession());
+                    for (int i = 0; i < listeners.length; i++) {
+                        int j = (listeners.length - 1) - i;
+                        if (!(listeners[j] instanceof HttpSessionListener)) {
+                            continue;
+                        }
+                        HttpSessionListener listener = (HttpSessionListener) listeners[j];
+                        try {
+                            context.fireContainerEvent("beforeSessionDestroyed", listener);
+                            listener.sessionDestroyed(event);
+                            context.fireContainerEvent("afterSessionDestroyed", listener);
+                        } catch (Throwable t) {
+                            ExceptionUtils.handleThrowable(t);
+                            try {
+                                context.fireContainerEvent("afterSessionDestroyed", listener);
+                            } catch (Exception e) {
+                                // Ignore
+                            }
+                            manager.getContext().getLogger().error(sm.getString("standardSession.sessionEvent"), t);
+                        }
+                    }
+                }
+            } finally {
+                context.unbind(Globals.IS_SECURITY_ENABLED, oldContextClassLoader);
+            }
+        }
+        if (activityCheck) {
+            accessCount.set(0);
+        }
+        // Remove this session from our manager's active sessions
+        manager.remove(this, true);
+        // Notify interested session event listeners
+        if (notify) {
+            fireSessionEvent(Session.SESSION_DESTROYED_EVENT, null);
+        }
+        // Call the logout method
+        if (principal instanceof TomcatPrincipal) {
+            TomcatPrincipal gp = (TomcatPrincipal) principal;
+            try {
+                gp.logout();
+            } catch (Exception e) {
+                manager.getContext().getLogger().error(sm.getString("standardSession.logoutfail"), e);
+            }
+        }
+        // We have completed expire of this session
+        setValid(false);
+        expiring = false;
+        // Unbind any objects associated with this session
+        String[] keys = keys();
+        ClassLoader oldContextClassLoader = null;
+        try {
+            oldContextClassLoader = context.bind(Globals.IS_SECURITY_ENABLED, null);
+            for (String key : keys) {
+                removeAttributeInternal(key, notify);
+            }
+        } finally {
+            context.unbind(Globals.IS_SECURITY_ENABLED, oldContextClassLoader);
+        }
+    }
+}

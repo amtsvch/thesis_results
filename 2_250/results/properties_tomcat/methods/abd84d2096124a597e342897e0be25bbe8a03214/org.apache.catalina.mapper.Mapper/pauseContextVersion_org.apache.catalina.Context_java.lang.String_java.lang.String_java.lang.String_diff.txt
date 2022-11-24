@@ -1,0 +1,17 @@
+/**
+ * Mark a context as being reloaded. Reversion of this state is performed
+ * by calling <code>addContextVersion(...)</code> when context starts up.
+ *
+ * @param ctxt      The actual context
+ * @param hostName  Virtual host name this context belongs to
+ * @param contextPath Context path
+ * @param version   Context version
+ */
+public void pauseContextVersion(Context ctxt, String hostName, String contextPath, String version) {
+    hostName = renameWildcardHost(hostName);
+    ContextVersion contextVersion = findContextVersion(hostName, contextPath, version, true);
+    if (contextVersion == null || !ctxt.equals(contextVersion.object)) {
+        return;
+    }
+    contextVersion.markPaused();
+}

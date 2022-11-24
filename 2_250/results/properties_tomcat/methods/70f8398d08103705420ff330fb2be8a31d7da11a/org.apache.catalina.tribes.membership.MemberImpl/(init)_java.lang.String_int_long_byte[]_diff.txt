@@ -1,0 +1,4 @@
+public MemberImpl(String host, int port, long aliveTime, byte[] payload) throws IOException {
+    this(host, port, aliveTime);
+    setPayload(payload);
+}

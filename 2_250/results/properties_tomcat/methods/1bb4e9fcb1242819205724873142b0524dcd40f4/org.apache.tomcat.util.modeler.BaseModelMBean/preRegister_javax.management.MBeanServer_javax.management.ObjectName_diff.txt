@@ -1,0 +1,14 @@
+// -------------------- Registration  --------------------                                             // -------------------- Registration  --------------------                                          
+// XXX We can add some method patterns here- like setName() and                                        // XXX We can add some method patterns here- like setName() and                                     
+// setDomain() for code that doesn't implement the Registration                                        // setDomain() for code that doesn't implement the Registration                                     
+@Override                                                                                              @Override                                                                                           
+public ObjectName preRegister(MBeanServer server, ObjectName name) throws Exception {                  public ObjectName preRegister(MBeanServer server, ObjectName name) throws Exception {               
+if (log.isDebugEnabled())                                                                            | if (log.isDebugEnabled()) {                                                                         
+log.debug("preRegister " + resource + " " + name);                                                     log.debug("preRegister " + resource + " " + name);                                                  
+                                                                                                     | }                                                                                                   
+oname = name;                                                                                          oname = name;                                                                                       
+if (resource instanceof MBeanRegistration) {                                                           if (resource instanceof MBeanRegistration) {                                                        
+oname = ((MBeanRegistration) resource).preRegister(server, name);                                      oname = ((MBeanRegistration) resource).preRegister(server, name);                                   
+}                                                                                                      }                                                                                                   
+return oname;                                                                                          return oname;                                                                                       
+}                                                                                                      }                                                                                                   

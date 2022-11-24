@@ -1,0 +1,14 @@
+/*
+     * Confirm the Basic parser tolerates excess white space after
+     * the base64 blob.
+     *
+     * RFC2617 does not define this case, but asks servers to be
+     * tolerant of this kind of client deviation.
+     */
+@Test
+public void testAuthMethodExtraTrailingSpace() throws Exception {
+    final BasicAuthHeader AUTH_HEADER = new BasicAuthHeader(NICE_METHOD, USER_NAME, PASSWORD, "    ");
+    BasicAuthenticator.BasicCredentials credentials = new BasicAuthenticator.BasicCredentials(AUTH_HEADER.getHeader(), StandardCharsets.UTF_8, true);
+    Assert.assertEquals(USER_NAME, credentials.getUsername());
+    Assert.assertEquals(PASSWORD, credentials.getPassword());
+}

@@ -1,0 +1,17 @@
+private void cancelKey(final SelectionKey key) {                                                       private void cancelKey(final SelectionKey key) {                                                    
+if (log.isTraceEnabled())                                                                            | if (log.isTraceEnabled()) {                                                                         
+log.trace("Adding key for cancel event:" + key);                                                       log.trace("Adding key for cancel event:" + key);                                                    
+                                                                                                     | }                                                                                                   
+ObjectReader reader = (ObjectReader) key.attachment();                                                 ObjectReader reader = (ObjectReader) key.attachment();                                              
+if (reader != null) {                                                                                  if (reader != null) {                                                                               
+reader.setCancelled(true);                                                                             reader.setCancelled(true);                                                                          
+reader.finish();                                                                                       reader.finish();                                                                                    
+}                                                                                                      }                                                                                                   
+Runnable cx = () -&gt; {                                                                               Runnable cx = () -&gt; {                                                                            
+if (log.isTraceEnabled())                                                                            | if (log.isTraceEnabled()) {                                                                         
+log.trace("Cancelling key:" + key);                                                                    log.trace("Cancelling key:" + key);                                                                 
+                                                                                                     | }                                                                                                   
+NioReceiver.cancelledKey(key);                                                                         NioReceiver.cancelledKey(key);                                                                      
+};                                                                                                     };                                                                                                  
+receiver.addEvent(cx);                                                                                 receiver.addEvent(cx);                                                                              
+}                                                                                                      }                                                                                                   

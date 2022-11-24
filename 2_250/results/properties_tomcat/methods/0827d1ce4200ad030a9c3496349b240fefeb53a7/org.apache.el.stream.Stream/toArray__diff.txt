@@ -1,0 +1,7 @@
+public Object[] toArray() {
+    List<Object> result = new ArrayList<>();
+    while (iterator.hasNext()) {
+        result.add(iterator.next());
+    }
+    return result.toArray(new Object[0]);
+}

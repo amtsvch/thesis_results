@@ -1,0 +1,10 @@
+/**
+ * {@inheritDoc}
+ *
+ * @exception IllegalStateException if this map is currently locked
+ */
+@Override
+public void putAll(Map<? extends K, ? extends V> map) {
+    checkLocked();
+    delegatedMap.putAll(map);
+}

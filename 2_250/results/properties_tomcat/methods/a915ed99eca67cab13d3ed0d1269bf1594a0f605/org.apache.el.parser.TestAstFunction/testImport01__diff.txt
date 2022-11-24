@@ -1,0 +1,6 @@
+@Test
+public void testImport01() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("Integer(1000)", Integer.class);
+    Assert.assertEquals(Integer.valueOf(1000), result);
+}

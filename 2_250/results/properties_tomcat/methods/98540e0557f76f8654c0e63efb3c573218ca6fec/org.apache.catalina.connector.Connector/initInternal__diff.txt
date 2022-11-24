@@ -1,0 +1,35 @@
+@Override
+protected void initInternal() throws LifecycleException {
+    super.initInternal();
+    if (protocolHandler == null) {
+        throw new LifecycleException(sm.getString("coyoteConnector.protocolHandlerInstantiationFailed"));
+    }
+    // Initialize adapter
+    adapter = new CoyoteAdapter(this);
+    protocolHandler.setAdapter(adapter);
+    if (service != null) {
+        protocolHandler.setUtilityExecutor(service.getServer().getUtilityExecutor());
+    }
+    // Make sure parseBodyMethodsSet has a default
+    if (null == parseBodyMethodsSet) {
+        setParseBodyMethods(getParseBodyMethods());
+    }
+    if (protocolHandler.isAprRequired() && !AprStatus.isInstanceCreated()) {
+        throw new LifecycleException(sm.getString("coyoteConnector.protocolHandlerNoAprListener", getProtocolHandlerClassName()));
+    }
+    if (protocolHandler.isAprRequired() && !AprStatus.isAprAvailable()) {
+        throw new LifecycleException(sm.getString("coyoteConnector.protocolHandlerNoAprLibrary", getProtocolHandlerClassName()));
+    }
+    if (AprStatus.isAprAvailable() && AprStatus.getUseOpenSSL() && protocolHandler instanceof AbstractHttp11JsseProtocol) {
+        AbstractHttp11JsseProtocol<?> jsseProtocolHandler = (AbstractHttp11JsseProtocol<?>) protocolHandler;
+        if (jsseProtocolHandler.isSSLEnabled() && jsseProtocolHandler.getSslImplementationName() == null) {
+            // OpenSSL is compatible with the JSSE configuration, so use it if APR is available
+            jsseProtocolHandler.setSslImplementationName(OpenSSLImplementation.class.getName());
+        }
+    }
+    try {
+        protocolHandler.init();
+    } catch (Exception e) {
+        throw new LifecycleException(sm.getString("coyoteConnector.protocolHandlerInitializationFailed"), e);
+    }
+}

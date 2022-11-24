@@ -1,0 +1,5 @@
+public SSIMediator(SSIExternalResolver ssiExternalResolver, long lastModifiedDate) {
+    this.ssiExternalResolver = ssiExternalResolver;
+    this.lastModifiedDate = lastModifiedDate;
+    setConfigTimeFmt(DEFAULT_CONFIG_TIME_FMT, true);
+}

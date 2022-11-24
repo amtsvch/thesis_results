@@ -1,0 +1,11 @@
+public User(String username, String dn, String password, List<String> roles, String userRoleId) {
+    this.username = username;
+    this.dn = dn;
+    this.password = password;
+    if (roles == null) {
+        this.roles = Collections.emptyList();
+    } else {
+        this.roles = Collections.unmodifiableList(roles);
+    }
+    this.userRoleId = userRoleId;
+}

@@ -1,0 +1,23 @@
+// -------------------- Processing --------------------
+/**
+ * Process the query string into parameters
+ */
+public void handleQueryParameters() {
+    if (didQueryParameters) {
+        return;
+    }
+    didQueryParameters = true;
+    if (queryMB == null || queryMB.isNull()) {
+        return;
+    }
+    if (log.isDebugEnabled()) {
+        log.debug("Decoding query " + decodedQuery + " " + queryStringCharset.name());
+    }
+    try {
+        decodedQuery.duplicate(queryMB);
+    } catch (IOException e) {
+        // Can't happen, as decodedQuery can't overflow
+        e.printStackTrace();
+    }
+    processParameters(decodedQuery, queryStringCharset);
+}

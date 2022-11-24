@@ -1,0 +1,17 @@
+@Override                                                                                              @Override                                                                                           
+public boolean equals(Object o) {                                                                      public boolean equals(Object o) {                                                                   
+if (this == o)                                                                                       | if (this == o) {                                                                                    
+return true;                                                                                           return true;                                                                                        
+if (o == null || getClass() != o.getClass())                                                         | }                                                                                                   
+                                                                                                     | if (o == null || getClass() != o.getClass()) {                                                      
+return false;                                                                                          return false;                                                                                       
+                                                                                                     | }                                                                                                   
+HuffmanCode that = (HuffmanCode) o;                                                                    HuffmanCode that = (HuffmanCode) o;                                                                 
+if (length != that.length)                                                                           | if (length != that.length) {                                                                        
+return false;                                                                                          return false;                                                                                       
+if (value != that.value)                                                                             | }                                                                                                   
+                                                                                                     | if (value != that.value) {                                                                          
+return false;                                                                                          return false;                                                                                       
+                                                                                                     | }                                                                                                   
+return true;                                                                                           return true;                                                                                        
+}                                                                                                      }                                                                                                   

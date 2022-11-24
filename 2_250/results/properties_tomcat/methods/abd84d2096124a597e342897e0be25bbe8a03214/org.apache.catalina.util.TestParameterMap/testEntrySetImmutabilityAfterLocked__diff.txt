@@ -1,0 +1,48 @@
+@Test
+public void testEntrySetImmutabilityAfterLocked() {
+    ((ParameterMap<String, String[]>) paramMap).setLocked(true);
+    final Set<Map.Entry<String, String[]>> entrySet = paramMap.entrySet();
+    try {
+        final Map<String, String[]> anotherParamsMap = new HashMap<>();
+        anotherParamsMap.put("param4", new String[] { "value4" });
+        Map.Entry<String, String[]> anotherEntry = anotherParamsMap.entrySet().iterator().next();
+        entrySet.add(anotherEntry);
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        final Map<String, String[]> anotherParamsMap = new HashMap<>();
+        anotherParamsMap.put("param4", new String[] { "value4" });
+        anotherParamsMap.put("param5", new String[] { "value5" });
+        entrySet.addAll(anotherParamsMap.entrySet());
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        final Map.Entry<String, String[]> entry = entrySet.iterator().next();
+        entrySet.remove(entry);
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        entrySet.removeIf((a) -> true);
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        Set<Map.Entry<String, String[]>> anotherEntrySet = new HashSet<>(entrySet);
+        entrySet.removeAll(anotherEntrySet);
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        entrySet.retainAll(Collections.emptySet());
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+    try {
+        entrySet.clear();
+        Assert.fail("ParameterMap is not locked.");
+    } catch (UnsupportedOperationException expectedException) {
+    }
+}

@@ -1,0 +1,4 @@
+private void writeObject(ObjectOutputStream oos) throws IOException {
+    oos.defaultWriteObject();
+    oos.writeUTF(getCharset().name());
+}

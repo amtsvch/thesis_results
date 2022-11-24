@@ -1,0 +1,18 @@
+private <T> boolean mergeMap(Map<String, T> fragmentMap, Map<String, T> mainMap, Map<String, T> tempMap, WebXml fragment, String mapName) {
+    for (Entry<String, T> entry : fragmentMap.entrySet()) {
+        final String key = entry.getKey();
+        if (!mainMap.containsKey(key)) {
+            // Not defined in main web.xml
+            T value = entry.getValue();
+            if (tempMap.containsKey(key)) {
+                if (value != null && !value.equals(tempMap.get(key))) {
+                    log.error(sm.getString("webXml.mergeConflictString", mapName, key, fragment.getName(), fragment.getURL()));
+                    return false;
+                }
+            } else {
+                tempMap.put(key, value);
+            }
+        }
+    }
+    return true;
+}

@@ -1,0 +1,6 @@
+@Test(expected = ELException.class)
+public void testNoneMatch04() {
+    ELProcessor processor = new ELProcessor();
+    Optional result = (Optional) processor.getValue("[].stream().noneMatch(x->x==7)", Object.class);
+    result.get();
+}

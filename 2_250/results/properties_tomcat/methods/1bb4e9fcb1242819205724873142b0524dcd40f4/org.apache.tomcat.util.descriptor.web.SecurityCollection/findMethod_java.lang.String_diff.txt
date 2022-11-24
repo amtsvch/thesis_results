@@ -1,0 +1,27 @@
+/**                                                                                                    /**                                                                                                 
+* Check if the collection applies to the specified method.                                             * Check if the collection applies to the specified method.                                          
+* @param method Request method to check                                                                * @param method Request method to check                                                             
+* @return &lt;code&gt;true&lt;/code&gt; if the specified HTTP request method is                        * @return &lt;code&gt;true&lt;/code&gt; if the specified HTTP request method is                     
+* part of this web resource collection.                                                                * part of this web resource collection.                                                             
+*/                                                                                                     */                                                                                                  
+public boolean findMethod(String method) {                                                             public boolean findMethod(String method) {                                                          
+if (methods.length == 0 && omittedMethods.length == 0)                                               | if (methods.length == 0 && omittedMethods.length == 0) {                                            
+return true;                                                                                           return true;                                                                                        
+                                                                                                     | }                                                                                                   
+if (methods.length &gt; 0) {                                                                           if (methods.length &gt; 0) {                                                                        
+for (String s : methods) {                                                                             for (String s : methods) {                                                                          
+if (s.equals(method))                                                                                | if (s.equals(method)) {                                                                             
+return true;                                                                                           return true;                                                                                        
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+return false;                                                                                          return false;                                                                                       
+}                                                                                                      }                                                                                                   
+if (omittedMethods.length &gt; 0) {                                                                    if (omittedMethods.length &gt; 0) {                                                                 
+for (String omittedMethod : omittedMethods) {                                                          for (String omittedMethod : omittedMethods) {                                                       
+if (omittedMethod.equals(method))                                                                    | if (omittedMethod.equals(method)) {                                                                 
+return false;                                                                                          return false;                                                                                       
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+return true;                                                                                           return true;                                                                                        
+}                                                                                                      }                                                                                                   

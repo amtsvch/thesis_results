@@ -1,0 +1,19 @@
+@Test
+public void testSetLocale08() {
+    Response response = setupResponse();
+    // Check setLocale() is over-ridden by setContentType
+    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
+    // setLocale doesn't change previous value
+    response.setContentType(TEXT_UTF_8);
+    Assert.assertEquals(UTF_8, response.getCharacterEncoding());
+    response.setLocale(Locale.ENGLISH);
+    Assert.assertEquals(UTF_8, response.getCharacterEncoding());
+    // Reset
+    response.setContentType(null);
+    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
+    // setLocale is over-ridden by setContentTpe
+    response.setLocale(Locale.CHINESE);
+    Assert.assertEquals(UTF_8, response.getCharacterEncoding());
+    response.setContentType(TEXT_ISO_8859_1);
+    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
+}

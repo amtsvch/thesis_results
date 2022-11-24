@@ -1,0 +1,23 @@
+@Test
+public void testMinIdleSwap() throws Exception {
+    PersistentManager manager = new PersistentManager();
+    manager.setStore(new TesterStore());
+    Host host = new TesterHost();
+    Context context = new TesterContext();
+    context.setParent(host);
+    manager.setContext(context);
+    manager.setMaxActiveSessions(2);
+    manager.setMinIdleSwap(0);
+    manager.start();
+    // Create the maximum number of sessions
+    manager.createSession(null);
+    manager.createSession(null);
+    // Given the minIdleSwap settings, this should swap one out to get below
+    // the limit
+    manager.processPersistenceChecks();
+    Assert.assertEquals(1, manager.getActiveSessions());
+    Assert.assertEquals(2, manager.getActiveSessionsFull());
+    manager.createSession(null);
+    Assert.assertEquals(2, manager.getActiveSessions());
+    Assert.assertEquals(3, manager.getActiveSessionsFull());
+}

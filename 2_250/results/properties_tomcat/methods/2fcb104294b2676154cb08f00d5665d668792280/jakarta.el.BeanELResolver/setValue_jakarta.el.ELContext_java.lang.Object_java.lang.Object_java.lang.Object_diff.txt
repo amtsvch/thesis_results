@@ -1,0 +1,21 @@
+@Override
+public void setValue(ELContext context, Object base, Object property, Object value) {
+    Objects.requireNonNull(context);
+    if (base == null || property == null) {
+        return;
+    }
+    context.setPropertyResolved(base, property);
+    if (this.readOnly) {
+        throw new PropertyNotWritableException(Util.message(context, "resolverNotWriteable", base.getClass().getName()));
+    }
+    Method m = this.property(context, base, property).write(context, base);
+    try {
+        m.invoke(base, value);
+    } catch (InvocationTargetException e) {
+        Throwable cause = e.getCause();
+        Util.handleThrowable(cause);
+        throw new ELException(Util.message(context, "propertyWriteError", base.getClass().getName(), property.toString()), cause);
+    } catch (Exception e) {
+        throw new ELException(e);
+    }
+}

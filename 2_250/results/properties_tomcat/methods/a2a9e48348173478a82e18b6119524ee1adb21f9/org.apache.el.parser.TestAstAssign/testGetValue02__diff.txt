@@ -1,0 +1,7 @@
+@Test
+public void testGetValue02() {
+    ELProcessor processor = new ELProcessor();
+    processor.defineBean("bean01", new TesterBeanB());
+    Object result = processor.getValue("bean01.text = 'hello'; bean01.text", String.class);
+    Assert.assertEquals("hello", result);
+}

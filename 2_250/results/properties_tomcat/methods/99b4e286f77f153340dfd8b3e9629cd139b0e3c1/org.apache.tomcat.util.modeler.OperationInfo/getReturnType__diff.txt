@@ -1,0 +1,10 @@
+/**
+ * @return the fully qualified Java class name of the return type for this
+ * operation.
+ */
+public String getReturnType() {
+    if (type == null) {
+        type = "void";
+    }
+    return type;
+}

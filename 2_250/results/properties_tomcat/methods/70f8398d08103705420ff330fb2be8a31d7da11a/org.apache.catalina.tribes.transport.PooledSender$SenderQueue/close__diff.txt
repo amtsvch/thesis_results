@@ -1,0 +1,18 @@
+public synchronized void close() {
+    isOpen = false;
+    Object[] unused = notinuse.toArray();
+    Object[] used = inuse.toArray();
+    for (Object value : unused) {
+        DataSender sender = (DataSender) value;
+        sender.disconnect();
+    }
+    // for
+    for (Object o : used) {
+        DataSender sender = (DataSender) o;
+        sender.disconnect();
+    }
+    // for
+    notinuse.clear();
+    inuse.clear();
+    notifyAll();
+}

@@ -1,0 +1,15 @@
+/*
+     * when a valid CORS Pre-flight request arrives, with empty
+     * Access-Control-Request-Method
+     */
+@Test
+public void testCheckPreFlightRequestTypeEmptyACRM() throws ServletException {
+    TesterHttpServletRequest request = new TesterHttpServletRequest();
+    request.setHeader(CorsFilter.REQUEST_HEADER_ORIGIN, TesterFilterConfigs.HTTP_TOMCAT_APACHE_ORG);
+    request.setHeader(CorsFilter.REQUEST_HEADER_ACCESS_CONTROL_REQUEST_METHOD, "");
+    request.setMethod("OPTIONS");
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getDefaultFilterConfig());
+    CorsFilter.CORSRequestType requestType = corsFilter.checkRequestType(request);
+    Assert.assertEquals(CorsFilter.CORSRequestType.INVALID_CORS, requestType);
+}

@@ -1,0 +1,26 @@
+public void execute() throws Exception {
+    if (registry == null) {
+        registry = Registry.getRegistry(null, null);
+    }
+    InputStream stream = (InputStream) source;
+    List<ManagedBean> loadedMbeans = new ArrayList<>();
+    synchronized (dLock) {
+        if (digester == null) {
+            digester = createDigester();
+        }
+        // Process the input file to configure our registry
+        try {
+            // Push our registry object onto the stack
+            digester.push(loadedMbeans);
+            digester.parse(stream);
+        } catch (Exception e) {
+            log.error(sm.getString("modules.digesterParseError"), e);
+            throw e;
+        } finally {
+            digester.reset();
+        }
+    }
+    for (ManagedBean loadedMbean : loadedMbeans) {
+        registry.addManagedBean(loadedMbean);
+    }
+}

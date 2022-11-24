@@ -1,0 +1,13 @@
+/**
+ * {@inheritDoc}
+ * <p>
+ * Returns an <strong>unmodifiable</strong> {@link Collection} view of the
+ * values contained in this map if it is locked.
+ */
+@Override
+public Collection<V> values() {
+    if (locked) {
+        return unmodifiableDelegatedMap.values();
+    }
+    return delegatedMap.values();
+}

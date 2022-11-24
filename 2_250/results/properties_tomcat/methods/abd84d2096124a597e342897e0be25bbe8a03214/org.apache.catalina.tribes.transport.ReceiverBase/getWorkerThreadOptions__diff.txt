@@ -1,0 +1,7 @@
+public int getWorkerThreadOptions() {
+    int options = 0;
+    if (getDirect()) {
+        options = options | OPTION_DIRECT_BUFFER;
+    }
+    return options;
+}

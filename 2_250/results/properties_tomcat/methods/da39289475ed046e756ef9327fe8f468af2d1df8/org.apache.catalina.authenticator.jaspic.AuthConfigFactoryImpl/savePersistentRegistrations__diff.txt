@@ -1,0 +1,10 @@
+private void savePersistentRegistrations() {
+    synchronized (CONFIG_FILE_LOCK) {
+        Providers providers = new Providers();
+        savePersistentProviders(providers, layerAppContextRegistrations);
+        savePersistentProviders(providers, appContextRegistrations);
+        savePersistentProviders(providers, layerRegistrations);
+        savePersistentProviders(providers, defaultRegistration);
+        PersistentProviderRegistrations.writeProviders(providers, CONFIG_FILE);
+    }
+}

@@ -1,0 +1,6 @@
+@Override
+public void cleanSubject(MessageInfo messageInfo, Subject subject) throws AuthException {
+    for (ServerAuthModule module : modules) {
+        module.cleanSubject(messageInfo, subject);
+    }
+}

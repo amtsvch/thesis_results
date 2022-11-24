@@ -1,0 +1,9 @@
+private static boolean hasAsync(Servlet existing) {
+    boolean result = false;
+    Class<?> clazz = existing.getClass();
+    WebServlet ws = clazz.getAnnotation(WebServlet.class);
+    if (ws != null) {
+        result = ws.asyncSupported();
+    }
+    return result;
+}

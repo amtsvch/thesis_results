@@ -1,0 +1,6 @@
+@Override
+public int hashCode() {
+    int result = value;
+    result = 31 * result + length;
+    return result;
+}

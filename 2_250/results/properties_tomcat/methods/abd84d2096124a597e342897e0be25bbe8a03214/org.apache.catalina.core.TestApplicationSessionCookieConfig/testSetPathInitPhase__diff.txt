@@ -1,0 +1,6 @@
+@Test
+public void testSetPathInitPhase() {
+    context.setState(LifecycleState.STARTING_PREP);
+    applicationSessionCookieConfig.setPath("test");
+    Assert.assertTrue(applicationSessionCookieConfig.getPath().equals("test"));
+}

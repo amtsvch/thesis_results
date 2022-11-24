@@ -1,0 +1,25 @@
+private void doTestSearchOrder(String layer, String appContext, int expected) {
+    AuthConfigFactory factory = new AuthConfigFactoryImpl();
+    AuthConfigProvider acp1 = new SimpleAuthConfigProvider(null, null);
+    factory.registerConfigProvider(acp1, null, null, "1");
+    AuthConfigProvider acp2 = new SimpleAuthConfigProvider(null, null);
+    factory.registerConfigProvider(acp2, null, "AC_1", "2");
+    AuthConfigProvider acp3 = new SimpleAuthConfigProvider(null, null);
+    factory.registerConfigProvider(acp3, "L_1", null, "3");
+    AuthConfigProvider acp4 = new SimpleAuthConfigProvider(null, null);
+    factory.registerConfigProvider(acp4, "L_2", "AC_2", "4");
+    AuthConfigProvider searchResult = factory.getConfigProvider(layer, appContext, null);
+    int searchIndex;
+    if (searchResult == acp1) {
+        searchIndex = 1;
+    } else if (searchResult == acp2) {
+        searchIndex = 2;
+    } else if (searchResult == acp3) {
+        searchIndex = 3;
+    } else if (searchResult == acp4) {
+        searchIndex = 4;
+    } else {
+        searchIndex = -1;
+    }
+    Assert.assertEquals(expected, searchIndex);
+}

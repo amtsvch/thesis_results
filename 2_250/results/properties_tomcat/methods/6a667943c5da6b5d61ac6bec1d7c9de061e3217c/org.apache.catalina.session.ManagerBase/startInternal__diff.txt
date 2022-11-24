@@ -1,0 +1,36 @@
+@Override                                                                                              @Override                                                                                           
+protected void startInternal() throws LifecycleException {                                             protected void startInternal() throws LifecycleException {                                          
+// Ensure caches for timing stats are the right size by filling with                                   // Ensure caches for timing stats are the right size by filling with                                
+// nulls.                                                                                              // nulls.                                                                                           
+while (sessionCreationTiming.size() &lt; TIMING_STATS_CACHE_SIZE) {                                    while (sessionCreationTiming.size() &lt; TIMING_STATS_CACHE_SIZE) {                                 
+sessionCreationTiming.add(null);                                                                       sessionCreationTiming.add(null);                                                                    
+}                                                                                                      }                                                                                                   
+while (sessionExpirationTiming.size() &lt; TIMING_STATS_CACHE_SIZE) {                                  while (sessionExpirationTiming.size() &lt; TIMING_STATS_CACHE_SIZE) {                               
+sessionExpirationTiming.add(null);                                                                     sessionExpirationTiming.add(null);                                                                  
+}                                                                                                      }                                                                                                   
+/* Create sessionIdGenerator if not explicitly configured */                                           /* Create sessionIdGenerator if not explicitly configured */                                        
+SessionIdGenerator sessionIdGenerator = getSessionIdGenerator();                                       SessionIdGenerator sessionIdGenerator = getSessionIdGenerator();                                    
+if (sessionIdGenerator == null) {                                                                      if (sessionIdGenerator == null) {                                                                   
+sessionIdGenerator = new StandardSessionIdGenerator();                                                 sessionIdGenerator = new StandardSessionIdGenerator();                                              
+setSessionIdGenerator(sessionIdGenerator);                                                             setSessionIdGenerator(sessionIdGenerator);                                                          
+}                                                                                                      }                                                                                                   
+sessionIdGenerator.setJvmRoute(getJvmRoute());                                                         sessionIdGenerator.setJvmRoute(getJvmRoute());                                                      
+if (sessionIdGenerator instanceof SessionIdGeneratorBase) {                                            if (sessionIdGenerator instanceof SessionIdGeneratorBase) {                                         
+SessionIdGeneratorBase sig = (SessionIdGeneratorBase) sessionIdGenerator;                              SessionIdGeneratorBase sig = (SessionIdGeneratorBase) sessionIdGenerator;                           
+sig.setSecureRandomAlgorithm(getSecureRandomAlgorithm());                                              sig.setSecureRandomAlgorithm(getSecureRandomAlgorithm());                                           
+sig.setSecureRandomClass(getSecureRandomClass());                                                      sig.setSecureRandomClass(getSecureRandomClass());                                                   
+sig.setSecureRandomProvider(getSecureRandomProvider());                                                sig.setSecureRandomProvider(getSecureRandomProvider());                                             
+}                                                                                                      }                                                                                                   
+if (sessionIdGenerator instanceof Lifecycle) {                                                         if (sessionIdGenerator instanceof Lifecycle) {                                                      
+((Lifecycle) sessionIdGenerator).start();                                                              ((Lifecycle) sessionIdGenerator).start();                                                           
+} else {                                                                                               } else {                                                                                            
+// Force initialization of the random number generator                                                 // Force initialization of the random number generator                                              
+if (log.isDebugEnabled())                                                                            | if (log.isDebugEnabled()) {                                                                         
+log.debug("Force random number initialization starting");                                              log.debug("Force random number initialization starting");                                           
+                                                                                                     | }                                                                                                   
+sessionIdGenerator.generateSessionId();                                                                sessionIdGenerator.generateSessionId();                                                             
+if (log.isDebugEnabled())                                                                            | if (log.isDebugEnabled()) {                                                                         
+log.debug("Force random number initialization completed");                                             log.debug("Force random number initialization completed");                                          
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

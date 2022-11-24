@@ -1,0 +1,4 @@
+@Test
+public void v1TestMaxAgePositive() {
+    doV1TestMaxAge(100, "foo=bar; Version=1; Max-Age=100", "foo=bar; Max-Age=100");
+}

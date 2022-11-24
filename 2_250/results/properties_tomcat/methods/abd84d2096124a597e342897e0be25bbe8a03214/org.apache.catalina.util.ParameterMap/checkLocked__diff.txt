@@ -1,0 +1,5 @@
+private void checkLocked() {
+    if (locked) {
+        throw new IllegalStateException(sm.getString("parameterMap.locked"));
+    }
+}

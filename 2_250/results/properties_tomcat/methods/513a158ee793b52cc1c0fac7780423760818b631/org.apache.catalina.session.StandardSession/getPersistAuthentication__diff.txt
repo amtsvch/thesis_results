@@ -1,0 +1,12 @@
+/**
+ * Return whether authentication information shall be persisted or not.
+ *
+ * @return {@code true}, if authentication information shall be persisted;
+ *         {@code false} otherwise
+ */
+private boolean getPersistAuthentication() {
+    if (manager instanceof ManagerBase) {
+        return ((ManagerBase) manager).getPersistAuthentication();
+    }
+    return false;
+}

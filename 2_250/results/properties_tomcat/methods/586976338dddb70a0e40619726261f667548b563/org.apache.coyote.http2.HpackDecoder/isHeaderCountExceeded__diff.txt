@@ -1,0 +1,6 @@
+boolean isHeaderCountExceeded() {
+    if (maxHeaderCount < 0) {
+        return false;
+    }
+    return headerCount > maxHeaderCount;
+}

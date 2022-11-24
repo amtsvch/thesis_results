@@ -1,0 +1,7 @@
+@Test
+public void testQuotedEmptyLhex() throws Exception {
+    String header = "Digest nc=\"\"";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertNull(result);
+}

@@ -1,0 +1,9 @@
+public void setType(String type) {
+    mBeanInfoLock.writeLock().lock();
+    try {
+        this.type = type;
+        this.info = null;
+    } finally {
+        mBeanInfoLock.writeLock().unlock();
+    }
+}

@@ -1,0 +1,22 @@
+/**
+ * Called to initiate a unit of work by this worker thread
+ * on the provided SelectionKey object.  This method is
+ * synchronized, as is the run() method, so only one key
+ * can be serviced at a given time.
+ * Before waking the worker thread, and before returning
+ * to the main selection loop, this key's interest set is
+ * updated to remove OP_READ.  This will cause the selector
+ * to ignore read-readiness for this channel while the
+ * worker thread is servicing it.
+ * @param key The key to process
+ */
+public synchronized void serviceChannel(SelectionKey key) {
+    if (log.isTraceEnabled())
+        log.trace("About to service key:" + key);
+    ObjectReader reader = (ObjectReader) key.attachment();
+    if (reader != null)
+        reader.setLastAccess(System.currentTimeMillis());
+    this.key = key;
+    key.interestOps(key.interestOps() & (~SelectionKey.OP_READ));
+    key.interestOps(key.interestOps() & (~SelectionKey.OP_WRITE));
+}

@@ -1,0 +1,14 @@
+/**
+ * @return the session associated with this Request, creating one
+ * if necessary and requested.
+ *
+ * @param create Create a new session if one does not exist
+ */
+@Override
+public HttpSession getSession(boolean create) {
+    Session session = doGetSession(create);
+    if (session == null) {
+        return null;
+    }
+    return session.getSession();
+}

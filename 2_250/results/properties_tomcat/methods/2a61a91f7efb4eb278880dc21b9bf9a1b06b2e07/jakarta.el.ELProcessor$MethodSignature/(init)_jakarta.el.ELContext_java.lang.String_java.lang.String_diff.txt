@@ -1,0 +1,113 @@
+public MethodSignature(ELContext context, String methodName, String className) throws NoSuchMethodException {
+    int paramIndex = methodName.indexOf('(');
+    if (paramIndex == -1) {
+        name = methodName.trim();
+        parameterTypeNames = null;
+    } else {
+        String returnTypeAndName = methodName.substring(0, paramIndex).trim();
+        // Assume that the return type and the name are separated by
+        // whitespace. Given the use of trim() above, there should only
+        // be one sequence of whitespace characters.
+        int wsPos = -1;
+        for (int i = 0; i < returnTypeAndName.length(); i++) {
+            if (Character.isWhitespace(returnTypeAndName.charAt(i))) {
+                wsPos = i;
+                break;
+            }
+        }
+        if (wsPos == -1) {
+            throw new NoSuchMethodException();
+        }
+        name = returnTypeAndName.substring(wsPos).trim();
+        String paramString = methodName.substring(paramIndex).trim();
+        // We know the params start with '(', check they end with ')'
+        if (!paramString.endsWith(")")) {
+            throw new NoSuchMethodException(Util.message(context, "elProcessor.defineFunctionInvalidParameterList", paramString, methodName, className));
+        }
+        // Trim '(' and ')'
+        paramString = paramString.substring(1, paramString.length() - 1).trim();
+        if (paramString.length() == 0) {
+            parameterTypeNames = EMPTY_STRING_ARRAY;
+        } else {
+            parameterTypeNames = paramString.split(",");
+            ImportHandler importHandler = context.getImportHandler();
+            for (int i = 0; i < parameterTypeNames.length; i++) {
+                String parameterTypeName = parameterTypeNames[i].trim();
+                int dimension = 0;
+                int bracketPos = parameterTypeName.indexOf('[');
+                if (bracketPos > -1) {
+                    String parameterTypeNameOnly = parameterTypeName.substring(0, bracketPos).trim();
+                    while (bracketPos > -1) {
+                        dimension++;
+                        bracketPos = parameterTypeName.indexOf('[', bracketPos + 1);
+                    }
+                    parameterTypeName = parameterTypeNameOnly;
+                }
+                boolean varArgs = false;
+                if (parameterTypeName.endsWith("...")) {
+                    varArgs = true;
+                    dimension = 1;
+                    parameterTypeName = parameterTypeName.substring(0, parameterTypeName.length() - 3).trim();
+                }
+                boolean isPrimitive = PRIMITIVES.contains(parameterTypeName);
+                if (isPrimitive && dimension > 0) {
+                    // When in an array, class name changes for primitive
+                    switch(parameterTypeName) {
+                        case "boolean":
+                            parameterTypeName = "Z";
+                            break;
+                        case "byte":
+                            parameterTypeName = "B";
+                            break;
+                        case "char":
+                            parameterTypeName = "C";
+                            break;
+                        case "double":
+                            parameterTypeName = "D";
+                            break;
+                        case "float":
+                            parameterTypeName = "F";
+                            break;
+                        case "int":
+                            parameterTypeName = "I";
+                            break;
+                        case "long":
+                            parameterTypeName = "J";
+                            break;
+                        case "short":
+                            parameterTypeName = "S";
+                            break;
+                        default:
+                            // Should never happen
+                            break;
+                    }
+                } else if (!isPrimitive && !parameterTypeName.contains(".")) {
+                    Class<?> clazz = importHandler.resolveClass(parameterTypeName);
+                    if (clazz == null) {
+                        throw new NoSuchMethodException(Util.message(context, "elProcessor.defineFunctionInvalidParameterTypeName", parameterTypeNames[i], methodName, className));
+                    }
+                    parameterTypeName = clazz.getName();
+                }
+                if (dimension > 0) {
+                    // Convert to array form of class name
+                    StringBuilder sb = new StringBuilder();
+                    for (int j = 0; j < dimension; j++) {
+                        sb.append('[');
+                    }
+                    if (!isPrimitive) {
+                        sb.append('L');
+                    }
+                    sb.append(parameterTypeName);
+                    if (!isPrimitive) {
+                        sb.append(';');
+                    }
+                    parameterTypeName = sb.toString();
+                }
+                if (varArgs) {
+                    parameterTypeName += "...";
+                }
+                parameterTypeNames[i] = parameterTypeName;
+            }
+        }
+    }
+}

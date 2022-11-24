@@ -1,0 +1,6 @@
+@Test
+public void test01() {
+    ELProcessor processor = new ELProcessor();
+    processor.defineBean("sb", new StringBuilder());
+    Assert.assertEquals("a", processor.eval("sb.append('a'); sb.toString()"));
+}

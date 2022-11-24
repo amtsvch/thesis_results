@@ -1,0 +1,7 @@
+@Override                                                                                              @Override                                                                                           
+public Principal authenticate(String username, String password) {                                      public Principal authenticate(String username, String password) {                                   
+if (getPassword(username).equals(password))                                                          | if (getPassword(username).equals(password)) {                                                       
+return getPrincipal(username);                                                                         return getPrincipal(username);                                                                      
+                                                                                                     | }                                                                                                   
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   

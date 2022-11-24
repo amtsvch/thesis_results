@@ -1,0 +1,21 @@
+/**
+ * Same as java.util.Random.nextBytes except this one we don't have to allocate a new byte array
+ * @param into byte[]
+ * @param offset int
+ * @param length int
+ * @param r Random
+ */
+public static void nextBytes(byte[] into, int offset, int length, Random r) {
+    int numRequested = length;
+    int numGot = 0, rnd = 0;
+    while (true) {
+        for (int i = 0; i < BYTES_PER_INT; i++) {
+            if (numGot == numRequested) {
+                return;
+            }
+            rnd = (i == 0 ? r.nextInt() : rnd >> BITS_PER_BYTE);
+            into[offset + numGot] = (byte) rnd;
+            numGot++;
+        }
+    }
+}

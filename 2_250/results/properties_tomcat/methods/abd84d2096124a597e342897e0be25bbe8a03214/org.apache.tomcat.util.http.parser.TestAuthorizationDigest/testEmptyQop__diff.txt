@@ -1,0 +1,7 @@
+@Test
+public void testEmptyQop() throws Exception {
+    String header = "Digest qop=";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertNull(result);
+}

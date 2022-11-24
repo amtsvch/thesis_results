@@ -1,0 +1,4 @@
+private void doTest(Cookie cookie, CookieProcessor legacy, String expectedLegacy, CookieProcessor rfc6265, String expectedRfc6265) {
+    doTest(cookie, legacy, expectedLegacy);
+    doTest(cookie, rfc6265, expectedRfc6265);
+}

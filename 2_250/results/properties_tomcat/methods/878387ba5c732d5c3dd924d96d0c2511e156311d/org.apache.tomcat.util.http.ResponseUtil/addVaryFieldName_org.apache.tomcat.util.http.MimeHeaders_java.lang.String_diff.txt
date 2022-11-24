@@ -1,0 +1,3 @@
+public static void addVaryFieldName(MimeHeaders headers, String name) {
+    addVaryFieldName(new HeaderAdapter(headers), name);
+}

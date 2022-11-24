@@ -1,0 +1,22 @@
+public static Serializable deserialize(byte[] data, int offset, int length, ClassLoader[] cls) throw   public static Serializable deserialize(byte[] data, int offset, int length, ClassLoader[] cls) throw
+invokecount.addAndGet(1);                                                                              invokecount.addAndGet(1);                                                                           
+Object message = null;                                                                                 Object message = null;                                                                              
+if (cls == null)                                                                                     | if (cls == null) {                                                                                  
+cls = new ClassLoader[0];                                                                              cls = new ClassLoader[0];                                                                           
+                                                                                                     | }                                                                                                   
+if (data != null && length &gt; 0) {                                                                   if (data != null && length &gt; 0) {                                                                
+InputStream instream = new ByteArrayInputStream(data, offset, length);                                 InputStream instream = new ByteArrayInputStream(data, offset, length);                              
+ObjectInputStream stream = null;                                                                       ObjectInputStream stream = null;                                                                    
+stream = (cls.length &gt; 0) ? new ReplicationStream(instream, cls) : new ObjectInputStream(instream   stream = (cls.length &gt; 0) ? new ReplicationStream(instream, cls) : new ObjectInputStream(instream
+message = stream.readObject();                                                                         message = stream.readObject();                                                                      
+instream.close();                                                                                      instream.close();                                                                                   
+stream.close();                                                                                        stream.close();                                                                                     
+}                                                                                                      }                                                                                                   
+if (message == null) {                                                                                 if (message == null) {                                                                              
+return null;                                                                                           return null;                                                                                        
+} else if (message instanceof Serializable)                                                          | } else if (message instanceof Serializable) {                                                       
+return (Serializable) message;                                                                         return (Serializable) message;                                                                      
+else {                                                                                               | } else {                                                                                            
+throw new ClassCastException(sm.getString("xByteBuffer.wrong.class", message.getClass().getName()));   throw new ClassCastException(sm.getString("xByteBuffer.wrong.class", message.getClass().getName()));
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

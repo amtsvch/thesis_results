@@ -1,0 +1,11 @@
+@Test
+public void testMimeHeadersAddValidWithValidHeaders() {
+    MimeHeaders mh = new MimeHeaders();
+    mh.addValue("vary").setString("foo");
+    mh.addValue("vary").setString("bar");
+    List<String> expected = new ArrayList<>();
+    expected.add("foo");
+    expected.add("bar");
+    expected.add("too");
+    doTestAddVaryFieldName(mh, "too", expected);
+}

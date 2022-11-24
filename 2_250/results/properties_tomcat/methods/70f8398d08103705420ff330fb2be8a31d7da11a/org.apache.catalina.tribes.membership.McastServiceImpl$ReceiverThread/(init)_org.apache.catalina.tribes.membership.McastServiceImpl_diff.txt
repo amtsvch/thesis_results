@@ -1,0 +1,8 @@
+public ReceiverThread() {                                                                              public ReceiverThread() {                                                                           
+super();                                                                                               super();                                                                                            
+String channelName = "";                                                                               String channelName = "";                                                                            
+if (channel.getName() != null)                                                                       | if (channel.getName() != null) {                                                                    
+channelName = "[" + channel.getName() + "]";                                                           channelName = "[" + channel.getName() + "]";                                                        
+                                                                                                     | }                                                                                                   
+setName("Tribes-MembershipReceiver" + channelName);                                                    setName("Tribes-MembershipReceiver" + channelName);                                                 
+}                                                                                                      }                                                                                                   

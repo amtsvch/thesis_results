@@ -1,0 +1,7 @@
+private void remoteEof(SelectionKey key) {                                                             private void remoteEof(SelectionKey key) {                                                          
+// close channel on EOF, invalidates the key                                                           // close channel on EOF, invalidates the key                                                        
+if (log.isDebugEnabled())                                                                            | if (log.isDebugEnabled()) {                                                                         
+log.debug("Channel closed on the remote end, disconnecting");                                          log.debug("Channel closed on the remote end, disconnecting");                                       
+                                                                                                     | }                                                                                                   
+cancelKey(key);                                                                                        cancelKey(key);                                                                                     
+}                                                                                                      }                                                                                                   

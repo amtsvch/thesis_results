@@ -1,0 +1,8 @@
+/**
+ * Returns the channel sender component
+ * @return ChannelSender
+ */
+@Override
+public ChannelSender getChannelSender() {
+    return coordinator.getClusterSender();
+}

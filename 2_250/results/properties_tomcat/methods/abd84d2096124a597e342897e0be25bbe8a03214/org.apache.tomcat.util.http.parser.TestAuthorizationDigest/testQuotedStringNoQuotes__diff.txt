@@ -1,0 +1,7 @@
+@Test
+public void testQuotedStringNoQuotes() throws Exception {
+    String header = "Digest username=a";
+    StringReader input = new StringReader(header);
+    Map<String, String> result = Authorization.parseAuthorizationDigest(input);
+    Assert.assertNull(result);
+}

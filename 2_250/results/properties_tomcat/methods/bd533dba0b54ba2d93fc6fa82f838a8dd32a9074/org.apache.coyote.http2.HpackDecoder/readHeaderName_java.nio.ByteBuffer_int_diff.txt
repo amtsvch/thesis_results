@@ -1,0 +1,12 @@
+private String readHeaderName(ByteBuffer buffer, int prefixLength) throws HpackException {
+    // unget the byte
+    buffer.position(buffer.position() - 1);
+    int index = Hpack.decodeInteger(buffer, prefixLength);
+    if (index == -1) {
+        return null;
+    } else if (index != 0) {
+        return handleIndexedHeaderName(index);
+    } else {
+        return readHpackString(buffer);
+    }
+}

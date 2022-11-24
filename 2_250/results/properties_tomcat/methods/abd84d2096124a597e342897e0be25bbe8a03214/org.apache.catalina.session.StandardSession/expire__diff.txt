@@ -1,0 +1,8 @@
+/**
+ * Perform the internal processing required to invalidate this session,
+ * without triggering an exception if the session has already expired.
+ */
+@Override
+public void expire() {
+    expire(true);
+}

@@ -1,0 +1,4 @@
+@Test
+public void testQueryLargeInvalid() {
+    Assert.assertFalse(HttpParser.isQuery(Integer.MAX_VALUE));
+}

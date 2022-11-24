@@ -1,0 +1,5 @@
+private ServletContext getServletContext() throws LifecycleException {
+    Tomcat tomcat = getTomcatInstanceTestWebapp(false, false);
+    StandardContext standardContext = (StandardContext) tomcat.getHost().findChildren()[0];
+    return standardContext.getServletContext();
+}

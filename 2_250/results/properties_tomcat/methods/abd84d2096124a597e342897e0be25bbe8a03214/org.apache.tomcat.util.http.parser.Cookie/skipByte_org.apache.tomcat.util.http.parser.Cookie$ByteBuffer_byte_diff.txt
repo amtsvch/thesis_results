@@ -1,0 +1,10 @@
+private static SkipResult skipByte(ByteBuffer bb, byte target) {
+    if (!bb.hasRemaining()) {
+        return SkipResult.EOF;
+    }
+    if (bb.get() == target) {
+        return SkipResult.FOUND;
+    }
+    bb.rewind();
+    return SkipResult.NOT_FOUND;
+}

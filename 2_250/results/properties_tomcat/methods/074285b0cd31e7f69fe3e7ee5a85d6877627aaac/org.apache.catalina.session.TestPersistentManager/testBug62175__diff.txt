@@ -1,0 +1,46 @@
+@Test
+public void testBug62175() throws Exception {
+    PersistentManager manager = new PersistentManager();
+    AtomicInteger sessionExpireCounter = new AtomicInteger();
+    Store mockStore = EasyMock.createNiceMock(Store.class);
+    EasyMock.expect(mockStore.load(EasyMock.anyString())).andAnswer(new IAnswer<Session>() {
+
+        @Override
+        public Session answer() throws Throwable {
+            return timedOutSession(manager, sessionExpireCounter);
+        }
+    }).anyTimes();
+    EasyMock.replay(mockStore);
+    manager.setStore(mockStore);
+    Host host = new TesterHost();
+    RequestCachingSessionListener requestCachingSessionListener = new RequestCachingSessionListener();
+    Context context = new TesterContext() {
+
+        @Override
+        public Object[] getApplicationLifecycleListeners() {
+            return new Object[] { requestCachingSessionListener };
+        }
+
+        @Override
+        public Manager getManager() {
+            return manager;
+        }
+    };
+    context.setParent(host);
+    Connector connector = EasyMock.createNiceMock(Connector.class);
+    Request req = new Request(connector) {
+
+        @Override
+        public Context getContext() {
+            return context;
+        }
+    };
+    req.setRequestedSessionId("invalidSession");
+    HttpServletRequest request = new RequestFacade(req);
+    EasyMock.replay(connector);
+    requestCachingSessionListener.request = request;
+    manager.setContext(context);
+    manager.start();
+    Assert.assertNull(request.getSession(false));
+    Assert.assertEquals(1, sessionExpireCounter.get());
+}

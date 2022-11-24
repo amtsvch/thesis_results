@@ -1,0 +1,6 @@
+@Test
+public void testSpecExample2_04() throws Exception {
+    UriTemplate t = new UriTemplate("/a/{var}");
+    Map<String, String> result = t.match(new UriTemplate("/a/b/c"));
+    Assert.assertNull(result);
+}

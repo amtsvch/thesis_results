@@ -1,0 +1,7 @@
+public void addFilter(FilterDef filter) {
+    if (filters.containsKey(filter.getFilterName())) {
+        // Filter names must be unique within a web(-fragment).xml
+        throw new IllegalArgumentException(sm.getString("webXml.duplicateFilter", filter.getFilterName()));
+    }
+    filters.put(filter.getFilterName(), filter);
+}

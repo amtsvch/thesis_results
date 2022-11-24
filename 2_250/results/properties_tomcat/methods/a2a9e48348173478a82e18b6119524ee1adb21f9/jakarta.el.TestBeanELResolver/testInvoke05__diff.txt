@@ -1,0 +1,9 @@
+/**
+ * Tests that a call to &lt;init&gt; as a method name will throw an exception.
+ */
+@Test(expected = MethodNotFoundException.class)
+public void testInvoke05() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    resolver.invoke(context, new TesterBean(BEAN_NAME), METHOD02_NAME, new Class<?>[] {}, new Object[] {});
+}

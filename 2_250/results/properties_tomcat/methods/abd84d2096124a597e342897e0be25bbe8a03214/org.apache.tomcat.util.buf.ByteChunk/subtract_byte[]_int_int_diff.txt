@@ -1,0 +1,12 @@
+public int subtract(byte[] dest, int off, int len) throws IOException {
+    if (checkEof()) {
+        return -1;
+    }
+    int n = len;
+    if (len > getLength()) {
+        n = getLength();
+    }
+    System.arraycopy(buff, start, dest, off, n);
+    start += n;
+    return n;
+}

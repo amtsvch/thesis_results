@@ -1,0 +1,56 @@
+@Override
+public void setAttribute(String name, Object value) {
+    // Name cannot be null
+    if (name == null) {
+        throw new NullPointerException(sm.getString("applicationContext.setAttribute.namenull"));
+    }
+    // Null value is the same as removeAttribute()
+    if (value == null) {
+        removeAttribute(name);
+        return;
+    }
+    // Add or replace the specified attribute
+    // Check for read only attribute
+    if (readOnlyAttributes.containsKey(name)) {
+        return;
+    }
+    Object oldValue = attributes.put(name, value);
+    boolean replaced = oldValue != null;
+    // Notify interested application event listeners
+    Object[] listeners = context.getApplicationEventListeners();
+    if ((listeners == null) || (listeners.length == 0)) {
+        return;
+    }
+    ServletContextAttributeEvent event = null;
+    if (replaced) {
+        event = new ServletContextAttributeEvent(context.getServletContext(), name, oldValue);
+    } else {
+        event = new ServletContextAttributeEvent(context.getServletContext(), name, value);
+    }
+    for (Object obj : listeners) {
+        if (!(obj instanceof ServletContextAttributeListener)) {
+            continue;
+        }
+        ServletContextAttributeListener listener = (ServletContextAttributeListener) obj;
+        try {
+            if (replaced) {
+                context.fireContainerEvent("beforeContextAttributeReplaced", listener);
+                listener.attributeReplaced(event);
+                context.fireContainerEvent("afterContextAttributeReplaced", listener);
+            } else {
+                context.fireContainerEvent("beforeContextAttributeAdded", listener);
+                listener.attributeAdded(event);
+                context.fireContainerEvent("afterContextAttributeAdded", listener);
+            }
+        } catch (Throwable t) {
+            ExceptionUtils.handleThrowable(t);
+            if (replaced) {
+                context.fireContainerEvent("afterContextAttributeReplaced", listener);
+            } else {
+                context.fireContainerEvent("afterContextAttributeAdded", listener);
+            }
+            // FIXME - should we do anything besides log these?
+            log(sm.getString("applicationContext.attributeEvent"), t);
+        }
+    }
+}

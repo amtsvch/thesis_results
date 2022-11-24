@@ -1,0 +1,10 @@
+// ------------------------------------------------ ServletResponse Methods
+/**
+ * Flush the buffer and commit this response.
+ *
+ * @exception IOException if an input/output error occurs
+ */
+@Override
+public void flushBuffer() throws IOException {
+    outputBuffer.flush();
+}

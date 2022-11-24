@@ -1,0 +1,4 @@
+@Override                                                                                              @Override                                                                                           
+public Object coerceToType(Object obj, Class&lt;?&gt; type) {                                        | public &lt;T&gt; T coerceToType(Object obj, Class&lt;T&gt; type) {                                  
+return ELSupport.coerceToType(null, obj, type);                                                        return ELSupport.coerceToType(null, obj, type);                                                     
+}                                                                                                      }                                                                                                   

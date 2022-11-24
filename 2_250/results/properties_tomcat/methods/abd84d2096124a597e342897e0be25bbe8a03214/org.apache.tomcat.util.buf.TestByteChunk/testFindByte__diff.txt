@@ -1,0 +1,28 @@
+/*
+     * Test for {@code findByte} vs. {@code indexOf} methods difference.
+     *
+     * <p>
+     * As discussed in the "Re: r944918" thread on dev@, {@code
+     * ByteChunk.indexOf()} works for 0-127 ASCII chars only, and cannot find
+     * any chars outside of the range. {@code ByteChunk.findByte()} works for
+     * any ISO-8859-1 chars.
+     */
+@Test
+public void testFindByte() throws UnsupportedEncodingException {
+    // 0xa0 = 160 = &nbsp; character
+    byte[] bytes = "Hello\u00a0world".getBytes("ISO-8859-1");
+    final int len = bytes.length;
+    // indexOf() does not work outside of 0-127
+    Assert.assertEquals(5, ByteChunk.findByte(bytes, 0, len, (byte) '\u00a0'));
+    Assert.assertEquals(-1, ByteChunk.indexOf(bytes, 0, len, '\u00a0'));
+    Assert.assertEquals(0, ByteChunk.findByte(bytes, 0, len, (byte) 'H'));
+    Assert.assertEquals(0, ByteChunk.indexOf(bytes, 0, len, 'H'));
+    Assert.assertEquals(len - 1, ByteChunk.findByte(bytes, 0, len, (byte) 'd'));
+    Assert.assertEquals(len - 1, ByteChunk.indexOf(bytes, 0, len, 'd'));
+    Assert.assertEquals(-1, ByteChunk.findByte(bytes, 0, len, (byte) 'x'));
+    Assert.assertEquals(-1, ByteChunk.indexOf(bytes, 0, len, 'x'));
+    Assert.assertEquals(7, ByteChunk.findByte(bytes, 5, len, (byte) 'o'));
+    Assert.assertEquals(7, ByteChunk.indexOf(bytes, 5, len, 'o'));
+    Assert.assertEquals(-1, ByteChunk.findByte(bytes, 2, 5, (byte) 'w'));
+    Assert.assertEquals(-1, ByteChunk.indexOf(bytes, 5, 5, 'w'));
+}

@@ -1,0 +1,4 @@
+@Test
+public void testHeaderValueBug60451() throws HpackException {
+    doTestHeaderValueBug60451("fooébar");
+}

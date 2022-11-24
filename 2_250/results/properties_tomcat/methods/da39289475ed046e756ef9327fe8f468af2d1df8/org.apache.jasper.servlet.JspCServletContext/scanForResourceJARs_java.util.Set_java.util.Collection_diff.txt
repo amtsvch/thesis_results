@@ -1,0 +1,21 @@
+private List<URL> scanForResourceJARs(Set<WebXml> orderedFragments, Collection<WebXml> fragments) throws JasperException {
+    List<URL> resourceJars = new ArrayList<>();
+    // Build list of potential resource JARs. Use same ordering as ContextConfig
+    Set<WebXml> resourceFragments = new LinkedHashSet<>(orderedFragments);
+    for (WebXml fragment : fragments) {
+        if (!resourceFragments.contains(fragment)) {
+            resourceFragments.add(fragment);
+        }
+    }
+    for (WebXml resourceFragment : resourceFragments) {
+        try (Jar jar = JarFactory.newInstance(resourceFragment.getURL())) {
+            if (jar.exists("META-INF/resources/")) {
+                // This is a resource JAR
+                resourceJars.add(resourceFragment.getURL());
+            }
+        } catch (IOException ioe) {
+            throw new JasperException(ioe);
+        }
+    }
+    return resourceJars;
+}

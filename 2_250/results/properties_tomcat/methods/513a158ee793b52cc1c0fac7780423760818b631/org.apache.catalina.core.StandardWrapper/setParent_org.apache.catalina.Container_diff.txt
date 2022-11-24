@@ -1,0 +1,16 @@
+/**                                                                                                    /**                                                                                                 
+* Set the parent Container of this Wrapper, but only if it is a Context.                               * Set the parent Container of this Wrapper, but only if it is a Context.                            
+*                                                                                                      *                                                                                                   
+* @param container Proposed parent Container                                                           * @param container Proposed parent Container                                                        
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void setParent(Container container) {                                                           public void setParent(Container container) {                                                        
+if ((container != null) && !(container instanceof Context))                                          | if ((container != null) && !(container instanceof Context)) {                                       
+throw new IllegalArgumentException(sm.getString("standardWrapper.notContext"));                        throw new IllegalArgumentException(sm.getString("standardWrapper.notContext"));                     
+                                                                                                     | }                                                                                                   
+if (container instanceof StandardContext) {                                                            if (container instanceof StandardContext) {                                                         
+swallowOutput = ((StandardContext) container).getSwallowOutput();                                      swallowOutput = ((StandardContext) container).getSwallowOutput();                                   
+unloadDelay = ((StandardContext) container).getUnloadDelay();                                          unloadDelay = ((StandardContext) container).getUnloadDelay();                                       
+}                                                                                                      }                                                                                                   
+super.setParent(container);                                                                            super.setParent(container);                                                                         
+}                                                                                                      }                                                                                                   

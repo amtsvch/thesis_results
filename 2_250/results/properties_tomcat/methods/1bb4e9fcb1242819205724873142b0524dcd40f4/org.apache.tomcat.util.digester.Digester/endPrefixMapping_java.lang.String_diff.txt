@@ -1,0 +1,26 @@
+/**                                                                                                    /**                                                                                                 
+* Process notification that a namespace prefix is going out of scope.                                  * Process notification that a namespace prefix is going out of scope.                               
+*                                                                                                      *                                                                                                   
+* @param prefix Prefix that is going out of scope                                                      * @param prefix Prefix that is going out of scope                                                   
+*                                                                                                      *                                                                                                   
+* @exception SAXException if a parsing error is to be reported                                         * @exception SAXException if a parsing error is to be reported                                      
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void endPrefixMapping(String prefix) throws SAXException {                                      public void endPrefixMapping(String prefix) throws SAXException {                                   
+if (saxLog.isDebugEnabled()) {                                                                         if (saxLog.isDebugEnabled()) {                                                                      
+saxLog.debug("endPrefixMapping(" + prefix + ")");                                                      saxLog.debug("endPrefixMapping(" + prefix + ")");                                                   
+}                                                                                                      }                                                                                                   
+// Deregister this prefix mapping                                                                      // Deregister this prefix mapping                                                                   
+ArrayStack&lt;String&gt; stack = namespaces.get(prefix);                                               ArrayStack&lt;String&gt; stack = namespaces.get(prefix);                                            
+if (stack == null) {                                                                                   if (stack == null) {                                                                                
+return;                                                                                                return;                                                                                             
+}                                                                                                      }                                                                                                   
+try {                                                                                                  try {                                                                                               
+stack.pop();                                                                                           stack.pop();                                                                                        
+if (stack.empty())                                                                                   | if (stack.empty()) {                                                                                
+namespaces.remove(prefix);                                                                             namespaces.remove(prefix);                                                                          
+                                                                                                     | }                                                                                                   
+} catch (EmptyStackException e) {                                                                      } catch (EmptyStackException e) {                                                                   
+throw createSAXException(sm.getString("digester.emptyStackError"));                                    throw createSAXException(sm.getString("digester.emptyStackError"));                                 
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

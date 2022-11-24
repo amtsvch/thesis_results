@@ -1,0 +1,8 @@
+@Test
+public void testSslClientCertNull() throws Exception {
+    TesterLogValidationFilter f = TesterLogValidationFilter.add(null, "", null, "org.apache.catalina.valves.SSLValve");
+    valve.invoke(mockRequest, null);
+    EasyMock.verify(mockNext);
+    Assert.assertNull(mockRequest.getAttribute(Globals.CERTIFICATES_ATTR));
+    Assert.assertEquals(0, f.getMessageCount());
+}

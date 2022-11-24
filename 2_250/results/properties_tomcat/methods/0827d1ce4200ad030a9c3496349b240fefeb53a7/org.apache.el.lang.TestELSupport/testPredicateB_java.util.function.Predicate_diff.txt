@@ -1,0 +1,8 @@
+public static String testPredicateB(Predicate<Long> filter) {
+    Long l = Long.valueOf(100);
+    if (filter.test(l)) {
+        return "PASS";
+    } else {
+        return "BLOCK";
+    }
+}

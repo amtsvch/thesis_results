@@ -1,0 +1,12 @@
+/**                                                                                                    /**                                                                                                 
+* Returns &lt;code&gt;true&lt;/code&gt; if the browser is sending cookies only over a                  * Returns &lt;code&gt;true&lt;/code&gt; if the browser is sending cookies only over a               
+* secure protocol, or &lt;code&gt;false&lt;/code&gt; if the browser can send cookies                   * secure protocol, or &lt;code&gt;false&lt;/code&gt; if the browser can send cookies                
+* using any protocol.                                                                                  * using any protocol.                                                                               
+*                                                                                                      *                                                                                                   
+* @return &lt;code&gt;true&lt;/code&gt; if the browser uses a secure protocol;                         * @return &lt;code&gt;true&lt;/code&gt; if the browser uses a secure protocol;                      
+*         otherwise, &lt;code&gt;true&lt;/code&gt;                                                     *         otherwise, &lt;code&gt;true&lt;/code&gt;                                                  
+* @see #setSecure                                                                                      * @see #setSecure                                                                                   
+*/                                                                                                     */                                                                                                  
+public boolean getSecure() {                                                                           public boolean getSecure() {                                                                        
+return secure;                                                                                       | return Boolean.parseBoolean(getAttribute(SECURE));                                                  
+}                                                                                                      }                                                                                                   

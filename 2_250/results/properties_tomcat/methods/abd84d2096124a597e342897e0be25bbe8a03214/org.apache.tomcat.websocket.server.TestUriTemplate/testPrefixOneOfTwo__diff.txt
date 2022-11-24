@@ -1,0 +1,5 @@
+@Test(expected = jakarta.websocket.DeploymentException.class)
+public void testPrefixOneOfTwo() throws Exception {
+    UriTemplate t = new UriTemplate("/x{a}/y{b}");
+    t.match(new UriTemplate("/xfoo"));
+}

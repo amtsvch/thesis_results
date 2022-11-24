@@ -1,0 +1,8 @@
+/* Returns the node on the top of the stack, and remove it from the
+     stack.  */
+public Node popNode() {
+    if (--sp < mk) {
+        mk = marks.remove(marks.size() - 1);
+    }
+    return nodes.remove(nodes.size() - 1);
+}

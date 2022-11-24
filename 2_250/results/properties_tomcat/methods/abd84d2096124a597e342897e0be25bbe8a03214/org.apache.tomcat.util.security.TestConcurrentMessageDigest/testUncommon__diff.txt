@@ -1,0 +1,5 @@
+@Test
+public void testUncommon() throws Exception {
+    ConcurrentMessageDigest.init(SHA256);
+    ConcurrentMessageDigest.digest(SHA256, new byte[8]);
+}
