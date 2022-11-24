@@ -1,3 +1,13 @@
-# creates too many logs, selection takes too much time (over 13 hours)
+# creates too many logs files during selection
 org.apache.juli.TestClassLoaderLogManager#testBug56082
+
+# creates too many logs files during measurement
+org.apache.catalina.connector.TestResponse#testSetCharacterEncoding06
+org.apache.catalina.connector.TestResponse#testSetContentType05
+org.apache.catalina.connector.TestResponse#testSetLocale05
+org.apache.catalina.connector.TestResponse#testSetCharacterEncoding07
+org.apache.catalina.connector.TestResponse#testSetContentType06
+org.apache.catalina.connector.TestResponse#testSetLocale06
+org.apache.catalina.connector.TestConnector#testInvalidProtocolNoThrows  
+org.apache.catalina.connector.TestConnector#testInvalidProtocolThrows
 
