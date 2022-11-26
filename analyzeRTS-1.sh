@@ -18,52 +18,24 @@ function analyzeStatistics {
 }
 
 function getOverallCommits {
-	allCommits=0
-	allTests=0
-	allNotRunning=0
-	allCommitsWithChange=0
-	allCoveredCommits=0
-	allRuns=0
-	for project in 1_250
-	do
-		selectionFile="$project/results/staticTestSelection_*.json"
-		commits=$(cat $selectionFile | jq ".commits | keys | length")
-		tests=$(cat $selectionFile | jq ".initialcommit.initialDependencies | keys | length")
-		notRunning=$(cat $selectionFile | jq ".commits" | grep "\"running\": false" | wc -l)
-		commitsWithChange=$(cat $selectionFile | jq ".commits[].changedClazzes | select(length > 0) | length" | wc -l)
-		coveredChanges=$(cat $project/results/traceTestSelection_*.json  | jq ".commits[].testcases | select(length>0) | length" | wc -l)
-		runs=$(cat $project/run-$project*sh | wc -l)
-		allCommits=$(($allCommits+$commits))
-		allTests=$(($allTests+$tests))
-		allNotRunning=$(($allNotRunning+$notRunning))
-		allCommitsWithChange=$(($allCommitsWithChange+$commitsWithChange))
-		allCoveredCommits=$(($allCoveredCommits+$coveredChanges))
-		allRuns=$(($allRuns+$runs))
-	done
-	echo "Tests: $allTests Commits: $allCommits Unausführbar: $allNotRunning Commits mit Änderung: $allCommitsWithChange Abgedeckte Änderungen: $allCoveredCommits Runs: $allRuns"
+	selectionFile="$project/results/staticTestSelection_*.json"
+	commits=$(cat $selectionFile | jq ".commits | keys | length")
+	tests=$(cat $selectionFile | jq ".initialcommit.initialDependencies | keys | length")
+	notRunning=$(cat $selectionFile | jq ".commits" | grep "\"running\": false" | wc -l)
+	commitsWithChange=$(cat $selectionFile | jq ".commits[].changedClazzes | select(length > 0) | length" | wc -l)
+	coveredChanges=$(cat $project/results/traceTestSelection_*.json  | jq ".commits[].testcases | select(length>0) | length" | wc -l)
+	runsCoverage=$(cat ${project}runCoverage-* | wc -l)
+	runsTrace=$(cat ${project}runTrace-* | wc -l)
+		
+	echo "Tests: $tests Commits: $commits Unausführbar: $notRunning Commits mit Änderung: $commitsWithChange Abgedeckte Änderungen: $coveredChanges Trace Runs: $runsTrace Coverage Runs: $runsCoverage"
+	echo
 }
 
-getOverallCommits
-
-
-for project in 1_250
+for project in ../thesis_results/*/
 do
 	echo "=============="
 	echo "$project"
-	analyzeStatistics $project/results	
-done
-
-
-echo
-echo
-for project in 1_250
-do
-	echo "=============="
-	echo $project
-	echo -n "Measured Commits "
-	cat $project/measurement-results/statistics.json | jq ".statistics | keys | length"
-	
-	echo -n "Commits containing changes "
-	cat $project/measurement-results/changes.json | jq ".commitChanges | keys | length"
+	analyzeStatistics $project/results
+	getOverallCommits	
 done
 
