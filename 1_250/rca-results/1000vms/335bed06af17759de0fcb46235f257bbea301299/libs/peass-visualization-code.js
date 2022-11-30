@@ -239,23 +239,22 @@ function diffUsingJS(text1, text2, outputDiv) {
 }
 
 function shownode(node) {
-  var minValue = Math.min(node.statistic.meanCurrent, node.statistic.meanOld);
-  var factor, unit;
-  if (minValue <= 1000) {
-    unit = "n";
-    factor = 1;
-  } else if (minValue <= 1000000) {
-    unit = "&#x00B5;";
-    factor = 1000;
-  } else if (minValue <= 1000000000) {
-    unit = "m";
-    factor = 1000000;
-  } else {
-    unit = ""
-    factor = 1000000000;
-  }
-
-  if (node.statistic != null){
+  if (node.statistic != null) {
+    var minValue = Math.min(node.statistic.meanCurrent, node.statistic.meanOld);
+    var factor, unit;
+    if (minValue <= 1000) {
+      unit = "n";
+      factor = 1;
+    } else if (minValue <= 1000000) {
+      unit = "&#x00B5;";
+      factor = 1000;
+    } else if (minValue <= 1000000000) {
+      unit = "m";
+      factor = 1000000;
+    } else {
+      unit = ""
+      factor = 1000000000;
+    } 
 	  infos.innerHTML="<table class='data-table'>" +
       "<tr><th>Property</th><th>Predecessor</th><th>Current</th></tr>"+
       "<tr><td>Mean</td><td>" + round(node.statistic.meanOld / factor).toLocaleString() + " " + unit + "s</td><td>" + round(node.statistic.meanCurrent / factor).toLocaleString() + " " + unit + "s</td></tr>"+
@@ -263,39 +262,55 @@ function shownode(node) {
       "<tr><td>In-VM-Deviation</td><td>" + round(node.inVMDeviationPredecessor).toLocaleString() + "</td><td>" + round(node.inVMDeviation).toLocaleString() + "</td></tr>" +
       "</table> VMs: " + node.statistic.vms +
       " T=" + round(node.statistic.tvalue).toLocaleString();
-  } else {
+  } else if (typeof infos !== 'undefined') {
 	  infos.innerHTML = "No statistic";
   }
-  if (node.key != node.otherKey){
-    diffUsingJS(source["old"][node.key], source["current"][node.otherKey], quelltext);
-  } else {
+  
+  if (node.otherKey == null){
     var sourceCurrent = source["current"][node.key];
-    var sourceOld = source["old"][node.key];
-    if (sourceCurrent != null && sourceOld != null){
-      if (sourceCurrent == sourceOld) {
-      	const highlightedCode = hljs.highlight("java", source["current"][node.key]).value;
-    	quelltext.innerHTML="<pre>"+highlightedCode+"</pre>";
-      } else {
-    	  diffUsingJS(sourceOld, sourceCurrent, quelltext);
+    const highlightedCode = hljs.highlight("java", source["current"][node.key]).value;
+    quelltext.innerHTML="<pre>"+highlightedCode+"</pre>";
+  } else {
+    if (node.key != node.otherKey){
+      var sourceCurrent = source["current"][node.otherKey];
+      var sourceOld = source["old"][node.key];
+      diffUsingJS(sourceOld, sourceCurrent, quelltext);
+    } else {
+      var sourceCurrent = source["current"][node.key];
+      var sourceOld = source["old"][node.key];
+      if (sourceCurrent != null && sourceOld != null){
+        if (sourceCurrent == sourceOld) {
+          const highlightedCode = hljs.highlight("java", source["current"][node.key]).value;
+      	  quelltext.innerHTML="<pre>"+highlightedCode+"</pre>";
+        } else {
+          diffUsingJS(sourceOld, sourceCurrent, quelltext);
+        }
       }
     }
   }
   
-  
   var inspectLink = "";
-  if (node.ess != -1){
-    inspectLink = "<a href='"+treeData[0].call.replace("#", "_") +"_dashboard.html?ess="+node.ess+"&call=" + encodeURIComponent(node.call)+"' target='parent'>Inspect Node</a><br><br>";
-  }
-  if (node.kiekerPattern != node.otherKiekerPattern) {
-  	histogramm.innerHTML=node.kiekerPattern + " " + node.otherKiekerPattern + inspectLink;
-  } else {
-    if (node.kiekerPattern.length > 100) {
-      histogramm.innerHTML=node.kiekerPattern.replace("(", " (").replaceAll(",",", ") + inspectLink;
+  if (node.ess != -1) {
+    if (typeof jenkins !== 'undefined') {
+      inspectLink = "<a href='"+treeData[0].call.replace("#", "_") +"_dashboard.html?ess="+node.ess+"&call=" + encodeURIComponent(node.call)+"' target='parent'>Inspect Node</a><br><br>";
     } else {
-      histogramm.innerHTML=node.kiekerPattern + inspectLink;
+      var methodName = treeData[0].call.substr(treeData[0].call.indexOf("#")+1);
+      inspectLink = "<a href='"+methodName +"_dashboard.html?ess="+node.ess+"&call=" + encodeURIComponent(node.call)+"' target='parent'>Inspect Node</a><br><br>";
     }
   }
-  plotOverallHistogram("histogramm", node);
+  
+  if (typeof histogramm !== 'undefined') {
+    if (node.kiekerPattern != node.otherKiekerPattern) {
+    	histogramm.innerHTML=node.kiekerPattern + " " + node.otherKiekerPattern + inspectLink;
+    } else {
+      if (node.kiekerPattern.length > 100) {
+        histogramm.innerHTML=node.kiekerPattern.replace("(", " (").replaceAll(",",", ") + inspectLink;
+      } else {
+        histogramm.innerHTML=node.kiekerPattern + inspectLink;
+      }
+    }
+    plotOverallHistogram("histogramm", node);
+  }
 }
 
 shownode(root);
