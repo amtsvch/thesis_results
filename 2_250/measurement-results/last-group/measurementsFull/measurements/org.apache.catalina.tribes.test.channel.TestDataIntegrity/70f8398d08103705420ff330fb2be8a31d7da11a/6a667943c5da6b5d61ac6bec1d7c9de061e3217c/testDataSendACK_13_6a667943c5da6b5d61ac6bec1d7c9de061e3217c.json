@@ -1,0 +1,53 @@
+{
+  "clazz" : "org.apache.catalina.tribes.test.channel.TestDataIntegrity",
+  "methods" : [ {
+    "method" : "testDataSendACK",
+    "datacollectorResults" : [ {
+      "name" : "de.dagere.kopeme.datacollection.TimeDataCollectorNoGC",
+      "chunks" : [ ],
+      "results" : [ {
+        "value" : 1.8271974364833336E10,
+        "deviation" : 0.006113154911429841,
+        "min" : 1.8199479827E10,
+        "max" : 1.8493435853E10,
+        "warmup" : 0,
+        "iterations" : 6,
+        "repetitions" : 4,
+        "commit" : null,
+        "vmRunConfiguration" : {
+          "showStart" : false,
+          "executeBeforeClassInMeasurement" : false,
+          "redirectToTemp" : false,
+          "redirectToNull" : true,
+          "useKieker" : false
+        },
+        "javaVersion" : "11.0.16",
+        "cpu" : "model name : Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz",
+        "memory" : "MemTotal: 16280676 kB",
+        "date" : 1669766256168,
+        "fulldata" : {
+          "fileName" : null,
+          "values" : [ {
+            "startTime" : 1669766146312,
+            "value" : 18493435853
+          }, {
+            "startTime" : 1669766164805,
+            "value" : 18260953688
+          }, {
+            "startTime" : 1669766183066,
+            "value" : 18256571036
+          }, {
+            "startTime" : 1669766201323,
+            "value" : 18221096100
+          }, {
+            "startTime" : 1669766219544,
+            "value" : 18200309685
+          }, {
+            "startTime" : 1669766237745,
+            "value" : 18199479827
+          } ]
+        }
+      } ]
+    } ]
+  } ]
+}
