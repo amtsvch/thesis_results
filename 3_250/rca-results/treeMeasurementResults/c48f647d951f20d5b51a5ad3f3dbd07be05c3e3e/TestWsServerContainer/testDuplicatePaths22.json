@@ -1,0 +1,222 @@
+{
+  "measurementConfig" : {
+    "vms" : 100,
+    "earlyStop" : false,
+    "warmup" : 80,
+    "iterations" : 80,
+    "repetitions" : 100,
+    "logFullData" : true,
+    "useGC" : false,
+    "callSyncBetweenVMs" : true,
+    "waitTimeBetweenVMs" : 1000,
+    "maxLogSizeInMb" : 100,
+    "kiekerConfig" : {
+      "useKieker" : true,
+      "useSourceInstrumentation" : true,
+      "useSelectiveInstrumentation" : true,
+      "useAggregation" : true,
+      "useCircularQueue" : false,
+      "enableAdaptiveMonitoring" : false,
+      "adaptiveInstrumentation" : false,
+      "kiekerAggregationInterval" : 5000,
+      "record" : "DURATION",
+      "onlyOneCallRecording" : false,
+      "extractMethod" : false,
+      "traceSizeInMb" : 100,
+      "kiekerQueueSize" : 10000000,
+      "createDefaultConstructor" : true,
+      "kiekerWaitTime" : 5,
+      "excludeForTracing" : [ "new org.eclipse.jetty.logging.JettyLevel.<init>(..)", "* org.eclipse.jetty.logging.JettyLevel.*(..)", "*[] org.eclipse.jetty.logging.JettyLevel.*(..)", "*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "new org.eclipse.jetty.logging.JettyLoggerConfiguration.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "new org.eclipse.jetty.logging.JettyLoggingServiceProvider.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "new org.eclipse.jetty.logging.JettyLoggerFactory.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "new org.eclipse.jetty.logging.StdErrAppender.<init>(..)", "* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*[] org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "new org.eclipse.jetty.logging.Timestamp.<init>(..)", "* org.eclipse.jetty.logging.Timestamp.*(..)", "*[] org.eclipse.jetty.logging.Timestamp.*(..)", "*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "new org.eclipse.jetty.logging.Timestamp$Tick.<init>(..)", "* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*[] org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "new org.eclipse.jetty.logging.JettyLogger.<init>(..)", "* org.eclipse.jetty.logging.JettyLogger.*(..)", "*[] org.eclipse.jetty.logging.JettyLogger.*(..)", "*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)" ]
+    },
+    "saveAll" : true,
+    "javaVersion" : "11.0.15",
+    "measurementStrategy" : "PARALLEL",
+    "statisticsConfig" : {
+      "type1error" : 0.2,
+      "type2error" : 0.1,
+      "outlierFactor" : 3.29,
+      "statisticTest" : "T_TEST"
+    },
+    "executionConfig" : {
+      "timeout" : 300000,
+      "redirectSubprocessOutputToFile" : true,
+      "useTieredCompilation" : false,
+      "removeSnapshots" : false,
+      "useAlternativeBuildfile" : false,
+      "excludeLog4jSlf4jImpl" : false,
+      "excludeLog4jToSlf4j" : false,
+      "executeBeforeClassInMeasurement" : false,
+      "clearMockitoCaches" : false,
+      "onlyMeasureWorkload" : false,
+      "showStart" : false,
+      "redirectToNull" : true,
+      "createDetailDebugFiles" : true,
+      "testExecutor" : "de.stro18.peass_ant.executor.AntTestExecutor",
+      "clazzFolders" : [ "java", "src/main/java", "webapps/examples/WEB-INF/classes", "webapps/examples/jsp/plugin/applet" ],
+      "testClazzFolders" : [ "test" ]
+    },
+    "fixedCommitConfig" : {
+      "commit" : "c48f647d951f20d5b51a5ad3f3dbd07be05c3e3e",
+      "commitOld" : "56ce1d9a83c55cf37bbb4ebff7cbd404a54cb00f"
+    }
+  },
+  "causeConfig" : {
+    "splitAggregated" : true,
+    "minTime" : 0.1,
+    "ignoreEOIs" : true,
+    "rcaStrategy" : "UNTIL_SOURCE_CHANGE",
+    "levels" : 1,
+    "testCase" : {
+      "clazz" : "org.apache.tomcat.websocket.server.TestWsServerContainer",
+      "method" : "testDuplicatePaths22",
+      "module" : "",
+      "params" : null
+    },
+    "propertyFolder" : "/home/matusevich/test-covsel3/peass-ant/../thesis_results/3_250/results/properties_tomcat"
+  },
+  "nodes" : {
+    "call" : "org.apache.tomcat.websocket.server.TestWsServerContainer#testDuplicatePaths22",
+    "kiekerPattern" : "public void org.apache.tomcat.websocket.server.TestWsServerContainer.testDuplicatePaths22()",
+    "otherKiekerPattern" : "public void org.apache.tomcat.websocket.server.TestWsServerContainer.testDuplicatePaths22()",
+    "module" : "",
+    "statistic" : {
+      "meanOld" : 1305915.1296919272,
+      "meanCurrent" : 1319395.9685455812,
+      "deviationOld" : 102052.95313616608,
+      "deviationCurrent" : 89785.7582173701,
+      "vms" : 98,
+      "callsOld" : 8000,
+      "calls" : 8000,
+      "tvalue" : -0.9839697095089566
+    },
+    "childs" : [ {
+      "call" : "org.apache.tomcat.websocket.server.WsServerContainer#addEndpoint",
+      "kiekerPattern" : "void org.apache.tomcat.websocket.server.WsServerContainer.addEndpoint(java.lang.Class,boolean)",
+      "otherKiekerPattern" : "void org.apache.tomcat.websocket.server.WsServerContainer.addEndpoint(java.lang.Class,boolean)",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 494125.1883293065,
+        "meanCurrent" : 499072.69849829987,
+        "deviationOld" : 69784.58593942359,
+        "deviationCurrent" : 67136.99355785073,
+        "vms" : 98,
+        "callsOld" : 8000,
+        "calls" : 8000,
+        "tvalue" : -0.5070123380923917
+      },
+      "childs" : [ {
+        "call" : "org.apache.tomcat.websocket.server.WsServerContainer#addEndpoint",
+        "kiekerPattern" : "void org.apache.tomcat.websocket.server.WsServerContainer.addEndpoint(jakarta.websocket.server.ServerEndpointConfig,boolean)",
+        "otherKiekerPattern" : "void org.apache.tomcat.websocket.server.WsServerContainer.addEndpoint(jakarta.websocket.server.ServerEndpointConfig,boolean)",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 314805.23299661005,
+          "meanCurrent" : 325050.66866695165,
+          "deviationOld" : 33089.90667582732,
+          "deviationCurrent" : 31998.743171604558,
+          "vms" : 98,
+          "callsOld" : 24000,
+          "calls" : 24000,
+          "tvalue" : -2.2087915031255294
+        },
+        "childs" : [ {
+          "call" : "org.apache.tomcat.websocket.pojo.PojoMethodMapping#<init>",
+          "kiekerPattern" : "public new org.apache.tomcat.websocket.pojo.PojoMethodMapping.<init>(java.lang.Class,java.util.List,java.lang.String)",
+          "otherKiekerPattern" : "public new org.apache.tomcat.websocket.pojo.PojoMethodMapping.<init>(java.lang.Class,java.util.List,java.lang.String,org.apache.tomcat.InstanceManager)",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 47020.10472273054,
+            "meanCurrent" : 48130.26238683361,
+            "deviationOld" : 4341.002083924036,
+            "deviationCurrent" : 4738.392101451127,
+            "vms" : 98,
+            "callsOld" : 24000,
+            "calls" : 24000,
+            "tvalue" : -1.7141287549727995
+          },
+          "childs" : [ ]
+        }, {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "protected org.apache.tomcat.InstanceManager org.apache.tomcat.websocket.WsWebSocketContainer.getInstanceManager(java.lang.ClassLoader)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.websocket.server.WsServerContainer#addEndpoint",
+      "kiekerPattern" : "public void org.apache.tomcat.websocket.server.WsServerContainer.addEndpoint(jakarta.websocket.server.ServerEndpointConfig)",
+      "otherKiekerPattern" : "public void org.apache.tomcat.websocket.server.WsServerContainer.addEndpoint(jakarta.websocket.server.ServerEndpointConfig)",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 138494.99041961014,
+        "meanCurrent" : 142065.30984262313,
+        "deviationOld" : 9426.666671136529,
+        "deviationCurrent" : 9296.003680262987,
+        "vms" : 98,
+        "callsOld" : 8000,
+        "calls" : 8000,
+        "tvalue" : -2.6696648390808275
+      },
+      "childs" : [ {
+        "call" : "org.apache.tomcat.websocket.server.WsServerContainer#addEndpoint",
+        "kiekerPattern" : "void org.apache.tomcat.websocket.server.WsServerContainer.addEndpoint(jakarta.websocket.server.ServerEndpointConfig,boolean)",
+        "otherKiekerPattern" : "void org.apache.tomcat.websocket.server.WsServerContainer.addEndpoint(jakarta.websocket.server.ServerEndpointConfig,boolean)",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 314805.23299661005,
+          "meanCurrent" : 325050.66866695165,
+          "deviationOld" : 33089.90667582732,
+          "deviationCurrent" : 31998.743171604558,
+          "vms" : 98,
+          "callsOld" : 24000,
+          "calls" : 24000,
+          "tvalue" : -2.2087915031255294
+        },
+        "childs" : [ {
+          "call" : "org.apache.tomcat.websocket.pojo.PojoMethodMapping#<init>",
+          "kiekerPattern" : "public new org.apache.tomcat.websocket.pojo.PojoMethodMapping.<init>(java.lang.Class,java.util.List,java.lang.String)",
+          "otherKiekerPattern" : "public new org.apache.tomcat.websocket.pojo.PojoMethodMapping.<init>(java.lang.Class,java.util.List,java.lang.String,org.apache.tomcat.InstanceManager)",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 47020.10472273054,
+            "meanCurrent" : 48130.26238683361,
+            "deviationOld" : 4341.002083924036,
+            "deviationCurrent" : 4738.392101451127,
+            "vms" : 98,
+            "callsOld" : 24000,
+            "calls" : 24000,
+            "tvalue" : -1.7141287549727995
+          },
+          "childs" : [ ]
+        }, {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "protected org.apache.tomcat.InstanceManager org.apache.tomcat.websocket.WsWebSocketContainer.getInstanceManager(java.lang.ClassLoader)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        } ]
+      } ]
+    } ]
+  }
+}

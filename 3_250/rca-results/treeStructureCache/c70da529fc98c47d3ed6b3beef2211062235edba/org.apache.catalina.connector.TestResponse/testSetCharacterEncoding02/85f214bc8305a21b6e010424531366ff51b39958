@@ -1,0 +1,739 @@
+{
+  "call" : "org.apache.catalina.connector.TestResponse#testSetCharacterEncoding02",
+  "kiekerPattern" : "public void org.apache.catalina.connector.TestResponse.testSetCharacterEncoding02()",
+  "otherKiekerPattern" : null,
+  "module" : "",
+  "children" : [ {
+    "call" : "org.apache.catalina.connector.TestResponse#setupResponse",
+    "kiekerPattern" : "private org.apache.catalina.connector.TestResponse org.apache.catalina.connector.TestResponse.setupResponse()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.catalina.util.LifecycleBase#<init>",
+      "kiekerPattern" : "public new org.apache.catalina.util.LifecycleBase.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.util.LifecycleMBeanBase#<init>",
+      "kiekerPattern" : "public new org.apache.catalina.util.LifecycleMBeanBase.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.connector.Connector#<init>",
+      "kiekerPattern" : "public new org.apache.catalina.connector.Connector.<init>(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.coyote.ProtocolHandler#create",
+        "kiekerPattern" : "public static org.apache.coyote.ProtocolHandler org.apache.coyote.ProtocolHandler.create(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.net.SocketProperties#<init>",
+          "kiekerPattern" : "public new org.apache.tomcat.util.net.SocketProperties.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.util.net.AbstractEndpoint#<init>",
+          "kiekerPattern" : "public new org.apache.tomcat.util.net.AbstractEndpoint.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.util.net.AbstractJsseEndpoint#<init>",
+          "kiekerPattern" : "public new org.apache.tomcat.util.net.AbstractJsseEndpoint.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.util.net.NioEndpoint#<init>",
+          "kiekerPattern" : "public new org.apache.tomcat.util.net.NioEndpoint.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.coyote.AbstractProtocol#<init>",
+          "kiekerPattern" : "public new org.apache.coyote.AbstractProtocol.<init>(org.apache.tomcat.util.net.AbstractEndpoint)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.coyote.AbstractProtocol#setConnectionLinger",
+            "kiekerPattern" : "public void org.apache.coyote.AbstractProtocol.setConnectionLinger(int)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.tomcat.util.net.AbstractEndpoint#setConnectionLinger",
+              "kiekerPattern" : "public void org.apache.tomcat.util.net.AbstractEndpoint.setConnectionLinger(int)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.tomcat.util.net.SocketProperties#setSoLingerTime",
+                "kiekerPattern" : "public void org.apache.tomcat.util.net.SocketProperties.setSoLingerTime(int)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.tomcat.util.net.SocketProperties#setSoLingerOn",
+                "kiekerPattern" : "public void org.apache.tomcat.util.net.SocketProperties.setSoLingerOn(boolean)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              } ]
+            } ]
+          }, {
+            "call" : "org.apache.coyote.AbstractProtocol#setTcpNoDelay",
+            "kiekerPattern" : "public void org.apache.coyote.AbstractProtocol.setTcpNoDelay(boolean)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.tomcat.util.net.AbstractEndpoint#setTcpNoDelay",
+              "kiekerPattern" : "public void org.apache.tomcat.util.net.AbstractEndpoint.setTcpNoDelay(boolean)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.tomcat.util.net.SocketProperties#setTcpNoDelay",
+                "kiekerPattern" : "public void org.apache.tomcat.util.net.SocketProperties.setTcpNoDelay(boolean)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              } ]
+            } ]
+          } ]
+        }, {
+          "call" : "org.apache.coyote.CompressionConfig#<init>",
+          "kiekerPattern" : "public new org.apache.coyote.CompressionConfig.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.coyote.http11.AbstractHttp11Protocol#<init>",
+          "kiekerPattern" : "public new org.apache.coyote.http11.AbstractHttp11Protocol.<init>(org.apache.tomcat.util.net.AbstractEndpoint)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.coyote.AbstractProtocol#setConnectionTimeout",
+            "kiekerPattern" : "public void org.apache.coyote.AbstractProtocol.setConnectionTimeout(int)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.tomcat.util.net.AbstractEndpoint#setConnectionTimeout",
+              "kiekerPattern" : "public void org.apache.tomcat.util.net.AbstractEndpoint.setConnectionTimeout(int)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.tomcat.util.net.SocketProperties#setSoTimeout",
+                "kiekerPattern" : "public void org.apache.tomcat.util.net.SocketProperties.setSoTimeout(int)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              } ]
+            } ]
+          }, {
+            "call" : "org.apache.tomcat.util.modeler.BaseModelMBean#<init>",
+            "kiekerPattern" : "public new org.apache.tomcat.util.modeler.BaseModelMBean.<init>()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.coyote.RequestGroupInfo#<init>",
+            "kiekerPattern" : "public new org.apache.coyote.RequestGroupInfo.<init>()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.tomcat.util.collections.SynchronizedStack#<init>",
+            "kiekerPattern" : "public new org.apache.tomcat.util.collections.SynchronizedStack.<init>(int,int)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.tomcat.util.collections.SynchronizedStack#<init>",
+            "kiekerPattern" : "public new org.apache.tomcat.util.collections.SynchronizedStack.<init>()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.coyote.AbstractProtocol$RecycledProcessors#<init>",
+            "kiekerPattern" : "public new org.apache.coyote.AbstractProtocol$RecycledProcessors.<init>(org.apache.coyote.AbstractProtocol$ConnectionHandler)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.coyote.AbstractProtocol$ConnectionHandler#<init>",
+            "kiekerPattern" : "public new org.apache.coyote.AbstractProtocol$ConnectionHandler.<init>(org.apache.coyote.AbstractProtocol)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.coyote.AbstractProtocol#setHandler",
+            "kiekerPattern" : "protected void org.apache.coyote.AbstractProtocol.setHandler(org.apache.tomcat.util.net.AbstractEndpoint.Handler)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.coyote.http11.AbstractHttp11JsseProtocol#getEndpoint",
+            "kiekerPattern" : "protected org.apache.tomcat.util.net.AbstractJsseEndpoint org.apache.coyote.http11.AbstractHttp11JsseProtocol.getEndpoint()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.coyote.http11.AbstractHttp11Protocol#getEndpoint",
+              "kiekerPattern" : "protected org.apache.tomcat.util.net.AbstractEndpoint org.apache.coyote.http11.AbstractHttp11Protocol.getEndpoint()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.coyote.AbstractProtocol#getEndpoint",
+                "kiekerPattern" : "protected org.apache.tomcat.util.net.AbstractEndpoint org.apache.coyote.AbstractProtocol.getEndpoint()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              } ]
+            } ]
+          }, {
+            "call" : "org.apache.tomcat.util.net.AbstractEndpoint#setHandler",
+            "kiekerPattern" : "public void org.apache.tomcat.util.net.AbstractEndpoint.setHandler(org.apache.tomcat.util.net.AbstractEndpoint$Handler)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        }, {
+          "call" : "org.apache.coyote.http11.AbstractHttp11JsseProtocol#<init>",
+          "kiekerPattern" : "public new org.apache.coyote.http11.AbstractHttp11JsseProtocol.<init>(org.apache.tomcat.util.net.AbstractJsseEndpoint)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.coyote.http11.Http11NioProtocol#<init>",
+          "kiekerPattern" : "public new org.apache.coyote.http11.Http11NioProtocol.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.catalina.util.LifecycleBase#setThrowOnFailure",
+        "kiekerPattern" : "public void org.apache.catalina.util.LifecycleBase.setThrowOnFailure(boolean)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.catalina.connector.Connector#<init>",
+      "kiekerPattern" : "public new org.apache.catalina.connector.Connector.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+      "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.juli.logging.LogFactory#getLog",
+      "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.juli.logging.LogFactory#getFactory",
+        "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.juli.logging.LogFactory#getInstance",
+        "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.Class)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.juli.logging.LogFactory#getInstance",
+          "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+            "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+              "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            } ]
+          } ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+      "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+          "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.http.MimeHeaders#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.util.http.MimeHeaders.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.coyote.Response#<init>",
+      "kiekerPattern" : "public new org.apache.coyote.Response.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.http.parser.MediaTypeCache#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.util.http.parser.MediaTypeCache.<init>(int)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.collections.ConcurrentCache#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.util.collections.ConcurrentCache.<init>(int)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.buf.UEncoder#initialSafeChars",
+      "kiekerPattern" : "private static java.util.BitSet org.apache.tomcat.util.buf.UEncoder.initialSafeChars()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.buf.UEncoder#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.util.buf.UEncoder.<init>(org.apache.tomcat.util.buf.SafeCharsSet)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.buf.AbstractChunk#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.util.buf.AbstractChunk.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.buf.CharChunk#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.util.buf.CharChunk.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.connector.Response#<init>",
+      "kiekerPattern" : "public new org.apache.catalina.connector.Response.<init>(int)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+            "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "call" : "org.apache.catalina.connector.OutputBuffer#<init>",
+        "kiekerPattern" : "public new org.apache.catalina.connector.OutputBuffer.<init>(int)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.catalina.connector.OutputBuffer#clear",
+          "kiekerPattern" : "private void org.apache.catalina.connector.OutputBuffer.clear(java.nio.Buffer)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.catalina.connector.Response#<init>",
+      "kiekerPattern" : "public new org.apache.catalina.connector.Response.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.connector.Response#setCoyoteResponse",
+      "kiekerPattern" : "public void org.apache.catalina.connector.Response.setCoyoteResponse(org.apache.catalina.connector.org.apache.coyote.Response)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.catalina.connector.OutputBuffer#setResponse",
+        "kiekerPattern" : "public void org.apache.catalina.connector.OutputBuffer.setResponse(org.apache.coyote.Response)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.catalina.connector.InputBuffer#<init>",
+      "kiekerPattern" : "public new org.apache.catalina.connector.InputBuffer.<init>(int)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.catalina.connector.InputBuffer#clear",
+        "kiekerPattern" : "private void org.apache.catalina.connector.InputBuffer.clear(java.nio.Buffer)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.catalina.connector.InputBuffer#<init>",
+      "kiekerPattern" : "public new org.apache.catalina.connector.InputBuffer.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.servlet.ServletInputStream#<init>",
+      "kiekerPattern" : "protected new jakarta.servlet.ServletInputStream.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.connector.CoyoteInputStream#<init>",
+      "kiekerPattern" : "protected new org.apache.catalina.connector.CoyoteInputStream.<init>(org.apache.catalina.connector.InputBuffer)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.connector.CoyoteReader#<init>",
+      "kiekerPattern" : "public new org.apache.catalina.connector.CoyoteReader.<init>(org.apache.catalina.connector.InputBuffer)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.util.ParameterMap#<init>",
+      "kiekerPattern" : "public new org.apache.catalina.util.ParameterMap.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.buf.MessageBytes$MessageBytesFactory#<init>",
+      "kiekerPattern" : "protected new org.apache.tomcat.util.buf.MessageBytes$MessageBytesFactory.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.buf.MessageBytes#newInstance",
+      "kiekerPattern" : "public static org.apache.tomcat.util.buf.MessageBytes org.apache.tomcat.util.buf.MessageBytes.newInstance()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.buf.MessageBytes$MessageBytesFactory#newInstance",
+        "kiekerPattern" : "public org.apache.tomcat.util.buf.MessageBytes org.apache.tomcat.util.buf.MessageBytes$MessageBytesFactory.newInstance()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.buf.AbstractChunk#<init>",
+          "kiekerPattern" : "public new org.apache.tomcat.util.buf.AbstractChunk.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.util.buf.ByteChunk#<init>",
+          "kiekerPattern" : "public new org.apache.tomcat.util.buf.ByteChunk.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.util.buf.CharChunk#<init>",
+          "kiekerPattern" : "public new org.apache.tomcat.util.buf.CharChunk.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.util.buf.MessageBytes#<init>",
+          "kiekerPattern" : "private new org.apache.tomcat.util.buf.MessageBytes.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.catalina.mapper.MappingData#<init>",
+      "kiekerPattern" : "public new org.apache.catalina.mapper.MappingData.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.core.ApplicationMapping#<init>",
+      "kiekerPattern" : "public new org.apache.catalina.core.ApplicationMapping.<init>(org.apache.catalina.mapper.MappingData)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.connector.Request#<init>",
+      "kiekerPattern" : "public new org.apache.catalina.connector.Request.<init>(org.apache.catalina.connector.Connector)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.res.StringManager#getString",
+      "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.res.StringManager.getString(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.buf.UDecoder$DecodeException#fillInStackTrace",
+      "kiekerPattern" : "public synchronized java.lang.Throwable org.apache.tomcat.util.buf.UDecoder$DecodeException.fillInStackTrace()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.buf.UDecoder$DecodeException#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.util.buf.UDecoder$DecodeException.<init>(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.buf.UDecoder#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.util.buf.UDecoder.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.http.ServerCookies#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.util.http.ServerCookies.<init>(int)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.log.UserDataHelper#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.util.log.UserDataHelper.<init>(org.apache.juli.logging.Log)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.buf.ByteChunk#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.util.buf.ByteChunk.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.http.Parameters#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.util.http.Parameters.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.coyote.RequestInfo#<init>",
+      "kiekerPattern" : "public new org.apache.coyote.RequestInfo.<init>(org.apache.coyote.Request)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.coyote.Request#<init>",
+      "kiekerPattern" : "public new org.apache.coyote.Request.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.http.Parameters#setQuery",
+        "kiekerPattern" : "public void org.apache.tomcat.util.http.Parameters.setQuery(org.apache.tomcat.util.buf.MessageBytes)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.http.Parameters#setURLDecoder",
+        "kiekerPattern" : "public void org.apache.tomcat.util.http.Parameters.setURLDecoder(org.apache.tomcat.util.buf.UDecoder)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.catalina.connector.Request#setCoyoteRequest",
+      "kiekerPattern" : "public void org.apache.catalina.connector.Request.setCoyoteRequest(org.apache.catalina.connector.org.apache.coyote.Request)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.catalina.connector.InputBuffer#setRequest",
+        "kiekerPattern" : "public void org.apache.catalina.connector.InputBuffer.setRequest(org.apache.coyote.Request)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.unittest.TesterContext#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.unittest.TesterContext.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.connector.Request#getMappingData",
+      "kiekerPattern" : "public org.apache.catalina.mapper.MappingData org.apache.catalina.connector.Request.getMappingData()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.connector.Response#setRequest",
+      "kiekerPattern" : "public void org.apache.catalina.connector.Response.setRequest(org.apache.catalina.connector.org.apache.catalina.connector.Request)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.unittest.TesterContext#addLocaleEncodingMappingParameter",
+      "kiekerPattern" : "public void org.apache.tomcat.unittest.TesterContext.addLocaleEncodingMappingParameter(java.lang.String,java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.catalina.connector.Response#getCharacterEncoding",
+    "kiekerPattern" : "public org.apache.catalina.connector.Response$PrivilegedGenerateCookieString org.apache.catalina.connector.Response.getCharacterEncoding()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.catalina.connector.Response#getCoyoteResponse",
+      "kiekerPattern" : "public org.apache.catalina.connector.org.apache.coyote.Response org.apache.catalina.connector.Response.getCoyoteResponse()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.coyote.Response#getCharacterEncoding",
+      "kiekerPattern" : "public java.lang.String org.apache.coyote.Response.getCharacterEncoding()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.connector.Response#getContext",
+      "kiekerPattern" : "public org.apache.catalina.Context org.apache.catalina.connector.Response.getContext()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.catalina.connector.Request#getContext",
+        "kiekerPattern" : "public org.apache.catalina.Context org.apache.catalina.connector.Request.getContext()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.unittest.TesterContext#getResponseCharacterEncoding",
+      "kiekerPattern" : "public java.lang.String org.apache.tomcat.unittest.TesterContext.getResponseCharacterEncoding()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.catalina.connector.Response#setCharacterEncoding",
+    "kiekerPattern" : "public void org.apache.catalina.connector.Response.setCharacterEncoding(org.apache.catalina.connector.Response$PrivilegedGenerateCookieString)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.catalina.connector.Response#isCommitted",
+      "kiekerPattern" : "public boolean org.apache.catalina.connector.Response.isCommitted()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.catalina.connector.Response#getCoyoteResponse",
+        "kiekerPattern" : "public org.apache.catalina.connector.org.apache.coyote.Response org.apache.catalina.connector.Response.getCoyoteResponse()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.coyote.Response#isCommitted",
+        "kiekerPattern" : "public boolean org.apache.coyote.Response.isCommitted()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.catalina.connector.Response#getCoyoteResponse",
+      "kiekerPattern" : "public org.apache.catalina.connector.org.apache.coyote.Response org.apache.catalina.connector.Response.getCoyoteResponse()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.coyote.Response#setCharacterEncoding",
+      "kiekerPattern" : "public void org.apache.coyote.Response.setCharacterEncoding(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.coyote.Response#isCommitted",
+        "kiekerPattern" : "public boolean org.apache.coyote.Response.isCommitted()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+            "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.util.buf.CharsetCache$DummyCharset#<init>",
+        "kiekerPattern" : "protected new org.apache.tomcat.util.buf.CharsetCache$DummyCharset.<init>(java.lang.String,java.lang.String[])",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.buf.CharsetCache#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.util.buf.CharsetCache.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.buf.CharsetCache#addToCache",
+          "kiekerPattern" : "private void org.apache.tomcat.util.buf.CharsetCache.addToCache(java.lang.String,java.nio.charset.Charset)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.util.buf.B2CConverter#getCharset",
+        "kiekerPattern" : "public static java.nio.charset.Charset org.apache.tomcat.util.buf.B2CConverter.getCharset(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.buf.CharsetCache#getCharset",
+          "kiekerPattern" : "public java.nio.charset.Charset org.apache.tomcat.util.buf.CharsetCache.getCharset(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    } ]
+  } ]
+}

@@ -1,0 +1,769 @@
+{
+  "call" : "org.apache.tomcat.websocket.server.TestWsServerContainer#testDuplicatePaths11",
+  "kiekerPattern" : "public void org.apache.tomcat.websocket.server.TestWsServerContainer.testDuplicatePaths11()",
+  "otherKiekerPattern" : null,
+  "module" : "",
+  "children" : [ {
+    "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+    "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+      "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+          "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "call" : "jakarta.websocket.CloseReason#<init>",
+    "kiekerPattern" : "public new jakarta.websocket.CloseReason.<init>(jakarta.websocket.CloseReason.CloseCode,java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.unittest.TesterSessionCookieConfig#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.unittest.TesterSessionCookieConfig.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.unittest.TesterServletContext#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.unittest.TesterServletContext.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.juli.logging.LogFactory#getLog",
+    "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.juli.logging.LogFactory#getFactory",
+      "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.juli.logging.LogFactory#getInstance",
+      "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.Class)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.juli.logging.LogFactory#getInstance",
+        "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+          "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+            "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.websocket.WsExtension#<init>",
+    "kiekerPattern" : "new org.apache.tomcat.websocket.WsExtension.<init>(java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.websocket.WsWebSocketContainer#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.websocket.WsWebSocketContainer.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.websocket.server.WsWriteTimeout$EndpointComparator#<init>",
+    "kiekerPattern" : "private new org.apache.tomcat.websocket.server.WsWriteTimeout$EndpointComparator.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.websocket.server.WsWriteTimeout#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.websocket.server.WsWriteTimeout.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.websocket.server.WsServerContainer#<init>",
+    "kiekerPattern" : "new org.apache.tomcat.websocket.server.WsServerContainer.<init>(jakarta.servlet.ServletContext)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.unittest.TesterServletContext#getAttribute",
+      "kiekerPattern" : "public java.lang.Object org.apache.tomcat.unittest.TesterServletContext.getAttribute(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.websocket.WsWebSocketContainer#setInstanceManager",
+      "kiekerPattern" : "protected void org.apache.tomcat.websocket.WsWebSocketContainer.setInstanceManager(org.apache.tomcat.InstanceManager)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.unittest.TesterServletContext#getInitParameter",
+      "kiekerPattern" : "public java.lang.String org.apache.tomcat.unittest.TesterServletContext.getInitParameter(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.servlet.GenericFilter#<init>",
+      "kiekerPattern" : "public new jakarta.servlet.GenericFilter.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.websocket.server.WsFilter#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.websocket.server.WsFilter.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.unittest.TesterServletContext#addFilter",
+      "kiekerPattern" : "public org.apache.tomcat.unittest.jakarta.servlet.FilterRegistration.Dynamic org.apache.tomcat.unittest.TesterServletContext.addFilter(java.lang.String,jakarta.servlet.Filter)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+            "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.util.descriptor.web.FilterDef#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.util.descriptor.web.FilterDef.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.juli.logging.LogFactory#getLog",
+        "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.juli.logging.LogFactory#getFactory",
+          "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.juli.logging.LogFactory#getInstance",
+          "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.Class)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.juli.logging.LogFactory#getInstance",
+            "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+              "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+                "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              } ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.unittest.TesterContext#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.unittest.TesterContext.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.core.ApplicationFilterRegistration#<init>",
+        "kiekerPattern" : "public new org.apache.catalina.core.ApplicationFilterRegistration.<init>(org.apache.tomcat.util.descriptor.web.FilterDef,org.apache.catalina.Context)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.catalina.core.ApplicationFilterRegistration#setAsyncSupported",
+      "kiekerPattern" : "public void org.apache.catalina.core.ApplicationFilterRegistration.setAsyncSupported(boolean)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.descriptor.web.FilterDef#setAsyncSupported",
+        "kiekerPattern" : "public void org.apache.tomcat.util.descriptor.web.FilterDef.setAsyncSupported(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "jakarta.servlet.DispatcherType#<init>",
+      "kiekerPattern" : "public new jakarta.servlet.DispatcherType.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.core.ApplicationFilterRegistration#addMappingForUrlPatterns",
+      "kiekerPattern" : "public void org.apache.catalina.core.ApplicationFilterRegistration.addMappingForUrlPatterns(java.util.EnumSet,boolean,java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.descriptor.web.XmlEncodingBase#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.util.descriptor.web.XmlEncodingBase.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.descriptor.web.FilterMap#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.util.descriptor.web.FilterMap.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.descriptor.web.FilterDef#getFilterName",
+        "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.descriptor.web.FilterDef.getFilterName()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.descriptor.web.FilterMap#setFilterName",
+        "kiekerPattern" : "public void org.apache.tomcat.util.descriptor.web.FilterMap.setFilterName(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.descriptor.web.FilterMap#setDispatcher",
+        "kiekerPattern" : "public void org.apache.tomcat.util.descriptor.web.FilterMap.setDispatcher(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.descriptor.web.FilterMap#addURLPattern",
+        "kiekerPattern" : "public void org.apache.tomcat.util.descriptor.web.FilterMap.addURLPattern(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.descriptor.web.XmlEncodingBase#getCharset",
+          "kiekerPattern" : "public java.nio.charset.Charset org.apache.tomcat.util.descriptor.web.XmlEncodingBase.getCharset()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+            "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+              "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "call" : "org.apache.tomcat.util.res.StringManager#getString",
+          "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.res.StringManager.getString(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.util.buf.UDecoder$DecodeException#fillInStackTrace",
+          "kiekerPattern" : "public synchronized java.lang.Throwable org.apache.tomcat.util.buf.UDecoder$DecodeException.fillInStackTrace()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.util.buf.UDecoder$DecodeException#<init>",
+          "kiekerPattern" : "public new org.apache.tomcat.util.buf.UDecoder$DecodeException.<init>(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.util.buf.UDecoder#URLDecode",
+          "kiekerPattern" : "public static java.lang.String org.apache.tomcat.util.buf.UDecoder.URLDecode(java.lang.String,java.nio.charset.Charset)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.util.descriptor.web.FilterMap#addURLPatternDecoded",
+          "kiekerPattern" : "public void org.apache.tomcat.util.descriptor.web.FilterMap.addURLPatternDecoded(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.descriptor.web.XmlEncodingBase#getCharset",
+            "kiekerPattern" : "public java.nio.charset.Charset org.apache.tomcat.util.descriptor.web.XmlEncodingBase.getCharset()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.tomcat.util.buf.UDecoder#URLDecode",
+            "kiekerPattern" : "public static java.lang.String org.apache.tomcat.util.buf.UDecoder.URLDecode(java.lang.String,java.nio.charset.Charset)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.unittest.TesterContext#addFilterMap",
+        "kiekerPattern" : "public void org.apache.tomcat.unittest.TesterContext.addFilterMap(org.apache.tomcat.util.descriptor.web.FilterMap)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "call" : "jakarta.websocket.server.ServerEndpointConfig$Builder#create",
+    "kiekerPattern" : "public static jakarta.websocket.server.ServerEndpointConfig$Builder jakarta.websocket.server.ServerEndpointConfig$Builder.create(java.lang.Class,java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "jakarta.websocket.server.ServerEndpointConfig$Configurator#fetchContainerDefaultConfigurator",
+      "kiekerPattern" : "static jakarta.websocket.server.ServerEndpointConfig$Configurator jakarta.websocket.server.ServerEndpointConfig$Configurator.fetchContainerDefaultConfigurator()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "jakarta.websocket.server.ServerEndpointConfig$Configurator#loadDefault",
+        "kiekerPattern" : "private static jakarta.websocket.server.ServerEndpointConfig$Configurator jakarta.websocket.server.ServerEndpointConfig$Configurator.loadDefault()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "jakarta.websocket.server.ServerEndpointConfig$Configurator#<init>",
+          "kiekerPattern" : "public new jakarta.websocket.server.ServerEndpointConfig$Configurator.<init>(jakarta.websocket.server.ServerEndpointConfig)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.websocket.server.DefaultServerEndpointConfigurator#<init>",
+          "kiekerPattern" : "public new org.apache.tomcat.websocket.server.DefaultServerEndpointConfigurator.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "jakarta.websocket.server.ServerEndpointConfig$Builder#<init>",
+      "kiekerPattern" : "private new jakarta.websocket.server.ServerEndpointConfig$Builder.<init>(jakarta.websocket.server.ServerEndpointConfig,java.lang.Class,java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "jakarta.websocket.server.ServerEndpointConfig$Builder#build",
+    "kiekerPattern" : "public jakarta.websocket.server.ServerEndpointConfig jakarta.websocket.server.ServerEndpointConfig$Builder.build()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "jakarta.websocket.server.DefaultServerEndpointConfig#<init>",
+      "kiekerPattern" : "new jakarta.websocket.server.DefaultServerEndpointConfig.<init>(java.lang.Class,java.lang.String,java.util.List,java.util.List,java.util.List,java.util.List,jakarta.websocket.server.Configurator)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.websocket.server.WsServerContainer#addEndpoint",
+    "kiekerPattern" : "void org.apache.tomcat.websocket.server.WsServerContainer.addEndpoint(jakarta.websocket.server.ServerEndpointConfig,boolean)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "jakarta.websocket.server.DefaultServerEndpointConfig#getPath",
+      "kiekerPattern" : "public java.lang.String jakarta.websocket.server.DefaultServerEndpointConfig.getPath()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+      "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+            "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      } ]
+    }, {
+      "call" : "jakarta.websocket.server.DefaultServerEndpointConfig#getEndpointClass",
+      "kiekerPattern" : "public java.lang.Class jakarta.websocket.server.DefaultServerEndpointConfig.getEndpointClass()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.websocket.server.DefaultServerEndpointConfig#getDecoders",
+      "kiekerPattern" : "public java.util.List jakarta.websocket.server.DefaultServerEndpointConfig.getDecoders()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.websocket.WsWebSocketContainer#getInstanceManager",
+      "kiekerPattern" : "protected org.apache.tomcat.InstanceManager org.apache.tomcat.websocket.WsWebSocketContainer.getInstanceManager(java.lang.ClassLoader)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.InstanceManagerBindings#get",
+        "kiekerPattern" : "public static final org.apache.tomcat.InstanceManager org.apache.tomcat.InstanceManagerBindings.get(java.lang.ClassLoader)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.websocket.pojo.PojoMethodMapping#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.websocket.pojo.PojoMethodMapping.<init>(java.lang.Class,java.util.List,java.lang.String,org.apache.tomcat.InstanceManager)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+            "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.websocket.Util#getDecoders",
+        "kiekerPattern" : "public static java.util.List org.apache.tomcat.websocket.Util.getDecoders(java.util.List,org.apache.tomcat.InstanceManager)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.websocket.pojo.PojoMethodMapping#getPathParams",
+        "kiekerPattern" : "private static org.apache.tomcat.websocket.pojo.PojoPathParam[] org.apache.tomcat.websocket.pojo.PojoMethodMapping.getPathParams(java.lang.reflect.Method,org.apache.tomcat.websocket.pojo.MethodType)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.websocket.pojo.PojoMethodMapping#getOnClose",
+      "kiekerPattern" : "public java.lang.reflect.Method org.apache.tomcat.websocket.pojo.PojoMethodMapping.getOnClose()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.websocket.pojo.PojoMethodMapping#getOnOpen",
+      "kiekerPattern" : "public java.lang.reflect.Method org.apache.tomcat.websocket.pojo.PojoMethodMapping.getOnOpen()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.websocket.pojo.PojoMethodMapping#getOnError",
+      "kiekerPattern" : "public java.lang.reflect.Method org.apache.tomcat.websocket.pojo.PojoMethodMapping.getOnError()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.websocket.pojo.PojoMethodMapping#hasMessageHandlers",
+      "kiekerPattern" : "public boolean org.apache.tomcat.websocket.pojo.PojoMethodMapping.hasMessageHandlers()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.websocket.server.UriTemplate#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.websocket.server.UriTemplate.<init>(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.websocket.server.UriTemplate$Segment#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.websocket.server.UriTemplate$Segment.<init>(int,java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.websocket.server.UriTemplate#hasParameters",
+      "kiekerPattern" : "public boolean org.apache.tomcat.websocket.server.UriTemplate.hasParameters()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.websocket.server.WsServerContainer$ExactPathMatch#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.websocket.server.WsServerContainer$ExactPathMatch.<init>(jakarta.websocket.server.ServerEndpointConfig,boolean)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.websocket.server.WsServerContainer#addEndpoint",
+    "kiekerPattern" : "void org.apache.tomcat.websocket.server.WsServerContainer.addEndpoint(java.lang.Class,boolean)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.websocket.WsWebSocketContainer#getInstanceManager",
+      "kiekerPattern" : "protected org.apache.tomcat.InstanceManager org.apache.tomcat.websocket.WsWebSocketContainer.getInstanceManager(java.lang.ClassLoader)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.InstanceManagerBindings#get",
+        "kiekerPattern" : "public static final org.apache.tomcat.InstanceManager org.apache.tomcat.InstanceManagerBindings.get(java.lang.ClassLoader)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.websocket.server.WsServerContainer#validateEncoders",
+      "kiekerPattern" : "private static void org.apache.tomcat.websocket.server.WsServerContainer.validateEncoders(java.lang.Class[],org.apache.tomcat.InstanceManager)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.websocket.server.ServerEndpointConfig$Builder#create",
+      "kiekerPattern" : "public static jakarta.websocket.server.ServerEndpointConfig$Builder jakarta.websocket.server.ServerEndpointConfig$Builder.create(java.lang.Class,java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "jakarta.websocket.server.ServerEndpointConfig$Configurator#fetchContainerDefaultConfigurator",
+        "kiekerPattern" : "static jakarta.websocket.server.ServerEndpointConfig$Configurator jakarta.websocket.server.ServerEndpointConfig$Configurator.fetchContainerDefaultConfigurator()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "jakarta.websocket.server.ServerEndpointConfig$Builder#<init>",
+        "kiekerPattern" : "private new jakarta.websocket.server.ServerEndpointConfig$Builder.<init>(jakarta.websocket.server.ServerEndpointConfig,java.lang.Class,java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "jakarta.websocket.server.ServerEndpointConfig$Builder#decoders",
+      "kiekerPattern" : "public jakarta.websocket.server.ServerEndpointConfig$Builder jakarta.websocket.server.ServerEndpointConfig$Builder.decoders(java.util.List)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.websocket.server.ServerEndpointConfig$Builder#encoders",
+      "kiekerPattern" : "public jakarta.websocket.server.ServerEndpointConfig$Builder jakarta.websocket.server.ServerEndpointConfig$Builder.encoders(java.util.List)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.websocket.server.ServerEndpointConfig$Builder#subprotocols",
+      "kiekerPattern" : "public jakarta.websocket.server.ServerEndpointConfig$Builder jakarta.websocket.server.ServerEndpointConfig$Builder.subprotocols(java.util.List)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.websocket.server.ServerEndpointConfig$Builder#configurator",
+      "kiekerPattern" : "public jakarta.websocket.server.ServerEndpointConfig$Builder jakarta.websocket.server.ServerEndpointConfig$Builder.configurator(jakarta.websocket.server.ServerEndpointConfig$Configurator)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "jakarta.websocket.server.ServerEndpointConfig$Configurator#fetchContainerDefaultConfigurator",
+        "kiekerPattern" : "static jakarta.websocket.server.ServerEndpointConfig$Configurator jakarta.websocket.server.ServerEndpointConfig$Configurator.fetchContainerDefaultConfigurator()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "jakarta.websocket.server.ServerEndpointConfig$Builder#build",
+      "kiekerPattern" : "public jakarta.websocket.server.ServerEndpointConfig jakarta.websocket.server.ServerEndpointConfig$Builder.build()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "jakarta.websocket.server.DefaultServerEndpointConfig#<init>",
+        "kiekerPattern" : "new jakarta.websocket.server.DefaultServerEndpointConfig.<init>(java.lang.Class,java.lang.String,java.util.List,java.util.List,java.util.List,java.util.List,jakarta.websocket.server.Configurator)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.websocket.server.WsServerContainer#addEndpoint",
+      "kiekerPattern" : "void org.apache.tomcat.websocket.server.WsServerContainer.addEndpoint(jakarta.websocket.server.ServerEndpointConfig,boolean)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "jakarta.websocket.server.DefaultServerEndpointConfig#getPath",
+        "kiekerPattern" : "public java.lang.String jakarta.websocket.server.DefaultServerEndpointConfig.getPath()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "jakarta.websocket.server.DefaultServerEndpointConfig#getEndpointClass",
+        "kiekerPattern" : "public java.lang.Class jakarta.websocket.server.DefaultServerEndpointConfig.getEndpointClass()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "jakarta.websocket.server.DefaultServerEndpointConfig#getDecoders",
+        "kiekerPattern" : "public java.util.List jakarta.websocket.server.DefaultServerEndpointConfig.getDecoders()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.websocket.WsWebSocketContainer#getInstanceManager",
+        "kiekerPattern" : "protected org.apache.tomcat.InstanceManager org.apache.tomcat.websocket.WsWebSocketContainer.getInstanceManager(java.lang.ClassLoader)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.InstanceManagerBindings#get",
+          "kiekerPattern" : "public static final org.apache.tomcat.InstanceManager org.apache.tomcat.InstanceManagerBindings.get(java.lang.ClassLoader)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.websocket.pojo.PojoMethodMapping#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.websocket.pojo.PojoMethodMapping.<init>(java.lang.Class,java.util.List,java.lang.String,org.apache.tomcat.InstanceManager)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.websocket.Util#getDecoders",
+          "kiekerPattern" : "public static java.util.List org.apache.tomcat.websocket.Util.getDecoders(java.util.List,org.apache.tomcat.InstanceManager)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.websocket.pojo.PojoMethodMapping#getPathParams",
+          "kiekerPattern" : "private static org.apache.tomcat.websocket.pojo.PojoPathParam[] org.apache.tomcat.websocket.pojo.PojoMethodMapping.getPathParams(java.lang.reflect.Method,org.apache.tomcat.websocket.pojo.MethodType)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.websocket.pojo.PojoMethodMapping#getOnClose",
+        "kiekerPattern" : "public java.lang.reflect.Method org.apache.tomcat.websocket.pojo.PojoMethodMapping.getOnClose()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.websocket.pojo.PojoMethodMapping#getOnOpen",
+        "kiekerPattern" : "public java.lang.reflect.Method org.apache.tomcat.websocket.pojo.PojoMethodMapping.getOnOpen()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.websocket.pojo.PojoMethodMapping#getOnError",
+        "kiekerPattern" : "public java.lang.reflect.Method org.apache.tomcat.websocket.pojo.PojoMethodMapping.getOnError()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.websocket.pojo.PojoMethodMapping#hasMessageHandlers",
+        "kiekerPattern" : "public boolean org.apache.tomcat.websocket.pojo.PojoMethodMapping.hasMessageHandlers()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.websocket.server.UriTemplate#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.websocket.server.UriTemplate.<init>(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.websocket.server.UriTemplate$Segment#<init>",
+          "kiekerPattern" : "public new org.apache.tomcat.websocket.server.UriTemplate$Segment.<init>(int,java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.websocket.server.UriTemplate#hasParameters",
+        "kiekerPattern" : "public boolean org.apache.tomcat.websocket.server.UriTemplate.hasParameters()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.websocket.server.WsServerContainer$ExactPathMatch#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.websocket.server.WsServerContainer$ExactPathMatch.<init>(jakarta.websocket.server.ServerEndpointConfig,boolean)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.websocket.server.WsServerContainer$ExactPathMatch#isFromAnnotatedPojo",
+        "kiekerPattern" : "public boolean org.apache.tomcat.websocket.server.WsServerContainer$ExactPathMatch.isFromAnnotatedPojo()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.websocket.server.WsServerContainer$ExactPathMatch#getConfig",
+        "kiekerPattern" : "public jakarta.websocket.server.ServerEndpointConfig org.apache.tomcat.websocket.server.WsServerContainer$ExactPathMatch.getConfig()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.res.StringManager#getString",
+        "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.res.StringManager.getString(java.lang.String,java.lang.Object)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getString",
+          "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.res.StringManager.getString(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "jakarta.websocket.DeploymentException#<init>",
+        "kiekerPattern" : "public new jakarta.websocket.DeploymentException.<init>(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.websocket.server.WsServerContainer#failDeployment",
+        "kiekerPattern" : "void org.apache.tomcat.websocket.server.WsServerContainer.failDeployment()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    } ]
+  } ]
+}
