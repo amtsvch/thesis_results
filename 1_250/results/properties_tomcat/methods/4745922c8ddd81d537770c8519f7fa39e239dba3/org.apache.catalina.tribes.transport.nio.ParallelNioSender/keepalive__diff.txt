@@ -1,0 +1,34 @@
+@Override                                                                                              @Override                                                                                           
+public boolean keepalive() {                                                                           public boolean keepalive() {                                                                        
+boolean result = false;                                                                                boolean result = false;                                                                             
+for (Iterator&lt;Entry&lt;Member, NioSender&gt;&gt; i = nioSenders.entrySet().iterator(); i.hasNext( | for (Iterator&lt;Entry&lt;Member, NioSender&gt;&gt; i = state.nioSenders.entrySet().iterator(); i.ha
+Map.Entry&lt;Member, NioSender&gt; entry = i.next();                                                   Map.Entry&lt;Member, NioSender&gt; entry = i.next();                                                
+NioSender sender = entry.getValue();                                                                   NioSender sender = entry.getValue();                                                                
+if (sender.keepalive()) {                                                                              if (sender.keepalive()) {                                                                           
+// nioSenders.remove(entry.getKey());                                                                  // nioSenders.remove(entry.getKey());                                                               
+i.remove();                                                                                            i.remove();                                                                                         
+result = true;                                                                                         result = true;                                                                                      
+} else {                                                                                               } else {                                                                                            
+try {                                                                                                  try {                                                                                               
+sender.read();                                                                                         sender.read();                                                                                      
+} catch (IOException x) {                                                                              } catch (IOException x) {                                                                           
+sender.disconnect();                                                                                   sender.disconnect();                                                                                
+sender.reset();                                                                                        sender.reset();                                                                                     
+// nioSenders.remove(entry.getKey());                                                                  // nioSenders.remove(entry.getKey());                                                               
+i.remove();                                                                                            i.remove();                                                                                         
+result = true;                                                                                         result = true;                                                                                      
+} catch (Exception x) {                                                                                } catch (Exception x) {                                                                             
+log.warn(sm.getString("parallelNioSender.error.keepalive", sender), x);                                log.warn(sm.getString("parallelNioSender.error.keepalive", sender), x);                             
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+// clean up any cancelled keys                                                                         // clean up any cancelled keys                                                                      
+if (result) {                                                                                          if (result) {                                                                                       
+try {                                                                                                  try {                                                                                               
+selector.selectNow();                                                                                | state.selector.selectNow();                                                                         
+} catch (Exception e) {                                                                                } catch (Exception e) {                                                                             
+/*Ignore*/                                                                                             /*Ignore*/                                                                                          
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+return result;                                                                                         return result;                                                                                      
+}                                                                                                      }                                                                                                   

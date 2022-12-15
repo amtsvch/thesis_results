@@ -1,0 +1,8 @@
+/**
+ * Returns the channel receiver component
+ * @return ChannelReceiver
+ */
+@Override
+public ChannelReceiver getChannelReceiver() {
+    return coordinator.getClusterReceiver();
+}

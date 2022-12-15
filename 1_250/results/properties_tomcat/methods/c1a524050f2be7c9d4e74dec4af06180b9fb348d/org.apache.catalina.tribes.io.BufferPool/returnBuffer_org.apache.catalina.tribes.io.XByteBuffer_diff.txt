@@ -1,0 +1,6 @@
+public void returnBuffer(XByteBuffer buffer) {
+    if ((size.get() + buffer.getCapacity()) <= maxSize) {
+        size.addAndGet(buffer.getCapacity());
+        queue.offer(buffer);
+    }
+}

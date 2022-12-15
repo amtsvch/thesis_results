@@ -1,0 +1,6 @@
+@Test
+public void testModified() throws Exception {
+    WebappLoader loader = new WebappLoader();
+    Assert.assertNull(loader.getClassLoader());
+    Assert.assertFalse(loader.modified());
+}

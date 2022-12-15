@@ -1,0 +1,6 @@
+@Test
+public void testGetCommonPropertyType01() {
+    // null base, null response
+    ArrayELResolver resolver = new ArrayELResolver();
+    Assert.assertNull(resolver.getCommonPropertyType(null, null));
+}

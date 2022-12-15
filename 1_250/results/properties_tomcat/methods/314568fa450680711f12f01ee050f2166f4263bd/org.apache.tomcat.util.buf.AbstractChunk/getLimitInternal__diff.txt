@@ -1,0 +1,7 @@
+protected int getLimitInternal() {
+    if (limit > 0) {
+        return limit;
+    } else {
+        return ARRAY_MAX_SIZE;
+    }
+}

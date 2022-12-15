@@ -1,0 +1,16 @@
+@Test
+public void testBug57647() throws Exception {
+    TldScanner scanner = EasyMock.createMock(TldScanner.class);
+    Field f = TldScanner.class.getDeclaredField("log");
+    f.setAccessible(true);
+    f.set(scanner, LogFactory.getLog(TldScanner.class));
+    Constructor<TldScanner.TldScannerCallback> constructor = TldScanner.TldScannerCallback.class.getDeclaredConstructor(TldScanner.class);
+    constructor.setAccessible(true);
+    TldScanner.TldScannerCallback callback = constructor.newInstance(scanner);
+    File webappDir = new File("webapps/examples");
+    Assert.assertFalse(callback.scanFoundNoTLDs());
+    scan(callback, webappDir, "WEB-INF/lib/taglibs-standard-spec-1.2.5-migrated-0.0.1.jar");
+    Assert.assertTrue(callback.scanFoundNoTLDs());
+    scan(callback, webappDir, "WEB-INF/lib/taglibs-standard-impl-1.2.5-migrated-0.0.1.jar");
+    Assert.assertTrue(callback.scanFoundNoTLDs());
+}

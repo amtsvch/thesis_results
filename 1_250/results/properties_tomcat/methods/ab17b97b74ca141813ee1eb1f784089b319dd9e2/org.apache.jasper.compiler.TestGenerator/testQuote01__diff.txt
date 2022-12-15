@@ -1,0 +1,5 @@
+@Test
+public void testQuote01() {
+    String result = Generator.quote('\'');
+    Assert.assertEquals("\'\\\'\'", result);
+}

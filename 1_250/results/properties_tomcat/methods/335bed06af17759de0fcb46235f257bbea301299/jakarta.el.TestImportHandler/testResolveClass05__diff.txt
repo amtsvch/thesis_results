@@ -1,0 +1,11 @@
+/**
+ * Attempting to resolve something that isn't a simple class name
+ * https://bz.apache.org/bugzilla/show_bug.cgi?id=57132
+ */
+@Test
+public void testResolveClass05() {
+    ImportHandler handler = new ImportHandler();
+    handler.importPackage("java.nio");
+    Class<?> clazz = handler.resolveClass("charset.StandardCharsets");
+    Assert.assertNull(clazz);
+}

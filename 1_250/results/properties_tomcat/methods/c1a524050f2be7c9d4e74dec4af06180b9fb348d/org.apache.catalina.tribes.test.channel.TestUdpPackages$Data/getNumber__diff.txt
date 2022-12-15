@@ -1,0 +1,6 @@
+public int getNumber() {
+    if (!hasNr) {
+        return -1;
+    }
+    return XByteBuffer.toInt(this.data, 0);
+}

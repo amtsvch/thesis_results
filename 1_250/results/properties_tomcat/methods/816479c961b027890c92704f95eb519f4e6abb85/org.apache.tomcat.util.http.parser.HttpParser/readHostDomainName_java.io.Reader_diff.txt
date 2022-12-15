@@ -1,0 +1,18 @@
+/**
+ * @return The position of ':' that separates the host from the port or -1
+ *         if it is not present
+ */
+static int readHostDomainName(Reader reader) throws IOException {
+    DomainParseState state = DomainParseState.NEW;
+    int pos = 0;
+    while (state.mayContinue()) {
+        state = state.next(reader.read());
+        pos++;
+    }
+    if (DomainParseState.COLON == state) {
+        // State identifies the state of the previous character
+        return pos - 1;
+    } else {
+        return -1;
+    }
+}

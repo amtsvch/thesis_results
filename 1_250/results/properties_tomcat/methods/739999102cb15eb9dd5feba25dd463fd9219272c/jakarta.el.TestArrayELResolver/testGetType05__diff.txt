@@ -1,0 +1,12 @@
+/**
+ * Tests that a result is returned even when a coercion cannot be performed.
+ */
+@Test
+public void testGetType05() {
+    ArrayELResolver resolver = new ArrayELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    String[] base = new String[] { "element" };
+    Class<?> result = resolver.getType(context, base, "index");
+    Assert.assertEquals(base.getClass().getComponentType(), result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

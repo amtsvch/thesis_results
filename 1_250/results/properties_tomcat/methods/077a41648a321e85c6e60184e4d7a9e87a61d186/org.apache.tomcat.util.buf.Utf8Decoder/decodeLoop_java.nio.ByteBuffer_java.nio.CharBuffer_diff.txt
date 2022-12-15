@@ -1,0 +1,7 @@
+@Override
+protected CoderResult decodeLoop(ByteBuffer in, CharBuffer out) {
+    if (in.hasArray() && out.hasArray()) {
+        return decodeHasArray(in, out);
+    }
+    return decodeNotHasArray(in, out);
+}

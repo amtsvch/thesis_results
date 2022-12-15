@@ -1,0 +1,15 @@
+/**
+ * Return an <code>Enumeration</code> of <code>String</code> objects
+ * containing the names of the objects bound to this session.
+ *
+ * @exception IllegalStateException if this method is called on an
+ *  invalidated session
+ */
+@Override
+public Enumeration<String> getAttributeNames() {
+    if (!isValidInternal()) {
+        throw new IllegalStateException(sm.getString("standardSession.getAttributeNames.ise"));
+    }
+    Set<String> names = new HashSet<>(attributes.keySet());
+    return Collections.enumeration(names);
+}

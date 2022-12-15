@@ -1,0 +1,7 @@
+@Test
+public void testGETRequestFetchNonceAsParameter() throws Exception {
+    setRequestExpectations(GET_METHOD, null, null, new String[] { Constants.CSRF_REST_NONCE_HEADER_FETCH_VALUE }, ACCEPTED_PATH1);
+    filter.setPathsAcceptingParams(ACCEPTED_PATHS);
+    filter.doFilter(request, response, filterChain);
+    verifyContinueChainNonceNotAvailable();
+}

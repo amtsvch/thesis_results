@@ -1,0 +1,17 @@
+/**
+ * Called explicitly by user to set the Content-Language and the default
+ * encoding.
+ *
+ * @param locale The locale to use for this response
+ */
+public void setLocale(Locale locale) {
+    if (locale == null) {
+        this.locale = null;
+        this.contentLanguage = null;
+        return;
+    }
+    // Save the locale for use by getLocale()
+    this.locale = locale;
+    // Set the contentLanguage for header output
+    contentLanguage = locale.toLanguageTag();
+}

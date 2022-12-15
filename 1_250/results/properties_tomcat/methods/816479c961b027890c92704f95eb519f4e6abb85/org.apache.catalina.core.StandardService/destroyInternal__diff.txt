@@ -1,0 +1,18 @@
+@Override
+protected void destroyInternal() throws LifecycleException {
+    mapperListener.destroy();
+    // Destroy our defined Connectors
+    synchronized (connectorsLock) {
+        for (Connector connector : connectors) {
+            connector.destroy();
+        }
+    }
+    // Destroy any Executors
+    for (Executor executor : findExecutors()) {
+        executor.destroy();
+    }
+    if (engine != null) {
+        engine.destroy();
+    }
+    super.destroyInternal();
+}

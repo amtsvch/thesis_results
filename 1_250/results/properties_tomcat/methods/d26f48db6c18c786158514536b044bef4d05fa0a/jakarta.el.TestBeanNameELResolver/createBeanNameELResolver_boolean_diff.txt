@@ -1,0 +1,8 @@
+private BeanNameELResolver createBeanNameELResolver(boolean allowCreate) {
+    TesterBeanNameResolver beanNameResolver = new TesterBeanNameResolver();
+    beanNameResolver.setBeanValue(BEAN01_NAME, BEAN01);
+    beanNameResolver.setBeanValue(BEAN02_NAME, BEAN02);
+    beanNameResolver.setAllowCreate(allowCreate);
+    BeanNameELResolver beanNameELResolver = new BeanNameELResolver(beanNameResolver);
+    return beanNameELResolver;
+}

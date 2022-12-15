@@ -1,0 +1,4 @@
+@Test
+public void testEncodeRedirectURL16() throws Exception {
+    doTestEncodeURL("./..#/../..", "./..;jsessionid=1234#/../..");
+}

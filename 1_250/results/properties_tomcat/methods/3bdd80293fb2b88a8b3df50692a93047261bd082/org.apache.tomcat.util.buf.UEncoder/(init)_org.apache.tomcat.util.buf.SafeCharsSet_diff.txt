@@ -1,0 +1,8 @@
+/**
+ * Create a UEncoder with an unmodifiable safe character set.
+ *
+ * @param safeCharsSet safe characters for this encoder
+ */
+public UEncoder(SafeCharsSet safeCharsSet) {
+    this.safeChars = safeCharsSet.getSafeChars();
+}

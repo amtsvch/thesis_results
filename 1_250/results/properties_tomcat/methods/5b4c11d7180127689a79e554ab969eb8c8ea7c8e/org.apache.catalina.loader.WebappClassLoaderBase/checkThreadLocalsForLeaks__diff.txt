@@ -1,0 +1,41 @@
+private void checkThreadLocalsForLeaks() {
+    Thread[] threads = getThreads();
+    try {
+        // Make the fields in the Thread class that store ThreadLocals
+        // accessible
+        Field threadLocalsField = Thread.class.getDeclaredField("threadLocals");
+        threadLocalsField.setAccessible(true);
+        Field inheritableThreadLocalsField = Thread.class.getDeclaredField("inheritableThreadLocals");
+        inheritableThreadLocalsField.setAccessible(true);
+        // Make the underlying array of ThreadLoad.ThreadLocalMap.Entry objects
+        // accessible
+        Class<?> tlmClass = Class.forName("java.lang.ThreadLocal$ThreadLocalMap");
+        Field tableField = tlmClass.getDeclaredField("table");
+        tableField.setAccessible(true);
+        Method expungeStaleEntriesMethod = tlmClass.getDeclaredMethod("expungeStaleEntries");
+        expungeStaleEntriesMethod.setAccessible(true);
+        for (Thread thread : threads) {
+            Object threadLocalMap;
+            if (thread != null) {
+                // Clear the first map
+                threadLocalMap = threadLocalsField.get(thread);
+                if (null != threadLocalMap) {
+                    expungeStaleEntriesMethod.invoke(threadLocalMap);
+                    checkThreadLocalMapForLeaks(threadLocalMap, tableField);
+                }
+                // Clear the second map
+                threadLocalMap = inheritableThreadLocalsField.get(thread);
+                if (null != threadLocalMap) {
+                    expungeStaleEntriesMethod.invoke(threadLocalMap);
+                    checkThreadLocalMapForLeaks(threadLocalMap, tableField);
+                }
+            }
+        }
+    } catch (InaccessibleObjectException e) {
+        // Must be running on without the necessary command line options.
+        log.warn(sm.getString("webappClassLoader.addExportsThreadLocal", this.getClass().getModule().getName()));
+    } catch (Throwable t) {
+        ExceptionUtils.handleThrowable(t);
+        log.warn(sm.getString("webappClassLoader.checkThreadLocalsForLeaksFail", getContextName()), t);
+    }
+}

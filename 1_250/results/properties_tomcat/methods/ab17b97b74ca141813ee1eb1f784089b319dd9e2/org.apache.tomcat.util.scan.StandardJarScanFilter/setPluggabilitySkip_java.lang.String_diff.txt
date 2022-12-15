@@ -1,0 +1,10 @@
+public void setPluggabilitySkip(String pluggabilitySkip) {
+    this.pluggabilitySkip = pluggabilitySkip;
+    Lock writeLock = configurationLock.writeLock();
+    writeLock.lock();
+    try {
+        populateSetFromAttribute(pluggabilitySkip, pluggabilitySkipSet);
+    } finally {
+        writeLock.unlock();
+    }
+}

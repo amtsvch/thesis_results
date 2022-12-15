@@ -1,0 +1,25 @@
+@Override
+public void setResources(WebResourceRoot resources) {
+    Lock writeLock = resourcesLock.writeLock();
+    writeLock.lock();
+    WebResourceRoot oldResources = null;
+    try {
+        if (getState().isAvailable()) {
+            throw new IllegalStateException(sm.getString("standardContext.resourcesStart"));
+        }
+        oldResources = this.resources;
+        if (oldResources == resources) {
+            return;
+        }
+        this.resources = resources;
+        if (oldResources != null) {
+            oldResources.setContext(null);
+        }
+        if (resources != null) {
+            resources.setContext(this);
+        }
+        support.firePropertyChange("resources", oldResources, resources);
+    } finally {
+        writeLock.unlock();
+    }
+}

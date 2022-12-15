@@ -1,0 +1,7 @@
+/**
+ * Tests that the method name cannot be coerced to String.
+ */
+@Test
+public void testInvoke04() {
+    doNegativeTest(new Bean(), null, MethodUnderTest.INVOKE, true);
+}

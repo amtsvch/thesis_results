@@ -1,0 +1,7 @@
+@Test
+public void testSerializationEmpty() throws Exception {
+    StandardSession s1 = new StandardSession(TEST_MANAGER);
+    s1.setValid(true);
+    StandardSession s2 = serializeThenDeserialize(s1);
+    validateSame(s1, s2, 0);
+}

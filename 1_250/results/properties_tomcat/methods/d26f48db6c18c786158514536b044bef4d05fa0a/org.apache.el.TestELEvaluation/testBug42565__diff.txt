@@ -1,0 +1,23 @@
+/**
+ * Test use of spaces in ternary expressions. This was primarily an EL
+ * parser bug.
+ */
+@Test
+public void testBug42565() {
+    Assert.assertEquals("false", evaluateExpression("${false?true:false}"));
+    Assert.assertEquals("false", evaluateExpression("${false?true: false}"));
+    Assert.assertEquals("false", evaluateExpression("${false?true :false}"));
+    Assert.assertEquals("false", evaluateExpression("${false?true : false}"));
+    Assert.assertEquals("false", evaluateExpression("${false? true:false}"));
+    Assert.assertEquals("false", evaluateExpression("${false? true: false}"));
+    Assert.assertEquals("false", evaluateExpression("${false? true :false}"));
+    Assert.assertEquals("false", evaluateExpression("${false? true : false}"));
+    Assert.assertEquals("false", evaluateExpression("${false ?true:false}"));
+    Assert.assertEquals("false", evaluateExpression("${false ?true: false}"));
+    Assert.assertEquals("false", evaluateExpression("${false ?true :false}"));
+    Assert.assertEquals("false", evaluateExpression("${false ?true : false}"));
+    Assert.assertEquals("false", evaluateExpression("${false ? true:false}"));
+    Assert.assertEquals("false", evaluateExpression("${false ? true: false}"));
+    Assert.assertEquals("false", evaluateExpression("${false ? true :false}"));
+    Assert.assertEquals("false", evaluateExpression("${false ? true : false}"));
+}

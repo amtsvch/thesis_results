@@ -1,0 +1,10 @@
+@Override
+public Loader getLoader() {
+    Lock readLock = loaderLock.readLock();
+    readLock.lock();
+    try {
+        return loader;
+    } finally {
+        readLock.unlock();
+    }
+}

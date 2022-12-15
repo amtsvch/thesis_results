@@ -1,0 +1,9 @@
+public void addServletMappingDecoded(String urlPattern, String servletName) {
+    String oldServletName = servletMappings.put(urlPattern, servletName);
+    if (oldServletName != null) {
+        // Duplicate mapping. As per clarification from the Servlet EG,
+        // deployment should fail.
+        throw new IllegalArgumentException(sm.getString("webXml.duplicateServletMapping", oldServletName, servletName, urlPattern));
+    }
+    servletMappingNames.add(servletName);
+}

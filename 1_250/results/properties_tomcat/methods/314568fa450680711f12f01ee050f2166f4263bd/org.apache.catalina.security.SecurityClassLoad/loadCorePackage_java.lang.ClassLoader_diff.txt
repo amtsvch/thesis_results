@@ -1,0 +1,19 @@
+private static final void loadCorePackage(ClassLoader loader) throws Exception {
+    final String basePackage = "org.apache.catalina.core.";
+    loader.loadClass(basePackage + "AccessLogAdapter");
+    loader.loadClass(basePackage + "ApplicationContextFacade$PrivilegedExecuteMethod");
+    loader.loadClass(basePackage + "ApplicationDispatcher$PrivilegedForward");
+    loader.loadClass(basePackage + "ApplicationDispatcher$PrivilegedInclude");
+    loader.loadClass(basePackage + "ApplicationPushBuilder");
+    loader.loadClass(basePackage + "AsyncContextImpl");
+    loader.loadClass(basePackage + "AsyncContextImpl$AsyncRunnable");
+    loader.loadClass(basePackage + "AsyncContextImpl$DebugException");
+    loader.loadClass(basePackage + "AsyncListenerWrapper");
+    loader.loadClass(basePackage + "ContainerBase$PrivilegedAddChild");
+    loader.loadClass(basePackage + "DefaultInstanceManager$AnnotationCacheEntry");
+    loader.loadClass(basePackage + "DefaultInstanceManager$AnnotationCacheEntryType");
+    loader.loadClass(basePackage + "DefaultInstanceManager$PrivilegedGetField");
+    loader.loadClass(basePackage + "DefaultInstanceManager$PrivilegedGetMethod");
+    loader.loadClass(basePackage + "DefaultInstanceManager$PrivilegedLoadClass");
+    loader.loadClass(basePackage + "ApplicationHttpRequest$AttributeNamesEnumerator");
+}

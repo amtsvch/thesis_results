@@ -1,0 +1,13 @@
+@Override
+public Object getValue(EvaluationContext ctx) throws ELException {
+    Map<Object, Object> result = new HashMap<>();
+    if (children != null) {
+        for (Node child : children) {
+            AstMapEntry mapEntry = (AstMapEntry) child;
+            Object key = mapEntry.children[0].getValue(ctx);
+            Object value = mapEntry.children[1].getValue(ctx);
+            result.put(key, value);
+        }
+    }
+    return result;
+}

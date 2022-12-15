@@ -1,0 +1,7 @@
+/**
+ * Creates the resolver that is used for the test. All the tests use a
+ * resolver with the same configuration.
+ */
+private BeanNameELResolver createBeanNameELResolver() {
+    return createBeanNameELResolver(true);
+}

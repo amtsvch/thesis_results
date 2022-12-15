@@ -1,0 +1,15 @@
+/**
+ * Tests that a valid FeatureDescriptors are returned.
+ */
+@Deprecated(forRemoval = true, since = "Tomcat 10.1.0")
+@Test
+public void testGetFeatureDescriptors02() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Iterator<FeatureDescriptor> result = resolver.getFeatureDescriptors(context, new Bean());
+    while (result.hasNext()) {
+        PropertyDescriptor featureDescriptor = (PropertyDescriptor) result.next();
+        Assert.assertEquals(featureDescriptor.getPropertyType(), featureDescriptor.getValue(ELResolver.TYPE));
+        Assert.assertEquals(Boolean.TRUE, featureDescriptor.getValue(ELResolver.RESOLVABLE_AT_DESIGN_TIME));
+    }
+}

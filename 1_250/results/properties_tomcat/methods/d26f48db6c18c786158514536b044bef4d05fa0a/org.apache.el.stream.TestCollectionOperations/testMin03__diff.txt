@@ -1,0 +1,6 @@
+@Test(expected = ELException.class)
+public void testMin03() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("[].stream().min()", Object.class);
+    ((Optional) result).get();
+}

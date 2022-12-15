@@ -1,0 +1,15 @@
+// -------------------- Removing --------------------
+/**
+ * Removes a header field with the specified name.  Does nothing
+ * if such a field could not be found.
+ * @param name the name of the header field to be removed
+ */
+public void removeHeader(String name) {
+    // XXX
+    // warning: rather sticky code; heavily tuned
+    for (int i = 0; i < count; i++) {
+        if (headers[i].getName().equalsIgnoreCase(name)) {
+            removeHeader(i--);
+        }
+    }
+}

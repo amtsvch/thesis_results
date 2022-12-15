@@ -1,0 +1,27 @@
+/**
+ * Configure associated class loader permissions.
+ */
+private void setPermissions() {
+    if (!Globals.IS_SECURITY_ENABLED) {
+        return;
+    }
+    if (context == null) {
+        return;
+    }
+    // Tell the class loader the root of the context
+    ServletContext servletContext = context.getServletContext();
+    // Assigning permissions for the work directory
+    File workDir = (File) servletContext.getAttribute(ServletContext.TEMPDIR);
+    if (workDir != null) {
+        try {
+            String workDirPath = workDir.getCanonicalPath();
+            classLoader.addPermission(new FilePermission(workDirPath, "read,write"));
+            classLoader.addPermission(new FilePermission(workDirPath + File.separator + "-", "read,write,delete"));
+        } catch (IOException e) {
+            // Ignore
+        }
+    }
+    for (URL url : context.getResources().getBaseUrls()) {
+        classLoader.addPermission(url);
+    }
+}

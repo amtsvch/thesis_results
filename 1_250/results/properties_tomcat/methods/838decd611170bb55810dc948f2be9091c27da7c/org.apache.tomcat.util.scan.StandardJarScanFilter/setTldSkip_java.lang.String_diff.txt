@@ -1,0 +1,10 @@
+public void setTldSkip(String tldSkip) {
+    this.tldSkip = tldSkip;
+    Lock writeLock = configurationLock.writeLock();
+    writeLock.lock();
+    try {
+        populateSetFromAttribute(tldSkip, tldSkipSet);
+    } finally {
+        writeLock.unlock();
+    }
+}

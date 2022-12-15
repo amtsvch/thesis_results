@@ -1,0 +1,18 @@
+/*
+     * RFC 2045 says the Base64 encoded string should be represented
+     * as lines of no more than 76 characters. However, RFC 2617
+     * says a base64-user-pass token is not limited to 76 char/line.
+     * It also says all line breaks, including mandatory ones,
+     * should be ignored during decoding.
+     * This test case has a line break in the Base64 string.
+     * (See also testGoodCribBase64Big below).
+     */
+@Test
+public void testGoodCribLineWrap() throws Exception {
+    final String USER_LONG = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnopqrstuvwxyz0123456789+/AAAABBBBCCCC" + // 80 characters
+    "DDDD";
+    final String BASE64_CRIB = "QUJDREVGR0hJSktMTU5PUFFSU1RVVldY" + "WVphYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3h5ejAxMjM0" + "\n" + "NTY3ODkrL0FBQUFCQkJCQ0NDQ0REREQ=";
+    final BasicAuthHeader AUTH_HEADER = new BasicAuthHeader(NICE_METHOD, BASE64_CRIB);
+    BasicAuthenticator.BasicCredentials credentials = new BasicAuthenticator.BasicCredentials(AUTH_HEADER.getHeader(), StandardCharsets.UTF_8, true);
+    Assert.assertEquals(USER_LONG, credentials.getUsername());
+}

@@ -1,0 +1,10 @@
+/*
+     * Confirm the Basic parser rejects an invalid authentication method.
+     */
+@Test(expected = IllegalArgumentException.class)
+public void testAuthMethodBadMethod() throws Exception {
+    final String METHOD = "BadMethod";
+    final BasicAuthHeader AUTH_HEADER = new BasicAuthHeader(METHOD, USER_NAME, PASSWORD);
+    @SuppressWarnings("unused")
+    BasicAuthenticator.BasicCredentials credentials = new BasicAuthenticator.BasicCredentials(AUTH_HEADER.getHeader(), StandardCharsets.UTF_8, true);
+}

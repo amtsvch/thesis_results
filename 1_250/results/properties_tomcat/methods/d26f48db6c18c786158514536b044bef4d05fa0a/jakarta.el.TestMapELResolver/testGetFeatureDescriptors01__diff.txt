@@ -1,0 +1,11 @@
+/**
+ * Tests that a valid FeatureDescriptors are not returned if base is not
+ * Map.
+ */
+@Test
+public void testGetFeatureDescriptors01() {
+    MapELResolver mapELResolver = new MapELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Iterator<FeatureDescriptor> result = mapELResolver.getFeatureDescriptors(context, new Object());
+    Assert.assertNull(result);
+}

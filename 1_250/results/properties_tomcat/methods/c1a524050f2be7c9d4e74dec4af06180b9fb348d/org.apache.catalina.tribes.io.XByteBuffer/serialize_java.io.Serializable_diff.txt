@@ -1,0 +1,14 @@
+/**
+ * Serializes a message into cluster data
+ * @param msg ClusterMessage
+ * @return serialized content as byte[] array
+ * @throws IOException Serialization error
+ */
+public static byte[] serialize(Serializable msg) throws IOException {
+    ByteArrayOutputStream outs = new ByteArrayOutputStream();
+    ObjectOutputStream out = new ObjectOutputStream(outs);
+    out.writeObject(msg);
+    out.flush();
+    byte[] data = outs.toByteArray();
+    return data;
+}

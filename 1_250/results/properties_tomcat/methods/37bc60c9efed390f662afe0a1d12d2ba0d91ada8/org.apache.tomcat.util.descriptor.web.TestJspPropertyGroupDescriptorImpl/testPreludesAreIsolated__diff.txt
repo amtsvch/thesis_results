@@ -1,0 +1,8 @@
+@Test
+public void testPreludesAreIsolated() {
+    JspPropertyGroup jpg = new JspPropertyGroup();
+    jpg.addIncludePrelude("prelude");
+    JspPropertyGroupDescriptorImpl descriptor = new JspPropertyGroupDescriptorImpl(jpg);
+    descriptor.getIncludePreludes().clear();
+    Assert.assertEquals(1, descriptor.getIncludePreludes().size());
+}

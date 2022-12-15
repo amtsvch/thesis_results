@@ -1,0 +1,10 @@
+/**
+ * Set a flag indicating whether or not the requested session ID for this
+ * request came in through a URL.  This is normally called by the
+ * HTTP Connector, when it parses the request headers.
+ *
+ * @param flag The new flag
+ */
+public void setRequestedSessionURL(boolean flag) {
+    this.requestedSessionURL = flag;
+}

@@ -1,0 +1,8 @@
+@Override
+public org.apache.coyote.Response getCoyoteResponse() {
+    // Lazy init
+    if (super.getCoyoteResponse() == null) {
+        this.coyoteResponse = new org.apache.coyote.Response();
+    }
+    return super.getCoyoteResponse();
+}

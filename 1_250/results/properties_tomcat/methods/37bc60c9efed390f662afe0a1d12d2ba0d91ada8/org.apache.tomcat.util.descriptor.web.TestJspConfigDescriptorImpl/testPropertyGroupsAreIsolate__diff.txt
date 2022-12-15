@@ -1,0 +1,9 @@
+@Test
+public void testPropertyGroupsAreIsolate() {
+    List<TaglibDescriptor> taglibs = Collections.emptyList();
+    List<JspPropertyGroupDescriptor> propertyGroups = new ArrayList<>();
+    propertyGroups.add(new JspPropertyGroupDescriptorImpl(new JspPropertyGroup()));
+    JspConfigDescriptor descriptor = new JspConfigDescriptorImpl(propertyGroups, taglibs);
+    descriptor.getJspPropertyGroups().clear();
+    Assert.assertEquals(propertyGroups, descriptor.getJspPropertyGroups());
+}

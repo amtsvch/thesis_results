@@ -1,0 +1,6 @@
+@Test
+public void testSetCharacterEncoding01() {
+    Response response = setupResponse();
+    // Check default
+    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
+}

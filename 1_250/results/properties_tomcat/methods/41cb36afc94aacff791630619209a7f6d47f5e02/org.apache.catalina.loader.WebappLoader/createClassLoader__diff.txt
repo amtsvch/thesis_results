@@ -1,0 +1,20 @@
+// ------------------------------------------------------- Private Methods
+/**
+ * Create associated classLoader.
+ */
+private WebappClassLoaderBase createClassLoader() throws Exception {
+    if (classLoader != null) {
+        return classLoader;
+    }
+    if (ParallelWebappClassLoader.class.getName().equals(loaderClass)) {
+        return new ParallelWebappClassLoader(context.getParentClassLoader());
+    }
+    Class<?> clazz = Class.forName(loaderClass);
+    WebappClassLoaderBase classLoader = null;
+    ClassLoader parentClassLoader = context.getParentClassLoader();
+    Class<?>[] argTypes = { ClassLoader.class };
+    Object[] args = { parentClassLoader };
+    Constructor<?> constr = clazz.getConstructor(argTypes);
+    classLoader = (WebappClassLoaderBase) constr.newInstance(args);
+    return classLoader;
+}

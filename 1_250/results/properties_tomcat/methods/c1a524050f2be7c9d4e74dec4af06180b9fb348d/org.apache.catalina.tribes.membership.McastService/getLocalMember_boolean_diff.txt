@@ -1,0 +1,10 @@
+/**
+ * {@inheritDoc}
+ */
+@Override
+public Member getLocalMember(boolean alive) {
+    if (alive && localMember != null && impl != null) {
+        localMember.setMemberAliveTime(System.currentTimeMillis() - impl.getServiceStartTime());
+    }
+    return localMember;
+}

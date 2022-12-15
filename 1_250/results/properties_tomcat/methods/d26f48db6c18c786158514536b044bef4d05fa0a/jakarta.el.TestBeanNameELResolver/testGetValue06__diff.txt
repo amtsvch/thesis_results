@@ -1,0 +1,7 @@
+/**
+ * Exception during resolution should be wrapped and re-thrown.
+ */
+@Test
+public void testGetValue06() {
+    doThrowableTest(TesterBeanNameResolver.EXCEPTION_TRIGGER_NAME, MethodUnderTest.GET_VALUE);
+}

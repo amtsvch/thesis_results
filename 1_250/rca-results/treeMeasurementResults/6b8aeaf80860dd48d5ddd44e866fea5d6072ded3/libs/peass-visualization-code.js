@@ -284,7 +284,12 @@ function shownode(node) {
   
   var inspectLink = "";
   if (node.ess != -1){
-    inspectLink = "<a href='"+treeData[0].call.replace("#", "_") +"_dashboard.html?ess="+node.ess+"&call=" + encodeURIComponent(node.call)+"' target='parent'>Inspect Node</a><br><br>";
+   if (typeof jenkins !== 'undefined') {
+      inspectLink = "<a href='"+treeData[0].call.replace("#", "_") +"_dashboard.html?ess="+node.ess+"&call=" + encodeURIComponent(node.call)+"' target='parent'>Inspect Node</a><br><br>";
+    } else {
+      var methodName = treeData[0].call.substr(treeData[0].call.indexOf("#")+1);
+      inspectLink = "<a href='"+methodName +"_dashboard.html?ess="+node.ess+"&call=" + encodeURIComponent(node.call)+"' target='parent'>Inspect Node</a><br><br>";
+    }
   }
   if (node.kiekerPattern != node.otherKiekerPattern) {
   	histogramm.innerHTML=node.kiekerPattern + " " + node.otherKiekerPattern + inspectLink;

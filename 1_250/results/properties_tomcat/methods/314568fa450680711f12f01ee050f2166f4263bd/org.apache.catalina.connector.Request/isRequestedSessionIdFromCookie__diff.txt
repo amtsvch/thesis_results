@@ -1,0 +1,11 @@
+/**
+ * @return <code>true</code> if the session identifier included in this
+ * request came from a cookie.
+ */
+@Override
+public boolean isRequestedSessionIdFromCookie() {
+    if (requestedSessionId == null) {
+        return false;
+    }
+    return requestedSessionCookie;
+}

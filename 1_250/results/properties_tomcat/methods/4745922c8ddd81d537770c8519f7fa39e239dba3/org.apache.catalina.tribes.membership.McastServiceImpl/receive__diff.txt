@@ -1,0 +1,28 @@
+/**
+ * Receive a datagram packet, locking wait
+ * @throws IOException Received failed
+ */
+public void receive() throws IOException {
+    boolean checkexpired = true;
+    try {
+        socket.receive(receivePacket);
+        if (receivePacket.getLength() > MAX_PACKET_SIZE) {
+            log.error(sm.getString("mcastServiceImpl.packet.tooLong", Integer.toString(receivePacket.getLength())));
+        } else {
+            byte[] data = new byte[receivePacket.getLength()];
+            System.arraycopy(receivePacket.getData(), receivePacket.getOffset(), data, 0, data.length);
+            if (XByteBuffer.firstIndexOf(data, 0, MemberImpl.TRIBES_MBR_BEGIN) == 0) {
+                memberDataReceived(data);
+            } else {
+                memberBroadcastsReceived(data);
+            }
+        }
+    } catch (SocketTimeoutException x) {
+        // do nothing, this is normal, we don't want to block forever
+        // since the receive thread is the same thread
+        // that does membership expiration
+    }
+    if (checkexpired) {
+        checkExpired();
+    }
+}

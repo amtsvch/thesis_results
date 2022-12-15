@@ -1,0 +1,5 @@
+@Test
+public void testRemoteHostValve() {
+    standardTests(HOST_ALLOW_PAT, HOST_DENY_PAT, HOST_ONLY_ALLOW, HOST_ONLY_DENY, HOST_ALLOW_AND_DENY, HOST_NO_ALLOW_NO_DENY, false, "Host");
+    standardTests(HOST_ALLOW_PAT, HOST_DENY_PAT, HOST_ONLY_ALLOW, HOST_ONLY_DENY, HOST_ALLOW_AND_DENY, HOST_NO_ALLOW_NO_DENY, true, "Host");
+}

@@ -1,8 +1,0 @@
-@Before
-public void setupTest() {
-    // Set up the socket wrapper
-    EasyMock.expect(socketWrapper.getSocketBufferHandler()).andReturn(new SocketBufferHandler(0, 0, false));
-    EasyMock.replay(socketWrapper);
-    // Cast to make the method visible
-    ((AbstractProcessor) processor).setSocketWrapper(socketWrapper);
-}

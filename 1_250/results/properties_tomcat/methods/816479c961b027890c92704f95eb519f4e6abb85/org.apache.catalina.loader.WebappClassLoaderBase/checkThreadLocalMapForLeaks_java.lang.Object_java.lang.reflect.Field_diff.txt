@@ -1,0 +1,63 @@
+/**
+ * Analyzes the given thread local map object. Also pass in the field that
+ * points to the internal table to save re-calculating it on every
+ * call to this method.
+ */
+private void checkThreadLocalMapForLeaks(Object map, Field internalTableField) throws IllegalAccessException, NoSuchFieldException {
+    if (map != null) {
+        Object[] table = (Object[]) internalTableField.get(map);
+        if (table != null) {
+            for (Object obj : table) {
+                if (obj != null) {
+                    boolean keyLoadedByWebapp = false;
+                    boolean valueLoadedByWebapp = false;
+                    // Check the key
+                    Object key = ((Reference<?>) obj).get();
+                    if (this.equals(key) || loadedByThisOrChild(key)) {
+                        keyLoadedByWebapp = true;
+                    }
+                    // Check the value
+                    Field valueField = obj.getClass().getDeclaredField("value");
+                    valueField.setAccessible(true);
+                    Object value = valueField.get(obj);
+                    if (this.equals(value) || loadedByThisOrChild(value)) {
+                        valueLoadedByWebapp = true;
+                    }
+                    if (keyLoadedByWebapp || valueLoadedByWebapp) {
+                        Object[] args = new Object[5];
+                        args[0] = getContextName();
+                        if (key != null) {
+                            args[1] = getPrettyClassName(key.getClass());
+                            try {
+                                args[2] = key.toString();
+                            } catch (Exception e) {
+                                log.warn(sm.getString("webappClassLoader.checkThreadLocalsForLeaks.badKey", args[1]), e);
+                                args[2] = sm.getString("webappClassLoader.checkThreadLocalsForLeaks.unknown");
+                            }
+                        }
+                        if (value != null) {
+                            args[3] = getPrettyClassName(value.getClass());
+                            try {
+                                args[4] = value.toString();
+                            } catch (Exception e) {
+                                log.warn(sm.getString("webappClassLoader.checkThreadLocalsForLeaks.badValue", args[3]), e);
+                                args[4] = sm.getString("webappClassLoader.checkThreadLocalsForLeaks.unknown");
+                            }
+                        }
+                        if (valueLoadedByWebapp) {
+                            log.error(sm.getString("webappClassLoader.checkThreadLocalsForLeaks", args));
+                        } else if (value == null) {
+                            if (log.isDebugEnabled()) {
+                                log.debug(sm.getString("webappClassLoader.checkThreadLocalsForLeaksNull", args));
+                            }
+                        } else {
+                            if (log.isDebugEnabled()) {
+                                log.debug(sm.getString("webappClassLoader.checkThreadLocalsForLeaksNone", args));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

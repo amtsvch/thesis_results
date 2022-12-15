@@ -11,8 +11,8 @@
         "jakarta.el.TestBeanELResolverVarargsInvocation" : [ "testJoin", "testJoinDelimited" ],
         "jakarta.el.TestELProcessor" : [ "testDefineBean01", "testDefineFunctionMethod01", "testDefineFunctionName01", "testDefineFunctionName02", "testDefineFunctionName03", "testDefineFunctionName04", "testDefineFunctionName05", "testDefineFunctionName06", "testDefineFunctionName07", "testDefineFunctionName08", "testDefineFunctionName09", "testDefineFunctionName10", "testDefineFunctionName11", "testDefineFunctionName12", "testDefineFunctionName13", "testPrimitiveArray01" ],
         "jakarta.el.TestELResolver" : [ "testDefaultConvertToType" ],
-        "jakarta.el.TestEvaluationListener" : [ "testPropertyResolved01" ],
-        "jakarta.el.TestImportHandler" : [ "testBug57135", "testImportClass01", "testImportClass02", "testImportClass04", "testImportStatic01", "testImportStatic02", "testImportStatic03", "testImportStatic04", "testResolveClass01", "testResolveClass03", "testResolveClass04" ],
+        "jakarta.el.TestEvaluationListener" : [ "testEvaluation02", "testPropertyResolved01" ],
+        "jakarta.el.TestImportHandler" : [ "testBug57135", "testImportClass01", "testImportClass02", "testImportClass03", "testImportClass04", "testImportPackage01_57574", "testImportStatic01", "testImportStatic02", "testImportStatic03", "testImportStatic04", "testResolveClass01", "testResolveClass02", "testResolveClass03", "testResolveClass04", "testResolveClass05", "testResolveClass06" ],
         "jakarta.el.TestResourceBundleELResolver" : [ "bug53001" ],
         "jakarta.el.TestStaticFieldELResolver" : [ "testGetType01", "testGetType03", "testGetType04", "testGetType05", "testGetType06", "testGetType07", "testGetType08", "testGetValue01", "testGetValue02", "testGetValue03", "testGetValue04", "testGetValue05", "testGetValue06", "testGetValue07", "testGetValue08", "testGetValue09", "testInvoke02", "testInvoke03", "testInvoke08", "testSetValue03", "testSetValue04" ],
         "jakarta.el.TestUtil" : [ "test01", "test02", "testBug56425a" ],
@@ -31,10 +31,444 @@
       "testcases" : {
         "jakarta.el.TestResourceBundleELResolver" : [ "bug53001" ],
         "org.apache.el.TestMethodExpressionImpl" : [ "testBug49655", "testBug50449a", "testBug50449b", "testBug52445a", "testBug52970", "testBug53792a", "testBug53792b", "testBug53792c", "testBug53792d", "testBug56797a", "testBug56797b", "testBug57855b", "testBug57855c", "testBug57855d", "testBug60844", "testBugPrimitives", "testInvoke", "testInvokeWithSuper", "testInvokeWithSuperAAAB", "testInvokeWithSuperAAABB", "testInvokeWithSuperAAB", "testInvokeWithSuperAABBB", "testInvokeWithSuperABB", "testInvokeWithSuperABBB", "testInvokeWithSuperABNoReturnTypeNoParamTypes", "testInvokeWithSuperABNoReturnTypeParamTypes", "testInvokeWithSuperABReturnTypeNoParamTypes", "testInvokeWithSuperABReturnTypeParamTypes", "testInvokeWithVarArgsAAABB", "testInvokeWithVarArgsAAABBB", "testInvokeWithVarArgsAABB", "testInvokeWithVarArgsAABBB", "testInvokeWithVarArgsABB", "testInvokeWithVarArgsABBB" ],
-        "org.apache.el.util.TestReflectionUtil" : [ "testBug54370c", "testBug54370d" ]
+        "org.apache.el.util.TestReflectionUtil" : [ "testBug54370c", "testBug54370d" ],
+        "org.apache.jasper.compiler.TestGenerator" : [ "testEscape01", "testEscape02", "testEscape03", "testEscape04", "testQuote01", "testQuote02", "testQuote03", "testQuote04", "testQuote05" ]
       },
       "predecessor" : "335bed06af17759de0fcb46235f257bbea301299"
     },
+    "26424219b95ce8e2919256bc6a419bd38c04f8fe" : {
+      "testcases" : {
+        "org.apache.juli.TestClassLoaderLogManager" : [ "testReplace" ]
+      },
+      "predecessor" : "8b54724d541e66a7650d4c52b5582dc05abe4fe4"
+    },
+    "424cd322dc60f9ee63e1175e4cf957353d79b88d" : {
+      "predecessor" : "26424219b95ce8e2919256bc6a419bd38c04f8fe"
+    },
+    "650a972f671f5edb34263237393438eca89204f4" : { },
+    "838decd611170bb55810dc948f2be9091c27da7c" : {
+      "testcases" : {
+        "org.apache.catalina.core.TestApplicationContext" : [ "testAddFilterWithFilterNameEmptyString", "testAddFilterWithFilterNameNull", "testAddServletWithServletNameEmptyString", "testAddServletWithServletNameNull" ],
+        "org.apache.jasper.servlet.TestJspCServletContext" : [ "testResourceJARs", "testWebapp_2_2", "testWebapp_2_3", "testWebapp_2_4", "testWebapp_2_5", "testWebresources" ],
+        "org.apache.tomcat.util.scan.TestStandardJarScanner" : [ "skipsInvalidClasspathURLNoFilePartNoFileScheme" ]
+      },
+      "predecessor" : "650a972f671f5edb34263237393438eca89204f4"
+    },
+    "ac62b95775b9c6be628b7aaa8b38f4221bb56473" : {
+      "predecessor" : "838decd611170bb55810dc948f2be9091c27da7c"
+    },
+    "3a062482563222cb86742bf844f5c2fa7ed9fe2d" : {
+      "predecessor" : "ac62b95775b9c6be628b7aaa8b38f4221bb56473"
+    },
+    "816479c961b027890c92704f95eb519f4e6abb85" : {
+      "testcases" : {
+        "org.apache.catalina.ant.TestDeployTask" : [ "bug58086a", "bug58086b", "bug58086c" ],
+        "org.apache.catalina.authenticator.TestDigestAuthenticator" : [ "bug54521" ],
+        "org.apache.catalina.connector.TestCoyoteAdapter" : [ "testNormalize01" ],
+        "org.apache.catalina.connector.TestRequest" : [ "getLocaleMultipleHeaders01", "getLocaleMultipleHeaders02" ],
+        "org.apache.catalina.connector.TestResponse" : [ "testBug53062a", "testBug53062b", "testBug53062c", "testBug53062d", "testBug53062e", "testBug53062f", "testBug53062g", "testBug53062h", "testBug53062i", "testBug53062j", "testBug53062k", "testBug53062l", "testBug53062m", "testBug53062n", "testBug53062o", "testBug53062p", "testBug53469a", "testBug53469b", "testEncodeRedirectURL01", "testEncodeRedirectURL02", "testEncodeRedirectURL03", "testEncodeRedirectURL04", "testEncodeRedirectURL05", "testEncodeRedirectURL06", "testEncodeRedirectURL07", "testEncodeRedirectURL08", "testEncodeRedirectURL09", "testEncodeRedirectURL10", "testEncodeRedirectURL11", "testEncodeRedirectURL12", "testEncodeRedirectURL13", "testEncodeRedirectURL14", "testEncodeRedirectURL15", "testEncodeRedirectURL16", "testEncodeURL01", "testEncodeURL02", "testEncodeURL03", "testEncodeURL04", "testEncodeURL06", "testEncodeURL07", "testEncodeURL08", "testEncodeURL09", "testEncodeURL10", "testEncodeURL11", "testEncodeURL12", "testEncodeURL13", "testEncodeURL14", "testEncodeURL15", "testEncodeURL16", "testSendRedirect01", "testSendRedirect02", "testSendRedirect03", "testSetCharacterEncoding01", "testSetCharacterEncoding02", "testSetCharacterEncoding03", "testSetCharacterEncoding04", "testSetCharacterEncoding05", "testSetCharacterEncoding08", "testSetContentType01", "testSetContentType02", "testSetContentType03", "testSetContentType04", "testSetLocale01", "testSetLocale02", "testSetLocale03", "testSetLocale04", "testSetLocale07", "testSetLocale08" ],
+        "org.apache.catalina.core.TestAsyncContextImpl" : [ "testAsyncListenerSupplyRequestResponse" ],
+        "org.apache.catalina.core.TestStandardContext" : [ "testAddPostConstructMethodNullClassName", "testAddPostConstructMethodNullMethodName", "testAddPreDestroyMethodNullClassName", "testAddPreDestroyMethodNullMethodName", "testBug56903", "testSetPath" ],
+        "org.apache.catalina.core.TestStandardHostValve" : [ "testInvalidErrorPage" ],
+        "org.apache.catalina.filters.TestCsrfPreventionFilter" : [ "testAddNonceNoQueryAnchor", "testAddNonceNoQueryNoAnchor", "testAddNonceQueryAnchor", "testAddNonceQueryNoAnchor", "testLruCacheSerializable" ],
+        "org.apache.catalina.filters.TestExpiresFilter" : [ "testIntsToCommaDelimitedString", "testParseExpiresConfigurationCombinedDuration", "testParseExpiresConfigurationMonoDuration" ],
+        "org.apache.catalina.filters.TestRemoteIpFilter" : [ "testCommaDelimitedListToStringArray", "testCommaDelimitedListToStringArrayEmptyList", "testCommaDelimitedListToStringArrayNullList", "testHeaderNamesCaseInsensitivity", "testListToCommaDelimitedString", "testListToCommaDelimitedStringMixedSpaceChars" ],
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance", "testModified" ],
+        "org.apache.catalina.loader.TestWebappClassLoader" : [ "testFilter" ],
+        "org.apache.catalina.mbeans.TestRegistration" : [ "testNames" ],
+        "org.apache.catalina.valves.TestRemoteIpValve" : [ "test172dash12InternalProxies", "testInvokeAllProxiesAreInternal", "testInvokeAllProxiesAreTrusted", "testInvokeAllProxiesAreTrustedAndRemoteAddrMatchRegexp", "testInvokeAllProxiesAreTrustedEmptyInternal", "testInvokeAllProxiesAreTrustedOrInternal", "testInvokeAllProxiesAreTrustedUnusedInternal", "testInvokeAllowedRemoteAddrWithNullRemoteIpHeader", "testInvokeNotAllowedRemoteAddr", "testInvokeUntrustedProxyInTheChain", "testInvokeXforwardedHost", "testInvokeXforwardedHostAndPort", "testInvokeXforwardedProtoIsNullForIncomingHttpRequest", "testInvokeXforwardedProtoIsNullForIncomingHttpsRequest", "testInvokeXforwardedProtoSaysHttpForIncomingHttpsRequest", "testInvokeXforwardedProtoSaysHttpsForIncomingHttpRequest", "testInvokeXforwardedProtoSaysInvalidValueForIncomingHttpRequest", "testInvokeXforwardedProtoSaysMultipleForwardsWithFirstBeingHttpForIncomingHttpsRequest", "testInvokeXforwardedProtoSaysMultipleForwardsWithLastBeingHttpForIncomingHttpRequest", "testInvokeXforwardedProtoSaysMultipleForwardsWithMiddleBeingHttpForIncomingHttpsRequest", "testInvokeXforwardedProtoSaysMultipleHttpForwardsForIncomingHttpRequest", "testInvokeXforwardedProtoSaysMultipleHttpsForwardsForIncomingHttpsRequest", "testRequestAttributesForAccessLog", "testRequestForwarded", "testRequestForwardedForWithPortNumber", "testRequestForwardedForWithProxyPortNumber" ],
+        "org.apache.catalina.valves.TestRequestFilterValve" : [ "testRemoteAddrValveIPv4", "testRemoteCIDR6Valve", "testRemoteCIDRValve", "testRemoteHostValve" ],
+        "org.apache.catalina.valves.rewrite.TestRewriteValve" : [ "testRewriteMissingCurlyBraceOnMapper", "testRewriteMissingCurlyBraceOnVar" ],
+        "org.apache.jasper.servlet.TestTldScanner" : [ "testBug57647" ],
+        "org.apache.tomcat.util.scan.TestJarScanner" : [ "testJarsToSkipFormat" ],
+        "org.apache.tomcat.websocket.server.TestWsServerContainer" : [ "testDuplicatePaths01", "testDuplicatePaths02", "testDuplicatePaths03", "testDuplicatePaths04", "testDuplicatePaths11", "testDuplicatePaths12", "testDuplicatePaths13", "testDuplicatePaths14", "testDuplicatePaths21", "testDuplicatePaths22", "testDuplicatePaths23", "testDuplicatePaths24", "testSpecExample3", "testSpecExample4" ]
+      },
+      "predecessor" : "3a062482563222cb86742bf844f5c2fa7ed9fe2d"
+    },
+    "e5f340843f746443f4b9b299822101c632473aab" : {
+      "predecessor" : "816479c961b027890c92704f95eb519f4e6abb85"
+    },
+    "21a6cac161e8f6097d119a41611793ea022c9e09" : {
+      "testcases" : {
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ]
+      },
+      "predecessor" : "e5f340843f746443f4b9b299822101c632473aab"
+    },
+    "15eedf022c8df1e7d4c6a989cdabfab966638eaf" : { },
+    "46cb8c3b407a7628613a4a1f5fed5a0297122c8a" : {
+      "predecessor" : "15eedf022c8df1e7d4c6a989cdabfab966638eaf"
+    },
+    "33d80f47be95aa64a8ac95ed99e1c3767b2cfe05" : {
+      "testcases" : {
+        "org.apache.jasper.servlet.TestJspCServletContext" : [ "testResourceJARs" ],
+        "org.apache.jasper.servlet.TestTldScanner" : [ "testBug57647" ],
+        "org.apache.tomcat.util.scan.TestAbstractInputStreamJar" : [ "testNestedJarGetInputStream" ],
+        "org.apache.tomcat.util.scan.TestStandardJarScanner" : [ "skipsInvalidClasspathURLNoFilePartNoFileScheme" ]
+      },
+      "predecessor" : "46cb8c3b407a7628613a4a1f5fed5a0297122c8a"
+    },
+    "197a0b7bcc8c00e63d29689158b287e77a46aa49" : {
+      "predecessor" : "33d80f47be95aa64a8ac95ed99e1c3767b2cfe05"
+    },
+    "5d49fc9ca4e9ce757687051e92c2a6d053744dc7" : {
+      "testcases" : {
+        "jakarta.el.TestImportHandlerStandardPackages" : [ "testClassListsAreComplete" ]
+      },
+      "predecessor" : "197a0b7bcc8c00e63d29689158b287e77a46aa49"
+    },
+    "eae15b427288986fd5f735cf185f04ef21d6ee2a" : {
+      "predecessor" : "5d49fc9ca4e9ce757687051e92c2a6d053744dc7"
+    },
+    "e11dd02eab0c541a50f2a5c32b54db0c757cd93f" : {
+      "testcases" : {
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ],
+        "org.apache.catalina.webresources.TestJarInputStreamWrapper" : [ "testAvailableAfterClose", "testCloseAfterClose", "testMarkAfterClose", "testMarkSupportedAfterClose", "testReadAfterClose", "testResetAfterClose", "testSkipAfterClose" ],
+        "org.apache.catalina.webresources.TestJarResourceSet" : [ "testNoArgConstructor" ],
+        "org.apache.catalina.webresources.TestJarResourceSetInternal" : [ "testNoArgConstructor" ],
+        "org.apache.catalina.webresources.TestResourceJars" : [ "testNonStaticResources" ]
+      },
+      "predecessor" : "eae15b427288986fd5f735cf185f04ef21d6ee2a"
+    },
+    "5b4c11d7180127689a79e554ab969eb8c8ea7c8e" : {
+      "testcases" : {
+        "org.apache.catalina.ant.TestDeployTask" : [ "bug58086a", "bug58086b", "bug58086c" ],
+        "org.apache.catalina.authenticator.TestDigestAuthenticator" : [ "bug54521" ],
+        "org.apache.catalina.connector.TestCoyoteAdapter" : [ "testNormalize01" ],
+        "org.apache.catalina.connector.TestRequest" : [ "getLocaleMultipleHeaders01", "getLocaleMultipleHeaders02" ],
+        "org.apache.catalina.connector.TestResponse" : [ "testBug53062a", "testBug53062b", "testBug53062c", "testBug53062d", "testBug53062e", "testBug53062f", "testBug53062g", "testBug53062h", "testBug53062i", "testBug53062j", "testBug53062k", "testBug53062l", "testBug53062m", "testBug53062n", "testBug53062o", "testBug53062p", "testBug53469a", "testBug53469b", "testEncodeRedirectURL01", "testEncodeRedirectURL02", "testEncodeRedirectURL03", "testEncodeRedirectURL04", "testEncodeRedirectURL05", "testEncodeRedirectURL06", "testEncodeRedirectURL07", "testEncodeRedirectURL08", "testEncodeRedirectURL09", "testEncodeRedirectURL10", "testEncodeRedirectURL11", "testEncodeRedirectURL12", "testEncodeRedirectURL13", "testEncodeRedirectURL14", "testEncodeRedirectURL15", "testEncodeRedirectURL16", "testEncodeURL01", "testEncodeURL02", "testEncodeURL03", "testEncodeURL04", "testEncodeURL06", "testEncodeURL07", "testEncodeURL08", "testEncodeURL09", "testEncodeURL10", "testEncodeURL11", "testEncodeURL12", "testEncodeURL13", "testEncodeURL14", "testEncodeURL15", "testEncodeURL16", "testSendRedirect01", "testSendRedirect02", "testSendRedirect03", "testSetCharacterEncoding01", "testSetCharacterEncoding02", "testSetCharacterEncoding03", "testSetCharacterEncoding04", "testSetCharacterEncoding05", "testSetCharacterEncoding08", "testSetContentType01", "testSetContentType02", "testSetContentType03", "testSetContentType04", "testSetLocale01", "testSetLocale02", "testSetLocale03", "testSetLocale04", "testSetLocale07", "testSetLocale08" ],
+        "org.apache.catalina.core.TestApplicationContext" : [ "testAddFilterWithFilterNameEmptyString", "testAddFilterWithFilterNameNull", "testAddServletWithServletNameEmptyString", "testAddServletWithServletNameNull" ],
+        "org.apache.catalina.core.TestAsyncContextImpl" : [ "testAsyncListenerSupplyRequestResponse" ],
+        "org.apache.catalina.core.TestStandardContext" : [ "testAddPostConstructMethodNullClassName", "testAddPostConstructMethodNullMethodName", "testAddPreDestroyMethodNullClassName", "testAddPreDestroyMethodNullMethodName", "testBug56903", "testSetPath" ],
+        "org.apache.catalina.core.TestStandardHostValve" : [ "testInvalidErrorPage" ],
+        "org.apache.catalina.filters.TestCsrfPreventionFilter" : [ "testAddNonceNoQueryAnchor", "testAddNonceNoQueryNoAnchor", "testAddNonceQueryAnchor", "testAddNonceQueryNoAnchor", "testLruCacheSerializable" ],
+        "org.apache.catalina.filters.TestExpiresFilter" : [ "testIntsToCommaDelimitedString", "testParseExpiresConfigurationCombinedDuration", "testParseExpiresConfigurationMonoDuration" ],
+        "org.apache.catalina.filters.TestRemoteIpFilter" : [ "testCommaDelimitedListToStringArray", "testCommaDelimitedListToStringArrayEmptyList", "testCommaDelimitedListToStringArrayNullList", "testHeaderNamesCaseInsensitivity", "testListToCommaDelimitedString", "testListToCommaDelimitedStringMixedSpaceChars" ],
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance", "testModified" ],
+        "org.apache.catalina.loader.TestWebappClassLoader" : [ "testFilter" ],
+        "org.apache.catalina.mapper.TestMapper" : [ "testAddHost", "testAddRemoveContextVersion", "testMap", "testReloadContextVersion", "testRemoveHost" ],
+        "org.apache.catalina.mbeans.TestRegistration" : [ "testNames" ],
+        "org.apache.catalina.valves.TestRequestFilterValve" : [ "testRemoteAddrValveIPv4", "testRemoteCIDR6Valve", "testRemoteCIDRValve", "testRemoteHostValve" ],
+        "org.apache.catalina.valves.rewrite.TestRewriteValve" : [ "testRewriteMissingCurlyBraceOnMapper", "testRewriteMissingCurlyBraceOnVar" ],
+        "org.apache.jasper.compiler.TestGenerator" : [ "testEscape01", "testEscape02", "testEscape03", "testEscape04", "testQuote01", "testQuote02", "testQuote03", "testQuote04", "testQuote05" ],
+        "org.apache.jasper.servlet.TestTldScanner" : [ "testBug57647" ],
+        "org.apache.tomcat.util.scan.TestJarScanner" : [ "testJarsToSkipFormat" ],
+        "org.apache.tomcat.websocket.server.TestWsServerContainer" : [ "testDuplicatePaths01", "testDuplicatePaths02", "testDuplicatePaths03", "testDuplicatePaths04", "testDuplicatePaths11", "testDuplicatePaths12", "testDuplicatePaths13", "testDuplicatePaths14", "testDuplicatePaths21", "testDuplicatePaths22", "testDuplicatePaths23", "testDuplicatePaths24", "testSpecExample3", "testSpecExample4" ]
+      },
+      "predecessor" : "e11dd02eab0c541a50f2a5c32b54db0c757cd93f"
+    },
+    "11079b6b97f3bd1d4ebea7359f8d9b118c1d65b5" : {
+      "testcases" : {
+        "jakarta.el.TestStaticFieldELResolver" : [ "testGetType01", "testGetType02", "testGetType03", "testGetType04", "testGetType05", "testGetType06", "testGetType07", "testGetType08", "testGetType09" ],
+        "org.apache.el.TestValueExpressionImpl" : [ "testBug51177ObjectList", "testBug51177ObjectMap", "testBug56522SetNullValue" ],
+        "org.apache.el.parser.TestAstAssign" : [ "testGetType01", "testGetType02", "testGetValue01", "testGetValue02" ]
+      },
+      "predecessor" : "5b4c11d7180127689a79e554ab969eb8c8ea7c8e"
+    },
+    "d26f48db6c18c786158514536b044bef4d05fa0a" : {
+      "testcases" : {
+        "jakarta.el.TestArrayELResolver" : [ "testGetType02", "testGetType03", "testGetType04", "testGetType05", "testGetType06", "testGetValue02", "testGetValue03", "testGetValue05", "testGetValueCoercion01", "testGetValueCoercion02a", "testGetValueCoercion02b", "testGetValueCoercion03", "testGetValueCoercion04", "testGetValueCoercion05", "testGetValueCoercion06", "testIsReadOnly02", "testIsReadOnly03", "testIsReadOnly04", "testIsReadOnly05", "testIsReadOnly06", "testIsReadOnly07", "testSetValue02", "testSetValue03", "testSetValue04", "testSetValue05", "testSetValue06", "testSetValue07", "testSetValue08", "testSetValue09" ],
+        "jakarta.el.TestBeanELResolver" : [ "testBug53421", "testGetFeatureDescriptors01", "testGetFeatureDescriptors02", "testGetType02", "testGetType03", "testGetType04", "testGetType05", "testGetValue02", "testGetValue03", "testGetValue04", "testGetValue05", "testGetValue06", "testGetValue07", "testInvoke02", "testInvoke03", "testInvoke04", "testInvoke05", "testInvoke06", "testInvokeVarargs01", "testInvokeVarargs02", "testInvokeVarargs03", "testInvokeVarargs04", "testInvokeVarargs05", "testInvokeVarargs06", "testInvokeVarargs07", "testInvokeVarargs08", "testInvokeVarargs09", "testInvokeVarargs10", "testInvokeVarargs11", "testInvokeVarargs12", "testInvokeVarargs13", "testInvokeVarargs14", "testInvokeVarargs15", "testInvokeVarargs16", "testInvokeVarargs17", "testInvokeVarargs18", "testInvokeVarargs19", "testInvokeVarargs20", "testInvokeVarargs21", "testInvokeVarargsCoerce01", "testInvokeVarargsCoerce02", "testInvokeVarargsCoerce03", "testInvokeVarargsCoerce04", "testInvokeVarargsCoerce05", "testInvokeVarargsCoerce06", "testInvokeVarargsCoerce07", "testInvokeVarargsCoerce08", "testInvokeVarargsCoerce09", "testInvokeVarargsCoerce10", "testInvokeVarargsCoerce11", "testInvokeVarargsCoerce12", "testInvokeVarargsCoerce13", "testInvokeVarargsCoerce14", "testInvokeVarargsCoerce15", "testInvokeVarargsCoerce16", "testInvokeVarargsCoerce17", "testInvokeVarargsCoerce18", "testInvokeVarargsCoerce19", "testInvokeVarargsCoerce20", "testInvokeVarargsCoerce21", "testIsReadOnly02", "testIsReadOnly03", "testIsReadOnly04", "testIsReadOnly05", "testIsReadOnly06", "testSetValue02", "testSetValue03", "testSetValue04", "testSetValue05", "testSetValue06", "testSetValue07" ],
+        "jakarta.el.TestBeanELResolverVarargsInvocation" : [ "testJoin", "testJoinDelimited" ],
+        "jakarta.el.TestBeanNameELResolver" : [ "testGetType02", "testGetType03", "testGetType04", "testGetType05", "testGetType06", "testGetType07", "testGetValue02", "testGetValue03", "testGetValue04", "testGetValue05", "testGetValue06", "testGetValue07", "testIsReadOnly02", "testIsReadOnly03", "testIsReadOnly04", "testIsReadOnly05", "testIsReadOnly06", "testIsReadOnly07", "testIsReadOnly08", "testSetValue02", "testSetValue03", "testSetValue04", "testSetValue05", "testSetValue06", "testSetValue07", "testSetValue08", "testSetValue09" ],
+        "jakarta.el.TestELContext" : [ "testConvertToType01", "testConvertToType02", "testConvertToType03" ],
+        "jakarta.el.TestELProcessor" : [ "testDefineBean01", "testDefineFunctionMethod01", "testDefineFunctionName01", "testDefineFunctionName02", "testDefineFunctionName03", "testDefineFunctionName04", "testDefineFunctionName05", "testDefineFunctionName06", "testDefineFunctionName07", "testDefineFunctionName08", "testDefineFunctionName09", "testDefineFunctionName10", "testDefineFunctionName11", "testDefineFunctionName12", "testDefineFunctionName13", "testEval01", "testEval02", "testEval03", "testPrimitiveArray01" ],
+        "jakarta.el.TestELResolver" : [ "testConvertToType01", "testConvertToType02", "testConvertToType03", "testConvertToType04", "testConvertToType05", "testConvertToType06", "testConvertToType07", "testDefaultConvertToType" ],
+        "jakarta.el.TestEvaluationListener" : [ "testEvaluation01", "testPropertyResolved01", "testPropertyResolved02" ],
+        "jakarta.el.TestImportHandler" : [ "testBug57135", "testImportClass01", "testImportClass04", "testImportStatic01", "testImportStatic03", "testImportStatic04", "testResolveClass01", "testResolveClass03", "testResolveClass04" ],
+        "jakarta.el.TestListELResolver" : [ "testGetType02", "testGetType03", "testGetType04", "testGetValue02", "testGetValue03", "testGetValue04", "testGetValue05", "testIsReadOnly02", "testIsReadOnly03", "testIsReadOnly04", "testIsReadOnly05", "testIsReadOnly06", "testSetValue02", "testSetValue03", "testSetValue04", "testSetValue05", "testSetValue06", "testSetValue07" ],
+        "jakarta.el.TestMapELResolver" : [ "testGetFeatureDescriptors01", "testGetFeatureDescriptors02", "testGetType02", "testGetType03", "testGetValue02", "testGetValue03", "testIsReadOnly02", "testIsReadOnly03", "testIsReadOnly04", "testSetValue02", "testSetValue03", "testSetValue04", "testSetValue05" ],
+        "jakarta.el.TestResourceBundleELResolver" : [ "bug53001", "testGetFeatureDescriptors01", "testGetFeatureDescriptors02", "testGetType02", "testGetType03", "testGetValue02", "testGetValue03", "testIsReadOnly02", "testIsReadOnly03", "testSetValue02", "testSetValue03" ],
+        "jakarta.el.TestStaticFieldELResolver" : [ "testGetType01", "testGetType02", "testGetType03", "testGetType04", "testGetType05", "testGetType06", "testGetType07", "testGetType08", "testGetType09", "testGetValue01", "testGetValue02", "testGetValue03", "testGetValue04", "testGetValue05", "testGetValue06", "testGetValue07", "testGetValue08", "testGetValue09", "testInvoke02", "testInvoke03", "testInvoke04", "testInvoke05", "testInvoke06", "testInvoke07", "testInvoke08", "testIsReadOnly02", "testIsReadOnly03", "testIsReadOnly04", "testSetValue02", "testSetValue03", "testSetValue04" ],
+        "jakarta.el.TestUtil" : [ "test01", "test02", "testBug56425a", "testBug56425b" ],
+        "org.apache.el.TestELEvaluation" : [ "testBug42565", "testBug44994", "testBug48112", "testBug49081a", "testBug49081b", "testBug49081c", "testBug49081d", "testBug60431a", "testBug60431b", "testBug60431c", "testBug60431d", "testBug60431e", "testEscape01", "testMixedTypes", "testMultipleEscaping", "testParserBug45511", "testParserLiteralExpression", "testParserStringLiteral" ],
+        "org.apache.el.TestExpressionFactory" : [ "testCreateValueExpression2ParamNullExpectedType", "testCreateValueExpression3ParamNullExpectedType" ],
+        "org.apache.el.TestMethodExpressionImpl" : [ "testBug49655", "testBug50449a", "testBug50790a", "testBug50790b", "testBug52445a", "testBug52970", "testBug53792a", "testBug53792b", "testBug53792c", "testBug53792d", "testBug56797a", "testBug56797b", "testBug57855a", "testBug57855e", "testBug60844", "testBugPrimitives", "testInvoke", "testInvokeWithSuper", "testInvokeWithSuperAAAB", "testInvokeWithSuperAAABB", "testInvokeWithSuperAAABBB", "testInvokeWithSuperAAB", "testInvokeWithSuperAABB", "testInvokeWithSuperAABBB", "testInvokeWithVarArgsAAAB", "testInvokeWithVarArgsAAABB", "testInvokeWithVarArgsAAABBB", "testInvokeWithVarArgsAAB", "testInvokeWithVarArgsAABB", "testInvokeWithVarArgsAB", "testInvokeWithVarArgsABB", "testInvokeWithVarArgsABBB", "testIsParametersProvided", "testPreferNoVarArgs", "testVarArgsBeanFEnum", "testVarArgsBeanFEnumEnum", "testVarArgsBeanFEnumString", "testVarArgsBeanFEnumVEnum", "testVarArgsBeanFEnumVString", "testVarArgsBeanFString", "testVarArgsBeanFStringEnum", "testVarArgsBeanFStringString", "testVarArgsBeanFStringVEnum", "testVarArgsBeanFStringVString", "testVarArgsBeanGEnum", "testVarArgsBeanGEnumEnum", "testVarArgsBeanGEnumString", "testVarArgsBeanGEnumVEnum", "testVarArgsBeanGEnumVString", "testVarArgsBeanGString", "testVarArgsBeanGStringEnum", "testVarArgsBeanGStringString", "testVarArgsBeanGStringVEnum", "testVarArgsBeanGStringVString", "testVarArgsBeanHEnum", "testVarArgsBeanHEnumEnum", "testVarArgsBeanHEnumString", "testVarArgsBeanHEnumVEnum", "testVarArgsBeanHEnumVString", "testVarArgsBeanHString", "testVarArgsBeanHStringEnum", "testVarArgsBeanHStringString", "testVarArgsBeanHStringVEnum", "testVarArgsBeanHStringVString" ],
+        "org.apache.el.TestValueExpressionImpl" : [ "testBug49345", "testBug50105", "testBug51177ObjectList", "testBug51177ObjectMap", "testBug51544Bean", "testBug51544Direct", "testBug56522SetNullValue", "testGetValueReference", "testGetValueReferenceVariable" ],
+        "org.apache.el.lang.TestELArithmetic" : [ "testAdd02", "testDivide02", "testMod02", "testMultiply02", "testSubtract02", "testUnaryMinus01" ],
+        "org.apache.el.lang.TestELSupport" : [ "testCoerceToType01", "testCoerceToType02", "testCoerceToType03", "testCoerceToType04", "testCoerceToType05", "testCoerceToType06", "testCoerceToType07", "testCoerceToType08", "testCoerceToType09", "testCoerceToType10", "testCoerceToType11", "testCoerceToType12", "testCoerceToType13", "testCoerceToType14", "testCoerceToType15", "testCoerceToType16", "testCoercetoFunctionalInterface01", "testCoercetoFunctionalInterface02", "testCoercetoFunctionalInterface03", "testCoercetoFunctionalInterface04", "testCoercetoFunctionalInterface05", "testCoercetoFunctionalInterface06" ],
+        "org.apache.el.lang.TesterVariableMapperImpl" : [ "testSetVariable01" ],
+        "org.apache.el.parser.TestAstAnd" : [ "test01", "test02", "test03", "test04" ],
+        "org.apache.el.parser.TestAstAssign" : [ "testGetType01", "testGetType02", "testGetValue01", "testGetValue02" ],
+        "org.apache.el.parser.TestAstChoice" : [ "test01" ],
+        "org.apache.el.parser.TestAstConcatenation" : [ "testConcatenation01", "testConcatenation02", "testConcatenation03", "testConcatenation04", "testGetType", "testPrecedence01", "testPrecedence02", "testPrecedence03", "testPrecedence04" ],
+        "org.apache.el.parser.TestAstFunction" : [ "testImport01", "testImport02" ],
+        "org.apache.el.parser.TestAstIdentifier" : [ "testImport01", "testImport02" ],
+        "org.apache.el.parser.TestAstLambdaExpression" : [ "testInvocation01", "testLambdaAsFunction01", "testLambdaAsFunction02", "testLambdaAsFunction03", "testLambdaAsFunction04", "testLambdaAsFunction05", "testLambdaAsFunction06", "testLambdaAsFunction07", "testLambdaAsFunction08", "testNested01", "testNested02", "testNested03", "testNested04", "testNested05", "testNested06", "testNested07", "testSpec01", "testSpec02", "testSpec03", "testSpec04", "testSpec05", "testSpec06" ],
+        "org.apache.el.parser.TestAstListData" : [ "testGetType", "testNested01", "testSimple01", "testSimple02" ],
+        "org.apache.el.parser.TestAstMapData" : [ "testGetType", "testNested01", "testSimple01", "testSimple02" ],
+        "org.apache.el.parser.TestAstNot" : [ "test01", "test02", "test03" ],
+        "org.apache.el.parser.TestAstOr" : [ "test01", "test02", "test03", "test04" ],
+        "org.apache.el.parser.TestAstSemicolon" : [ "testGetType", "testGetValue01", "testGetValue02", "testGetValue03" ],
+        "org.apache.el.parser.TestAstSetData" : [ "testGetType", "testNested01", "testSimple01", "testSimple02" ],
+        "org.apache.el.parser.TestELParser" : [ "bug56179a", "bug56179b", "bug56179c", "bug56179d", "bug56179e", "bug56179f", "bug56179g", "bug56179h", "bug56179i", "bug56179j", "bug56179k", "bug56179l", "bug56179m", "bug56179n", "bug56185", "testBug49081", "testJavaKeyWordIdentifier", "testJavaKeyWordSuffix" ],
+        "org.apache.el.stream.TestCollectionOperations" : [ "testAllMatch01", "testAllMatch02", "testAllMatch03", "testAllMatch04", "testAnyMatch01", "testAnyMatch02", "testAnyMatch03", "testAverage01", "testAverage02", "testAverage03", "testAverage04", "testAverage05", "testAverage06", "testCount01", "testCount02", "testDistinct01", "testFilter01", "testFindFirst01", "testFindFirst02", "testFlatMap01", "testForEach01", "testLimit01", "testMap01", "testMap02", "testMax01", "testMax02", "testMax03", "testMax04", "testMaxLambda01", "testMaxLambda02", "testMin01", "testMin02", "testMin03", "testMin04", "testMinLambda01", "testNoneMatch01", "testNoneMatch02", "testNoneMatch03", "testNoneMatch04", "testPeek01", "testReduceLambda01", "testReduceLambda02", "testReduceLambdaSeed01", "testSorted01", "testSortedLambdaExpression01", "testSubstreamStart01", "testSubstreamStartEnd01", "testSum01", "testSum02", "testToArray01", "testToList01", "testToList02" ],
+        "org.apache.jasper.compiler.TestAttributeParser" : [ "testBug42565", "testBug44994", "testBug45015", "testBug45451", "testBug49081", "testLiteral" ],
+        "org.apache.jasper.compiler.TestELParser" : [ "testCompound01", "testEscape01", "testEscape02", "testEscape03", "testEscape04", "testEscape05", "testEscape07", "testEscape08", "testEscape09", "testEscape10", "testEscape11", "testLiteral", "testQuotes01", "testQuotes03", "testTernary01", "testTernary11", "testTernary12", "testTernary13", "testText" ]
+      },
+      "predecessor" : "11079b6b97f3bd1d4ebea7359f8d9b118c1d65b5"
+    },
+    "bccc5aebd7ceb0894fbe79d0ba0bcee99e8a1a31" : {
+      "predecessor" : "d26f48db6c18c786158514536b044bef4d05fa0a"
+    },
+    "b758f5cb1475f9d3ed093327d4fe018498e8a6bb" : { },
+    "2d49e820b93d28695d760fda66c1affa396f1055" : { },
+    "b14e9ff3c514078b6e9be29cae8084cd93b56c55" : {
+      "testcases" : {
+        "jakarta.el.TestImportHandlerStandardPackages" : [ "testClassListsAreComplete" ]
+      },
+      "predecessor" : "2d49e820b93d28695d760fda66c1affa396f1055"
+    },
+    "9adb89886cb8db3d9969173f9c3dae687b32694e" : { },
+    "077a41648a321e85c6e60184e4d7a9e87a61d186" : {
+      "testcases" : {
+        "org.apache.tomcat.util.buf.TestUtf8" : [ "testHarmonyDecoder", "testJvmDecoder" ]
+      },
+      "predecessor" : "9adb89886cb8db3d9969173f9c3dae687b32694e"
+    },
+    "3d34fcfacdd155b4abf2801404b896a8b63b5a2a" : { },
+    "c9ea1d5db0b04b0386b79e5cb0a467fb601c860a" : {
+      "predecessor" : "3d34fcfacdd155b4abf2801404b896a8b63b5a2a"
+    },
+    "15220d8df73754dcf45ddbab206cadece4644dcb" : { },
+    "f7100b436c0ab2ef32f44bc03b841e79897cc710" : {
+      "testcases" : {
+        "org.apache.catalina.core.TestApplicationSessionCookieConfig" : [ "testSetCommentNotInitPhase", "testSetDomainNotInitPhase", "testSetHttpOnlyNotInitPhase", "testSetMaxAgeNotInitPhase", "testSetNameNotInitPhase", "testSetPathNotInitPhase", "testSetSecureNotInitPhase" ],
+        "org.apache.catalina.session.TestStandardSession" : [ "testSerializationSimple01", "testSerializationSimple02", "testSerializationSimple03" ],
+        "org.apache.catalina.valves.TestCrawlerSessionManagerValve" : [ "testCrawlersSessionIdIsRemovedAfterSessionExpiry" ]
+      },
+      "predecessor" : "15220d8df73754dcf45ddbab206cadece4644dcb"
+    },
+    "b3fea5cd61bca53113677425a2c27788c40d5c1a" : {
+      "predecessor" : "f7100b436c0ab2ef32f44bc03b841e79897cc710"
+    },
+    "6190e7a8717bd75c1bcce7b956ef700334812ced" : { },
+    "3f6db1c84c71c7adc227428239c44f579dec19b1" : {
+      "predecessor" : "6190e7a8717bd75c1bcce7b956ef700334812ced"
+    },
+    "ae4ee893f99f226fe5fdc8e933313e2e759d0733" : { },
+    "41cb36afc94aacff791630619209a7f6d47f5e02" : {
+      "testcases" : {
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ]
+      },
+      "predecessor" : "ae4ee893f99f226fe5fdc8e933313e2e759d0733"
+    },
+    "8e8f634a3da96ff9fca3588bbd09aa833bb91ac2" : { },
+    "6666b63bc4d4b41a23b211196a7be9b98449e93c" : { },
+    "b2b9ea8417db3efc6cf8dd6fef877a4639adb9bb" : { },
+    "09193e0514ac449df454184941bba492d9b20a85" : { },
+    "c2b9c6a655d269c46c27242930fb6aa9374e84bb" : { },
+    "6793c7cdc08be5c70fb82ad44a7950107288dedc" : { },
+    "4a1165a72b9715fbdd35edc97d6dc319e7a6236c" : {
+      "testcases" : {
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ]
+      },
+      "predecessor" : "6793c7cdc08be5c70fb82ad44a7950107288dedc"
+    },
+    "0f8a19d16d7bb327b54195df6511291b294579fd" : {
+      "predecessor" : "4a1165a72b9715fbdd35edc97d6dc319e7a6236c"
+    },
+    "956f2263b68017f0abe6e11458f5ec5555e5dd75" : { },
+    "00824315e5add00118f8d625aafccdfb38aa416d" : { },
+    "e0f5aed9075b01392012b8f8e5b0f78bad06513e" : { },
+    "7725d855aa365d437fe01dff56fe8628106d4dca" : { },
+    "4737645491f3e79fec2f083019dd082d102159b6" : {
+      "predecessor" : "7725d855aa365d437fe01dff56fe8628106d4dca"
+    },
+    "c4f46fa9d3b1673a461e06c353b145c6ba5d1f67" : { },
+    "76da8deac37071e8a891580d74ba1322c7a2da2c" : {
+      "testcases" : {
+        "org.apache.catalina.authenticator.jaspic.TestAuthConfigFactoryImpl" : [ "testRegistrationNullClassName", "testRegistrationNullClassNullLayerNullAppContext", "testRegistrationNullClassOverrideExisting", "testRemovePersistentRegistration" ],
+        "org.apache.catalina.authenticator.jaspic.TestPersistentProviderRegistrations" : [ "testLoadEmpty", "testLoadProviderWithoutLayerAndAC", "testLoadSimple", "testSaveProviderWithoutLayerAndAC", "testSaveSimple" ]
+      },
+      "predecessor" : "c4f46fa9d3b1673a461e06c353b145c6ba5d1f67"
+    },
+    "4c1fe3f74021646fa50266b87341a22e05a64226" : { },
+    "1da1552abc56a46e6c46113f42fa2624894e2dc5" : { },
+    "fa0f2567aae91a13137094ebcdb74d72b8222f3b" : {
+      "predecessor" : "1da1552abc56a46e6c46113f42fa2624894e2dc5"
+    },
+    "f53fb52ec1a316f5047dff52c154807bd4c11254" : {
+      "testcases" : {
+        "org.apache.catalina.authenticator.TestJaspicCallbackHandlerInAuthenticator" : [ "testPasswordValidationCallback" ]
+      },
+      "predecessor" : "fa0f2567aae91a13137094ebcdb74d72b8222f3b"
+    },
+    "38dbc21ce7d5cb2af9780526ba26b607648e7691" : { },
+    "27b86640335bba9e0e167425102ab916e79e4d3f" : { },
+    "5376d45258b8bf496951a99eab435517d2ed70f0" : {
+      "predecessor" : "27b86640335bba9e0e167425102ab916e79e4d3f"
+    },
+    "93f5911c0c80c081e5d080de14f02f35ae637592" : {
+      "testcases" : {
+        "org.apache.catalina.authenticator.TestBasicAuthParser" : [ "testAuthMethodBadMethod", "testAuthMethodCaseBasic", "testAuthMethodExtraLeadingSpace", "testAuthMethodExtraTrailingSpace", "testBadBase64BadLength", "testBadBase64Char", "testBadBase64InlineEquals", "testBadBase64LastChar", "testBadBase64TooManyEquals", "testGoodCredentials", "testGoodCredentialsNoPassword", "testGoodCrib", "testGoodCribBase64Big", "testGoodCribLineWrap", "testGoodCribOnePad", "testGoodCribUserOnly", "testMissingUsername", "testPasswordExtraSpace", "testPasswordHasColonEmbedded", "testPasswordHasColonLeading", "testPasswordHasColonTrailing", "testPasswordHasSpaceEmbedded", "testShortPassword", "testShortUsername", "testUserExtraSpace", "testWrongPassword" ],
+        "org.apache.catalina.authenticator.TestJaspicCallbackHandlerInAuthenticator" : [ "testCallerPrincipalCallback", "testCustomCallbackHandlerCreation", "testDefaultCallbackHandlerCreation", "testGroupPrincipalCallback" ]
+      },
+      "predecessor" : "5376d45258b8bf496951a99eab435517d2ed70f0"
+    },
+    "263fb37b6507203aece9c8afb77272654cad80d1" : { },
+    "75ba84a8e6f1abbeaf1bf242de8c53bdf4951862" : { },
+    "026f4fcc6db33db0c48bb033496583aec50ca14e" : { },
+    "90da2caa0e186c066b57b01bd1cb7b444436ee2e" : { },
+    "16c684befa797faac0697adb15bd6911f27feed6" : { },
+    "58ac04aa08182efbf69afc56a28c34fc9294f915" : { },
+    "831cf3e39312f8ad63778454c259c26910e93c0e" : { },
+    "8e7267d742b48182ab2ed291c987f185d90ef6b7" : { },
+    "49072ffa7d613ca4273712159ef1522f79982a36" : { },
+    "8a106504f8668841c3140ecfd5494879231d0f56" : { },
+    "9cc94bd751d90c0a3f65e58198293b88f5318de9" : {
+      "predecessor" : "8a106504f8668841c3140ecfd5494879231d0f56"
+    },
+    "7a8233880b873782ec8efeee742c7a10b7bec41b" : { },
+    "22b076eca050a99a826e461a85d411ac5a6b81ff" : {
+      "predecessor" : "7a8233880b873782ec8efeee742c7a10b7bec41b"
+    },
+    "314568fa450680711f12f01ee050f2166f4263bd" : {
+      "testcases" : {
+        "org.apache.catalina.ant.TestDeployTask" : [ "bug58086a", "bug58086b", "bug58086c" ],
+        "org.apache.catalina.authenticator.TestDigestAuthenticator" : [ "bug54521" ],
+        "org.apache.catalina.connector.TestCoyoteAdapter" : [ "testNormalize01" ],
+        "org.apache.catalina.connector.TestRequest" : [ "getLocaleMultipleHeaders01", "getLocaleMultipleHeaders02" ],
+        "org.apache.catalina.connector.TestResponse" : [ "testBug53062a", "testBug53062b", "testBug53062c", "testBug53062d", "testBug53062e", "testBug53062f", "testBug53062g", "testBug53062h", "testBug53062i", "testBug53062j", "testBug53062k", "testBug53062l", "testBug53062m", "testBug53062n", "testBug53062o", "testBug53062p", "testBug53469a", "testBug53469b", "testEncodeRedirectURL01", "testEncodeRedirectURL02", "testEncodeRedirectURL03", "testEncodeRedirectURL04", "testEncodeRedirectURL05", "testEncodeRedirectURL06", "testEncodeRedirectURL07", "testEncodeRedirectURL08", "testEncodeRedirectURL09", "testEncodeRedirectURL10", "testEncodeRedirectURL11", "testEncodeRedirectURL12", "testEncodeRedirectURL13", "testEncodeRedirectURL14", "testEncodeRedirectURL15", "testEncodeRedirectURL16", "testEncodeURL01", "testEncodeURL02", "testEncodeURL03", "testEncodeURL04", "testEncodeURL06", "testEncodeURL07", "testEncodeURL08", "testEncodeURL09", "testEncodeURL10", "testEncodeURL11", "testEncodeURL12", "testEncodeURL13", "testEncodeURL14", "testEncodeURL15", "testEncodeURL16", "testSendRedirect01", "testSendRedirect02", "testSendRedirect03", "testSetCharacterEncoding01", "testSetCharacterEncoding02", "testSetCharacterEncoding03", "testSetCharacterEncoding04", "testSetCharacterEncoding05", "testSetCharacterEncoding08", "testSetContentType01", "testSetContentType02", "testSetContentType03", "testSetContentType04", "testSetLocale01", "testSetLocale02", "testSetLocale03", "testSetLocale04", "testSetLocale07", "testSetLocale08" ],
+        "org.apache.catalina.core.TestApplicationContext" : [ "testAddFilterWithFilterNameEmptyString", "testAddFilterWithFilterNameNull", "testAddServletWithServletNameEmptyString", "testAddServletWithServletNameNull" ],
+        "org.apache.catalina.core.TestAsyncContextImpl" : [ "testAsyncListenerSupplyRequestResponse" ],
+        "org.apache.catalina.core.TestStandardContext" : [ "testAddPostConstructMethodNullClassName", "testAddPostConstructMethodNullMethodName", "testAddPreDestroyMethodNullClassName", "testAddPreDestroyMethodNullMethodName", "testBug56903", "testSetPath" ],
+        "org.apache.catalina.core.TestStandardHostValve" : [ "testInvalidErrorPage" ],
+        "org.apache.catalina.filters.TestCsrfPreventionFilter" : [ "testAddNonceNoQueryAnchor", "testAddNonceNoQueryNoAnchor", "testAddNonceQueryAnchor", "testAddNonceQueryNoAnchor", "testLruCacheSerializable" ],
+        "org.apache.catalina.filters.TestExpiresFilter" : [ "testIntsToCommaDelimitedString", "testParseExpiresConfigurationCombinedDuration", "testParseExpiresConfigurationMonoDuration" ],
+        "org.apache.catalina.filters.TestRemoteIpFilter" : [ "testCommaDelimitedListToStringArray", "testCommaDelimitedListToStringArrayEmptyList", "testCommaDelimitedListToStringArrayNullList", "testHeaderNamesCaseInsensitivity", "testListToCommaDelimitedString", "testListToCommaDelimitedStringMixedSpaceChars" ],
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance", "testModified" ],
+        "org.apache.catalina.loader.TestWebappClassLoader" : [ "testFilter" ],
+        "org.apache.catalina.mbeans.TestRegistration" : [ "testNames" ],
+        "org.apache.catalina.security.TestSecurityClassLoad" : [ "testLoad" ],
+        "org.apache.catalina.valves.rewrite.TestRewriteValve" : [ "testRewriteMissingCurlyBraceOnMapper", "testRewriteMissingCurlyBraceOnVar" ],
+        "org.apache.jasper.compiler.TestGenerator" : [ "testEscape01", "testEscape02", "testEscape03", "testEscape04", "testQuote01", "testQuote02", "testQuote03", "testQuote04", "testQuote05" ],
+        "org.apache.jasper.servlet.TestTldScanner" : [ "testBug57647" ],
+        "org.apache.tomcat.util.scan.TestJarScanner" : [ "testJarsToSkipFormat" ],
+        "org.apache.tomcat.websocket.server.TestWsServerContainer" : [ "testDuplicatePaths01", "testDuplicatePaths02", "testDuplicatePaths03", "testDuplicatePaths04", "testDuplicatePaths11", "testDuplicatePaths12", "testDuplicatePaths13", "testDuplicatePaths14", "testDuplicatePaths21", "testDuplicatePaths22", "testDuplicatePaths23", "testDuplicatePaths24", "testSpecExample3", "testSpecExample4" ]
+      },
+      "predecessor" : "22b076eca050a99a826e461a85d411ac5a6b81ff"
+    },
+    "5c1b14a9e34bd965146c4941742ff6221a5110c8" : {
+      "predecessor" : "314568fa450680711f12f01ee050f2166f4263bd"
+    },
+    "a3a6a89a2fcbe5d432640e7b31808eeb591541ce" : { },
+    "25c2c7a392c4d0eb4c67797bd4fa5b1ce023f6d2" : {
+      "predecessor" : "a3a6a89a2fcbe5d432640e7b31808eeb591541ce"
+    },
+    "b964f07952eaaa83ad523430d540607c4c8f2f63" : { },
+    "b9ca106b27360bebe21a917da97cf8493474674d" : { },
+    "4d62d064019f6e8ca63c82301c8244887ad59708" : { },
+    "4f3db0890f6df5929c013e34fd29ad715a94d29e" : { },
+    "44d15edec3fa9fbc45136848b65e4219eea1d3ae" : { },
+    "880d53ebed6ecf30679b3fdb18e4db91645e61d4" : { },
+    "f24f27531560a53e363486f998da200557ef7864" : {
+      "predecessor" : "880d53ebed6ecf30679b3fdb18e4db91645e61d4"
+    },
+    "51d82daf6abd008fa811d92f24ff2ffc960fac90" : {
+      "predecessor" : "f24f27531560a53e363486f998da200557ef7864"
+    },
+    "c7b95cfbb4fe46bda6c4525574d5ba3d4176feff" : {
+      "predecessor" : "51d82daf6abd008fa811d92f24ff2ffc960fac90"
+    },
+    "e45117fd14f987c3c7199d1e87c26a02e8fec0e7" : {
+      "predecessor" : "c7b95cfbb4fe46bda6c4525574d5ba3d4176feff"
+    },
+    "c1a524050f2be7c9d4e74dec4af06180b9fb348d" : {
+      "testcases" : {
+        "org.apache.catalina.tribes.group.TestGroupChannelSenderConnections" : [ "testConnectionLinger", "testKeepAliveCount", "testKeepAliveTime" ],
+        "org.apache.catalina.tribes.test.channel.TestDataIntegrity" : [ "testDataSendACK", "testDataSendASYNC", "testDataSendSYNCACK" ],
+        "org.apache.catalina.tribes.test.channel.TestUdpPackages" : [ "testDataSendACK", "testSingleDataSendNO_ACK" ]
+      },
+      "predecessor" : "e45117fd14f987c3c7199d1e87c26a02e8fec0e7"
+    },
+    "4745922c8ddd81d537770c8519f7fa39e239dba3" : {
+      "testcases" : {
+        "org.apache.catalina.tribes.group.TestGroupChannelSenderConnections" : [ "testConnectionLinger", "testKeepAliveCount", "testKeepAliveTime" ],
+        "org.apache.catalina.tribes.test.channel.TestDataIntegrity" : [ "testDataSendACK", "testDataSendASYNC", "testDataSendSYNCACK" ],
+        "org.apache.catalina.tribes.test.channel.TestUdpPackages" : [ "testDataSendACK", "testDataSendSYNCACK", "testSingleDataSendNO_ACK" ]
+      },
+      "predecessor" : "c1a524050f2be7c9d4e74dec4af06180b9fb348d"
+    },
+    "11fca7f383069cfcc0cc5efdbd3e750596c0f0b4" : { },
+    "de1b5ecaa1a3c54e3f5e0c067ff3bd0b412c2600" : { },
+    "3bdd80293fb2b88a8b3df50692a93047261bd082" : {
+      "testcases" : {
+        "org.apache.tomcat.util.http.TestResponseUtil" : [ "testAddAllWithAll", "testAddAllWithNone", "testAddValidWithAll", "testAddValidWithPartiallyValidSingleHeader", "testAddValidWithPartiallyValidSingleHeaderAlreadyPresent", "testAddValidWithPartiallyValidSingleHeaderIncludingAll", "testAddValidWithValidHeaders", "testAddValidWithValidHeadersAlreadyPresent", "testAddValidWithValidHeadersIncludingAll", "testAddValidWithValidSingleHeader", "testAddValidWithValidSingleHeaderAlreadyPresent", "testAddValidWithValidSingleHeaderIncludingAll", "testMimeHeadersAddAllWithNone", "testMimeHeadersAddValidWithValidHeaders" ]
+      },
+      "predecessor" : "de1b5ecaa1a3c54e3f5e0c067ff3bd0b412c2600"
+    },
+    "459cbf6bd96a0488f205f090efba34520186066e" : {
+      "predecessor" : "3bdd80293fb2b88a8b3df50692a93047261bd082"
+    },
+    "f969a8f19797e41a70956a66317bdaa72a398158" : {
+      "predecessor" : "459cbf6bd96a0488f205f090efba34520186066e"
+    },
+    "299d061080774d3a898335d11bc981b23caa859d" : {
+      "predecessor" : "f969a8f19797e41a70956a66317bdaa72a398158"
+    },
+    "6382197ad57738dc06209845541c728e584f7c5a" : {
+      "predecessor" : "299d061080774d3a898335d11bc981b23caa859d"
+    },
+    "0c1915dd188bc0180cbc918cdc3cba8d40fa7e6d" : { },
+    "378a1e5f6fb5482e49b61d494da897bca8abe3dc" : { },
+    "035eef91372bac71becf6dde6fcd8ba2ad178d64" : { },
+    "ba6806966148dc35ef5beef51c69541369fc2d22" : {
+      "predecessor" : "035eef91372bac71becf6dde6fcd8ba2ad178d64"
+    },
+    "36fa7bd76fc2328c778081b0bb0c34c2a30d345f" : {
+      "predecessor" : "ba6806966148dc35ef5beef51c69541369fc2d22"
+    },
+    "cd094d8bc7ed46c3410ea4555594738ac6cf5b1c" : {
+      "predecessor" : "36fa7bd76fc2328c778081b0bb0c34c2a30d345f"
+    },
+    "7a82963a78a8242b3c8c276de2382594f8a74f42" : { },
+    "5907d8f284aa50cc970b43dd6352da143c95cd31" : {
+      "predecessor" : "7a82963a78a8242b3c8c276de2382594f8a74f42"
+    },
+    "2da9e181f8251547425c9fe44b925dbb2f86b2a8" : {
+      "predecessor" : "5907d8f284aa50cc970b43dd6352da143c95cd31"
+    },
+    "f7f39f8e51a18435eda7873a9b304a8728bb0b49" : {
+      "predecessor" : "2da9e181f8251547425c9fe44b925dbb2f86b2a8"
+    },
+    "257e5763bddde315791da7ab1852b29905265733" : {
+      "testcases" : {
+        "org.apache.catalina.authenticator.TestBasicAuthParser" : [ "testAuthMethodBadMethod", "testAuthMethodCaseBasic", "testAuthMethodExtraLeadingSpace", "testAuthMethodExtraTrailingSpace", "testBadBase64BadLength", "testBadBase64LastChar", "testBadBase64TooManyEquals", "testGoodCredentials", "testGoodCredentialsNoPassword", "testGoodCrib", "testGoodCribBase64Big", "testGoodCribLineWrap", "testGoodCribOnePad", "testGoodCribUserOnly", "testMissingUsername", "testPasswordExtraSpace", "testPasswordHasColonEmbedded", "testPasswordHasColonLeading", "testPasswordHasColonTrailing", "testPasswordHasSpaceEmbedded", "testShortPassword", "testShortUsername", "testUserExtraSpace", "testWrongPassword" ],
+        "org.apache.catalina.realm.TestRealmBase" : [ "testDigestMD5Prefix", "testDigestSHAPrefix", "testDigestSSHAPrefix" ]
+      },
+      "predecessor" : "f7f39f8e51a18435eda7873a9b304a8728bb0b49"
+    },
+    "a4490a2af64308cfdd9cc92663fd390380aee1a2" : {
+      "predecessor" : "257e5763bddde315791da7ab1852b29905265733"
+    },
+    "6650205974619771f9ffe19d1b7a5490ce468e9d" : {
+      "testcases" : {
+        "org.apache.catalina.realm.TestRealmBase" : [ "testAllAuthenticatedUsers", "testAllAuthenticatedUsersAsAppRoleNoUser", "testAllAuthenticatedUsersAsAppRoleWithUser", "testAllRolesWithNoAppRole", "testCombineConstraints01", "testCombineConstraints02", "testCombineConstraints03", "testCombineConstraints04", "testCombineConstraints05", "testCombineConstraints06", "testCombineConstraints07", "testCombineConstraints08", "testCombineConstraints09", "testCombineConstraints10", "testCombineConstraints11", "testCombineConstraints12", "testCombineConstraints13", "testCombineConstraints14", "testCombineConstraints15", "testCombineConstraints16", "testCombineConstraints17", "testHttpConstraint", "testNoAuthConstraint", "testUserWithNoRoles", "testUserWithSingleRole", "testUserWithSingleRoleAndAllRoles", "testUserWithoutNoRolesAndAllRoles" ],
+        "org.apache.catalina.session.TestPersistentManager" : [ "testBug62175" ],
+        "org.apache.catalina.valves.TestRemoteIpValve" : [ "test172dash12InternalProxies", "testInvokeAllProxiesAreInternal", "testInvokeAllProxiesAreTrusted", "testInvokeAllProxiesAreTrustedAndRemoteAddrMatchRegexp", "testInvokeAllProxiesAreTrustedEmptyInternal", "testInvokeAllProxiesAreTrustedOrInternal", "testInvokeAllProxiesAreTrustedUnusedInternal", "testInvokeUntrustedProxyInTheChain", "testInvokeXforwardedProtoIsNullForIncomingHttpRequest", "testInvokeXforwardedProtoIsNullForIncomingHttpsRequest", "testInvokeXforwardedProtoSaysHttpForIncomingHttpsRequest", "testInvokeXforwardedProtoSaysHttpsForIncomingHttpRequest", "testInvokeXforwardedProtoSaysInvalidValueForIncomingHttpRequest", "testInvokeXforwardedProtoSaysMultipleForwardsWithFirstBeingHttpForIncomingHttpsRequest", "testInvokeXforwardedProtoSaysMultipleForwardsWithLastBeingHttpForIncomingHttpRequest", "testInvokeXforwardedProtoSaysMultipleForwardsWithMiddleBeingHttpForIncomingHttpsRequest", "testInvokeXforwardedProtoSaysMultipleHttpForwardsForIncomingHttpRequest", "testInvokeXforwardedProtoSaysMultipleHttpsForwardsForIncomingHttpsRequest", "testRequestAttributesForAccessLog", "testRequestForwarded", "testRequestForwardedForWithPortNumber", "testRequestForwardedForWithProxyPortNumber" ]
+      },
+      "predecessor" : "a4490a2af64308cfdd9cc92663fd390380aee1a2"
+    },
+    "7eab11a932dbc41df9bfa3aa38a6455246841656" : { },
+    "e1cef2cfc47982c947b5f23a8dae7c71cf1b979c" : {
+      "predecessor" : "7eab11a932dbc41df9bfa3aa38a6455246841656"
+    },
+    "fbd85f4cfce632c1e667a295b067dde35a9975b2" : {
+      "predecessor" : "e1cef2cfc47982c947b5f23a8dae7c71cf1b979c"
+    },
+    "d2e8a3b4c4046ef84fdc18475a652e3027854232" : {
+      "predecessor" : "fbd85f4cfce632c1e667a295b067dde35a9975b2"
+    },
+    "92ad31acce0ab5ddc79ffc6c45a6ba61063f1e62" : { },
+    "69f6483e67878f502f1af88497968f7d4f66aa44" : { },
+    "d2b19276ea9f3781a849b36fc58a8f143f92154d" : { },
+    "8eb0fa57d9b2161e869984f87a25f25be0f02ae8" : { },
+    "433a28bb66c06471201d0cc6803b295fdf6f15cd" : { },
+    "304588c1e205309f5025e822b6de14dc39c5180b" : { },
+    "672bde04a1fd37c4c1acae2e2fe3268f8d3260ee" : { },
+    "d62d35fd746e3c9af0a5b35d1b8ce9d96fc7014b" : { },
+    "fb6bdb54759e3c596810908db3ee87e1a57b7832" : { },
+    "e9cbd4c2cdb958930fed1cfeabdd3e911fc8b1e6" : { },
     "791b6afdb3feb6e2a5c1b3b8fd92d4e8361271b4" : { },
     "92ccdb339fff3e3e06d57fd28389ceb9ad9cecf1" : { },
     "eb14d8f6749ef9b5cc22c41a31d53e19075acdf2" : { },
@@ -44,16 +478,15 @@
     "cdb2b439c8dbcdb88ba10cddb2b2887328008c84" : {
       "testcases" : {
         "jakarta.el.TestArrayELResolver" : [ "testGetFeatureDescriptors" ],
-        "jakarta.el.TestBeanELResolver" : [ "testGetFeatureDescriptors01", "testGetFeatureDescriptors02", "testInvokeVarargsCoerce05", "testInvokeVarargsCoerce06" ],
+        "jakarta.el.TestBeanELResolver" : [ "testGetFeatureDescriptors01", "testGetFeatureDescriptors02", "testInvokeVarargs05", "testInvokeVarargsCoerce05" ],
         "jakarta.el.TestMapELResolver" : [ "testGetFeatureDescriptors01", "testGetFeatureDescriptors02" ],
-        "jakarta.el.TestResourceBundleELResolver" : [ "bug53001", "testGetFeatureDescriptors01", "testGetFeatureDescriptors02" ],
+        "jakarta.el.TestResourceBundleELResolver" : [ "testGetFeatureDescriptors01", "testGetFeatureDescriptors02" ],
         "jakarta.el.TestUtil" : [ "testBug56425b" ],
-        "org.apache.el.TestELEvaluation" : [ "testBug42565", "testBug60431d", "testParserBug45511", "testParserLiteralExpression" ],
-        "org.apache.el.TestMethodExpressionImpl" : [ "testBug50449a", "testBug50790a", "testBug53792a", "testBug56797b", "testBug57855b", "testBugPrimitives", "testInvokeWithSuper", "testInvokeWithSuperAAABB", "testInvokeWithSuperAAABBB", "testInvokeWithSuperAABB", "testInvokeWithSuperAABBB", "testInvokeWithSuperABNoReturnTypeParamTypes", "testInvokeWithVarArgsAAAB", "testInvokeWithVarArgsAAABB", "testInvokeWithVarArgsAAABBB", "testInvokeWithVarArgsAAB", "testInvokeWithVarArgsABB", "testVarArgsBeanFEnumVEnum", "testVarArgsBeanGEnumEnum" ],
-        "org.apache.el.TestValueExpressionImpl" : [ "testBug51177ObjectMap", "testGetValueReference" ],
-        "org.apache.el.lang.TestELSupport" : [ "testCoercetoFunctionalInterface02", "testCoercetoFunctionalInterface04", "testCoercetoFunctionalInterface06" ],
-        "org.apache.el.parser.TestELParser" : [ "bug56179d", "bug56179h", "bug56179i", "bug56179l", "bug56179m", "bug56185", "testBug49081" ],
-        "org.apache.jasper.compiler.TestAttributeParser" : [ "testBug42565", "testBug45015", "testLiteral" ]
+        "org.apache.el.TestELEvaluation" : [ "testBug42565", "testBug44994", "testBug60431b", "testParserBug45511" ],
+        "org.apache.el.TestMethodExpressionImpl" : [ "testBug49655", "testBug50790a", "testBug53792a", "testBug53792b", "testInvoke", "testInvokeWithSuperAABB", "testInvokeWithSuperABB", "testInvokeWithSuperABNoReturnTypeNoParamTypes", "testInvokeWithVarArgsAABBB", "testInvokeWithVarArgsAB", "testVarArgsBeanGEnum", "testVarArgsBeanGEnumString" ],
+        "org.apache.el.lang.TestELSupport" : [ "testCoercetoFunctionalInterface01", "testCoercetoFunctionalInterface02", "testCoercetoFunctionalInterface06" ],
+        "org.apache.el.parser.TestELParser" : [ "bug56179j", "bug56179n", "bug56185", "testBug49081" ],
+        "org.apache.jasper.compiler.TestAttributeParser" : [ "testBug42565", "testBug44994", "testBug45015" ]
       },
       "predecessor" : "6b4c1ff07e3dbd50f0edb7fd67d8fa986bf24aa1"
     },
@@ -61,24 +494,42 @@
     "4fc7cc94d4fb78ad5bc62ce93f67ba82cb4faac7" : { },
     "380fb1144b9ba68494b1c42397141ebe21af8a8d" : {
       "testcases" : {
-        "jakarta.el.TestBeanELResolver" : [ "testBug53421", "testGetType03", "testGetType05", "testGetValue03", "testGetValue05", "testGetValue06", "testGetValue07", "testInvokeVarargsCoerce05", "testIsReadOnly03", "testIsReadOnly04", "testIsReadOnly06", "testSetValue04", "testSetValue05", "testSetValue07" ]
+        "jakarta.el.TestBeanELResolver" : [ "testBug53421", "testGetFeatureDescriptors01", "testGetFeatureDescriptors02", "testGetType01", "testGetType02", "testGetType03", "testGetType05", "testGetValue01", "testGetValue02", "testGetValue03", "testGetValue05", "testGetValue06", "testGetValue07", "testInvoke01", "testInvoke02", "testInvoke03", "testInvoke04", "testInvoke05", "testInvoke06", "testInvokeVarargs01", "testInvokeVarargs02", "testInvokeVarargs03", "testInvokeVarargs04", "testInvokeVarargs05", "testInvokeVarargs06", "testInvokeVarargs07", "testInvokeVarargs08", "testInvokeVarargs09", "testInvokeVarargs10", "testInvokeVarargs11", "testInvokeVarargs12", "testInvokeVarargs13", "testInvokeVarargs14", "testInvokeVarargs15", "testInvokeVarargs16", "testInvokeVarargs17", "testInvokeVarargs18", "testInvokeVarargs19", "testInvokeVarargs20", "testInvokeVarargs21", "testInvokeVarargsCoerce01", "testInvokeVarargsCoerce02", "testInvokeVarargsCoerce03", "testInvokeVarargsCoerce04", "testInvokeVarargsCoerce05", "testInvokeVarargsCoerce06", "testInvokeVarargsCoerce07", "testInvokeVarargsCoerce08", "testInvokeVarargsCoerce09", "testInvokeVarargsCoerce10", "testInvokeVarargsCoerce11", "testInvokeVarargsCoerce12", "testInvokeVarargsCoerce13", "testInvokeVarargsCoerce14", "testInvokeVarargsCoerce15", "testInvokeVarargsCoerce16", "testInvokeVarargsCoerce17", "testInvokeVarargsCoerce18", "testInvokeVarargsCoerce19", "testInvokeVarargsCoerce20", "testInvokeVarargsCoerce21", "testIsReadOnly01", "testIsReadOnly02", "testIsReadOnly03", "testIsReadOnly04", "testIsReadOnly06", "testSetValue01", "testSetValue02", "testSetValue03", "testSetValue04", "testSetValue05", "testSetValue07" ]
       },
       "predecessor" : "4fc7cc94d4fb78ad5bc62ce93f67ba82cb4faac7"
     },
     "fda4faaaa16233c2d32961f4765b2dd9eb1f4a4c" : {
       "testcases" : {
-        "jakarta.el.TestBeanELResolver" : [ "testGetValue03", "testGetValue07", "testInvokeVarargs06", "testIsReadOnly03", "testIsReadOnly04", "testIsReadOnly06", "testSetValue04", "testSetValue07" ],
-        "jakarta.el.TestELProcessor" : [ "testDefineBean01", "testPrimitiveArray01" ],
-        "jakarta.el.TestEvaluationListener" : [ "testPropertyResolved01", "testPropertyResolved02" ],
-        "jakarta.el.TestUtil" : [ "testBug56425b" ],
-        "org.apache.el.TestELEvaluation" : [ "testBug42565", "testBug60431b", "testBug60431d", "testBug60431e", "testParserLiteralExpression" ],
-        "org.apache.el.TestMethodExpressionImpl" : [ "testBug49655", "testBug50790a", "testBug50790b", "testBug52445a", "testBug52970", "testBug53792a", "testBug53792b", "testBug53792c", "testBug56797b", "testBug57855b", "testBugPrimitives", "testInvokeWithSuper", "testInvokeWithSuperAAAB", "testInvokeWithSuperAAABB", "testInvokeWithSuperAAABBB", "testInvokeWithSuperAABB", "testInvokeWithSuperAABBB", "testInvokeWithVarArgsAAABB", "testInvokeWithVarArgsAAABBB", "testInvokeWithVarArgsABBB", "testPreferNoVarArgs", "testVarArgsBeanFEnumVEnum", "testVarArgsBeanFEnumVString", "testVarArgsBeanGEnum", "testVarArgsBeanGEnumString", "testVarArgsBeanGStringEnum" ],
-        "org.apache.el.TestValueExpressionImpl" : [ "testBug49345", "testBug51177ObjectMap", "testBug51544Bean", "testBug56522SetNullValue", "testGetValueReference" ],
-        "org.apache.el.lang.TestELSupport" : [ "testCoercetoFunctionalInterface02", "testCoercetoFunctionalInterface03", "testCoercetoFunctionalInterface05", "testCoercetoFunctionalInterface06" ],
+        "jakarta.el.TestBeanELResolver" : [ "testGetValue03", "testGetValue07", "testInvokeVarargs05", "testInvokeVarargs06", "testInvokeVarargsCoerce05", "testInvokeVarargsCoerce06", "testIsReadOnly03", "testIsReadOnly04", "testIsReadOnly06", "testSetValue04", "testSetValue07" ],
+        "jakarta.el.TestELContext" : [ "testSetPropertyResolved" ],
+        "jakarta.el.TestELProcessor" : [ "testDefineBean01", "testDefineFunctionMethod01", "testDefineFunctionName01", "testDefineFunctionName02", "testDefineFunctionName03", "testDefineFunctionName04", "testDefineFunctionName05", "testDefineFunctionName06", "testDefineFunctionName07", "testDefineFunctionName08", "testDefineFunctionName09", "testDefineFunctionName10", "testDefineFunctionName11", "testDefineFunctionName12", "testDefineFunctionName13", "testEval01", "testEval02", "testEval03", "testPrimitiveArray01" ],
+        "jakarta.el.TestELResolver" : [ "testConvertToType01", "testConvertToType02", "testConvertToType03", "testConvertToType04", "testConvertToType05", "testConvertToType06", "testConvertToType07", "testDefaultConvertToType" ],
+        "jakarta.el.TestEvaluationListener" : [ "testEvaluation01", "testEvaluation02", "testPropertyResolved01", "testPropertyResolved02" ],
+        "jakarta.el.TestResourceBundleELResolver" : [ "bug53001" ],
+        "jakarta.el.TestUtil" : [ "test01", "test02", "testBug56425a", "testBug56425b" ],
+        "org.apache.el.TestELEvaluation" : [ "testBug42565", "testBug44994", "testBug48112", "testBug49081a", "testBug49081b", "testBug49081c", "testBug49081d", "testBug60431a", "testBug60431b", "testBug60431c", "testBug60431d", "testBug60431e", "testEscape01", "testMixedTypes", "testMultipleEscaping", "testParserBug45511", "testParserLiteralExpression", "testParserStringLiteral" ],
+        "org.apache.el.TestMethodExpressionImpl" : [ "testBug49655", "testBug50449a", "testBug50449b", "testBug50790a", "testBug50790b", "testBug52445a", "testBug52970", "testBug53792a", "testBug53792b", "testBug53792c", "testBug53792d", "testBug56797a", "testBug56797b", "testBug57855a", "testBug57855b", "testBug57855c", "testBug57855d", "testBug57855e", "testBug60844", "testBugPrimitives", "testInvoke", "testInvokeWithSuper", "testInvokeWithSuperAAAB", "testInvokeWithSuperAAABB", "testInvokeWithSuperAAABBB", "testInvokeWithSuperAAB", "testInvokeWithSuperAABB", "testInvokeWithSuperAABBB", "testInvokeWithSuperABB", "testInvokeWithSuperABBB", "testInvokeWithSuperABNoReturnTypeNoParamTypes", "testInvokeWithSuperABNoReturnTypeParamTypes", "testInvokeWithSuperABReturnTypeNoParamTypes", "testInvokeWithSuperABReturnTypeParamTypes", "testInvokeWithVarArgsAAAB", "testInvokeWithVarArgsAAABB", "testInvokeWithVarArgsAAABBB", "testInvokeWithVarArgsAAB", "testInvokeWithVarArgsAABB", "testInvokeWithVarArgsAABBB", "testInvokeWithVarArgsAB", "testInvokeWithVarArgsABB", "testInvokeWithVarArgsABBB", "testIsParametersProvided", "testPreferNoVarArgs", "testVarArgsBeanFEnum", "testVarArgsBeanFEnumEnum", "testVarArgsBeanFEnumString", "testVarArgsBeanFEnumVEnum", "testVarArgsBeanFEnumVString", "testVarArgsBeanFString", "testVarArgsBeanFStringEnum", "testVarArgsBeanFStringString", "testVarArgsBeanFStringVEnum", "testVarArgsBeanFStringVString", "testVarArgsBeanGEnum", "testVarArgsBeanGEnumEnum", "testVarArgsBeanGEnumString", "testVarArgsBeanGEnumVEnum", "testVarArgsBeanGEnumVString", "testVarArgsBeanGString", "testVarArgsBeanGStringEnum", "testVarArgsBeanGStringString", "testVarArgsBeanGStringVEnum", "testVarArgsBeanGStringVString", "testVarArgsBeanHEnum", "testVarArgsBeanHEnumEnum", "testVarArgsBeanHEnumString", "testVarArgsBeanHEnumVEnum", "testVarArgsBeanHEnumVString", "testVarArgsBeanHString", "testVarArgsBeanHStringEnum", "testVarArgsBeanHStringString", "testVarArgsBeanHStringVEnum", "testVarArgsBeanHStringVString" ],
+        "org.apache.el.TestValueExpressionImpl" : [ "testBug49345", "testBug50105", "testBug51177ObjectList", "testBug51177ObjectMap", "testBug51544Bean", "testBug51544Direct", "testBug56522SetNullValue", "testGetValueReference", "testGetValueReferenceVariable" ],
+        "org.apache.el.lang.TestELArithmetic" : [ "testAdd02", "testDivide02", "testMod02", "testMultiply02", "testSubtract02", "testUnaryMinus01" ],
+        "org.apache.el.lang.TestELSupport" : [ "testCoercetoFunctionalInterface01", "testCoercetoFunctionalInterface02", "testCoercetoFunctionalInterface03", "testCoercetoFunctionalInterface04", "testCoercetoFunctionalInterface05", "testCoercetoFunctionalInterface06" ],
+        "org.apache.el.lang.TesterVariableMapperImpl" : [ "testSetVariable01" ],
+        "org.apache.el.parser.TestAstAnd" : [ "test01", "test02", "test03", "test04" ],
         "org.apache.el.parser.TestAstAssign" : [ "testGetType01", "testGetType02", "testGetValue01", "testGetValue02" ],
-        "org.apache.el.parser.TestELParser" : [ "bug56179d", "bug56179h", "bug56185", "testBug49081" ],
-        "org.apache.el.stream.TestCollectionOperations" : [ "testFilter01", "testFlatMap01", "testForEach01", "testMap01", "testMap02", "testMaxLambda01", "testMaxLambda02", "testMinLambda01" ],
-        "org.apache.jasper.compiler.TestAttributeParser" : [ "testBug42565", "testBug44994", "testBug45015" ]
+        "org.apache.el.parser.TestAstChoice" : [ "test01" ],
+        "org.apache.el.parser.TestAstConcatenation" : [ "testConcatenation01", "testConcatenation02", "testConcatenation03", "testConcatenation04", "testGetType", "testPrecedence01", "testPrecedence02", "testPrecedence03", "testPrecedence04" ],
+        "org.apache.el.parser.TestAstFunction" : [ "testImport01", "testImport02" ],
+        "org.apache.el.parser.TestAstIdentifier" : [ "testImport01", "testImport02" ],
+        "org.apache.el.parser.TestAstLambdaExpression" : [ "testInvocation01", "testLambdaAsFunction01", "testLambdaAsFunction02", "testLambdaAsFunction03", "testLambdaAsFunction04", "testLambdaAsFunction05", "testLambdaAsFunction06", "testLambdaAsFunction07", "testLambdaAsFunction08", "testNested01", "testNested02", "testNested03", "testNested04", "testNested05", "testNested06", "testNested07", "testSpec01", "testSpec02", "testSpec03", "testSpec04", "testSpec05", "testSpec06" ],
+        "org.apache.el.parser.TestAstListData" : [ "testGetType", "testNested01", "testSimple01", "testSimple02" ],
+        "org.apache.el.parser.TestAstMapData" : [ "testGetType", "testNested01", "testSimple01", "testSimple02" ],
+        "org.apache.el.parser.TestAstNot" : [ "test01", "test02", "test03" ],
+        "org.apache.el.parser.TestAstOr" : [ "test01", "test02", "test03", "test04" ],
+        "org.apache.el.parser.TestAstSemicolon" : [ "testGetType", "testGetValue01", "testGetValue02", "testGetValue03" ],
+        "org.apache.el.parser.TestAstSetData" : [ "testGetType", "testNested01", "testSimple01", "testSimple02" ],
+        "org.apache.el.parser.TestELParser" : [ "bug56179a", "bug56179b", "bug56179c", "bug56179d", "bug56179e", "bug56179f", "bug56179g", "bug56179h", "bug56179i", "bug56179j", "bug56179k", "bug56179l", "bug56179m", "bug56179n", "bug56185", "testBug49081", "testJavaKeyWordIdentifier", "testJavaKeyWordSuffix" ],
+        "org.apache.el.stream.TestCollectionOperations" : [ "testAllMatch01", "testAllMatch02", "testAllMatch03", "testAllMatch04", "testAnyMatch01", "testAnyMatch02", "testAnyMatch03", "testAverage01", "testAverage02", "testAverage03", "testAverage04", "testAverage05", "testAverage06", "testCount01", "testCount02", "testDistinct01", "testFilter01", "testFindFirst01", "testFindFirst02", "testFlatMap01", "testForEach01", "testLimit01", "testMap01", "testMap02", "testMax01", "testMax02", "testMax03", "testMax04", "testMaxLambda01", "testMaxLambda02", "testMin01", "testMin02", "testMin03", "testMin04", "testMinLambda01", "testNoneMatch01", "testNoneMatch02", "testNoneMatch03", "testNoneMatch04", "testPeek01", "testReduceLambda01", "testReduceLambda02", "testReduceLambdaSeed01", "testSorted01", "testSortedLambdaExpression01", "testSubstreamStart01", "testSubstreamStartEnd01", "testSum01", "testSum02", "testToArray01", "testToList01", "testToList02" ],
+        "org.apache.jasper.compiler.TestAttributeParser" : [ "testBug42565", "testBug44994", "testBug45015", "testBug45451", "testBug49081", "testLiteral" ],
+        "org.apache.jasper.compiler.TestELParser" : [ "testCompound01", "testEscape01", "testEscape02", "testEscape03", "testEscape04", "testEscape05", "testEscape07", "testEscape08", "testEscape09", "testEscape10", "testEscape11", "testLiteral", "testQuotes01", "testQuotes03", "testTernary01", "testTernary11", "testTernary12", "testTernary13", "testText" ]
       },
       "predecessor" : "380fb1144b9ba68494b1c42397141ebe21af8a8d"
     },
@@ -86,6 +537,9 @@
       "predecessor" : "fda4faaaa16233c2d32961f4765b2dd9eb1f4a4c"
     },
     "39a2f1dd76036215b319aee3f8e577ade0f7b491" : {
+      "testcases" : {
+        "org.apache.tomcat.util.descriptor.web.TestWebXml" : [ "testBug54387a", "testBug54387b", "testBug54387c", "testEncoding", "testLifecycleMethodsWebFragments", "testLifecycleMethodsWebFragmentsWithConflicts", "testLifecycleMethodsWebXml", "testParsePublicIdVersion22", "testParsePublicIdVersion23", "testParseVersion", "testParseVersion24", "testParseVersion25", "testParseVersion30", "testParseVersion31", "testParseVersion40", "testValidateVersion22", "testValidateVersion23", "testValidateVersion24", "testValidateVersion25", "testValidateVersion30", "testValidateVersion31", "testValidateVersion40" ]
+      },
       "predecessor" : "386912a93f130078f52e7094be3a730cda742121"
     },
     "8650cbb6104d09d247d7df5848e64ab12a598835" : {
@@ -93,7 +547,7 @@
     },
     "8a9b1c4c14e7ebf46c0c03d9246201647c7eed23" : {
       "testcases" : {
-        "jakarta.el.TestBeanELResolver" : [ "testGetDefaultValue", "testGetType04", "testGetValue04", "testInvokeVarargs05", "testInvokeVarargs06", "testInvokeVarargsCoerce05", "testIsReadOnly05", "testSetValue06" ]
+        "jakarta.el.TestBeanELResolver" : [ "testGetDefaultValue", "testGetType04", "testGetValue04", "testInvokeVarargs05", "testInvokeVarargs06", "testInvokeVarargsCoerce06", "testIsReadOnly05", "testSetValue06" ]
       },
       "predecessor" : "8650cbb6104d09d247d7df5848e64ab12a598835"
     },
@@ -110,6 +564,9 @@
       "predecessor" : "878caf69ca333929b31ed821c2a7f2593e785495"
     },
     "74681f56475541ff6069aadb1a88bd4d687e7446" : {
+      "testcases" : {
+        "org.apache.coyote.http2.TestAbstractStream" : [ "testCircular01", "testCircular02", "testCircular03", "testDependenciesFig3", "testDependenciesFig4", "testDependenciesFig5Exclusive", "testDependenciesFig5NonExclusive" ]
+      },
       "predecessor" : "3910ab722be9b791533f8662e45cc6b5701c3177"
     },
     "dbd137f142385fe2db21f72a04e8a9a789f92ae3" : {
@@ -155,14 +612,14 @@
     "a59bffdd5ace451d5e234abc390e1e5dcc06510c" : { },
     "93dd0c2e2a15b9e5d37a92b4d435c4f53de3c00d" : {
       "testcases" : {
-        "org.apache.el.TestMethodExpressionImpl" : [ "testBug49655", "testBug53792a", "testBug53792b", "testBug53792c", "testBug56797a", "testBugPrimitives", "testInvokeWithSuperAAAB", "testInvokeWithSuperAAABB", "testInvokeWithSuperAABB", "testInvokeWithSuperABB", "testInvokeWithSuperABNoReturnTypeParamTypes", "testInvokeWithSuperABReturnTypeParamTypes", "testInvokeWithVarArgsAAAB", "testInvokeWithVarArgsAAABB", "testInvokeWithVarArgsABBB", "testVarArgsBeanFEnumVEnum", "testVarArgsBeanGEnum", "testVarArgsBeanGEnumString", "testVarArgsBeanGStringEnum" ]
+        "org.apache.el.TestMethodExpressionImpl" : [ "testBug49655", "testBug50790a", "testBug50790b", "testBug52445a", "testBug53792a", "testBug53792b", "testBug56797b", "testInvoke", "testInvokeWithSuper", "testInvokeWithSuperAAABB", "testInvokeWithSuperAABBB", "testInvokeWithSuperABB", "testInvokeWithSuperABBB", "testInvokeWithSuperABNoReturnTypeNoParamTypes", "testInvokeWithSuperABReturnTypeNoParamTypes", "testInvokeWithSuperABReturnTypeParamTypes", "testInvokeWithVarArgsAAAB", "testInvokeWithVarArgsAAABB", "testInvokeWithVarArgsAAABBB", "testInvokeWithVarArgsAABBB", "testInvokeWithVarArgsAB", "testInvokeWithVarArgsABB", "testInvokeWithVarArgsABBB", "testVarArgsBeanFEnumVEnum", "testVarArgsBeanFEnumVString", "testVarArgsBeanGEnum", "testVarArgsBeanGEnumEnum", "testVarArgsBeanGEnumString", "testVarArgsBeanGStringEnum" ]
       },
       "predecessor" : "a59bffdd5ace451d5e234abc390e1e5dcc06510c"
     },
     "84f42dce3df07e4640051b1430fca239ff5c45cf" : { },
     "4777f307dee44385a88bc1fe06c7a2e9a5baa11b" : {
       "testcases" : {
-        "org.apache.el.TestMethodExpressionImpl" : [ "testBug52445a", "testBug52970", "testBug53792a", "testBug53792b", "testBug56797a", "testBugPrimitives", "testGetMethodInfo01", "testInvokeWithSuper", "testInvokeWithSuperAAABB", "testInvokeWithSuperAAB", "testInvokeWithSuperABB", "testInvokeWithSuperABNoReturnTypeParamTypes", "testInvokeWithSuperABReturnTypeParamTypes", "testInvokeWithVarArgsAAAB", "testInvokeWithVarArgsAAB", "testVarArgsBeanFEnumVEnum", "testVarArgsBeanGEnum", "testVarArgsBeanGEnumString" ]
+        "org.apache.el.TestMethodExpressionImpl" : [ "testBug50790b", "testBug52445a", "testBug53792a", "testBug53792b", "testBug53792c", "testBug53792d", "testBug56797a", "testGetMethodInfo01", "testInvokeWithSuper", "testInvokeWithSuperAAABB", "testInvokeWithSuperAAB", "testInvokeWithSuperABB", "testInvokeWithSuperABNoReturnTypeNoParamTypes", "testInvokeWithSuperABNoReturnTypeParamTypes", "testInvokeWithSuperABReturnTypeNoParamTypes", "testInvokeWithVarArgsAAABB", "testInvokeWithVarArgsAAABBB", "testInvokeWithVarArgsAABB", "testInvokeWithVarArgsAABBB", "testInvokeWithVarArgsAB", "testInvokeWithVarArgsABB", "testPreferNoVarArgs", "testVarArgsBeanFEnumVEnum", "testVarArgsBeanFEnumVString", "testVarArgsBeanGStringEnum" ]
       },
       "predecessor" : "84f42dce3df07e4640051b1430fca239ff5c45cf"
     },
@@ -173,14 +630,44 @@
     },
     "ab17b97b74ca141813ee1eb1f784089b319dd9e2" : {
       "testcases" : {
+        "org.apache.catalina.ant.TestDeployTask" : [ "bug58086a", "bug58086b", "bug58086c" ],
         "org.apache.catalina.authenticator.TestDigestAuthenticator" : [ "bug54521" ],
-        "org.apache.catalina.connector.TestResponse" : [ "testSendRedirect01", "testSendRedirect02", "testSendRedirect03" ]
+        "org.apache.catalina.connector.TestCoyoteAdapter" : [ "testNormalize01" ],
+        "org.apache.catalina.connector.TestRequest" : [ "getLocaleMultipleHeaders01", "getLocaleMultipleHeaders02" ],
+        "org.apache.catalina.connector.TestResponse" : [ "testBug53062a", "testBug53062b", "testBug53062c", "testBug53062d", "testBug53062e", "testBug53062f", "testBug53062g", "testBug53062h", "testBug53062i", "testBug53062j", "testBug53062k", "testBug53062l", "testBug53062m", "testBug53062n", "testBug53062o", "testBug53062p", "testBug53469a", "testBug53469b", "testEncodeRedirectURL01", "testEncodeRedirectURL02", "testEncodeRedirectURL03", "testEncodeRedirectURL04", "testEncodeRedirectURL05", "testEncodeRedirectURL06", "testEncodeRedirectURL07", "testEncodeRedirectURL08", "testEncodeRedirectURL09", "testEncodeRedirectURL10", "testEncodeRedirectURL11", "testEncodeRedirectURL12", "testEncodeRedirectURL13", "testEncodeRedirectURL14", "testEncodeRedirectURL15", "testEncodeRedirectURL16", "testEncodeURL01", "testEncodeURL02", "testEncodeURL03", "testEncodeURL04", "testEncodeURL06", "testEncodeURL07", "testEncodeURL08", "testEncodeURL09", "testEncodeURL10", "testEncodeURL11", "testEncodeURL12", "testEncodeURL13", "testEncodeURL14", "testEncodeURL15", "testEncodeURL16", "testSendRedirect01", "testSendRedirect02", "testSendRedirect03", "testSetCharacterEncoding01", "testSetCharacterEncoding02", "testSetCharacterEncoding03", "testSetCharacterEncoding04", "testSetCharacterEncoding05", "testSetCharacterEncoding08", "testSetContentType01", "testSetContentType02", "testSetContentType03", "testSetContentType04", "testSetLocale01", "testSetLocale02", "testSetLocale03", "testSetLocale04", "testSetLocale07", "testSetLocale08" ],
+        "org.apache.catalina.core.TestApplicationContext" : [ "testAddFilterWithFilterNameEmptyString", "testAddFilterWithFilterNameNull", "testAddServletWithServletNameEmptyString", "testAddServletWithServletNameNull" ],
+        "org.apache.catalina.core.TestAsyncContextImpl" : [ "testAsyncListenerSupplyRequestResponse" ],
+        "org.apache.catalina.core.TestStandardContext" : [ "testAddPostConstructMethodNullClassName", "testAddPostConstructMethodNullMethodName", "testAddPreDestroyMethodNullClassName", "testAddPreDestroyMethodNullMethodName", "testBug56903", "testSetPath" ],
+        "org.apache.catalina.core.TestStandardHostValve" : [ "testInvalidErrorPage" ],
+        "org.apache.catalina.filters.TestCorsFilter" : [ "testCheckActualRequestType", "testCheckActualRequestTypeMethodPOSTNotSimpleHeaders", "testCheckForPortVariance", "testCheckForSchemeVariance", "testCheckInvalidCRLF1", "testCheckInvalidCRLF2", "testCheckInvalidCRLF3", "testCheckInvalidCRLF4", "testCheckInvalidOrigin", "testCheckInvalidOriginNotAllowedSubdomain", "testCheckInvalidRequestMethod", "testCheckNotCORSRequestTypeEmptyOrigin", "testCheckNullOriginNotAllowed", "testCheckNullRequestMethod", "testCheckPreFlightRequestType", "testCheckPreFlightRequestTypeAnyOriginNoWithCredentials", "testCheckPreFlightRequestTypeEmptyACRM", "testCheckPreFlightRequestTypeEmptyHeaders", "testCheckPreFlightRequestTypeInvalidRequestMethod", "testCheckPreFlightRequestTypeNoACRM", "testCheckPreFlightRequestTypeNoHeaders", "testCheckPreFlightRequestTypeOriginNotAllowed", "testCheckPreFlightRequestTypeUnsupportedRequestHeaders", "testCheckPreFlightRequestTypeUnsupportedRequestMethod", "testCheckSimpleRequestType", "testCheckSimpleRequestTypeAnyOrigin", "testContentTypeWithParameter", "testDecorateCORSPropertiesCORSRequestTypeInvalidCORS", "testDecorateCORSPropertiesCORSRequestTypeNotCORS", "testDecorateCORSPropertiesValidRequestNullRequestType", "testDecorateRequestDisabled", "testDoFilterInvalidCORSOriginNotAllowed", "testDoFilterNoOrigin", "testDoFilterNullOriginAllowedByConfiguration", "testDoFilterNullOriginAllowedByDefault", "testDoFilterNullRequestResponse", "testDoFilterPreflight", "testDoFilterPreflightAnyOrigin", "testDoFilterPreflightInvalidOrigin", "testDoFilterPreflightNegativeMaxAge", "testDoFilterPreflightWithCredentials", "testDoFilterPreflightWithoutCredentialsAndSpecificOrigin", "testDoFilterRequestNullResponse", "testDoFilterSameHostWithOrigin01", "testDoFilterSameHostWithOrigin02", "testDoFilterSameHostWithOrigin03", "testDoFilterSameHostWithOrigin04", "testDoFilterSameHostWithOrigin05", "testDoFilterSameHostWithOrigin06", "testDoFilterSameHostWithOrigin07", "testDoFilterSimpleAnyOriginAndSupportsCredentialsDisabled", "testDoFilterSimpleGET", "testDoFilterSimpleHEAD", "testDoFilterSimplePOST", "testDoFilterSimpleSpecificHeader", "testDoFilterSimpleWithExposedHeaders", "testInitDefaultFilterConfig", "testNotPreflight", "testNotSimple" ],
+        "org.apache.catalina.filters.TestCsrfPreventionFilter" : [ "testAddNonceNoQueryAnchor", "testAddNonceNoQueryNoAnchor", "testAddNonceQueryAnchor", "testAddNonceQueryNoAnchor", "testLruCacheSerializable" ],
+        "org.apache.catalina.filters.TestExpiresFilter" : [ "testIntsToCommaDelimitedString", "testParseExpiresConfigurationCombinedDuration", "testParseExpiresConfigurationMonoDuration" ],
+        "org.apache.catalina.filters.TestRemoteIpFilter" : [ "testCommaDelimitedListToStringArray", "testCommaDelimitedListToStringArrayEmptyList", "testCommaDelimitedListToStringArrayNullList", "testHeaderNamesCaseInsensitivity", "testListToCommaDelimitedString", "testListToCommaDelimitedStringMixedSpaceChars" ],
+        "org.apache.catalina.filters.TestRestCsrfPreventionFilter" : [ "testGETRequestFetchNonceAsParameter", "testGetFetchRequestSessionNoNonce", "testGetFetchRequestSessionNonce", "testGetRequestNoSessionNoNonce", "testPostFetchRequestSessionNoNonce", "testPostFetchRequestSessionNonce", "testPostRequestCustomDenyStatus", "testPostRequestInvalidNonceAsParameterValidPath", "testPostRequestMultipleInvalidNoncesAsParameterValidPath", "testPostRequestMultipleNoncesAsParameterValidPath", "testPostRequestMultipleValidNoncesAsParameterValidPath", "testPostRequestNoNonceAsParameterAndHeaderValidPath", "testPostRequestNoSessionNoNonce", "testPostRequestSessionInvalidNonce", "testPostRequestSessionNoNonce1", "testPostRequestSessionNoNonce2", "testPostRequestSessionValidNonce", "testPostRequestValidNonceAsParameterInvalidNonceAsHeader", "testPostRequestValidNonceAsParameterInvalidPath", "testPostRequestValidNonceAsParameterNoNonceInSession", "testPostRequestValidNonceAsParameterNoPath", "testPostRequestValidNonceAsParameterValidPath1", "testPostRequestValidNonceAsParameterValidPath2" ],
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance", "testModified" ],
+        "org.apache.catalina.loader.TestWebappClassLoader" : [ "testFilter" ],
+        "org.apache.catalina.mapper.TestMapper" : [ "testAddHost", "testAddRemoveContextVersion", "testMap", "testReloadContextVersion", "testRemoveHost" ],
+        "org.apache.catalina.mbeans.TestRegistration" : [ "testNames" ],
+        "org.apache.catalina.realm.TestRealmBase" : [ "testAllAuthenticatedUsers", "testAllAuthenticatedUsersAsAppRoleNoUser", "testAllAuthenticatedUsersAsAppRoleWithUser", "testAllRolesWithNoAppRole", "testCombineConstraints01", "testCombineConstraints02", "testCombineConstraints03", "testCombineConstraints04", "testCombineConstraints05", "testCombineConstraints06", "testCombineConstraints07", "testCombineConstraints08", "testCombineConstraints09", "testCombineConstraints10", "testCombineConstraints11", "testCombineConstraints12", "testCombineConstraints13", "testCombineConstraints14", "testCombineConstraints15", "testCombineConstraints16", "testCombineConstraints17", "testHttpConstraint", "testNoAuthConstraint", "testUserWithNoRoles", "testUserWithSingleRole", "testUserWithSingleRoleAndAllRoles", "testUserWithoutNoRolesAndAllRoles" ],
+        "org.apache.catalina.session.TestPersistentManager" : [ "testBug62175", "testMinIdleSwap" ],
+        "org.apache.catalina.session.TestStandardSession" : [ "testSerializationEmpty", "testSerializationSimple01", "testSerializationSimple02", "testSerializationSimple03" ],
+        "org.apache.catalina.valves.TestCrawlerSessionManagerValve" : [ "testCrawlersSessionIdIsRemovedAfterSessionExpiry" ],
+        "org.apache.catalina.valves.TestRemoteIpValve" : [ "test172dash12InternalProxies", "testInvokeAllProxiesAreInternal", "testInvokeAllProxiesAreTrusted", "testInvokeAllProxiesAreTrustedAndRemoteAddrMatchRegexp", "testInvokeAllProxiesAreTrustedEmptyInternal", "testInvokeAllProxiesAreTrustedOrInternal", "testInvokeAllProxiesAreTrustedUnusedInternal", "testInvokeAllowedRemoteAddrWithNullRemoteIpHeader", "testInvokeNotAllowedRemoteAddr", "testInvokeUntrustedProxyInTheChain", "testInvokeXforwardedHost", "testInvokeXforwardedHostAndPort", "testInvokeXforwardedProtoIsNullForIncomingHttpRequest", "testInvokeXforwardedProtoIsNullForIncomingHttpsRequest", "testInvokeXforwardedProtoSaysHttpForIncomingHttpsRequest", "testInvokeXforwardedProtoSaysHttpsForIncomingHttpRequest", "testInvokeXforwardedProtoSaysInvalidValueForIncomingHttpRequest", "testInvokeXforwardedProtoSaysMultipleForwardsWithFirstBeingHttpForIncomingHttpsRequest", "testInvokeXforwardedProtoSaysMultipleForwardsWithLastBeingHttpForIncomingHttpRequest", "testInvokeXforwardedProtoSaysMultipleForwardsWithMiddleBeingHttpForIncomingHttpsRequest", "testInvokeXforwardedProtoSaysMultipleHttpForwardsForIncomingHttpRequest", "testInvokeXforwardedProtoSaysMultipleHttpsForwardsForIncomingHttpsRequest", "testRequestAttributesForAccessLog", "testRequestForwarded", "testRequestForwardedForWithPortNumber", "testRequestForwardedForWithProxyPortNumber" ],
+        "org.apache.catalina.valves.TestRequestFilterValve" : [ "testRemoteAddrValveIPv4", "testRemoteCIDR6Valve", "testRemoteCIDRValve", "testRemoteHostValve" ],
+        "org.apache.catalina.valves.rewrite.TestRewriteValve" : [ "testRewriteMissingCurlyBraceOnMapper", "testRewriteMissingCurlyBraceOnVar" ],
+        "org.apache.jasper.compiler.TestGenerator" : [ "testEscape01", "testEscape02", "testEscape03", "testEscape04", "testQuote01", "testQuote02", "testQuote03", "testQuote04", "testQuote05" ],
+        "org.apache.jasper.servlet.TestJspCServletContext" : [ "testResourceJARs", "testWebapp", "testWebapp_2_2", "testWebapp_2_3", "testWebapp_2_4", "testWebapp_2_5", "testWebapp_3_0", "testWebapp_3_1", "testWebapp_4_0", "testWebapp_5_0", "testWebresources" ],
+        "org.apache.jasper.servlet.TestTldScanner" : [ "testBug57647" ],
+        "org.apache.tomcat.util.http.TestResponseUtil" : [ "testAddAllWithAll", "testAddAllWithNone", "testAddValidWithAll", "testAddValidWithPartiallyValidSingleHeader", "testAddValidWithPartiallyValidSingleHeaderAlreadyPresent", "testAddValidWithPartiallyValidSingleHeaderIncludingAll", "testAddValidWithValidHeaders", "testAddValidWithValidHeadersAlreadyPresent", "testAddValidWithValidHeadersIncludingAll", "testAddValidWithValidSingleHeader", "testAddValidWithValidSingleHeaderAlreadyPresent", "testAddValidWithValidSingleHeaderIncludingAll" ],
+        "org.apache.tomcat.util.scan.TestJarScanner" : [ "testJarsToSkipFormat" ],
+        "org.apache.tomcat.websocket.server.TestWsServerContainer" : [ "testDuplicatePaths01", "testDuplicatePaths02", "testDuplicatePaths03", "testDuplicatePaths04", "testDuplicatePaths11", "testDuplicatePaths12", "testDuplicatePaths13", "testDuplicatePaths14", "testDuplicatePaths21", "testDuplicatePaths22", "testDuplicatePaths23", "testDuplicatePaths24", "testSpecExample3", "testSpecExample4" ]
       },
       "predecessor" : "ff7f2c4495598f542be4592f5ec187353a46333e"
     },
     "c5ffc0638cda8fce02e61dd19c222d0136d694da" : {
       "testcases" : {
-        "org.apache.el.lang.TestELSupport" : [ "testCoercetoFunctionalInterface01", "testCoercetoFunctionalInterface06" ]
+        "jakarta.el.TestImportHandler" : [ "testBug57135", "testImportClass01", "testImportClass02", "testImportClass03", "testImportClass04", "testImportPackage01_57574", "testImportStatic01", "testImportStatic02", "testImportStatic03", "testImportStatic04", "testResolveClass01", "testResolveClass02", "testResolveClass03", "testResolveClass04", "testResolveClass05", "testResolveClass06" ],
+        "org.apache.el.lang.TestELSupport" : [ "testCoercetoFunctionalInterface03", "testCoercetoFunctionalInterface04" ]
       },
       "predecessor" : "ab17b97b74ca141813ee1eb1f784089b319dd9e2"
     },
@@ -195,7 +682,7 @@
     "5674941dddf60f028fc77f2dea0424bcb0d5c59c" : {
       "testcases" : {
         "jakarta.servlet.resources.TestSchemaValidation" : [ "testWebapp", "testWebapp_2_2", "testWebapp_2_3", "testWebapp_2_4", "testWebapp_2_5", "testWebapp_3_0", "testWebapp_3_1", "testWebapp_4_0", "testWebapp_5_0" ],
-        "org.apache.jasper.servlet.TestJspCServletContext" : [ "testResourceJARs", "testWebapp", "testWebapp_2_2", "testWebapp_2_3", "testWebapp_2_4", "testWebapp_2_5", "testWebapp_3_0", "testWebapp_3_1", "testWebapp_4_0", "testWebapp_5_0" ]
+        "org.apache.jasper.servlet.TestJspCServletContext" : [ "testResourceJARs", "testWebapp", "testWebapp_2_2", "testWebapp_2_3", "testWebapp_2_4", "testWebapp_2_5", "testWebapp_3_0", "testWebapp_3_1", "testWebapp_4_0", "testWebapp_5_0", "testWebresources" ]
       },
       "predecessor" : "1fb7a2c1549bc492357c9477f7dfddc981893b1b"
     },
@@ -223,13 +710,32 @@
     },
     "739999102cb15eb9dd5feba25dd463fd9219272c" : {
       "testcases" : {
+        "jakarta.el.TestArrayELResolver" : [ "testGetCommonPropertyType01", "testGetCommonPropertyType02", "testGetCommonPropertyType03", "testGetFeatureDescriptors", "testGetType01", "testGetType02", "testGetType03", "testGetType04", "testGetType05", "testGetType06", "testGetValue01", "testGetValue02", "testGetValue03", "testGetValue05", "testGetValueCoercion01", "testGetValueCoercion02a", "testGetValueCoercion02b", "testGetValueCoercion03", "testGetValueCoercion04", "testGetValueCoercion05", "testGetValueCoercion06", "testIsReadOnly01", "testIsReadOnly02", "testIsReadOnly03", "testIsReadOnly04", "testIsReadOnly05", "testIsReadOnly06", "testIsReadOnly07", "testSetValue01", "testSetValue02", "testSetValue03", "testSetValue04", "testSetValue05", "testSetValue06", "testSetValue07", "testSetValue08", "testSetValue09" ],
+        "jakarta.el.TestBeanELResolver" : [ "testInvokeVarargs05", "testInvokeVarargs06", "testInvokeVarargsCoerce05", "testInvokeVarargsCoerce06" ],
+        "jakarta.el.TestBeanELResolverVarargsInvocation" : [ "testJoin", "testJoinDelimited" ],
+        "jakarta.el.TestBeanNameELResolver" : [ "testGetType01", "testGetType02", "testGetType03", "testGetType04", "testGetType05", "testGetType06", "testGetType07", "testGetValue01", "testGetValue02", "testGetValue03", "testGetValue04", "testGetValue05", "testGetValue06", "testGetValue07", "testIsReadOnly01", "testIsReadOnly02", "testIsReadOnly03", "testIsReadOnly04", "testIsReadOnly05", "testIsReadOnly06", "testIsReadOnly07", "testIsReadOnly08", "testSetValue01", "testSetValue02", "testSetValue03", "testSetValue04", "testSetValue05", "testSetValue06", "testSetValue07", "testSetValue08", "testSetValue09" ],
+        "jakarta.el.TestELContext" : [ "testConvertToType03" ],
+        "jakarta.el.TestELProcessor" : [ "testDefineFunctionName07", "testDefineFunctionName13" ],
+        "jakarta.el.TestListELResolver" : [ "testGetType01", "testGetType02", "testGetType03", "testGetType04", "testGetValue01", "testGetValue02", "testGetValue03", "testGetValue04", "testGetValue05", "testIsReadOnly01", "testIsReadOnly02", "testIsReadOnly03", "testIsReadOnly04", "testIsReadOnly05", "testIsReadOnly06", "testSetValue01", "testSetValue02", "testSetValue03", "testSetValue04", "testSetValue05", "testSetValue06", "testSetValue07" ],
+        "jakarta.el.TestMapELResolver" : [ "testGetFeatureDescriptors01", "testGetFeatureDescriptors02", "testGetType01", "testGetType02", "testGetType03", "testGetValue01", "testGetValue02", "testGetValue03", "testIsReadOnly01", "testIsReadOnly02", "testIsReadOnly03", "testIsReadOnly04", "testSetValue01", "testSetValue02", "testSetValue03", "testSetValue04", "testSetValue05" ],
         "jakarta.el.TestMethodReference" : [ "testGetAnnotationInfo01", "testGetAnnotationInfo02" ],
+        "jakarta.el.TestResourceBundleELResolver" : [ "bug53001", "testGetFeatureDescriptors01", "testGetFeatureDescriptors02", "testGetType01", "testGetType02", "testGetType03", "testGetValue01", "testGetValue02", "testGetValue03", "testIsReadOnly01", "testIsReadOnly02", "testIsReadOnly03", "testSetValue01", "testSetValue02", "testSetValue03" ],
+        "jakarta.el.TestStaticFieldELResolver" : [ "testGetType01", "testGetType02", "testGetType03", "testGetType04", "testGetType05", "testGetType06", "testGetType07", "testGetType08", "testGetType09", "testGetValue01", "testGetValue02", "testGetValue03", "testGetValue04", "testGetValue05", "testGetValue06", "testGetValue07", "testGetValue08", "testGetValue09", "testInvoke01", "testInvoke02", "testInvoke03", "testInvoke04", "testInvoke05", "testInvoke06", "testInvoke07", "testInvoke08", "testIsReadOnly01", "testIsReadOnly02", "testIsReadOnly03", "testIsReadOnly04", "testSetValue01", "testSetValue02", "testSetValue03", "testSetValue04" ],
         "jakarta.el.TestUtil" : [ "testBug56425b" ],
-        "org.apache.el.TestELEvaluation" : [ "testBug42565", "testBug60431a" ],
-        "org.apache.el.TestMethodExpressionImpl" : [ "testBug52970", "testBug53792b", "testInvoke", "testInvokeWithSuperAAABB", "testInvokeWithSuperAAB", "testInvokeWithVarArgsAAB", "testPreferNoVarArgs", "testVarArgsBeanFEnumVString" ],
-        "org.apache.el.lang.TestELSupport" : [ "testCoercetoFunctionalInterface01", "testCoercetoFunctionalInterface03", "testCoercetoFunctionalInterface05", "testCoercetoFunctionalInterface06" ],
-        "org.apache.el.parser.TestELParser" : [ "bug56185", "testBug49081" ],
-        "org.apache.jasper.compiler.TestAttributeParser" : [ "testBug42565", "testBug44994", "testBug45015", "testBug45451", "testLiteral" ]
+        "org.apache.el.TestELEvaluation" : [ "testBug42565", "testBug60431a", "testBug60431e", "testParserLiteralExpression", "testParserStringLiteral" ],
+        "org.apache.el.TestExpressionFactory" : [ "testCreateValueExpression3ParamNullExpectedType" ],
+        "org.apache.el.TestMethodExpressionImpl" : [ "testBug49655", "testBug50790b", "testBug52445a", "testBug53792a", "testBug53792b", "testBug53792c", "testInvoke", "testInvokeWithSuperAAABB", "testInvokeWithSuperAAB", "testInvokeWithSuperABB", "testInvokeWithSuperABBB", "testInvokeWithSuperABNoReturnTypeNoParamTypes", "testInvokeWithSuperABNoReturnTypeParamTypes", "testInvokeWithVarArgsAAAB", "testInvokeWithVarArgsAAABB", "testInvokeWithVarArgsAAABBB", "testInvokeWithVarArgsAABBB", "testInvokeWithVarArgsAB", "testInvokeWithVarArgsABB", "testInvokeWithVarArgsABBB", "testVarArgsBeanFEnumVEnum", "testVarArgsBeanFEnumVString", "testVarArgsBeanGEnumEnum", "testVarArgsBeanGEnumString", "testVarArgsBeanGStringEnum" ],
+        "org.apache.el.TestValueExpressionImpl" : [ "testBug49345", "testBug51177ObjectMap" ],
+        "org.apache.el.lang.TestELSupport" : [ "testCoercetoFunctionalInterface04", "testCoercetoFunctionalInterface05" ],
+        "org.apache.el.parser.TestAstAssign" : [ "testGetType01" ],
+        "org.apache.el.parser.TestAstConcatenation" : [ "testPrecedence01", "testPrecedence03", "testPrecedence04" ],
+        "org.apache.el.parser.TestAstFunction" : [ "testImport01", "testImport02" ],
+        "org.apache.el.parser.TestAstLambdaExpression" : [ "testLambdaAsFunction05", "testLambdaAsFunction07" ],
+        "org.apache.el.parser.TestAstSemicolon" : [ "testGetType" ],
+        "org.apache.el.parser.TestELParser" : [ "bug56179c", "bug56179d", "bug56179k", "bug56179l", "bug56179m", "bug56185", "testBug49081" ],
+        "org.apache.el.stream.TestCollectionOperations" : [ "testAnyMatch02", "testForEach01", "testMax03", "testMin04", "testNoneMatch03", "testToArray01" ],
+        "org.apache.jasper.compiler.TestAttributeParser" : [ "testBug42565", "testBug45015", "testLiteral" ],
+        "org.apache.jasper.compiler.TestELParser" : [ "testTernary11", "testTernary13" ]
       },
       "predecessor" : "ca11d5650cafd197190e950d0e05e8ddf87482dd"
     },
@@ -241,6 +747,8 @@
       "testcases" : {
         "jakarta.servlet.resources.TestSchemaValidation" : [ "testWebapp", "testWebapp_2_2", "testWebapp_2_3", "testWebapp_2_4", "testWebapp_2_5", "testWebapp_3_0", "testWebapp_3_1", "testWebapp_4_0", "testWebapp_5_0", "testWebapp_6_0" ],
         "org.apache.jasper.servlet.TestJspCServletContext" : [ "testResourceJARs", "testWebapp", "testWebapp_2_2", "testWebapp_2_3", "testWebapp_2_4", "testWebapp_2_5", "testWebapp_3_0", "testWebapp_3_1", "testWebapp_4_0", "testWebapp_5_0", "testWebresources" ],
+        "org.apache.tomcat.util.descriptor.web.TestJspConfigDescriptorImpl" : [ "testPropertyGroupsAreIsolate" ],
+        "org.apache.tomcat.util.descriptor.web.TestJspPropertyGroupDescriptorImpl" : [ "testCodasAreIsolated", "testPreludesAreIsolated", "testUrlPatternsAreIsolated" ],
         "org.apache.tomcat.util.descriptor.web.TestWebXml" : [ "testValidateVersion22", "testValidateVersion23", "testValidateVersion24", "testValidateVersion25", "testValidateVersion30", "testValidateVersion31", "testValidateVersion40", "testValidateVersion50", "testValidateVersion60" ]
       },
       "predecessor" : "5d47c040a6e1d146babd89a5dc02beb3505330b8"
@@ -256,9 +764,10 @@
     },
     "b7c05a8f60003c42e6f367bf307188ce391dbad2" : {
       "testcases" : {
-        "org.apache.coyote.TestRequest" : [ "test100ContinueExpectationImmediately", "test100ContinueExpectationOnRequestBodyRead", "testNoExpectationWithOnRequestBodyReadPolicy", "testNoExpectationWithOnRequestImmediately" ],
+        "jakarta.el.TestELProcessor" : [ "testDefineFunctionName04", "testDefineFunctionName07", "testDefineFunctionName10", "testDefineFunctionName12", "testDefineFunctionName13" ],
         "org.apache.coyote.http2.TestAbstractStream" : [ "testCircular01", "testCircular02", "testCircular03", "testDependenciesFig3", "testDependenciesFig4", "testDependenciesFig5Exclusive", "testDependenciesFig5NonExclusive" ],
-        "org.apache.el.lang.TestELSupport" : [ "testCoercetoFunctionalInterface01", "testCoercetoFunctionalInterface03", "testCoercetoFunctionalInterface04", "testCoercetoFunctionalInterface06" ]
+        "org.apache.el.lang.TestELSupport" : [ "testCoercetoFunctionalInterface02", "testCoercetoFunctionalInterface03", "testCoercetoFunctionalInterface04", "testCoercetoFunctionalInterface05", "testCoercetoFunctionalInterface06" ],
+        "org.apache.el.parser.TestAstFunction" : [ "testImport01", "testImport02" ]
       },
       "predecessor" : "4e96884d2e7464e8654b5e06a3c5be24213c56b8"
     },
@@ -292,9 +801,6 @@
       "predecessor" : "f19fe59995cc817b28f1c3d525b20a600890be95"
     },
     "14ee9683f8543f59a6c3c217a1b68530297873d7" : {
-      "testcases" : {
-        "org.apache.coyote.TestRequest" : [ "test100ContinueExpectationImmediately", "test100ContinueExpectationOnRequestBodyRead", "testNoExpectationWithOnRequestBodyReadPolicy" ]
-      },
       "predecessor" : "4d60e4d8fb8158b42af427b8d7ed0db788295c40"
     },
     "4bf1264cc58e4fd09da84c69c732429927cee4e6" : { },
@@ -324,7 +830,7 @@
     },
     "fa768e3878ae56fbdfadf3a86e1d218e722c459d" : {
       "testcases" : {
-        "org.apache.juli.TestFileHandler" : [ "testCleanOnInitMultipleHandlers" ]
+        "org.apache.juli.TestFileHandler" : [ "testCleanDisabled", "testCleanOnInitMultipleHandlers", "testCleanOnInitOneHandler" ]
       },
       "predecessor" : "4c2f459c5048bca2b350dc3395f4f80475eae244"
     },
@@ -385,7 +891,7 @@
         "jakarta.el.TestMethodReference" : [ "testGetAnnotationInfo01", "testGetAnnotationInfo02" ],
         "jakarta.el.TestResourceBundleELResolver" : [ "bug53001" ],
         "jakarta.el.TestUtil" : [ "test01", "test02", "testBug56425a", "testBug56425b" ],
-        "org.apache.el.TestELEvaluation" : [ "testBug42565", "testBug44994", "testBug48112", "testBug60431a", "testBug60431b", "testBug60431c", "testBug60431d", "testBug60431e", "testParserBug45511" ],
+        "org.apache.el.TestELEvaluation" : [ "testBug42565", "testBug44994", "testBug48112", "testBug60431a", "testBug60431b", "testBug60431c", "testBug60431d", "testBug60431e", "testParserBug45511", "testParserLiteralExpression" ],
         "org.apache.el.TestMethodExpressionImpl" : [ "testBug49655", "testBug50449a", "testBug50449b", "testBug50790a", "testBug50790b", "testBug52445a", "testBug52970", "testBug53792a", "testBug53792b", "testBug53792c", "testBug53792d", "testBug56797a", "testBug56797b", "testBug57855a", "testBug57855b", "testBug57855c", "testBug57855d", "testBug57855e", "testBug60844", "testBugPrimitives", "testGetMethodInfo01", "testGetMethodInfo02", "testInvoke", "testInvokeWithSuper", "testInvokeWithSuperAAAB", "testInvokeWithSuperAAABB", "testInvokeWithSuperAAABBB", "testInvokeWithSuperAAB", "testInvokeWithSuperAABB", "testInvokeWithSuperAABBB", "testInvokeWithSuperABB", "testInvokeWithSuperABBB", "testInvokeWithSuperABNoReturnTypeNoParamTypes", "testInvokeWithSuperABNoReturnTypeParamTypes", "testInvokeWithSuperABReturnTypeNoParamTypes", "testInvokeWithSuperABReturnTypeParamTypes", "testInvokeWithVarArgsAAAB", "testInvokeWithVarArgsAAABB", "testInvokeWithVarArgsAAABBB", "testInvokeWithVarArgsAAB", "testInvokeWithVarArgsAABB", "testInvokeWithVarArgsAABBB", "testInvokeWithVarArgsAB", "testInvokeWithVarArgsABB", "testInvokeWithVarArgsABBB", "testIsParametersProvided", "testPreferNoVarArgs", "testVarArgsBeanFEnum", "testVarArgsBeanFEnumEnum", "testVarArgsBeanFEnumString", "testVarArgsBeanFEnumVEnum", "testVarArgsBeanFEnumVString", "testVarArgsBeanFString", "testVarArgsBeanFStringEnum", "testVarArgsBeanFStringString", "testVarArgsBeanFStringVEnum", "testVarArgsBeanFStringVString", "testVarArgsBeanGEnum", "testVarArgsBeanGEnumEnum", "testVarArgsBeanGEnumString", "testVarArgsBeanGEnumVEnum", "testVarArgsBeanGEnumVString", "testVarArgsBeanGString", "testVarArgsBeanGStringEnum", "testVarArgsBeanGStringString", "testVarArgsBeanGStringVEnum", "testVarArgsBeanGStringVString", "testVarArgsBeanHEnum", "testVarArgsBeanHEnumEnum", "testVarArgsBeanHEnumString", "testVarArgsBeanHEnumVEnum", "testVarArgsBeanHEnumVString", "testVarArgsBeanHString", "testVarArgsBeanHStringEnum", "testVarArgsBeanHStringString", "testVarArgsBeanHStringVEnum", "testVarArgsBeanHStringVString" ],
         "org.apache.el.TestValueExpressionImpl" : [ "testBug49345", "testBug50105", "testBug51177ObjectList", "testBug51177ObjectMap", "testBug51544Bean", "testBug51544Direct", "testBug56522SetNullValue", "testGetValueReference", "testGetValueReferenceVariable" ],
         "org.apache.el.lang.TestELSupport" : [ "testCoercetoFunctionalInterface01", "testCoercetoFunctionalInterface02", "testCoercetoFunctionalInterface03", "testCoercetoFunctionalInterface04", "testCoercetoFunctionalInterface05", "testCoercetoFunctionalInterface06" ],
@@ -399,7 +905,7 @@
         "org.apache.el.parser.TestAstSetData" : [ "testGetType", "testNested01", "testSimple01", "testSimple02" ],
         "org.apache.el.parser.TestELParser" : [ "bug56179a", "bug56179b", "bug56179c", "bug56179d", "bug56179e", "bug56179f", "bug56179g", "bug56179h", "bug56179i", "bug56179j", "bug56179k", "bug56179l", "bug56179m", "bug56179n", "bug56185", "testBug49081", "testJavaKeyWordIdentifier", "testJavaKeyWordSuffix" ],
         "org.apache.el.stream.TestCollectionOperations" : [ "testAllMatch01", "testAllMatch02", "testAllMatch03", "testAllMatch04", "testAnyMatch01", "testAnyMatch02", "testAnyMatch03", "testAverage01", "testAverage02", "testAverage03", "testAverage04", "testAverage05", "testAverage06", "testCount01", "testCount02", "testDistinct01", "testFilter01", "testFindFirst01", "testFindFirst02", "testFlatMap01", "testForEach01", "testLimit01", "testMap01", "testMap02", "testMax01", "testMax02", "testMax03", "testMax04", "testMaxLambda01", "testMaxLambda02", "testMin01", "testMin02", "testMin03", "testMin04", "testMinLambda01", "testNoneMatch01", "testNoneMatch02", "testNoneMatch03", "testNoneMatch04", "testPeek01", "testReduceLambda01", "testReduceLambda02", "testReduceLambdaSeed01", "testSorted01", "testSortedLambdaExpression01", "testSubstreamStart01", "testSubstreamStartEnd01", "testSum01", "testSum02", "testToArray01", "testToList01", "testToList02" ],
-        "org.apache.jasper.compiler.TestAttributeParser" : [ "testBug42565", "testBug44994", "testBug45015" ],
+        "org.apache.jasper.compiler.TestAttributeParser" : [ "testBug42565", "testBug44994", "testBug45015", "testLiteral" ],
         "org.apache.jasper.compiler.TestELParser" : [ "testTernary01", "testTernary11", "testTernary12", "testTernary13" ]
       },
       "predecessor" : "22e481064be7fae9ee9f5b11d5ef88e5cc5a64e4"
@@ -408,10 +914,10 @@
       "testcases" : {
         "jakarta.el.TestArrayELResolver" : [ "testGetType01", "testGetType02", "testGetType03", "testGetType04", "testGetType05", "testGetType06" ],
         "jakarta.el.TestBeanELResolver" : [ "testGetType01", "testGetType02", "testGetType04", "testGetType05" ],
-        "jakarta.el.TestBeanNameELResolver" : [ "testGetType01", "testGetType02", "testGetType03", "testGetType04", "testGetType05" ],
+        "jakarta.el.TestBeanNameELResolver" : [ "testGetType01", "testGetType02", "testGetType03", "testGetType04", "testGetType05", "testGetType06", "testGetType07" ],
         "jakarta.el.TestListELResolver" : [ "testGetType01", "testGetType02", "testGetType03", "testGetType04" ],
         "jakarta.el.TestMapELResolver" : [ "testGetType01", "testGetType02", "testGetType03" ],
-        "jakarta.el.TestStaticFieldELResolver" : [ "testGetType01", "testGetType03", "testGetType04", "testGetType05", "testGetType07", "testGetType08" ],
+        "jakarta.el.TestStaticFieldELResolver" : [ "testGetType01", "testGetType02", "testGetType03", "testGetType04", "testGetType05", "testGetType06", "testGetType07", "testGetType08", "testGetType09" ],
         "org.apache.el.TestValueExpressionImpl" : [ "testBug51177ObjectList", "testBug51177ObjectMap", "testBug56522SetNullValue" ],
         "org.apache.el.parser.TestAstAssign" : [ "testGetType01", "testGetType02", "testGetValue01", "testGetValue02" ]
       },
@@ -421,6 +927,9 @@
       "predecessor" : "7c630a7fde51c858c899f5155c21f4462d971ec2"
     },
     "7691f255245d592e7239cfb430708c236b8eae68" : {
+      "testcases" : {
+        "org.apache.tomcat.websocket.TestWsSession" : [ "testAppendCloseReasonWithTruncation01", "testAppendCloseReasonWithTruncation02", "testAppendCloseReasonWithTruncation03", "testAppendCloseReasonWithTruncation04", "testAppendCloseReasonWithTruncation05", "testAppendCloseReasonWithTruncation06", "testAppendCloseReasonWithTruncation07", "testAppendCloseReasonWithTruncation08", "testAppendCloseReasonWithTruncation09" ]
+      },
       "predecessor" : "0967cd752e32cff35acf3c61477602658f66b15a"
     },
     "683d32e2f06938af4985b8e1f3e672f71e02b121" : {
@@ -447,6 +956,12 @@
       "predecessor" : "ac0e3d6dc95ec61ade20bfc34839aa369812dcbf"
     },
     "0b3c99c4e9c4cdce91a969430b01750291c86c1f" : {
+      "testcases" : {
+        "jakarta.servlet.http.TestCookie" : [ "attributeDiscard", "attributeDomain", "attributeExpires", "attributeHttpOnly", "attributeMaxAge", "attributePath", "attributeSecure", "attributeVersion", "defaultImpliesNetscape", "strictNamingImpliesRFC2109", "testAttribute01", "testAttributeInvalid01", "testAttributeInvalid02", "testAttributeInvalid03", "testDefaults", "testGetAttributes01", "testInitialValue", "testMaxAge01", "tokenVersion" ],
+        "jakarta.servlet.http.TestCookieStrict" : [ "strictNamingImpliesRFC2109", "testDefaults" ],
+        "org.apache.tomcat.util.http.TestCookieProcessorGeneration" : [ "testSameSiteCookies", "v0NullValue", "v0QuotedValue", "v0SimpleCookie", "v0ValueContainsBackslash", "v0ValueContainsBackslashAndQuote", "v0ValueContainsBackslashAtEnd", "v0ValueContainsComma", "v0ValueContainsEquals", "v0ValueContainsNonV0Separator", "v0ValueContainsQuote", "v0ValueContainsSemicolon", "v0ValueContainsSpace", "v1NullValue", "v1QuotedValue", "v1TestDomainInvalid01", "v1TestDomainInvalid02", "v1TestDomainInvalid03", "v1TestDomainInvalid04", "v1TestDomainInvalid05", "v1TestDomainInvalid06", "v1TestDomainInvalid07", "v1TestDomainValid01", "v1TestDomainValid02", "v1TestMaxAgeNegative", "v1TestMaxAgePositive", "v1TestMaxAgeZero", "v1TestPathInvalid01", "v1TestPathValid", "v1ValueContainsBackslash", "v1ValueContainsBackslashAndQuote", "v1ValueContainsComma", "v1ValueContainsEquals", "v1ValueContainsNonV0Separator", "v1ValueContainsQuote", "v1ValueContainsSemicolon", "v1ValueContainsSpace", "v1ValueUTF8", "v1simpleCookie" ],
+        "org.apache.tomcat.util.http.TestCookies" : [ "allow8BitInV0Value", "allow8bitInV1QuotedValue", "rfc2109Version0Old", "rfc2109Version0Rfc6265", "testBasicCookieOld", "testBasicCookieRfc6265", "testBug60788Rfc2109", "testBug60788Rfc6265", "testEmptyPairsOld", "testEmptyPairsRfc6265", "testJsonInV0", "testJsonInV1", "testNameOnlyAreDroppedOld", "testNameOnlyAreDroppedRfc6265", "testQuotedValueOld", "testQuotedValueRfc6265", "testSeparatorsInValueOld", "testSeparatorsInValueRfc6265", "testSkipSemicolonOrComma", "v1DQuoteInValueOld", "v1DQuoteInValueRfc6265", "v1DomainIsParsedOld", "v1DomainIsParsedRfc6265", "v1DomainOnlyAffectsPrecedingCookieOld", "v1DomainOnlyAffectsPrecedingCookieRfc6265", "v1EscapedDQuoteInValueOld", "v1EscapedDQuoteInValueRfc6265", "v1MismatchedQuotesOld", "v1MismatchedQuotesRfc6265", "v1NameOnlyIsDroppedOld", "v1NameOnlyIsDroppedRfc6265", "v1PathAffectsPrecedingCookieOld", "v1PathAffectsPrecedingCookieRfc6265", "v1PortIsIgnoredOld", "v1PortIsIgnoredRfc6265", "v1QuoteInQuotedValueOld", "v1QuoteInQuotedValueRfc6265", "v1QuoteInValueOld", "v1QuoteInValueRfc6265", "v1QuotedValueEndsInBackslashOld", "v1QuotedValueEndsInBackslashRfc6265", "v1QuotedValueOld", "v1QuotedValueRfc6265", "v1SingleQuotesAreValidTokenCharactersOld", "v1SingleQuotesAreValidTokenCharactersRfc6265", "v1TokenValueOld", "v1TokenValueRfc6265" ]
+      },
       "predecessor" : "434cef97eedab06676f6454075ceb36637695bdd"
     },
     "b505fdcc743c8366627b232c43ab178e6e7f907e" : { },
@@ -470,9 +985,13 @@
     "6b8aeaf80860dd48d5ddd44e866fea5d6072ded3" : {
       "testcases" : {
         "jakarta.servlet.resources.TestSchemaValidation" : [ "testWebapp", "testWebapp_2_2", "testWebapp_2_3", "testWebapp_2_4", "testWebapp_2_5", "testWebapp_3_0", "testWebapp_3_1", "testWebapp_4_0", "testWebapp_5_0", "testWebapp_6_0" ],
-        "org.apache.catalina.core.TestApplicationSessionCookieConfig" : [ "testSetCommentInitPhase", "testSetCommentNotInitPhase", "testSetDomainInitPhase", "testSetDomainNotInitPhase", "testSetHttpOnlyInitPhase", "testSetHttpOnlyNotInitPhase", "testSetMaxAgeInitPhase", "testSetMaxAgeNotInitPhase", "testSetPathInitPhase", "testSetPathNotInitPhase", "testSetSecureInitPhase", "testSetSecureNotInitPhase" ],
+        "org.apache.catalina.core.TestApplicationSessionCookieConfig" : [ "testSetCommentInitPhase", "testSetCommentNotInitPhase", "testSetDomainInitPhase", "testSetDomainNotInitPhase", "testSetHttpOnlyInitPhase", "testSetHttpOnlyNotInitPhase", "testSetMaxAgeInitPhase", "testSetMaxAgeNotInitPhase", "testSetNameInitPhase", "testSetNameNotInitPhase", "testSetPathInitPhase", "testSetPathNotInitPhase", "testSetSecureInitPhase", "testSetSecureNotInitPhase" ],
         "org.apache.jasper.servlet.TestJspCServletContext" : [ "testResourceJARs", "testWebapp", "testWebapp_2_2", "testWebapp_2_3", "testWebapp_2_4", "testWebapp_2_5", "testWebapp_3_0", "testWebapp_3_1", "testWebapp_4_0", "testWebapp_5_0", "testWebresources" ],
-        "org.apache.tomcat.util.descriptor.web.TestWebXml" : [ "testBug54387b", "testBug54387c", "testLifecycleMethodsWebFragments", "testLifecycleMethodsWebFragmentsWithConflicts", "testLifecycleMethodsWebXml", "testValidateVersion22", "testValidateVersion23", "testValidateVersion24", "testValidateVersion25", "testValidateVersion30", "testValidateVersion31", "testValidateVersion40", "testValidateVersion50", "testValidateVersion60" ]
+        "org.apache.tomcat.util.descriptor.web.TestWebXml" : [ "testBug54387b", "testBug54387c", "testLifecycleMethodsWebFragments", "testLifecycleMethodsWebFragmentsWithConflicts", "testLifecycleMethodsWebXml", "testValidateVersion22", "testValidateVersion23", "testValidateVersion24", "testValidateVersion25", "testValidateVersion30", "testValidateVersion31", "testValidateVersion40", "testValidateVersion50", "testValidateVersion60" ],
+        "org.apache.tomcat.util.descriptor.web.TestWebXmlOrdering" : [ "testOrderWebFragmentsAbsolute", "testOrderWebFragmentsAbsoluteOthersEnd", "testOrderWebFragmentsAbsoluteOthersMiddle", "testOrderWebFragmentsAbsoluteOthersStart", "testOrderWebFragmentsAbsolutePartial", "testOrderWebFragmentsRelative1", "testOrderWebFragmentsRelative10", "testOrderWebFragmentsRelative11", "testOrderWebFragmentsRelative2", "testOrderWebFragmentsRelative3", "testOrderWebFragmentsRelative4Bug54068", "testOrderWebFragmentsRelative5Bug54068", "testOrderWebFragmentsRelative6Bug54068", "testOrderWebFragmentsRelative7", "testOrderWebFragmentsRelative8", "testOrderWebFragmentsRelative9", "testOrderWebFragmentsrelativeCircular1", "testOrderWebFragmentsrelativeCircular2", "testWebFragmentsAbsoluteWrongFragmentName" ],
+        "org.apache.tomcat.util.http.TestCookieProcessorGeneration" : [ "testSameSiteCookies", "v0NullValue", "v0QuotedValue", "v0SimpleCookie", "v0ValueContainsBackslash", "v0ValueContainsBackslashAndQuote", "v0ValueContainsBackslashAtEnd", "v0ValueContainsComma", "v0ValueContainsEquals", "v0ValueContainsNonV0Separator", "v0ValueContainsQuote", "v0ValueContainsSemicolon", "v0ValueContainsSpace", "v1NullValue", "v1QuotedValue", "v1TestDomainInvalid01", "v1TestDomainInvalid02", "v1TestDomainInvalid03", "v1TestDomainInvalid04", "v1TestDomainInvalid05", "v1TestDomainInvalid06", "v1TestDomainInvalid07", "v1TestDomainValid01", "v1TestDomainValid02", "v1TestMaxAgeNegative", "v1TestMaxAgePositive", "v1TestMaxAgeZero", "v1TestPathInvalid01", "v1TestPathValid", "v1ValueContainsBackslash", "v1ValueContainsBackslashAndQuote", "v1ValueContainsComma", "v1ValueContainsEquals", "v1ValueContainsNonV0Separator", "v1ValueContainsQuote", "v1ValueContainsSemicolon", "v1ValueContainsSpace", "v1ValueUTF8", "v1simpleCookie" ],
+        "org.apache.tomcat.util.http.TestCookies" : [ "disallow8BitControlInName", "disallow8BitControlInV1UnquotedValue", "disallow8bitInName", "disallow8bitInV1UnquotedValue", "disallowControlInName", "disallowControlInV0Value", "disallowControlInV1QuotedValue", "disallowControlInV1UnquotedValue" ],
+        "org.apache.tomcat.util.http.TestLegacyCookieProcessor" : [ "testV0WithPath" ]
       },
       "predecessor" : "fa64c162a505bf36c0335d713dea5606f9185dc2"
     },

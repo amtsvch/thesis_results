@@ -1,0 +1,32 @@
+/**
+ * Inform the listeners about the new session.
+ */
+public void tellNew() {
+    // Notify interested session event listeners
+    fireSessionEvent(Session.SESSION_CREATED_EVENT, null);
+    // Notify interested application event listeners
+    Context context = manager.getContext();
+    Object[] listeners = context.getApplicationLifecycleListeners();
+    if (listeners != null && listeners.length > 0) {
+        HttpSessionEvent event = new HttpSessionEvent(getSession());
+        for (Object o : listeners) {
+            if (!(o instanceof HttpSessionListener)) {
+                continue;
+            }
+            HttpSessionListener listener = (HttpSessionListener) o;
+            try {
+                context.fireContainerEvent("beforeSessionCreated", listener);
+                listener.sessionCreated(event);
+                context.fireContainerEvent("afterSessionCreated", listener);
+            } catch (Throwable t) {
+                ExceptionUtils.handleThrowable(t);
+                try {
+                    context.fireContainerEvent("afterSessionCreated", listener);
+                } catch (Exception e) {
+                    // Ignore
+                }
+                manager.getContext().getLogger().error(sm.getString("standardSession.sessionEvent"), t);
+            }
+        }
+    }
+}

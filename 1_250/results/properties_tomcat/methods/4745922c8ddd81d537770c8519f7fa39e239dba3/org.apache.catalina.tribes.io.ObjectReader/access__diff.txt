@@ -1,0 +1,4 @@
+public synchronized void access() {
+    this.accessed = true;
+    this.lastAccess = System.currentTimeMillis();
+}

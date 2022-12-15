@@ -1,0 +1,16 @@
+@Test                                                                                                  @Test                                                                                               
+public void testJvmDecoder() {                                                                         public void testJvmDecoder() {                                                                      
+CharsetDecoder decoder = StandardCharsets.UTF_8.newDecoder();                                          CharsetDecoder decoder = StandardCharsets.UTF_8.newDecoder();                                       
+int testCount = 0;                                                                                     int testCount = 0;                                                                                  
+try {                                                                                                  try {                                                                                               
+for (Utf8TestCase testCase : TEST_CASES) {                                                             for (Utf8TestCase testCase : TEST_CASES) {                                                          
+doTest(decoder, testCase, testCase.flagsJvm);                                                        | doTest(decoder, testCase);                                                                          
+testCount++;                                                                                           testCount++;                                                                                        
+}                                                                                                      }                                                                                                   
+} finally {                                                                                            } finally {                                                                                         
+System.err.println("Workarounds added to " + workAroundCount + " tests to account for known JVM bugs |                                                                                                     
+if (testCount &lt; TEST_CASES.size()) {                                                                if (testCount &lt; TEST_CASES.size()) {                                                             
+System.err.println("Executed " + testCount + " of " + TEST_CASES.size() + " UTF-8 tests before " + "   System.err.println("Executed " + testCount + " of " + TEST_CASES.size() + " UTF-8 tests before " + "
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

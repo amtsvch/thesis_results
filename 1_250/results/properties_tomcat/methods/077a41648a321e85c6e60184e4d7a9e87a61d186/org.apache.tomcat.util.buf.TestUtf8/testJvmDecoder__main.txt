@@ -1,0 +1,15 @@
+@Test
+public void testJvmDecoder() {
+    CharsetDecoder decoder = StandardCharsets.UTF_8.newDecoder();
+    int testCount = 0;
+    try {
+        for (Utf8TestCase testCase : TEST_CASES) {
+            doTest(decoder, testCase);
+            testCount++;
+        }
+    } finally {
+        if (testCount < TEST_CASES.size()) {
+            System.err.println("Executed " + testCount + " of " + TEST_CASES.size() + " UTF-8 tests before " + "encountering a failure");
+        }
+    }
+}

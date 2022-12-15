@@ -1,0 +1,5 @@
+@Test
+public void disallowControlInV1UnquotedValue() {
+    // Bug 55917
+    test(true, "$Version=1; foo=b\010r");
+}

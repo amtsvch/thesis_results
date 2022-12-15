@@ -1,0 +1,4 @@
+@Test
+public void testInvokeXforwardedProtoSaysInvalidValueForIncomingHttpRequest() throws Exception {
+    performXForwardedProtoWithMultipleForwardsTest(",", false, false);
+}

@@ -1,0 +1,7 @@
+/**
+ * Tests that a non static method invocation will fail.
+ */
+@Test
+public void testInvoke07() {
+    doThrowableTest(METHOD03_NAME, MethodUnderTest.INVOKE, false);
+}

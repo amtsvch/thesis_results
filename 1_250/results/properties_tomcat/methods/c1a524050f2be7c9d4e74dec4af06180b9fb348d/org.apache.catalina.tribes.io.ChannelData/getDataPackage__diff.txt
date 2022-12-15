@@ -1,0 +1,10 @@
+/**
+ * Serializes the ChannelData object into a byte[] array
+ * @return byte[]
+ */
+public byte[] getDataPackage() {
+    int length = getDataPackageLength();
+    byte[] data = new byte[length];
+    int offset = 0;
+    return getDataPackage(data, offset);
+}

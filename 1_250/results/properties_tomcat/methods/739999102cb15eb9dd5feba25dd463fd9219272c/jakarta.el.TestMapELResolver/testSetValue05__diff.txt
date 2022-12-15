@@ -1,0 +1,10 @@
+/**
+ * Tests that an exception is thrown when the map is not modifiable.
+ */
+@Test(expected = PropertyNotWritableException.class)
+public void testSetValue05() {
+    MapELResolver mapELResolver = new MapELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Map<Object, Object> map = Collections.unmodifiableMap(new HashMap<>());
+    mapELResolver.setValue(context, map, "key", "value");
+}

@@ -1,7 +1,0 @@
-@Test
-public void testBugPrimitives() throws Exception {
-    MethodExpression me = factory.createMethodExpression(context, "${beanA.setValLong(5)}", null, null);
-    me.invoke(context, null);
-    ValueExpression ve = factory.createValueExpression(context, "#{beanA.valLong}", java.lang.String.class);
-    Assert.assertEquals("5", ve.getValue(context));
-}

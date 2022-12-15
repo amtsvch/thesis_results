@@ -1,0 +1,15 @@
+/**
+ * Get the HTTP format of the specified date.
+ * @param value The date
+ * @return the HTTP date
+ */
+public static final String formatDate(long value) {
+    Long longValue = Long.valueOf(value);
+    String cachedDate = formatCache.get(longValue);
+    if (cachedDate != null) {
+        return cachedDate;
+    }
+    String newDate = FORMAT_RFC5322.format(new Date(value));
+    updateFormatCache(longValue, newDate);
+    return newDate;
+}

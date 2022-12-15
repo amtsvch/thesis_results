@@ -1,0 +1,23 @@
+/**                                                                                                    /**                                                                                                 
+* Map a method to a function name.                                                                     * Map a method to a function name.                                                                  
+*                                                                                                      *                                                                                                   
+* @param prefix    Function prefix                                                                     * @param prefix    Function prefix                                                                  
+* @param function  Function name                                                                       * @param function  Function name                                                                    
+* @param method    Method                                                                              * @param method    Method                                                                           
+*                                                                                                      *                                                                                                   
+* @throws NullPointerException                                                                         * @throws NullPointerException                                                                      
+*              If any of the arguments are null                                                        *              If any of the arguments are null                                                     
+* @throws NoSuchMethodException                                                                        * @throws NoSuchMethodException                                                                     
+*              If the method is not static                                                             *              If the method is not static                                                          
+*/                                                                                                     */                                                                                                  
+public void defineFunction(String prefix, String function, Method method) throws java.lang.NoSuchMet   public void defineFunction(String prefix, String function, Method method) throws java.lang.NoSuchMet
+if (prefix == null || function == null || method == null) {                                            if (prefix == null || function == null || method == null) {                                         
+throw new NullPointerException(Util.message(context, "elProcessor.defineFunctionNullParams"));         throw new NullPointerException(Util.message(context, "elProcessor.defineFunctionNullParams"));      
+}                                                                                                      }                                                                                                   
+int modifiers = method.getModifiers();                                                                 int modifiers = method.getModifiers();                                                              
+// Check for static, public method and module access for Java 9+                                     | // Check for static, public method and module access                                                
+if (!Modifier.isStatic(modifiers) || !method.canAccess(null)) {                                      | if (!Modifier.isStatic(modifiers) || !Util.canAccess(null, method)) {                               
+throw new NoSuchMethodException(Util.message(context, "elProcessor.defineFunctionInvalidMethod", met   throw new NoSuchMethodException(Util.message(context, "elProcessor.defineFunctionInvalidMethod", met
+}                                                                                                      }                                                                                                   
+manager.mapFunction(prefix, function, method);                                                         manager.mapFunction(prefix, function, method);                                                      
+}                                                                                                      }                                                                                                   

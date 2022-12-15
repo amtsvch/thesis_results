@@ -1,0 +1,18 @@
+@Override
+public boolean isReadOnly(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base instanceof List<?>) {
+        context.setPropertyResolved(base, property);
+        List<?> list = (List<?>) base;
+        try {
+            int idx = coerce(property);
+            if (idx < 0 || idx >= list.size()) {
+                throw new PropertyNotFoundException(new ArrayIndexOutOfBoundsException(idx).getMessage());
+            }
+        } catch (IllegalArgumentException e) {
+            // ignore
+        }
+        return this.readOnly || UNMODIFIABLE.equals(list.getClass());
+    }
+    return this.readOnly;
+}

@@ -1,0 +1,11 @@
+@Override
+public void addPostConstructMethod(String clazz, String method) {
+    if (clazz == null || method == null) {
+        throw new IllegalArgumentException(sm.getString("standardContext.postconstruct.required"));
+    }
+    if (postConstructMethods.get(clazz) != null) {
+        throw new IllegalArgumentException(sm.getString("standardContext.postconstruct.duplicate", clazz));
+    }
+    postConstructMethods.put(clazz, method);
+    fireContainerEvent("addPostConstructMethod", clazz);
+}

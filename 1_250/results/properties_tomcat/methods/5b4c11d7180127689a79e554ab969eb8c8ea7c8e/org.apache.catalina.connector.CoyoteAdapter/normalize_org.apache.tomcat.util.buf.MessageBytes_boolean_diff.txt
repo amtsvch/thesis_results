@@ -1,0 +1,92 @@
+/**
+ * This method normalizes "\", "//", "/./" and "/../".
+ *
+ * @param uriMB URI to be normalized
+ * @param allowBackslash <code>true</code> if backslash characters are allowed in URLs
+ *
+ * @return <code>false</code> if normalizing this URI would require going
+ *         above the root, or if the URI contains a null byte, otherwise
+ *         <code>true</code>
+ */
+public static boolean normalize(MessageBytes uriMB, boolean allowBackslash) {
+    ByteChunk uriBC = uriMB.getByteChunk();
+    final byte[] b = uriBC.getBytes();
+    final int start = uriBC.getStart();
+    int end = uriBC.getEnd();
+    // An empty URL is not acceptable
+    if (start == end) {
+        return false;
+    }
+    int pos = 0;
+    int index = 0;
+    // The URL must start with '/' (or '\' that will be replaced soon)
+    if (b[start] != (byte) '/' && b[start] != (byte) '\\') {
+        return false;
+    }
+    // Replace '\' with '/'
+    // Check for null byte
+    for (pos = start; pos < end; pos++) {
+        if (b[pos] == (byte) '\\') {
+            if (allowBackslash) {
+                b[pos] = (byte) '/';
+            } else {
+                return false;
+            }
+        } else if (b[pos] == (byte) 0) {
+            return false;
+        }
+    }
+    // Replace "//" with "/"
+    for (pos = start; pos < (end - 1); pos++) {
+        if (b[pos] == (byte) '/') {
+            while ((pos + 1 < end) && (b[pos + 1] == (byte) '/')) {
+                copyBytes(b, pos, pos + 1, end - pos - 1);
+                end--;
+            }
+        }
+    }
+    // If the URI ends with "/." or "/..", then we append an extra "/"
+    // Note: It is possible to extend the URI by 1 without any side effect
+    // as the next character is a non-significant WS.
+    if (((end - start) >= 2) && (b[end - 1] == (byte) '.')) {
+        if ((b[end - 2] == (byte) '/') || ((b[end - 2] == (byte) '.') && (b[end - 3] == (byte) '/'))) {
+            b[end] = (byte) '/';
+            end++;
+        }
+    }
+    uriBC.setEnd(end);
+    index = 0;
+    // Resolve occurrences of "/./" in the normalized path
+    while (true) {
+        index = uriBC.indexOf("/./", 0, 3, index);
+        if (index < 0) {
+            break;
+        }
+        copyBytes(b, start + index, start + index + 2, end - start - index - 2);
+        end = end - 2;
+        uriBC.setEnd(end);
+    }
+    index = 0;
+    // Resolve occurrences of "/../" in the normalized path
+    while (true) {
+        index = uriBC.indexOf("/../", 0, 4, index);
+        if (index < 0) {
+            break;
+        }
+        // Prevent from going outside our context
+        if (index == 0) {
+            return false;
+        }
+        int index2 = -1;
+        for (pos = start + index - 1; (pos >= 0) && (index2 < 0); pos--) {
+            if (b[pos] == (byte) '/') {
+                index2 = pos;
+            }
+        }
+        copyBytes(b, start + index2, start + index + 3, end - start - index - 3);
+        end = end + index2 - index - 3;
+        uriBC.setEnd(end);
+        index = index2;
+    }
+    return true;
+}

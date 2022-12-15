@@ -1,0 +1,9 @@
+private InputStream getUnwrappedClosedInputStream() throws IOException {
+    File file = new File("test/webresources/non-static-resources.jar");
+    JarFile jarFile = new JarFile(file, true, ZipFile.OPEN_READ, Runtime.version());
+    ZipEntry jarEntry = jarFile.getEntry("META-INF/MANIFEST.MF");
+    InputStream unwrapped = jarFile.getInputStream(jarEntry);
+    unwrapped.close();
+    jarFile.close();
+    return unwrapped;
+}

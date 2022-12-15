@@ -1,0 +1,23 @@
+public String toStringNoCharset() {
+    if (noCharset == null) {
+        synchronized (this) {
+            if (noCharset == null) {
+                StringBuilder result = new StringBuilder();
+                result.append(type);
+                result.append('/');
+                result.append(subtype);
+                for (Map.Entry<String, String> entry : parameters.entrySet()) {
+                    if (entry.getKey().equalsIgnoreCase("charset")) {
+                        continue;
+                    }
+                    result.append(';');
+                    result.append(entry.getKey());
+                    result.append('=');
+                    result.append(entry.getValue());
+                }
+                noCharset = result.toString();
+            }
+        }
+    }
+    return noCharset;
+}

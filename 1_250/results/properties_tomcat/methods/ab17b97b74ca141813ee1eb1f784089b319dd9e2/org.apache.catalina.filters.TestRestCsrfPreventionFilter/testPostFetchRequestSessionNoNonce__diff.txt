@@ -1,0 +1,5 @@
+@Test
+public void testPostFetchRequestSessionNoNonce() throws Exception {
+    setRequestExpectations(POST_METHOD, session, Constants.CSRF_REST_NONCE_HEADER_FETCH_VALUE);
+    testPostRequestHeaderScenarios(null, true);
+}

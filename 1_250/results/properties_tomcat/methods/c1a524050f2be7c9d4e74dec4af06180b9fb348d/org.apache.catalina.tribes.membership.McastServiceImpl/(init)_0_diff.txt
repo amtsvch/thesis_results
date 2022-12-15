@@ -1,0 +1,29 @@
+/**
+ * Create a new mcast service instance.
+ * @param member - the local member
+ * @param sendFrequency - the time (ms) in between pings sent out
+ * @param expireTime - the time (ms) for a member to expire
+ * @param port - the mcast port
+ * @param bind - the bind address (not sure this is used yet)
+ * @param mcastAddress - the mcast address
+ * @param ttl multicast ttl that will be set on the socket
+ * @param soTimeout Socket timeout
+ * @param service - the callback service
+ * @param msgservice Message listener
+ * @param localLoopbackDisabled - disable loopbackMode
+ * @throws IOException Init error
+ */
+public McastServiceImpl(MemberImpl member, long sendFrequency, long expireTime, int port, InetAddress bind, InetAddress mcastAddress, int ttl, int soTimeout, MembershipListener service, MessageListener msgservice, boolean localLoopbackDisabled) throws IOException {
+    this.member = member;
+    this.address = mcastAddress;
+    this.port = port;
+    this.mcastSoTimeout = soTimeout;
+    this.mcastTTL = ttl;
+    this.mcastBindAddress = bind;
+    this.timeToExpiration = expireTime;
+    this.service = service;
+    this.msgservice = msgservice;
+    this.sendFrequency = sendFrequency;
+    this.localLoopbackDisabled = localLoopbackDisabled;
+    init();
+}

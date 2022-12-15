@@ -1,0 +1,32 @@
+/**
+ * Process notification of the end of the document being reached.
+ *
+ * @exception SAXException if a parsing error is to be reported
+ */
+@Override
+public void endDocument() throws SAXException {
+    if (saxLog.isDebugEnabled()) {
+        if (getCount() > 1) {
+            saxLog.debug("endDocument():  " + getCount() + " elements left");
+        } else {
+            saxLog.debug("endDocument()");
+        }
+    }
+    while (getCount() > 1) {
+        pop();
+    }
+    // Fire "finish" events for all defined rules
+    for (Rule rule : getRules().rules()) {
+        try {
+            rule.finish();
+        } catch (Exception e) {
+            log.error(sm.getString("digester.error.finish"), e);
+            throw createSAXException(e);
+        } catch (Error e) {
+            log.error(sm.getString("digester.error.finish"), e);
+            throw e;
+        }
+    }
+    // Perform final cleanup
+    clear();
+}

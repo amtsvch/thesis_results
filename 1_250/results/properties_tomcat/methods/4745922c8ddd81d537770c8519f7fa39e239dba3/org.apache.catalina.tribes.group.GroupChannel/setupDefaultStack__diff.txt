@@ -1,0 +1,16 @@
+/**
+ * Sets up the default implementation interceptor stack
+ * if no interceptors have been added
+ * @throws ChannelException Cluster error
+ */
+protected synchronized void setupDefaultStack() throws ChannelException {
+    if (getFirstInterceptor() != null && ((getFirstInterceptor().getNext() instanceof ChannelCoordinator))) {
+        addInterceptor(new MessageDispatchInterceptor());
+    }
+    Iterator<ChannelInterceptor> interceptors = getInterceptors();
+    while (interceptors.hasNext()) {
+        ChannelInterceptor channelInterceptor = interceptors.next();
+        channelInterceptor.setChannel(this);
+    }
+    coordinator.setChannel(this);
+}

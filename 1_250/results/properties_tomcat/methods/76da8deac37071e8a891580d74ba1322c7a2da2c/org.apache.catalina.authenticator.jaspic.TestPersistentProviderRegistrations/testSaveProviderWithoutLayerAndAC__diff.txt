@@ -1,0 +1,25 @@
+@Test
+public void testSaveProviderWithoutLayerAndAC() {
+    File f = new File("test/conf/jaspic-test-05.xml");
+    if (f.exists()) {
+        Assert.assertTrue(f.delete());
+    }
+    // Create a config and write it out
+    Providers initialProviders = new Providers();
+    Provider p = new Provider();
+    p.setClassName("a");
+    p.setDescription("d");
+    initialProviders.addProvider(p);
+    PersistentProviderRegistrations.writeProviders(initialProviders, f);
+    // Read it back
+    Providers loadedProviders = PersistentProviderRegistrations.loadProviders(f);
+    try {
+        validateNoLayerAndAC(loadedProviders);
+    } finally {
+        if (f.exists()) {
+            if (!f.delete()) {
+                Assert.fail("Failed to delete " + f);
+            }
+        }
+    }
+}

@@ -1,0 +1,7 @@
+public ConcurrentDateFormat(String format, Locale locale, TimeZone timezone) {
+    this.format = format;
+    this.locale = locale;
+    this.timezone = timezone;
+    SimpleDateFormat initial = createInstance();
+    queue.add(initial);
+}

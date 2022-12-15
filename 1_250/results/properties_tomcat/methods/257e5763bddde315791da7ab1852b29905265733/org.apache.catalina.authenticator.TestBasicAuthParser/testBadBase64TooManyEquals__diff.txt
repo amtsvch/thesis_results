@@ -1,0 +1,13 @@
+/*
+     * The trailing third "=" is illegal. However, the RFC says the decoder
+     * must terminate as soon as the first pad is detected, so no error
+     * will be detected unless the payload has been damaged in some way.
+     */
+@Test
+public void testBadBase64TooManyEquals() throws Exception {
+    final String BASE64_CRIB = "dXNlcmlkOnNlY3JldA===";
+    final BasicAuthHeader AUTH_HEADER = new BasicAuthHeader(NICE_METHOD, BASE64_CRIB);
+    BasicAuthenticator.BasicCredentials credentials = new BasicAuthenticator.BasicCredentials(AUTH_HEADER.getHeader(), StandardCharsets.UTF_8, true);
+    Assert.assertEquals(USER_NAME, credentials.getUsername());
+    Assert.assertEquals(PASSWORD, credentials.getPassword());
+}

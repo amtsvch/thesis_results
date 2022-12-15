@@ -1,0 +1,52 @@
+public java.lang.Class<?> resolveClass(String name) {
+    if (name == null || name.contains(".")) {
+        return null;
+    }
+    // Has it been previously resolved?
+    Class<?> result = clazzes.get(name);
+    if (result != null) {
+        if (NotFound.class.equals(result)) {
+            return null;
+        } else {
+            return result;
+        }
+    }
+    // Search the class imports
+    String className = classNames.get(name);
+    if (className != null) {
+        Class<?> clazz = findClass(className, true);
+        if (clazz != null) {
+            clazzes.put(name, clazz);
+            return clazz;
+        }
+    }
+    // Search the package imports - note there may be multiple matches
+    // (which correctly triggers an error)
+    for (Map.Entry<String, Set<String>> entry : packageNames.entrySet()) {
+        if (!entry.getValue().isEmpty()) {
+            // Standard package where we know all the class names
+            if (!entry.getValue().contains(name)) {
+                // Requested name isn't in the list so it isn't in this
+                // package so move on to next package. This allows the
+                // class loader look-up to be skipped.
+                continue;
+            }
+        }
+        className = entry.getKey() + '.' + name;
+        Class<?> clazz = findClass(className, false);
+        if (clazz != null) {
+            if (result != null) {
+                throw new ELException(Util.message(null, "importHandler.ambiguousImport", className, result.getName()));
+            }
+            result = clazz;
+        }
+    }
+    if (result == null) {
+        // Cache NotFound results to save repeated calls to findClass()
+        // which is relatively slow
+        clazzes.put(name, NotFound.class);
+    } else {
+        clazzes.put(name, result);
+    }
+    return result;
+}

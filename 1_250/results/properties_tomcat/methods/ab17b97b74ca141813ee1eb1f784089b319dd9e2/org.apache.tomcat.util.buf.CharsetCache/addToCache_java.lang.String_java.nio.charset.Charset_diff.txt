@@ -1,0 +1,6 @@
+private void addToCache(String name, Charset charset) {
+    cache.put(name, charset);
+    for (String alias : charset.aliases()) {
+        cache.put(alias.toLowerCase(Locale.ENGLISH), charset);
+    }
+}

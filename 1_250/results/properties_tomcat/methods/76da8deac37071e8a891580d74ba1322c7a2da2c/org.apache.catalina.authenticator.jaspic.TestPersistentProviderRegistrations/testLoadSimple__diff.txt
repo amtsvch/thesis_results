@@ -1,0 +1,6 @@
+@Test
+public void testLoadSimple() {
+    File f = new File("test/conf/jaspic-test-02.xml");
+    Providers result = PersistentProviderRegistrations.loadProviders(f);
+    validateSimple(result);
+}

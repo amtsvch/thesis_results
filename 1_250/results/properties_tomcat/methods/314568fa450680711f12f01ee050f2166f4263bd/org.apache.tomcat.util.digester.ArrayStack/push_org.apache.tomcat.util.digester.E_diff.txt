@@ -1,0 +1,11 @@
+/**
+ * Pushes a new item onto the top of this stack. The pushed item is also
+ * returned. This is equivalent to calling <code>add</code>.
+ *
+ * @param item  the item to be added
+ * @return the item just pushed
+ */
+public E push(E item) {
+    add(item);
+    return item;
+}

@@ -1,0 +1,15 @@
+/**
+ * Tests that the propertyResolved is false if base is not Map.
+ */
+@Test
+public void testIsReadOnly02() {
+    MapELResolver mapELResolver = new MapELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    boolean result = mapELResolver.isReadOnly(context, new Object(), new Object());
+    Assert.assertFalse(result);
+    Assert.assertFalse(context.isPropertyResolved());
+    mapELResolver = new MapELResolver(true);
+    result = mapELResolver.isReadOnly(context, new Object(), new Object());
+    Assert.assertTrue(result);
+    Assert.assertFalse(context.isPropertyResolved());
+}

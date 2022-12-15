@@ -1,0 +1,7 @@
+@Test
+public void testInitialValue() {
+    Cookie cookie = new Cookie("foo", "bar");
+    Assert.assertEquals("foo", cookie.getName());
+    Assert.assertEquals("bar", cookie.getValue());
+    Assert.assertEquals(0, cookie.getVersion());
+}

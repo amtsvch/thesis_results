@@ -1,0 +1,10 @@
+// ----------------------------------------------------------- Constructors
+/**
+ * Construct a new Principal, associated with the specified Realm, for the
+ * specified username, with no roles.
+ *
+ * @param name The username of the user represented by this Principal
+ */
+public GenericPrincipal(String name) {
+    this(name, null);
+}

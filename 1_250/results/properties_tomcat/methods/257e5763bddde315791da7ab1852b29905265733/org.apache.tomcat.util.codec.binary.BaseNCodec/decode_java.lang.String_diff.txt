@@ -1,0 +1,10 @@
+/**
+ * Decodes a String containing characters in the Base-N alphabet.
+ *
+ * @param pArray
+ *            A String containing Base-N character data
+ * @return a byte array containing binary data
+ */
+public byte[] decode(final String pArray) {
+    return decode(StringUtils.getBytesUtf8(pArray));
+}

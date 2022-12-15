@@ -1,0 +1,18 @@
+public Connector(String protocol) {
+    configuredProtocol = protocol;
+    ProtocolHandler p = null;
+    try {
+        p = ProtocolHandler.create(protocol);
+    } catch (Exception e) {
+        log.error(sm.getString("coyoteConnector.protocolHandlerInstantiationFailed"), e);
+    }
+    if (p != null) {
+        protocolHandler = p;
+        protocolHandlerClassName = protocolHandler.getClass().getName();
+    } else {
+        protocolHandler = null;
+        protocolHandlerClassName = protocol;
+    }
+    // Default for Connector depends on this system property
+    setThrowOnFailure(Boolean.getBoolean("org.apache.catalina.startup.EXIT_ON_INIT_FAILURE"));
+}

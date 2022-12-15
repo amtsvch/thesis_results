@@ -1,0 +1,8 @@
+@Test
+public void testCodasAreIsolated() {
+    JspPropertyGroup jpg = new JspPropertyGroup();
+    jpg.addIncludeCoda("coda");
+    JspPropertyGroupDescriptorImpl descriptor = new JspPropertyGroupDescriptorImpl(jpg);
+    descriptor.getIncludeCodas().clear();
+    Assert.assertEquals(1, descriptor.getIncludeCodas().size());
+}

@@ -1,0 +1,4 @@
+public void setConnectionLinger(int connectionLinger) {
+    socketProperties.setSoLingerTime(connectionLinger);
+    socketProperties.setSoLingerOn(connectionLinger >= 0);
+}

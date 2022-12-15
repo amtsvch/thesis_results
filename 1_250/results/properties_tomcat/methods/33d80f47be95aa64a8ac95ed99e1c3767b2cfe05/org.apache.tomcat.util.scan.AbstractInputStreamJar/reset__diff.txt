@@ -1,0 +1,29 @@
+@Override                                                                                              @Override                                                                                           
+public void reset() throws IOException {                                                               public void reset() throws IOException {                                                            
+closeStream();                                                                                         closeStream();                                                                                      
+entry = null;                                                                                          entry = null;                                                                                       
+jarInputStream = createJarInputStream();                                                               jarInputStream = createJarInputStream();                                                            
+// Only perform multi-release processing on first access                                               // Only perform multi-release processing on first access                                            
+if (multiRelease == null) {                                                                            if (multiRelease == null) {                                                                         
+if (JreCompat.isJre9Available()) {                                                                   |                                                                                                     
+Manifest manifest = jarInputStream.getManifest();                                                      Manifest manifest = jarInputStream.getManifest();                                                   
+if (manifest == null) {                                                                                if (manifest == null) {                                                                             
+multiRelease = Boolean.FALSE;                                                                          multiRelease = Boolean.FALSE;                                                                       
+} else {                                                                                               } else {                                                                                            
+String mrValue = manifest.getMainAttributes().getValue("Multi-Release");                               String mrValue = manifest.getMainAttributes().getValue("Multi-Release");                            
+if (mrValue == null) {                                                                                 if (mrValue == null) {                                                                              
+multiRelease = Boolean.FALSE;                                                                          multiRelease = Boolean.FALSE;                                                                       
+} else {                                                                                               } else {                                                                                            
+multiRelease = Boolean.valueOf(mrValue);                                                               multiRelease = Boolean.valueOf(mrValue);                                                            
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+} else {                                                                                             |                                                                                                     
+multiRelease = Boolean.FALSE;                                                                        |                                                                                                     
+}                                                                                                    |                                                                                                     
+if (multiRelease.booleanValue()) {                                                                     if (multiRelease.booleanValue()) {                                                                  
+if (mrMap == null) {                                                                                   if (mrMap == null) {                                                                                
+populateMrMap();                                                                                       populateMrMap();                                                                                    
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,10 @@
+/**
+ * Import a valid class.
+ */
+@Test
+public void testImportClass01() {
+    ImportHandler handler = new ImportHandler();
+    handler.importClass("org.apache.tomcat.util.res.StringManager");
+    Class<?> result = handler.resolveClass("StringManager");
+    Assert.assertEquals(StringManager.class, result);
+}

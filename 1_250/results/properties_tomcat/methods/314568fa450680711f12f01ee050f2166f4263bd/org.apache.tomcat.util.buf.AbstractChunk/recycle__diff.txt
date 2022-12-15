@@ -1,0 +1,9 @@
+/**
+ * Resets the chunk to an uninitialized state.
+ */
+public void recycle() {
+    hasHashCode = false;
+    isSet = false;
+    start = 0;
+    end = 0;
+}

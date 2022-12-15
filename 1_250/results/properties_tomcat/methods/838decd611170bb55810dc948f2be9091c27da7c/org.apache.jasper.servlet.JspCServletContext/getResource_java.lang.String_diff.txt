@@ -1,0 +1,38 @@
+/**
+ * Return a URL object of a resource that is mapped to the
+ * specified context-relative path.
+ *
+ * @param path Context-relative path of the desired resource
+ *
+ * @exception MalformedURLException if the resource path is
+ *  not properly formed
+ */
+@Override
+public URL getResource(String path) throws MalformedURLException {
+    if (!path.startsWith("/")) {
+        throw new MalformedURLException(Localizer.getMessage("jsp.error.URLMustStartWithSlash", path));
+    }
+    // Strip leading '/'
+    path = path.substring(1);
+    URL url = new URL(myResourceBaseURL, path);
+    try (InputStream is = url.openStream()) {
+    } catch (Throwable t) {
+        ExceptionUtils.handleThrowable(t);
+        url = null;
+    }
+    // During initialisation, getResource() is called before resourceJARs is
+    // initialised
+    if (url == null && resourceJARs != null) {
+        String jarPath = "META-INF/resources/" + path;
+        for (URL jarUrl : resourceJARs) {
+            try (Jar jar = JarFactory.newInstance(jarUrl)) {
+                if (jar.exists(jarPath)) {
+                    return new URL(jar.getURL(jarPath));
+                }
+            } catch (IOException ioe) {
+                // Ignore
+            }
+        }
+    }
+    return url;
+}

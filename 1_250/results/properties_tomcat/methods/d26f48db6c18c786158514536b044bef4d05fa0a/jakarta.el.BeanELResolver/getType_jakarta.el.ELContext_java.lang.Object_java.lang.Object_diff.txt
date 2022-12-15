@@ -1,0 +1,9 @@
+@Override
+public Class<?> getType(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base == null || property == null) {
+        return null;
+    }
+    context.setPropertyResolved(base, property);
+    return this.property(context, base, property).getPropertyType();
+}

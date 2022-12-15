@@ -1,0 +1,7 @@
+@Override
+public Class<?> getCommonPropertyType(ELContext context, Object base) {
+    if (base != null && base.getClass().isArray()) {
+        return Integer.class;
+    }
+    return null;
+}

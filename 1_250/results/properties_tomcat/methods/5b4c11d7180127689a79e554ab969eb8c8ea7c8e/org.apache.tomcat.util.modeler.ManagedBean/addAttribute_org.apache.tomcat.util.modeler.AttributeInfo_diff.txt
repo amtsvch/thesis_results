@@ -1,0 +1,9 @@
+// --------------------------------------------------------- Public Methods
+/**
+ * Add a new attribute to the set of attributes for this MBean.
+ *
+ * @param attribute The new attribute descriptor
+ */
+public void addAttribute(AttributeInfo attribute) {
+    attributes.put(attribute.getName(), attribute);
+}

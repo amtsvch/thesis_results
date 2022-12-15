@@ -1,0 +1,6 @@
+@Test
+public void testSpec03() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("(()->64)", Integer.class);
+    Assert.assertEquals(Integer.valueOf(64), result);
+}

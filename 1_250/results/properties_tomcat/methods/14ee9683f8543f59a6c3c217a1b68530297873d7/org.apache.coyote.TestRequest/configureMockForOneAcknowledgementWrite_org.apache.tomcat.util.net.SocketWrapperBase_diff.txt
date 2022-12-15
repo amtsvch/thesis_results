@@ -1,6 +1,0 @@
-private void configureMockForOneAcknowledgementWrite(SocketWrapperBase<?> socketWrapper) throws IOException {
-    EasyMock.reset(socketWrapper);
-    socketWrapper.write(true, Constants.ACK_BYTES, 0, Constants.ACK_BYTES.length);
-    EasyMock.expectLastCall().once();
-    EasyMock.replay(socketWrapper);
-}

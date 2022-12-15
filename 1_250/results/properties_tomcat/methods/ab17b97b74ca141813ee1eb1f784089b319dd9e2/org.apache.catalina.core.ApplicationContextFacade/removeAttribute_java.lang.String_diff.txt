@@ -1,0 +1,8 @@
+@Override
+public void removeAttribute(String name) {
+    if (SecurityUtil.isPackageProtectionEnabled()) {
+        doPrivileged("removeAttribute", new Object[] { name });
+    } else {
+        context.removeAttribute(name);
+    }
+}

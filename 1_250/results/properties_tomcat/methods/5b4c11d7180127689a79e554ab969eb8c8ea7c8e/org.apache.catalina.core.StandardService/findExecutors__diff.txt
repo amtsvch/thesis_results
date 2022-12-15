@@ -1,0 +1,12 @@
+/**
+ * Retrieves all executors
+ * @return Executor[]
+ */
+@Override
+public Executor[] findExecutors() {
+    synchronized (executors) {
+        Executor[] arr = new Executor[executors.size()];
+        executors.toArray(arr);
+        return arr;
+    }
+}

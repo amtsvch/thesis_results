@@ -1,0 +1,12 @@
+/**
+ * Constructor used for the primary Host
+ *
+ * @param name The name of the virtual host
+ * @param host The host
+ */
+public MappedHost(String name, Host host) {
+    super(name, host);
+    realHost = this;
+    contextList = new ContextList();
+    aliases = new CopyOnWriteArrayList<>();
+}

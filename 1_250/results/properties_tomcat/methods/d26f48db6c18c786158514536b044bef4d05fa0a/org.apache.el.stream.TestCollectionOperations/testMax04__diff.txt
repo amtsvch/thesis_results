@@ -1,0 +1,6 @@
+@Test(expected = ELException.class)
+public void testMax04() {
+    ELProcessor processor = new ELProcessor();
+    processor.defineBean("beans", beans);
+    processor.getValue("beans.stream().max()", Object.class);
+}

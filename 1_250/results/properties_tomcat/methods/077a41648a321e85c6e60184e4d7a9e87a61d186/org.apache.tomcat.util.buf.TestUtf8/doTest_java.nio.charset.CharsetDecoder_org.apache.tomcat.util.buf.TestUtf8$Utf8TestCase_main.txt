@@ -1,0 +1,48 @@
+private void doTest(CharsetDecoder decoder, Utf8TestCase testCase) {
+    int len = testCase.input.length;
+    ByteBuffer bb = ByteBuffer.allocate(len);
+    CharBuffer cb = CharBuffer.allocate(len);
+    // Configure decoder to fail on an error
+    decoder.reset();
+    decoder.onMalformedInput(CodingErrorAction.REPORT);
+    decoder.onUnmappableCharacter(CodingErrorAction.REPORT);
+    // Add each byte one at a time. The decoder should fail as soon as
+    // an invalid sequence has been provided
+    for (int i = 0; i < len; i++) {
+        bb.put((byte) testCase.input[i]);
+        bb.flip();
+        CoderResult cr = decoder.decode(bb, cb, false);
+        if (cr.isError()) {
+            int expected = testCase.invalidIndex;
+            Assert.assertEquals(testCase.description, expected, i);
+            break;
+        }
+        bb.compact();
+    }
+    // Configure decoder to replace on an error
+    decoder.reset();
+    decoder.onMalformedInput(CodingErrorAction.REPLACE);
+    decoder.onUnmappableCharacter(CodingErrorAction.REPLACE);
+    // Add each byte one at a time.
+    bb.clear();
+    cb.clear();
+    for (int i = 0; i < len; i++) {
+        bb.put((byte) testCase.input[i]);
+        bb.flip();
+        CoderResult cr = decoder.decode(bb, cb, false);
+        if (cr.isError()) {
+            Assert.fail(testCase.description);
+        }
+        bb.compact();
+    }
+    // For incomplete sequences at the end of the input need to tell
+    // the decoder the input has ended
+    bb.flip();
+    CoderResult cr = decoder.decode(bb, cb, true);
+    if (cr.isError()) {
+        Assert.fail(testCase.description);
+    }
+    cb.flip();
+    String expected = testCase.outputReplaced;
+    Assert.assertEquals(testCase.description, expected, cb.toString());
+}

@@ -1,0 +1,7 @@
+private static void skipUntilSemiColon(ByteBuffer bb) {
+    while (bb.hasRemaining()) {
+        if (bb.get() == SEMICOLON_BYTE) {
+            break;
+        }
+    }
+}

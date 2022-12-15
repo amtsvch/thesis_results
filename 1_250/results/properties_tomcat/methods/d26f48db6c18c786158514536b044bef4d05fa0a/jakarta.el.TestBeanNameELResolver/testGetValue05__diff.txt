@@ -1,0 +1,11 @@
+/**
+ * Beans that don't exist shouldn't return anything
+ */
+@Test
+public void testGetValue05() {
+    BeanNameELResolver resolver = createBeanNameELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Object result = resolver.getValue(context, null, BEAN99_NAME);
+    Assert.assertNull(result);
+    Assert.assertFalse(context.isPropertyResolved());
+}

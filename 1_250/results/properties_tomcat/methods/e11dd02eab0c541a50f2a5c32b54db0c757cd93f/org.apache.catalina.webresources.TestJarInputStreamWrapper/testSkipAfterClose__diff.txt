@@ -1,0 +1,5 @@
+@Test
+public void testSkipAfterClose() throws Exception {
+    Method m = InputStream.class.getMethod("skip", long.class);
+    testMethodAfterClose(m, Long.valueOf(1));
+}

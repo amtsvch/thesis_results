@@ -1,0 +1,16 @@
+// -------------------- Metadata --------------------
+// methods from 1.0
+/**
+ * Add a new bean metadata to the set of beans known to this registry. This
+ * is used by internal components.
+ *
+ * @param bean The managed bean to be added
+ * @since 1.0
+ */
+public void addManagedBean(ManagedBean bean) {
+    // XXX Use group + name
+    descriptors.put(bean.getName(), bean);
+    if (bean.getType() != null) {
+        descriptorsByClass.put(bean.getType(), bean);
+    }
+}

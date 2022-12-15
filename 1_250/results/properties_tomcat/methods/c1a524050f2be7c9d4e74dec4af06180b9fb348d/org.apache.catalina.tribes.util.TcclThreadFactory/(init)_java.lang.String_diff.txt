@@ -1,0 +1,5 @@
+public TcclThreadFactory(String namePrefix) {
+    SecurityManager s = System.getSecurityManager();
+    group = (s != null) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();
+    this.namePrefix = namePrefix;
+}

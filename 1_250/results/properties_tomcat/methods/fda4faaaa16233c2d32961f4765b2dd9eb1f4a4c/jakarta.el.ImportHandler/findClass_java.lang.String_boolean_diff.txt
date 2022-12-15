@@ -1,0 +1,45 @@
+private Class<?> findClass(String name, boolean throwException) {
+    Class<?> clazz;
+    ClassLoader cl = Util.getContextClassLoader();
+    String path = name.replace('.', '/') + ".class";
+    try {
+        /* Given that findClass() has to be called for every imported
+             * package and that getResource() is a lot faster then loadClass()
+             * for resources that don't exist, the overhead of the getResource()
+             * for the case where the class does exist is a lot less than the
+             * overhead we save by not calling loadClass().
+             */
+        if (IS_SECURITY_ENABLED) {
+            // Webapps don't have read permission for JAVA_HOME (and
+            // possibly other sources of classes). Only need to know if the
+            // class exists at this point. Class loading occurs with
+            // standard SecurityManager policy next.
+            if (!AccessController.doPrivileged(new PrivilegedResourceExists(cl, path)).booleanValue()) {
+                return null;
+            }
+        } else {
+            if (cl.getResource(path) == null) {
+                return null;
+            }
+        }
+    } catch (ClassCircularityError cce) {
+        // May happen under a security manager. Ignore it and try loading
+        // the class normally.
+    }
+    try {
+        clazz = cl.loadClass(name);
+    } catch (ClassNotFoundException e) {
+        return null;
+    }
+    // Class must be public, non-abstract, not an interface and in an
+    // exported package
+    int modifiers = clazz.getModifiers();
+    if (!Modifier.isPublic(modifiers) || Modifier.isAbstract(modifiers) || Modifier.isInterface(modifiers) || !isExported(clazz)) {
+        if (throwException) {
+            throw new ELException(Util.message(null, "importHandler.invalidClass", name));
+        } else {
+            return null;
+        }
+    }
+    return clazz;
+}

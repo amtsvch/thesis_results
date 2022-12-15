@@ -1,0 +1,63 @@
+void addEndpoint(ServerEndpointConfig sec, boolean fromAnnotatedPojo) throws DeploymentException {
+    if (enforceNoAddAfterHandshake && !addAllowed) {
+        throw new DeploymentException(sm.getString("serverContainer.addNotAllowed"));
+    }
+    if (servletContext == null) {
+        throw new DeploymentException(sm.getString("serverContainer.servletContextMissing"));
+    }
+    if (deploymentFailed) {
+        throw new DeploymentException(sm.getString("serverContainer.failedDeployment", servletContext.getContextPath(), servletContext.getVirtualServerName()));
+    }
+    try {
+        String path = sec.getPath();
+        // Add method mapping to user properties
+        PojoMethodMapping methodMapping = new PojoMethodMapping(sec.getEndpointClass(), sec.getDecoders(), path, getInstanceManager(Thread.currentThread().getContextClassLoader()));
+        if (methodMapping.getOnClose() != null || methodMapping.getOnOpen() != null || methodMapping.getOnError() != null || methodMapping.hasMessageHandlers()) {
+            sec.getUserProperties().put(org.apache.tomcat.websocket.pojo.Constants.POJO_METHOD_MAPPING_KEY, methodMapping);
+        }
+        UriTemplate uriTemplate = new UriTemplate(path);
+        if (uriTemplate.hasParameters()) {
+            Integer key = Integer.valueOf(uriTemplate.getSegmentCount());
+            ConcurrentSkipListMap<String, TemplatePathMatch> templateMatches = configTemplateMatchMap.get(key);
+            if (templateMatches == null) {
+                // Ensure that if concurrent threads execute this block they
+                // all end up using the same ConcurrentSkipListMap instance
+                templateMatches = new ConcurrentSkipListMap<>();
+                configTemplateMatchMap.putIfAbsent(key, templateMatches);
+                templateMatches = configTemplateMatchMap.get(key);
+            }
+            TemplatePathMatch newMatch = new TemplatePathMatch(sec, uriTemplate, fromAnnotatedPojo);
+            TemplatePathMatch oldMatch = templateMatches.putIfAbsent(uriTemplate.getNormalizedPath(), newMatch);
+            if (oldMatch != null) {
+                // Note: This depends on Endpoint instances being added
+                // before POJOs in WsSci#onStartup()
+                if (oldMatch.isFromAnnotatedPojo() && !newMatch.isFromAnnotatedPojo() && oldMatch.getConfig().getEndpointClass() == newMatch.getConfig().getEndpointClass()) {
+                    // The WebSocket spec says to ignore the new match in this case
+                    templateMatches.put(path, oldMatch);
+                } else {
+                    // Duplicate uriTemplate;
+                    throw new DeploymentException(sm.getString("serverContainer.duplicatePaths", path, sec.getEndpointClass(), sec.getEndpointClass()));
+                }
+            }
+        } else {
+            // Exact match
+            ExactPathMatch newMatch = new ExactPathMatch(sec, fromAnnotatedPojo);
+            ExactPathMatch oldMatch = configExactMatchMap.put(path, newMatch);
+            if (oldMatch != null) {
+                // Note: This depends on Endpoint instances being added
+                // before POJOs in WsSci#onStartup()
+                if (oldMatch.isFromAnnotatedPojo() && !newMatch.isFromAnnotatedPojo() && oldMatch.getConfig().getEndpointClass() == newMatch.getConfig().getEndpointClass()) {
+                    // The WebSocket spec says to ignore the new match in this case
+                    configExactMatchMap.put(path, oldMatch);
+                } else {
+                    // Duplicate path mappings
+                    throw new DeploymentException(sm.getString("serverContainer.duplicatePaths", path, oldMatch.getConfig().getEndpointClass(), sec.getEndpointClass()));
+                }
+            }
+        }
+        endpointsRegistered = true;
+    } catch (DeploymentException de) {
+        failDeployment();
+        throw de;
+    }
+}

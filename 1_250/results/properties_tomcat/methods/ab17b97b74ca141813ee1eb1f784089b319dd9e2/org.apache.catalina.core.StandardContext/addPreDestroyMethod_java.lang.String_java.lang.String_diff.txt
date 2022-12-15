@@ -1,0 +1,11 @@
+@Override
+public void addPreDestroyMethod(String clazz, String method) {
+    if (clazz == null || method == null) {
+        throw new IllegalArgumentException(sm.getString("standardContext.predestroy.required"));
+    }
+    if (preDestroyMethods.get(clazz) != null) {
+        throw new IllegalArgumentException(sm.getString("standardContext.predestroy.duplicate", clazz));
+    }
+    preDestroyMethods.put(clazz, method);
+    fireContainerEvent("addPreDestroyMethod", clazz);
+}

@@ -1,0 +1,13 @@
+@Override
+public void messageReceived(ChannelMessage msg) {
+    if (rxStart == 0) {
+        rxStart = System.currentTimeMillis();
+    }
+    long bytes = XByteBuffer.getDataPackageLength(((ChannelData) msg).getDataPackageLength());
+    mbRx += bytes / (1024d * 1024d);
+    msgRxCnt.addAndGet(1);
+    if (msgRxCnt.get() % interval == 0) {
+        report(timeTx);
+    }
+    super.messageReceived(msg);
+}

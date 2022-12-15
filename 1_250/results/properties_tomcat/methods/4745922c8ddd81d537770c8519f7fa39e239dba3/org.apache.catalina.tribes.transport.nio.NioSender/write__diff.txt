@@ -1,0 +1,24 @@
+protected boolean write() throws IOException {
+    if ((!isConnected()) || (this.socketChannel == null && this.dataChannel == null)) {
+        throw new IOException(sm.getString("nioSender.not.connected"));
+    }
+    if (current != null) {
+        if (remaining > 0) {
+            // we have written everything, or we are starting a new package
+            // protect against buffer overwrite
+            int byteswritten = isUdpBased() ? dataChannel.write(writebuf) : socketChannel.write(writebuf);
+            if (byteswritten == -1) {
+                throw new EOFException();
+            }
+            remaining -= byteswritten;
+            // if the entire message was written from the buffer
+            // reset the position counter
+            if (remaining < 0) {
+                remaining = 0;
+            }
+        }
+        return (remaining == 0);
+    }
+    // no message to send, we can consider that complete
+    return true;
+}

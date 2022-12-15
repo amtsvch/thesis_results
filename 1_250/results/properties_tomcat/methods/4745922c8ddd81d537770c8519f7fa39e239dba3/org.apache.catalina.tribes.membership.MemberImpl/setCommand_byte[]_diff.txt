@@ -1,0 +1,5 @@
+@Override
+public synchronized void setCommand(byte[] command) {
+    this.command = command != null ? command : new byte[0];
+    getData(true, true);
+}

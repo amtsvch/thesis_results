@@ -1,0 +1,10 @@
+/**
+ * Returns true if this object has buffered data for reading.
+ *
+ * @param context the context to be used
+ * @return true if there is data still available for reading.
+ */
+boolean hasData(final Context context) {
+    // package protected for access from I/O streams
+    return context.pos > context.readPos;
+}

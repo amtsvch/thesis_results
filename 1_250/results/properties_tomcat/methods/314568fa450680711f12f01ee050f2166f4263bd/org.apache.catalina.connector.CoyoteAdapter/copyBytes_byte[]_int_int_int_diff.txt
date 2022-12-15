@@ -1,0 +1,12 @@
+/**
+ * Copy an array of bytes to a different position. Used during
+ * normalization.
+ *
+ * @param b The bytes that should be copied
+ * @param dest Destination offset
+ * @param src Source offset
+ * @param len Length
+ */
+protected static void copyBytes(byte[] b, int dest, int src, int len) {
+    System.arraycopy(b, src, b, dest, len);
+}

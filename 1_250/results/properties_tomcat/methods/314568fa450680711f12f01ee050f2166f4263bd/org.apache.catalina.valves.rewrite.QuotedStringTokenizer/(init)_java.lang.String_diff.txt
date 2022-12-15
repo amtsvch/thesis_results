@@ -1,0 +1,10 @@
+public QuotedStringTokenizer(String text) {
+    List<String> tokens;
+    if (text != null) {
+        tokens = tokenizeText(text);
+    } else {
+        tokens = Collections.emptyList();
+    }
+    this.tokenCount = tokens.size();
+    this.tokenIterator = tokens.iterator();
+}

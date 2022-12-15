@@ -1,0 +1,9 @@
+private static void decoupleOtherGroups(Set<WebXml> group) {
+    Set<String> names = new HashSet<>();
+    for (WebXml fragment : group) {
+        names.add(fragment.getName());
+    }
+    for (WebXml fragment : group) {
+        fragment.getAfterOrdering().removeIf(entry -> !names.contains(entry));
+    }
+}

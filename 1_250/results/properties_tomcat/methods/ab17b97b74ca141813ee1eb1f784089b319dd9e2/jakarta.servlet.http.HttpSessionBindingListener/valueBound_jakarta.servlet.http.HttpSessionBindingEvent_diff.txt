@@ -1,0 +1,11 @@
+/**
+ * Notifies the object that it is being bound to a session and identifies
+ * the session.
+ * The default implementation is a NO-OP.
+ *
+ * @param event
+ *            the event that identifies the session
+ * @see #valueUnbound
+ */
+public default void valueBound(HttpSessionBindingEvent event) {
+}

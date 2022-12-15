@@ -1,0 +1,44 @@
+protected void doScanClassPath(JarScanType scanType, ServletContext context, JarScannerCallback callback, Set<URL> processedURLs) {
+    if (log.isTraceEnabled()) {
+        log.trace(sm.getString("jarScan.classloaderStart"));
+    }
+    ClassLoader stopLoader = null;
+    if (!isScanBootstrapClassPath()) {
+        // Stop when we reach the bootstrap class loader
+        stopLoader = ClassLoader.getSystemClassLoader().getParent();
+    }
+    ClassLoader classLoader = context.getClassLoader();
+    // JARs are treated as application provided until the common class
+    // loader is reached.
+    boolean isWebapp = true;
+    // Use a Deque so URLs can be removed as they are processed
+    // and new URLs can be added as they are discovered during
+    // processing.
+    Deque<URL> classPathUrlsToProcess = new LinkedList<>();
+    while (classLoader != null && classLoader != stopLoader) {
+        if (classLoader instanceof URLClassLoader) {
+            if (isWebapp) {
+                isWebapp = isWebappClassLoader(classLoader);
+            }
+            classPathUrlsToProcess.addAll(Arrays.asList(((URLClassLoader) classLoader).getURLs()));
+            processURLs(scanType, callback, processedURLs, isWebapp, classPathUrlsToProcess);
+        }
+        classLoader = classLoader.getParent();
+    }
+    // The application and platform class loaders are not
+    // instances of URLClassLoader. Use the class path in this
+    // case.
+    addClassPath(classPathUrlsToProcess);
+    // Also add any modules
+    for (ResolvedModule module : ModuleLayer.boot().configuration().modules()) {
+        Optional<URI> uri = module.reference().location();
+        if (uri.isPresent()) {
+            try {
+                classPathUrlsToProcess.add(uri.get().toURL());
+            } catch (MalformedURLException e) {
+                log.warn(sm.getString("jarScan.invalidModuleUri", uri), e);
+            }
+        }
+    }
+    processURLs(scanType, callback, processedURLs, false, classPathUrlsToProcess);
+}

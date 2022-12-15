@@ -1,0 +1,9 @@
+public static Method[] findMethods(Class<?> c) {
+    Method[] methods = objectMethods.get(c);
+    if (methods != null) {
+        return methods;
+    }
+    methods = c.getMethods();
+    objectMethods.put(c, methods);
+    return methods;
+}

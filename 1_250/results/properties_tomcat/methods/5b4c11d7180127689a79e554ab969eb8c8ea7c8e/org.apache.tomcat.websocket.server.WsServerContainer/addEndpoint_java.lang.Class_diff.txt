@@ -1,0 +1,11 @@
+/**
+ * Provides the equivalent of {@link #addEndpoint(ServerEndpointConfig)}
+ * for publishing plain old java objects (POJOs) that have been annotated as
+ * WebSocket endpoints.
+ *
+ * @param pojo   The annotated POJO
+ */
+@Override
+public void addEndpoint(Class<?> pojo) throws DeploymentException {
+    addEndpoint(pojo, false);
+}

@@ -1,0 +1,4 @@
+@Test
+public void testBug49081a() {
+    Assert.assertEquals("$2", evaluateExpression("$${1+1}"));
+}

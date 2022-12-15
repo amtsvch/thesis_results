@@ -1,0 +1,20 @@
+/**
+ * Single quote and escape a character
+ */
+static String quote(char c) {
+    StringBuilder b = new StringBuilder();
+    b.append('\'');
+    if (c == '\'') {
+        b.append('\\').append('\'');
+    } else if (c == '\\') {
+        b.append('\\').append('\\');
+    } else if (c == '\n') {
+        b.append('\\').append('n');
+    } else if (c == '\r') {
+        b.append('\\').append('r');
+    } else {
+        b.append(c);
+    }
+    b.append('\'');
+    return b.toString();
+}

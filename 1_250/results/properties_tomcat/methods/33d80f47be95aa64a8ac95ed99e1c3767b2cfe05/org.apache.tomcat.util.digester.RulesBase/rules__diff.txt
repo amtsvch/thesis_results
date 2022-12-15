@@ -1,0 +1,11 @@
+/**
+ * Return a List of all registered Rule instances, or a zero-length List
+ * if there are no registered Rule instances.  If more than one Rule
+ * instance has been registered, they <strong>must</strong> be returned
+ * in the order originally registered through the <code>add()</code>
+ * method.
+ */
+@Override
+public List<Rule> rules() {
+    return this.rules;
+}

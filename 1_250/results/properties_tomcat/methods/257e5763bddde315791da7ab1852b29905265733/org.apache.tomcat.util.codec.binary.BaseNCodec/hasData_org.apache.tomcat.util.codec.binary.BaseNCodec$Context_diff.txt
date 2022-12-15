@@ -1,0 +1,10 @@
+/**                                                                                                    /**                                                                                                 
+* Returns true if this object has buffered data for reading.                                           * Returns true if this object has buffered data for reading.                                        
+*                                                                                                      *                                                                                                   
+* @param context the context to be used                                                                * @param context the context to be used                                                             
+* @return true if there is data still available for reading.                                           * @return true if there is data still available for reading.                                        
+*/                                                                                                     */                                                                                                  
+boolean hasData(final Context context) {                                                               boolean hasData(final Context context) {                                                            
+// package protected for access from I/O streams                                                       // package protected for access from I/O streams                                                    
+return context.buffer != null;                                                                       | return context.pos &gt; context.readPos;                                                            
+}                                                                                                      }                                                                                                   

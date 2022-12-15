@@ -1,0 +1,11 @@
+@Test
+public void testToArray01() {
+    ELProcessor processor = new ELProcessor();
+    processor.defineBean("beans", beans);
+    Object result = processor.getValue("beans.stream().toArray()", Object.class);
+    Object[] expected = new Object[3];
+    expected[0] = bean01;
+    expected[1] = bean02;
+    expected[2] = bean03;
+    Assert.assertArrayEquals(expected, (Object[]) result);
+}

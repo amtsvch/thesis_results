@@ -1,0 +1,14 @@
+// -------------------------------------------------------- Lifecycle methods                          // -------------------------------------------------------- Lifecycle methods                       
+@Override                                                                                              @Override                                                                                           
+protected void initInternal() throws LifecycleException {                                              protected void initInternal() throws LifecycleException {                                           
+try (JarFile jarFile = JreCompat.getInstance().jarFileNewInstance(getBase())) {                      | try (JarFile jarFile = new JarFile(new File(getBase()), true, ZipFile.OPEN_READ, Runtime.version()))
+setManifest(jarFile.getManifest());                                                                    setManifest(jarFile.getManifest());                                                                 
+} catch (IOException ioe) {                                                                            } catch (IOException ioe) {                                                                         
+throw new IllegalArgumentException(ioe);                                                               throw new IllegalArgumentException(ioe);                                                            
+}                                                                                                      }                                                                                                   
+try {                                                                                                  try {                                                                                               
+setBaseUrl(UriUtil.buildJarSafeUrl(new File(getBase())));                                              setBaseUrl(UriUtil.buildJarSafeUrl(new File(getBase())));                                           
+} catch (MalformedURLException e) {                                                                    } catch (MalformedURLException e) {                                                                 
+throw new IllegalArgumentException(e);                                                                 throw new IllegalArgumentException(e);                                                              
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

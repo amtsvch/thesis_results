@@ -1,0 +1,15 @@
+/**
+ * Specify a non-default provider to use to create instances of
+ * {@link SecureRandom} which are used to generate session IDs.  If no
+ * provider is specified, the platform default is used. To use the platform
+ * default specify {@code null} or the empty string. If an invalid algorithm
+ * and/or provider is specified the {@link SecureRandom} instances will be
+ * created using the defaults for this {@link SessionIdGenerator}
+ * implementation. If that fails, the {@link SecureRandom} instances will be
+ * created using platform defaults.
+ *
+ * @param secureRandomProvider  The name of the provider
+ */
+public void setSecureRandomProvider(String secureRandomProvider) {
+    this.secureRandomProvider = secureRandomProvider;
+}

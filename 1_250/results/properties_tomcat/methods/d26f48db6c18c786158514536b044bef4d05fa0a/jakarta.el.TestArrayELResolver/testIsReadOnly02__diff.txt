@@ -1,0 +1,15 @@
+/**
+ * Tests that the propertyResolved is false if base is not an array.
+ */
+@Test
+public void testIsReadOnly02() {
+    ArrayELResolver resolver = new ArrayELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    boolean result = resolver.isReadOnly(context, new Object(), new Object());
+    Assert.assertFalse(result);
+    Assert.assertFalse(context.isPropertyResolved());
+    resolver = new ArrayELResolver(true);
+    result = resolver.isReadOnly(context, new Object(), new Object());
+    Assert.assertTrue(result);
+    Assert.assertFalse(context.isPropertyResolved());
+}

@@ -1,0 +1,7 @@
+/**
+ * Tests that the operation is not invoked if base is not ELCLass.
+ */
+@Test
+public void testSetValue03() {
+    doNegativeTest(new Object(), PROPERTY01_NAME, MethodUnderTest.SET_VALUE);
+}

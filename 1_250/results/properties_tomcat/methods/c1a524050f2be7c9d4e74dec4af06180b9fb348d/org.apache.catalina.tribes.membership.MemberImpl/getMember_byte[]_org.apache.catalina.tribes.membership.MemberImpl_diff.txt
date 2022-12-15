@@ -1,0 +1,11 @@
+/**
+ * Deserializes a member from data sent over the wire.
+ *
+ * @param data   The bytes received
+ * @param member The member object to populate
+ *
+ * @return The populated member object.
+ */
+public static Member getMember(byte[] data, MemberImpl member) {
+    return getMember(data, 0, data.length, member);
+}

@@ -1,0 +1,5 @@
+@Test(expected = NumberFormatException.class)
+public void testAttributeInvalid03() {
+    Cookie cookie = new Cookie("name", "value");
+    cookie.setAttribute("Max-Age", "bbb");
+}

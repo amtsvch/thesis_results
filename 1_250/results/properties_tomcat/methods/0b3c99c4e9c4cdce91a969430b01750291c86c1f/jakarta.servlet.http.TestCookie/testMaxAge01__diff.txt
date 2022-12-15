@@ -1,0 +1,9 @@
+@Test
+public void testMaxAge01() {
+    Cookie cookie = new Cookie("name", "value");
+    Assert.assertEquals(-1, cookie.getMaxAge());
+    for (int value : new int[] { Integer.MIN_VALUE, -2, -1, 0, 1, 2, Integer.MAX_VALUE }) {
+        cookie.setMaxAge(value);
+        Assert.assertEquals(value, cookie.getMaxAge());
+    }
+}

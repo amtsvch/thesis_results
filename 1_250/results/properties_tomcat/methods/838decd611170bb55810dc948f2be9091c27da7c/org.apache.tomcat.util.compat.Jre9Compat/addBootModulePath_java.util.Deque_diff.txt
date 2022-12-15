@@ -1,0 +1,24 @@
+@Override
+public void addBootModulePath(Deque<URL> classPathUrlsToProcess) {
+    try {
+        Object bootLayer = bootMethod.invoke(null);
+        Object bootConfiguration = configurationMethod.invoke(bootLayer);
+        Set<?> resolvedModules = (Set<?>) modulesMethod.invoke(bootConfiguration);
+        for (Object resolvedModule : resolvedModules) {
+            Object moduleReference = referenceMethod.invoke(resolvedModule);
+            Object optionalURI = locationMethod.invoke(moduleReference);
+            Boolean isPresent = (Boolean) isPresentMethod.invoke(optionalURI);
+            if (isPresent.booleanValue()) {
+                URI uri = (URI) getMethod.invoke(optionalURI);
+                try {
+                    URL url = uri.toURL();
+                    classPathUrlsToProcess.add(url);
+                } catch (MalformedURLException e) {
+                    log.warn(sm.getString("jre9Compat.invalidModuleUri", uri), e);
+                }
+            }
+        }
+    } catch (ReflectiveOperationException e) {
+        throw new UnsupportedOperationException(e);
+    }
+}

@@ -1,0 +1,10 @@
+@Test
+public void testOrderWebFragmentsAbsolutePartial() {
+    app.addAbsoluteOrdering("c");
+    app.addAbsoluteOrdering("a");
+    Set<WebXml> ordered = WebXml.orderWebFragments(app, fragments, null);
+    Iterator<WebXml> iter = ordered.iterator();
+    Assert.assertEquals(c, iter.next());
+    Assert.assertEquals(a, iter.next());
+    Assert.assertFalse(iter.hasNext());
+}

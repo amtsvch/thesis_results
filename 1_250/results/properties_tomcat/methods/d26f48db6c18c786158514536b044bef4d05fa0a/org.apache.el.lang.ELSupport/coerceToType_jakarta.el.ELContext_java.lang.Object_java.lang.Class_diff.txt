@@ -1,0 +1,92 @@
+public static final <T> T coerceToType(final ELContext ctx, final Object obj, final Class<T> type) throws ELException {
+    if (ctx != null) {
+        boolean originalIsPropertyResolved = ctx.isPropertyResolved();
+        try {
+            T result = ctx.getELResolver().convertToType(ctx, obj, type);
+            if (ctx.isPropertyResolved()) {
+                return result;
+            }
+        } finally {
+            ctx.setPropertyResolved(originalIsPropertyResolved);
+        }
+    }
+    if (type == null || Object.class.equals(type) || (obj != null && type.isAssignableFrom(obj.getClass()))) {
+        @SuppressWarnings("unchecked")
+        T result = (T) obj;
+        return result;
+    }
+    if (!COERCE_TO_ZERO) {
+        if (obj == null && !type.isPrimitive() && !String.class.isAssignableFrom(type)) {
+            return null;
+        }
+    }
+    if (String.class.equals(type)) {
+        @SuppressWarnings("unchecked")
+        T result = (T) coerceToString(ctx, obj);
+        return result;
+    }
+    if (ELArithmetic.isNumberType(type)) {
+        @SuppressWarnings("unchecked")
+        T result = (T) coerceToNumber(ctx, obj, type);
+        return result;
+    }
+    if (Character.class.equals(type) || Character.TYPE == type) {
+        @SuppressWarnings("unchecked")
+        T result = (T) coerceToCharacter(ctx, obj);
+        return result;
+    }
+    if (Boolean.class.equals(type) || Boolean.TYPE == type) {
+        @SuppressWarnings("unchecked")
+        T result = (T) coerceToBoolean(ctx, obj, Boolean.TYPE == type);
+        return result;
+    }
+    if (type.isEnum()) {
+        @SuppressWarnings("unchecked")
+        T result = (T) coerceToEnum(ctx, obj, type);
+        return result;
+    }
+    // new to spec
+    if (obj == null) {
+        return null;
+    }
+    if (obj instanceof String) {
+        String str = (String) obj;
+        PropertyEditor editor = PropertyEditorManager.findEditor(type);
+        if (editor == null) {
+            if (str.isEmpty()) {
+                return null;
+            }
+            throw new ELException(MessageFactory.get("error.convert", obj, obj.getClass(), type));
+        } else {
+            try {
+                editor.setAsText(str);
+                @SuppressWarnings("unchecked")
+                T result = (T) editor.getValue();
+                return result;
+            } catch (RuntimeException e) {
+                if (str.isEmpty()) {
+                    return null;
+                }
+                throw new ELException(MessageFactory.get("error.convert", obj, obj.getClass(), type), e);
+            }
+        }
+    }
+    // Handle special case because the syntax for the empty set is the same
+    // for an empty map. The parser will always parse {} as an empty set.
+    if (obj instanceof Set && type == Map.class && ((Set<?>) obj).isEmpty()) {
+        @SuppressWarnings("unchecked")
+        T result = (T) Collections.EMPTY_MAP;
+        return result;
+    }
+    // Handle arrays
+    if (type.isArray() && obj.getClass().isArray()) {
+        @SuppressWarnings("unchecked")
+        T result = (T) coerceToArray(ctx, obj, type);
+        return result;
+    }
+    if (obj instanceof LambdaExpression && isFunctionalInterface(type)) {
+        T result = coerceToFunctionalInterface(ctx, (LambdaExpression) obj, type);
+        return result;
+    }
+    throw new ELException(MessageFactory.get("error.convert", obj, obj.getClass(), type));
+}

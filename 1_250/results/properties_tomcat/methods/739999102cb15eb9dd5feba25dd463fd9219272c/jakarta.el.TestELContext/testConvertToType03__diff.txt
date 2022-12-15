@@ -1,0 +1,16 @@
+/**
+ * Tests that if there is ELResolver it will handle the conversion. If this
+ * resolver cannot return a result the standard coercions will be invoked.
+ */
+@Test
+public void testConvertToType03() {
+    ELContext elContext = new TesterELContext(new TesterELResolverOne());
+    boolean originalPropertyResolved = false;
+    elContext.setPropertyResolved(originalPropertyResolved);
+    Object result = elContext.convertToType("1", String.class);
+    Assert.assertEquals("ONE", result);
+    Assert.assertTrue(originalPropertyResolved == elContext.isPropertyResolved());
+    result = elContext.convertToType("test", String.class);
+    Assert.assertEquals("test", result);
+    Assert.assertTrue(originalPropertyResolved == elContext.isPropertyResolved());
+}

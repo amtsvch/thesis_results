@@ -1,0 +1,14 @@
+// -------------------------------------------------------- Lifecycle methods
+@Override
+protected void initInternal() throws LifecycleException {
+    try (JarFile jarFile = new JarFile(new File(getBase()), true, ZipFile.OPEN_READ, Runtime.version())) {
+        setManifest(jarFile.getManifest());
+    } catch (IOException ioe) {
+        throw new IllegalArgumentException(ioe);
+    }
+    try {
+        setBaseUrl(UriUtil.buildJarSafeUrl(new File(getBase())));
+    } catch (MalformedURLException e) {
+        throw new IllegalArgumentException(e);
+    }
+}

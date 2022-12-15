@@ -1,0 +1,7 @@
+@Test(expected = IllegalArgumentException.class)
+public void testBug53062e() throws Exception {
+    Request req = new TesterRequest();
+    Response resp = new Response();
+    resp.setRequest(req);
+    resp.toAbsolute("../../..");
+}

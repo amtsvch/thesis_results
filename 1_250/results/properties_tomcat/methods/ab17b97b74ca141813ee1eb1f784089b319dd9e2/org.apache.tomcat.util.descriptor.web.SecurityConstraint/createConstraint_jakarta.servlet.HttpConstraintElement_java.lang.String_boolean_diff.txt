@@ -1,0 +1,26 @@
+private static SecurityConstraint createConstraint(HttpConstraintElement element, String urlPattern, boolean alwaysCreate) {
+    SecurityConstraint constraint = new SecurityConstraint();
+    SecurityCollection collection = new SecurityCollection();
+    boolean create = alwaysCreate;
+    if (element.getTransportGuarantee() != ServletSecurity.TransportGuarantee.NONE) {
+        constraint.setUserConstraint(element.getTransportGuarantee().name());
+        create = true;
+    }
+    if (element.getRolesAllowed().length > 0) {
+        String[] roles = element.getRolesAllowed();
+        for (String role : roles) {
+            constraint.addAuthRole(role);
+        }
+        create = true;
+    }
+    if (element.getEmptyRoleSemantic() != EmptyRoleSemantic.PERMIT) {
+        constraint.setAuthConstraint(true);
+        create = true;
+    }
+    if (create) {
+        collection.addPattern(urlPattern);
+        constraint.addCollection(collection);
+        return constraint;
+    }
+    return null;
+}

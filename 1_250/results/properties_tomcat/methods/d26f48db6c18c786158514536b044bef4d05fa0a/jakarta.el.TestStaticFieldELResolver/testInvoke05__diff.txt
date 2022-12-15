@@ -1,0 +1,7 @@
+/**
+ * Tests that non String method name is not resolved.
+ */
+@Test
+public void testInvoke05() {
+    doNegativeTest(new ELClass(TesterClass.class), new Object(), MethodUnderTest.INVOKE);
+}

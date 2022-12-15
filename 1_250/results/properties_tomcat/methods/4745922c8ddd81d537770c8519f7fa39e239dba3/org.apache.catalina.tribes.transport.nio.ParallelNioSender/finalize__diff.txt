@@ -1,0 +1,16 @@
+@Override                                                                                            |                                                                                                     
+protected void finalize() throws Throwable {                                                         |                                                                                                     
+try {                                                                                                |                                                                                                     
+disconnect();                                                                                        |                                                                                                     
+} catch (Exception e) {                                                                              |                                                                                                     
+/*Ignore*/                                                                                           |                                                                                                     
+}                                                                                                    |                                                                                                     
+try {                                                                                                |                                                                                                     
+selector.close();                                                                                    |                                                                                                     
+} catch (Exception e) {                                                                              |                                                                                                     
+if (log.isDebugEnabled()) {                                                                          |                                                                                                     
+log.debug("Failed to close selector", e);                                                            |                                                                                                     
+}                                                                                                    |                                                                                                     
+}                                                                                                    |                                                                                                     
+super.finalize();                                                                                    |                                                                                                     
+}                                                                                                    |                                                                                                     

@@ -1,0 +1,36 @@
+private void doNegativeTest(Object base, Object trigger, MethodUnderTest method, boolean checkResult) {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Object result = null;
+    switch(method) {
+        case GET_VALUE:
+            {
+                result = resolver.getValue(context, base, trigger);
+                break;
+            }
+        case SET_VALUE:
+            {
+                resolver.setValue(context, base, trigger, new Object());
+                break;
+            }
+        case GET_TYPE:
+            {
+                result = resolver.getType(context, base, trigger);
+                break;
+            }
+        case INVOKE:
+            {
+                result = resolver.invoke(context, base, trigger, new Class<?>[0], new Object[0]);
+                break;
+            }
+        default:
+            {
+                // Should never happen
+                Assert.fail("Missing case for method");
+            }
+    }
+    if (checkResult) {
+        Assert.assertNull(result);
+    }
+    Assert.assertFalse(context.isPropertyResolved());
+}

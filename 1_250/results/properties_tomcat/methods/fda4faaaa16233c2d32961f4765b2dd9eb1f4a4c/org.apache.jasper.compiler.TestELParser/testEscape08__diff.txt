@@ -1,0 +1,4 @@
+@Test
+public void testEscape08() throws JasperException {
+    doTestParser("${'\\\\#'}", "\\#");
+}

@@ -1,0 +1,9 @@
+public static String join(Collection<String> collection, char separator) {
+    // Shortcut
+    if (collection == null || collection.isEmpty()) {
+        return EMPTY_STRING;
+    }
+    StringBuilder result = new StringBuilder();
+    join(collection, separator, result);
+    return result.toString();
+}

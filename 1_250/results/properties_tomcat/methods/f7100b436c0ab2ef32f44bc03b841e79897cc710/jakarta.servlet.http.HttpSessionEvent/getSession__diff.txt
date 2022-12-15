@@ -1,0 +1,8 @@
+/**
+ * Get the session that changed.
+ *
+ * @return The session that changed
+ */
+public HttpSession getSession() {
+    return (HttpSession) super.getSource();
+}

@@ -1,0 +1,6 @@
+@Test
+public void testGetValue01() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("1;2", String.class);
+    Assert.assertEquals("2", result);
+}

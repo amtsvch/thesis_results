@@ -1,0 +1,19 @@
+/**
+ * Exact mapping.
+ */
+private final void internalMapExactWrapper(MappedWrapper[] wrappers, CharChunk path, MappingData mappingData) {
+    MappedWrapper wrapper = exactFind(wrappers, path);
+    if (wrapper != null) {
+        mappingData.requestPath.setString(wrapper.name);
+        mappingData.wrapper = wrapper.object;
+        if (path.equals("/")) {
+            // Special handling for Context Root mapped servlet
+            mappingData.pathInfo.setString("/");
+            mappingData.wrapperPath.setString("");
+            mappingData.matchType = MappingMatch.CONTEXT_ROOT;
+        } else {
+            mappingData.wrapperPath.setString(wrapper.name);
+            mappingData.matchType = MappingMatch.EXACT;
+        }
+    }
+}

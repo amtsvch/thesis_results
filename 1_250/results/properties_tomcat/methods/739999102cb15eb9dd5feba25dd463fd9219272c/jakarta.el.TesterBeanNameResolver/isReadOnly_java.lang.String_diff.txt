@@ -1,0 +1,5 @@
+@Override
+public boolean isReadOnly(String beanName) {
+    checkTriggers(beanName);
+    return READ_ONLY_NAME.equals(beanName);
+}

@@ -1,0 +1,18 @@
+/**
+ * Tests that propertyResolved will be set to true and the corresponding
+ * listeners will be notified.
+ */
+@Test
+public void testSetPropertyResolved() {
+    ELContext elContext = new TesterELContext();
+    TesterEvaluationListener listener = new TesterEvaluationListener();
+    elContext.addEvaluationListener(listener);
+    TesterBean bean = new TesterBean("test");
+    elContext.setPropertyResolved(bean, "name");
+    Assert.assertTrue(elContext.isPropertyResolved());
+    List<Pair> events = listener.getResolvedProperties();
+    Assert.assertEquals(1, events.size());
+    Pair p = events.get(0);
+    Assert.assertEquals(bean, p.getBase());
+    Assert.assertEquals("name", p.getProperty());
+}

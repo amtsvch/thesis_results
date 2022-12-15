@@ -1,0 +1,10 @@
+/**
+ * Set the flag deciding whether we use the connection peer address
+ * or the remote address. This makes a dfifference when
+ * using AJP or the RemoteIpValve.
+ *
+ * @param usePeerAddress The new flag
+ */
+public void setUsePeerAddress(boolean usePeerAddress) {
+    this.usePeerAddress = usePeerAddress;
+}

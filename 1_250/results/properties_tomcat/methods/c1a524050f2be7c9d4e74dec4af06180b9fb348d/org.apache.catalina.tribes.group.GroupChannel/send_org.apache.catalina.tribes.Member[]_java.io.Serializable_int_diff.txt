@@ -1,0 +1,15 @@
+/**
+ * Send a message to the destinations specified
+ * @param destination Member[] - destination.length &gt; 0
+ * @param msg Serializable - the message to send
+ * @param options sender options, options can trigger guarantee levels and different
+ *                interceptors to react to the message see class documentation for the
+ *                <code>Channel</code> object.<br>
+ * @return UniqueId - the unique Id that was assigned to this message
+ * @throws ChannelException - if an error occurs processing the message
+ * @see org.apache.catalina.tribes.Channel
+ */
+@Override
+public UniqueId send(Member[] destination, Serializable msg, int options) throws ChannelException {
+    return send(destination, msg, options, null);
+}

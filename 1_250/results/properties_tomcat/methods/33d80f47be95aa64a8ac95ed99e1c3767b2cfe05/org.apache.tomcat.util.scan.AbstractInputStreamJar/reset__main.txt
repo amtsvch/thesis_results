@@ -1,0 +1,25 @@
+@Override
+public void reset() throws IOException {
+    closeStream();
+    entry = null;
+    jarInputStream = createJarInputStream();
+    // Only perform multi-release processing on first access
+    if (multiRelease == null) {
+        Manifest manifest = jarInputStream.getManifest();
+        if (manifest == null) {
+            multiRelease = Boolean.FALSE;
+        } else {
+            String mrValue = manifest.getMainAttributes().getValue("Multi-Release");
+            if (mrValue == null) {
+                multiRelease = Boolean.FALSE;
+            } else {
+                multiRelease = Boolean.valueOf(mrValue);
+            }
+        }
+        if (multiRelease.booleanValue()) {
+            if (mrMap == null) {
+                populateMrMap();
+            }
+        }
+    }
+}

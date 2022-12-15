@@ -1,0 +1,7 @@
+@Test
+public void testHarmonyDecoder() {
+    CharsetDecoder decoder = new Utf8Decoder();
+    for (Utf8TestCase testCase : TEST_CASES) {
+        doTest(decoder, testCase);
+    }
+}

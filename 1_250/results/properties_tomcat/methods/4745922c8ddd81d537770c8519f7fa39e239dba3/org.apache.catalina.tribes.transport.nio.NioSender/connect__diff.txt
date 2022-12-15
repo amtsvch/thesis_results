@@ -1,0 +1,50 @@
+/**
+ * connect - blocking in this operation
+ *
+ * @throws IOException
+ * TODO Implement this org.apache.catalina.tribes.transport.IDataSender method
+ */
+@Override
+public synchronized void connect() throws IOException {
+    if (connecting || isConnected()) {
+        return;
+    }
+    connecting = true;
+    if (isConnected()) {
+        throw new IOException(sm.getString("nioSender.already.connected"));
+    }
+    if (readbuf == null) {
+        readbuf = getReadBuffer();
+    } else {
+        readbuf.clear();
+    }
+    if (writebuf == null) {
+        writebuf = getWriteBuffer();
+    } else {
+        writebuf.clear();
+    }
+    if (isUdpBased()) {
+        InetSocketAddress daddr = new InetSocketAddress(getAddress(), getUdpPort());
+        if (dataChannel != null) {
+            throw new IOException(sm.getString("nioSender.datagram.already.established"));
+        }
+        dataChannel = DatagramChannel.open();
+        configureSocket();
+        dataChannel.connect(daddr);
+        completeConnect();
+        dataChannel.register(getSelector(), SelectionKey.OP_WRITE, this);
+    } else {
+        InetSocketAddress addr = new InetSocketAddress(getAddress(), getPort());
+        if (socketChannel != null) {
+            throw new IOException(sm.getString("nioSender.socketChannel.already.established"));
+        }
+        socketChannel = SocketChannel.open();
+        configureSocket();
+        if (socketChannel.connect(addr)) {
+            completeConnect();
+            socketChannel.register(getSelector(), SelectionKey.OP_WRITE, this);
+        } else {
+            socketChannel.register(getSelector(), SelectionKey.OP_CONNECT, this);
+        }
+    }
+}

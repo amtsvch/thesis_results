@@ -1,0 +1,9 @@
+protected Realm getRealmInternal() {
+    Lock l = realmLock.readLock();
+    l.lock();
+    try {
+        return realm;
+    } finally {
+        l.unlock();
+    }
+}

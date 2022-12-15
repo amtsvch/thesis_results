@@ -1,0 +1,7 @@
+@Override
+public void setDomain(String domain) {
+    if (!context.getState().equals(LifecycleState.STARTING_PREP)) {
+        throw new IllegalStateException(sm.getString("applicationSessionCookieConfig.ise", "domain name", context.getPath()));
+    }
+    this.domain = domain;
+}

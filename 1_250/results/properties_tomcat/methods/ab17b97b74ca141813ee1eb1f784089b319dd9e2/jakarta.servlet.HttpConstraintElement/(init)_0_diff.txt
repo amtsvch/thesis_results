@@ -1,0 +1,20 @@
+/**
+ * Construct a constraint with an empty role semantic, a transport guarantee
+ * and roles.
+ *
+ * @param emptyRoleSemantic The empty role semantic to apply to the newly
+ *                          created constraint
+ * @param transportGuarantee The transport guarantee to apply to the newly
+ *                           created constraint
+ * @param rolesAllowed       The roles to associate with the newly created
+ *                           constraint
+ * @throws IllegalArgumentException if roles are specified when DENY is used
+ */
+public HttpConstraintElement(EmptyRoleSemantic emptyRoleSemantic, TransportGuarantee transportGuarantee, String... rolesAllowed) {
+    if (rolesAllowed != null && rolesAllowed.length > 0 && EmptyRoleSemantic.DENY.equals(emptyRoleSemantic)) {
+        throw new IllegalArgumentException(lStrings.getString("httpConstraintElement.invalidRolesDeny"));
+    }
+    this.emptyRoleSemantic = emptyRoleSemantic;
+    this.transportGuarantee = transportGuarantee;
+    this.rolesAllowed = rolesAllowed;
+}

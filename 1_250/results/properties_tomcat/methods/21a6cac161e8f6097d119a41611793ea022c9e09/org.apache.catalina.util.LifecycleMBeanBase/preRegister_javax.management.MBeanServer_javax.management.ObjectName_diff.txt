@@ -1,0 +1,10 @@
+/**
+ * Allows the object to be registered with an alternative
+ * {@link MBeanServer} and/or {@link ObjectName}.
+ */
+@Override
+public final ObjectName preRegister(MBeanServer server, ObjectName name) throws Exception {
+    this.oname = name;
+    this.domain = name.getDomain().intern();
+    return oname;
+}

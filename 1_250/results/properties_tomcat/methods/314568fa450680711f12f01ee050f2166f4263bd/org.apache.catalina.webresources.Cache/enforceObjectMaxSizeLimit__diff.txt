@@ -1,0 +1,10 @@
+void enforceObjectMaxSizeLimit() {
+    long limit = maxSize / OBJECT_MAX_SIZE_FACTOR;
+    if (limit > Integer.MAX_VALUE) {
+        return;
+    }
+    if (objectMaxSize > limit) {
+        log.warn(sm.getString("cache.objectMaxSizeTooBig", Integer.valueOf(objectMaxSize / 1024), Integer.valueOf((int) limit / 1024)));
+        objectMaxSize = (int) limit;
+    }
+}

@@ -1,0 +1,7 @@
+@Override
+public void setName(String name) {
+    if (!context.getState().equals(LifecycleState.STARTING_PREP)) {
+        throw new IllegalStateException(sm.getString("applicationSessionCookieConfig.ise", "name", context.getPath()));
+    }
+    this.name = name;
+}

@@ -1,0 +1,6 @@
+@Test
+public void testSetNameInitPhase() {
+    context.setState(LifecycleState.STARTING_PREP);
+    applicationSessionCookieConfig.setName("test");
+    Assert.assertTrue(applicationSessionCookieConfig.getName().equals("test"));
+}

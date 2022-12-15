@@ -1,0 +1,37 @@
+/**
+ * Back up idle sessions.
+ */
+protected void processMaxIdleBackups() {
+    if (!getState().isAvailable() || maxIdleBackup < 0) {
+        return;
+    }
+    Session[] sessions = findSessions();
+    // Back up all sessions idle longer than maxIdleBackup
+    if (maxIdleBackup >= 0) {
+        for (Session value : sessions) {
+            StandardSession session = (StandardSession) value;
+            synchronized (session) {
+                if (!session.isValid()) {
+                    continue;
+                }
+                long lastAccessedTime = session.getLastAccessedTimeInternal();
+                Long persistedLastAccessedTime = (Long) session.getNote(PERSISTED_LAST_ACCESSED_TIME);
+                if (persistedLastAccessedTime != null && lastAccessedTime == persistedLastAccessedTime.longValue()) {
+                    continue;
+                }
+                int timeIdle = (int) (session.getIdleTimeInternal() / 1000L);
+                if (timeIdle >= maxIdleBackup) {
+                    if (log.isDebugEnabled()) {
+                        log.debug(sm.getString("persistentManager.backupMaxIdle", session.getIdInternal(), Integer.valueOf(timeIdle)));
+                    }
+                    try {
+                        writeSession(session);
+                    } catch (IOException e) {
+                        // This is logged in writeSession()
+                    }
+                    session.setNote(PERSISTED_LAST_ACCESSED_TIME, Long.valueOf(lastAccessedTime));
+                }
+            }
+        }
+    }
+}

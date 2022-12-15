@@ -1,0 +1,75 @@
+private void checkPackageClassList(String packageName, Set<String> classNames) throws Exception {
+    if ("java.lang".equals(packageName)) {
+        // The intention is that this test will catch new classes when the
+        // tests are run on a newer JRE.
+        // The latest version of the JRE where this test is known to pass is
+        // - OpenJDK 17 EA 28
+        getJavaBaseClasses().filter(c -> (c.startsWith("java/lang/"))).filter(// Exclude sub-packages
+        c -> c.lastIndexOf('/') == 9).filter(// Exclude non-class resources
+        c -> c.endsWith(".class")).map(// Extract class name
+        c -> c.substring(10, c.length() - 6)).map(c -> {
+            try {
+                // Get the class object
+                return Class.forName("java.lang." + c);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException();
+            }
+        }).filter(// Exclude non-public classes
+        c -> Modifier.isPublic(c.getModifiers())).map(// Back to the class name
+        c -> c.getName().substring(10)).map(c -> c.replace('$', '.')).filter(// Skip classes already listed
+        c -> !classNames.contains(c)).filter(// Skip public inner class
+        c -> !c.startsWith("FdLibm.")).filter(// Skip public inner class
+        c -> !c.startsWith("LiveStackFrame.")).filter(// Skip public inner class
+        c -> !c.startsWith("WeakPairMap.")).forEach(// Should have in list
+        c -> Assert.fail("java.lang." + c));
+    } else {
+        // When this test runs, the class loader will be loading resources
+        // from a directory for each of these packages.
+        ClassLoader cl = Thread.currentThread().getContextClassLoader();
+        String path = packageName.replace('.', '/');
+        Enumeration<URL> resources = cl.getResources(path);
+        while (resources.hasMoreElements()) {
+            URL resource = resources.nextElement();
+            URI uri = resource.toURI();
+            // Gump includes some JARs on classpath - skip them
+            if (!"file".equals(uri.getScheme())) {
+                continue;
+            }
+            File dir = new File(uri);
+            String[] files = dir.list();
+            Assert.assertNotNull(files);
+            for (String file : files) {
+                if (!file.endsWith(".class")) {
+                    // Skip non-class resources
+                    continue;
+                }
+                if (file.startsWith("Test")) {
+                    // Skip test resources
+                    continue;
+                }
+                if (file.matches(".*\\$[0-9]?\\.class")) {
+                    // Skip anonymous inner classes
+                    continue;
+                }
+                String name = file.substring(0, file.length() - 6);
+                name = name.replace('$', '.');
+                if (classNames.contains(name)) {
+                    // Skip classes already known
+                    continue;
+                }
+                File f = new File(dir, file);
+                if (!f.isFile()) {
+                    // Skip directories
+                    continue;
+                }
+                Class<?> clazz = Class.forName(packageName + "." + name.replaceAll("\\.", "\\$"));
+                if (!Modifier.isPublic(clazz.getModifiers())) {
+                    // Skip non-public classes
+                    continue;
+                }
+                // There should be nothing left unless we missed something
+                Assert.fail(packageName + "." + name);
+            }
+        }
+    }
+}

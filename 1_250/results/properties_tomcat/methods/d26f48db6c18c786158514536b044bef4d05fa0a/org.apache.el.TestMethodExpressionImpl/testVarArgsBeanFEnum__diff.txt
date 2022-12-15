@@ -1,0 +1,4 @@
+@Test
+public void testVarArgsBeanFEnum() {
+    doTestVarArgsBeanF("beanF.doTest(apple)", (a) -> a.doTest(TesterEnum.APPLE));
+}

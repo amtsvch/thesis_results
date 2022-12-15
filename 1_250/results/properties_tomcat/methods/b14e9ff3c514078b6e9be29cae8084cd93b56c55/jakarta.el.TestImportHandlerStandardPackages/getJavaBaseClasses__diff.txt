@@ -1,0 +1,17 @@
+private static Stream&lt;String&gt; getJavaBaseClasses() throws Exception {                          |                                                                                                     
+// While this code is only used on Java 9 and later, it needs to compile                             |                                                                                                     
+// with Java 8 so use reflection for now.                                                            |                                                                                                     
+Class&lt;?&gt; clazzModuleFinder = Class.forName("java.lang.module.ModuleFinder");                   |                                                                                                     
+Class&lt;?&gt; clazzModuleReference = Class.forName("java.lang.module.ModuleReference");             |                                                                                                     
+Class&lt;?&gt; clazzModuleReader = Class.forName("java.lang.module.ModuleReader");                   |                                                                                                     
+// Returns ModuleFinder                                                                              |                                                                                                     
+Object mf = clazzModuleFinder.getMethod("ofSystem").invoke(null);                                    |                                                                                                     
+// Returns ModuleReference                                                                           |                                                                                                     
+Object mRef = ((Optional&lt;?&gt;) clazzModuleFinder.getMethod("find", String.class).invoke(mf, "jav |                                                                                                     
+// Returns ModuleReader                                                                              |                                                                                                     
+Object mr = clazzModuleReference.getMethod("open").invoke(mRef);                                     |                                                                                                     
+// Returns the contents of the module                                                                |                                                                                                     
+@SuppressWarnings("unchecked")                                                                       |                                                                                                     
+Stream&lt;String&gt; result = (Stream&lt;String&gt;) clazzModuleReader.getMethod("list").invoke(mr); |                                                                                                     
+return result;                                                                                       |                                                                                                     
+}                                                                                                    |                                                                                                     

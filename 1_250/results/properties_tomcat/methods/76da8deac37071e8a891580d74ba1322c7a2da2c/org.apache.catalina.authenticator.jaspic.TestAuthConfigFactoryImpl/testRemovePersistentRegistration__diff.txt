@@ -1,0 +1,12 @@
+@Test
+public void testRemovePersistentRegistration() {
+    AuthConfigFactory factory = new AuthConfigFactoryImpl();
+    factory.registerConfigProvider(SimpleAuthConfigProvider.class.getName(), null, "L_1", "AC_1", null);
+    String registrationId2 = factory.registerConfigProvider(SimpleAuthConfigProvider.class.getName(), null, "L_2", "AC_2", null);
+    factory.removeRegistration(registrationId2);
+    factory.refresh();
+    String[] registrationIds = factory.getRegistrationIDs(null);
+    for (String registrationId : registrationIds) {
+        Assert.assertNotEquals(registrationId2, registrationId);
+    }
+}

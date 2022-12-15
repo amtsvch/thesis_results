@@ -1,0 +1,15 @@
+/**
+ * Obtain the Map of attributes and values (excluding version) for this
+ * cookie.
+ *
+ * @return A read-only Map of attributes to values, excluding version.
+ *
+ * @since Servlet 6.0
+ */
+public Map<String, String> getAttributes() {
+    if (attributes == null) {
+        return Collections.emptyMap();
+    } else {
+        return Collections.unmodifiableMap(attributes);
+    }
+}

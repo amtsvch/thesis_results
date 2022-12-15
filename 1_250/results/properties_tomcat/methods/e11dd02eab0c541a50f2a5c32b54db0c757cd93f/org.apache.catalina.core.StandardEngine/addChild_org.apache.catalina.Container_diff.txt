@@ -1,0 +1,14 @@
+// --------------------------------------------------------- Public Methods
+/**
+ * Add a child Container, only if the proposed child is an implementation
+ * of Host.
+ *
+ * @param child Child container to be added
+ */
+@Override
+public void addChild(Container child) {
+    if (!(child instanceof Host)) {
+        throw new IllegalArgumentException(sm.getString("standardEngine.notHost"));
+    }
+    super.addChild(child);
+}

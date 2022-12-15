@@ -1,0 +1,6 @@
+protected InstanceManager getInstanceManager(ClassLoader classLoader) {
+    if (instanceManager != null) {
+        return instanceManager;
+    }
+    return InstanceManagerBindings.get(classLoader);
+}

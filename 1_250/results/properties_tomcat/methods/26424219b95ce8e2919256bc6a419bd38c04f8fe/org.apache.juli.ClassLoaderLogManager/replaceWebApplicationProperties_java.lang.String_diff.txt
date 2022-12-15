@@ -1,0 +1,17 @@
+private String replaceWebApplicationProperties(String propName) {
+    ClassLoader cl = Thread.currentThread().getContextClassLoader();
+    if (cl instanceof WebappProperties) {
+        WebappProperties wProps = (WebappProperties) cl;
+        if ("classloader.webappName".equals(propName)) {
+            return wProps.getWebappName();
+        } else if ("classloader.hostName".equals(propName)) {
+            return wProps.getHostName();
+        } else if ("classloader.serviceName".equals(propName)) {
+            return wProps.getServiceName();
+        } else {
+            return null;
+        }
+    } else {
+        return null;
+    }
+}

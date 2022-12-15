@@ -1,0 +1,27 @@
+/**
+ * Returns true if the byte is a whitespace character as
+ * defined in RFC2619
+ * JVK
+ */
+private static final boolean isWhiteSpace(final byte c) {
+    // This switch statement is slightly slower
+    // for my vm than the if statement.
+    // Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_07-164)
+    /*
+        switch (c) {
+        case ' ':;
+        case '\t':;
+        case '\n':;
+        case '\r':;
+        case '\f':;
+            return true;
+        default:;
+            return false;
+        }
+        */
+    if (c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\f') {
+        return true;
+    } else {
+        return false;
+    }
+}

@@ -1,0 +1,16 @@
+public XForwardedRequest(HttpServletRequest request) {
+    super(request);
+    this.localName = request.getLocalName();
+    this.localPort = request.getLocalPort();
+    this.remoteAddr = request.getRemoteAddr();
+    this.remoteHost = request.getRemoteHost();
+    this.scheme = request.getScheme();
+    this.secure = request.isSecure();
+    this.serverName = request.getServerName();
+    this.serverPort = request.getServerPort();
+    headers = new HashMap<>();
+    for (Enumeration<String> headerNames = request.getHeaderNames(); headerNames.hasMoreElements(); ) {
+        String header = headerNames.nextElement();
+        headers.put(header, Collections.list(request.getHeaders(header)));
+    }
+}

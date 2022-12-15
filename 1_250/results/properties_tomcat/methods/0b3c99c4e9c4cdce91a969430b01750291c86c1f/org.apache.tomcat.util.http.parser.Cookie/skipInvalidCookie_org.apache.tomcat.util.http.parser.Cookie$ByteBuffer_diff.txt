@@ -1,0 +1,5 @@
+private static void skipInvalidCookie(ByteBuffer bb) {
+    logInvalidHeader(bb);
+    // Invalid cookie value. Skip to the next semi-colon
+    skipUntilSemiColonOrComma(bb);
+}

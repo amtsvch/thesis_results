@@ -1,0 +1,15 @@
+@Test
+public void testCombineConstraints03() throws IOException {
+    // Allowed roles should be the union of the roles in the constraints
+    // User role is not in any constraint
+    List<String> userRoles = new ArrayList<>();
+    List<String> constraintOneRoles = new ArrayList<>();
+    List<String> constraintTwoRoles = new ArrayList<>();
+    List<String> applicationRoles = new ArrayList<>();
+    userRoles.add(ROLE3);
+    constraintOneRoles.add(ROLE1);
+    constraintTwoRoles.add(ROLE2);
+    applicationRoles.add(ROLE1);
+    applicationRoles.add(ROLE2);
+    doRoleTest(userRoles, constraintOneRoles, constraintTwoRoles, applicationRoles, false);
+}

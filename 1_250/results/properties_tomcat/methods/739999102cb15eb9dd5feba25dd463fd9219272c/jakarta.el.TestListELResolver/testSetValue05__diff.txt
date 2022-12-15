@@ -1,0 +1,10 @@
+/**
+ * Tests that an exception is thrown when the list is not modifiable.
+ */
+@Test(expected = PropertyNotWritableException.class)
+public void testSetValue05() {
+    ListELResolver resolver = new ListELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    List<Object> list = Collections.unmodifiableList(new ArrayList<>());
+    resolver.setValue(context, list, Integer.valueOf(0), "value");
+}

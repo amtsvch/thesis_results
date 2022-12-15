@@ -1,0 +1,8 @@
+/**
+ * @param n The header index
+ * @return the Nth header name, or null if there is no such header.
+ * This may be used to iterate through all header fields.
+ */
+public MessageBytes getName(int n) {
+    return n >= 0 && n < count ? headers[n].getName() : null;
+}

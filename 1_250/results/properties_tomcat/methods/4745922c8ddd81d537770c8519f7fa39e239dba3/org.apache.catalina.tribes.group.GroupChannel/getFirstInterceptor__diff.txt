@@ -1,0 +1,11 @@
+/**
+ * Returns the first interceptor of the stack. Useful for traversal.
+ * @return ChannelInterceptor
+ */
+public ChannelInterceptor getFirstInterceptor() {
+    if (interceptors != null) {
+        return interceptors;
+    } else {
+        return coordinator;
+    }
+}

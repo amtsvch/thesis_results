@@ -1,0 +1,8 @@
+private void validateNoLayerAndAC(Providers providers) {
+    Assert.assertEquals(1, providers.getProviders().size());
+    Provider p = providers.getProviders().get(0);
+    Assert.assertEquals("a", p.getClassName());
+    Assert.assertNull(p.getLayer());
+    Assert.assertNull(p.getAppContext());
+    Assert.assertEquals("d", p.getDescription());
+}

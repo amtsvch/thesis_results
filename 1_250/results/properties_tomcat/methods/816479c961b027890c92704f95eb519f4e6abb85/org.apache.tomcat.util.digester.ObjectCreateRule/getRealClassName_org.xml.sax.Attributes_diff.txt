@@ -1,0 +1,16 @@
+/**
+ * Return the actual class name of the class to be instantiated.
+ * @param attributes The attribute list for this element
+ * @return the class name
+ */
+protected String getRealClassName(Attributes attributes) {
+    // Identify the name of the class to instantiate
+    String realClassName = className;
+    if (attributeName != null) {
+        String value = attributes.getValue(attributeName);
+        if (value != null) {
+            realClassName = value;
+        }
+    }
+    return realClassName;
+}

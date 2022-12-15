@@ -1,0 +1,5 @@
+private static final void checkBounds(Object base, int idx) {
+    if (idx < 0 || idx >= Array.getLength(base)) {
+        throw new PropertyNotFoundException(new ArrayIndexOutOfBoundsException(idx).getMessage());
+    }
+}

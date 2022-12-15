@@ -1,0 +1,16 @@
+/**
+ * Find a map element given its name in a sorted array of map elements. This
+ * will return the element that you were searching for. Otherwise it will
+ * return <code>null</code>.
+ * @see #findIgnoreCase(MapElement[], CharChunk)
+ */
+private static final <T, E extends MapElement<T>> E exactFindIgnoreCase(E[] map, CharChunk name) {
+    int pos = findIgnoreCase(map, name);
+    if (pos >= 0) {
+        E result = map[pos];
+        if (name.equalsIgnoreCase(result.name)) {
+            return result;
+        }
+    }
+    return null;
+}

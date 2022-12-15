@@ -1,0 +1,10 @@
+/**
+ * Obtain the collection of security constraints configured for specific
+ * methods.
+ *
+ * @return The security constraints for specific methods
+ */
+public Collection<HttpMethodConstraintElement> getHttpMethodConstraints() {
+    Collection<HttpMethodConstraintElement> result = new HashSet<>(methodConstraints.values());
+    return result;
+}

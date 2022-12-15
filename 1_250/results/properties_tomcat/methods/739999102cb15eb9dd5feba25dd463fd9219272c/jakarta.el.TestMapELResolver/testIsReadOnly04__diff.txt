@@ -1,0 +1,12 @@
+/**
+ * Tests that the readOnly is true always when the map is not modifiable.
+ */
+@Test
+public void testIsReadOnly04() {
+    MapELResolver mapELResolver = new MapELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Map<Object, Object> map = Collections.unmodifiableMap(new HashMap<>());
+    boolean result = mapELResolver.isReadOnly(context, map, new Object());
+    Assert.assertTrue(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

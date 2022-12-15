@@ -1,0 +1,27 @@
+/**
+ * Stops the channel.
+ * @param svc int
+ * @throws ChannelException Stop error
+ * @see org.apache.catalina.tribes.Channel#stop(int)
+ */
+@Override
+public synchronized void stop(int svc) throws ChannelException {
+    if (monitorFuture != null) {
+        monitorFuture.cancel(true);
+        monitorFuture = null;
+    }
+    if (heartbeatFuture != null) {
+        heartbeatFuture.cancel(true);
+        heartbeatFuture = null;
+    }
+    super.stop(svc);
+    if (ownExecutor) {
+        utilityExecutor.shutdown();
+        utilityExecutor = null;
+        ownExecutor = false;
+    }
+    if (oname != null) {
+        JmxRegistry.getRegistry(this).unregisterJmx(oname);
+        oname = null;
+    }
+}

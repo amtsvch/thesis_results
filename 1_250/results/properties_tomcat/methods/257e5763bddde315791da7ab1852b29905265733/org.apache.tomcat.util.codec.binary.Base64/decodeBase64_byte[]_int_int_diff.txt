@@ -1,0 +1,3 @@
+public static byte[] decodeBase64(final byte[] base64Data, final int off, final int len) {
+    return new Base64().decode(base64Data, off, len);
+}

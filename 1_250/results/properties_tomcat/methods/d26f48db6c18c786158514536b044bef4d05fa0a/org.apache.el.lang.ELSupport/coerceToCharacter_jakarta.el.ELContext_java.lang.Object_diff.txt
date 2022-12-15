@@ -1,0 +1,27 @@
+private static final Character coerceToCharacter(final ELContext ctx, final Object obj) throws ELException {
+    if (ctx != null) {
+        boolean originalIsPropertyResolved = ctx.isPropertyResolved();
+        try {
+            Object result = ctx.getELResolver().convertToType(ctx, obj, Character.class);
+            if (ctx.isPropertyResolved()) {
+                return (Character) result;
+            }
+        } finally {
+            ctx.setPropertyResolved(originalIsPropertyResolved);
+        }
+    }
+    if (obj == null || "".equals(obj)) {
+        return Character.valueOf((char) 0);
+    }
+    if (obj instanceof String) {
+        return Character.valueOf(((String) obj).charAt(0));
+    }
+    if (ELArithmetic.isNumber(obj)) {
+        return Character.valueOf((char) ((Number) obj).shortValue());
+    }
+    Class<?> objType = obj.getClass();
+    if (obj instanceof Character) {
+        return (Character) obj;
+    }
+    throw new ELException(MessageFactory.get("error.convert", obj, objType, Character.class));
+}

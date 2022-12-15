@@ -16,10 +16,333 @@
     },
     "8b54724d541e66a7650d4c52b5582dc05abe4fe4" : {
       "testcases" : {
-        "org.apache.el.TestMethodExpressionImpl" : [ "testInvoke" ]
+        "org.apache.el.TestMethodExpressionImpl" : [ "testInvoke" ],
+        "org.apache.jasper.compiler.TestGenerator" : [ "testEscape01" ]
       },
       "predecessor" : "335bed06af17759de0fcb46235f257bbea301299"
     },
+    "26424219b95ce8e2919256bc6a419bd38c04f8fe" : {
+      "testcases" : {
+        "org.apache.juli.TestClassLoaderLogManager" : [ "testReplace" ]
+      },
+      "predecessor" : "8b54724d541e66a7650d4c52b5582dc05abe4fe4"
+    },
+    "424cd322dc60f9ee63e1175e4cf957353d79b88d" : {
+      "predecessor" : "26424219b95ce8e2919256bc6a419bd38c04f8fe"
+    },
+    "650a972f671f5edb34263237393438eca89204f4" : { },
+    "838decd611170bb55810dc948f2be9091c27da7c" : {
+      "testcases" : {
+        "org.apache.tomcat.util.scan.TestStandardJarScanner" : [ "skipsInvalidClasspathURLNoFilePartNoFileScheme" ]
+      },
+      "predecessor" : "650a972f671f5edb34263237393438eca89204f4"
+    },
+    "ac62b95775b9c6be628b7aaa8b38f4221bb56473" : {
+      "predecessor" : "838decd611170bb55810dc948f2be9091c27da7c"
+    },
+    "3a062482563222cb86742bf844f5c2fa7ed9fe2d" : {
+      "predecessor" : "ac62b95775b9c6be628b7aaa8b38f4221bb56473"
+    },
+    "816479c961b027890c92704f95eb519f4e6abb85" : {
+      "testcases" : {
+        "org.apache.catalina.valves.TestRequestFilterValve" : [ "testRemoteAddrValveIPv4" ]
+      },
+      "predecessor" : "3a062482563222cb86742bf844f5c2fa7ed9fe2d"
+    },
+    "e5f340843f746443f4b9b299822101c632473aab" : {
+      "predecessor" : "816479c961b027890c92704f95eb519f4e6abb85"
+    },
+    "21a6cac161e8f6097d119a41611793ea022c9e09" : {
+      "testcases" : {
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ]
+      },
+      "predecessor" : "e5f340843f746443f4b9b299822101c632473aab"
+    },
+    "15eedf022c8df1e7d4c6a989cdabfab966638eaf" : { },
+    "46cb8c3b407a7628613a4a1f5fed5a0297122c8a" : {
+      "predecessor" : "15eedf022c8df1e7d4c6a989cdabfab966638eaf"
+    },
+    "33d80f47be95aa64a8ac95ed99e1c3767b2cfe05" : {
+      "testcases" : {
+        "org.apache.jasper.servlet.TestTldScanner" : [ "testBug57647" ],
+        "org.apache.tomcat.util.scan.TestAbstractInputStreamJar" : [ "testNestedJarGetInputStream" ]
+      },
+      "predecessor" : "46cb8c3b407a7628613a4a1f5fed5a0297122c8a"
+    },
+    "197a0b7bcc8c00e63d29689158b287e77a46aa49" : {
+      "predecessor" : "33d80f47be95aa64a8ac95ed99e1c3767b2cfe05"
+    },
+    "5d49fc9ca4e9ce757687051e92c2a6d053744dc7" : {
+      "testcases" : {
+        "jakarta.el.TestImportHandlerStandardPackages" : [ "testClassListsAreComplete" ]
+      },
+      "predecessor" : "197a0b7bcc8c00e63d29689158b287e77a46aa49"
+    },
+    "eae15b427288986fd5f735cf185f04ef21d6ee2a" : {
+      "predecessor" : "5d49fc9ca4e9ce757687051e92c2a6d053744dc7"
+    },
+    "e11dd02eab0c541a50f2a5c32b54db0c757cd93f" : {
+      "testcases" : {
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ],
+        "org.apache.catalina.webresources.TestJarInputStreamWrapper" : [ "testAvailableAfterClose" ]
+      },
+      "predecessor" : "eae15b427288986fd5f735cf185f04ef21d6ee2a"
+    },
+    "5b4c11d7180127689a79e554ab969eb8c8ea7c8e" : {
+      "testcases" : {
+        "org.apache.catalina.valves.TestRequestFilterValve" : [ "testRemoteAddrValveIPv4" ]
+      },
+      "predecessor" : "e11dd02eab0c541a50f2a5c32b54db0c757cd93f"
+    },
+    "11079b6b97f3bd1d4ebea7359f8d9b118c1d65b5" : {
+      "testcases" : {
+        "org.apache.el.parser.TestAstAssign" : [ "testGetType02" ]
+      },
+      "predecessor" : "5b4c11d7180127689a79e554ab969eb8c8ea7c8e"
+    },
+    "d26f48db6c18c786158514536b044bef4d05fa0a" : {
+      "testcases" : {
+        "jakarta.el.TestELProcessor" : [ "testDefineFunctionName10" ],
+        "jakarta.el.TestUtil" : [ "test02" ],
+        "org.apache.el.parser.TestAstAssign" : [ "testGetType02" ],
+        "org.apache.el.stream.TestCollectionOperations" : [ "testForEach01" ]
+      },
+      "predecessor" : "11079b6b97f3bd1d4ebea7359f8d9b118c1d65b5"
+    },
+    "bccc5aebd7ceb0894fbe79d0ba0bcee99e8a1a31" : {
+      "predecessor" : "d26f48db6c18c786158514536b044bef4d05fa0a"
+    },
+    "b758f5cb1475f9d3ed093327d4fe018498e8a6bb" : { },
+    "2d49e820b93d28695d760fda66c1affa396f1055" : { },
+    "b14e9ff3c514078b6e9be29cae8084cd93b56c55" : {
+      "testcases" : {
+        "jakarta.el.TestImportHandlerStandardPackages" : [ "testClassListsAreComplete" ]
+      },
+      "predecessor" : "2d49e820b93d28695d760fda66c1affa396f1055"
+    },
+    "9adb89886cb8db3d9969173f9c3dae687b32694e" : { },
+    "077a41648a321e85c6e60184e4d7a9e87a61d186" : {
+      "testcases" : {
+        "org.apache.tomcat.util.buf.TestUtf8" : [ "testHarmonyDecoder" ]
+      },
+      "predecessor" : "9adb89886cb8db3d9969173f9c3dae687b32694e"
+    },
+    "3d34fcfacdd155b4abf2801404b896a8b63b5a2a" : { },
+    "c9ea1d5db0b04b0386b79e5cb0a467fb601c860a" : {
+      "predecessor" : "3d34fcfacdd155b4abf2801404b896a8b63b5a2a"
+    },
+    "15220d8df73754dcf45ddbab206cadece4644dcb" : { },
+    "f7100b436c0ab2ef32f44bc03b841e79897cc710" : {
+      "testcases" : {
+        "org.apache.catalina.valves.TestCrawlerSessionManagerValve" : [ "testCrawlersSessionIdIsRemovedAfterSessionExpiry" ]
+      },
+      "predecessor" : "15220d8df73754dcf45ddbab206cadece4644dcb"
+    },
+    "b3fea5cd61bca53113677425a2c27788c40d5c1a" : {
+      "predecessor" : "f7100b436c0ab2ef32f44bc03b841e79897cc710"
+    },
+    "6190e7a8717bd75c1bcce7b956ef700334812ced" : { },
+    "3f6db1c84c71c7adc227428239c44f579dec19b1" : {
+      "predecessor" : "6190e7a8717bd75c1bcce7b956ef700334812ced"
+    },
+    "ae4ee893f99f226fe5fdc8e933313e2e759d0733" : { },
+    "41cb36afc94aacff791630619209a7f6d47f5e02" : {
+      "testcases" : {
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ]
+      },
+      "predecessor" : "ae4ee893f99f226fe5fdc8e933313e2e759d0733"
+    },
+    "8e8f634a3da96ff9fca3588bbd09aa833bb91ac2" : { },
+    "6666b63bc4d4b41a23b211196a7be9b98449e93c" : { },
+    "b2b9ea8417db3efc6cf8dd6fef877a4639adb9bb" : { },
+    "09193e0514ac449df454184941bba492d9b20a85" : { },
+    "c2b9c6a655d269c46c27242930fb6aa9374e84bb" : { },
+    "6793c7cdc08be5c70fb82ad44a7950107288dedc" : { },
+    "4a1165a72b9715fbdd35edc97d6dc319e7a6236c" : {
+      "testcases" : {
+        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ]
+      },
+      "predecessor" : "6793c7cdc08be5c70fb82ad44a7950107288dedc"
+    },
+    "0f8a19d16d7bb327b54195df6511291b294579fd" : {
+      "predecessor" : "4a1165a72b9715fbdd35edc97d6dc319e7a6236c"
+    },
+    "956f2263b68017f0abe6e11458f5ec5555e5dd75" : { },
+    "00824315e5add00118f8d625aafccdfb38aa416d" : { },
+    "e0f5aed9075b01392012b8f8e5b0f78bad06513e" : { },
+    "7725d855aa365d437fe01dff56fe8628106d4dca" : { },
+    "4737645491f3e79fec2f083019dd082d102159b6" : {
+      "predecessor" : "7725d855aa365d437fe01dff56fe8628106d4dca"
+    },
+    "c4f46fa9d3b1673a461e06c353b145c6ba5d1f67" : { },
+    "76da8deac37071e8a891580d74ba1322c7a2da2c" : {
+      "testcases" : {
+        "org.apache.catalina.authenticator.jaspic.TestAuthConfigFactoryImpl" : [ "testRemovePersistentRegistration" ],
+        "org.apache.catalina.authenticator.jaspic.TestPersistentProviderRegistrations" : [ "testLoadSimple" ]
+      },
+      "predecessor" : "c4f46fa9d3b1673a461e06c353b145c6ba5d1f67"
+    },
+    "4c1fe3f74021646fa50266b87341a22e05a64226" : { },
+    "1da1552abc56a46e6c46113f42fa2624894e2dc5" : { },
+    "fa0f2567aae91a13137094ebcdb74d72b8222f3b" : {
+      "predecessor" : "1da1552abc56a46e6c46113f42fa2624894e2dc5"
+    },
+    "f53fb52ec1a316f5047dff52c154807bd4c11254" : {
+      "testcases" : {
+        "org.apache.catalina.authenticator.TestJaspicCallbackHandlerInAuthenticator" : [ "testPasswordValidationCallback" ]
+      },
+      "predecessor" : "fa0f2567aae91a13137094ebcdb74d72b8222f3b"
+    },
+    "38dbc21ce7d5cb2af9780526ba26b607648e7691" : { },
+    "27b86640335bba9e0e167425102ab916e79e4d3f" : { },
+    "5376d45258b8bf496951a99eab435517d2ed70f0" : {
+      "predecessor" : "27b86640335bba9e0e167425102ab916e79e4d3f"
+    },
+    "93f5911c0c80c081e5d080de14f02f35ae637592" : {
+      "testcases" : {
+        "org.apache.catalina.authenticator.TestBasicAuthParser" : [ "testAuthMethodCaseBasic" ],
+        "org.apache.catalina.authenticator.TestJaspicCallbackHandlerInAuthenticator" : [ "testCallerPrincipalCallback" ]
+      },
+      "predecessor" : "5376d45258b8bf496951a99eab435517d2ed70f0"
+    },
+    "263fb37b6507203aece9c8afb77272654cad80d1" : { },
+    "75ba84a8e6f1abbeaf1bf242de8c53bdf4951862" : { },
+    "026f4fcc6db33db0c48bb033496583aec50ca14e" : { },
+    "90da2caa0e186c066b57b01bd1cb7b444436ee2e" : { },
+    "16c684befa797faac0697adb15bd6911f27feed6" : { },
+    "58ac04aa08182efbf69afc56a28c34fc9294f915" : { },
+    "831cf3e39312f8ad63778454c259c26910e93c0e" : { },
+    "8e7267d742b48182ab2ed291c987f185d90ef6b7" : { },
+    "49072ffa7d613ca4273712159ef1522f79982a36" : { },
+    "8a106504f8668841c3140ecfd5494879231d0f56" : { },
+    "9cc94bd751d90c0a3f65e58198293b88f5318de9" : {
+      "predecessor" : "8a106504f8668841c3140ecfd5494879231d0f56"
+    },
+    "7a8233880b873782ec8efeee742c7a10b7bec41b" : { },
+    "22b076eca050a99a826e461a85d411ac5a6b81ff" : {
+      "predecessor" : "7a8233880b873782ec8efeee742c7a10b7bec41b"
+    },
+    "314568fa450680711f12f01ee050f2166f4263bd" : {
+      "testcases" : {
+        "org.apache.catalina.connector.TestResponse" : [ "testSendRedirect01" ],
+        "org.apache.catalina.security.TestSecurityClassLoad" : [ "testLoad" ]
+      },
+      "predecessor" : "22b076eca050a99a826e461a85d411ac5a6b81ff"
+    },
+    "5c1b14a9e34bd965146c4941742ff6221a5110c8" : {
+      "predecessor" : "314568fa450680711f12f01ee050f2166f4263bd"
+    },
+    "a3a6a89a2fcbe5d432640e7b31808eeb591541ce" : { },
+    "25c2c7a392c4d0eb4c67797bd4fa5b1ce023f6d2" : {
+      "predecessor" : "a3a6a89a2fcbe5d432640e7b31808eeb591541ce"
+    },
+    "b964f07952eaaa83ad523430d540607c4c8f2f63" : { },
+    "b9ca106b27360bebe21a917da97cf8493474674d" : { },
+    "4d62d064019f6e8ca63c82301c8244887ad59708" : { },
+    "4f3db0890f6df5929c013e34fd29ad715a94d29e" : { },
+    "44d15edec3fa9fbc45136848b65e4219eea1d3ae" : { },
+    "880d53ebed6ecf30679b3fdb18e4db91645e61d4" : { },
+    "f24f27531560a53e363486f998da200557ef7864" : {
+      "predecessor" : "880d53ebed6ecf30679b3fdb18e4db91645e61d4"
+    },
+    "51d82daf6abd008fa811d92f24ff2ffc960fac90" : {
+      "predecessor" : "f24f27531560a53e363486f998da200557ef7864"
+    },
+    "c7b95cfbb4fe46bda6c4525574d5ba3d4176feff" : {
+      "predecessor" : "51d82daf6abd008fa811d92f24ff2ffc960fac90"
+    },
+    "e45117fd14f987c3c7199d1e87c26a02e8fec0e7" : {
+      "predecessor" : "c7b95cfbb4fe46bda6c4525574d5ba3d4176feff"
+    },
+    "c1a524050f2be7c9d4e74dec4af06180b9fb348d" : {
+      "testcases" : {
+        "org.apache.catalina.tribes.test.channel.TestDataIntegrity" : [ "testDataSendASYNC" ]
+      },
+      "predecessor" : "e45117fd14f987c3c7199d1e87c26a02e8fec0e7"
+    },
+    "4745922c8ddd81d537770c8519f7fa39e239dba3" : {
+      "testcases" : {
+        "org.apache.catalina.tribes.test.channel.TestDataIntegrity" : [ "testDataSendACK" ]
+      },
+      "predecessor" : "c1a524050f2be7c9d4e74dec4af06180b9fb348d"
+    },
+    "11fca7f383069cfcc0cc5efdbd3e750596c0f0b4" : { },
+    "de1b5ecaa1a3c54e3f5e0c067ff3bd0b412c2600" : { },
+    "3bdd80293fb2b88a8b3df50692a93047261bd082" : {
+      "testcases" : {
+        "org.apache.tomcat.util.http.TestResponseUtil" : [ "testAddValidWithValidHeaders", "testMimeHeadersAddValidWithValidHeaders" ]
+      },
+      "predecessor" : "de1b5ecaa1a3c54e3f5e0c067ff3bd0b412c2600"
+    },
+    "459cbf6bd96a0488f205f090efba34520186066e" : {
+      "predecessor" : "3bdd80293fb2b88a8b3df50692a93047261bd082"
+    },
+    "f969a8f19797e41a70956a66317bdaa72a398158" : {
+      "predecessor" : "459cbf6bd96a0488f205f090efba34520186066e"
+    },
+    "299d061080774d3a898335d11bc981b23caa859d" : {
+      "predecessor" : "f969a8f19797e41a70956a66317bdaa72a398158"
+    },
+    "6382197ad57738dc06209845541c728e584f7c5a" : {
+      "predecessor" : "299d061080774d3a898335d11bc981b23caa859d"
+    },
+    "0c1915dd188bc0180cbc918cdc3cba8d40fa7e6d" : { },
+    "378a1e5f6fb5482e49b61d494da897bca8abe3dc" : { },
+    "035eef91372bac71becf6dde6fcd8ba2ad178d64" : { },
+    "ba6806966148dc35ef5beef51c69541369fc2d22" : {
+      "predecessor" : "035eef91372bac71becf6dde6fcd8ba2ad178d64"
+    },
+    "36fa7bd76fc2328c778081b0bb0c34c2a30d345f" : {
+      "predecessor" : "ba6806966148dc35ef5beef51c69541369fc2d22"
+    },
+    "cd094d8bc7ed46c3410ea4555594738ac6cf5b1c" : {
+      "predecessor" : "36fa7bd76fc2328c778081b0bb0c34c2a30d345f"
+    },
+    "7a82963a78a8242b3c8c276de2382594f8a74f42" : { },
+    "5907d8f284aa50cc970b43dd6352da143c95cd31" : {
+      "predecessor" : "7a82963a78a8242b3c8c276de2382594f8a74f42"
+    },
+    "2da9e181f8251547425c9fe44b925dbb2f86b2a8" : {
+      "predecessor" : "5907d8f284aa50cc970b43dd6352da143c95cd31"
+    },
+    "f7f39f8e51a18435eda7873a9b304a8728bb0b49" : {
+      "predecessor" : "2da9e181f8251547425c9fe44b925dbb2f86b2a8"
+    },
+    "257e5763bddde315791da7ab1852b29905265733" : {
+      "testcases" : {
+        "org.apache.catalina.authenticator.TestBasicAuthParser" : [ "testAuthMethodCaseBasic" ]
+      },
+      "predecessor" : "f7f39f8e51a18435eda7873a9b304a8728bb0b49"
+    },
+    "a4490a2af64308cfdd9cc92663fd390380aee1a2" : {
+      "predecessor" : "257e5763bddde315791da7ab1852b29905265733"
+    },
+    "6650205974619771f9ffe19d1b7a5490ce468e9d" : {
+      "testcases" : {
+        "org.apache.catalina.valves.TestRemoteIpValve" : [ "test172dash12InternalProxies" ]
+      },
+      "predecessor" : "a4490a2af64308cfdd9cc92663fd390380aee1a2"
+    },
+    "7eab11a932dbc41df9bfa3aa38a6455246841656" : { },
+    "e1cef2cfc47982c947b5f23a8dae7c71cf1b979c" : {
+      "predecessor" : "7eab11a932dbc41df9bfa3aa38a6455246841656"
+    },
+    "fbd85f4cfce632c1e667a295b067dde35a9975b2" : {
+      "predecessor" : "e1cef2cfc47982c947b5f23a8dae7c71cf1b979c"
+    },
+    "d2e8a3b4c4046ef84fdc18475a652e3027854232" : {
+      "predecessor" : "fbd85f4cfce632c1e667a295b067dde35a9975b2"
+    },
+    "92ad31acce0ab5ddc79ffc6c45a6ba61063f1e62" : { },
+    "69f6483e67878f502f1af88497968f7d4f66aa44" : { },
+    "d2b19276ea9f3781a849b36fc58a8f143f92154d" : { },
+    "8eb0fa57d9b2161e869984f87a25f25be0f02ae8" : { },
+    "433a28bb66c06471201d0cc6803b295fdf6f15cd" : { },
+    "304588c1e205309f5025e822b6de14dc39c5180b" : { },
+    "672bde04a1fd37c4c1acae2e2fe3268f8d3260ee" : { },
+    "d62d35fd746e3c9af0a5b35d1b8ce9d96fc7014b" : { },
+    "fb6bdb54759e3c596810908db3ee87e1a57b7832" : { },
+    "e9cbd4c2cdb958930fed1cfeabdd3e911fc8b1e6" : { },
     "791b6afdb3feb6e2a5c1b3b8fd92d4e8361271b4" : { },
     "92ccdb339fff3e3e06d57fd28389ceb9ad9cecf1" : { },
     "eb14d8f6749ef9b5cc22c41a31d53e19075acdf2" : { },
@@ -31,8 +354,7 @@
         "jakarta.el.TestArrayELResolver" : [ "testGetFeatureDescriptors" ],
         "jakarta.el.TestBeanELResolver" : [ "testGetFeatureDescriptors02" ],
         "jakarta.el.TestMapELResolver" : [ "testGetFeatureDescriptors01" ],
-        "jakarta.el.TestResourceBundleELResolver" : [ "bug53001" ],
-        "org.apache.el.TestMethodExpressionImpl" : [ "testVarArgsBeanFEnumVEnum" ],
+        "jakarta.el.TestResourceBundleELResolver" : [ "testGetFeatureDescriptors02" ],
         "org.apache.el.parser.TestELParser" : [ "bug56185", "testBug49081" ]
       },
       "predecessor" : "6b4c1ff07e3dbd50f0edb7fd67d8fa986bf24aa1"
@@ -41,7 +363,7 @@
     "4fc7cc94d4fb78ad5bc62ce93f67ba82cb4faac7" : { },
     "380fb1144b9ba68494b1c42397141ebe21af8a8d" : {
       "testcases" : {
-        "jakarta.el.TestBeanELResolver" : [ "testBug53421", "testSetValue04" ]
+        "jakarta.el.TestBeanELResolver" : [ "testBug53421", "testInvokeVarargsCoerce16" ]
       },
       "predecessor" : "4fc7cc94d4fb78ad5bc62ce93f67ba82cb4faac7"
     },
@@ -49,10 +371,8 @@
       "testcases" : {
         "jakarta.el.TestBeanELResolver" : [ "testGetValue03" ],
         "jakarta.el.TestELProcessor" : [ "testPrimitiveArray01" ],
-        "org.apache.el.TestELEvaluation" : [ "testBug42565" ],
-        "org.apache.el.TestMethodExpressionImpl" : [ "testBug53792a" ],
-        "org.apache.el.stream.TestCollectionOperations" : [ "testForEach01" ],
-        "org.apache.jasper.compiler.TestAttributeParser" : [ "testBug45015" ]
+        "org.apache.el.TestMethodExpressionImpl" : [ "testInvoke" ],
+        "org.apache.el.parser.TestELParser" : [ "testBug49081" ]
       },
       "predecessor" : "380fb1144b9ba68494b1c42397141ebe21af8a8d"
     },
@@ -60,6 +380,9 @@
       "predecessor" : "fda4faaaa16233c2d32961f4765b2dd9eb1f4a4c"
     },
     "39a2f1dd76036215b319aee3f8e577ade0f7b491" : {
+      "testcases" : {
+        "org.apache.tomcat.util.descriptor.web.TestWebXml" : [ "testLifecycleMethodsWebFragmentsWithConflicts", "testValidateVersion40" ]
+      },
       "predecessor" : "386912a93f130078f52e7094be3a730cda742121"
     },
     "8650cbb6104d09d247d7df5848e64ab12a598835" : {
@@ -84,6 +407,9 @@
       "predecessor" : "878caf69ca333929b31ed821c2a7f2593e785495"
     },
     "74681f56475541ff6069aadb1a88bd4d687e7446" : {
+      "testcases" : {
+        "org.apache.coyote.http2.TestAbstractStream" : [ "testCircular02" ]
+      },
       "predecessor" : "3910ab722be9b791533f8662e45cc6b5701c3177"
     },
     "dbd137f142385fe2db21f72a04e8a9a789f92ae3" : {
@@ -129,7 +455,7 @@
     "a59bffdd5ace451d5e234abc390e1e5dcc06510c" : { },
     "93dd0c2e2a15b9e5d37a92b4d435c4f53de3c00d" : {
       "testcases" : {
-        "org.apache.el.TestMethodExpressionImpl" : [ "testBug53792b" ]
+        "org.apache.el.TestMethodExpressionImpl" : [ "testBug49655", "testInvoke" ]
       },
       "predecessor" : "a59bffdd5ace451d5e234abc390e1e5dcc06510c"
     },
@@ -148,13 +474,21 @@
     "ab17b97b74ca141813ee1eb1f784089b319dd9e2" : {
       "testcases" : {
         "org.apache.catalina.authenticator.TestDigestAuthenticator" : [ "bug54521" ],
-        "org.apache.catalina.connector.TestResponse" : [ "testSendRedirect01" ]
+        "org.apache.catalina.core.TestApplicationContext" : [ "testAddFilterWithFilterNameEmptyString" ],
+        "org.apache.catalina.filters.TestCorsFilter" : [ "testDoFilterPreflightWithCredentials" ],
+        "org.apache.catalina.filters.TestCsrfPreventionFilter" : [ "testAddNonceNoQueryAnchor", "testLruCacheSerializable" ],
+        "org.apache.catalina.filters.TestRemoteIpFilter" : [ "testHeaderNamesCaseInsensitivity" ],
+        "org.apache.catalina.mapper.TestMapper" : [ "testAddRemoveContextVersion" ],
+        "org.apache.catalina.session.TestPersistentManager" : [ "testMinIdleSwap" ],
+        "org.apache.catalina.valves.TestCrawlerSessionManagerValve" : [ "testCrawlersSessionIdIsRemovedAfterSessionExpiry" ],
+        "org.apache.catalina.valves.TestRequestFilterValve" : [ "testRemoteAddrValveIPv4" ],
+        "org.apache.jasper.servlet.TestJspCServletContext" : [ "testResourceJARs" ]
       },
       "predecessor" : "ff7f2c4495598f542be4592f5ec187353a46333e"
     },
     "c5ffc0638cda8fce02e61dd19c222d0136d694da" : {
       "testcases" : {
-        "org.apache.el.lang.TestELSupport" : [ "testCoercetoFunctionalInterface01" ]
+        "jakarta.el.TestImportHandler" : [ "testBug57135" ]
       },
       "predecessor" : "ab17b97b74ca141813ee1eb1f784089b319dd9e2"
     },
@@ -220,9 +554,8 @@
     },
     "b7c05a8f60003c42e6f367bf307188ce391dbad2" : {
       "testcases" : {
-        "org.apache.coyote.TestRequest" : [ "test100ContinueExpectationImmediately" ],
-        "org.apache.coyote.http2.TestAbstractStream" : [ "testCircular02" ],
-        "org.apache.el.lang.TestELSupport" : [ "testCoercetoFunctionalInterface01" ]
+        "jakarta.el.TestELProcessor" : [ "testDefineFunctionName04" ],
+        "org.apache.coyote.http2.TestAbstractStream" : [ "testCircular02" ]
       },
       "predecessor" : "4e96884d2e7464e8654b5e06a3c5be24213c56b8"
     },
@@ -256,9 +589,6 @@
       "predecessor" : "f19fe59995cc817b28f1c3d525b20a600890be95"
     },
     "14ee9683f8543f59a6c3c217a1b68530297873d7" : {
-      "testcases" : {
-        "org.apache.coyote.TestRequest" : [ "test100ContinueExpectationImmediately" ]
-      },
       "predecessor" : "4d60e4d8fb8158b42af427b8d7ed0db788295c40"
     },
     "4bf1264cc58e4fd09da84c69c732429927cee4e6" : { },
@@ -316,8 +646,7 @@
         "org.apache.el.TestELEvaluation" : [ "testBug42565" ],
         "org.apache.el.parser.TestAstMapData" : [ "testNested01" ],
         "org.apache.el.parser.TestELParser" : [ "bug56185" ],
-        "org.apache.el.stream.TestCollectionOperations" : [ "testForEach01", "testMaxLambda02" ],
-        "org.apache.jasper.compiler.TestAttributeParser" : [ "testBug45015" ]
+        "org.apache.el.stream.TestCollectionOperations" : [ "testForEach01", "testMaxLambda02" ]
       },
       "predecessor" : "22e481064be7fae9ee9f5b11d5ef88e5cc5a64e4"
     },
@@ -331,6 +660,9 @@
       "predecessor" : "7c630a7fde51c858c899f5155c21f4462d971ec2"
     },
     "7691f255245d592e7239cfb430708c236b8eae68" : {
+      "testcases" : {
+        "org.apache.tomcat.websocket.TestWsSession" : [ "testAppendCloseReasonWithTruncation01" ]
+      },
       "predecessor" : "0967cd752e32cff35acf3c61477602658f66b15a"
     },
     "683d32e2f06938af4985b8e1f3e672f71e02b121" : {
@@ -355,6 +687,9 @@
       "predecessor" : "ac0e3d6dc95ec61ade20bfc34839aa369812dcbf"
     },
     "0b3c99c4e9c4cdce91a969430b01750291c86c1f" : {
+      "testcases" : {
+        "org.apache.tomcat.util.http.TestCookieProcessorGeneration" : [ "testSameSiteCookies" ]
+      },
       "predecessor" : "434cef97eedab06676f6454075ceb36637695bdd"
     },
     "b505fdcc743c8366627b232c43ab178e6e7f907e" : { },
@@ -378,8 +713,10 @@
     "6b8aeaf80860dd48d5ddd44e866fea5d6072ded3" : {
       "testcases" : {
         "org.apache.catalina.core.TestApplicationSessionCookieConfig" : [ "testSetCommentInitPhase" ],
-        "org.apache.jasper.servlet.TestJspCServletContext" : [ "testResourceJARs" ],
-        "org.apache.tomcat.util.descriptor.web.TestWebXml" : [ "testLifecycleMethodsWebFragmentsWithConflicts", "testValidateVersion30", "testValidateVersion40" ]
+        "org.apache.tomcat.util.descriptor.web.TestWebXml" : [ "testLifecycleMethodsWebFragmentsWithConflicts", "testValidateVersion30" ],
+        "org.apache.tomcat.util.descriptor.web.TestWebXmlOrdering" : [ "testOrderWebFragmentsRelative8" ],
+        "org.apache.tomcat.util.http.TestCookies" : [ "disallow8BitControlInName" ],
+        "org.apache.tomcat.util.http.TestLegacyCookieProcessor" : [ "testV0WithPath" ]
       },
       "predecessor" : "fa64c162a505bf36c0335d713dea5606f9185dc2"
     },

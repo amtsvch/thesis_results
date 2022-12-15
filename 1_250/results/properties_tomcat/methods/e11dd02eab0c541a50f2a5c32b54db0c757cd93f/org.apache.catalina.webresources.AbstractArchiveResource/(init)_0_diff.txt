@@ -1,0 +1,22 @@
+protected AbstractArchiveResource(AbstractArchiveResourceSet archiveResourceSet, String webAppPath, String baseUrl, JarEntry jarEntry, String codeBaseUrl) {
+    super(archiveResourceSet.getRoot(), webAppPath);
+    this.archiveResourceSet = archiveResourceSet;
+    this.baseUrl = baseUrl;
+    this.resource = jarEntry;
+    this.codeBaseUrl = codeBaseUrl;
+    String resourceName = resource.getName();
+    if (resourceName.charAt(resourceName.length() - 1) == '/') {
+        resourceName = resourceName.substring(0, resourceName.length() - 1);
+    }
+    String internalPath = archiveResourceSet.getInternalPath();
+    if (internalPath.length() > 0 && resourceName.equals(internalPath.subSequence(1, internalPath.length()))) {
+        name = "";
+    } else {
+        int index = resourceName.lastIndexOf('/');
+        if (index == -1) {
+            name = resourceName;
+        } else {
+            name = resourceName.substring(index + 1);
+        }
+    }
+}

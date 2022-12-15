@@ -1,0 +1,12 @@
+private void clearReferencesObjectStreamClassCaches() {
+    try {
+        Class<?> clazz = Class.forName("java.io.ObjectStreamClass$Caches");
+        clearCache(clazz, "localDescs");
+        clearCache(clazz, "reflectors");
+    } catch (ReflectiveOperationException | SecurityException | ClassCastException e) {
+        log.warn(sm.getString("webappClassLoader.clearObjectStreamClassCachesFail", getContextName()), e);
+    } catch (InaccessibleObjectException e) {
+        // Must be running on without the necessary command line options.
+        log.warn(sm.getString("webappClassLoader.addExportsJavaIo", this.getClass().getModule().getName()));
+    }
+}

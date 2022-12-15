@@ -1,0 +1,18 @@
+/*
+     * Section Section 6.2.5
+     *
+     * @throws ServletException
+     * @throws IOException
+     */
+@Test
+public void testCheckPreFlightRequestTypeUnsupportedRequestMethod() throws ServletException, IOException {
+    TesterHttpServletRequest request = new TesterHttpServletRequest();
+    TesterHttpServletResponse response = new TesterHttpServletResponse();
+    request.setHeader(CorsFilter.REQUEST_HEADER_ORIGIN, TesterFilterConfigs.HTTP_TOMCAT_APACHE_ORG);
+    request.setHeader(CorsFilter.REQUEST_HEADER_ACCESS_CONTROL_REQUEST_METHOD, "TRACE");
+    request.setMethod("OPTIONS");
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getDefaultFilterConfig());
+    corsFilter.doFilter(request, response, filterChain);
+    Assert.assertEquals(HttpServletResponse.SC_FORBIDDEN, response.getStatus());
+}

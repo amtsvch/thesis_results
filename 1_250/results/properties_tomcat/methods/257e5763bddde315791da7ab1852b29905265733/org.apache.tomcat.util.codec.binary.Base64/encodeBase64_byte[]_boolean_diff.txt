@@ -1,0 +1,14 @@
+/**
+ * Encodes binary data using the base64 algorithm, optionally chunking the output into 76 character blocks.
+ *
+ * @param binaryData
+ *            Array containing binary data to encode.
+ * @param isChunked
+ *            if {@code true} this encoder will chunk the base64 output into 76 character blocks
+ * @return Base64-encoded data.
+ * @throws IllegalArgumentException
+ *             Thrown when the input array needs an output array bigger than {@link Integer#MAX_VALUE}
+ */
+public static byte[] encodeBase64(final byte[] binaryData, final boolean isChunked) {
+    return encodeBase64(binaryData, isChunked, false);
+}

@@ -1,0 +1,5 @@
+@Test(expected = IllegalArgumentException.class)
+public void testAttributeInvalid01() {
+    Cookie cookie = new Cookie("name", "value");
+    cookie.setAttribute("a<aa", "bbb");
+}

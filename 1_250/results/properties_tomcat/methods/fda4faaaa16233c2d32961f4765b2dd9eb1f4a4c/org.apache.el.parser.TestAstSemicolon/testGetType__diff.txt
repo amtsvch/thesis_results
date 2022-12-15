@@ -1,0 +1,9 @@
+@Test
+public void testGetType() {
+    ELProcessor processor = new ELProcessor();
+    ELContext context = processor.getELManager().getELContext();
+    ExpressionFactory factory = ELManager.getExpressionFactory();
+    ValueExpression ve = factory.createValueExpression(context, "${1+1;2+2}", Integer.class);
+    Assert.assertEquals(Number.class, ve.getType(context));
+    Assert.assertEquals(Integer.valueOf(4), ve.getValue(context));
+}

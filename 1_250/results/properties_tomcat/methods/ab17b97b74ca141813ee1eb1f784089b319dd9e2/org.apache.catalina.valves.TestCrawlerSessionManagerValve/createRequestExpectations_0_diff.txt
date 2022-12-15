@@ -1,0 +1,12 @@
+private Request createRequestExpectations(String ip, HttpSession session, boolean isBot, String hostname, String contextPath, String userAgent) {
+    Request request = EasyMock.createMock(Request.class);
+    EasyMock.expect(request.getRemoteAddr()).andReturn(ip);
+    EasyMock.expect(request.getHost()).andReturn(simpleHostWithName(hostname));
+    EasyMock.expect(request.getContext()).andReturn(simpleContextWithName(contextPath));
+    IExpectationSetters<HttpSession> setter = EasyMock.expect(request.getSession(false)).andReturn(null);
+    if (isBot) {
+        setter.andReturn(session);
+    }
+    EasyMock.expect(request.getHeaders("user-agent")).andAnswer(() -> Collections.enumeration(Arrays.asList(userAgent)));
+    return request;
+}

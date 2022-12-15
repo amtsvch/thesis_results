@@ -1,0 +1,5 @@
+public ParallelNioSender() throws IOException {                                                        public ParallelNioSender() throws IOException {                                                     
+selector = Selector.open();                                                                          | state = new InternalState(Selector.open());                                                         
+                                                                                                     | cleaner.register(this, state);                                                                      
+setConnected(true);                                                                                    setConnected(true);                                                                                 
+}                                                                                                      }                                                                                                   

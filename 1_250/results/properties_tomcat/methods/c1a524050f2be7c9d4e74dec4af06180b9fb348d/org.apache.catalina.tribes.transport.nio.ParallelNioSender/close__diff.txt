@@ -1,0 +1,20 @@
+private synchronized void close() throws ChannelException {                                            private synchronized void close() throws ChannelException {                                         
+ChannelException x = null;                                                                             ChannelException x = null;                                                                          
+Object[] members = nioSenders.keySet().toArray();                                                    | Iterator&lt;Map.Entry&lt;Member, NioSender&gt;&gt; iter = nioSenders.entrySet().iterator();         
+for (Object member : members) {                                                                      | while (iter.hasNext()) {                                                                            
+Member mbr = (Member) member;                                                                        | Map.Entry&lt;Member, NioSender&gt; entry = iter.next();                                             
+try {                                                                                                  try {                                                                                               
+NioSender sender = nioSenders.get(mbr);                                                              | entry.getValue().disconnect();                                                                      
+sender.disconnect();                                                                                 |                                                                                                     
+} catch (Exception e) {                                                                                } catch (Exception e) {                                                                             
+if (x == null) {                                                                                       if (x == null) {                                                                                    
+x = new ChannelException(e);                                                                           x = new ChannelException(e);                                                                        
+}                                                                                                      }                                                                                                   
+x.addFaultyMember(mbr, e);                                                                           | x.addFaultyMember(entry.getKey(), e);                                                               
+}                                                                                                      }                                                                                                   
+nioSenders.remove(mbr);                                                                              | iter.remove();                                                                                      
+}                                                                                                      }                                                                                                   
+if (x != null) {                                                                                       if (x != null) {                                                                                    
+throw x;                                                                                               throw x;                                                                                            
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

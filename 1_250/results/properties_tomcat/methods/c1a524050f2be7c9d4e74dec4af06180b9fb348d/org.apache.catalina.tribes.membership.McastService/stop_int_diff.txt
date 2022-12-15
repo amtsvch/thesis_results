@@ -1,0 +1,19 @@
+/**
+ * Stop broadcasting and listening to membership pings
+ */
+@Override
+public void stop(int svc) {
+    try {
+        if (impl != null && impl.stop(svc)) {
+            if (oname != null) {
+                JmxRegistry.getRegistry(channel).unregisterJmx(oname);
+                oname = null;
+            }
+            impl.setChannel(null);
+            impl = null;
+            channel = null;
+        }
+    } catch (Exception x) {
+        log.error(sm.getString("McastService.stopFail", Integer.valueOf(svc)), x);
+    }
+}

@@ -1,0 +1,18 @@
+/**
+ * Tests that a valid property is resolved.
+ */
+@Test
+public void testGetValue03() {
+    ResourceBundleELResolver resolver = new ResourceBundleELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    ResourceBundle resourceBundle = new TesterResourceBundle();
+    Object result = resolver.getValue(context, resourceBundle, "key1");
+    Assert.assertEquals("value1", result);
+    Assert.assertTrue(context.isPropertyResolved());
+    result = resolver.getValue(context, resourceBundle, "unknown-key");
+    Assert.assertEquals("???unknown-key???", result);
+    Assert.assertTrue(context.isPropertyResolved());
+    result = resolver.getValue(context, resourceBundle, null);
+    Assert.assertNull(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

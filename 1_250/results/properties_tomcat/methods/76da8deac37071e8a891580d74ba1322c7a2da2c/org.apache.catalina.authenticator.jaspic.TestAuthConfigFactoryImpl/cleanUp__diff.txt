@@ -1,0 +1,13 @@
+@After
+public void cleanUp() {
+    if (oldCatalinaBase != null) {
+        System.setProperty(Globals.CATALINA_BASE_PROP, oldCatalinaBase);
+    } else {
+        System.clearProperty(Globals.CATALINA_BASE_PROP);
+    }
+    if (TEST_CONFIG_FILE.exists()) {
+        if (!TEST_CONFIG_FILE.delete()) {
+            Assert.fail("Failed to delete " + TEST_CONFIG_FILE);
+        }
+    }
+}

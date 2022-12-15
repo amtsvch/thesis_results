@@ -1,0 +1,5 @@
+@Override
+public void addJarResources(WebResourceSet webResourceSet) {
+    webResourceSet.setRoot(this);
+    jarResources.add(webResourceSet);
+}

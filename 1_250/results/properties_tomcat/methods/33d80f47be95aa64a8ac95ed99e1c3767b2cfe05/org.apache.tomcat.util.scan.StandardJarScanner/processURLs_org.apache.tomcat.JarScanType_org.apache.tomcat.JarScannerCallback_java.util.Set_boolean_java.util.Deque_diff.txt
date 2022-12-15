@@ -1,0 +1,33 @@
+protected void processURLs(JarScanType scanType, JarScannerCallback callback, Set<URL> processedURLs, boolean isWebapp, Deque<URL> classPathUrlsToProcess) {
+    if (jarScanFilter.isSkipAll()) {
+        return;
+    }
+    while (!classPathUrlsToProcess.isEmpty()) {
+        URL url = classPathUrlsToProcess.pop();
+        if (processedURLs.contains(url)) {
+            // Skip this URL it has already been processed
+            continue;
+        }
+        ClassPathEntry cpe = new ClassPathEntry(url);
+        // JARs are scanned unless the filter says not to.
+        // Directories are scanned for pluggability scans or
+        // if scanAllDirectories is enabled unless the
+        // filter says not to.
+        if ((cpe.isJar() || scanType == JarScanType.PLUGGABILITY || isScanAllDirectories()) && getJarScanFilter().check(scanType, cpe.getName())) {
+            if (log.isDebugEnabled()) {
+                log.debug(sm.getString("jarScan.classloaderJarScan", url));
+            }
+            try {
+                processedURLs.add(url);
+                process(scanType, callback, url, null, isWebapp, classPathUrlsToProcess);
+            } catch (IOException ioe) {
+                log.warn(sm.getString("jarScan.classloaderFail", url), ioe);
+            }
+        } else {
+            // JAR / directory has been skipped
+            if (log.isTraceEnabled()) {
+                log.trace(sm.getString("jarScan.classloaderJarNoScan", url));
+            }
+        }
+    }
+}

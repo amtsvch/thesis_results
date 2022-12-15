@@ -1,0 +1,7 @@
+/**
+ * Tests that a valid method is not resolved if base is not ELCLass.
+ */
+@Test
+public void testInvoke04() {
+    doNegativeTest(new Object(), METHOD02_NAME, MethodUnderTest.INVOKE);
+}

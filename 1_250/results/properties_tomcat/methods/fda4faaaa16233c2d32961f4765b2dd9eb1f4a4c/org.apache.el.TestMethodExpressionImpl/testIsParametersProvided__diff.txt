@@ -1,0 +1,7 @@
+@Test
+public void testIsParametersProvided() {
+    MethodExpression me1 = factory.createMethodExpression(context, "${beanB.getName}", String.class, new Class<?>[] {});
+    MethodExpression me2 = factory.createMethodExpression(context, "${beanB.sayHello('JUnit')}", String.class, new Class<?>[] { String.class });
+    Assert.assertFalse(me1.isParametersProvided());
+    Assert.assertTrue(me2.isParametersProvided());
+}

@@ -1,0 +1,7 @@
+/**
+ * @return the names of all headers received with this request.
+ */
+@Override
+public Enumeration<String> getHeaderNames() {
+    return coyoteRequest.getMimeHeaders().names();
+}

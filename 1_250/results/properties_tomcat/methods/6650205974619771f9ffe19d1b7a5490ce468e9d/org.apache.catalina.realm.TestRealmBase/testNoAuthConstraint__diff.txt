@@ -1,0 +1,6 @@
+@Test
+public void testNoAuthConstraint() throws IOException {
+    // No auth constraint == allow access for all
+    List<String> applicationRoles = new ArrayList<>();
+    doRoleTest(null, null, applicationRoles, true);
+}

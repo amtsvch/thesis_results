@@ -1,0 +1,40 @@
+@Before
+@Override
+public void setUp() throws Exception {
+    super.setUp();
+    // Trigger loading of catalina.properties
+    CatalinaProperties.getProperty("foo");
+    File appBase = new File(getTemporaryDirectory(), "webapps");
+    if (!appBase.exists() && !appBase.mkdir()) {
+        Assert.fail("Unable to create appBase for test");
+    }
+    tomcat = new TomcatWithFastSessionIDs();
+    String protocol = getProtocol();
+    Connector connector = new Connector(protocol);
+    // Listen only on localhost
+    Assert.assertTrue(connector.setProperty("address", InetAddress.getByName("localhost").getHostAddress()));
+    // Use random free port
+    connector.setPort(0);
+    // Mainly set to reduce timeouts during async tests
+    Assert.assertTrue(connector.setProperty("connectionTimeout", "3000"));
+    tomcat.getService().addConnector(connector);
+    tomcat.setConnector(connector);
+    File catalinaBase = getTemporaryDirectory();
+    tomcat.setBaseDir(catalinaBase.getAbsolutePath());
+    tomcat.getHost().setAppBase(appBase.getAbsolutePath());
+    accessLogEnabled = Boolean.parseBoolean(System.getProperty("tomcat.test.accesslog", "false"));
+    if (accessLogEnabled) {
+        String accessLogDirectory = System.getProperty("tomcat.test.reports");
+        if (accessLogDirectory == null) {
+            accessLogDirectory = new File(getBuildDirectory(), "logs").toString();
+        }
+        AccessLogValve alv = new AccessLogValve();
+        alv.setDirectory(accessLogDirectory);
+        alv.setPattern("%h %l %u %t \"%r\" %s %b %I %D");
+        tomcat.getHost().getPipeline().addValve(alv);
+    }
+    // Cannot delete the whole tempDir, because logs are there,
+    // but delete known subdirectories of it.
+    addDeleteOnTearDown(new File(catalinaBase, "webapps"));
+    addDeleteOnTearDown(new File(catalinaBase, "work"));
+}

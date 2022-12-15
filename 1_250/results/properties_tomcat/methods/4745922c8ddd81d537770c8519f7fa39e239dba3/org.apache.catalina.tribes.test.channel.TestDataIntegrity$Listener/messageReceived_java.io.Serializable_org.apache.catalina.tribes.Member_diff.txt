@@ -1,0 +1,12 @@
+@Override
+public void messageReceived(Serializable s, Member m) {
+    Data d = (Data) s;
+    if (!Data.verify(d)) {
+        System.err.println("ERROR");
+    } else {
+        count++;
+        if ((count % 1000) == 0) {
+            System.err.println("SUCCESS:" + count);
+        }
+    }
+}

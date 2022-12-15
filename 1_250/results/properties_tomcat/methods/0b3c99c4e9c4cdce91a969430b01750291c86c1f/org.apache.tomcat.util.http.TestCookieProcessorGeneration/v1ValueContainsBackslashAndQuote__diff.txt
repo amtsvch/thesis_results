@@ -1,0 +1,6 @@
+@Test
+public void v1ValueContainsBackslashAndQuote() {
+    Cookie cookie = new Cookie("foo", "a\"b\\c");
+    cookie.setVersion(1);
+    doTest(cookie, "foo=\"a\\\"b\\\\c\"; Version=1", null);
+}

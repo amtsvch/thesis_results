@@ -1,0 +1,13 @@
+/**
+ * Tests that a valid property is resolved.
+ */
+@Test
+public void testGetValue03() {
+    ListELResolver resolver = new ListELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    List<String> list = new ArrayList<>();
+    list.add("key");
+    Object result = resolver.getValue(context, list, Integer.valueOf(0));
+    Assert.assertEquals("key", result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

@@ -1,0 +1,53 @@
+/**
+ * Add data to the buffer.
+ *
+ * @param src Char array
+ * @param off Offset
+ * @param len Length
+ * @throws IOException Writing overflow data to the output channel failed
+ */
+public void append(char[] src, int off, int len) throws IOException {
+    // will grow, up to limit
+    makeSpace(len);
+    int limit = getLimitInternal();
+    // Optimize on a common case.
+    // If the buffer is empty and the source is going to fill up all the
+    // space in buffer, may as well write it directly to the output,
+    // and avoid an extra copy
+    if (len == limit && end == start && out != null) {
+        out.realWriteChars(src, off, len);
+        return;
+    }
+    // if we are below the limit
+    if (len <= limit - end) {
+        System.arraycopy(src, off, buff, end, len);
+        end += len;
+        return;
+    }
+    // Need more space than we can afford, need to flush buffer.
+    // The buffer is already at (or bigger than) limit.
+    // Optimization:
+    // If len-avail < length (i.e. after we fill the buffer with what we
+    // can, the remaining will fit in the buffer) we'll just copy the first
+    // part, flush, then copy the second part - 1 write and still have some
+    // space for more. We'll still have 2 writes, but we write more on the first.
+    if (len + end < 2 * limit) {
+        /*
+             * If the request length exceeds the size of the output buffer,
+             * flush the output buffer and then write the data directly. We
+             * can't avoid 2 writes, but we can write more on the second
+             */
+        int avail = limit - end;
+        System.arraycopy(src, off, buff, end, avail);
+        end += avail;
+        flushBuffer();
+        System.arraycopy(src, off + avail, buff, end, len - avail);
+        end += len - avail;
+    } else {
+        // len > buf.length + avail
+        // long write - flush the buffer and write the rest
+        // directly from source
+        flushBuffer();
+        out.realWriteChars(src, off, len);
+    }
+}

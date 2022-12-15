@@ -1,0 +1,3 @@
+public void addServletMapping(String urlPattern, String servletName) {
+    addServletMappingDecoded(UDecoder.URLDecode(urlPattern, getCharset()), servletName);
+}

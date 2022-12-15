@@ -1,0 +1,17 @@
+/**
+ * Tests that if the ArrayELResolver is constructed with readOnly the method
+ * will return always true, otherwise false.
+ */
+@Test
+public void testIsReadOnly03() {
+    ArrayELResolver resolver = new ArrayELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    String[] base = new String[] { "element" };
+    boolean result = resolver.isReadOnly(context, base, Integer.valueOf(0));
+    Assert.assertFalse(result);
+    Assert.assertTrue(context.isPropertyResolved());
+    resolver = new ArrayELResolver(true);
+    result = resolver.isReadOnly(context, base, Integer.valueOf(0));
+    Assert.assertTrue(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

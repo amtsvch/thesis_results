@@ -1,0 +1,4 @@
+@Override
+public jakarta.servlet.FilterRegistration.Dynamic addFilter(String filterName, Filter filter) {
+    return new ApplicationFilterRegistration(new FilterDef(), new TesterContext());
+}

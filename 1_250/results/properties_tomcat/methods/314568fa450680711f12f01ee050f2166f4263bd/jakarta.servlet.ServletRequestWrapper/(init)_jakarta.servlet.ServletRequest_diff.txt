@@ -1,0 +1,13 @@
+/**
+ * Creates a ServletRequest adaptor wrapping the given request object.
+ *
+ * @param request The request to wrap
+ *
+ * @throws IllegalArgumentException if the request is null
+ */
+public ServletRequestWrapper(ServletRequest request) {
+    if (request == null) {
+        throw new IllegalArgumentException(lStrings.getString("wrapper.nullRequest"));
+    }
+    this.request = request;
+}

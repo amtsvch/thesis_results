@@ -1,9 +1,0 @@
-void init(SocketWrapperBase<?> socketWrapper) {
-    wrapper = socketWrapper;
-    wrapper.setAppReadBufHandler(this);
-    int bufLength = headerBufferSize + wrapper.getSocketBufferHandler().getReadBuffer().capacity();
-    if (byteBuffer == null || byteBuffer.capacity() < bufLength) {
-        byteBuffer = ByteBuffer.allocate(bufLength);
-        byteBuffer.position(0).limit(0);
-    }
-}

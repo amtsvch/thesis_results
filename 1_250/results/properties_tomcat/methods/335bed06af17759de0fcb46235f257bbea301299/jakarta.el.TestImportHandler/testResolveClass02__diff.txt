@@ -1,0 +1,9 @@
+/**
+ * Resolve an unknown class
+ */
+@Test
+public void testResolveClass02() {
+    ImportHandler handler = new ImportHandler();
+    Class<?> result = handler.resolveClass("Foo");
+    Assert.assertNull(result);
+}

@@ -1,0 +1,35 @@
+/**
+ * Build the list of decoder entries from a set of decoder implementations.
+ *
+ * @param decoderClazzes    Decoder implementation classes
+ * @param instanceManager   Instance manager to use to create Decoder
+ *                              instances
+ *
+ * @return List of mappings from target type to associated decoder
+ *
+ * @throws DeploymentException If a provided decoder class is not valid
+ */
+public static List<DecoderEntry> getDecoders(List<Class<? extends Decoder>> decoderClazzes, InstanceManager instanceManager) throws DeploymentException {
+    List<DecoderEntry> result = new ArrayList<>();
+    if (decoderClazzes != null) {
+        for (Class<? extends Decoder> decoderClazz : decoderClazzes) {
+            // Need to instantiate decoder to ensure it is valid and that
+            // deployment can be failed if it is not
+            Decoder instance;
+            try {
+                if (instanceManager == null) {
+                    instance = decoderClazz.getConstructor().newInstance();
+                } else {
+                    instance = (Decoder) instanceManager.newInstance(decoderClazz);
+                    // Don't need this instance, so destroy it
+                    instanceManager.destroyInstance(instance);
+                }
+            } catch (ReflectiveOperationException | IllegalArgumentException | SecurityException | NamingException e) {
+                throw new DeploymentException(sm.getString("pojoMethodMapping.invalidDecoder", decoderClazz.getName()), e);
+            }
+            DecoderEntry entry = new DecoderEntry(Util.getDecoderType(decoderClazz), decoderClazz);
+            result.add(entry);
+        }
+    }
+    return result;
+}

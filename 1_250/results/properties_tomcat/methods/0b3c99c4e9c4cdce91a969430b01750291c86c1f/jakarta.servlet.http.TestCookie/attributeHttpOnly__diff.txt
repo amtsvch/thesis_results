@@ -1,0 +1,5 @@
+@Test
+public void attributeHttpOnly() {
+    Cookie cookie = new Cookie("HttpOnly", null);
+    Assert.assertEquals("HttpOnly", cookie.getName());
+}

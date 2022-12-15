@@ -1,0 +1,9 @@
+/**
+ * Import an invalid package.
+ */
+@Test
+public void testImportPackage01_57574() {
+    ImportHandler handler = new ImportHandler();
+    handler.importPackage("org.apache.tomcat.foo");
+    // No exception is expected
+}

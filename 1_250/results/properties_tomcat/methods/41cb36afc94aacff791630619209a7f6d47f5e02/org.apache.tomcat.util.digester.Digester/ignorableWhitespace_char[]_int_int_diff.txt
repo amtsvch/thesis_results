@@ -1,0 +1,17 @@
+/**
+ * Process notification of ignorable whitespace received from the body of
+ * an XML element.
+ *
+ * @param buffer The characters from the XML document
+ * @param start Starting offset into the buffer
+ * @param len Number of characters from the buffer
+ *
+ * @exception SAXException if a parsing error is to be reported
+ */
+@Override
+public void ignorableWhitespace(char[] buffer, int start, int len) throws SAXException {
+    if (saxLog.isDebugEnabled()) {
+        saxLog.debug("ignorableWhitespace(" + new String(buffer, start, len) + ")");
+    }
+    // No processing required
+}

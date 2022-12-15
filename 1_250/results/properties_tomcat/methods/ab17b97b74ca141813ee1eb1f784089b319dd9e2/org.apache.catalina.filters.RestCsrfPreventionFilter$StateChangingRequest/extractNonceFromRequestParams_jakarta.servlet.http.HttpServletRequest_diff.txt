@@ -1,0 +1,13 @@
+private String extractNonceFromRequestParams(HttpServletRequest request) {
+    String[] params = nonceFromRequestParams.getNonce(request, Constants.CSRF_REST_NONCE_HEADER_NAME);
+    if (Objects.nonNull(params) && params.length > 0) {
+        String nonce = params[0];
+        for (String param : params) {
+            if (!Objects.equals(param, nonce)) {
+                return null;
+            }
+        }
+        return nonce;
+    }
+    return null;
+}

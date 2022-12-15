@@ -1,0 +1,6 @@
+public void setHostname(String host) throws IOException {
+    hostname = host;
+    synchronized (this) {
+        this.host = java.net.InetAddress.getByName(host).getAddress();
+    }
+}

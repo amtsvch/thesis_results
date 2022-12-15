@@ -1,0 +1,7 @@
+@Test
+public void v1PortIsIgnoredOld() {
+    FOO.setVersion(1);
+    FOO.setDomain("apache.org");
+    A.setVersion(1);
+    test(false, "$Version=1;foo=\"bar\";$Domain=apache.org;$Port=8080;a=b", FOO, A);
+}

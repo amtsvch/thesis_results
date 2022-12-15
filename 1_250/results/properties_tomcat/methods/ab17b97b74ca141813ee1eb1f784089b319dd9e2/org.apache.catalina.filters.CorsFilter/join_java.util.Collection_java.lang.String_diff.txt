@@ -1,0 +1,31 @@
+/**
+ * Joins elements of {@link Set} into a string, where each element is
+ * separated by the provided separator.
+ *
+ * @param elements The {@link Set} containing elements to join together.
+ * @param joinSeparator The character to be used for separating elements.
+ * @return The joined {@link String}; <code>null</code> if elements
+ *         {@link Set} is null.
+ */
+protected static String join(final Collection<String> elements, final String joinSeparator) {
+    String separator = ",";
+    if (elements == null) {
+        return null;
+    }
+    if (joinSeparator != null) {
+        separator = joinSeparator;
+    }
+    StringBuilder buffer = new StringBuilder();
+    boolean isFirst = true;
+    for (String element : elements) {
+        if (!isFirst) {
+            buffer.append(separator);
+        } else {
+            isFirst = false;
+        }
+        if (element != null) {
+            buffer.append(element);
+        }
+    }
+    return buffer.toString();
+}

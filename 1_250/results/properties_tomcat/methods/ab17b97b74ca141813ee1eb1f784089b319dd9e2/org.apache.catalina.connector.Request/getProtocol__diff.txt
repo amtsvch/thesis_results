@@ -1,0 +1,7 @@
+/**
+ * @return the protocol and version used to make this Request.
+ */
+@Override
+public String getProtocol() {
+    return coyoteRequest.protocol().toString();
+}

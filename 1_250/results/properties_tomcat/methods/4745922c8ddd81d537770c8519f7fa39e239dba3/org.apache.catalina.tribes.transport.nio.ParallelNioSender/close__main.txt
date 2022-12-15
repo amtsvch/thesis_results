@@ -1,0 +1,19 @@
+private synchronized void close() throws ChannelException {
+    ChannelException x = null;
+    Iterator<Map.Entry<Member, NioSender>> iter = state.nioSenders.entrySet().iterator();
+    while (iter.hasNext()) {
+        Map.Entry<Member, NioSender> entry = iter.next();
+        try {
+            entry.getValue().disconnect();
+        } catch (Exception e) {
+            if (x == null) {
+                x = new ChannelException(e);
+            }
+            x.addFaultyMember(entry.getKey(), e);
+        }
+        iter.remove();
+    }
+    if (x != null) {
+        throw x;
+    }
+}

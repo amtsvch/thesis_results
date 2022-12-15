@@ -1,0 +1,9 @@
+@Test
+public void testGetType() {
+    ELProcessor processor = new ELProcessor();
+    ELContext context = processor.getELManager().getELContext();
+    ExpressionFactory factory = ELManager.getExpressionFactory();
+    ValueExpression ve = factory.createValueExpression(context, "${{'a','b','c'}}", Set.class);
+    Assert.assertEquals(Set.class, ve.getType(context));
+    Assert.assertEquals(simpleSet, ve.getValue(context));
+}

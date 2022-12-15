@@ -1,0 +1,25 @@
+/**
+ * Fill a {@link NetMask} list from a string input containing a
+ * comma-separated list of (hopefully valid) {@link NetMask}s.
+ *
+ * @param input The input string
+ * @param target The list to fill
+ * @return a string list of processing errors (empty when no errors)
+ */
+private List<String> fillFromInput(final String input, final List<NetMask> target) {
+    target.clear();
+    if (input == null || input.isEmpty()) {
+        return Collections.emptyList();
+    }
+    final List<String> messages = new LinkedList<>();
+    NetMask nm;
+    for (final String s : input.split("\\s*,\\s*")) {
+        try {
+            nm = new NetMask(s);
+            target.add(nm);
+        } catch (IllegalArgumentException e) {
+            messages.add(s + ": " + e.getMessage());
+        }
+    }
+    return Collections.unmodifiableList(messages);
+}

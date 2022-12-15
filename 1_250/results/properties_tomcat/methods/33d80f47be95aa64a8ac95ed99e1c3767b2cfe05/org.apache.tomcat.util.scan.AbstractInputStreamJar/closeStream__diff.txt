@@ -1,0 +1,9 @@
+protected void closeStream() {
+    if (jarInputStream != null) {
+        try {
+            jarInputStream.reallyClose();
+        } catch (IOException ioe) {
+            // Ignore
+        }
+    }
+}

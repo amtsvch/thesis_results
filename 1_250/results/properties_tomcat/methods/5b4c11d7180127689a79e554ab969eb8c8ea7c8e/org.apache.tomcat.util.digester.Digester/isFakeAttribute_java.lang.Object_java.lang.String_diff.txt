@@ -1,0 +1,20 @@
+/**
+ * Determine if an attribute is a fake attribute.
+ * @param object The object
+ * @param name The attribute name
+ * @return <code>true</code> if this is a fake attribute
+ */
+public boolean isFakeAttribute(Object object, String name) {
+    if (fakeAttributes == null) {
+        return false;
+    }
+    List<String> result = fakeAttributes.get(object.getClass());
+    if (result == null) {
+        result = fakeAttributes.get(Object.class);
+    }
+    if (result == null) {
+        return false;
+    } else {
+        return result.contains(name);
+    }
+}

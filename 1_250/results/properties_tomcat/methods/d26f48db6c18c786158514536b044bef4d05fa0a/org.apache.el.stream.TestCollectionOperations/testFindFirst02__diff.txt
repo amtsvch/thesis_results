@@ -1,0 +1,6 @@
+@Test(expected = ELException.class)
+public void testFindFirst02() {
+    ELProcessor processor = new ELProcessor();
+    Optional result = (Optional) processor.getValue("[].stream().findFirst()", Object.class);
+    result.get();
+}

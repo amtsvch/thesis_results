@@ -1,0 +1,22 @@
+@Override                                                                                              @Override                                                                                           
+protected boolean isMultiRelease() {                                                                   protected boolean isMultiRelease() {                                                                
+if (multiRelease == null) {                                                                            if (multiRelease == null) {                                                                         
+synchronized (archiveLock) {                                                                           synchronized (archiveLock) {                                                                        
+if (multiRelease == null) {                                                                            if (multiRelease == null) {                                                                         
+JarFile jarFile = null;                                                                                JarFile jarFile = null;                                                                             
+try {                                                                                                  try {                                                                                               
+jarFile = openJarFile();                                                                               jarFile = openJarFile();                                                                            
+multiRelease = Boolean.valueOf(JreCompat.getInstance().jarFileIsMultiRelease(jarFile));              | multiRelease = Boolean.valueOf(jarFile.isMultiRelease());                                           
+} catch (IOException ioe) {                                                                            } catch (IOException ioe) {                                                                         
+// Should never happen                                                                                 // Should never happen                                                                              
+throw new IllegalStateException(ioe);                                                                  throw new IllegalStateException(ioe);                                                               
+} finally {                                                                                            } finally {                                                                                         
+if (jarFile != null) {                                                                                 if (jarFile != null) {                                                                              
+closeJarFile();                                                                                        closeJarFile();                                                                                     
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+return multiRelease.booleanValue();                                                                    return multiRelease.booleanValue();                                                                 
+}                                                                                                      }                                                                                                   

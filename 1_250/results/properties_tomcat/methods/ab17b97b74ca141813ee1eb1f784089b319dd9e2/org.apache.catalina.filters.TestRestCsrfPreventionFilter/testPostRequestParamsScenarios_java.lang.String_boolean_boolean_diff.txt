@@ -1,0 +1,14 @@
+private void testPostRequestParamsScenarios(String sessionAttr, boolean denyResponse, boolean configurePaths) throws Exception {
+    EasyMock.expect(session.getAttribute(Constants.CSRF_REST_NONCE_SESSION_ATTR_NAME)).andReturn(sessionAttr);
+    EasyMock.replay(session);
+    if (configurePaths) {
+        filter.setPathsAcceptingParams(ACCEPTED_PATHS);
+    }
+    filter.doFilter(request, response, filterChain);
+    if (denyResponse) {
+        verifyDenyResponse(HttpServletResponse.SC_FORBIDDEN);
+    } else {
+        verifyContinueChain();
+    }
+    EasyMock.verify(session);
+}

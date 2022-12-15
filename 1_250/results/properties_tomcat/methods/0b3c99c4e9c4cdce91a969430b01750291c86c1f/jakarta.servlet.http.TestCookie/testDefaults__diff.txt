@@ -1,0 +1,8 @@
+@Test
+public void testDefaults() {
+    Cookie cookie = new Cookie("foo", null);
+    Assert.assertEquals("foo", cookie.getName());
+    Assert.assertNull(cookie.getValue());
+    Assert.assertEquals(0, cookie.getVersion());
+    Assert.assertEquals(-1, cookie.getMaxAge());
+}

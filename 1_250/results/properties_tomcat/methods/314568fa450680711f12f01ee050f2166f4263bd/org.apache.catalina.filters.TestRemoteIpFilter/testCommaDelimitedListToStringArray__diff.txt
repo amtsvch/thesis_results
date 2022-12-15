@@ -1,0 +1,6 @@
+@Test
+public void testCommaDelimitedListToStringArray() {
+    List<String> elements = Arrays.asList("element1", "element2", "element3");
+    String actual = RemoteIpFilter.listToCommaDelimitedString(elements);
+    Assert.assertEquals("element1, element2, element3", actual);
+}

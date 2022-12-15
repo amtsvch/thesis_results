@@ -1,0 +1,9 @@
+@Test
+public void testGoodCribOnePad() throws Exception {
+    final String PASSWORD1 = "secrets";
+    final String BASE64_CRIB = "dXNlcmlkOnNlY3JldHM=";
+    final BasicAuthHeader AUTH_HEADER = new BasicAuthHeader(NICE_METHOD, BASE64_CRIB);
+    BasicAuthenticator.BasicCredentials credentials = new BasicAuthenticator.BasicCredentials(AUTH_HEADER.getHeader(), StandardCharsets.UTF_8, true);
+    Assert.assertEquals(USER_NAME, credentials.getUsername());
+    Assert.assertEquals(PASSWORD1, credentials.getPassword());
+}

@@ -1,0 +1,34 @@
+@Override
+public boolean keepalive() {
+    boolean result = false;
+    for (Iterator<Entry<Member, NioSender>> i = state.nioSenders.entrySet().iterator(); i.hasNext(); ) {
+        Map.Entry<Member, NioSender> entry = i.next();
+        NioSender sender = entry.getValue();
+        if (sender.keepalive()) {
+            // nioSenders.remove(entry.getKey());
+            i.remove();
+            result = true;
+        } else {
+            try {
+                sender.read();
+            } catch (IOException x) {
+                sender.disconnect();
+                sender.reset();
+                // nioSenders.remove(entry.getKey());
+                i.remove();
+                result = true;
+            } catch (Exception x) {
+                log.warn(sm.getString("parallelNioSender.error.keepalive", sender), x);
+            }
+        }
+    }
+    // clean up any cancelled keys
+    if (result) {
+        try {
+            state.selector.selectNow();
+        } catch (Exception e) {
+            /*Ignore*/
+        }
+    }
+    return result;
+}

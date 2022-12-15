@@ -1,0 +1,17 @@
+/**
+ * Test if a given address and port matches this netmask.
+ *
+ * @param addr The {@link java.net.InetAddress} to test
+ * @param port The port to test
+ * @return true on match, false otherwise
+ */
+public boolean matches(final InetAddress addr, int port) {
+    if (!foundPort) {
+        return false;
+    }
+    final String portString = Integer.toString(port);
+    if (!portPattern.matcher(portString).matches()) {
+        return false;
+    }
+    return matches(addr, true);
+}

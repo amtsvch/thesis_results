@@ -1,0 +1,6 @@
+@Test
+public void test02() {
+    ELProcessor processor = new ELProcessor();
+    Boolean result = processor.eval("true && null");
+    Assert.assertEquals(Boolean.FALSE, result);
+}

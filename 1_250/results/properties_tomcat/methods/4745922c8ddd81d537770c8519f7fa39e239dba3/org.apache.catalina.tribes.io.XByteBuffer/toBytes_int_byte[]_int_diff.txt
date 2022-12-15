@@ -1,0 +1,17 @@
+/**
+ * Converts an integer to four bytes.
+ * @param n the integer
+ * @param b the byte buffer in which the integer will be placed
+ * @param offset the offset in the byte array
+ * @return four bytes in an array
+ */
+public static byte[] toBytes(int n, byte[] b, int offset) {
+    b[offset + 3] = (byte) (n);
+    n >>>= 8;
+    b[offset + 2] = (byte) (n);
+    n >>>= 8;
+    b[offset + 1] = (byte) (n);
+    n >>>= 8;
+    b[offset + 0] = (byte) (n);
+    return b;
+}

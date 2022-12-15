@@ -1,0 +1,12 @@
+/**
+ * Use specified HttpConstraintElement as default and specific constraints
+ * for specified methods.
+ * @param httpConstraintElement Default constraint
+ * @param httpMethodConstraints Method constraints
+ * @throws IllegalArgumentException if a method name is specified more than
+ * once
+ */
+public ServletSecurityElement(HttpConstraintElement httpConstraintElement, Collection<HttpMethodConstraintElement> httpMethodConstraints) {
+    super(httpConstraintElement.getEmptyRoleSemantic(), httpConstraintElement.getTransportGuarantee(), httpConstraintElement.getRolesAllowed());
+    addHttpMethodConstraints(httpMethodConstraints);
+}

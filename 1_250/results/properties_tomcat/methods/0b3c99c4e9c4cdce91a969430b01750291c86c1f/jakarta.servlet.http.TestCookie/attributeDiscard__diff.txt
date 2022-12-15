@@ -1,0 +1,5 @@
+@Test
+public void attributeDiscard() {
+    Cookie cookie = new Cookie("Discard", null);
+    Assert.assertEquals("Discard", cookie.getName());
+}

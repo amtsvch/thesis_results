@@ -1,0 +1,30 @@
+final void set(Setting setting, long value) throws T {
+    if (log.isDebugEnabled()) {
+        log.debug(sm.getString("connectionSettings.debug", connectionId, getEndpointName(), setting, Long.toString(value)));
+    }
+    switch(setting) {
+        case HEADER_TABLE_SIZE:
+            validateHeaderTableSize(value);
+            break;
+        case ENABLE_PUSH:
+            validateEnablePush(value);
+            break;
+        case MAX_CONCURRENT_STREAMS:
+            // No further validation required
+            break;
+        case INITIAL_WINDOW_SIZE:
+            validateInitialWindowSize(value);
+            break;
+        case MAX_FRAME_SIZE:
+            validateMaxFrameSize(value);
+            break;
+        case MAX_HEADER_LIST_SIZE:
+            // No further validation required
+            break;
+        case UNKNOWN:
+            // Unrecognised. Ignore it.
+            log.warn(sm.getString("connectionSettings.unknown", connectionId, setting, Long.toString(value)));
+            return;
+    }
+    set(setting, Long.valueOf(value));
+}

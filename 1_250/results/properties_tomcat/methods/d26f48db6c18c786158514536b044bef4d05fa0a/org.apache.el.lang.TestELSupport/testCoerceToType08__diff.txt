@@ -1,0 +1,5 @@
+@Test
+public void testCoerceToType08() {
+    Object result = ELManager.getExpressionFactory().coerceToType("", char.class);
+    Assert.assertEquals(Character.valueOf((char) 0), result);
+}

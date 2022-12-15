@@ -1,0 +1,11 @@
+/**
+ * Add a "call parameter" rule for the specified parameters.
+ *
+ * @param pattern Element matching pattern
+ * @param paramIndex Zero-relative parameter index to set
+ *  (from the body of this element)
+ * @see CallParamRule
+ */
+public void addCallParam(String pattern, int paramIndex) {
+    addRule(pattern, new CallParamRule(paramIndex));
+}

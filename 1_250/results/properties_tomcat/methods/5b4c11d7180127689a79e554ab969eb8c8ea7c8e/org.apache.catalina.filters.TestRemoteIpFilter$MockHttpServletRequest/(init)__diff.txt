@@ -1,0 +1,4 @@
+public MockHttpServletRequest() {
+    super(new Connector());
+    setCoyoteRequest(new org.apache.coyote.Request());
+}

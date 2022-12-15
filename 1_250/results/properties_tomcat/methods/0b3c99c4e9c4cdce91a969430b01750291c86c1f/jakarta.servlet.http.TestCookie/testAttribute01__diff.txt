@@ -1,0 +1,10 @@
+@Test
+public void testAttribute01() {
+    Cookie cookie = new Cookie("name", "value");
+    cookie.setAttribute("aaa", "bbb");
+    Assert.assertEquals("bbb", cookie.getAttribute("aAa"));
+    cookie.setAttribute("aaa", "");
+    Assert.assertEquals("", cookie.getAttribute("aAa"));
+    cookie.setAttribute("aaa", null);
+    Assert.assertNull(cookie.getAttribute("aAa"));
+}

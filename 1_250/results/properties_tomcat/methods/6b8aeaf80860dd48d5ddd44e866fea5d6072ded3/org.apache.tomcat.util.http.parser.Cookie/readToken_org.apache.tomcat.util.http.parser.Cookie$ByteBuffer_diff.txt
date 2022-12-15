@@ -1,0 +1,12 @@
+private static ByteBuffer readToken(ByteBuffer bb) {
+    final int start = bb.position();
+    int end = bb.limit();
+    while (bb.hasRemaining()) {
+        if (!HttpParser.isToken(bb.get())) {
+            end = bb.position() - 1;
+            bb.position(end);
+            break;
+        }
+    }
+    return new ByteBuffer(bb.bytes, start, end - start);
+}

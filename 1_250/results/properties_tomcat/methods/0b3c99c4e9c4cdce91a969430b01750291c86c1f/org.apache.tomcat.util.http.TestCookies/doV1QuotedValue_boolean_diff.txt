@@ -1,0 +1,6 @@
+private void doV1QuotedValue(boolean useRfc6265) {
+    FOO.setVersion(1);
+    A.setVersion(1);
+    // presumes quotes are removed
+    test(useRfc6265, "$Version=1;foo=\"bar\";a=b; ; ", FOO, A);
+}

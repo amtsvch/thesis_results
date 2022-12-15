@@ -1,0 +1,9 @@
+/**
+ * Convert eight bytes to a long
+ * @param b - the byte array containing the four bytes
+ * @param off - the offset
+ * @return the long value constructed from the eight bytes
+ */
+public static long toLong(byte[] b, int off) {
+    return (((long) b[off + 7]) & 0xFF) + ((((long) b[off + 6]) & 0xFF) << 8) + ((((long) b[off + 5]) & 0xFF) << 16) + ((((long) b[off + 4]) & 0xFF) << 24) + ((((long) b[off + 3]) & 0xFF) << 32) + ((((long) b[off + 2]) & 0xFF) << 40) + ((((long) b[off + 1]) & 0xFF) << 48) + ((((long) b[off + 0]) & 0xFF) << 56);
+}

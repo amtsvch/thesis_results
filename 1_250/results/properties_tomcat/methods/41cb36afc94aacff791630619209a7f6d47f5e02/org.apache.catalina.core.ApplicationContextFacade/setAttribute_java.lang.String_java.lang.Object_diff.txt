@@ -1,0 +1,8 @@
+@Override
+public void setAttribute(String name, Object object) {
+    if (SecurityUtil.isPackageProtectionEnabled()) {
+        doPrivileged("setAttribute", new Object[] { name, object });
+    } else {
+        context.setAttribute(name, object);
+    }
+}

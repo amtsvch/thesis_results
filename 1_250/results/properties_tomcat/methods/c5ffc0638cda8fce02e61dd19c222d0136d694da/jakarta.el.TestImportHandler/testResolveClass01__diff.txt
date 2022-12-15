@@ -1,0 +1,9 @@
+/**
+ * java.lang should be imported by default
+ */
+@Test
+public void testResolveClass01() {
+    ImportHandler handler = new ImportHandler();
+    Class<?> result = handler.resolveClass("String");
+    Assert.assertEquals(String.class, result);
+}

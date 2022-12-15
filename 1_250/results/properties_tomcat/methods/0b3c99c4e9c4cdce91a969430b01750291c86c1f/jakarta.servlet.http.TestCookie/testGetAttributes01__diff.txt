@@ -1,0 +1,5 @@
+@Test
+public void testGetAttributes01() {
+    Cookie cookie = new Cookie("name", "value");
+    Assert.assertEquals(0, cookie.getAttributes().size());
+}

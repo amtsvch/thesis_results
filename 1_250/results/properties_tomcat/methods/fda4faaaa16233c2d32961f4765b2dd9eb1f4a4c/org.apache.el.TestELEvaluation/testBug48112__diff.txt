@@ -1,0 +1,5 @@
+@Test
+public void testBug48112() {
+    // bug 48112
+    Assert.assertEquals("{world}", evaluateExpression("${fn:trim('{world}')}"));
+}

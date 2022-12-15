@@ -1,0 +1,14 @@
+/**
+ * Construct an instance for the given HTTP method name and
+ * {@link HttpConstraintElement}.
+ *
+ * @param methodName    The HTTP method name
+ * @param constraint    The constraint for the given method
+ */
+public HttpMethodConstraintElement(String methodName, HttpConstraintElement constraint) {
+    super(constraint.getEmptyRoleSemantic(), constraint.getTransportGuarantee(), constraint.getRolesAllowed());
+    if (methodName == null || methodName.length() == 0) {
+        throw new IllegalArgumentException(lStrings.getString("httpMethodConstraintElement.invalidMethod"));
+    }
+    this.methodName = methodName;
+}

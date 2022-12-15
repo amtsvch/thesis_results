@@ -1,0 +1,26 @@
+public byte[] getDataPackage(byte[] data, int offset) {
+    byte[] addr = address.getData(false);
+    XByteBuffer.toBytes(options, data, offset);
+    // options
+    offset += 4;
+    XByteBuffer.toBytes(timestamp, data, offset);
+    // timestamp
+    offset += 8;
+    XByteBuffer.toBytes(uniqueId.length, data, offset);
+    // uniqueId.length
+    offset += 4;
+    System.arraycopy(uniqueId, 0, data, offset, uniqueId.length);
+    // uniqueId data
+    offset += uniqueId.length;
+    XByteBuffer.toBytes(addr.length, data, offset);
+    // addr.length
+    offset += 4;
+    System.arraycopy(addr, 0, data, offset, addr.length);
+    // addr data
+    offset += addr.length;
+    XByteBuffer.toBytes(message.getLength(), data, offset);
+    // message.length
+    offset += 4;
+    System.arraycopy(message.getBytesDirect(), 0, data, offset, message.getLength());
+    return data;
+}

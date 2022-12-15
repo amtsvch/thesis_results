@@ -1,0 +1,9 @@
+@Test
+public void testCleanOnInitOneHandler() throws Exception {
+    generateLogFiles(logsDir, PREFIX_1, SUFFIX_1, 3);
+    FileHandler fh1 = new FileHandler(logsDir.getAbsolutePath(), PREFIX_1, SUFFIX_1, Integer.valueOf(2));
+    fh1.open();
+    Thread.sleep(1000);
+    Assert.assertTrue(logsDir.list().length == 16);
+    fh1.close();
+}

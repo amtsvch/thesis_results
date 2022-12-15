@@ -1,0 +1,19 @@
+private synchronized void close() throws ChannelException {                                            private synchronized void close() throws ChannelException {                                         
+ChannelException x = null;                                                                             ChannelException x = null;                                                                          
+Iterator&lt;Map.Entry&lt;Member, NioSender&gt;&gt; iter = nioSenders.entrySet().iterator();          | Iterator&lt;Map.Entry&lt;Member, NioSender&gt;&gt; iter = state.nioSenders.entrySet().iterator();   
+while (iter.hasNext()) {                                                                               while (iter.hasNext()) {                                                                            
+Map.Entry&lt;Member, NioSender&gt; entry = iter.next();                                                Map.Entry&lt;Member, NioSender&gt; entry = iter.next();                                             
+try {                                                                                                  try {                                                                                               
+entry.getValue().disconnect();                                                                         entry.getValue().disconnect();                                                                      
+} catch (Exception e) {                                                                                } catch (Exception e) {                                                                             
+if (x == null) {                                                                                       if (x == null) {                                                                                    
+x = new ChannelException(e);                                                                           x = new ChannelException(e);                                                                        
+}                                                                                                      }                                                                                                   
+x.addFaultyMember(entry.getKey(), e);                                                                  x.addFaultyMember(entry.getKey(), e);                                                               
+}                                                                                                      }                                                                                                   
+iter.remove();                                                                                         iter.remove();                                                                                      
+}                                                                                                      }                                                                                                   
+if (x != null) {                                                                                       if (x != null) {                                                                                    
+throw x;                                                                                               throw x;                                                                                            
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

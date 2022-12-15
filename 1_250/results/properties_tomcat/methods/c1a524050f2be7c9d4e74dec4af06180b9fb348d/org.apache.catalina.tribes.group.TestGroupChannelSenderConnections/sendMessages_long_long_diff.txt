@@ -1,0 +1,25 @@
+public void sendMessages(long delay, long sleep) throws Exception {
+    resetMessageCounters();
+    Member local = channels[0].getLocalMember(true);
+    Member dest = channels[1].getLocalMember(true);
+    int n = 3;
+    log.info("Sending " + n + " messages from [" + local.getName() + "] to [" + dest.getName() + "] with delay of " + delay + " ms between them.");
+    for (int i = 0; i < n; i++) {
+        channels[0].send(new Member[] { dest }, new TestMsg(), 0);
+        boolean last = (i == n - 1);
+        if (!last && delay > 0) {
+            Thread.sleep(delay);
+        }
+    }
+    log.info("Messages sent. Waiting no more than " + (sleep / 1000) + " seconds for them to be received");
+    long startTime = System.currentTimeMillis();
+    int countReceived;
+    while ((countReceived = getReceivedMessageCount()) != n) {
+        long time = System.currentTimeMillis();
+        if ((time - startTime) > sleep) {
+            Assert.fail("Only " + countReceived + " out of " + n + " messages have been received in " + (sleep / 1000) + " seconds");
+            break;
+        }
+        Thread.sleep(100);
+    }
+}

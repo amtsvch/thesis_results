@@ -1,0 +1,7 @@
+private void setRequestExpectations(String method, HttpSession session, String headerValue, String[] paramValues, String servletPath) {
+    request.setMethod(method);
+    request.setSession(session);
+    request.setHeader(Constants.CSRF_REST_NONCE_HEADER_NAME, headerValue);
+    request.setParameterValues(paramValues);
+    request.setServletPath(servletPath);
+}

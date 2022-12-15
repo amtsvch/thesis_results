@@ -1,0 +1,4 @@
+@Test(expected = IllegalArgumentException.class)
+public void testAddPreDestroyMethodNullClassName() {
+    new StandardContext().addPreDestroyMethod(null, "");
+}

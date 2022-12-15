@@ -1,0 +1,16 @@
+/**
+ * Add a child Container, only if the proposed child is an implementation
+ * of Wrapper.
+ *
+ * @param child Child container to be added
+ *
+ * @exception IllegalArgumentException if the proposed container is
+ *  not an implementation of Wrapper
+ */
+@Override
+public void removeChild(Container child) {
+    if (!(child instanceof Wrapper)) {
+        throw new IllegalArgumentException(sm.getString("standardContext.notWrapper"));
+    }
+    super.removeChild(child);
+}

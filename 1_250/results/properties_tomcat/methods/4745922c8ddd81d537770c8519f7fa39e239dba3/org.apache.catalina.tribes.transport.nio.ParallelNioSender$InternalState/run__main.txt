@@ -1,0 +1,20 @@
+@Override
+public void run() {
+    Iterator<NioSender> iter = nioSenders.values().iterator();
+    while (iter.hasNext()) {
+        NioSender nioSender = iter.next();
+        try {
+            nioSender.disconnect();
+        } catch (Exception e) {
+            // Ignore
+        }
+        iter.remove();
+    }
+    try {
+        selector.close();
+    } catch (Exception e) {
+        if (log.isDebugEnabled()) {
+            log.debug("Failed to close selector", e);
+        }
+    }
+}

@@ -1,0 +1,4 @@
+@Test
+public void testLoad() throws Exception {
+    SecurityClassLoad.securityClassLoad(Thread.currentThread().getContextClassLoader(), false);
+}

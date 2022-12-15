@@ -1,0 +1,9 @@
+// ------------------------------------------------------------Constructors
+public ClassLoaderLogManager() {
+    super();
+    try {
+        Runtime.getRuntime().addShutdownHook(new Cleaner());
+    } catch (IllegalStateException ise) {
+        // We are probably already being shutdown. Ignore this error.
+    }
+}

@@ -1,0 +1,5 @@
+@Test
+public void disallow8BitControlInName() {
+    // Bug 55917
+    test(true, "f\210o=bar");
+}

@@ -1,0 +1,15 @@
+/**
+ * Add an initialization parameter to the set of parameters associated
+ * with this servlet.
+ *
+ * @param name The initialisation parameter name
+ * @param value The initialisation parameter value
+ */
+public void addInitParameter(String name, String value) {
+    if (parameters.containsKey(name)) {
+        // The spec does not define this but the TCK expects the first
+        // definition to take precedence
+        return;
+    }
+    parameters.put(name, value);
+}

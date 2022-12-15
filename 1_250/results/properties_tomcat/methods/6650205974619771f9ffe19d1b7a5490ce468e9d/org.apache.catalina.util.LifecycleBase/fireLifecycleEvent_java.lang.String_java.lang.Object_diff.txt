@@ -1,0 +1,12 @@
+/**
+ * Allow sub classes to fire {@link Lifecycle} events.
+ *
+ * @param type  Event type
+ * @param data  Data associated with event.
+ */
+protected void fireLifecycleEvent(String type, Object data) {
+    LifecycleEvent event = new LifecycleEvent(this, type, data);
+    for (LifecycleListener listener : lifecycleListeners) {
+        listener.lifecycleEvent(event);
+    }
+}

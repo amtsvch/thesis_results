@@ -1,0 +1,17 @@
+/*
+     * PUT is not an allowed request method.
+     *
+     * @throws ServletException
+     * @throws IOException
+     */
+@Test
+public void testCheckInvalidRequestMethod() throws ServletException, IOException {
+    TesterHttpServletRequest request = new TesterHttpServletRequest();
+    TesterHttpServletResponse response = new TesterHttpServletResponse();
+    request.setHeader(CorsFilter.REQUEST_HEADER_ORIGIN, "http://tomcat.apache.org");
+    request.setMethod("PUT");
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getDefaultFilterConfig());
+    corsFilter.doFilter(request, response, filterChain);
+    Assert.assertEquals(HttpServletResponse.SC_FORBIDDEN, response.getStatus());
+}

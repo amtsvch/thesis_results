@@ -1,0 +1,16 @@
+/**
+ * Tests that if the MapELResolver is constructed with readOnly the method
+ * will return always true, otherwise false.
+ */
+@Test
+public void testIsReadOnly03() {
+    MapELResolver mapELResolver = new MapELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    boolean result = mapELResolver.isReadOnly(context, new HashMap<>(), new Object());
+    Assert.assertFalse(result);
+    Assert.assertTrue(context.isPropertyResolved());
+    mapELResolver = new MapELResolver(true);
+    result = mapELResolver.isReadOnly(context, new HashMap<>(), new Object());
+    Assert.assertTrue(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

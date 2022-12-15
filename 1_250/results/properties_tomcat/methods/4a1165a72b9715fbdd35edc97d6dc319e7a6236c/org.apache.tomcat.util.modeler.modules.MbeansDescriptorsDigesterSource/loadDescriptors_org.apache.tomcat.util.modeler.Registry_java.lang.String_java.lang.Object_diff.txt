@@ -1,0 +1,7 @@
+@Override
+public List<ObjectName> loadDescriptors(Registry registry, String type, Object source) throws Exception {
+    setRegistry(registry);
+    setSource(source);
+    execute();
+    return mbeans;
+}
