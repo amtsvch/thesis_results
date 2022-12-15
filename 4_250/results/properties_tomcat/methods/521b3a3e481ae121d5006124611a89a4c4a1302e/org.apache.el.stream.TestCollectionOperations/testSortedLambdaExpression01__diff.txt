@@ -1,0 +1,11 @@
+@Test
+public void testSortedLambdaExpression01() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("['c', 'd', 'b', 'a'].stream().sorted((x,y)->x.compareTo(y)*-1).toList()", List.class);
+    List<String> expected = new ArrayList<>(4);
+    expected.add("d");
+    expected.add("c");
+    expected.add("b");
+    expected.add("a");
+    Assert.assertEquals(expected, result);
+}

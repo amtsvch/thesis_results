@@ -1,0 +1,22 @@
+@Override
+public void fireOnComplete() {
+    if (log.isDebugEnabled()) {
+        log.debug(sm.getString("asyncContextImpl.fireOnComplete"));
+    }
+    List<AsyncListenerWrapper> listenersCopy = new ArrayList<>(listeners);
+    ClassLoader oldCL = context.bind(Globals.IS_SECURITY_ENABLED, null);
+    try {
+        for (AsyncListenerWrapper listener : listenersCopy) {
+            try {
+                listener.fireOnComplete(event);
+            } catch (Throwable t) {
+                ExceptionUtils.handleThrowable(t);
+                log.warn(sm.getString("asyncContextImpl.onCompleteError", listener.getClass().getName()), t);
+            }
+        }
+    } finally {
+        context.fireRequestDestroyEvent(request.getRequest());
+        clearServletRequestResponse();
+        context.unbind(Globals.IS_SECURITY_ENABLED, oldCL);
+    }
+}

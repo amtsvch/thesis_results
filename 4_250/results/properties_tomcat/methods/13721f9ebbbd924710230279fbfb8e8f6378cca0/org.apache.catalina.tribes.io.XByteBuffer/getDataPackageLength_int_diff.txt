@@ -1,0 +1,8 @@
+public static int getDataPackageLength(int datalength) {
+    int length = // header length
+    START_DATA.length + // data length indicator
+    4 + // actual data length
+    datalength + // footer length
+    END_DATA.length;
+    return length;
+}

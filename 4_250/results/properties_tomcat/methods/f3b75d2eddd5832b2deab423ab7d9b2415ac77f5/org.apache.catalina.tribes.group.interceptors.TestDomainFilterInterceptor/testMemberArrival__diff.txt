@@ -1,0 +1,27 @@
+@Test
+public void testMemberArrival() throws Exception {
+    // purpose of this test is to make sure that we have received all the members
+    // that we can expect before the start method returns
+    Thread[] threads = new Thread[channels.length];
+    for (int i = 0; i < channels.length; i++) {
+        final Channel channel = channels[i];
+        Thread t = new Thread() {
+
+            @Override
+            public void run() {
+                try {
+                    channel.start(Channel.DEFAULT);
+                } catch (Exception x) {
+                    throw new RuntimeException(x);
+                }
+            }
+        };
+        threads[i] = t;
+    }
+    for (Thread thread : threads) thread.start();
+    for (Thread thread : threads) thread.join();
+    System.out.println("All channels started.");
+    for (int i = listeners.length - 1; i >= 0; i--) {
+        Assert.assertEquals("Checking member arrival length", 0, listeners[i].members.size());
+    }
+}

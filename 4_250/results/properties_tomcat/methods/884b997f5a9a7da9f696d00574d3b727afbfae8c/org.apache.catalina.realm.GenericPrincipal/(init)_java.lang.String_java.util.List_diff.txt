@@ -1,0 +1,10 @@
+/**
+ * Construct a new Principal, associated with the specified Realm, for the
+ * specified username, with the specified role names (as Strings).
+ *
+ * @param name The username of the user represented by this Principal
+ * @param roles List of roles (must be Strings) possessed by this user
+ */
+public GenericPrincipal(String name, List<String> roles) {
+    this(name, roles, null);
+}

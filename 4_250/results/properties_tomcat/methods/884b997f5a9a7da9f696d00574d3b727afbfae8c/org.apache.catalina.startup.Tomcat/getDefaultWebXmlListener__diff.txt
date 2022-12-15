@@ -1,0 +1,11 @@
+/**
+ * Return a listener that provides the required configuration items for JSP
+ * processing. From the standard Tomcat global web.xml. Pass this to
+ * {@link Context#addLifecycleListener(LifecycleListener)} and then pass the
+ * result of {@link #noDefaultWebXmlPath()} to
+ * {@link ContextConfig#setDefaultWebXml(String)}.
+ * @return a listener object that configures default JSP processing.
+ */
+public LifecycleListener getDefaultWebXmlListener() {
+    return new DefaultWebXmlListener();
+}

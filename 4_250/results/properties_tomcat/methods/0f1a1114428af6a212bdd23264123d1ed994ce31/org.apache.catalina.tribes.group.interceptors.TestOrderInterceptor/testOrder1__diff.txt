@@ -1,0 +1,12 @@
+@Test
+public void testOrder1() throws Exception {
+    Member[] dest = channels[0].getMembers();
+    final AtomicInteger value = new AtomicInteger(0);
+    for (int i = 0; i < 100; i++) {
+        channels[0].send(dest, Integer.valueOf(value.getAndAdd(1)), 0);
+    }
+    Thread.sleep(5000);
+    for (TestListener testListener : test) {
+        Assert.assertFalse(testListener.fail);
+    }
+}

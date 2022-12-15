@@ -1,0 +1,12 @@
+protected DateFormatCache(int size, Locale loc, DateFormatCache parent) {
+    cacheSize = size;
+    cacheDefaultLocale = loc;
+    this.parent = parent;
+    Cache parentCache = null;
+    if (parent != null) {
+        synchronized (parent) {
+            parentCache = parent.getCache(null, null);
+        }
+    }
+    cLFCache = new Cache(parentCache);
+}

@@ -1,0 +1,12 @@
+@Override
+public int compare(Member m1, Member m2) {
+    // Longer alive time, means sort first
+    long result = m2.getMemberAliveTime() - m1.getMemberAliveTime();
+    if (result < 0) {
+        return -1;
+    } else if (result == 0) {
+        return 0;
+    } else {
+        return 1;
+    }
+}

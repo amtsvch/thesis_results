@@ -1,0 +1,8 @@
+@Test
+public void testShortUsername() throws Exception {
+    final String SHORT_USER_NAME = "a";
+    final BasicAuthHeader AUTH_HEADER = new BasicAuthHeader(NICE_METHOD, SHORT_USER_NAME, PASSWORD);
+    BasicAuthenticator.BasicCredentials credentials = new BasicAuthenticator.BasicCredentials(AUTH_HEADER.getHeader(), StandardCharsets.UTF_8, true);
+    Assert.assertEquals(SHORT_USER_NAME, credentials.getUsername());
+    Assert.assertEquals(PASSWORD, credentials.getPassword());
+}

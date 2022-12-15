@@ -1,0 +1,40 @@
+@Override
+public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
+    String name = null;
+    Principal principal = null;
+    Subject subject = null;
+    String[] groups = null;
+    if (callbacks != null) {
+        // Need to combine data from multiple callbacks so use this to hold
+        // the data
+        // Process the callbacks
+        for (Callback callback : callbacks) {
+            if (callback instanceof CallerPrincipalCallback) {
+                CallerPrincipalCallback cpc = (CallerPrincipalCallback) callback;
+                name = cpc.getName();
+                principal = cpc.getPrincipal();
+                subject = cpc.getSubject();
+            } else if (callback instanceof GroupPrincipalCallback) {
+                GroupPrincipalCallback gpc = (GroupPrincipalCallback) callback;
+                groups = gpc.getGroups();
+            } else if (callback instanceof PasswordValidationCallback) {
+                if (container == null) {
+                    log.warn(sm.getString("callbackHandlerImpl.containerMissing", callback.getClass().getName()));
+                } else if (container.getRealm() == null) {
+                    log.warn(sm.getString("callbackHandlerImpl.realmMissing", callback.getClass().getName(), container.getName()));
+                } else {
+                    PasswordValidationCallback pvc = (PasswordValidationCallback) callback;
+                    principal = container.getRealm().authenticate(pvc.getUsername(), String.valueOf(pvc.getPassword()));
+                    subject = pvc.getSubject();
+                }
+            } else {
+                log.error(sm.getString("callbackHandlerImpl.jaspicCallbackMissing", callback.getClass().getName()));
+            }
+        }
+        // Create the GenericPrincipal
+        Principal gp = getPrincipal(principal, name, groups);
+        if (subject != null && gp != null) {
+            subject.getPrivateCredentials().add(gp);
+        }
+    }
+}

@@ -1,0 +1,4 @@
+@Test
+public void v0ValueContainsSpace() {
+    doTest(new Cookie("foo", "a b"), "foo=\"a b\"; Version=1", null);
+}

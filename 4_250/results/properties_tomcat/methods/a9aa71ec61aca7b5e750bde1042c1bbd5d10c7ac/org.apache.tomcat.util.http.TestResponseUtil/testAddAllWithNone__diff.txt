@@ -1,0 +1,8 @@
+@Test                                                                                                  @Test                                                                                               
+public void testAddAllWithNone() {                                                                     public void testAddAllWithNone() {                                                                  
+TesterResponse response = new TesterResponse();                                                        TesterResponse response = new TesterResponse();                                                     
+response.getCoyoteResponse();                                                                          response.getCoyoteResponse();                                                                       
+Set&lt;String&gt; expected = new HashSet&lt;&gt;();                                                  | List&lt;String&gt; expected = new ArrayList&lt;&gt;();                                              
+expected.add("*");                                                                                     expected.add("*");                                                                                  
+doTestAddVaryFieldName(response, "*", expected);                                                       doTestAddVaryFieldName(response, "*", expected);                                                    
+}                                                                                                      }                                                                                                   

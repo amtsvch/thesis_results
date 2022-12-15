@@ -1,0 +1,9 @@
+static Set<Cipher> filterByStrengthBits(Set<Cipher> ciphers, int strength_bits) {
+    Set<Cipher> result = new LinkedHashSet<>(ciphers.size());
+    for (Cipher cipher : ciphers) {
+        if (cipher.getStrength_bits() == strength_bits) {
+            result.add(cipher);
+        }
+    }
+    return result;
+}

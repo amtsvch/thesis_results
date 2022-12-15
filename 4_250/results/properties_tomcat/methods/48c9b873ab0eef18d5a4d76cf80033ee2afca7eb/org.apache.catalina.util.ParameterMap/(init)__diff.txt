@@ -1,0 +1,8 @@
+/**
+ * Construct a new, empty map with the default initial capacity and
+ * load factor.
+ */
+public ParameterMap() {
+    delegatedMap = new LinkedHashMap<>();
+    unmodifiableDelegatedMap = Collections.unmodifiableMap(delegatedMap);
+}

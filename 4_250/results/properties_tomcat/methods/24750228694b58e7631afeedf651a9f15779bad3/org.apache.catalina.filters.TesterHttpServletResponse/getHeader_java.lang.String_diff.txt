@@ -1,0 +1,8 @@
+@Override
+public String getHeader(String name) {
+    int index = headerNames.indexOf(name);
+    if (index != -1) {
+        return headerValues.get(index);
+    }
+    return null;
+}

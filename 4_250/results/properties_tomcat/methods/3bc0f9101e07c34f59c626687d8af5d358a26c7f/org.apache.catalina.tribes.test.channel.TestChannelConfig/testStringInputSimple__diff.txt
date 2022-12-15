@@ -1,0 +1,6 @@
+@Test
+public void testStringInputSimple() {
+    SimpleTcpCluster cluster = new SimpleTcpCluster();
+    cluster.setChannelSendOptions("multicast");
+    Assert.assertEquals(Channel.SEND_OPTIONS_MULTICAST, cluster.getChannelSendOptions());
+}

@@ -1,0 +1,10 @@
+/**
+ * sendMessage
+ *
+ * @param data ChannelMessage
+ * @throws IOException
+ * TODO Implement this org.apache.catalina.tribes.transport.IDataSender method
+ */
+public void setMessage(byte[] data) throws IOException {
+    setMessage(data, 0, data.length);
+}

@@ -1,0 +1,20 @@
+@Override
+public synchronized void setPayload(byte[] payload) {
+    // longs to avoid any possibility of overflow
+    long oldPayloadLength = 0;
+    if (this.payload != null) {
+        oldPayloadLength = this.payload.length;
+    }
+    long newPayloadLength = 0;
+    if (payload != null) {
+        newPayloadLength = payload.length;
+    }
+    if (newPayloadLength > oldPayloadLength) {
+        // It is possible that the max packet size will be exceeded
+        if ((newPayloadLength - oldPayloadLength + getData(false, false).length) > McastServiceImpl.MAX_PACKET_SIZE) {
+            throw new IllegalArgumentException(sm.getString("memberImpl.large.payload"));
+        }
+    }
+    this.payload = payload != null ? payload : new byte[0];
+    getData(true, true);
+}

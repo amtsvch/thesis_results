@@ -1,0 +1,11 @@
+@Test
+public void testSetPath() {
+    testSetPath("", "");
+    testSetPath("/foo", "/foo");
+    testSetPath("/foo/bar", "/foo/bar");
+    testSetPath(null, "");
+    testSetPath("/", "");
+    testSetPath("foo", "/foo");
+    testSetPath("/foo/bar/", "/foo/bar");
+    testSetPath("foo/bar/", "/foo/bar");
+}

@@ -1,0 +1,13 @@
+private Session loadSessionFromStore(String id) throws IOException {
+    try {
+        if (SecurityUtil.isPackageProtectionEnabled()) {
+            return securedStoreLoad(id);
+        } else {
+            return store.load(id);
+        }
+    } catch (ClassNotFoundException e) {
+        String msg = sm.getString("persistentManager.deserializeError", id);
+        log.error(msg, e);
+        throw new IllegalStateException(msg, e);
+    }
+}

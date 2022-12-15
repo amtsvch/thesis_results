@@ -1,0 +1,7 @@
+/**
+ * Tests that non String property is not resolved.
+ */
+@Test
+public void testGetType04() {
+    doNegativeTest(new ELClass(TesterClass.class), new Object(), MethodUnderTest.GET_TYPE);
+}

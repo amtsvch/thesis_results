@@ -1,0 +1,29 @@
+@Override
+public URI getURI(String name) {
+    File f = new File(name);
+    if (!f.isAbsolute()) {
+        f = new File(catalinaBaseFile, name);
+    }
+    if (f.isFile()) {
+        return f.toURI();
+    }
+    // Try classloader
+    try {
+        URL resource = getClass().getClassLoader().getResource(name);
+        if (resource != null) {
+            return resource.toURI();
+        }
+    } catch (Exception e) {
+        // Ignore
+    }
+    // Then try URI.
+    // Using resolve() enables the code to handle relative paths that did
+    // not point to a file
+    URI uri;
+    if (catalinaBaseUri != null) {
+        uri = catalinaBaseUri.resolve(name);
+    } else {
+        uri = URI.create(name);
+    }
+    return uri;
+}

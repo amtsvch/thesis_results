@@ -1,0 +1,15 @@
+private static void decoupleOtherGroups(Set&lt;WebXml&gt; group) {                                     private static void decoupleOtherGroups(Set&lt;WebXml&gt; group) {                                  
+Set&lt;String&gt; names = new HashSet&lt;&gt;();                                                       Set&lt;String&gt; names = new HashSet&lt;&gt;();                                                    
+for (WebXml fragment : group) {                                                                        for (WebXml fragment : group) {                                                                     
+names.add(fragment.getName());                                                                         names.add(fragment.getName());                                                                      
+}                                                                                                      }                                                                                                   
+for (WebXml fragment : group) {                                                                        for (WebXml fragment : group) {                                                                     
+Iterator&lt;String&gt; after = fragment.getAfterOrdering().iterator();                               | fragment.getAfterOrdering().removeIf(entry -&gt; !names.contains(entry));                           
+while (after.hasNext()) {                                                                            |                                                                                                     
+String entry = after.next();                                                                         |                                                                                                     
+if (!names.contains(entry)) {                                                                        |                                                                                                     
+after.remove();                                                                                      |                                                                                                     
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                    |                                                                                                     
+}                                                                                                    |                                                                                                     

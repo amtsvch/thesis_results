@@ -1,0 +1,10 @@
+/**
+ * Decodes a byte[] containing characters in the Base-N alphabet.
+ *
+ * @param pArray
+ *            A byte array containing Base-N character data
+ * @return a byte array containing binary data
+ */
+public byte[] decode(final byte[] pArray) {
+    return decode(pArray, 0, pArray.length);
+}

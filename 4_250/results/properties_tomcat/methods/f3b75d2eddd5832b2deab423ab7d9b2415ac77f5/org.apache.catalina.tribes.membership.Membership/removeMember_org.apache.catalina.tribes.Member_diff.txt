@@ -1,0 +1,27 @@
+/**
+ * Remove a member from this component.
+ *
+ * @param member The member to remove
+ */
+public void removeMember(Member member) {
+    synchronized (membersLock) {
+        map.remove(member);
+        int n = -1;
+        for (int i = 0; i < members.length; i++) {
+            if (members[i] == member || members[i].equals(member)) {
+                n = i;
+                break;
+            }
+        }
+        if (n < 0)
+            return;
+        Member[] results = new Member[members.length - 1];
+        int j = 0;
+        for (int i = 0; i < members.length; i++) {
+            if (i != n) {
+                results[j++] = members[i];
+            }
+        }
+        members = results;
+    }
+}

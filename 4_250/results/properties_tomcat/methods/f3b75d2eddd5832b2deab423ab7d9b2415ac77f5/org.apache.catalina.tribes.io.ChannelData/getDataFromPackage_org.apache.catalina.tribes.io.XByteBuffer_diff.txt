@@ -1,0 +1,36 @@
+/**
+ * Deserializes a ChannelData object from a byte array
+ * @param xbuf byte[]
+ * @return ChannelData
+ */
+public static ChannelData getDataFromPackage(XByteBuffer xbuf) {
+    ChannelData data = new ChannelData(false);
+    int offset = 0;
+    data.setOptions(XByteBuffer.toInt(xbuf.getBytesDirect(), offset));
+    // options
+    offset += 4;
+    data.setTimestamp(XByteBuffer.toLong(xbuf.getBytesDirect(), offset));
+    // timestamp
+    offset += 8;
+    data.uniqueId = new byte[XByteBuffer.toInt(xbuf.getBytesDirect(), offset)];
+    // uniqueId length
+    offset += 4;
+    System.arraycopy(xbuf.getBytesDirect(), offset, data.uniqueId, 0, data.uniqueId.length);
+    // uniqueId data
+    offset += data.uniqueId.length;
+    // byte[] addr = new byte[XByteBuffer.toInt(xbuf.getBytesDirect(),offset)];
+    int addrlen = XByteBuffer.toInt(xbuf.getBytesDirect(), offset);
+    // addr length
+    offset += 4;
+    // System.arraycopy(xbuf.getBytesDirect(),offset,addr,0,addr.length);
+    data.setAddress(MemberImpl.getMember(xbuf.getBytesDirect(), offset, addrlen));
+    // offset += addr.length; //addr data
+    offset += addrlen;
+    int xsize = XByteBuffer.toInt(xbuf.getBytesDirect(), offset);
+    // xsize length
+    offset += 4;
+    System.arraycopy(xbuf.getBytesDirect(), offset, xbuf.getBytesDirect(), 0, xsize);
+    xbuf.setLength(xsize);
+    data.message = xbuf;
+    return data;
+}

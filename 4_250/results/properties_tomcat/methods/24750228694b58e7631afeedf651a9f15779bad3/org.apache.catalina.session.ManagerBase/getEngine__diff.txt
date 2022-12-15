@@ -1,0 +1,15 @@
+// ------------------------------------------------------ Protected Methods
+/**
+ * Retrieve the enclosing Engine for this Manager.
+ *
+ * @return an Engine object (or null).
+ */
+public Engine getEngine() {
+    Engine e = null;
+    for (Container c = getContext(); e == null && c != null; c = c.getParent()) {
+        if (c instanceof Engine) {
+            e = (Engine) c;
+        }
+    }
+    return e;
+}

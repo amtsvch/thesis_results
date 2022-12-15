@@ -1,0 +1,17 @@
+private static void logInvalidHeader(ByteBuffer bb) {
+    UserDataHelper.Mode logMode = invalidCookieLog.getNextMode();
+    if (logMode != null) {
+        String headerValue = new String(bb.array(), bb.position(), bb.limit() - bb.position(), StandardCharsets.UTF_8);
+        String message = sm.getString("cookie.invalidCookieValue", headerValue);
+        switch(logMode) {
+            case INFO_THEN_DEBUG:
+                message += sm.getString("cookie.fallToDebug");
+            // $FALL-THROUGH$
+            case INFO:
+                log.info(message);
+                break;
+            case DEBUG:
+                log.debug(message);
+        }
+    }
+}

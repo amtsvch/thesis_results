@@ -1,0 +1,6 @@
+@Override
+public void heartbeat() {
+    if (clusterSender != null)
+        clusterSender.heartbeat();
+    super.heartbeat();
+}

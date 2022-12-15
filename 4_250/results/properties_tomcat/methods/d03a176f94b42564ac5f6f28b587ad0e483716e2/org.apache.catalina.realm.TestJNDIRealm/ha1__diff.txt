@@ -1,0 +1,4 @@
+private String ha1() {
+    String a1 = USER + ":" + REALM + ":" + PASSWORD;
+    return MD5Encoder.encode(md5Helper.digest(a1.getBytes()));
+}

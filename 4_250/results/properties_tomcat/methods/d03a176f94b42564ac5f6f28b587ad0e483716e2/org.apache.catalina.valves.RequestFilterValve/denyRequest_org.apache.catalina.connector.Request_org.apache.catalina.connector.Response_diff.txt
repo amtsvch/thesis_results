@@ -1,0 +1,24 @@
+/**
+ * Reject the request that was denied by this valve.
+ * <p>If <code>invalidAuthenticationWhenDeny</code> is true
+ * and the context has <code>preemptiveAuthentication</code>
+ * set, set an invalid authorization header to trigger basic auth.
+ *
+ * @param request The servlet request to be processed
+ * @param response The servlet response to be processed
+ * @exception IOException if an input/output error occurs
+ * @exception ServletException if a servlet error occurs
+ */
+protected void denyRequest(Request request, Response response) throws IOException, ServletException {
+    if (invalidAuthenticationWhenDeny) {
+        Context context = request.getContext();
+        if (context != null && context.getPreemptiveAuthentication()) {
+            if (request.getCoyoteRequest().getMimeHeaders().getValue("authorization") == null) {
+                request.getCoyoteRequest().getMimeHeaders().addValue("authorization").setString("invalid");
+            }
+            getNext().invoke(request, response);
+            return;
+        }
+    }
+    response.sendError(denyStatus);
+}

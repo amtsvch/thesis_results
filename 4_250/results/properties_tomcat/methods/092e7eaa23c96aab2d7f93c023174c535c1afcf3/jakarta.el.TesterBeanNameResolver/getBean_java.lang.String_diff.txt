@@ -1,0 +1,5 @@
+@Override
+public Object getBean(String beanName) {
+    checkTriggers(beanName);
+    return beans.get(beanName);
+}

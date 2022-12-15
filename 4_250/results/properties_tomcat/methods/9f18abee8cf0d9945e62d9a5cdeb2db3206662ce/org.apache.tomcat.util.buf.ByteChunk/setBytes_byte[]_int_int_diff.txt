@@ -1,0 +1,14 @@
+/**
+ * Sets the buffer to the specified subarray of bytes.
+ *
+ * @param b the ascii bytes
+ * @param off the start offset of the bytes
+ * @param len the length of the bytes
+ */
+public void setBytes(byte[] b, int off, int len) {
+    buff = b;
+    start = off;
+    end = start + len;
+    isSet = true;
+    hasHashCode = false;
+}

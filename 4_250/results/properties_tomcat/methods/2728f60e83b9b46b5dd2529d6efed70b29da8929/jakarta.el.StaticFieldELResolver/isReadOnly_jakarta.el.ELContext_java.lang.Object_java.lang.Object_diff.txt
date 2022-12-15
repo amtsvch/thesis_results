@@ -1,0 +1,8 @@
+@Override
+public boolean isReadOnly(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base instanceof ELClass && property instanceof String) {
+        context.setPropertyResolved(base, property);
+    }
+    return true;
+}

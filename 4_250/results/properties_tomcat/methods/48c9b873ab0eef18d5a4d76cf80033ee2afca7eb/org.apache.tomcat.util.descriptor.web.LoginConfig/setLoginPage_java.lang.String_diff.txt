@@ -1,0 +1,6 @@
+public void setLoginPage(String loginPage) {
+    // if ((loginPage == null) || !loginPage.startsWith("/"))
+    // throw new IllegalArgumentException
+    // ("Login Page resource path must start with a '/'");
+    this.loginPage = UDecoder.URLDecode(loginPage, getCharset());
+}

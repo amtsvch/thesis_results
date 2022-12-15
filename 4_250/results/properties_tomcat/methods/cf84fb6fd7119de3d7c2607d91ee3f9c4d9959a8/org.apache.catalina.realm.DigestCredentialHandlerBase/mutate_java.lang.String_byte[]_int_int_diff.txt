@@ -1,0 +1,22 @@
+/**
+ * Generates the equivalent stored credentials for the given input
+ * credentials, salt, iterations and key length. The default implementation
+ * calls ignores the key length and calls
+ * {@link #mutate(String, byte[], int)}. Sub-classes that use the key length
+ * should override this method.
+ *
+ * @param inputCredentials  User provided credentials
+ * @param salt              Salt, if any
+ * @param iterations        Number of iterations of the algorithm associated
+ *                          with this CredentialHandler applied to the
+ *                          inputCredentials to generate the equivalent
+ *                          stored credentials
+ * @param keyLength         Length of the produced digest in bits for
+ *                          implementations where it's applicable
+ *
+ * @return  The equivalent stored credentials for the given input
+ *          credentials or <code>null</code> if the generation fails
+ */
+protected String mutate(String inputCredentials, byte[] salt, int iterations, int keyLength) {
+    return mutate(inputCredentials, salt, iterations);
+}

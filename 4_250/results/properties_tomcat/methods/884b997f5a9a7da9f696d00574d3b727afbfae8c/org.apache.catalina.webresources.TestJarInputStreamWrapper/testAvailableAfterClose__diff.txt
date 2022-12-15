@@ -1,0 +1,5 @@
+@Test
+public void testAvailableAfterClose() throws Exception {
+    Method m = InputStream.class.getMethod("available", (Class<?>[]) null);
+    testMethodAfterClose(m, (Object[]) null);
+}

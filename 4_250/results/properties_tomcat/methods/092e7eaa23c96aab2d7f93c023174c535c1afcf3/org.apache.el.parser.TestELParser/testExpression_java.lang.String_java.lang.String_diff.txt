@@ -1,0 +1,7 @@
+private void testExpression(String expression, String expected) {
+    ExpressionFactory factory = ExpressionFactory.newInstance();
+    ELContext context = new ELContextImpl(factory);
+    ValueExpression ve = factory.createValueExpression(context, expression, String.class);
+    String result = (String) ve.getValue(context);
+    Assert.assertEquals(expected, result);
+}

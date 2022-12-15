@@ -1,0 +1,16 @@
+// ----------------------------------------------------------- Constructors
+/**
+ * Create a new StandardEngine component with the default basic Valve.
+ */
+public StandardEngine() {
+    super();
+    pipeline.setBasic(new StandardEngineValve());
+    /* Set the jmvRoute using the system property jvmRoute */
+    try {
+        setJvmRoute(System.getProperty("jvmRoute"));
+    } catch (Exception ex) {
+        log.warn(sm.getString("standardEngine.jvmRouteFail"));
+    }
+    // By default, the engine will hold the reloading thread
+    backgroundProcessorDelay = 10;
+}

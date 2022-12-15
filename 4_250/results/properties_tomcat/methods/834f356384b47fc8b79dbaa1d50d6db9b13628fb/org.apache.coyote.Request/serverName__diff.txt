@@ -1,0 +1,10 @@
+/**
+ * Get the "virtual host", derived from the Host: header associated with
+ * this request.
+ *
+ * @return The buffer holding the server name, if any. Use isNull() to check
+ *         if there is no value set.
+ */
+public MessageBytes serverName() {
+    return serverNameMB;
+}

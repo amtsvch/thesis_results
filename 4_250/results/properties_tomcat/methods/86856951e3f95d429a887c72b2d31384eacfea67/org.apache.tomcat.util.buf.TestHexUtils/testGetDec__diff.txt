@@ -1,0 +1,13 @@
+@Test
+public void testGetDec() {
+    Assert.assertEquals(0, HexUtils.getDec('0'));
+    Assert.assertEquals(9, HexUtils.getDec('9'));
+    Assert.assertEquals(10, HexUtils.getDec('a'));
+    Assert.assertEquals(15, HexUtils.getDec('f'));
+    Assert.assertEquals(10, HexUtils.getDec('A'));
+    Assert.assertEquals(15, HexUtils.getDec('F'));
+    Assert.assertEquals(-1, HexUtils.getDec(0));
+    Assert.assertEquals(-1, HexUtils.getDec('Z'));
+    Assert.assertEquals(-1, HexUtils.getDec(255));
+    Assert.assertEquals(-1, HexUtils.getDec(-60));
+}

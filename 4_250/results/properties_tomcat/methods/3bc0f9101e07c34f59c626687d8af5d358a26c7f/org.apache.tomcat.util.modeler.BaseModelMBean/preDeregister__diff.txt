@@ -1,0 +1,6 @@
+@Override
+public void preDeregister() throws Exception {
+    if (resource instanceof MBeanRegistration) {
+        ((MBeanRegistration) resource).preDeregister();
+    }
+}

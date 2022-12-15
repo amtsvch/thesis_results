@@ -1,0 +1,18 @@
+/**
+ * Set the default host.
+ *
+ * @param host The new default host
+ */
+@Override
+public void setDefaultHost(String host) {
+    String oldDefaultHost = this.defaultHost;
+    if (host == null) {
+        this.defaultHost = null;
+    } else {
+        this.defaultHost = host.toLowerCase(Locale.ENGLISH);
+    }
+    if (getState().isAvailable()) {
+        service.getMapper().setDefaultHostName(host);
+    }
+    support.firePropertyChange("defaultHost", oldDefaultHost, this.defaultHost);
+}

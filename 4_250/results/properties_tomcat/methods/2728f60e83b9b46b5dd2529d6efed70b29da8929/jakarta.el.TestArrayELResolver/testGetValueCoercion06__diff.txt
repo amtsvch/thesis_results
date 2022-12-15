@@ -1,0 +1,10 @@
+/**
+ * Tests a coercion cannot be performed as the key is not integer.
+ */
+@Test(expected = IllegalArgumentException.class)
+public void testGetValueCoercion06() {
+    ArrayELResolver resolver = new ArrayELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    String[] base = new String[] { "element" };
+    resolver.getValue(context, base, "key");
+}

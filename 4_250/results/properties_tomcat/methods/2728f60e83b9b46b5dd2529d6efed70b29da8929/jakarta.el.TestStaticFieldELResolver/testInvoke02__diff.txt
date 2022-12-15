@@ -1,0 +1,11 @@
+/**
+ * Tests a constructor invocation.
+ */
+@Test
+public void testInvoke02() {
+    StaticFieldELResolver resolver = new StaticFieldELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Object result = resolver.invoke(context, new ELClass(TesterClass.class), METHOD01_NAME, null, null);
+    Assert.assertEquals(TesterClass.class, result.getClass());
+    Assert.assertTrue(context.isPropertyResolved());
+}

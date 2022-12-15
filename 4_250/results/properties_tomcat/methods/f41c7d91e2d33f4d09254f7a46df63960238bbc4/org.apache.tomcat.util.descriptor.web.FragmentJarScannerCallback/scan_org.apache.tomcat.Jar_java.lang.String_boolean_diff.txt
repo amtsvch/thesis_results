@@ -1,0 +1,30 @@
+@Override
+public void scan(Jar jar, String webappPath, boolean isWebapp) throws IOException {
+    InputStream is = null;
+    WebXml fragment = new WebXml();
+    fragment.setWebappJar(isWebapp);
+    fragment.setDelegate(delegate);
+    try {
+        // Only web application JARs are checked for web-fragment.xml
+        // files.
+        // web-fragment.xml files don't need to be parsed if they are never
+        // going to be used.
+        if (isWebapp && parseRequired) {
+            is = jar.getInputStream(FRAGMENT_LOCATION);
+        }
+        if (is == null) {
+            // If there is no web.xml, normal JAR no impact on
+            // distributable
+            fragment.setDistributable(true);
+        } else {
+            String fragmentUrl = jar.getURL(FRAGMENT_LOCATION);
+            InputSource source = new InputSource(fragmentUrl);
+            source.setByteStream(is);
+            if (!webXmlParser.parseWebXml(source, fragment, true)) {
+                ok = false;
+            }
+        }
+    } finally {
+        addFragment(fragment, jar.getJarFileURL());
+    }
+}

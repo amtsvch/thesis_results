@@ -1,0 +1,8 @@
+/*
+     * For unit testing.
+     */
+int getProcessCount() {
+    synchronized (processesLock) {
+        return processes.size();
+    }
+}

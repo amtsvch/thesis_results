@@ -1,0 +1,27 @@
+                                                                                                     | private static String readProtocol(ByteBuffer bb) {                                                 
+                                                                                                     | char protocol = bb.getChar();                                                                       
+                                                                                                     | switch(protocol) {                                                                                  
+                                                                                                     | case 0x0300:                                                                                        
+                                                                                                     | {                                                                                                   
+                                                                                                     | return Constants.SSL_PROTO_SSLv3;                                                                   
+                                                                                                     | }                                                                                                   
+                                                                                                     | case 0x0301:                                                                                        
+                                                                                                     | {                                                                                                   
+                                                                                                     | return Constants.SSL_PROTO_TLSv1_0;                                                                 
+                                                                                                     | }                                                                                                   
+                                                                                                     | case 0x0302:                                                                                        
+                                                                                                     | {                                                                                                   
+                                                                                                     | return Constants.SSL_PROTO_TLSv1_1;                                                                 
+                                                                                                     | }                                                                                                   
+                                                                                                     | case 0x0303:                                                                                        
+                                                                                                     | {                                                                                                   
+                                                                                                     | return Constants.SSL_PROTO_TLSv1_2;                                                                 
+                                                                                                     | }                                                                                                   
+                                                                                                     | case 0x0304:                                                                                        
+                                                                                                     | {                                                                                                   
+                                                                                                     | return Constants.SSL_PROTO_TLSv1_3;                                                                 
+                                                                                                     | }                                                                                                   
+                                                                                                     | default:                                                                                            
+                                                                                                     | return "Unknown(0x" + HexUtils.toHexString(protocol) + ")";                                         
+                                                                                                     | }                                                                                                   
+                                                                                                     | }                                                                                                   

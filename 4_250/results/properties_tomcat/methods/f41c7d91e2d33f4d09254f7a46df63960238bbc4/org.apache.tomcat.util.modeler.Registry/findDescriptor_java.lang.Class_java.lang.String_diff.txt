@@ -1,0 +1,31 @@
+/**                                                                                                    /**                                                                                                 
+* Lookup the component descriptor in the package and in the parent                                     * Lookup the component descriptor in the package and in the parent                                  
+* packages.                                                                                            * packages.                                                                                         
+*/                                                                                                     */                                                                                                  
+private void findDescriptor(Class&lt;?&gt; beanClass, String type) {                                   private void findDescriptor(Class&lt;?&gt; beanClass, String type) {                                
+if (type == null) {                                                                                    if (type == null) {                                                                                 
+type = beanClass.getName();                                                                            type = beanClass.getName();                                                                         
+}                                                                                                      }                                                                                                   
+ClassLoader classLoader = null;                                                                        ClassLoader classLoader = null;                                                                     
+if (beanClass != null) {                                                                               if (beanClass != null) {                                                                            
+classLoader = beanClass.getClassLoader();                                                              classLoader = beanClass.getClassLoader();                                                           
+}                                                                                                      }                                                                                                   
+if (classLoader == null) {                                                                             if (classLoader == null) {                                                                          
+classLoader = Thread.currentThread().getContextClassLoader();                                          classLoader = Thread.currentThread().getContextClassLoader();                                       
+}                                                                                                      }                                                                                                   
+if (classLoader == null) {                                                                             if (classLoader == null) {                                                                          
+classLoader = this.getClass().getClassLoader();                                                        classLoader = this.getClass().getClassLoader();                                                     
+}                                                                                                      }                                                                                                   
+String className = type;                                                                               String className = type;                                                                            
+String pkg = className;                                                                                String pkg = className;                                                                             
+while (pkg.indexOf(".") &gt; 0) {                                                                    | while (pkg.indexOf('.') &gt; 0) {                                                                   
+int lastComp = pkg.lastIndexOf(".");                                                                 | int lastComp = pkg.lastIndexOf('.');                                                                
+if (lastComp &lt;= 0)                                                                                  if (lastComp &lt;= 0)                                                                               
+return;                                                                                                return;                                                                                             
+pkg = pkg.substring(0, lastComp);                                                                      pkg = pkg.substring(0, lastComp);                                                                   
+if (searchedPaths.get(pkg) != null) {                                                                  if (searchedPaths.get(pkg) != null) {                                                               
+return;                                                                                                return;                                                                                             
+}                                                                                                      }                                                                                                   
+loadDescriptors(pkg, classLoader);                                                                     loadDescriptors(pkg, classLoader);                                                                  
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

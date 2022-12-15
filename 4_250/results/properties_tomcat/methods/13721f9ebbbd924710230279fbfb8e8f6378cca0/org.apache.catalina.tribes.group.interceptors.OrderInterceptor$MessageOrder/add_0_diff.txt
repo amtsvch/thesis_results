@@ -1,0 +1,33 @@
+// prev cannot be null
+@SuppressWarnings("null")
+public static MessageOrder add(MessageOrder head, MessageOrder add) {
+    if (head == null)
+        return add;
+    if (add == null)
+        return head;
+    if (head == add)
+        return add;
+    if (head.getMsgNr() > add.getMsgNr()) {
+        add.next = head;
+        return add;
+    }
+    MessageOrder iter = head;
+    MessageOrder prev = null;
+    while (iter.getMsgNr() < add.getMsgNr() && (iter.next != null)) {
+        prev = iter;
+        iter = iter.next;
+    }
+    if (iter.getMsgNr() < add.getMsgNr()) {
+        // add after
+        add.next = iter.next;
+        iter.next = add;
+    } else if (iter.getMsgNr() > add.getMsgNr()) {
+        // add before
+        // prev cannot be null here, warning suppressed
+        prev.next = add;
+        add.next = iter;
+    } else {
+        throw new ArithmeticException(sm.getString("orderInterceptor.messageAdded.sameCounter"));
+    }
+    return head;
+}

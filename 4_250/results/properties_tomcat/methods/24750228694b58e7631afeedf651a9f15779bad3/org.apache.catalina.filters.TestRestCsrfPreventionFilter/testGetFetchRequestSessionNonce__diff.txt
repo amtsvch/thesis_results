@@ -1,0 +1,9 @@
+@Test
+public void testGetFetchRequestSessionNonce() throws Exception {
+    setRequestExpectations(GET_METHOD, session, Constants.CSRF_REST_NONCE_HEADER_FETCH_VALUE);
+    EasyMock.expect(session.getAttribute(Constants.CSRF_REST_NONCE_SESSION_ATTR_NAME)).andReturn(NONCE);
+    EasyMock.replay(session);
+    filter.doFilter(request, response, filterChain);
+    verifyContinueChainNonceAvailable();
+    EasyMock.verify(session);
+}

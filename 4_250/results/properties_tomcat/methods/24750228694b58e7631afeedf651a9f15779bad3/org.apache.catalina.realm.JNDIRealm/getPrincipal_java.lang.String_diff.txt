@@ -1,0 +1,9 @@
+/**
+ * Get the principal associated with the specified certificate.
+ * @param username The user name
+ * @return the Principal associated with the given certificate.
+ */
+@Override
+protected Principal getPrincipal(String username) {
+    return getPrincipal(username, null);
+}

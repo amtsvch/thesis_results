@@ -1,0 +1,12 @@
+/**
+ * Sets the document locator associated with our parser.
+ *
+ * @param locator The new locator
+ */
+@Override
+public void setDocumentLocator(Locator locator) {
+    if (saxLog.isDebugEnabled()) {
+        saxLog.debug("setDocumentLocator(" + locator + ")");
+    }
+    this.locator = locator;
+}

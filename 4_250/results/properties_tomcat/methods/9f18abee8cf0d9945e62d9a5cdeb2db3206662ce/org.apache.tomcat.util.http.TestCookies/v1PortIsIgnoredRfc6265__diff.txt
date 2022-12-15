@@ -1,0 +1,8 @@
+@Test
+public void v1PortIsIgnoredRfc6265() {
+    FOO.setVersion(1);
+    FOO.setDomain("apache.org");
+    $PORT.setVersion(1);
+    A.setVersion(1);
+    test(true, "$Version=1;foo=\"bar\";$Domain=apache.org;$Port=8080;a=b", FOO, $PORT, A);
+}

@@ -1,0 +1,12 @@
+/**
+ * Tests that true will be returned when the property does not have setter
+ * method.
+ */
+@Test
+public void testIsReadOnly06() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    boolean result = resolver.isReadOnly(context, new TesterBean(BEAN_NAME), PROPERTY01_NAME);
+    Assert.assertTrue(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

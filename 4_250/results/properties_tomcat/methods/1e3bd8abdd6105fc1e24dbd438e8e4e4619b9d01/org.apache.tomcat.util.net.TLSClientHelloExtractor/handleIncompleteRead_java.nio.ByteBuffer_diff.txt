@@ -1,0 +1,9 @@
+private static ExtractorResult handleIncompleteRead(ByteBuffer bb) {
+    if (bb.limit() == bb.capacity()) {
+        // Buffer not big enough
+        return ExtractorResult.UNDERFLOW;
+    } else {
+        // Need to read more data into buffer
+        return ExtractorResult.NEED_READ;
+    }
+}

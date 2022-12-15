@@ -1,0 +1,17 @@
+protected WebResource[] getResourcesInternal(String path, boolean useClassLoaderResources) {
+    List<WebResource> result = new ArrayList<>();
+    for (List<WebResourceSet> list : allResources) {
+        for (WebResourceSet webResourceSet : list) {
+            if (useClassLoaderResources || !webResourceSet.getClassLoaderOnly()) {
+                WebResource webResource = webResourceSet.getResource(path);
+                if (webResource.exists()) {
+                    result.add(webResource);
+                }
+            }
+        }
+    }
+    if (result.size() == 0) {
+        result.add(main.getResource(path));
+    }
+    return result.toArray(new WebResource[0]);
+}

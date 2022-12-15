@@ -1,0 +1,22 @@
+@Override
+public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    if (request instanceof HttpServletRequest && response instanceof HttpServletResponse) {
+        MethodType mType = MethodType.MODIFYING_METHOD;
+        if (nonModifyingMethods.test(((HttpServletRequest) request).getMethod())) {
+            mType = MethodType.NON_MODIFYING_METHOD;
+        }
+        RestCsrfPreventionStrategy strategy;
+        switch(mType) {
+            case NON_MODIFYING_METHOD:
+                strategy = new FetchRequest();
+                break;
+            default:
+                strategy = new StateChangingRequest();
+                break;
+        }
+        if (!strategy.apply((HttpServletRequest) request, (HttpServletResponse) response)) {
+            return;
+        }
+    }
+    chain.doFilter(request, response);
+}

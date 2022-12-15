@@ -1,0 +1,8 @@
+public void addWrappers(String hostName, String contextPath, String version, Collection<WrapperMappingInfo> wrappers) {
+    hostName = renameWildcardHost(hostName);
+    ContextVersion contextVersion = findContextVersion(hostName, contextPath, version, false);
+    if (contextVersion == null) {
+        return;
+    }
+    addWrappers(contextVersion, wrappers);
+}

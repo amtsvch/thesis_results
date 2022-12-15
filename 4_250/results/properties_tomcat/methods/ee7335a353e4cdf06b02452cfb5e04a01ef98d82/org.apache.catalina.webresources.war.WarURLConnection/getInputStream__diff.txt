@@ -1,0 +1,5 @@
+@Override
+public InputStream getInputStream() throws IOException {
+    connect();
+    return wrappedJarUrlConnection.getInputStream();
+}

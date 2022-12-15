@@ -1,0 +1,14 @@
+/**
+ * Decodes a Base64 String into octets.
+ * <p>
+ * <b>Note:</b> this method seamlessly handles data encoded in URL-safe or normal mode.
+ * </p>
+ *
+ * @param base64String
+ *            String containing Base64 data
+ * @return Array containing decoded data.
+ * @since 1.4
+ */
+public static byte[] decodeBase64(final String base64String) {
+    return new Base64().decode(base64String);
+}

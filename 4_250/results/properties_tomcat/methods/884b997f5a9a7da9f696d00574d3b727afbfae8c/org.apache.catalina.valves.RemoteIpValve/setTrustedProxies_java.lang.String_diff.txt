@@ -1,0 +1,17 @@
+/**
+ * <p>
+ * Regular expression defining proxies that are trusted when they appear in
+ * the {@link #remoteIpHeader} header.
+ * </p>
+ * <p>
+ * Default value : empty list, no external proxy is trusted.
+ * </p>
+ * @param trustedProxies The regular expression
+ */
+public void setTrustedProxies(String trustedProxies) {
+    if (trustedProxies == null || trustedProxies.length() == 0) {
+        this.trustedProxies = null;
+    } else {
+        this.trustedProxies = Pattern.compile(trustedProxies);
+    }
+}

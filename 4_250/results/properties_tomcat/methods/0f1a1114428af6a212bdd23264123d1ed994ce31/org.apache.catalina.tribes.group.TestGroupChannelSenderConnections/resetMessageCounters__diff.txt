@@ -1,0 +1,5 @@
+private void resetMessageCounters() {
+    for (TestMsgListener listener : listeners) {
+        listener.reset();
+    }
+}

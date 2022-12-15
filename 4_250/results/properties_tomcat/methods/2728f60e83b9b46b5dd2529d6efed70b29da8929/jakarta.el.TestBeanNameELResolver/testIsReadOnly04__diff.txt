@@ -1,0 +1,10 @@
+/**
+ * Tests that a valid bean is not resolved if base is non-null.
+ */
+@Test
+public void testIsReadOnly04() {
+    BeanNameELResolver resolver = createBeanNameELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    resolver.isReadOnly(context, new Object(), BEAN01_NAME);
+    Assert.assertFalse(context.isPropertyResolved());
+}

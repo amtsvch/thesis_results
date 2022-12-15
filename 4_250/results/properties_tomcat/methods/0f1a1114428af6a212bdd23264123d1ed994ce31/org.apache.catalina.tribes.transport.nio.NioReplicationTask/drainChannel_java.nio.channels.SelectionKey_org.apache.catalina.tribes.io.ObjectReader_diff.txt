@@ -1,0 +1,100 @@
+/**
+ * The actual code which drains the channel associated with
+ * the given key.  This method assumes the key has been
+ * modified prior to invocation to turn off selection
+ * interest in OP_READ.  When this method completes it
+ * re-enables OP_READ and calls wakeup() on the selector
+ * so the selector will resume watching this channel.
+ * @param key The key to process
+ * @param reader The reader
+ * @throws Exception IO error
+ */
+protected void drainChannel(final SelectionKey key, ObjectReader reader) throws Exception {
+    reader.access();
+    ReadableByteChannel channel = (ReadableByteChannel) key.channel();
+    int count = -1;
+    // make buffer empty
+    buffer.clear();
+    SocketAddress saddr = null;
+    if (channel instanceof SocketChannel) {
+        // loop while data available, channel is non-blocking
+        while ((count = channel.read(buffer)) > 0) {
+            // make buffer readable
+            buffer.flip();
+            if (buffer.hasArray())
+                reader.append(buffer.array(), 0, count, false);
+            else
+                reader.append(buffer, count, false);
+            // make buffer empty
+            buffer.clear();
+            // do we have at least one package?
+            if (reader.hasPackage())
+                break;
+        }
+    } else if (channel instanceof DatagramChannel) {
+        DatagramChannel dchannel = (DatagramChannel) channel;
+        saddr = dchannel.receive(buffer);
+        // make buffer readable
+        buffer.flip();
+        if (buffer.hasArray())
+            reader.append(buffer.array(), 0, buffer.limit() - buffer.position(), false);
+        else
+            reader.append(buffer, buffer.limit() - buffer.position(), false);
+        // make buffer empty
+        buffer.clear();
+        // did we get a package
+        count = reader.hasPackage() ? 1 : -1;
+    }
+    int pkgcnt = reader.count();
+    if (count < 0 && pkgcnt == 0) {
+        // end of stream, and no more packages to process
+        remoteEof(key);
+        return;
+    }
+    ChannelMessage[] msgs = pkgcnt == 0 ? ChannelData.EMPTY_DATA_ARRAY : reader.execute();
+    // register to read new data, before we send it off to avoid dead locks
+    registerForRead(key, reader);
+    for (ChannelMessage msg : msgs) {
+        /**
+         * Use send ack here if you want to ack the request to the remote
+         * server before completing the request
+         * This is considered an asynchronous request
+         */
+        if (ChannelData.sendAckAsync(msg.getOptions())) {
+            sendAck(key, (WritableByteChannel) channel, Constants.ACK_COMMAND, saddr);
+        }
+        try {
+            if (Logs.MESSAGES.isTraceEnabled()) {
+                try {
+                    Logs.MESSAGES.trace("NioReplicationThread - Received msg:" + new UniqueId(msg.getUniqueId()) + " at " + new java.sql.Timestamp(System.currentTimeMillis()));
+                } catch (Throwable t) {
+                }
+            }
+            // process the message
+            getCallback().messageDataReceived(msg);
+            /**
+             * Use send ack here if you want the request to complete on this
+             * server before sending the ack to the remote server
+             * This is considered a synchronized request
+             */
+            if (ChannelData.sendAckSync(msg.getOptions()))
+                sendAck(key, (WritableByteChannel) channel, Constants.ACK_COMMAND, saddr);
+        } catch (RemoteProcessException e) {
+            if (log.isDebugEnabled())
+                log.error(sm.getString("nioReplicationTask.process.clusterMsg.failed"), e);
+            if (ChannelData.sendAckSync(msg.getOptions()))
+                sendAck(key, (WritableByteChannel) channel, Constants.FAIL_ACK_COMMAND, saddr);
+        } catch (Exception e) {
+            log.error(sm.getString("nioReplicationTask.process.clusterMsg.failed"), e);
+            if (ChannelData.sendAckSync(msg.getOptions()))
+                sendAck(key, (WritableByteChannel) channel, Constants.FAIL_ACK_COMMAND, saddr);
+        }
+        if (getUseBufferPool()) {
+            BufferPool.getBufferPool().returnBuffer(msg.getMessage());
+            msg.setMessage(null);
+        }
+    }
+    if (count < 0) {
+        remoteEof(key);
+    }
+}

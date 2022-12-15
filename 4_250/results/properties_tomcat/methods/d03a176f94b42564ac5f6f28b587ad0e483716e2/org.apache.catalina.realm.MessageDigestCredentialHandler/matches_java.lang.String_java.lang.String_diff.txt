@@ -1,0 +1,51 @@
+@Override
+public boolean matches(String inputCredentials, String storedCredentials) {
+    if (inputCredentials == null || storedCredentials == null) {
+        return false;
+    }
+    if (getAlgorithm() == null) {
+        // No digests, compare directly
+        return storedCredentials.equals(inputCredentials);
+    } else {
+        // Some directories and databases prefix the password with the hash
+        // type. The string is in a format compatible with Base64.encode not
+        // the normal hex encoding of the digest
+        if (storedCredentials.startsWith("{MD5}") || storedCredentials.startsWith("{SHA}")) {
+            // Server is storing digested passwords with a prefix indicating
+            // the digest type
+            String base64ServerDigest = storedCredentials.substring(5);
+            byte[] userDigest = ConcurrentMessageDigest.digest(getAlgorithm(), inputCredentials.getBytes(StandardCharsets.ISO_8859_1));
+            String base64UserDigest = Base64.encodeBase64String(userDigest);
+            return base64UserDigest.equals(base64ServerDigest);
+        } else if (storedCredentials.startsWith("{SSHA}")) {
+            // "{SSHA}<sha-1 digest:20><salt:n>"
+            // Need to convert the salt to bytes to apply it to the user's
+            // digested password.
+            String serverDigestPlusSalt = storedCredentials.substring(6);
+            byte[] serverDigestPlusSaltBytes = Base64.decodeBase64(serverDigestPlusSalt);
+            // Extract the first 20 bytes containing the SHA-1 digest
+            final int digestLength = 20;
+            byte[] serverDigestBytes = new byte[digestLength];
+            System.arraycopy(serverDigestPlusSaltBytes, 0, serverDigestBytes, 0, digestLength);
+            // the remaining bytes are the salt
+            final int saltLength = serverDigestPlusSaltBytes.length - digestLength;
+            byte[] serverSaltBytes = new byte[saltLength];
+            System.arraycopy(serverDigestPlusSaltBytes, digestLength, serverSaltBytes, 0, saltLength);
+            // Generate the digested form of the user provided password
+            // using the salt
+            byte[] userDigestBytes = ConcurrentMessageDigest.digest(getAlgorithm(), inputCredentials.getBytes(StandardCharsets.ISO_8859_1), serverSaltBytes);
+            return Arrays.equals(userDigestBytes, serverDigestBytes);
+        } else if (storedCredentials.indexOf('$') > -1) {
+            return matchesSaltIterationsEncoded(inputCredentials, storedCredentials);
+        } else {
+            // Hex hashes should be compared case-insensitively
+            String userDigest = mutate(inputCredentials, null, 1);
+            if (userDigest == null) {
+                // Failed to mutate user credentials. Automatic fail.
+                // Root cause should be logged by mutate()
+                return false;
+            }
+            return storedCredentials.equalsIgnoreCase(userDigest);
+        }
+    }
+}

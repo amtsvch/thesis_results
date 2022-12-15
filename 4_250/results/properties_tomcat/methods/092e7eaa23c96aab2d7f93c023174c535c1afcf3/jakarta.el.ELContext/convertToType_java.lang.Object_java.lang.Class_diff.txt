@@ -1,0 +1,29 @@
+/**
+ * Coerce the supplied object to the requested type.
+ *
+ * @param obj  The object to be coerced
+ * @param type The type to which the object should be coerced
+ *
+ * @return An instance of the requested type.
+ *
+ * @throws ELException
+ *              If the conversion fails
+ *
+ * @since EL 3.0
+ */
+public Object convertToType(Object obj, Class<?> type) {
+    boolean originalResolved = isPropertyResolved();
+    setPropertyResolved(false);
+    try {
+        ELResolver resolver = getELResolver();
+        if (resolver != null) {
+            Object result = resolver.convertToType(this, obj, type);
+            if (isPropertyResolved()) {
+                return result;
+            }
+        }
+    } finally {
+        setPropertyResolved(originalResolved);
+    }
+    return ELManager.getExpressionFactory().coerceToType(obj, type);
+}

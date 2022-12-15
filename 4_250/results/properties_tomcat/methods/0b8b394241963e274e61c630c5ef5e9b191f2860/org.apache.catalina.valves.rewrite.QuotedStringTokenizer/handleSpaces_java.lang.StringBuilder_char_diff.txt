@@ -1,0 +1,13 @@
+private WordMode handleSpaces(StringBuilder currentToken, char currentChar) {
+    if (!Character.isWhitespace(currentChar)) {
+        if (currentChar == '"') {
+            return WordMode.QUOTED;
+        } else if (currentChar == '#') {
+            return WordMode.COMMENT;
+        } else {
+            currentToken.append(currentChar);
+            return WordMode.SIMPLE;
+        }
+    }
+    return WordMode.SPACES;
+}

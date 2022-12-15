@@ -1,0 +1,20 @@
+@Override
+public synchronized int getDataLength() {
+    return // start pkg
+    TRIBES_MBR_BEGIN.length + // data length
+    4 + // alive time
+    8 + // port
+    4 + // secure port
+    4 + // udp port
+    4 + // host length
+    1 + // host
+    host.length + // command length
+    4 + // command
+    command.length + // domain length
+    4 + // domain
+    domain.length + // unique id
+    16 + // payload length
+    4 + // payload
+    payload.length + // end pkg
+    TRIBES_MBR_END.length;
+}

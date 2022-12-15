@@ -1,0 +1,6 @@
+public FunctionMapperFactory(FunctionMapper mapper) {
+    if (mapper == null) {
+        throw new NullPointerException(MessageFactory.get("error.noFunctionMapperTarget"));
+    }
+    this.target = mapper;
+}

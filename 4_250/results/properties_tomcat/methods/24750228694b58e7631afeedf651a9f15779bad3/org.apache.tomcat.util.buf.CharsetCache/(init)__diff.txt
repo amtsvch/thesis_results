@@ -1,0 +1,10 @@
+public CharsetCache() {
+    // Pre-populate the cache
+    for (String charsetName : INITIAL_CHARSETS) {
+        Charset charset = Charset.forName(charsetName);
+        addToCache(charsetName, charset);
+    }
+    for (String charsetName : LAZY_CHARSETS) {
+        addToCache(charsetName, DUMMY_CHARSET);
+    }
+}

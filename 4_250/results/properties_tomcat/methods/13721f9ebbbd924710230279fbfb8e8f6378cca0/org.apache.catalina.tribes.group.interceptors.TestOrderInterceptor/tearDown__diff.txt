@@ -1,0 +1,7 @@
+@After
+public void tearDown() throws Exception {
+    System.out.println("tearDown");
+    for (int i = 0; i < channelCount; i++) {
+        channels[i].stop(Channel.DEFAULT);
+    }
+}

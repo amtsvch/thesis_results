@@ -1,0 +1,19 @@
+// ----------------------------------------------------------- Constructors
+/**
+ * Construct a new Session associated with the specified Manager.
+ *
+ * @param manager The manager with which this Session is associated
+ */
+public StandardSession(Manager manager) {
+    super();
+    this.manager = manager;
+    if (manager != null) {
+        // Manager could be null in test environments
+        activityCheck = manager.getSessionActivityCheck();
+        lastAccessAtStart = manager.getSessionLastAccessAtStart();
+    }
+    // Initialize access count
+    if (activityCheck) {
+        accessCount = new AtomicInteger();
+    }
+}

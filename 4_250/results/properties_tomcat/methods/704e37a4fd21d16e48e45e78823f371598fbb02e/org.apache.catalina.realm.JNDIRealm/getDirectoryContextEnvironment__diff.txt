@@ -1,0 +1,35 @@
+/**
+ * Create our directory context configuration.
+ *
+ * @return java.util.Hashtable the configuration for the directory context.
+ */
+protected Hashtable<String, String> getDirectoryContextEnvironment() {
+    Hashtable<String, String> env = new Hashtable<>();
+    // Configure our directory context environment.
+    if (containerLog.isDebugEnabled() && connectionAttempt == 0)
+        containerLog.debug("Connecting to URL " + connectionURL);
+    else if (containerLog.isDebugEnabled() && connectionAttempt > 0)
+        containerLog.debug("Connecting to URL " + alternateURL);
+    env.put(Context.INITIAL_CONTEXT_FACTORY, contextFactory);
+    if (connectionName != null)
+        env.put(Context.SECURITY_PRINCIPAL, connectionName);
+    if (connectionPassword != null)
+        env.put(Context.SECURITY_CREDENTIALS, connectionPassword);
+    if (connectionURL != null && connectionAttempt == 0)
+        env.put(Context.PROVIDER_URL, connectionURL);
+    else if (alternateURL != null && connectionAttempt > 0)
+        env.put(Context.PROVIDER_URL, alternateURL);
+    if (authentication != null)
+        env.put(Context.SECURITY_AUTHENTICATION, authentication);
+    if (protocol != null)
+        env.put(Context.SECURITY_PROTOCOL, protocol);
+    if (referrals != null)
+        env.put(Context.REFERRAL, referrals);
+    if (derefAliases != null)
+        env.put(JNDIRealm.DEREF_ALIASES, derefAliases);
+    if (connectionTimeout != null)
+        env.put("com.sun.jndi.ldap.connect.timeout", connectionTimeout);
+    if (readTimeout != null)
+        env.put("com.sun.jndi.ldap.read.timeout", readTimeout);
+    return env;
+}

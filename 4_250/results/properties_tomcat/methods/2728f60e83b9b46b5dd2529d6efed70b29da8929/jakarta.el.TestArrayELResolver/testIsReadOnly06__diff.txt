@@ -1,0 +1,16 @@
+/**
+ * Tests that a result is returned even when a coercion cannot be performed.
+ */
+@Test
+public void testIsReadOnly06() {
+    ArrayELResolver resolver = new ArrayELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    String[] base = new String[] { "element" };
+    boolean result = resolver.isReadOnly(context, base, "key");
+    Assert.assertFalse(result);
+    Assert.assertTrue(context.isPropertyResolved());
+    resolver = new ArrayELResolver(true);
+    result = resolver.isReadOnly(context, base, "key");
+    Assert.assertTrue(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

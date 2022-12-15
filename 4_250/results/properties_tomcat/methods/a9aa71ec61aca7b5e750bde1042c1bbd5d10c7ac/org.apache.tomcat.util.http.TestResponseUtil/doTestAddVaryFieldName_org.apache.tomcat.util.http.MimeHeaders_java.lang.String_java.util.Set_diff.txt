@@ -1,0 +1,11 @@
+private void doTestAddVaryFieldName(MimeHeaders mh, String fieldName, Set&lt;String&gt; expected) {  |                                                                                                     
+ResponseUtil.addVaryFieldName(mh, fieldName);                                                        |                                                                                                     
+// There will now only be one Vary header                                                            |                                                                                                     
+String resultHeader = mh.getHeader("vary");                                                          |                                                                                                     
+Set&lt;String&gt; result = new HashSet&lt;&gt;();                                                    |                                                                                                     
+// Deliberately do not use Vary.parseVary as it will skip invalid values.                            |                                                                                                     
+for (String value : resultHeader.split(",")) {                                                       |                                                                                                     
+result.add(value.trim());                                                                            |                                                                                                     
+}                                                                                                    |                                                                                                     
+Assert.assertEquals(expected, result);                                                               |                                                                                                     
+}                                                                                                    |                                                                                                     

@@ -1,0 +1,16 @@
+/**
+ * Start this component and implement the requirements
+ * of {@link org.apache.catalina.util.LifecycleBase#startInternal()}.
+ *
+ * @exception LifecycleException if this component detects a fatal error
+ *  that prevents this component from being used
+ */
+@Override
+protected synchronized void startInternal() throws LifecycleException {
+    super.startInternal();
+    if (store == null)
+        log.error("No Store configured, persistence disabled");
+    else if (store instanceof Lifecycle)
+        ((Lifecycle) store).start();
+    setState(LifecycleState.STARTING);
+}

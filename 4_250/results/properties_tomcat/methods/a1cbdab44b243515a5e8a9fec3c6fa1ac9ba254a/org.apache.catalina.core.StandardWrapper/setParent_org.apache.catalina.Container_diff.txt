@@ -1,0 +1,15 @@
+/**
+ * Set the parent Container of this Wrapper, but only if it is a Context.
+ *
+ * @param container Proposed parent Container
+ */
+@Override
+public void setParent(Container container) {
+    if ((container != null) && !(container instanceof Context))
+        throw new IllegalArgumentException(sm.getString("standardWrapper.notContext"));
+    if (container instanceof StandardContext) {
+        swallowOutput = ((StandardContext) container).getSwallowOutput();
+        unloadDelay = ((StandardContext) container).getUnloadDelay();
+    }
+    super.setParent(container);
+}

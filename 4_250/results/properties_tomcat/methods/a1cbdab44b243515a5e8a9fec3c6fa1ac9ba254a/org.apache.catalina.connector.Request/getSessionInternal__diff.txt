@@ -1,0 +1,7 @@
+/**
+ * @return the session associated with this Request, creating one
+ * if necessary.
+ */
+public Session getSessionInternal() {
+    return doGetSession(true);
+}

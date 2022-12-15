@@ -1,0 +1,7 @@
+@Test
+public void testMinLambda01() {
+    ELProcessor processor = new ELProcessor();
+    processor.defineBean("beans", beans);
+    Object result = processor.getValue("beans.stream().min((x,y)->x.name.compareTo(y.name))", Object.class);
+    Assert.assertEquals(bean01, ((Optional) result).get());
+}

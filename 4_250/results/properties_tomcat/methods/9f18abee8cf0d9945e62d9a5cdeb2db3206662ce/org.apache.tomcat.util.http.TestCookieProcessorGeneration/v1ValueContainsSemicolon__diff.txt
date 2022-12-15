@@ -1,0 +1,6 @@
+@Test
+public void v1ValueContainsSemicolon() {
+    Cookie cookie = new Cookie("foo", "a;b");
+    cookie.setVersion(1);
+    doTest(cookie, "foo=\"a;b\"; Version=1", null);
+}

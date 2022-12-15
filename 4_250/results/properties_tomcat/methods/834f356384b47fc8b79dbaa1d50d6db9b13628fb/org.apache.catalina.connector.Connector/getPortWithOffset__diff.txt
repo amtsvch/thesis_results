@@ -1,0 +1,8 @@
+public int getPortWithOffset() {
+    int port = getPort();
+    // Zero is a special case and negative values are invalid
+    if (port > 0) {
+        return port + getPortOffset();
+    }
+    return port;
+}

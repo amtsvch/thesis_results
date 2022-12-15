@@ -1,0 +1,8 @@
+/**
+ * Create a data package to send over the wire representing this member.
+ * This is faster than serialization.
+ * @return - the bytes for this member deserialized
+ */
+public byte[] getData() {
+    return getData(true);
+}

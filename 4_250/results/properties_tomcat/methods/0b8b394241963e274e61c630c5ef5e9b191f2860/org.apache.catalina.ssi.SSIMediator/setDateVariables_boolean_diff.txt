@@ -1,0 +1,24 @@
+protected void setDateVariables(boolean fromConstructor) {
+    boolean alreadySet = ssiExternalResolver.getVariableValue(className + ".alreadyset") != null;
+    // skip this if we are being called from the constructor, and this has
+    // already
+    // been set
+    if (!(fromConstructor && alreadySet)) {
+        ssiExternalResolver.setVariableValue(className + ".alreadyset", "true");
+        Date date = new Date();
+        TimeZone timeZone = TimeZone.getTimeZone("GMT");
+        String retVal = formatDate(date, timeZone);
+        // If we are setting on of the date variables, we want to remove
+        // them from the
+        // user
+        // defined list of variables, because this is what Apache does
+        setVariableValue("DATE_GMT", null);
+        ssiExternalResolver.setVariableValue(className + ".DATE_GMT", retVal);
+        retVal = formatDate(date, null);
+        setVariableValue("DATE_LOCAL", null);
+        ssiExternalResolver.setVariableValue(className + ".DATE_LOCAL", retVal);
+        retVal = formatDate(new Date(lastModifiedDate), null);
+        setVariableValue("LAST_MODIFIED", null);
+        ssiExternalResolver.setVariableValue(className + ".LAST_MODIFIED", retVal);
+    }
+}

@@ -1,0 +1,6 @@
+@Test
+public void testIntsToCommaDelimitedString() {
+    String actual = ExpiresFilter.intsToCommaDelimitedString(new int[] { 500, 503 });
+    String expected = "500, 503";
+    Assert.assertEquals(expected, actual);
+}

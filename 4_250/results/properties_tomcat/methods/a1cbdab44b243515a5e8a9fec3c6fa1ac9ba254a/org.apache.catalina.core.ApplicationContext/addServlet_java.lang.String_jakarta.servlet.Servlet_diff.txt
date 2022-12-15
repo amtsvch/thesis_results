@@ -1,0 +1,4 @@
+@Override
+public ServletRegistration.Dynamic addServlet(String servletName, Servlet servlet) {
+    return addServlet(servletName, null, servlet, null);
+}

@@ -1,0 +1,9 @@
+@Test                                                                                                  @Test                                                                                               
+public void testAddValidWithPartiallyValidSingleHeaderIncludingAll() {                                 public void testAddValidWithPartiallyValidSingleHeaderIncludingAll() {                              
+TesterResponse response = new TesterResponse();                                                        TesterResponse response = new TesterResponse();                                                     
+response.getCoyoteResponse();                                                                          response.getCoyoteResponse();                                                                       
+response.addHeader("vary", "{{{, *");                                                                  response.addHeader("vary", "{{{, *");                                                               
+Set&lt;String&gt; expected = new HashSet&lt;&gt;();                                                  | List&lt;String&gt; expected = new ArrayList&lt;&gt;();                                              
+expected.add("*");                                                                                     expected.add("*");                                                                                  
+doTestAddVaryFieldName(response, "too", expected);                                                     doTestAddVaryFieldName(response, "too", expected);                                                  
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,8 @@
+public Builder encoders(List<Class<? extends Encoder>> encoders) {
+    if (encoders == null || encoders.size() == 0) {
+        this.encoders = Collections.emptyList();
+    } else {
+        this.encoders = Collections.unmodifiableList(encoders);
+    }
+    return this;
+}

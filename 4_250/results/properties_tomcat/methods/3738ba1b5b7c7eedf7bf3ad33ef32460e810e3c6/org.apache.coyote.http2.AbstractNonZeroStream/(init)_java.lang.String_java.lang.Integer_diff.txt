@@ -1,0 +1,4 @@
+AbstractNonZeroStream(String connectionId, Integer identifier) {
+    super(identifier);
+    this.state = new StreamStateMachine(connectionId, getIdAsString());
+}

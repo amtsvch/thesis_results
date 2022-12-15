@@ -1,0 +1,9 @@
+                                                                                                     | /**                                                                                                 
+                                                                                                     | * Get the flag deciding whether we use the connection peer address                                  
+                                                                                                     | * or the remote address. This makes a dfifference when                                              
+                                                                                                     | * using AJP or the RemoteIpValve.                                                                   
+                                                                                                     | * @return &lt;code&gt;true&lt;/code&gt; if we use the connection peer address                       
+                                                                                                     | */                                                                                                  
+                                                                                                     | public boolean getUsePeerAddress() {                                                                
+                                                                                                     | return usePeerAddress;                                                                              
+                                                                                                     | }                                                                                                   

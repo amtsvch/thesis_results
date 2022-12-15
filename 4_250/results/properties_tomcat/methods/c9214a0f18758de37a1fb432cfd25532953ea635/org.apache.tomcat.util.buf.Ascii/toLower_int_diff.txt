@@ -1,0 +1,8 @@
+/**
+ * Returns the lower case equivalent of the specified ASCII character.
+ * @param c The char
+ * @return the lower case equivalent char
+ */
+public static int toLower(int c) {
+    return toLower[c & 0xff] & 0xff;
+}

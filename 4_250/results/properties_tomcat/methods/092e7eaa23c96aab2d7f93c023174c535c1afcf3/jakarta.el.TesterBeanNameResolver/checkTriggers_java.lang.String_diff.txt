@@ -1,0 +1,8 @@
+private void checkTriggers(String beanName) {
+    if (EXCEPTION_TRIGGER_NAME.equals(beanName)) {
+        throw new RuntimeException();
+    }
+    if (THROWABLE_TRIGGER_NAME.equals(beanName)) {
+        throw new Error();
+    }
+}

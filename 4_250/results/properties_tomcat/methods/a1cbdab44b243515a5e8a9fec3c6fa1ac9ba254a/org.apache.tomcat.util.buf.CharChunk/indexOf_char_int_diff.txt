@@ -1,0 +1,14 @@
+/**
+ * Returns the first instance of the given character in this CharChunk
+ * starting at the specified char. If the character is not found, -1 is
+ * returned. <br>
+ *
+ * @param c The character
+ * @param starting The start position
+ * @return The position of the first instance of the character or -1 if the
+ *         character is not found.
+ */
+public int indexOf(char c, int starting) {
+    int ret = indexOf(buff, start + starting, end, c);
+    return (ret >= start) ? ret - start : -1;
+}

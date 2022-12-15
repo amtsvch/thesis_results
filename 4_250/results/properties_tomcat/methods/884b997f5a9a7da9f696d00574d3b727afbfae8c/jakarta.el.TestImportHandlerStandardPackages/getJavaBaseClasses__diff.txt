@@ -1,0 +1,17 @@
+private static Stream<String> getJavaBaseClasses() throws Exception {
+    // While this code is only used on Java 9 and later, it needs to compile
+    // with Java 8 so use reflection for now.
+    Class<?> clazzModuleFinder = Class.forName("java.lang.module.ModuleFinder");
+    Class<?> clazzModuleReference = Class.forName("java.lang.module.ModuleReference");
+    Class<?> clazzModuleReader = Class.forName("java.lang.module.ModuleReader");
+    // Returns ModuleFinder
+    Object mf = clazzModuleFinder.getMethod("ofSystem").invoke(null);
+    // Returns ModuleReference
+    Object mRef = ((Optional<?>) clazzModuleFinder.getMethod("find", String.class).invoke(mf, "java.base")).get();
+    // Returns ModuleReader
+    Object mr = clazzModuleReference.getMethod("open").invoke(mRef);
+    // Returns the contents of the module
+    @SuppressWarnings("unchecked")
+    Stream<String> result = (Stream<String>) clazzModuleReader.getMethod("list").invoke(mr);
+    return result;
+}

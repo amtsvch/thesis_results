@@ -1,0 +1,13 @@
+@Override
+public void setPayload(byte[] payload) {
+    this.payload = payload;
+    if (localMember != null) {
+        localMember.setPayload(payload);
+        try {
+            if (impl != null)
+                impl.send(false);
+        } catch (Exception x) {
+            log.error(sm.getString("McastService.payload"), x);
+        }
+    }
+}

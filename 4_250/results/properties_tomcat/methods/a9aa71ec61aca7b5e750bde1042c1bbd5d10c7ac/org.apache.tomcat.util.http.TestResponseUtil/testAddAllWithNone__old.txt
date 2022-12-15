@@ -1,0 +1,8 @@
+@Test
+public void testAddAllWithNone() {
+    TesterResponse response = new TesterResponse();
+    response.getCoyoteResponse();
+    Set<String> expected = new HashSet<>();
+    expected.add("*");
+    doTestAddVaryFieldName(response, "*", expected);
+}

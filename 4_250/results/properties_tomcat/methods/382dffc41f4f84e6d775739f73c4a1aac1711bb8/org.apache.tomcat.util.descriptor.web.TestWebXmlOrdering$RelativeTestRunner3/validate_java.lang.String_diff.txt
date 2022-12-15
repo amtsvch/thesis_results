@@ -1,0 +1,13 @@
+@Override
+public void validate(String order) {
+    // There is some duplication in the tests below - it is easier to
+    // check the tests are complete this way.
+    // a.addAfterOrdering("b");
+    Assert.assertTrue(order, posA > posB);
+    // c.addBeforeOrderingOthers();
+    Assert.assertTrue(order, posC < posA);
+    Assert.assertTrue(order, posC < posB);
+    Assert.assertTrue(order, posC < posD);
+    Assert.assertTrue(order, posC < posE);
+    Assert.assertTrue(order, posC < posF);
+}

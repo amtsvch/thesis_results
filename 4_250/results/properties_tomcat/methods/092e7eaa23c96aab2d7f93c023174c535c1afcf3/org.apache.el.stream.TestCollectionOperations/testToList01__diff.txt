@@ -1,0 +1,10 @@
+@Test
+public void testToList01() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("['a','b','c'].stream().toList()", List.class);
+    List<String> expected = new ArrayList<>(3);
+    expected.add("a");
+    expected.add("b");
+    expected.add("c");
+    Assert.assertEquals(expected, result);
+}

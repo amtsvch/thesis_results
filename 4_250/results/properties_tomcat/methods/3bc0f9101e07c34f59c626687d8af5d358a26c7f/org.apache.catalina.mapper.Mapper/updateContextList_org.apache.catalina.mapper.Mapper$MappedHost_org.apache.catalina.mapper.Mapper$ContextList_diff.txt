@@ -1,0 +1,10 @@
+/**
+ * Replace {@link MappedHost#contextList} field in <code>realHost</code> and
+ * all its aliases with a new value.
+ */
+private void updateContextList(MappedHost realHost, ContextList newContextList) {
+    realHost.contextList = newContextList;
+    for (MappedHost alias : realHost.getAliases()) {
+        alias.contextList = newContextList;
+    }
+}

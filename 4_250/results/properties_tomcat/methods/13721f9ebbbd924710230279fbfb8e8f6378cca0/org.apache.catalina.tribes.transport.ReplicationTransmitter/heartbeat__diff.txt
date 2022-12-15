@@ -1,0 +1,10 @@
+/**
+ * Call transmitter to check for sender socket status
+ *
+ * @see org.apache.catalina.ha.tcp.SimpleTcpCluster#backgroundProcess()
+ */
+@Override
+public void heartbeat() {
+    if (getTransport() != null)
+        getTransport().keepalive();
+}

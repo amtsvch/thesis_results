@@ -1,0 +1,5 @@
+public boolean okToProcess(int messageFlags) {
+    if (this.optionFlag == 0)
+        return true;
+    return ((optionFlag & messageFlags) == optionFlag);
+}

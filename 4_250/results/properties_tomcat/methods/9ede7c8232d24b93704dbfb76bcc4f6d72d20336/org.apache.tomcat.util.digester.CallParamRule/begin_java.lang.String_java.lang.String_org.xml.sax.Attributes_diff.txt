@@ -1,0 +1,36 @@
+// --------------------------------------------------------- Public Methods
+/**
+ * Process the start of this element.
+ *
+ * @param namespace the namespace URI of the matching element, or an
+ *   empty string if the parser is not namespace aware or the element has
+ *   no namespace
+ * @param name the local name if the parser is namespace aware, or just
+ *   the element name otherwise
+ * @param attributes The attribute list for this element
+ */
+@Override
+public void begin(String namespace, String name, Attributes attributes) throws Exception {
+    Object param = null;
+    if (attributeName != null) {
+        param = attributes.getValue(attributeName);
+    } else if (fromStack) {
+        param = digester.peek(stackIndex);
+        if (digester.log.isDebugEnabled()) {
+            StringBuilder sb = new StringBuilder("[CallParamRule]{");
+            sb.append(digester.match);
+            sb.append("} Save from stack; from stack?").append(fromStack);
+            sb.append("; object=").append(param);
+            digester.log.debug(sb.toString());
+        }
+    }
+    // Have to save the param object to the param stack frame here.
+    // Can't wait until end(). Otherwise, the object will be lost.
+    // We can't save the object as instance variables, as
+    // the instance variables will be overwritten
+    // if this CallParamRule is reused in subsequent nesting.
+    if (param != null) {
+        Object[] parameters = (Object[]) digester.peekParams();
+        parameters[paramIndex] = param;
+    }
+}

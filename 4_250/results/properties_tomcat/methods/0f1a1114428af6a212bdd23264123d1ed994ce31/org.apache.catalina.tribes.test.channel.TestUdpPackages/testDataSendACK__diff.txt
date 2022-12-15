@@ -1,0 +1,8 @@
+@Test
+public void testDataSendACK() throws Exception {
+    System.err.println("Starting ACK");
+    for (int i = 0; i < msgCount; i++) channel1.send(new Member[] { channel2.getLocalMember(false) }, Data.createRandomData(1024), Channel.SEND_OPTIONS_USE_ACK | Channel.SEND_OPTIONS_UDP);
+    Thread.sleep(250);
+    System.err.println("Finished ACK");
+    Assert.assertEquals("Checking success messages.", msgCount, listener1.count.get());
+}

@@ -1,0 +1,7 @@
+/**
+ * Test replacing a read-only bean with create enabled.
+ */
+@Test(expected = PropertyNotWritableException.class)
+public void testSetValue06() {
+    doSetValueCreateReplaceTest(true, TesterBeanNameResolver.READ_ONLY_NAME);
+}

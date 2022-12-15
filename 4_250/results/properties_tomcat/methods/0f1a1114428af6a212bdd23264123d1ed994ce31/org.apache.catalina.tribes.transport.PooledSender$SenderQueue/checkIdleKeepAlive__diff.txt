@@ -1,0 +1,9 @@
+public synchronized boolean checkIdleKeepAlive() {
+    DataSender[] list = new DataSender[notinuse.size()];
+    notinuse.toArray(list);
+    boolean result = false;
+    for (DataSender dataSender : list) {
+        result = result | dataSender.keepalive();
+    }
+    return result;
+}

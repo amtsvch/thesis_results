@@ -1,0 +1,19 @@
+/**
+ * Returns the message for this exception
+ * @return the error message
+ * @see java.lang.Exception#getMessage()
+ */
+@Override
+public String getMessage() {
+    StringBuilder buf = new StringBuilder(super.getMessage());
+    if (faultyMembers == null || faultyMembers.size() == 0) {
+        buf.append("; No faulty members identified.");
+    } else {
+        buf.append("; Faulty members:");
+        for (FaultyMember mbr : faultyMembers) {
+            buf.append(mbr.getMember().getName());
+            buf.append("; ");
+        }
+    }
+    return buf.toString();
+}

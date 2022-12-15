@@ -1,0 +1,28 @@
+/**
+ * Perform the test implemented by this Valve, matching against the
+ * specified request property value. This method is public so that it can be
+ * called through JMX, e.g. to test whether certain IP address is allowed or
+ * denied by the valve configuration.
+ *
+ * @param property The request property value on which to filter
+ * @return <code>true</code> if the request is allowed
+ */
+public boolean isAllowed(String property) {
+    // Use local copies for thread safety
+    Pattern deny = this.deny;
+    Pattern allow = this.allow;
+    // Check the deny patterns, if any
+    if (deny != null && deny.matcher(property).matches()) {
+        return false;
+    }
+    // Check the allow patterns, if any
+    if (allow != null && allow.matcher(property).matches()) {
+        return true;
+    }
+    // Allow if denies specified but not allows
+    if (deny != null && allow == null) {
+        return true;
+    }
+    // Deny this request
+    return false;
+}

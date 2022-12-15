@@ -1,0 +1,11 @@
+private void relax(boolean[] flags, String relaxedChars) {
+    if (relaxedChars != null && relaxedChars.length() > 0) {
+        char[] chars = relaxedChars.toCharArray();
+        for (char c : chars) {
+            if (isRelaxable(c)) {
+                flags[c] = true;
+                IS_NOT_REQUEST_TARGET[c] = false;
+            }
+        }
+    }
+}

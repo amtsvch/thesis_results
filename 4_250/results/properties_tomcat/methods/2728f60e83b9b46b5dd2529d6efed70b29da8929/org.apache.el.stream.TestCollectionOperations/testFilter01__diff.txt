@@ -1,0 +1,9 @@
+@Test
+public void testFilter01() {
+    ELProcessor processor = new ELProcessor();
+    processor.defineBean("beans", beans);
+    Object result = processor.getValue("beans.stream().filter(b->b.valLong > 2).toList()", List.class);
+    List<TesterBeanA> expected = new ArrayList<>(1);
+    expected.add(bean03);
+    Assert.assertEquals(expected, result);
+}

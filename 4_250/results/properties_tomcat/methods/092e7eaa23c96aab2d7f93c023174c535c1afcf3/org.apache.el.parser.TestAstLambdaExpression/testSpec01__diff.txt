@@ -1,0 +1,6 @@
+@Test
+public void testSpec01() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("(x->x+1)(1)", Integer.class);
+    Assert.assertEquals(Integer.valueOf(2), result);
+}

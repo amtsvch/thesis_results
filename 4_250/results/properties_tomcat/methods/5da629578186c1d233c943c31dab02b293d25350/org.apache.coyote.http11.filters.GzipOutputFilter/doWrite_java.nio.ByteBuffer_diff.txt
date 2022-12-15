@@ -1,0 +1,17 @@
+// --------------------------------------------------- OutputBuffer Methods                            // --------------------------------------------------- OutputBuffer Methods                         
+@Override                                                                                              @Override                                                                                           
+public int doWrite(ByteBuffer chunk) throws IOException {                                              public int doWrite(ByteBuffer chunk) throws IOException {                                           
+if (compressionStream == null) {                                                                       if (compressionStream == null) {                                                                    
+compressionStream = new GZIPOutputStream(fakeOutputStream, true);                                      compressionStream = new GZIPOutputStream(fakeOutputStream, true);                                   
+}                                                                                                      }                                                                                                   
+int len = chunk.remaining();                                                                           int len = chunk.remaining();                                                                        
+if (chunk.hasArray()) {                                                                                if (chunk.hasArray()) {                                                                             
+compressionStream.write(chunk.array(), chunk.arrayOffset() + chunk.position(), len);                   compressionStream.write(chunk.array(), chunk.arrayOffset() + chunk.position(), len);                
+                                                                                                     | chunk.position(chunk.position() + len);                                                             
+} else {                                                                                               } else {                                                                                            
+byte[] bytes = new byte[len];                                                                          byte[] bytes = new byte[len];                                                                       
+chunk.put(bytes);                                                                                      chunk.put(bytes);                                                                                   
+compressionStream.write(bytes, 0, len);                                                                compressionStream.write(bytes, 0, len);                                                             
+}                                                                                                      }                                                                                                   
+return len;                                                                                            return len;                                                                                         
+}                                                                                                      }                                                                                                   

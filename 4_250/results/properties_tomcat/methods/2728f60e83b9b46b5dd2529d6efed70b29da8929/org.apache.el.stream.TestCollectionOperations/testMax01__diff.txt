@@ -1,0 +1,6 @@
+@Test
+public void testMax01() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("[1,2,3,4,5].stream().max()", Object.class);
+    Assert.assertEquals(Long.valueOf(5), ((Optional) result).get());
+}

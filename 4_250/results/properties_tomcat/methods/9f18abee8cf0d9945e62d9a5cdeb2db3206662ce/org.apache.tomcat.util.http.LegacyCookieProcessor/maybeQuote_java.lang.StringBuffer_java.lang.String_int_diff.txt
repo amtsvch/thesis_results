@@ -1,0 +1,15 @@
+private void maybeQuote(StringBuffer buf, String value, int version) {
+    if (value == null || value.length() == 0) {
+        buf.append("\"\"");
+    } else if (alreadyQuoted(value)) {
+        buf.append('"');
+        escapeDoubleQuotes(buf, value, 1, value.length() - 1);
+        buf.append('"');
+    } else if (needsQuotes(value, version)) {
+        buf.append('"');
+        escapeDoubleQuotes(buf, value, 0, value.length());
+        buf.append('"');
+    } else {
+        buf.append(value);
+    }
+}

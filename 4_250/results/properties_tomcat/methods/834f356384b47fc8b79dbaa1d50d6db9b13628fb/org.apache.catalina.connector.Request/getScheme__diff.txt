@@ -1,0 +1,7 @@
+/**
+ * @return the scheme used to make this Request.
+ */
+@Override
+public String getScheme() {
+    return coyoteRequest.scheme().toString();
+}

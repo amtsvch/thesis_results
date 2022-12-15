@@ -1,0 +1,9 @@
+@After
+public void tearDown() throws Exception {
+    for (File file : deleteOnTearDown) {
+        ExpandWar.delete(file);
+    }
+    deleteOnTearDown.clear();
+    // tempDir contains log files which will be open until JULI shuts down
+    deleteOnClassTearDown.add(tempDir);
+}

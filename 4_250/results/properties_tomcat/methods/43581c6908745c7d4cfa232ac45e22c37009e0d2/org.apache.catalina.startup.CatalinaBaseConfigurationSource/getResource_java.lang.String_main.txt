@@ -1,0 +1,44 @@
+@Override
+public Resource getResource(String name) throws IOException {
+    // Location was originally always a file before URI support was added so
+    // try file first.
+    File f = new File(name);
+    if (!f.isAbsolute()) {
+        f = new File(catalinaBaseFile, name);
+    }
+    if (f.isFile()) {
+        FileInputStream fis = new FileInputStream(f);
+        return new Resource(fis, f.toURI());
+    }
+    // Try classloader
+    InputStream stream = null;
+    try {
+        stream = getClass().getClassLoader().getResourceAsStream(name);
+        if (stream != null) {
+            return new Resource(stream, getClass().getClassLoader().getResource(name).toURI());
+        }
+    } catch (InvalidPathException e) {
+        // Ignore. Some valid file URIs can trigger this.
+        // Stream should be null here but check to be on the safe side.
+        if (stream != null) {
+            stream.close();
+        }
+    } catch (URISyntaxException e) {
+        stream.close();
+        throw new IOException(sm.getString("catalinaConfigurationSource.cannotObtainURL", name), e);
+    }
+    // Then try URI.
+    URI uri = null;
+    try {
+        uri = getURIInternal(name);
+    } catch (IllegalArgumentException e) {
+        throw new IOException(sm.getString("catalinaConfigurationSource.cannotObtainURL", name), e);
+    }
+    // Obtain the input stream we need
+    try {
+        URL url = uri.toURL();
+        return new Resource(url.openConnection().getInputStream(), uri);
+    } catch (MalformedURLException e) {
+        throw new IOException(sm.getString("catalinaConfigurationSource.cannotObtainURL", name), e);
+    }
+}

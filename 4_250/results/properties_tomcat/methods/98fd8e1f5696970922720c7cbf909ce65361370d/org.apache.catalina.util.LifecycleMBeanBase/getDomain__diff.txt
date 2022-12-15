@@ -1,0 +1,14 @@
+/**
+ * Obtain the domain under which this component will be / has been
+ * registered.
+ */
+@Override
+public final String getDomain() {
+    if (domain == null) {
+        domain = getDomainInternal();
+    }
+    if (domain == null) {
+        domain = Globals.DEFAULT_MBEAN_DOMAIN;
+    }
+    return domain;
+}

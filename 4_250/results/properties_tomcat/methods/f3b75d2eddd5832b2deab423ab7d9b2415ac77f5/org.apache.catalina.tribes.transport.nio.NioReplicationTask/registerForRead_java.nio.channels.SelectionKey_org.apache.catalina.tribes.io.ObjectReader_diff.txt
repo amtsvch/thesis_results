@@ -1,0 +1,30 @@
+protected void registerForRead(final SelectionKey key, ObjectReader reader) {                          protected void registerForRead(final SelectionKey key, ObjectReader reader) {                       
+if (log.isTraceEnabled())                                                                              if (log.isTraceEnabled())                                                                           
+log.trace("Adding key for read event:" + key);                                                         log.trace("Adding key for read event:" + key);                                                      
+reader.finish();                                                                                       reader.finish();                                                                                    
+// register our OP_READ interest                                                                       // register our OP_READ interest                                                                    
+Runnable r = new Runnable() {                                                                        | Runnable r = () -&gt; {                                                                             
+                                                                                                                                                                                                           
+@Override                                                                                            |                                                                                                     
+public void run() {                                                                                  |                                                                                                     
+try {                                                                                                  try {                                                                                               
+if (key.isValid()) {                                                                                   if (key.isValid()) {                                                                                
+// cycle the selector so this key is active again                                                      // cycle the selector so this key is active again                                                   
+key.selector().wakeup();                                                                               key.selector().wakeup();                                                                            
+// resume interest in OP_READ, OP_WRITE                                                                // resume interest in OP_READ, OP_WRITE                                                             
+int resumeOps = key.interestOps() | SelectionKey.OP_READ;                                              int resumeOps = key.interestOps() | SelectionKey.OP_READ;                                           
+key.interestOps(resumeOps);                                                                            key.interestOps(resumeOps);                                                                         
+if (log.isTraceEnabled())                                                                              if (log.isTraceEnabled())                                                                           
+log.trace("Registering key for read:" + key);                                                          log.trace("Registering key for read:" + key);                                                       
+}                                                                                                      }                                                                                                   
+} catch (CancelledKeyException ckx) {                                                                  } catch (CancelledKeyException ckx) {                                                               
+NioReceiver.cancelledKey(key);                                                                         NioReceiver.cancelledKey(key);                                                                      
+if (log.isTraceEnabled())                                                                              if (log.isTraceEnabled())                                                                           
+log.trace("CKX Cancelling key:" + key);                                                                log.trace("CKX Cancelling key:" + key);                                                             
+} catch (Exception x) {                                                                                } catch (Exception x) {                                                                             
+log.error(sm.getString("nioReplicationTask.error.register.key", key), x);                              log.error(sm.getString("nioReplicationTask.error.register.key", key), x);                           
+}                                                                                                      }                                                                                                   
+}                                                                                                    |                                                                                                     
+};                                                                                                     };                                                                                                  
+receiver.addEvent(r);                                                                                  receiver.addEvent(r);                                                                               
+}                                                                                                      }                                                                                                   

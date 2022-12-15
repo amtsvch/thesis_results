@@ -1,0 +1,10 @@
+@After
+public void tearDown() throws Exception {
+    for (ManagedChannel channel : channels) {
+        try {
+            channel.stop(Channel.DEFAULT);
+        } catch (Exception ignore) {
+            // Ignore
+        }
+    }
+}

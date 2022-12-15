@@ -1,0 +1,7 @@
+/**
+ * Tests that a private constructor invocation will fail.
+ */
+@Test
+public void testInvoke06() {
+    doThrowableTest(METHOD01_NAME, MethodUnderTest.INVOKE, false);
+}

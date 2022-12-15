@@ -1,0 +1,13 @@
+@Override                                                                                              @Override                                                                                           
+public void invoke(final Request request, final Response response) throws IOException, ServletExcept   public void invoke(final Request request, final Response response) throws IOException, ServletExcept
+String property;                                                                                       String property;                                                                                    
+if (getAddConnectorPort()) {                                                                         | if (getUsePeerAddress()) {                                                                          
+property = request.getRequest().getRemoteAddr() + ";" + request.getConnector().getPortWithOffset();  | property = request.getPeerAddr();                                                                   
+} else {                                                                                               } else {                                                                                            
+property = request.getRequest().getRemoteAddr();                                                       property = request.getRequest().getRemoteAddr();                                                    
+}                                                                                                      }                                                                                                   
+                                                                                                     | if (getAddConnectorPort()) {                                                                        
+                                                                                                     | property = property + ";" + request.getConnector().getPortWithOffset();                             
+                                                                                                     | }                                                                                                   
+process(property, request, response);                                                                  process(property, request, response);                                                               
+}                                                                                                      }                                                                                                   

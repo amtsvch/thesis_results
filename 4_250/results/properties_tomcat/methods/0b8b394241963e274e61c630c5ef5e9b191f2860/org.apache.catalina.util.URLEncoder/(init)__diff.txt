@@ -1,0 +1,12 @@
+public URLEncoder() {
+    this(new BitSet(256));
+    for (char i = 'a'; i <= 'z'; i++) {
+        addSafeCharacter(i);
+    }
+    for (char i = 'A'; i <= 'Z'; i++) {
+        addSafeCharacter(i);
+    }
+    for (char i = '0'; i <= '9'; i++) {
+        addSafeCharacter(i);
+    }
+}

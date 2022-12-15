@@ -1,0 +1,12 @@
+public void addEvent(Runnable event) {
+    Selector selector = this.selector.get();
+    if (selector != null) {
+        events.add(event);
+        if (log.isTraceEnabled()) {
+            log.trace("Adding event to selector:" + event);
+        }
+        if (isListening()) {
+            selector.wakeup();
+        }
+    }
+}

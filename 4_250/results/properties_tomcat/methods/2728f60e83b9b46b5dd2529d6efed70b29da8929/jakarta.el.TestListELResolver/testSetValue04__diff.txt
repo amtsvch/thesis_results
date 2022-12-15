@@ -1,0 +1,13 @@
+/**
+ * Tests that a valid property is set.
+ */
+@Test
+public void testSetValue04() {
+    ListELResolver resolver = new ListELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    List<String> list = new ArrayList<>();
+    list.add("value");
+    resolver.setValue(context, list, Integer.valueOf(0), "value");
+    Assert.assertEquals("value", resolver.getValue(context, list, Integer.valueOf(0)));
+    Assert.assertTrue(context.isPropertyResolved());
+}

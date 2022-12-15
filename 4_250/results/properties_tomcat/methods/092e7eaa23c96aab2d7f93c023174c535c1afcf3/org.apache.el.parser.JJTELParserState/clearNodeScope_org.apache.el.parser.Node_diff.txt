@@ -1,0 +1,6 @@
+public void clearNodeScope(Node n) {
+    while (sp > mk) {
+        popNode();
+    }
+    mk = marks.remove(marks.size() - 1);
+}

@@ -1,0 +1,13 @@
+@Override
+public void invoke(final Request request, final Response response) throws IOException, ServletException {
+    String property;
+    if (getUsePeerAddress()) {
+        property = request.getPeerAddr();
+    } else {
+        property = request.getRequest().getRemoteAddr();
+    }
+    if (getAddConnectorPort()) {
+        property = property + ";" + request.getConnector().getPortWithOffset();
+    }
+    process(property, request, response);
+}

@@ -1,0 +1,13 @@
+private static boolean isTLSHandshake(ByteBuffer bb) {
+    // For a TLS client hello the first byte must be 22 - handshake
+    if (bb.get() != 22) {
+        return false;
+    }
+    // Next two bytes are major/minor version. We need at least 3.1.
+    byte b2 = bb.get();
+    byte b3 = bb.get();
+    if (b2 < 3 || b2 == 3 && b3 == 0) {
+        return false;
+    }
+    return true;
+}

@@ -1,0 +1,9 @@
+/**
+ * Complete clone
+ * @return ClusterData
+ */
+@Override
+public Object deepclone() {
+    byte[] d = this.getDataPackage();
+    return ChannelData.getDataFromPackage(d);
+}

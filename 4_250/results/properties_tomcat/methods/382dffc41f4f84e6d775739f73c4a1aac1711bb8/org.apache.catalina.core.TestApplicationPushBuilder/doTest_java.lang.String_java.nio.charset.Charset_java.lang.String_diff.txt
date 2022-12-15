@@ -1,0 +1,4 @@
+private void doTest(String input, Charset charset, String expected) {
+    String result = ApplicationPushBuilder.decode(input, charset);
+    Assert.assertEquals(expected, result);
+}

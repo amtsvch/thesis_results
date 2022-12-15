@@ -1,0 +1,53 @@
+@Test
+public void testAddHost() throws Exception {
+    // Try to add duplicates
+    // Duplicate Host name
+    mapper.addHost("iowejoiejfoiew", new String[0], createHost("blah17"));
+    // Alias conflicting with existing Host
+    mapper.addHostAlias("iowejoiejfoiew", "qwigqwiwoih");
+    // Alias conflicting with existing Alias
+    mapper.addHostAlias("sjbjdvwsbvhrb", "iowejoiejfoiew_alias");
+    // Redundancy. Alias name = Host name. No error here.
+    mapper.addHostAlias("qwigqwiwoih", "qwigqwiwoih");
+    // Redundancy. Duplicate Alias for the same Host name. No error here.
+    mapper.addHostAlias("iowejoiejfoiew", "iowejoiejfoiew_alias");
+    mapper.addHostAlias("iowejoiejfoiew", "iowejoiejfoiew_alias");
+    // Check we have the right number
+    // (added 17 including one host alias. Three duplicates do not increase the count.)
+    Assert.assertEquals(19, mapper.hosts.length);
+    // Make sure adding a duplicate *does not* overwrite
+    final int iowPos = 4;
+    Assert.assertEquals("blah7", mapper.hosts[iowPos].object.getName());
+    final int qwigPos = 10;
+    Assert.assertEquals("blah14", mapper.hosts[qwigPos].object.getName());
+    // Check for alphabetical order of host names
+    String previous;
+    String current = mapper.hosts[0].name;
+    for (int i = 1; i < mapper.hosts.length; i++) {
+        previous = current;
+        current = mapper.hosts[i].name;
+        Assert.assertTrue(previous.compareTo(current) < 0);
+    }
+    // Check that host alias has the same data
+    Mapper.MappedHost host = mapper.hosts[iowPos];
+    Mapper.MappedHost alias = mapper.hosts[iowPos + 1];
+    Assert.assertEquals("iowejoiejfoiew", host.name);
+    Assert.assertEquals("iowejoiejfoiew_alias", alias.name);
+    Assert.assertFalse(host.isAlias());
+    Assert.assertTrue(alias.isAlias());
+    Assert.assertEquals(host.object, alias.object);
+    // Test addContextVersion() followed by addHost()
+    Host hostZ = createHost("zzzz");
+    Context contextZ = createContext("contextZ");
+    Assert.assertEquals(19, mapper.hosts.length);
+    mapper.addContextVersion("zzzz", hostZ, "/", "", contextZ, null, null, null);
+    Assert.assertEquals(20, mapper.hosts.length);
+    mapper.addHost("zzzz", new String[] { "zzzz_alias1", "zzzz_alias2" }, hostZ);
+    Assert.assertEquals(22, mapper.hosts.length);
+    Assert.assertEquals("zzzz", mapper.hosts[19].name);
+    Assert.assertEquals("zzzz_alias1", mapper.hosts[20].name);
+    Assert.assertEquals("zzzz_alias2", mapper.hosts[21].name);
+    Assert.assertEquals(2, mapper.hosts[19].getAliases().size());
+    Assert.assertSame(contextZ, mapper.hosts[19].contextList.contexts[0].versions[0].object);
+    Assert.assertSame(contextZ, mapper.hosts[21].contextList.contexts[0].versions[0].object);
+}

@@ -1,0 +1,29 @@
+/**
+ * Make the Tomcat instance preconfigured with test/webapp available to
+ * sub-classes.
+ * @param addJstl Should JSTL support be added to the test webapp
+ * @param start   Should the Tomcat instance be started
+ *
+ * @return A Tomcat instance pre-configured with the web application located
+ *         at test/webapp
+ *
+ * @throws LifecycleException If a problem occurs while starting the
+ *                            instance
+ */
+public Tomcat getTomcatInstanceTestWebapp(boolean addJstl, boolean start) throws LifecycleException {
+    File appDir = new File("test/webapp");
+    Context ctx = tomcat.addWebapp(null, "/test", appDir.getAbsolutePath());
+    StandardJarScanner scanner = (StandardJarScanner) ctx.getJarScanner();
+    StandardJarScanFilter filter = (StandardJarScanFilter) scanner.getJarScanFilter();
+    filter.setTldSkip(filter.getTldSkip() + ",testclasses");
+    filter.setPluggabilitySkip(filter.getPluggabilitySkip() + ",testclasses");
+    if (addJstl) {
+        File lib = new File("webapps/examples/WEB-INF/lib");
+        ctx.setResources(new StandardRoot(ctx));
+        ctx.getResources().createWebResourceSet(WebResourceRoot.ResourceSetType.POST, "/WEB-INF/lib", lib.getAbsolutePath(), null, "/");
+    }
+    if (start) {
+        tomcat.start();
+    }
+    return tomcat;
+}

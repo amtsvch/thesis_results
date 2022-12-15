@@ -1,0 +1,9 @@
+/**
+ * Format the date according to the strftime-style string given in the constructor.
+ *
+ * @param date the date to format
+ * @return the formatted date
+ */
+public String format(Date date) {
+    return simpleDateFormat.format(date);
+}

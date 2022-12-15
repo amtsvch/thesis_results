@@ -1,0 +1,19 @@
+/**
+ * Tests that a valid bean is not resolved if property is not a String even
+ * if it can be coerced to a valid bean name.
+ */
+@Test
+public void testGetValue04() {
+    BeanNameELResolver resolver = createBeanNameELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Object property = new Object() {
+
+        @Override
+        public String toString() {
+            return BEAN01_NAME;
+        }
+    };
+    Object result = resolver.getValue(context, null, property);
+    Assert.assertNull(result);
+    Assert.assertFalse(context.isPropertyResolved());
+}

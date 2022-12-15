@@ -1,0 +1,67 @@
+/**
+ * Find the resource with the given name, and return an input stream
+ * that can be used for reading it.  The search order is as described
+ * for <code>getResource()</code>, after checking to see if the resource
+ * data has been previously cached.  If the resource cannot be found,
+ * return <code>null</code>.
+ *
+ * @param name Name of the resource to return an input stream for
+ */
+@Override
+public InputStream getResourceAsStream(String name) {
+    if (log.isDebugEnabled())
+        log.debug("getResourceAsStream(" + name + ")");
+    checkStateForResourceLoading(name);
+    InputStream stream = null;
+    boolean delegateFirst = delegate || filter(name, false);
+    // (1) Delegate to parent if requested
+    if (delegateFirst) {
+        if (log.isDebugEnabled())
+            log.debug("  Delegating to parent classloader " + parent);
+        stream = parent.getResourceAsStream(name);
+        if (stream != null) {
+            if (log.isDebugEnabled())
+                log.debug("  --> Returning stream from parent");
+            return stream;
+        }
+    }
+    // (2) Search local repositories
+    if (log.isDebugEnabled())
+        log.debug("  Searching local repositories");
+    String path = nameToPath(name);
+    WebResource resource = resources.getClassLoaderResource(path);
+    if (resource.exists()) {
+        stream = resource.getInputStream();
+        trackLastModified(path, resource);
+    }
+    try {
+        if (hasExternalRepositories && stream == null) {
+            URL url = super.findResource(name);
+            if (url != null) {
+                stream = url.openStream();
+            }
+        }
+    } catch (IOException e) {
+        // Ignore
+    }
+    if (stream != null) {
+        if (log.isDebugEnabled())
+            log.debug("  --> Returning stream from local");
+        return stream;
+    }
+    // (3) Delegate to parent unconditionally
+    if (!delegateFirst) {
+        if (log.isDebugEnabled())
+            log.debug("  Delegating to parent classloader unconditionally " + parent);
+        stream = parent.getResourceAsStream(name);
+        if (stream != null) {
+            if (log.isDebugEnabled())
+                log.debug("  --> Returning stream from parent");
+            return stream;
+        }
+    }
+    // (4) Resource was not found
+    if (log.isDebugEnabled())
+        log.debug("  --> Resource not found, returning null");
+    return null;
+}

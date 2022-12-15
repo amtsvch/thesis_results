@@ -1,0 +1,5 @@
+private void doTest(String path) throws IOException {
+    try (InputStream is = ConfigFileLoader.getSource().getResource(path).getInputStream()) {
+        Assert.assertNotNull(is);
+    }
+}

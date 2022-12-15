@@ -1,0 +1,12 @@
+@Test
+public void testInvokeWithVarArgsAB() throws Exception {
+    MethodExpression me1 = factory.createMethodExpression(context, "${beanC.sayHello(beanA,beanB,beanB)}", null, null);
+    Exception e = null;
+    try {
+        me1.invoke(context, null);
+    } catch (Exception e1) {
+        e = e1;
+    }
+    // Expected to fail
+    Assert.assertNotNull(e);
+}

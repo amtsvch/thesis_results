@@ -1,0 +1,10 @@
+/**
+ * @return the context name for this class loader.
+ */
+public String getContextName() {
+    if (resources == null) {
+        return "Unknown";
+    } else {
+        return resources.getContext().getBaseName();
+    }
+}

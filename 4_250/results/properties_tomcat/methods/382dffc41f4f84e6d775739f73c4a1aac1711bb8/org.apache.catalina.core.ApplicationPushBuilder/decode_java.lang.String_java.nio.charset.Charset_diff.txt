@@ -1,0 +1,25 @@
+// Package private so it can be tested. charsetName must be in lower case.
+static String decode(String input, Charset charset) {
+    int start = input.indexOf('%');
+    int end = 0;
+    // Shortcut
+    if (start == -1) {
+        return input;
+    }
+    StringBuilder result = new StringBuilder(input.length());
+    while (start != -1) {
+        // Found the start of a %nn sequence. Copy everything from the last
+        // end to this start to the output.
+        result.append(input.substring(end, start));
+        // Advance the end 3 characters: %nn
+        end = start + 3;
+        while (end < input.length() && input.charAt(end) == '%') {
+            end += 3;
+        }
+        result.append(decodePercentSequence(input.substring(start, end), charset));
+        start = input.indexOf('%', end);
+    }
+    // Append the remaining text
+    result.append(input.substring(end));
+    return result.toString();
+}

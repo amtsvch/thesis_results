@@ -1,0 +1,8 @@
+private Charset getDigestCharset() throws UnsupportedEncodingException {
+    String charset = getDigestEncoding();
+    if (charset == null) {
+        return StandardCharsets.ISO_8859_1;
+    } else {
+        return B2CConverter.getCharset(charset);
+    }
+}

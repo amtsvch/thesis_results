@@ -1,0 +1,12 @@
+/**
+ * @return the host name of the Internet Protocol (IP) interface on
+ * which the request was received.
+ */
+@Override
+public String getLocalName() {
+    if (localName == null) {
+        coyoteRequest.action(ActionCode.REQ_LOCAL_NAME_ATTRIBUTE, coyoteRequest);
+        localName = coyoteRequest.localName().toString();
+    }
+    return localName;
+}

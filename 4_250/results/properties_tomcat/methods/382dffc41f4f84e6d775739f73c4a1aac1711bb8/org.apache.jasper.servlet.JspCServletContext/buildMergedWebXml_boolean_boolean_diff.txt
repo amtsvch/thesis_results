@@ -1,0 +1,31 @@
+private WebXml buildMergedWebXml(boolean validate, boolean blockExternal) throws JasperException {
+    WebXml webXml = new WebXml();
+    WebXmlParser webXmlParser = new WebXmlParser(validate, validate, blockExternal);
+    // Use this class's classloader as Ant will have set the TCCL to its own
+    webXmlParser.setClassLoader(getClass().getClassLoader());
+    try {
+        URL url = getResource(org.apache.tomcat.util.descriptor.web.Constants.WEB_XML_LOCATION);
+        if (!webXmlParser.parseWebXml(url, webXml, false)) {
+            throw new JasperException(Localizer.getMessage("jspc.error.invalidWebXml"));
+        }
+    } catch (IOException e) {
+        throw new JasperException(e);
+    }
+    // if the application is metadata-complete then we can skip fragment processing
+    if (webXml.isMetadataComplete()) {
+        return webXml;
+    }
+    // If an empty absolute ordering element is present, fragment processing
+    // may be skipped.
+    Set<String> absoluteOrdering = webXml.getAbsoluteOrdering();
+    if (absoluteOrdering != null && absoluteOrdering.isEmpty()) {
+        return webXml;
+    }
+    Map<String, WebXml> fragments = scanForFragments(webXmlParser);
+    Set<WebXml> orderedFragments = WebXml.orderWebFragments(webXml, fragments, this);
+    // Find resource JARs
+    this.resourceJARs = scanForResourceJARs(orderedFragments, fragments.values());
+    // JspC is not affected by annotations so skip that processing, proceed to merge
+    webXml.merge(orderedFragments);
+    return webXml;
+}

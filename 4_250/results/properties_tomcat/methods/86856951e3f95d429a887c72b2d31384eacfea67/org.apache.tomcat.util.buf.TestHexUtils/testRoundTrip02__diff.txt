@@ -1,0 +1,4 @@
+@Test
+public void testRoundTrip02() {
+    Assert.assertArrayEquals(TEST02_STRING, TEST02_BYTES, HexUtils.fromHexString(HexUtils.toHexString(TEST02_BYTES)));
+}

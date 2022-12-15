@@ -1,0 +1,11 @@
+/**
+ * @return the remote IP address making this Request.
+ */
+@Override
+public String getRemoteAddr() {
+    if (remoteAddr == null) {
+        coyoteRequest.action(ActionCode.REQ_HOST_ADDR_ATTRIBUTE, coyoteRequest);
+        remoteAddr = coyoteRequest.remoteAddr().toString();
+    }
+    return remoteAddr;
+}

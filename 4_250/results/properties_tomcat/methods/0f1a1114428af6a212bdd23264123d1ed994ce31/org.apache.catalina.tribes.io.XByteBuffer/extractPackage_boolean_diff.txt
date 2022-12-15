@@ -1,0 +1,5 @@
+public ChannelData extractPackage(boolean clearFromBuffer) {
+    XByteBuffer xbuf = extractDataPackage(clearFromBuffer);
+    ChannelData cdata = ChannelData.getDataFromPackage(xbuf);
+    return cdata;
+}

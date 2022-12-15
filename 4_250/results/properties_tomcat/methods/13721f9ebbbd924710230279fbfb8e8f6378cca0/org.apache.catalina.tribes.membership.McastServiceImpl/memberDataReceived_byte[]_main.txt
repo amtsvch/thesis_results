@@ -1,0 +1,44 @@
+private void memberDataReceived(byte[] data) {
+    final Member m = MemberImpl.getMember(data);
+    if (log.isTraceEnabled())
+        log.trace("Mcast receive ping from member " + m);
+    Runnable t = null;
+    if (Arrays.equals(m.getCommand(), Member.SHUTDOWN_PAYLOAD)) {
+        if (log.isDebugEnabled())
+            log.debug("Member has shutdown:" + m);
+        membership.removeMember(m);
+        t = new Runnable() {
+
+            @Override
+            public void run() {
+                String name = Thread.currentThread().getName();
+                try {
+                    Thread.currentThread().setName("Membership-MemberDisappeared");
+                    service.memberDisappeared(m);
+                } finally {
+                    Thread.currentThread().setName(name);
+                }
+            }
+        };
+    } else if (membership.memberAlive(m)) {
+        if (log.isDebugEnabled())
+            log.debug("Mcast add member " + m);
+        t = new Runnable() {
+
+            @Override
+            public void run() {
+                String name = Thread.currentThread().getName();
+                try {
+                    Thread.currentThread().setName("Membership-MemberAdded");
+                    service.memberAdded(m);
+                } finally {
+                    Thread.currentThread().setName(name);
+                }
+            }
+        };
+    }
+    // end if
+    if (t != null) {
+        executor.execute(t);
+    }
+}

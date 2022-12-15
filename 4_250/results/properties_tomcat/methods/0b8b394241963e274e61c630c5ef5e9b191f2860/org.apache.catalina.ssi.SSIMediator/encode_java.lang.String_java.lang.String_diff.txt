@@ -1,0 +1,14 @@
+protected String encode(String value, String encoding) {
+    String retVal = null;
+    if (encoding.equalsIgnoreCase(ENCODING_URL)) {
+        retVal = URLEncoder.DEFAULT.encode(value, StandardCharsets.UTF_8);
+    } else if (encoding.equalsIgnoreCase(ENCODING_NONE)) {
+        retVal = value;
+    } else if (encoding.equalsIgnoreCase(ENCODING_ENTITY)) {
+        retVal = Escape.htmlElementContent(value);
+    } else {
+        // This shouldn't be possible
+        throw new IllegalArgumentException(sm.getString("ssiMediator.unknownEncoding", encoding));
+    }
+    return retVal;
+}

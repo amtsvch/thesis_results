@@ -1,0 +1,9 @@
+private synchronized Host createHost(String name) {
+    Host host = hostMap.get(name);
+    if (host == null) {
+        host = new StandardHost();
+        host.setName(name);
+        hostMap.put(name, host);
+    }
+    return host;
+}

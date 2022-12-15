@@ -1,0 +1,5 @@
+private void addStaticTableEntry(int index) throws HpackException {
+    // adds an entry from the static table.
+    Hpack.HeaderField entry = Hpack.STATIC_TABLE[index];
+    emitHeader(entry.name, (entry.value == null) ? "" : entry.value);
+}

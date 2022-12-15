@@ -1,0 +1,8 @@
+public Builder configurator(Configurator serverEndpointConfigurator) {
+    if (serverEndpointConfigurator == null) {
+        this.configurator = Configurator.fetchContainerDefaultConfigurator();
+    } else {
+        this.configurator = serverEndpointConfigurator;
+    }
+    return this;
+}

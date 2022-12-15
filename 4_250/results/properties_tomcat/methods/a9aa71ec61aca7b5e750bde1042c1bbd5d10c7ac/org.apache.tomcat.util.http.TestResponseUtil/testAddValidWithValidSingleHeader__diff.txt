@@ -1,0 +1,12 @@
+@Test                                                                                                  @Test                                                                                               
+public void testAddValidWithValidSingleHeader() {                                                      public void testAddValidWithValidSingleHeader() {                                                   
+TesterResponse response = new TesterResponse();                                                        TesterResponse response = new TesterResponse();                                                     
+response.getCoyoteResponse();                                                                          response.getCoyoteResponse();                                                                       
+response.addHeader("vary", "foo, bar");                                                                response.addHeader("vary", "foo, bar");                                                             
+Set&lt;String&gt; expected = new HashSet&lt;&gt;();                                                  | List&lt;String&gt; expected = new ArrayList&lt;&gt;();                                              
+expected.add("bar");                                                                                 |                                                                                                     
+expected.add("foo");                                                                                   expected.add("foo");                                                                                
+                                                                                                     | expected.add("bar");                                                                                
+expected.add("too");                                                                                   expected.add("too");                                                                                
+doTestAddVaryFieldName(response, "too", expected);                                                     doTestAddVaryFieldName(response, "too", expected);                                                  
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,10 @@
+/**
+ * Construct a "call parameter" rule that will save the value of the
+ * specified attribute as the parameter value.
+ *
+ * @param paramIndex The zero-relative parameter number
+ * @param attributeName The name of the attribute to save
+ */
+public CallParamRule(int paramIndex, String attributeName) {
+    this(attributeName, paramIndex, 0, false);
+}

@@ -1,0 +1,7 @@
+@Override
+protected void destroyInternal() {
+    Valve[] valves = getValves();
+    for (Valve valve : valves) {
+        removeValve(valve);
+    }
+}

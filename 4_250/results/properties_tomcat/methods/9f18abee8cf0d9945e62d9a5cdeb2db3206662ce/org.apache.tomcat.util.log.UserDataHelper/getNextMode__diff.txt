@@ -1,0 +1,27 @@
+/**
+ * Returns log mode for the next log message, or <code>null</code> if the
+ * message should not be logged.
+ *
+ * <p>
+ * If <code>INFO_THEN_DEBUG</code> configuration option is enabled, this
+ * method might change internal state of this object.
+ *
+ * @return Log mode, or <code>null</code>
+ */
+public Mode getNextMode() {
+    if (Config.NONE == config) {
+        return null;
+    } else if (Config.DEBUG_ALL == config) {
+        return log.isDebugEnabled() ? Mode.DEBUG : null;
+    } else if (Config.INFO_THEN_DEBUG == config) {
+        if (logAtInfo()) {
+            return log.isInfoEnabled() ? Mode.INFO_THEN_DEBUG : null;
+        } else {
+            return log.isDebugEnabled() ? Mode.DEBUG : null;
+        }
+    } else if (Config.INFO_ALL == config) {
+        return log.isInfoEnabled() ? Mode.INFO : null;
+    }
+    // Should never happen
+    return null;
+}

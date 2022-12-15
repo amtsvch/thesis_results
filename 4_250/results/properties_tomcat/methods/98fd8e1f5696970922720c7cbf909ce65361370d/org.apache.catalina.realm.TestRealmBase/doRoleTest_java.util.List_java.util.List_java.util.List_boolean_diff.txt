@@ -1,0 +1,13 @@
+/**
+ * @param userRoles         <code>null</code> tests unauthenticated access
+ *                          otherwise access is tested with an authenticated
+ *                          user with the listed roles
+ * @param constraintRoles   <code>null</code> is equivalent to no auth
+ *                          constraint whereas an empty list is equivalent
+ *                          to an auth constraint that defines no roles.
+ */
+private void doRoleTest(List<String> userRoles, List<String> constraintRoles, List<String> applicationRoles, boolean expected) throws IOException {
+    List<String> constraintTwoRoles = new ArrayList<>();
+    constraintTwoRoles.add(ROLE99);
+    doRoleTest(userRoles, constraintRoles, constraintTwoRoles, applicationRoles, expected);
+}

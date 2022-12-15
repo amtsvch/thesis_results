@@ -1,0 +1,120 @@
+/**
+ * Creates the instance of the parser and processes the provided buffer. The
+ * buffer position and limit will be modified during the execution of this
+ * method but they will be returned to the original values before the method
+ * exits.
+ *
+ * @param netInBuffer The buffer containing the TLS data to process
+ * @throws IOException If the client hello message is malformed
+ */
+public TLSClientHelloExtractor(ByteBuffer netInBuffer) throws IOException {
+    // Buffer is in write mode at this point. Record the current position so
+    // the buffer state can be restored at the end of this method.
+    int pos = netInBuffer.position();
+    int limit = netInBuffer.limit();
+    ExtractorResult result = ExtractorResult.NOT_PRESENT;
+    List<Cipher> clientRequestedCiphers = new ArrayList<>();
+    List<String> clientRequestedCipherNames = new ArrayList<>();
+    List<String> clientRequestedApplicationProtocols = new ArrayList<>();
+    List<String> clientRequestedProtocols = new ArrayList<>();
+    String sniValue = null;
+    try {
+        // Switch to read mode.
+        netInBuffer.flip();
+        // A complete TLS record header is required before we can figure out
+        // how many bytes there are in the record.
+        if (!isAvailable(netInBuffer, TLS_RECORD_HEADER_LEN)) {
+            result = handleIncompleteRead(netInBuffer);
+            return;
+        }
+        if (!isTLSHandshake(netInBuffer)) {
+            // Is the client trying to use clear text HTTP?
+            if (isHttp(netInBuffer)) {
+                result = ExtractorResult.NON_SECURE;
+            }
+            return;
+        }
+        if (!isAllRecordAvailable(netInBuffer)) {
+            result = handleIncompleteRead(netInBuffer);
+            return;
+        }
+        if (!isClientHello(netInBuffer)) {
+            return;
+        }
+        if (!isAllClientHelloAvailable(netInBuffer)) {
+            // Client hello didn't fit into single TLS record.
+            // Treat this as not present.
+            log.warn(sm.getString("sniExtractor.clientHelloTooBig"));
+            return;
+        }
+        // Protocol Version
+        String legacyVersion = readProtocol(netInBuffer);
+        // Random
+        skipBytes(netInBuffer, 32);
+        // Session ID (single byte for length)
+        skipBytes(netInBuffer, (netInBuffer.get() & 0xFF));
+        // Cipher Suites
+        // (2 bytes for length, each cipher ID is 2 bytes)
+        int cipherCount = netInBuffer.getChar() / 2;
+        for (int i = 0; i < cipherCount; i++) {
+            char cipherId = netInBuffer.getChar();
+            Cipher c = Cipher.valueOf(cipherId);
+            // Some clients transmit grease values (see RFC 8701)
+            if (c == null) {
+                clientRequestedCipherNames.add("Unknown(0x" + HexUtils.toHexString(cipherId) + ")");
+            } else {
+                clientRequestedCiphers.add(c);
+                clientRequestedCipherNames.add(c.name());
+            }
+        }
+        // Compression methods (single byte for length)
+        skipBytes(netInBuffer, (netInBuffer.get() & 0xFF));
+        if (!netInBuffer.hasRemaining()) {
+            // No more data means no extensions present
+            return;
+        }
+        // Extension length
+        skipBytes(netInBuffer, 2);
+        // Read the extensions until we run out of data or find the data
+        // we need
+        while (netInBuffer.hasRemaining() && (sniValue == null || clientRequestedApplicationProtocols.isEmpty()) || clientRequestedProtocols.isEmpty()) {
+            // Extension type is two byte
+            char extensionType = netInBuffer.getChar();
+            // Extension size is another two bytes
+            char extensionDataSize = netInBuffer.getChar();
+            switch(extensionType) {
+                case TLS_EXTENSION_SERVER_NAME:
+                    {
+                        sniValue = readSniExtension(netInBuffer);
+                        break;
+                    }
+                case TLS_EXTENSION_ALPN:
+                    readAlpnExtension(netInBuffer, clientRequestedApplicationProtocols);
+                    break;
+                case TLS_EXTENSION_SUPPORTED_VERSION:
+                    readSupportedVersions(netInBuffer, clientRequestedProtocols);
+                    break;
+                default:
+                    {
+                        skipBytes(netInBuffer, extensionDataSize);
+                    }
+            }
+        }
+        if (clientRequestedProtocols.isEmpty()) {
+            clientRequestedProtocols.add(legacyVersion);
+        }
+        result = ExtractorResult.COMPLETE;
+    } catch (BufferUnderflowException | IllegalArgumentException e) {
+        throw new IOException(sm.getString("sniExtractor.clientHelloInvalid"), e);
+    } finally {
+        this.result = result;
+        this.clientRequestedCiphers = clientRequestedCiphers;
+        this.clientRequestedCipherNames = clientRequestedCipherNames;
+        this.clientRequestedApplicationProtocols = clientRequestedApplicationProtocols;
+        this.sniValue = sniValue;
+        this.clientRequestedProtocols = clientRequestedProtocols;
+        // Whatever happens, return the buffer to its original state
+        netInBuffer.limit(limit);
+        netInBuffer.position(pos);
+    }
+}

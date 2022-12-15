@@ -1,0 +1,9 @@
+/**
+ * Test string concatenation with mixed types.
+ */
+@Test
+public void testConcatenation04() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("'a' += 3", String.class);
+    Assert.assertEquals("a3", result);
+}

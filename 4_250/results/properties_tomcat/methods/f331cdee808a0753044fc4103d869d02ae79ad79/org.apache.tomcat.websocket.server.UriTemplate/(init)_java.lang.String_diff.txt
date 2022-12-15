@@ -1,0 +1,48 @@
+public UriTemplate(String path) throws DeploymentException {
+    if (path == null || path.length() == 0 || !path.startsWith("/") || path.contains("/../") || path.contains("/./") || path.contains("//")) {
+        throw new DeploymentException(sm.getString("uriTemplate.invalidPath", path));
+    }
+    StringBuilder normalized = new StringBuilder(path.length());
+    Set<String> paramNames = new HashSet<>();
+    // Include empty segments.
+    String[] segments = path.split("/", -1);
+    int paramCount = 0;
+    int segmentCount = 0;
+    for (int i = 0; i < segments.length; i++) {
+        String segment = segments[i];
+        if (segment.length() == 0) {
+            if (i == 0 || (i == segments.length - 1 && paramCount == 0)) {
+                // Ignore the first empty segment as the path must always
+                // start with '/'
+                // Ending with a '/' is also OK for instances used for
+                // matches but not for parameterised templates.
+                continue;
+            } else {
+                // As per EG discussion, all other empty segments are
+                // invalid
+                throw new DeploymentException(sm.getString("uriTemplate.emptySegment", path));
+            }
+        }
+        normalized.append('/');
+        int index = -1;
+        if (segment.startsWith("{") && segment.endsWith("}")) {
+            index = segmentCount;
+            segment = segment.substring(1, segment.length() - 1);
+            normalized.append('{');
+            normalized.append(paramCount++);
+            normalized.append('}');
+            if (!paramNames.add(segment)) {
+                throw new DeploymentException(sm.getString("uriTemplate.duplicateParameter", segment));
+            }
+        } else {
+            if (segment.contains("{") || segment.contains("}")) {
+                throw new DeploymentException(sm.getString("uriTemplate.invalidSegment", segment, path));
+            }
+            normalized.append(segment);
+        }
+        this.segments.add(new Segment(index, segment));
+        segmentCount++;
+    }
+    this.normalized = normalized.toString();
+    this.hasParameters = paramCount > 0;
+}

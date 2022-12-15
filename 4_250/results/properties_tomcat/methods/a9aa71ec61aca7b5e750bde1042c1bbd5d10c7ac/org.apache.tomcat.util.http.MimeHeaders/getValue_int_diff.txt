@@ -1,0 +1,8 @@
+/**
+ * @param n The header index
+ * @return the Nth header value, or null if there is no such header.
+ * This may be used to iterate through all header fields.
+ */
+public MessageBytes getValue(int n) {
+    return n >= 0 && n < count ? headers[n].getValue() : null;
+}

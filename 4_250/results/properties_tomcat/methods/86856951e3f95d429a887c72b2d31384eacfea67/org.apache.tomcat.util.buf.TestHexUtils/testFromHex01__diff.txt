@@ -1,0 +1,4 @@
+@Test(expected = IllegalArgumentException.class)
+public void testFromHex01() {
+    HexUtils.fromHexString("Not a hex string");
+}

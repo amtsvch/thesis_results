@@ -1,0 +1,9 @@
+/**
+ * Called by the background thread after active sessions have been checked
+ * for expiration, to allow sessions to be swapped out, backed up, etc.
+ */
+public void processPersistenceChecks() {
+    processMaxIdleSwaps();
+    processMaxActiveSwaps();
+    processMaxIdleBackups();
+}

@@ -1,0 +1,5 @@
+@Test
+public void testCoerceToType13() {
+    Object result = ELManager.getExpressionFactory().coerceToType("", TesterType.class);
+    Assert.assertNull(result);
+}

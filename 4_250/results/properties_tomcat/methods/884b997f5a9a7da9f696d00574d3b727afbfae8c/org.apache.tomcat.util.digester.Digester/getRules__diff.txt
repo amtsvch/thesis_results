@@ -1,0 +1,13 @@
+/**
+ * Return the <code>Rules</code> implementation object containing our
+ * rules collection and associated matching policy.  If none has been
+ * established, a default implementation will be created and returned.
+ * @return the rules
+ */
+public Rules getRules() {
+    if (this.rules == null) {
+        this.rules = new RulesBase();
+        this.rules.setDigester(this);
+    }
+    return this.rules;
+}

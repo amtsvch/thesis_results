@@ -1,0 +1,6 @@
+@Test
+public void testIntInput() {
+    SimpleTcpCluster cluster = new SimpleTcpCluster();
+    cluster.setChannelSendOptions(Channel.SEND_OPTIONS_ASYNCHRONOUS | Channel.SEND_OPTIONS_MULTICAST);
+    Assert.assertEquals(Channel.SEND_OPTIONS_ASYNCHRONOUS | Channel.SEND_OPTIONS_MULTICAST, cluster.getChannelSendOptions());
+}

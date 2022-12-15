@@ -1,0 +1,16 @@
+/**
+ * Tests that the key is out of bounds and null will be returned.
+ */
+@Test
+public void testGetValue05() {
+    ListELResolver resolver = new ListELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    List<String> list = new ArrayList<>();
+    list.add("key");
+    Object result = resolver.getValue(context, list, Integer.valueOf(1));
+    Assert.assertNull(result);
+    Assert.assertTrue(context.isPropertyResolved());
+    result = resolver.getValue(context, list, Integer.valueOf(-1));
+    Assert.assertNull(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

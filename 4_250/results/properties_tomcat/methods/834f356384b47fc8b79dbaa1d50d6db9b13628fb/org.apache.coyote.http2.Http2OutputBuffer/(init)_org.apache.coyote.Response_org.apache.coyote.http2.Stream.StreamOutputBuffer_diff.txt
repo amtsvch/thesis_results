@@ -1,0 +1,4 @@
+public Http2OutputBuffer(Response coyoteResponse, StreamOutputBuffer streamOutputBuffer) {
+    this.coyoteResponse = coyoteResponse;
+    this.next = streamOutputBuffer;
+}

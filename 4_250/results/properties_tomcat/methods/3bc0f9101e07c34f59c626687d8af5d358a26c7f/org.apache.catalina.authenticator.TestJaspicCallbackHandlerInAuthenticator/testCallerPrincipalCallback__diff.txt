@@ -1,0 +1,22 @@
+@Test
+public void testCallerPrincipalCallback() throws Exception {
+    CallbackHandler callbackHandler = createCallbackHandler(null);
+    Subject clientSubject = new Subject();
+    CallerPrincipalCallback cpc1 = new CallerPrincipalCallback(clientSubject, "name1");
+    callbackHandler.handle(new Callback[] { cpc1 });
+    CallerPrincipalCallback cpc2 = new CallerPrincipalCallback(clientSubject, new Principal() {
+
+        @Override
+        public String getName() {
+            return "name2";
+        }
+    });
+    callbackHandler.handle(new Callback[] { cpc2 });
+    Set<Object> credentials = clientSubject.getPrivateCredentials();
+    Assert.assertTrue(credentials.size() == 2);
+    Set<String> names = new HashSet<>(Arrays.asList(new String[] { "name1", "name2" }));
+    for (Object o : credentials) {
+        names.remove(((GenericPrincipal) o).getName());
+    }
+    Assert.assertTrue(names.isEmpty());
+}

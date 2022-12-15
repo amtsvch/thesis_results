@@ -1,0 +1,11 @@
+/**
+ * Tests that a read-only bean is reported as not writable.
+ */
+@Test
+public void testIsReadOnly03() {
+    BeanNameELResolver resolver = createBeanNameELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    boolean result = resolver.isReadOnly(context, null, TesterBeanNameResolver.READ_ONLY_NAME);
+    Assert.assertTrue(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

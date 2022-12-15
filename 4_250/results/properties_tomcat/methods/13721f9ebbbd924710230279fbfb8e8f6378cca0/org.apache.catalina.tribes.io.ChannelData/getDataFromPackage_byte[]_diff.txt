@@ -1,0 +1,33 @@
+public static ChannelData getDataFromPackage(byte[] b) {
+    ChannelData data = new ChannelData(false);
+    int offset = 0;
+    data.setOptions(XByteBuffer.toInt(b, offset));
+    // options
+    offset += 4;
+    data.setTimestamp(XByteBuffer.toLong(b, offset));
+    // timestamp
+    offset += 8;
+    data.uniqueId = new byte[XByteBuffer.toInt(b, offset)];
+    // uniqueId length
+    offset += 4;
+    System.arraycopy(b, offset, data.uniqueId, 0, data.uniqueId.length);
+    // uniqueId data
+    offset += data.uniqueId.length;
+    byte[] addr = new byte[XByteBuffer.toInt(b, offset)];
+    // addr length
+    offset += 4;
+    System.arraycopy(b, offset, addr, 0, addr.length);
+    data.setAddress(MemberImpl.getMember(addr));
+    // addr data
+    offset += addr.length;
+    int xsize = XByteBuffer.toInt(b, offset);
+    // data.message = new XByteBuffer(new byte[xsize],false);
+    data.message = BufferPool.getBufferPool().getBuffer(xsize, false);
+    // message length
+    offset += 4;
+    System.arraycopy(b, offset, data.message.getBytesDirect(), 0, xsize);
+    data.message.append(b, offset, xsize);
+    // message data
+    offset += xsize;
+    return data;
+}

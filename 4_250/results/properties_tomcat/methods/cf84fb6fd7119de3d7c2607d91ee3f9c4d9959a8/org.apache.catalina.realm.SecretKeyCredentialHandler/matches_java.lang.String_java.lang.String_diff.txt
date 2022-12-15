@@ -1,0 +1,4 @@
+@Override
+public boolean matches(String inputCredentials, String storedCredentials) {
+    return matchesSaltIterationsEncoded(inputCredentials, storedCredentials);
+}

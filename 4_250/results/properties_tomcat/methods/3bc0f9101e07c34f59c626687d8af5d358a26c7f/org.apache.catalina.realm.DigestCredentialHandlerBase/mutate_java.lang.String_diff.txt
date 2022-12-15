@@ -1,0 +1,41 @@
+@Override
+public String mutate(String userCredential) {
+    byte[] salt = null;
+    int iterations = getIterations();
+    int saltLength = getSaltLength();
+    if (saltLength == 0) {
+        salt = new byte[0];
+    } else if (saltLength > 0) {
+        // Double checked locking. OK since random is volatile.
+        if (random == null) {
+            synchronized (randomLock) {
+                if (random == null) {
+                    random = new SecureRandom();
+                }
+            }
+        }
+        salt = new byte[saltLength];
+        // Concurrent use of this random is unlikely to be a performance
+        // issue as it is only used during stored password generation.
+        random.nextBytes(salt);
+    }
+    String serverCredential = mutate(userCredential, salt, iterations);
+    // Failed to generate server credential from user credential. Points to
+    // a configuration issue. The root cause should have been logged in the
+    // mutate() method.
+    if (serverCredential == null) {
+        return null;
+    }
+    if (saltLength == 0 && iterations == 1) {
+        // Output the simple/old format for backwards compatibility
+        return serverCredential;
+    } else {
+        StringBuilder result = new StringBuilder((saltLength << 1) + 10 + serverCredential.length() + 2);
+        result.append(HexUtils.toHexString(salt));
+        result.append('$');
+        result.append(iterations);
+        result.append('$');
+        result.append(serverCredential);
+        return result.toString();
+    }
+}

@@ -1,0 +1,12 @@
+/*
+     * Provide access to just the cluster component attached to this container.
+     */
+protected Cluster getClusterInternal() {
+    Lock readLock = clusterLock.readLock();
+    readLock.lock();
+    try {
+        return cluster;
+    } finally {
+        readLock.unlock();
+    }
+}

@@ -1,0 +1,15 @@
+/**
+ * Used by sub-components to retrieve configuration information.
+ *
+ * @param key The name of the property for which the value should be
+ *            retrieved
+ *
+ * @return The value of the specified property
+ */
+public Object getAttribute(String key) {
+    Object value = attributes.get(key);
+    if (getLog().isTraceEnabled()) {
+        getLog().trace(sm.getString("endpoint.getAttribute", key, value));
+    }
+    return value;
+}

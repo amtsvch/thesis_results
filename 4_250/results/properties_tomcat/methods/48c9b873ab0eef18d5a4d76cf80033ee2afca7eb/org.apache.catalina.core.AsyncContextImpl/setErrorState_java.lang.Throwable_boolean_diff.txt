@@ -1,0 +1,44 @@
+public void setErrorState(Throwable t, boolean fireOnError) {
+    if (t != null)
+        request.setAttribute(RequestDispatcher.ERROR_EXCEPTION, t);
+    request.getCoyoteRequest().action(ActionCode.ASYNC_ERROR, null);
+    if (fireOnError) {
+        if (log.isDebugEnabled()) {
+            log.debug(sm.getString("asyncContextImpl.fireOnError"));
+        }
+        AsyncEvent errorEvent = new AsyncEvent(event.getAsyncContext(), event.getSuppliedRequest(), event.getSuppliedResponse(), t);
+        List<AsyncListenerWrapper> listenersCopy = new ArrayList<>(listeners);
+        for (AsyncListenerWrapper listener : listenersCopy) {
+            try {
+                listener.fireOnError(errorEvent);
+            } catch (Throwable t2) {
+                ExceptionUtils.handleThrowable(t2);
+                log.warn(sm.getString("asyncContextImpl.onErrorError", listener.getClass().getName()), t2);
+            }
+        }
+    }
+    AtomicBoolean result = new AtomicBoolean();
+    request.getCoyoteRequest().action(ActionCode.ASYNC_IS_ERROR, result);
+    if (result.get()) {
+        // No listener called dispatch() or complete(). This is an error.
+        // SRV.2.3.3.3 (search for "error dispatch")
+        // Take a local copy to avoid threading issues if another thread
+        // clears this (can happen during error handling with non-container
+        // threads)
+        ServletResponse servletResponse = this.servletResponse;
+        if (servletResponse instanceof HttpServletResponse) {
+            ((HttpServletResponse) servletResponse).setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        }
+        Host host = (Host) context.getParent();
+        Valve stdHostValve = host.getPipeline().getBasic();
+        if (stdHostValve instanceof StandardHostValve) {
+            ((StandardHostValve) stdHostValve).throwable(request, request.getResponse(), t);
+        }
+        request.getCoyoteRequest().action(ActionCode.ASYNC_IS_ERROR, result);
+        if (result.get()) {
+            // Still in the error state. The error page did not call
+            // complete() or dispatch(). Complete the async processing.
+            complete();
+        }
+    }
+}

@@ -1,0 +1,5 @@
+public void addPostConstructMethods(String clazz, String method) {
+    if (!postConstructMethods.containsKey(clazz)) {
+        postConstructMethods.put(clazz, method);
+    }
+}

@@ -1,0 +1,14 @@
+private void runEvictionIfRequired() {
+    while (currentTableSize > maxTableSize) {
+        TableEntry next = evictionQueue.poll();
+        if (next == null) {
+            return;
+        }
+        currentTableSize -= next.size;
+        List<TableEntry> list = dynamicTable.get(next.name);
+        list.remove(next);
+        if (list.isEmpty()) {
+            dynamicTable.remove(next.name);
+        }
+    }
+}

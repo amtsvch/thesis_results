@@ -1,0 +1,6 @@
+@Test
+public void testInvokeWithVarArgsABB() throws Exception {
+    MethodExpression me2 = factory.createMethodExpression(context, "${beanC.sayHello(beanA,beanBB,beanBB)}", null, null);
+    Object r2 = me2.invoke(context, null);
+    Assert.assertEquals("ABB[]: Hello A from BB, BB", r2.toString());
+}

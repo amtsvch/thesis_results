@@ -1,0 +1,4 @@
+@Test
+public void testAddNonceNoQueryNoAnchor() throws Exception {
+    Assert.assertEquals("/test?" + RESULT_NONCE, wrapper.encodeRedirectURL("/test"));
+}

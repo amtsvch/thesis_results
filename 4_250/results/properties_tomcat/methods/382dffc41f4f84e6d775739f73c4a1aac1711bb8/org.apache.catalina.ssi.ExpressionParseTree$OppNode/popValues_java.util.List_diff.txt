@@ -1,0 +1,10 @@
+/**
+ * Lets the node pop its own branch nodes off the front of the
+ * specified list. The default pulls two.
+ *
+ * @param values The list from which to pop the values
+ */
+public void popValues(List<Node> values) {
+    right = values.remove(0);
+    left = values.remove(0);
+}

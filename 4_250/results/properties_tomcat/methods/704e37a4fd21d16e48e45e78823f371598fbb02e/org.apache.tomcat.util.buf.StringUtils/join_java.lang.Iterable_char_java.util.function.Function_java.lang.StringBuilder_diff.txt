@@ -1,0 +1,14 @@
+public static <T> void join(Iterable<T> iterable, char separator, Function<T, String> function, StringBuilder sb) {
+    if (iterable == null) {
+        return;
+    }
+    boolean first = true;
+    for (T value : iterable) {
+        if (first) {
+            first = false;
+        } else {
+            sb.append(separator);
+        }
+        sb.append(function.apply(value));
+    }
+}

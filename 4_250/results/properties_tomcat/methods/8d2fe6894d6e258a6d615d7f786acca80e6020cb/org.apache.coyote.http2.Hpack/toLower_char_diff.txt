@@ -1,0 +1,6 @@
+static char toLower(char c) {
+    if (c >= 'A' && c <= 'Z') {
+        return (char) (c + LOWER_DIFF);
+    }
+    return c;
+}

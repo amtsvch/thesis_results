@@ -1,0 +1,5 @@
+@Before
+public void setUp() throws Exception {
+    log = LogFactory.getLog(getClass());
+    log.info("Starting test case [" + testName.getMethodName() + "]");
+}

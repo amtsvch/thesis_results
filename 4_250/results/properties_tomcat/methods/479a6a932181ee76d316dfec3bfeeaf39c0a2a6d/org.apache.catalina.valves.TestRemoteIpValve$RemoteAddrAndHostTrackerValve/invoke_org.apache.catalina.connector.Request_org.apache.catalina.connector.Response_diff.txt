@@ -1,0 +1,11 @@
+@Override
+public void invoke(Request request, Response response) throws IOException, ServletException {
+    this.remoteHost = request.getRemoteHost();
+    this.remoteAddr = request.getRemoteAddr();
+    this.scheme = request.getScheme();
+    this.secure = request.isSecure();
+    this.serverName = request.getServerName();
+    this.serverPort = request.getServerPort();
+    this.forwardedFor = request.getHeader("x-forwarded-for");
+    this.forwardedBy = request.getHeader("x-forwarded-by");
+}

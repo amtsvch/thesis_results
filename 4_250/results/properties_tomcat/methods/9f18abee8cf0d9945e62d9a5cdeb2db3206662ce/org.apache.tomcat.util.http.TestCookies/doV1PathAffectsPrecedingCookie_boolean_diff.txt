@@ -1,0 +1,6 @@
+private void doV1PathAffectsPrecedingCookie(boolean useRfc6265) {
+    FOO.setVersion(1);
+    FOO.setPath("/examples");
+    A.setVersion(1);
+    test(useRfc6265, "$Version=1;foo=\"bar\";$Path=/examples;a=b; ; ", FOO, A);
+}

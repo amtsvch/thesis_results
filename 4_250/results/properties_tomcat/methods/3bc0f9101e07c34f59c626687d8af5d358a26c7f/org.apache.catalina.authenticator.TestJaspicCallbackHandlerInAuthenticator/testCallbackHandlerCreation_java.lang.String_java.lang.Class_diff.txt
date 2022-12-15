@@ -1,0 +1,4 @@
+private void testCallbackHandlerCreation(String callbackHandlerImplClassName, Class<?> callbackHandlerImplClass) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    CallbackHandler callbackHandler = createCallbackHandler(callbackHandlerImplClassName);
+    Assert.assertTrue(callbackHandlerImplClass.isInstance(callbackHandler));
+}

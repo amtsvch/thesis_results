@@ -1,0 +1,11 @@
+@After
+@Override
+public void tearDown() throws Exception {
+    try {
+        for (ManagedChannel channel : channels) {
+            channel.stop(Channel.DEFAULT);
+        }
+    } finally {
+        super.tearDown();
+    }
+}

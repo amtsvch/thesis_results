@@ -1,0 +1,10 @@
+// ----------------------------------------------------------- Constructors
+/**
+ * Create a new StandardWrapper component with the default basic Valve.
+ */
+public StandardWrapper() {
+    super();
+    swValve = new StandardWrapperValve();
+    pipeline.setBasic(swValve);
+    broadcaster = new NotificationBroadcasterSupport();
+}

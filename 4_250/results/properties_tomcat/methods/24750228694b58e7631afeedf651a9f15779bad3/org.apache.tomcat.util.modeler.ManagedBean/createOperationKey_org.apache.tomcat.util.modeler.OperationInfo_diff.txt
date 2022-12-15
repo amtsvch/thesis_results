@@ -1,0 +1,7 @@
+private String createOperationKey(OperationInfo operation) {                                           private String createOperationKey(OperationInfo operation) {                                        
+StringBuilder key = new StringBuilder(operation.getName());                                            StringBuilder key = new StringBuilder(operation.getName());                                         
+key.append('(');                                                                                       key.append('(');                                                                                    
+StringUtils.join(operation.getSignature(), ',', (x) -&gt; x.getType(), key);                         | StringUtils.join(operation.getSignature(), ',', FeatureInfo::getType, key);                         
+key.append(')');                                                                                       key.append(')');                                                                                    
+return key.toString().intern();                                                                        return key.toString().intern();                                                                     
+}                                                                                                      }                                                                                                   

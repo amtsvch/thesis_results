@@ -1,0 +1,16 @@
+public void events() {
+    if (events.isEmpty()) {
+        return;
+    }
+    Runnable r = null;
+    while ((r = events.pollFirst()) != null) {
+        try {
+            if (log.isTraceEnabled()) {
+                log.trace("Processing event in selector:" + r);
+            }
+            r.run();
+        } catch (Exception x) {
+            log.error(sm.getString("nioReceiver.eventsError"), x);
+        }
+    }
+}

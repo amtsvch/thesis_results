@@ -1,0 +1,11 @@
+public final int getLocalPort() {
+    try {
+        InetSocketAddress localAddress = getLocalAddress();
+        if (localAddress == null) {
+            return -1;
+        }
+        return localAddress.getPort();
+    } catch (IOException ioe) {
+        return -1;
+    }
+}

@@ -1,0 +1,4 @@
+@Test
+public void testInvokeXforwardedProtoSaysMultipleHttpForwardsForIncomingHttpRequest() throws Exception {
+    performXForwardedProtoWithMultipleForwardsTest("http,http", false, false);
+}

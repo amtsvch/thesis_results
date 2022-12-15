@@ -1,0 +1,35 @@
+/**
+ * Set the new cipher configuration. Note: Regardless of the format used to
+ * set the configuration, it is always stored in OpenSSL format.
+ *
+ * @param ciphersList The new cipher configuration in OpenSSL or JSSE format
+ */
+public void setCiphers(String ciphersList) {
+    // Ciphers is stored in OpenSSL format. Convert the provided value if
+    // necessary.
+    if (ciphersList != null && !ciphersList.contains(":")) {
+        StringBuilder sb = new StringBuilder();
+        // Not obviously in OpenSSL format. May be a single OpenSSL or JSSE
+        // cipher name. May be a comma separated list of cipher names
+        String[] ciphers = ciphersList.split(",");
+        for (String cipher : ciphers) {
+            String trimmed = cipher.trim();
+            if (trimmed.length() > 0) {
+                String openSSLName = OpenSSLCipherConfigurationParser.jsseToOpenSSL(trimmed);
+                if (openSSLName == null) {
+                    // Not a JSSE name. Maybe an OpenSSL name or alias
+                    openSSLName = trimmed;
+                }
+                if (sb.length() > 0) {
+                    sb.append(':');
+                }
+                sb.append(openSSLName);
+            }
+        }
+        this.ciphers = sb.toString();
+    } else {
+        this.ciphers = ciphersList;
+    }
+    this.cipherList = null;
+    this.jsseCipherNames = null;
+}

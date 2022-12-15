@@ -1,0 +1,5 @@
+public static boolean verify(Data d) {
+    boolean result = (d.length == d.data.length);
+    for (int i = (d.hasNr ? 4 : 0); result && (i < d.data.length); i++) result = result && d.data[i] == d.key;
+    return result;
+}

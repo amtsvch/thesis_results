@@ -1,0 +1,10 @@
+@Override
+public void invoke(final Request request, final Response response) throws IOException, ServletException {
+    String property;
+    if (getAddConnectorPort()) {
+        property = request.getRequest().getRemoteAddr() + ";" + request.getConnector().getPortWithOffset();
+    } else {
+        property = request.getRequest().getRemoteAddr();
+    }
+    process(property, request, response);
+}

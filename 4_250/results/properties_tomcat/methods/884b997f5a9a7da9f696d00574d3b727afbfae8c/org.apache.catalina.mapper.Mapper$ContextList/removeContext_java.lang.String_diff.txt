@@ -1,0 +1,11 @@
+public ContextList removeContext(String path) {
+    MappedContext[] newContexts = new MappedContext[contexts.length - 1];
+    if (removeMap(contexts, newContexts, path)) {
+        int newNesting = 0;
+        for (MappedContext context : newContexts) {
+            newNesting = Math.max(newNesting, slashCount(context.name));
+        }
+        return new ContextList(newContexts, newNesting);
+    }
+    return null;
+}

@@ -1,0 +1,12 @@
+/**
+ * @return the servlet context for which this Context is a facade.
+ */
+@Override
+public ServletContext getServletContext() {
+    if (context == null) {
+        context = new ApplicationContext(this);
+        if (altDDName != null)
+            context.setAttribute(Globals.ALT_DD_ATTR, altDDName);
+    }
+    return context.getFacade();
+}

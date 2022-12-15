@@ -1,0 +1,20 @@
+/**
+ * String representation of this object
+ */
+@Override
+public String toString() {
+    StringBuilder buf = new StringBuilder(getClass().getName());
+    buf.append('[');
+    buf.append(getName()).append(',');
+    buf.append(getHostname()).append(',');
+    buf.append(port).append(", alive=");
+    buf.append(memberAliveTime).append(", ");
+    buf.append("securePort=").append(securePort).append(", ");
+    buf.append("UDP Port=").append(udpPort).append(", ");
+    buf.append("id=").append(bToS(this.uniqueId)).append(", ");
+    buf.append("payload=").append(bToS(this.payload, 8)).append(", ");
+    buf.append("command=").append(bToS(this.command, 8)).append(", ");
+    buf.append("domain=").append(bToS(this.domain, 8));
+    buf.append(']');
+    return buf.toString();
+}

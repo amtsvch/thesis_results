@@ -1,0 +1,7 @@
+private static void scan(TldScanner.TldScannerCallback callback, File webapp, String path) throws Exception {
+    String fullPath = new File(webapp, path).toURI().toString();
+    URL jarUrl = new URL("jar:" + fullPath + "!/");
+    try (Jar jar = JarFactory.newInstance(jarUrl)) {
+        callback.scan(jar, path, true);
+    }
+}

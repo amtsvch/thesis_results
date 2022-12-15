@@ -1,0 +1,7 @@
+public Membership(Member local, Comparator<Member> comp, boolean includeLocal) {
+    this.local = local;
+    this.memberComparator = comp;
+    if (includeLocal) {
+        addMember(local);
+    }
+}

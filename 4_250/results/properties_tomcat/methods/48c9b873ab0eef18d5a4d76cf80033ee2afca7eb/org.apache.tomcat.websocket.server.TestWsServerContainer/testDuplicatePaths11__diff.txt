@@ -1,0 +1,11 @@
+/*
+     * Simulates a class that gets picked up for extending Endpoint and for
+     * being annotated.
+     */
+@Test(expected = DeploymentException.class)
+public void testDuplicatePaths11() throws Exception {
+    WsServerContainer sc = new WsServerContainer(new TesterServletContext());
+    ServerEndpointConfig configA = ServerEndpointConfig.Builder.create(Pojo.class, "/foo").build();
+    sc.addEndpoint(configA, false);
+    sc.addEndpoint(Pojo.class, true);
+}

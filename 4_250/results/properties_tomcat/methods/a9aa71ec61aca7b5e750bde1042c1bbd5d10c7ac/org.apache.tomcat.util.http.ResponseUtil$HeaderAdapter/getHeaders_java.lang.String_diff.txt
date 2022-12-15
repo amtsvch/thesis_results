@@ -1,0 +1,9 @@
+@Override
+public Collection<String> getHeaders(String name) {
+    Enumeration<String> values = headers.values(name);
+    List<String> result = new ArrayList<>();
+    while (values.hasMoreElements()) {
+        result.add(values.nextElement());
+    }
+    return result;
+}

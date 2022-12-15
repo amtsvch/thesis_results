@@ -1,0 +1,5 @@
+@Override
+public void messageReceived(ChannelMessage msg) {
+    if (msglistener != null && msglistener.accept(msg))
+        msglistener.messageReceived(msg);
+}

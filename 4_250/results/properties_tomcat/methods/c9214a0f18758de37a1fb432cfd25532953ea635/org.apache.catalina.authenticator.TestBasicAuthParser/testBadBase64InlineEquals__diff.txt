@@ -1,0 +1,18 @@
+/*
+     * invalid base64 string tests
+     *
+     * Refer to
+     *  - RFC 7617 (Basic Auth)
+     *  - RFC 4648 (base 64)
+     */
+/*
+     * non-trailing "=" is illegal and will be rejected by the parser
+     */
+@Test(expected = IllegalArgumentException.class)
+public void testBadBase64InlineEquals() throws Exception {
+    final String BASE64_CRIB = "dXNlcmlkOnNlY3J=dAo=";
+    final BasicAuthHeader AUTH_HEADER = new BasicAuthHeader(NICE_METHOD, BASE64_CRIB);
+    // Exception will be thrown.
+    @SuppressWarnings("unused")
+    BasicAuthenticator.BasicCredentials credentials = new BasicAuthenticator.BasicCredentials(AUTH_HEADER.getHeader(), StandardCharsets.UTF_8, true);
+}

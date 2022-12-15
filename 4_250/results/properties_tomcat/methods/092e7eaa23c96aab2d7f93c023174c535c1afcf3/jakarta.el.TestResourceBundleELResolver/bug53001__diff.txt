@@ -1,0 +1,30 @@
+@Test
+public void bug53001() {
+    ExpressionFactory factory = ExpressionFactory.newInstance();
+    ELContext context = new ELContextImpl(factory);
+    ResourceBundle rb = new TesterResourceBundle();
+    ValueExpression var = factory.createValueExpression(rb, ResourceBundle.class);
+    context.getVariableMapper().setVariable("rb", var);
+    ValueExpression ve = factory.createValueExpression(context, "${rb.keys}", String.class);
+    MethodExpression me = factory.createMethodExpression(context, "${rb.getKeys()}", Enumeration.class, null);
+    // Ensure we are specification compliant
+    String result1 = (String) ve.getValue(context);
+    Assert.assertEquals("???keys???", result1);
+    // Check that the method expression does return the keys
+    Object result2 = me.invoke(context, null);
+    @SuppressWarnings("unchecked")
+    Enumeration<String> e = (Enumeration<String>) result2;
+    Assert.assertTrue(e.hasMoreElements());
+    String element = e.nextElement();
+    if ("key1".equals(element)) {
+        Assert.assertEquals("key1", element);
+        Assert.assertTrue(e.hasMoreElements());
+        Assert.assertEquals("key2", e.nextElement());
+        Assert.assertFalse(e.hasMoreElements());
+    } else {
+        Assert.assertEquals("key2", element);
+        Assert.assertTrue(e.hasMoreElements());
+        Assert.assertEquals("key1", e.nextElement());
+        Assert.assertFalse(e.hasMoreElements());
+    }
+}

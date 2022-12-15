@@ -1,0 +1,8 @@
+private DirContext mockDirContext(NamingEnumeration<SearchResult> namingEnumeration) throws NamingException {
+    DirContext dirContext = EasyMock.createNiceMock(InitialDirContext.class);
+    EasyMock.expect(dirContext.search(EasyMock.anyString(), EasyMock.anyString(), EasyMock.anyObject(SearchControls.class))).andReturn(namingEnumeration).times(2);
+    EasyMock.expect(dirContext.getNameParser("")).andReturn(new NameParserImpl()).times(2);
+    EasyMock.expect(dirContext.getNameInNamespace()).andReturn("ANY NAME").times(2);
+    EasyMock.replay(dirContext);
+    return dirContext;
+}

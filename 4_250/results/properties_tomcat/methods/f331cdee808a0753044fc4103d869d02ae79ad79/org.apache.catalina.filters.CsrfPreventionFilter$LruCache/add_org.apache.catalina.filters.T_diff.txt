@@ -1,0 +1,5 @@
+public void add(T key) {
+    synchronized (cache) {
+        cache.put(key, null);
+    }
+}

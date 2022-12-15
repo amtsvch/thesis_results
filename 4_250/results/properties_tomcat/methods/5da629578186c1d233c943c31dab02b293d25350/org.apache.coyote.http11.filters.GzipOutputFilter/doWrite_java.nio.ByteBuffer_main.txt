@@ -1,0 +1,17 @@
+// --------------------------------------------------- OutputBuffer Methods
+@Override
+public int doWrite(ByteBuffer chunk) throws IOException {
+    if (compressionStream == null) {
+        compressionStream = new GZIPOutputStream(fakeOutputStream, true);
+    }
+    int len = chunk.remaining();
+    if (chunk.hasArray()) {
+        compressionStream.write(chunk.array(), chunk.arrayOffset() + chunk.position(), len);
+        chunk.position(chunk.position() + len);
+    } else {
+        byte[] bytes = new byte[len];
+        chunk.put(bytes);
+        compressionStream.write(bytes, 0, len);
+    }
+    return len;
+}

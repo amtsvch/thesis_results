@@ -1,0 +1,36 @@
+@Before
+public void setUp() throws Exception {
+    System.out.println("Setup");
+    channels = new GroupChannel[channelCount];
+    orderitcs = new OrderInterceptor[channelCount];
+    mangleitcs = new MangleOrderInterceptor[channelCount];
+    test = new TestListener[channelCount];
+    threads = new Thread[channelCount];
+    for (int i = 0; i < channelCount; i++) {
+        channels[i] = new GroupChannel();
+        orderitcs[i] = new OrderInterceptor();
+        mangleitcs[i] = new MangleOrderInterceptor();
+        orderitcs[i].setExpire(Long.MAX_VALUE);
+        channels[i].addInterceptor(orderitcs[i]);
+        channels[i].addInterceptor(mangleitcs[i]);
+        test[i] = new TestListener(i);
+        channels[i].addChannelListener(test[i]);
+        final int j = i;
+        threads[i] = new Thread() {
+
+            @Override
+            public void run() {
+                try {
+                    channels[j].start(Channel.DEFAULT);
+                    Thread.sleep(50);
+                } catch (Exception x) {
+                    x.printStackTrace();
+                }
+            }
+        };
+    }
+    TesterUtil.addRandomDomain(channels);
+    for (int i = 0; i < channelCount; i++) threads[i].start();
+    for (int i = 0; i < channelCount; i++) threads[i].join();
+    Thread.sleep(1500);
+}

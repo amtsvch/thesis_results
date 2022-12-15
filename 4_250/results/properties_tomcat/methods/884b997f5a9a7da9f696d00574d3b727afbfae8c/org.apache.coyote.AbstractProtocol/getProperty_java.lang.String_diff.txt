@@ -1,0 +1,11 @@
+/**
+ * Generic property getter used by the digester. Other code should not need
+ * to use this.
+ *
+ * @param name The name of the property to get
+ *
+ * @return The value of the property converted to a string
+ */
+public String getProperty(String name) {
+    return endpoint.getProperty(name);
+}

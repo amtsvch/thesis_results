@@ -1,0 +1,8 @@
+/**
+ * @return the names of all currently defined session attributes
+ * as an array of Strings.  If there are no defined attributes, a
+ * zero-length array is returned.
+ */
+protected String[] keys() {
+    return attributes.keySet().toArray(EMPTY_ARRAY);
+}

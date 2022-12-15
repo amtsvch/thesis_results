@@ -1,0 +1,11 @@
+/**
+ * Create a new named header , return the MessageBytes
+ * container for the new value
+ * @param name The header name
+ * @return the message bytes container for the value
+ */
+public MessageBytes addValue(String name) {
+    MimeHeaderField mh = createHeader();
+    mh.getName().setString(name);
+    return mh.getValue();
+}

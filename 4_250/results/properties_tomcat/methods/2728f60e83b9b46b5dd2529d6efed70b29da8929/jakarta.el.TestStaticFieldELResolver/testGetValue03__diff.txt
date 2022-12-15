@@ -1,0 +1,7 @@
+/**
+ * Tests that a valid property is not resolved if base is not ELCLass.
+ */
+@Test
+public void testGetValue03() {
+    doNegativeTest(new Object(), PROPERTY01_NAME, MethodUnderTest.GET_VALUE);
+}

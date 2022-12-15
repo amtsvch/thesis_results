@@ -1,0 +1,10 @@
+@Override
+public InputStream getInputStream(String name) throws IOException {
+    // JarFile#getEntry() is multi-release aware
+    ZipEntry entry = jarFile.getEntry(name);
+    if (entry == null) {
+        return null;
+    } else {
+        return jarFile.getInputStream(entry);
+    }
+}

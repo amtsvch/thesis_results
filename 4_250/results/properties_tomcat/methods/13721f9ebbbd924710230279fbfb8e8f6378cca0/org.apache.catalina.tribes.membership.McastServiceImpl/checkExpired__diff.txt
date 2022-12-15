@@ -1,0 +1,27 @@
+protected void checkExpired() {                                                                        protected void checkExpired() {                                                                     
+synchronized (expiredMutex) {                                                                          synchronized (expiredMutex) {                                                                       
+Member[] expired = membership.expire(timeToExpiration);                                                Member[] expired = membership.expire(timeToExpiration);                                             
+for (final Member member : expired) {                                                                  for (final Member member : expired) {                                                               
+if (log.isDebugEnabled())                                                                              if (log.isDebugEnabled())                                                                           
+log.debug("Mcast expire  member " + member);                                                           log.debug("Mcast expire  member " + member);                                                        
+try {                                                                                                  try {                                                                                               
+Runnable t = new Runnable() {                                                                          Runnable t = new Runnable() {                                                                       
+                                                                                                                                                                                                           
+@Override                                                                                              @Override                                                                                           
+public void run() {                                                                                    public void run() {                                                                                 
+String name = Thread.currentThread().getName();                                                        String name = Thread.currentThread().getName();                                                     
+try {                                                                                                  try {                                                                                               
+Thread.currentThread().setName("Membership-MemberExpired.");                                         | Thread.currentThread().setName("Membership-MemberExpired");                                         
+service.memberDisappeared(member);                                                                     service.memberDisappeared(member);                                                                  
+} finally {                                                                                            } finally {                                                                                         
+Thread.currentThread().setName(name);                                                                  Thread.currentThread().setName(name);                                                               
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+};                                                                                                     };                                                                                                  
+executor.execute(t);                                                                                   executor.execute(t);                                                                                
+} catch (Exception x) {                                                                                } catch (Exception x) {                                                                             
+log.error(sm.getString("mcastServiceImpl.memberDisappeared.failed"), x);                               log.error(sm.getString("mcastServiceImpl.memberDisappeared.failed"), x);                            
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,27 @@
+private String getNameInternal() {                                                                     private String getNameInternal() {                                                                  
+StringBuilder name = new StringBuilder(getNamePrefix());                                               StringBuilder name = new StringBuilder(getNamePrefix());                                            
+name.append('-');                                                                                      name.append('-');                                                                                   
+String path = getProperty("unixDomainSocketPath");                                                   | String id = getId();                                                                                
+if (path != null) {                                                                                  | if (id != null) {                                                                                   
+name.append(path);                                                                                   | name.append(id);                                                                                    
+} else {                                                                                               } else {                                                                                            
+if (getAddress() != null) {                                                                            if (getAddress() != null) {                                                                         
+name.append(getAddress().getHostAddress());                                                            name.append(getAddress().getHostAddress());                                                         
+name.append('-');                                                                                      name.append('-');                                                                                   
+}                                                                                                      }                                                                                                   
+int port = getPortWithOffset();                                                                        int port = getPortWithOffset();                                                                     
+if (port == 0) {                                                                                       if (port == 0) {                                                                                    
+// Auto binding is in use. Check if port is known                                                      // Auto binding is in use. Check if port is known                                                   
+name.append("auto-");                                                                                  name.append("auto-");                                                                               
+name.append(getNameIndex());                                                                           name.append(getNameIndex());                                                                        
+port = getLocalPort();                                                                                 port = getLocalPort();                                                                              
+if (port != -1) {                                                                                      if (port != -1) {                                                                                   
+name.append('-');                                                                                      name.append('-');                                                                                   
+name.append(port);                                                                                     name.append(port);                                                                                  
+}                                                                                                      }                                                                                                   
+} else {                                                                                               } else {                                                                                            
+name.append(port);                                                                                     name.append(port);                                                                                  
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+return name.toString();                                                                                return name.toString();                                                                             
+}                                                                                                      }                                                                                                   

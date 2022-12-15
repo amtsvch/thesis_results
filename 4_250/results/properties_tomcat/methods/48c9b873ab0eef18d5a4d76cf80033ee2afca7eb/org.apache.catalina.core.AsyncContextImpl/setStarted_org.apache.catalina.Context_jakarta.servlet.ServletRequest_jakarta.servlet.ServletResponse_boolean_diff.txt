@@ -1,0 +1,24 @@
+public void setStarted(Context context, ServletRequest request, ServletResponse response, boolean originalRequestResponse) {
+    synchronized (asyncContextLock) {
+        this.request.getCoyoteRequest().action(ActionCode.ASYNC_START, this);
+        this.context = context;
+        context.incrementInProgressAsyncCount();
+        this.servletRequest = request;
+        this.servletResponse = response;
+        this.hasOriginalRequestAndResponse = originalRequestResponse;
+        this.event = new AsyncEvent(this, request, response);
+        List<AsyncListenerWrapper> listenersCopy = new ArrayList<>(listeners);
+        listeners.clear();
+        if (log.isDebugEnabled()) {
+            log.debug(sm.getString("asyncContextImpl.fireOnStartAsync"));
+        }
+        for (AsyncListenerWrapper listener : listenersCopy) {
+            try {
+                listener.fireOnStartAsync(event);
+            } catch (Throwable t) {
+                ExceptionUtils.handleThrowable(t);
+                log.warn(sm.getString("asyncContextImpl.onStartAsyncError", listener.getClass().getName()), t);
+            }
+        }
+    }
+}

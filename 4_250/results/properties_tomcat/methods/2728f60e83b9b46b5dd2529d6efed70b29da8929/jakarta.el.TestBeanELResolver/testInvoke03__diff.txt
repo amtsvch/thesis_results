@@ -1,0 +1,11 @@
+/**
+ * Tests a method invocation.
+ */
+@Test
+public void testInvoke03() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Object result = resolver.invoke(context, new TesterBean(BEAN_NAME), METHOD01_NAME, new Class<?>[] {}, new Object[] {});
+    Assert.assertEquals(BEAN_NAME, result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

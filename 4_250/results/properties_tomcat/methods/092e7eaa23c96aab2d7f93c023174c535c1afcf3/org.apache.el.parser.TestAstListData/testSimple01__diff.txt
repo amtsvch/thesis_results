@@ -1,0 +1,6 @@
+@Test
+public void testSimple01() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("['a','b','c', 'b', 'c']", List.class);
+    Assert.assertEquals(simpleList, result);
+}

@@ -1,0 +1,20 @@
+/**
+ * Find the index of a header with the given name.
+ * @param name The header name
+ * @param starting Index on which to start looking
+ * @return the header index
+ */
+public int findHeader(String name, int starting) {
+    // We can use a hash - but it's not clear how much
+    // benefit you can get - there is an  overhead
+    // and the number of headers is small (4-5 ?)
+    // Another problem is that we'll pay the overhead
+    // of constructing the hashtable
+    // A custom search tree may be better
+    for (int i = starting; i < count; i++) {
+        if (headers[i].getName().equalsIgnoreCase(name)) {
+            return i;
+        }
+    }
+    return -1;
+}

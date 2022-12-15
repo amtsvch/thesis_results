@@ -1,0 +1,18 @@
+/**
+ * Convert to char[] and fill the CharChunk.
+ * XXX Not optimized - it converts to String first.
+ */
+public void toChars() {
+    if (isNull()) {
+        return;
+    }
+    if (!charC.isNull()) {
+        type = T_CHARS;
+        return;
+    }
+    // inefficient
+    toString();
+    type = T_CHARS;
+    char[] cc = strValue.toCharArray();
+    charC.setChars(cc, 0, cc.length);
+}

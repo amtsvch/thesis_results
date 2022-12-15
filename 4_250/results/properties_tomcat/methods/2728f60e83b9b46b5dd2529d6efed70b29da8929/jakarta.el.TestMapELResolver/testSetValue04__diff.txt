@@ -1,0 +1,12 @@
+/**
+ * Tests that a valid property is set.
+ */
+@Test
+public void testSetValue04() {
+    MapELResolver mapELResolver = new MapELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Map<String, String> map = new HashMap<>();
+    mapELResolver.setValue(context, map, "key", "value");
+    Assert.assertEquals("value", mapELResolver.getValue(context, map, "key"));
+    Assert.assertTrue(context.isPropertyResolved());
+}

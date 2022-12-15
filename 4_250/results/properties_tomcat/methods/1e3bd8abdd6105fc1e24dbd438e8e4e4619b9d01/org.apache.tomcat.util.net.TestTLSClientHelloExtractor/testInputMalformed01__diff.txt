@@ -1,0 +1,13 @@
+@Test(expected = IOException.class)
+public void testInputMalformed01() throws IOException {
+    ByteBuffer testInput = ByteBuffer.allocate(1024);
+    // TLS handshake
+    testInput.put((byte) 22);
+    // TLS 1.0
+    testInput.put((byte) 3);
+    testInput.put((byte) 1);
+    // Record length 0 (correct, but not legal)
+    testInput.put((byte) 0);
+    testInput.put((byte) 0);
+    doTestInputNeedRead(testInput);
+}

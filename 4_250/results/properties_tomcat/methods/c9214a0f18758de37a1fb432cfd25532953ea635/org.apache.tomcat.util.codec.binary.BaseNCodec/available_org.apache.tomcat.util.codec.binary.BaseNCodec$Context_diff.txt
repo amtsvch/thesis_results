@@ -1,0 +1,10 @@
+/**
+ * Returns the amount of buffered data available for reading.
+ *
+ * @param context the context to be used
+ * @return The amount of buffered data available for reading.
+ */
+int available(final Context context) {
+    // package protected for access from I/O streams
+    return context.buffer != null ? context.pos - context.readPos : 0;
+}

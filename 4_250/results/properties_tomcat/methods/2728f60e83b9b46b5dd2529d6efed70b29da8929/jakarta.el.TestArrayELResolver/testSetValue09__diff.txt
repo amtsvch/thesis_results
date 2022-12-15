@@ -1,0 +1,10 @@
+/*
+     * Null base should be a NO-OP rather than an exception
+     */
+@Test
+public void testSetValue09() {
+    ArrayELResolver resolver = new ArrayELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    resolver.setValue(context, null, Integer.valueOf(1), Integer.valueOf(4));
+    Assert.assertFalse(context.isPropertyResolved());
+}

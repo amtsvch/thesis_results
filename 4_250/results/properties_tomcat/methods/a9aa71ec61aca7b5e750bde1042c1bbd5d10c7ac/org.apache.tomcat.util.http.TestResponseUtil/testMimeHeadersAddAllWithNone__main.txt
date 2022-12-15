@@ -1,0 +1,7 @@
+@Test
+public void testMimeHeadersAddAllWithNone() {
+    MimeHeaders mh = new MimeHeaders();
+    List<String> expected = new ArrayList<>();
+    expected.add("*");
+    doTestAddVaryFieldName(mh, "*", expected);
+}

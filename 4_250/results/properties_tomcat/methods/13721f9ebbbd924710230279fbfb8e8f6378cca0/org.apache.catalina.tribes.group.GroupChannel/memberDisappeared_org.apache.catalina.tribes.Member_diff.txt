@@ -1,0 +1,13 @@
+/**
+ * memberDisappeared gets invoked by the interceptor below the channel
+ * and the channel will broadcast it to the membership listeners
+ * @param member Member - the member that left or crashed
+ */
+@Override
+public void memberDisappeared(Member member) {
+    // notify upwards
+    for (MembershipListener membershipListener : membershipListeners) {
+        if (membershipListener != null)
+            membershipListener.memberDisappeared(member);
+    }
+}

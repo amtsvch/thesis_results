@@ -1,0 +1,28 @@
+/**
+ * Skip until an EL expression ('${' || '#{') is reached, allowing escape
+ * sequences '\$' and '\#'.
+ *
+ * @return The text string up to the EL expression
+ */
+private String skipUntilEL() {
+    StringBuilder buf = new StringBuilder();
+    while (hasNextChar()) {
+        char ch = nextChar();
+        if (ch == '\\') {
+            // Is this the start of a "\$" or "\#" escape sequence?
+            char p0 = peek(0);
+            if (p0 == '$' || (p0 == '#' && !isDeferredSyntaxAllowedAsLiteral)) {
+                buf.append(nextChar());
+            } else {
+                buf.append(ch);
+            }
+        } else if ((ch == '$' || (ch == '#' && !isDeferredSyntaxAllowedAsLiteral)) && peek(0) == '{') {
+            this.type = ch;
+            nextChar();
+            break;
+        } else {
+            buf.append(ch);
+        }
+    }
+    return buf.toString();
+}

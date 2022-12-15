@@ -1,0 +1,21 @@
+public UserDataHelper(Log log) {
+    this.log = log;
+    Config tempConfig;
+    String configString = System.getProperty("org.apache.juli.logging.UserDataHelper.CONFIG");
+    if (configString == null) {
+        tempConfig = Config.INFO_THEN_DEBUG;
+    } else {
+        try {
+            tempConfig = Config.valueOf(configString);
+        } catch (IllegalArgumentException iae) {
+            // Ignore - use default
+            tempConfig = Config.INFO_THEN_DEBUG;
+        }
+    }
+    // Default suppression time of 1 day.
+    suppressionTime = Integer.getInteger("org.apache.juli.logging.UserDataHelper.SUPPRESSION_TIME", 60 * 60 * 24).intValue() * 1000L;
+    if (suppressionTime == 0) {
+        tempConfig = Config.INFO_ALL;
+    }
+    config = tempConfig;
+}

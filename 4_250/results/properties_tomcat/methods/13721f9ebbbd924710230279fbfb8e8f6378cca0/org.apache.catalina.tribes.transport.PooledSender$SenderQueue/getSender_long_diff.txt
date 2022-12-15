@@ -1,0 +1,28 @@
+public synchronized DataSender getSender(long timeout) {
+    long start = System.currentTimeMillis();
+    while (true) {
+        if (!isOpen)
+            throw new IllegalStateException(sm.getString("pooledSender.closed.queue"));
+        DataSender sender = null;
+        if (notinuse.size() == 0 && inuse.size() < limit) {
+            sender = parent.getNewDataSender();
+        } else if (notinuse.size() > 0) {
+            sender = notinuse.remove(0);
+        }
+        if (sender != null) {
+            inuse.add(sender);
+            return sender;
+        }
+        // end if
+        long delta = System.currentTimeMillis() - start;
+        if (delta > timeout && timeout > 0)
+            return null;
+        else {
+            try {
+                wait(Math.max(timeout - delta, 1));
+            } catch (InterruptedException x) {
+            }
+        }
+        // end if
+    }
+}

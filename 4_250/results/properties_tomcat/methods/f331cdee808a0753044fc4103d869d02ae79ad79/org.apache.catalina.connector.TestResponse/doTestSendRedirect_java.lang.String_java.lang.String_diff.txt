@@ -1,0 +1,18 @@
+private void doTestSendRedirect(String input, String expectedLocation) throws Exception {
+    // Set-up.
+    // Note: Not sufficient for testing relative -> absolute
+    Connector connector = new Connector();
+    org.apache.coyote.Response cResponse = new org.apache.coyote.Response();
+    Response response = new Response();
+    response.setCoyoteResponse(cResponse);
+    Request request = new Request(connector);
+    org.apache.coyote.Request cRequest = new org.apache.coyote.Request();
+    request.setCoyoteRequest(cRequest);
+    Context context = new TesterContext();
+    request.getMappingData().context = context;
+    response.setRequest(request);
+    // Do test
+    response.sendRedirect(input);
+    String location = response.getHeader("Location");
+    Assert.assertEquals(expectedLocation, location);
+}

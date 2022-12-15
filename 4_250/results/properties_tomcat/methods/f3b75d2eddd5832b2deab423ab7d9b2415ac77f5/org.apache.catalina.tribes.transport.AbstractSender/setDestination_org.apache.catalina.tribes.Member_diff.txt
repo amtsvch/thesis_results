@@ -1,0 +1,6 @@
+public void setDestination(Member destination) throws UnknownHostException {
+    this.destination = destination;
+    this.address = InetAddress.getByAddress(destination.getHost());
+    this.port = destination.getPort();
+    this.udpPort = destination.getUdpPort();
+}

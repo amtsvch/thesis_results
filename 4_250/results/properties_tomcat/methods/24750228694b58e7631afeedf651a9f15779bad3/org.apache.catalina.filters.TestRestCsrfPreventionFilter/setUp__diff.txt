@@ -1,0 +1,14 @@
+@Before
+public void setUp() {
+    filter = new RestCsrfPreventionFilter() {
+
+        @Override
+        protected String generateNonce() {
+            return NONCE;
+        }
+    };
+    request = new TesterRequest();
+    response = new TesterResponse();
+    filterChain = new TesterFilterChain();
+    session = EasyMock.createMock(HttpSession.class);
+}

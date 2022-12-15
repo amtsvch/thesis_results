@@ -1,0 +1,60 @@
+/**
+ * Parses each param-value and populates configuration variables. If a param
+ * is provided, it overrides the default.
+ *
+ * @param allowedOrigins
+ *            A {@link String} of comma separated origins.
+ * @param allowedHttpMethods
+ *            A {@link String} of comma separated HTTP methods.
+ * @param allowedHttpHeaders
+ *            A {@link String} of comma separated HTTP headers.
+ * @param exposedHeaders
+ *            A {@link String} of comma separated headers that needs to be
+ *            exposed.
+ * @param supportsCredentials
+ *            "true" if support credentials needs to be enabled.
+ * @param preflightMaxAge
+ *            The amount of seconds the user agent is allowed to cache the
+ *            result of the pre-flight request.
+ * @throws ServletException
+ */
+private void parseAndStore(final String allowedOrigins, final String allowedHttpMethods, final String allowedHttpHeaders, final String exposedHeaders, final String supportsCredentials, final String preflightMaxAge, final String decorateRequest) throws ServletException {
+    if (allowedOrigins.trim().equals("*")) {
+        this.anyOriginAllowed = true;
+    } else {
+        this.anyOriginAllowed = false;
+        Set<String> setAllowedOrigins = parseStringToSet(allowedOrigins);
+        this.allowedOrigins.clear();
+        this.allowedOrigins.addAll(setAllowedOrigins);
+    }
+    Set<String> setAllowedHttpMethods = parseStringToSet(allowedHttpMethods);
+    this.allowedHttpMethods.clear();
+    this.allowedHttpMethods.addAll(setAllowedHttpMethods);
+    Set<String> setAllowedHttpHeaders = parseStringToSet(allowedHttpHeaders);
+    Set<String> lowerCaseHeaders = new HashSet<>();
+    for (String header : setAllowedHttpHeaders) {
+        String lowerCase = header.toLowerCase(Locale.ENGLISH);
+        lowerCaseHeaders.add(lowerCase);
+    }
+    this.allowedHttpHeaders.clear();
+    this.allowedHttpHeaders.addAll(lowerCaseHeaders);
+    Set<String> setExposedHeaders = parseStringToSet(exposedHeaders);
+    this.exposedHeaders.clear();
+    this.exposedHeaders.addAll(setExposedHeaders);
+    // For any value other than 'true' this will be false.
+    this.supportsCredentials = Boolean.parseBoolean(supportsCredentials);
+    if (this.supportsCredentials && this.anyOriginAllowed) {
+        throw new ServletException(sm.getString("corsFilter.invalidSupportsCredentials"));
+    }
+    try {
+        if (!preflightMaxAge.isEmpty()) {
+            this.preflightMaxAge = Long.parseLong(preflightMaxAge);
+        } else {
+            this.preflightMaxAge = 0L;
+        }
+    } catch (NumberFormatException e) {
+        throw new ServletException(sm.getString("corsFilter.invalidPreflightMaxAge"), e);
+    }
+    // For any value other than 'true' this will be false.
+    this.decorateRequest = Boolean.parseBoolean(decorateRequest);
+}

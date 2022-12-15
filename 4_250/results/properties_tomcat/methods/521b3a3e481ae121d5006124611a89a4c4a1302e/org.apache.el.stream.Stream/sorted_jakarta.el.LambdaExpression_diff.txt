@@ -1,0 +1,29 @@
+public Stream sorted(final LambdaExpression le) {                                                      public Stream sorted(final LambdaExpression le) {                                                   
+Iterator&lt;Object&gt; downStream = new OpIterator() {                                                 Iterator&lt;Object&gt; downStream = new OpIterator() {                                              
+                                                                                                                                                                                                           
+private Iterator&lt;Object&gt; sorted = null;                                                          private Iterator&lt;Object&gt; sorted = null;                                                       
+                                                                                                                                                                                                           
+@Override                                                                                              @Override                                                                                           
+protected void findNext() {                                                                            protected void findNext() {                                                                         
+if (sorted == null) {                                                                                  if (sorted == null) {                                                                               
+sort(le);                                                                                              sort(le);                                                                                           
+}                                                                                                      }                                                                                                   
+if (sorted.hasNext()) {                                                                                if (sorted.hasNext()) {                                                                             
+next = sorted.next();                                                                                  next = sorted.next();                                                                               
+foundNext = true;                                                                                      foundNext = true;                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                                                                                                                           
+@SuppressWarnings({ "rawtypes", "unchecked" })                                                         @SuppressWarnings({ "rawtypes", "unchecked" })                                                      
+private final void sort(LambdaExpression le) {                                                         private final void sort(LambdaExpression le) {                                                      
+List list = new ArrayList&lt;&gt;();                                                                   List list = new ArrayList&lt;&gt;();                                                                
+Comparator&lt;Object&gt; c = new LambdaExpressionComparator(le);                                       Comparator&lt;Object&gt; c = new LambdaExpressionComparator(le);                                    
+while (iterator.hasNext()) {                                                                           while (iterator.hasNext()) {                                                                        
+list.add(iterator.next());                                                                             list.add(iterator.next());                                                                          
+}                                                                                                      }                                                                                                   
+Collections.sort(list, c);                                                                           | list.sort(c);                                                                                       
+sorted = list.iterator();                                                                              sorted = list.iterator();                                                                           
+}                                                                                                      }                                                                                                   
+};                                                                                                     };                                                                                                  
+return new Stream(downStream);                                                                         return new Stream(downStream);                                                                      
+}                                                                                                      }                                                                                                   

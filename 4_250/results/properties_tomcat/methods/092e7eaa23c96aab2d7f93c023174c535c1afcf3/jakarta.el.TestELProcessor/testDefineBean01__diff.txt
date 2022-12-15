@@ -1,0 +1,6 @@
+@Test
+public void testDefineBean01() {
+    ELProcessor elp = new ELProcessor();
+    elp.defineBean("bean01", new TesterBean("name01"));
+    Assert.assertEquals("name01", elp.eval("bean01.name"));
+}

@@ -1,0 +1,14 @@
+@Override
+public SessionIdGenerator getSessionIdGenerator() {
+    if (sessionIdGenerator != null) {
+        return sessionIdGenerator;
+    } else if (sessionIdGeneratorClass != null) {
+        try {
+            sessionIdGenerator = sessionIdGeneratorClass.getConstructor().newInstance();
+            return sessionIdGenerator;
+        } catch (ReflectiveOperationException ex) {
+            // Ignore
+        }
+    }
+    return null;
+}

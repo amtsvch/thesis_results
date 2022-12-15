@@ -1,0 +1,4 @@
+@Test(expected = FileNotFoundException.class)
+public void test02() throws IOException {
+    doTest("classpath:org/apache/catalina/foo");
+}

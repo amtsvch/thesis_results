@@ -1,0 +1,12 @@
+public void importClass(String name) throws jakarta.el.ELException {
+    int lastPeriodIndex = name.lastIndexOf('.');
+    if (lastPeriodIndex < 0) {
+        throw new ELException(Util.message(null, "importHandler.invalidClassName", name));
+    }
+    String unqualifiedName = name.substring(lastPeriodIndex + 1);
+    String currentName = classNames.putIfAbsent(unqualifiedName, name);
+    if (currentName != null && !currentName.equals(name)) {
+        // Conflict. Same unqualifiedName, different fully qualified names
+        throw new ELException(Util.message(null, "importHandler.ambiguousImport", name, currentName));
+    }
+}

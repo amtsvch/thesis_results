@@ -1,0 +1,7 @@
+private static final String getClassNameSysProp() {
+    String value = System.getProperty(PROPERTY_NAME);
+    if (value != null && value.trim().length() > 0) {
+        return value.trim();
+    }
+    return null;
+}

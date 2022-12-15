@@ -1,0 +1,13 @@
+// ------------------------------------------------------------- Properties
+/**
+ * Add an output filter to the filter library. Note that calling this method
+ * resets the currently active filters to none.
+ *
+ * @param filter The filter to add
+ */
+public void addFilter(OutputFilter filter) {
+    OutputFilter[] newFilterLibrary = Arrays.copyOf(filterLibrary, filterLibrary.length + 1);
+    newFilterLibrary[filterLibrary.length] = filter;
+    filterLibrary = newFilterLibrary;
+    activeFilters = new OutputFilter[filterLibrary.length];
+}

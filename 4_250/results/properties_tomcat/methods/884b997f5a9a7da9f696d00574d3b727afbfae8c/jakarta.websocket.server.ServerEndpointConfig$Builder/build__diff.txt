@@ -1,0 +1,3 @@
+public ServerEndpointConfig build() {
+    return new DefaultServerEndpointConfig(endpointClass, path, subprotocols, extensions, encoders, decoders, configurator);
+}

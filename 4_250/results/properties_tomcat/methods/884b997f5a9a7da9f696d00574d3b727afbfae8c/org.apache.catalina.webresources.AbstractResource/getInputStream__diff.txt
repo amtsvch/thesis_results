@@ -1,0 +1,8 @@
+@Override
+public final InputStream getInputStream() {
+    InputStream is = doGetInputStream();
+    if (is == null || !root.getTrackLockedFiles()) {
+        return is;
+    }
+    return new TrackedInputStream(root, getName(), is);
+}

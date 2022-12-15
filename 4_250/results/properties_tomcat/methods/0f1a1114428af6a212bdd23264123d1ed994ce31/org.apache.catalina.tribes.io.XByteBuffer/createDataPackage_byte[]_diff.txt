@@ -1,0 +1,5 @@
+public static byte[] createDataPackage(byte[] data) {
+    int length = getDataPackageLength(data.length);
+    byte[] result = new byte[length];
+    return createDataPackage(data, 0, data.length, result, 0);
+}

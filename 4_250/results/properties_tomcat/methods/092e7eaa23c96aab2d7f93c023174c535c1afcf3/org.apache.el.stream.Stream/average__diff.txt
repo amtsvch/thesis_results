@@ -1,0 +1,13 @@
+public Optional average() {
+    long count = 0;
+    Number sum = Long.valueOf(0);
+    while (iterator.hasNext()) {
+        count++;
+        sum = ELArithmetic.add(sum, iterator.next());
+    }
+    if (count == 0) {
+        return Optional.EMPTY;
+    } else {
+        return new Optional(ELArithmetic.divide(sum, Long.valueOf(count)));
+    }
+}

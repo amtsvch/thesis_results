@@ -1,0 +1,17 @@
+/**
+ * Remove a host alias
+ * @param alias The alias to remove
+ */
+public synchronized void removeHostAlias(String alias) {
+    alias = renameWildcardHost(alias);
+    // Find and remove the alias
+    MappedHost hostMapping = exactFind(hosts, alias);
+    if (hostMapping == null || !hostMapping.isAlias()) {
+        return;
+    }
+    MappedHost[] newHosts = new MappedHost[hosts.length - 1];
+    if (removeMap(hosts, newHosts, alias)) {
+        hosts = newHosts;
+        hostMapping.getRealHost().removeAlias(hostMapping);
+    }
+}

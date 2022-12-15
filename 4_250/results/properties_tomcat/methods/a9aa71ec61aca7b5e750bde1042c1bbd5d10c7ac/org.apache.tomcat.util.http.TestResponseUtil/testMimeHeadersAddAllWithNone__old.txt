@@ -1,0 +1,7 @@
+@Test
+public void testMimeHeadersAddAllWithNone() {
+    MimeHeaders mh = new MimeHeaders();
+    Set<String> expected = new HashSet<>();
+    expected.add("*");
+    doTestAddVaryFieldName(mh, "*", expected);
+}

@@ -1,0 +1,5 @@
+@Test
+public void testEscape05() throws JasperException {
+    // When parsed as EL in JSP the escaping of # as \# is optional
+    doTestParser("\\#", "\\#", "#");
+}

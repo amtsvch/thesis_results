@@ -1,0 +1,10 @@
+                                                                                                     | /**                                                                                                 
+                                                                                                     | * @return the connection peer IP address making this Request.                                       
+                                                                                                     | */                                                                                                  
+                                                                                                     | public String getPeerAddr() {                                                                       
+                                                                                                     | if (peerAddr == null) {                                                                             
+                                                                                                     | coyoteRequest.action(ActionCode.REQ_PEER_ADDR_ATTRIBUTE, coyoteRequest);                            
+                                                                                                     | peerAddr = coyoteRequest.peerAddr().toString();                                                     
+                                                                                                     | }                                                                                                   
+                                                                                                     | return peerAddr;                                                                                    
+                                                                                                     | }                                                                                                   

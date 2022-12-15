@@ -1,0 +1,31 @@
+@Test
+public void testInvokeAllProxiesAreInternal() throws Exception {
+    // PREPARE
+    RemoteIpValve remoteIpValve = new RemoteIpValve();
+    remoteIpValve.setInternalProxies("192\\.168\\.0\\.10|192\\.168\\.0\\.11");
+    remoteIpValve.setTrustedProxies("proxy1|proxy2|proxy3");
+    remoteIpValve.setRemoteIpHeader("x-forwarded-for");
+    remoteIpValve.setProxiesHeader("x-forwarded-by");
+    RemoteAddrAndHostTrackerValve remoteAddrAndHostTrackerValve = new RemoteAddrAndHostTrackerValve();
+    remoteIpValve.setNext(remoteAddrAndHostTrackerValve);
+    Request request = new MockRequest();
+    request.setCoyoteRequest(new org.apache.coyote.Request());
+    request.setRemoteAddr("192.168.0.10");
+    request.setRemoteHost("remote-host-original-value");
+    request.getCoyoteRequest().getMimeHeaders().addValue("x-forwarded-for").setString("140.211.11.130, 192.168.0.10, 192.168.0.11");
+    // TEST
+    remoteIpValve.invoke(request, null);
+    // VERIFY
+    String actualXForwardedFor = remoteAddrAndHostTrackerValve.getForwardedFor();
+    Assert.assertNull("all proxies are internal, x-forwarded-for must be null", actualXForwardedFor);
+    String actualXForwardedBy = request.getHeader("x-forwarded-by");
+    Assert.assertNull("all proxies are internal, x-forwarded-by must be null", actualXForwardedBy);
+    String actualRemoteAddr = remoteAddrAndHostTrackerValve.getRemoteAddr();
+    Assert.assertEquals("remoteAddr", "140.211.11.130", actualRemoteAddr);
+    String actualRemoteHost = remoteAddrAndHostTrackerValve.getRemoteHost();
+    Assert.assertEquals("remoteHost", "140.211.11.130", actualRemoteHost);
+    String actualPostInvokeRemoteAddr = request.getRemoteAddr();
+    Assert.assertEquals("postInvoke remoteAddr", "192.168.0.10", actualPostInvokeRemoteAddr);
+    String actualPostInvokeRemoteHost = request.getRemoteHost();
+    Assert.assertEquals("postInvoke remoteAddr", "remote-host-original-value", actualPostInvokeRemoteHost);
+}

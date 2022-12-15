@@ -1,0 +1,8 @@
+private static void skipUntilSemiColonOrComma(ByteBuffer bb) {
+    while (bb.hasRemaining()) {
+        byte b = bb.get();
+        if (b == SEMICOLON_BYTE || b == COMMA_BYTE) {
+            break;
+        }
+    }
+}

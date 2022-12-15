@@ -1,0 +1,5 @@
+public CatalinaBaseConfigurationSource(File catalinaBaseFile, String serverXmlPath) {
+    this.catalinaBaseFile = catalinaBaseFile;
+    catalinaBaseUri = catalinaBaseFile.toURI();
+    this.serverXmlPath = serverXmlPath;
+}

@@ -1,0 +1,19 @@
+/**
+ * Fill the #allow list with the list of netmasks provided as an argument,
+ * if any. Calls #fillFromInput.
+ *
+ * @param input The list of netmasks, as a comma separated string
+ * @throws IllegalArgumentException One or more netmasks are invalid
+ */
+@Override
+public void setAllow(final String input) {
+    final List<String> messages = fillFromInput(input, allow);
+    if (messages.isEmpty()) {
+        return;
+    }
+    allowValid = false;
+    for (final String message : messages) {
+        log.error(message);
+    }
+    throw new IllegalArgumentException(sm.getString("remoteCidrValve.invalid", "allow"));
+}

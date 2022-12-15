@@ -1,0 +1,11 @@
+/**
+ * Gets the flag that controls if this cookie will be hidden from scripts on
+ * the client side.
+ *
+ * @return  <code>true</code> if the cookie is hidden from scripts, else
+ *          <code>false</code>
+ * @since Servlet 3.0
+ */
+public boolean isHttpOnly() {
+    return httpOnly;
+}

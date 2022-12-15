@@ -1,0 +1,5 @@
+@Override
+public void messageReceived(Serializable msg, Member sender) {
+    counter.incrementAndGet();
+    log.info("[" + name + "] Received message:" + msg + " from " + sender.getName());
+}

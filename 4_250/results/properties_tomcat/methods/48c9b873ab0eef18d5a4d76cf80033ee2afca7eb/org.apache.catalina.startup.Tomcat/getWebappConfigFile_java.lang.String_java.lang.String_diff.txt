@@ -1,0 +1,8 @@
+protected URL getWebappConfigFile(String path, String contextName) {
+    File docBase = new File(path);
+    if (docBase.isDirectory()) {
+        return getWebappConfigFileFromDirectory(docBase, contextName);
+    } else {
+        return getWebappConfigFileFromWar(docBase, contextName);
+    }
+}

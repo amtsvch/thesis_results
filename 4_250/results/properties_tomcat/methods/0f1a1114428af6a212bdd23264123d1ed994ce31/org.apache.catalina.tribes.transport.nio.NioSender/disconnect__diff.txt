@@ -1,0 +1,56 @@
+/**
+ * disconnect
+ *
+ * TODO Implement this org.apache.catalina.tribes.transport.IDataSender method
+ */
+@Override
+public void disconnect() {
+    try {
+        connecting = false;
+        setConnected(false);
+        if (socketChannel != null) {
+            try {
+                try {
+                    socketChannel.socket().close();
+                } catch (Exception x) {
+                    // Ignore
+                }
+                // error free close, all the way
+                // try {socket.shutdownOutput();}catch ( Exception x){}
+                // try {socket.shutdownInput();}catch ( Exception x){}
+                // try {socket.close();}catch ( Exception x){}
+                try {
+                    socketChannel.close();
+                } catch (Exception x) {
+                    // Ignore
+                }
+            } finally {
+                socketChannel = null;
+            }
+        }
+        if (dataChannel != null) {
+            try {
+                try {
+                    dataChannel.socket().close();
+                } catch (Exception x) {
+                    // Ignore
+                }
+                // error free close, all the way
+                // try {socket.shutdownOutput();}catch ( Exception x){}
+                // try {socket.shutdownInput();}catch ( Exception x){}
+                // try {socket.close();}catch ( Exception x){}
+                try {
+                    dataChannel.close();
+                } catch (Exception x) {
+                    // Ignore
+                }
+            } finally {
+                dataChannel = null;
+            }
+        }
+    } catch (Exception x) {
+        log.error(sm.getString("nioSender.unable.disconnect", x.getMessage()));
+        if (log.isDebugEnabled())
+            log.debug(sm.getString("nioSender.unable.disconnect", x.getMessage()), x);
+    }
+}

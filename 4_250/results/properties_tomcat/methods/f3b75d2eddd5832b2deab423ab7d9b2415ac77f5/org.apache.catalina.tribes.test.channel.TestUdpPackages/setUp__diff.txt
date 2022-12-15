@@ -1,0 +1,22 @@
+@Before
+public void setUp() throws Exception {
+    channel1 = new GroupChannel();
+    channel1.addInterceptor(new MessageDispatchInterceptor());
+    channel2 = new GroupChannel();
+    channel2.addInterceptor(new MessageDispatchInterceptor());
+    ThroughputInterceptor tint = new ThroughputInterceptor();
+    tint.setInterval(500);
+    ThroughputInterceptor tint2 = new ThroughputInterceptor();
+    tint2.setInterval(500);
+    // channel1.addInterceptor(tint);
+    channel2.addInterceptor(tint2);
+    listener1 = new Listener();
+    ReceiverBase rb1 = (ReceiverBase) channel1.getChannelReceiver();
+    ReceiverBase rb2 = (ReceiverBase) channel2.getChannelReceiver();
+    rb1.setUdpPort(50000);
+    rb2.setUdpPort(50000);
+    channel2.addChannelListener(listener1);
+    TesterUtil.addRandomDomain(new ManagedChannel[] { channel1, channel2 });
+    channel1.start(Channel.DEFAULT);
+    channel2.start(Channel.DEFAULT);
+}

@@ -1,0 +1,86 @@
+/**
+ * Constructor
+ *
+ * @param input the CIDR netmask
+ * @throws IllegalArgumentException if the netmask is not correct (invalid
+ *             address specification, malformed CIDR prefix, etc)
+ */
+public NetMask(final String input) {
+    expression = input;
+    final int portIdx = input.indexOf(';');
+    final String nonPortPart;
+    if (portIdx == -1) {
+        foundPort = false;
+        nonPortPart = input;
+        portPattern = null;
+    } else {
+        foundPort = true;
+        nonPortPart = input.substring(0, portIdx);
+        try {
+            portPattern = Pattern.compile(input.substring(portIdx + 1));
+        } catch (PatternSyntaxException e) {
+            /*
+                 * In case of error never match any non-empty port given
+                 */
+            throw new IllegalArgumentException(sm.getString("netmask.invalidPort", input), e);
+        }
+    }
+    final int idx = nonPortPart.indexOf('/');
+    /*
+         * Handle the "IP only" case first
+         */
+    if (idx == -1) {
+        try {
+            netaddr = InetAddress.getByName(nonPortPart).getAddress();
+        } catch (UnknownHostException e) {
+            throw new IllegalArgumentException(sm.getString("netmask.invalidAddress", nonPortPart));
+        }
+        nrBytes = netaddr.length;
+        lastByteShift = 0;
+        return;
+    }
+    /*
+         * OK, we do have a netmask specified, so let's extract both the address
+         * and the CIDR.
+         */
+    final String addressPart = nonPortPart.substring(0, idx), cidrPart = nonPortPart.substring(idx + 1);
+    try {
+        /*
+             * The address first...
+             */
+        netaddr = InetAddress.getByName(addressPart).getAddress();
+    } catch (UnknownHostException e) {
+        throw new IllegalArgumentException(sm.getString("netmask.invalidAddress", addressPart));
+    }
+    final int addrlen = netaddr.length * 8;
+    final int cidr;
+    try {
+        /*
+             * And then the CIDR.
+             */
+        cidr = Integer.parseInt(cidrPart);
+    } catch (NumberFormatException e) {
+        throw new IllegalArgumentException(sm.getString("netmask.cidrNotNumeric", cidrPart));
+    }
+    /*
+         * We don't want a negative CIDR, nor do we want a CIDR which is greater
+         * than the address length (consider 0.0.0.0/33, or ::/129)
+         */
+    if (cidr < 0) {
+        throw new IllegalArgumentException(sm.getString("netmask.cidrNegative", cidrPart));
+    }
+    if (cidr > addrlen) {
+        throw new IllegalArgumentException(sm.getString("netmask.cidrTooBig", cidrPart, Integer.valueOf(addrlen)));
+    }
+    nrBytes = cidr / 8;
+    /*
+         * These last two lines could be shortened to:
+         *
+         * lastByteShift = (8 - (cidr % 8)) & 7;
+         *
+         * But... It's not worth it. In fact, explaining why it could work would
+         * be too long to be worth the trouble, so let's do it the simple way...
+         */
+    final int remainder = cidr % 8;
+    lastByteShift = (remainder == 0) ? 0 : 8 - remainder;
+}

@@ -1,0 +1,31 @@
+private void gotoEntry(String name) throws IOException {
+    boolean needsReset = true;
+    if (multiRelease == null) {
+        reset();
+        needsReset = false;
+    }
+    // Need to convert requested name to multi-release name (if one exists)
+    if (multiRelease.booleanValue()) {
+        String mrName = mrMap.get(name);
+        if (mrName != null) {
+            name = mrName;
+        }
+    } else if (name.startsWith("META-INF/versions/")) {
+        entry = null;
+        return;
+    }
+    if (entry != null && name.equals(entry.getName())) {
+        return;
+    }
+    if (needsReset) {
+        reset();
+    }
+    JarEntry jarEntry = jarInputStream.getNextJarEntry();
+    while (jarEntry != null) {
+        if (name.equals(jarEntry.getName())) {
+            entry = jarEntry;
+            break;
+        }
+        jarEntry = jarInputStream.getNextJarEntry();
+    }
+}

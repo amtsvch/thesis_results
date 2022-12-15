@@ -1,0 +1,7 @@
+@Test(expected = IllegalArgumentException.class)
+public void testGetValueCoercion04() {
+    ArrayELResolver resolver = new ArrayELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    String[] base = new String[] { "element" };
+    resolver.getValue(context, base, new Object());
+}

@@ -1,0 +1,18 @@
+@Test
+public void testDoubleFullStart() throws Exception {
+    int count = 0;
+    try {
+        channel.start(Channel.DEFAULT);
+        count++;
+    } catch (Exception x) {
+        x.printStackTrace();
+    }
+    try {
+        channel.start(Channel.DEFAULT);
+        count++;
+    } catch (Exception x) {
+        x.printStackTrace();
+    }
+    Assert.assertEquals(count, 2);
+    channel.stop(Channel.DEFAULT);
+}

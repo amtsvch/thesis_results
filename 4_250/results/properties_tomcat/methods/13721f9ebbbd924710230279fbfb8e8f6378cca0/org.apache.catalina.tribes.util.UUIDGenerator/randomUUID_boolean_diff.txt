@@ -1,0 +1,4 @@
+public static byte[] randomUUID(boolean secure) {
+    byte[] result = new byte[UUID_LENGTH];
+    return randomUUID(secure, result, 0);
+}

@@ -1,0 +1,23 @@
+/**
+ * Parse the HTTP Authorization header for BASIC authentication
+ * as per RFC 2617 section 2, and the Base64 encoded credentials
+ * as per RFC 2045 section 6.8.
+ *
+ * @param input           The header value to parse in-place
+ * @param charset         The character set to use to convert the bytes
+ *                        to a string
+ * @param trimCredentials Should leading and trailing whitespace be
+ *                        removed from the parsed credentials
+ *
+ * @throws IllegalArgumentException If the header does not conform
+ *                                  to RFC 2617
+ */
+public BasicCredentials(ByteChunk input, Charset charset, boolean trimCredentials) throws IllegalArgumentException {
+    authorization = input;
+    initialOffset = input.getOffset();
+    this.charset = charset;
+    this.trimCredentials = trimCredentials;
+    parseMethod();
+    byte[] decoded = parseBase64();
+    parseCredentials(decoded);
+}

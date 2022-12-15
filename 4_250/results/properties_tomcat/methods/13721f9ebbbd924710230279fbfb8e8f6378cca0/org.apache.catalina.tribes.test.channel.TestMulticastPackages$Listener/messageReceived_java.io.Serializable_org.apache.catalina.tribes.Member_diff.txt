@@ -1,0 +1,21 @@
+@Override
+public void messageReceived(Serializable s, Member m) {
+    try {
+        Data d = (Data) s;
+        if (!Data.verify(d)) {
+            System.err.println("ERROR - Unable to verify data package");
+        } else {
+            long c = count.addAndGet(1);
+            if ((c % 1000) == 0) {
+                System.err.println("SUCCESS:" + c);
+            }
+            int nr = d.getNumber();
+            if (nr >= 0 && nr < nrs.length) {
+                maxIdx = Math.max(maxIdx, nr);
+                nrs[nr] = 1;
+            }
+        }
+    } catch (Exception x) {
+        x.printStackTrace();
+    }
+}

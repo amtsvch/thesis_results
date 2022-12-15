@@ -1,0 +1,13 @@
+private static final boolean equals(String s, byte[] b, int start, int end) {
+    int blen = end - start;
+    if (b == null || blen != s.length()) {
+        return false;
+    }
+    int boff = start;
+    for (int i = 0; i < blen; i++) {
+        if (b[boff++] != s.charAt(i)) {
+            return false;
+        }
+    }
+    return true;
+}

@@ -1,0 +1,42 @@
+/**
+ * Wildcard mapping.
+ */
+private final void internalMapWildcardWrapper(MappedWrapper[] wrappers, int nesting, CharChunk path, MappingData mappingData) {
+    int pathEnd = path.getEnd();
+    int lastSlash = -1;
+    int length = -1;
+    int pos = find(wrappers, path);
+    if (pos != -1) {
+        boolean found = false;
+        while (pos >= 0) {
+            if (path.startsWith(wrappers[pos].name)) {
+                length = wrappers[pos].name.length();
+                if (path.getLength() == length) {
+                    found = true;
+                    break;
+                } else if (path.startsWithIgnoreCase("/", length)) {
+                    found = true;
+                    break;
+                }
+            }
+            if (lastSlash == -1) {
+                lastSlash = nthSlash(path, nesting + 1);
+            } else {
+                lastSlash = lastSlash(path);
+            }
+            path.setEnd(lastSlash);
+            pos = find(wrappers, path);
+        }
+        path.setEnd(pathEnd);
+        if (found) {
+            mappingData.wrapperPath.setString(wrappers[pos].name);
+            if (path.getLength() > length) {
+                mappingData.pathInfo.setChars(path.getBuffer(), path.getOffset() + length, path.getLength() - length);
+            }
+            mappingData.requestPath.setChars(path.getBuffer(), path.getOffset(), path.getLength());
+            mappingData.wrapper = wrappers[pos].object;
+            mappingData.jspWildCard = wrappers[pos].jspWildCard;
+            mappingData.matchType = MappingMatch.PATH;
+        }
+    }
+}

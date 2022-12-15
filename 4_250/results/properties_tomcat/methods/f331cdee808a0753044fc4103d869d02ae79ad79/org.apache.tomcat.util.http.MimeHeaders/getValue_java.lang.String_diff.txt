@@ -1,0 +1,16 @@
+// -------------------- Getting headers --------------------
+/**
+ * Finds and returns a header field with the given name.  If no such
+ * field exists, null is returned.  If more than one such field is
+ * in the header, an arbitrary one is returned.
+ * @param name The header name
+ * @return the value
+ */
+public MessageBytes getValue(String name) {
+    for (int i = 0; i < count; i++) {
+        if (headers[i].getName().equalsIgnoreCase(name)) {
+            return headers[i].getValue();
+        }
+    }
+    return null;
+}

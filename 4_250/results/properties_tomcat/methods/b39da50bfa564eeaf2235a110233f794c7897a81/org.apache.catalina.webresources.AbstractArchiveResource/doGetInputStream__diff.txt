@@ -1,0 +1,7 @@
+@Override
+protected final InputStream doGetInputStream() {
+    if (isDirectory()) {
+        return null;
+    }
+    return getJarInputStreamWrapper();
+}

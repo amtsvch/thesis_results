@@ -1,0 +1,10 @@
+@Test
+public void testUserWithoutNoRolesAndAllRoles() throws IOException {
+    List<String> userRoles = new ArrayList<>();
+    List<String> constraintRoles = new ArrayList<>();
+    List<String> applicationRoles = new ArrayList<>();
+    // Configure this test
+    constraintRoles.add(SecurityConstraint.ROLE_ALL_ROLES);
+    applicationRoles.add(ROLE1);
+    doRoleTest(userRoles, constraintRoles, applicationRoles, false);
+}

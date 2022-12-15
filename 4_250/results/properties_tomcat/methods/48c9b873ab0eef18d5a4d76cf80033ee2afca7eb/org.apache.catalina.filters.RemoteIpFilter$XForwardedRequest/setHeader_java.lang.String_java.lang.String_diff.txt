@@ -1,0 +1,9 @@
+public void setHeader(String name, String value) {
+    List<String> values = Collections.singletonList(value);
+    Map.Entry<String, List<String>> header = getHeaderEntry(name);
+    if (header == null) {
+        headers.put(name, values);
+    } else {
+        header.setValue(values);
+    }
+}

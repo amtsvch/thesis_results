@@ -1,0 +1,5 @@
+protected WarURLConnection(URL url) throws IOException {
+    super(url);
+    URL innerJarUrl = UriUtil.warToJar(url);
+    wrappedJarUrlConnection = innerJarUrl.openConnection();
+}

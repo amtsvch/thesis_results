@@ -1,0 +1,8 @@
+@Override
+public String getHeader(String name) {
+    Map.Entry<String, List<String>> header = getHeaderEntry(name);
+    if (header == null || header.getValue() == null || header.getValue().isEmpty()) {
+        return null;
+    }
+    return header.getValue().get(0);
+}

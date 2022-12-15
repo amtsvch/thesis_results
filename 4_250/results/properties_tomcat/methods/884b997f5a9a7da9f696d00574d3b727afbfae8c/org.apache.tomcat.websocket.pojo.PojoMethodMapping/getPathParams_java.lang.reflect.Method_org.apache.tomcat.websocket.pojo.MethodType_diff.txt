@@ -1,0 +1,38 @@
+private static PojoPathParam[] getPathParams(Method m, MethodType methodType) throws DeploymentException {
+    if (m == null) {
+        return new PojoPathParam[0];
+    }
+    boolean foundThrowable = false;
+    Class<?>[] types = m.getParameterTypes();
+    Annotation[][] paramsAnnotations = m.getParameterAnnotations();
+    PojoPathParam[] result = new PojoPathParam[types.length];
+    for (int i = 0; i < types.length; i++) {
+        Class<?> type = types[i];
+        if (type.equals(Session.class)) {
+            result[i] = new PojoPathParam(type, null);
+        } else if (methodType == MethodType.ON_OPEN && type.equals(EndpointConfig.class)) {
+            result[i] = new PojoPathParam(type, null);
+        } else if (methodType == MethodType.ON_ERROR && type.equals(Throwable.class)) {
+            foundThrowable = true;
+            result[i] = new PojoPathParam(type, null);
+        } else if (methodType == MethodType.ON_CLOSE && type.equals(CloseReason.class)) {
+            result[i] = new PojoPathParam(type, null);
+        } else {
+            Annotation[] paramAnnotations = paramsAnnotations[i];
+            for (Annotation paramAnnotation : paramAnnotations) {
+                if (paramAnnotation.annotationType().equals(PathParam.class)) {
+                    result[i] = new PojoPathParam(type, ((PathParam) paramAnnotation).value());
+                    break;
+                }
+            }
+            // Parameters without annotations are not permitted
+            if (result[i] == null) {
+                throw new DeploymentException(sm.getString("pojoMethodMapping.paramWithoutAnnotation", type, m.getName(), m.getClass().getName()));
+            }
+        }
+    }
+    if (methodType == MethodType.ON_ERROR && !foundThrowable) {
+        throw new DeploymentException(sm.getString("pojoMethodMapping.onErrorNoThrowable", m.getName(), m.getDeclaringClass().getName()));
+    }
+    return result;
+}

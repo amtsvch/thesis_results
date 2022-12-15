@@ -1,0 +1,17 @@
+@Test
+public void testJavaKeyWordSuffix() {
+    ExpressionFactory factory = ExpressionFactory.newInstance();
+    ELContext context = new ELContextImpl(factory);
+    TesterBeanA beanA = new TesterBeanA();
+    beanA.setInt("five");
+    ValueExpression var = factory.createValueExpression(beanA, TesterBeanA.class);
+    context.getVariableMapper().setVariable("beanA", var);
+    // Should fail
+    Exception e = null;
+    try {
+        factory.createValueExpression(context, "${beanA.int}", String.class);
+    } catch (ELException ele) {
+        e = ele;
+    }
+    Assert.assertNotNull(e);
+}

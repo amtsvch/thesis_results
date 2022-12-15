@@ -1,0 +1,4 @@
+public boolean addToQueue(final ChannelMessage msg, final Member[] destination, final InterceptorPayload payload) {
+    executor.execute(() -> sendAsyncData(msg, destination, payload));
+    return true;
+}

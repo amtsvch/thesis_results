@@ -1,0 +1,6 @@
+protected void clearMatchGroups() {
+    for (int i = 1; i <= lastMatchCount; i++) {
+        setVariableValue(Integer.toString(i), "");
+    }
+    lastMatchCount = 0;
+}

@@ -1,0 +1,11 @@
+/**
+ * Tests that a valid FeatureDescriptors are not returned if base is not
+ * Map.
+ */
+@Test
+public void testGetFeatureDescriptors01() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Iterator<FeatureDescriptor> result = resolver.getFeatureDescriptors(context, null);
+    Assert.assertNull(result);
+}

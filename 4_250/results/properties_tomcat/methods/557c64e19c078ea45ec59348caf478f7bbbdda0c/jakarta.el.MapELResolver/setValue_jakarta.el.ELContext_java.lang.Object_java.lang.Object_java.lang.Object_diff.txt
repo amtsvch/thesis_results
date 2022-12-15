@@ -1,0 +1,18 @@
+@Override
+public void setValue(ELContext context, Object base, Object property, Object value) {
+    Objects.requireNonNull(context);
+    if (base instanceof Map<?, ?>) {
+        context.setPropertyResolved(base, property);
+        if (this.readOnly) {
+            throw new PropertyNotWritableException(Util.message(context, "resolverNotWriteable", base.getClass().getName()));
+        }
+        try {
+            // Must be OK
+            @SuppressWarnings("unchecked")
+            Map<Object, Object> map = ((Map<Object, Object>) base);
+            map.put(property, value);
+        } catch (UnsupportedOperationException e) {
+            throw new PropertyNotWritableException(e);
+        }
+    }
+}

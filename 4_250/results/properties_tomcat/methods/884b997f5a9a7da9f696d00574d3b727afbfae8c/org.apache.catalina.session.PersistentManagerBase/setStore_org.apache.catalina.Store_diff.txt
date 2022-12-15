@@ -1,0 +1,10 @@
+/**
+ * Set the Store object which will manage persistent Session
+ * storage for this Manager.
+ *
+ * @param store the associated Store
+ */
+public void setStore(Store store) {
+    this.store = store;
+    store.setManager(this);
+}

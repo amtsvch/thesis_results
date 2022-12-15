@@ -1,0 +1,12 @@
+@Test                                                                                                  @Test                                                                                               
+public void testMimeHeadersAddValidWithValidHeaders() {                                                public void testMimeHeadersAddValidWithValidHeaders() {                                             
+MimeHeaders mh = new MimeHeaders();                                                                    MimeHeaders mh = new MimeHeaders();                                                                 
+mh.addValue("vary").setString("foo");                                                                  mh.addValue("vary").setString("foo");                                                               
+mh.addValue("vary").setString("bar");                                                                  mh.addValue("vary").setString("bar");                                                               
+Set&lt;String&gt; expected = new HashSet&lt;&gt;();                                                  | List&lt;String&gt; expected = new ArrayList&lt;&gt;();                                              
+expected.add("bar");                                                                                 |                                                                                                     
+expected.add("foo");                                                                                   expected.add("foo");                                                                                
+                                                                                                     | expected.add("bar");                                                                                
+expected.add("too");                                                                                   expected.add("too");                                                                                
+doTestAddVaryFieldName(mh, "too", expected);                                                           doTestAddVaryFieldName(mh, "too", expected);                                                        
+}                                                                                                      }                                                                                                   

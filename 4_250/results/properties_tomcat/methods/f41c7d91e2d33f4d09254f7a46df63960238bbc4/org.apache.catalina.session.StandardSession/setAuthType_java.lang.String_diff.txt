@@ -1,0 +1,12 @@
+/**
+ * Set the authentication type used to authenticate our cached
+ * Principal, if any.
+ *
+ * @param authType The new cached authentication type
+ */
+@Override
+public void setAuthType(String authType) {
+    String oldAuthType = this.authType;
+    this.authType = authType;
+    support.firePropertyChange("authType", oldAuthType, this.authType);
+}

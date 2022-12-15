@@ -1,0 +1,9 @@
+protected Http11OutputBuffer(Response response, int headerBufferSize) {
+    this.response = response;
+    headerBuffer = ByteBuffer.allocate(headerBufferSize);
+    filterLibrary = new OutputFilter[0];
+    activeFilters = new OutputFilter[0];
+    lastActiveFilter = -1;
+    responseFinished = false;
+    outputStreamOutputBuffer = new SocketOutputBuffer();
+}

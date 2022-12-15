@@ -1,0 +1,31 @@
+/**
+ * Send a reply-acknowledgement (6,2,3), sends it doing a busy write, the ACK is so small
+ * that it should always go to the buffer.
+ * @param key The key to use
+ * @param channel The channel
+ * @param command The command to write
+ * @param udpaddr Target address
+ */
+protected void sendAck(SelectionKey key, WritableByteChannel channel, byte[] command, SocketAddress udpaddr) {
+    try {
+        ByteBuffer buf = ByteBuffer.wrap(command);
+        int total = 0;
+        if (channel instanceof DatagramChannel) {
+            DatagramChannel dchannel = (DatagramChannel) channel;
+            // were using a shared channel, document says its thread safe
+            // TODO check optimization, one channel per thread?
+            while (total < command.length) {
+                total += dchannel.send(buf, udpaddr);
+            }
+        } else {
+            while (total < command.length) {
+                total += channel.write(buf);
+            }
+        }
+        if (log.isTraceEnabled()) {
+            log.trace("ACK sent to " + ((channel instanceof SocketChannel) ? ((SocketChannel) channel).socket().getInetAddress() : ((DatagramChannel) channel).socket().getInetAddress()));
+        }
+    } catch (java.io.IOException x) {
+        log.warn(sm.getString("nioReplicationTask.unable.ack", x.getMessage()));
+    }
+}

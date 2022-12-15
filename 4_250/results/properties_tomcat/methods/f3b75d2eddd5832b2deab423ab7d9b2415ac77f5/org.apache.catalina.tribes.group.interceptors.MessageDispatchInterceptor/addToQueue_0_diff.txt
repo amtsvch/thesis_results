@@ -1,0 +1,11 @@
+public boolean addToQueue(final ChannelMessage msg, final Member[] destination, final InterceptorPay   public boolean addToQueue(final ChannelMessage msg, final Member[] destination, final InterceptorPay
+Runnable r = new Runnable() {                                                                        | executor.execute(() -&gt; sendAsyncData(msg, destination, payload));                                
+                                                                                                                                                                                                           
+@Override                                                                                            |                                                                                                     
+public void run() {                                                                                  |                                                                                                     
+sendAsyncData(msg, destination, payload);                                                            |                                                                                                     
+}                                                                                                    |                                                                                                     
+};                                                                                                   |                                                                                                     
+executor.execute(r);                                                                                 |                                                                                                     
+return true;                                                                                           return true;                                                                                        
+}                                                                                                      }                                                                                                   

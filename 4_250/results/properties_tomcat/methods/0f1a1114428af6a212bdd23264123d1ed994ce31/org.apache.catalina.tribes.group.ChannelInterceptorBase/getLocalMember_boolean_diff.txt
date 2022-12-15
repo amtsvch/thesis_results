@@ -1,0 +1,12 @@
+/**
+ * Return the member that represents this node.
+ *
+ * @return Member
+ */
+@Override
+public Member getLocalMember(boolean incAlive) {
+    if (getNext() != null)
+        return getNext().getLocalMember(incAlive);
+    else
+        return null;
+}

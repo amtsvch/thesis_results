@@ -1,0 +1,11 @@
+/**
+ * If a manager for a package already exists, it will be reused, else a new
+ * StringManager will be created and returned.
+ *
+ * @param packageName The package name
+ *
+ * @return The StringManager for the given package.
+ */
+public static final StringManager getManager(String packageName) {
+    return getManager(packageName, Locale.getDefault());
+}

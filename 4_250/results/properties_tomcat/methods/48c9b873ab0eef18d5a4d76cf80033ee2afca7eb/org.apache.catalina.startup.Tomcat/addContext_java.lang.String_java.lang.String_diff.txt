@@ -1,0 +1,43 @@
+/**
+ * Add a context - programmatic mode, no default web.xml used. This means
+ * that there is no JSP support (no JSP servlet), no default servlet and
+ * no web socket support unless explicitly enabled via the programmatic
+ * interface. There is also no
+ * {@link jakarta.servlet.ServletContainerInitializer} processing and no
+ * annotation processing. If a
+ * {@link jakarta.servlet.ServletContainerInitializer} is added
+ * programmatically, there will still be no scanning for
+ * {@link jakarta.servlet.annotation.HandlesTypes} matches.
+ *
+ * <p>
+ * API calls equivalent with web.xml:
+ *
+ * <pre>{@code
+ *  // context-param
+ *  ctx.addParameter("name", "value");
+ *
+ *  // error-page
+ *  ErrorPage ep = new ErrorPage();
+ *  ep.setErrorCode(500);
+ *  ep.setLocation("/error.html");
+ *  ctx.addErrorPage(ep);
+ *
+ *  ctx.addMimeMapping("ext", "type");
+ * }</pre>
+ *
+ * <p>
+ * Note: If you reload the Context, all your configuration will be lost. If
+ * you need reload support, consider using a LifecycleListener to provide
+ * your configuration.
+ *
+ * <p>
+ * TODO: add the rest
+ *
+ * @param contextPath The context mapping to use, "" for root context.
+ * @param docBase Base directory for the context, for static files.
+ *  Must exist, relative to the server home
+ * @return the deployed context
+ */
+public Context addContext(String contextPath, String docBase) {
+    return addContext(getHost(), contextPath, docBase);
+}

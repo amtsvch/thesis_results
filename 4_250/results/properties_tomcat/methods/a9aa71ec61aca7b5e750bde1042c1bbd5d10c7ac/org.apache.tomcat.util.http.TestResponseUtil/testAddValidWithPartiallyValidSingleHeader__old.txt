@@ -1,0 +1,10 @@
+@Test
+public void testAddValidWithPartiallyValidSingleHeader() {
+    TesterResponse response = new TesterResponse();
+    response.getCoyoteResponse();
+    response.addHeader("vary", "{{{, bar");
+    Set<String> expected = new HashSet<>();
+    expected.add("bar");
+    expected.add("too");
+    doTestAddVaryFieldName(response, "too", expected);
+}

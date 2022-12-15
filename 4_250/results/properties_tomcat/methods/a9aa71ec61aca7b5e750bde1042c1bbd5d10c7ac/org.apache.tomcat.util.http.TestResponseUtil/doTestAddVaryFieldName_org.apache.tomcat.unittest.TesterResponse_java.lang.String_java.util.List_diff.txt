@@ -1,0 +1,11 @@
+                                                                                                     | private void doTestAddVaryFieldName(TesterResponse response, String fieldName, List&lt;String&gt; ex
+                                                                                                     | ResponseUtil.addVaryFieldName(response, fieldName);                                                 
+                                                                                                     | // There will now only be one Vary header                                                           
+                                                                                                     | String resultHeader = response.getHeader("vary");                                                   
+                                                                                                     | List&lt;String&gt; result = new ArrayList&lt;&gt;();                                                
+                                                                                                     | // Deliberately do not use Vary.parseVary as it will skip invalid values.                           
+                                                                                                     | for (String value : resultHeader.split(",")) {                                                      
+                                                                                                     | result.add(value.trim());                                                                           
+                                                                                                     | }                                                                                                   
+                                                                                                     | Assert.assertEquals(expected, result);                                                              
+                                                                                                     | }                                                                                                   

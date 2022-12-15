@@ -1,0 +1,11 @@
+/**
+ * Tests that a null result is returned when the base is null.
+ */
+@Test
+public void testGetType06() {
+    ArrayELResolver resolver = new ArrayELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Class<?> result = resolver.getType(context, null, "index");
+    Assert.assertNull(result);
+    Assert.assertFalse(context.isPropertyResolved());
+}

@@ -1,0 +1,17 @@
+/**
+ * Return the n'th object down the stack, where 0 is the top element
+ * and [getCount()-1] is the bottom element.  If the specified index
+ * is out of range, return <code>null</code>.
+ *
+ * @param n Index of the desired element, where 0 is the top of the stack,
+ *  1 is the next element down, and so on.
+ * @return the specified object
+ */
+public Object peek(int n) {
+    try {
+        return stack.peek(n);
+    } catch (EmptyStackException e) {
+        log.warn(sm.getString("digester.emptyStack"));
+        return null;
+    }
+}

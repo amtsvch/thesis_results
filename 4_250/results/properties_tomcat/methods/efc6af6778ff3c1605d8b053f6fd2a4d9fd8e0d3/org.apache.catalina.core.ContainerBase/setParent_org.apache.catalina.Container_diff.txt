@@ -1,0 +1,17 @@
+/**
+ * Set the parent Container to which this Container is being added as a
+ * child.  This Container may refuse to become attached to the specified
+ * Container by throwing an exception.
+ *
+ * @param container Container to which this Container is being added
+ *  as a child
+ *
+ * @exception IllegalArgumentException if this Container refuses to become
+ *  attached to the specified Container
+ */
+@Override
+public void setParent(Container container) {
+    Container oldParent = this.parent;
+    this.parent = container;
+    support.firePropertyChange("parent", oldParent, this.parent);
+}

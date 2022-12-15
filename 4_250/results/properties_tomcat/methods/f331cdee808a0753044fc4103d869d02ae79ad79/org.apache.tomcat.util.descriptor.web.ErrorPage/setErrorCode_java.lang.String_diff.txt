@@ -1,0 +1,12 @@
+/**
+ * Set the error code (hack for default XmlMapper data type).
+ *
+ * @param errorCode The new error code
+ */
+public void setErrorCode(String errorCode) {
+    try {
+        this.errorCode = Integer.parseInt(errorCode);
+    } catch (NumberFormatException nfe) {
+        throw new IllegalArgumentException(nfe);
+    }
+}

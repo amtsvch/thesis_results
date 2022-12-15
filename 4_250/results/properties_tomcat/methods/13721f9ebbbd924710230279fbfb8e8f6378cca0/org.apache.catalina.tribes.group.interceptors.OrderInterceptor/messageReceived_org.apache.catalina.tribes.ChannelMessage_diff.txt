@@ -1,0 +1,17 @@
+@Override
+public void messageReceived(ChannelMessage msg) {
+    if (!okToProcess(msg.getOptions())) {
+        super.messageReceived(msg);
+        return;
+    }
+    int msgnr = XByteBuffer.toInt(msg.getMessage().getBytesDirect(), msg.getMessage().getLength() - 4);
+    msg.getMessage().trim(4);
+    MessageOrder order = new MessageOrder(msgnr, (ChannelMessage) msg.deepclone());
+    inLock.writeLock().lock();
+    try {
+        if (processIncoming(order))
+            processLeftOvers(msg.getAddress(), false);
+    } finally {
+        inLock.writeLock().unlock();
+    }
+}

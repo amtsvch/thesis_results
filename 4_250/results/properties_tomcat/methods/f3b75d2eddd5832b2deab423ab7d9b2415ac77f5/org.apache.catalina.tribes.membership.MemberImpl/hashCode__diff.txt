@@ -1,0 +1,8 @@
+/**
+ * @see java.lang.Object#hashCode()
+ * @return The hash code
+ */
+@Override
+public int hashCode() {
+    return getHost()[0] + getHost()[1] + getHost()[2] + getHost()[3];
+}

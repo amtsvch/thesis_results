@@ -1,0 +1,29 @@
+public static void cancelledKey(SelectionKey key) {
+    ObjectReader reader = (ObjectReader) key.attachment();
+    if (reader != null) {
+        reader.setCancelled(true);
+        reader.finish();
+    }
+    key.cancel();
+    key.attach(null);
+    if (key.channel() instanceof SocketChannel)
+        try {
+            ((SocketChannel) key.channel()).socket().close();
+        } catch (IOException e) {
+            if (log.isDebugEnabled())
+                log.debug("", e);
+        }
+    if (key.channel() instanceof DatagramChannel)
+        try {
+            ((DatagramChannel) key.channel()).socket().close();
+        } catch (Exception e) {
+            if (log.isDebugEnabled())
+                log.debug("", e);
+        }
+    try {
+        key.channel().close();
+    } catch (IOException e) {
+        if (log.isDebugEnabled())
+            log.debug("", e);
+    }
+}

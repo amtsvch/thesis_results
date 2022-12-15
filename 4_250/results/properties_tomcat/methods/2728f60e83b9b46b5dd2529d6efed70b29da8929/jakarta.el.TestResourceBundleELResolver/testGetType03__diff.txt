@@ -1,0 +1,13 @@
+/**
+ * Tests that null will be returned when base is ResourceBundle. Checks that
+ * the propertyResolved is true.
+ */
+@Test
+public void testGetType03() {
+    ResourceBundleELResolver resolver = new ResourceBundleELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    ResourceBundle resourceBundle = new TesterResourceBundle();
+    Class<?> result = resolver.getType(context, resourceBundle, "key1");
+    Assert.assertNull(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

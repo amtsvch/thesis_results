@@ -1,0 +1,17 @@
+/**
+ * For test purposes.
+ * @param input
+ * @param quote
+ * @param strict
+ */
+private AttributeParser(String input, char quote, boolean isELIgnored, boolean isDeferredSyntaxAllowedAsLiteral, boolean strict, boolean quoteAttributeEL) {
+    this.input = input;
+    this.quote = quote;
+    this.isELIgnored = isELIgnored;
+    this.isDeferredSyntaxAllowedAsLiteral = isDeferredSyntaxAllowedAsLiteral;
+    this.strict = strict;
+    this.quoteAttributeEL = quoteAttributeEL;
+    this.type = getType(input);
+    this.size = input.length();
+    result = new StringBuilder(size);
+}

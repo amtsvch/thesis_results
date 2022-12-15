@@ -1,0 +1,9 @@
+@Override
+public void init() {
+    a.addAfterOrderingOthers();
+    a.addAfterOrdering("c");
+    b.addBeforeOrderingOthers();
+    c.addAfterOrderingOthers();
+    f.addBeforeOrderingOthers();
+    f.addBeforeOrdering("b");
+}

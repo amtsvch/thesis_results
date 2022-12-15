@@ -1,0 +1,8 @@
+@Test
+public void testUdpReceiverStart() throws Exception {
+    ReceiverBase rb = (ReceiverBase) channel.getChannelReceiver();
+    rb.setUdpPort(udpPort);
+    channel.start(Channel.DEFAULT);
+    Thread.sleep(1000);
+    channel.stop(Channel.DEFAULT);
+}

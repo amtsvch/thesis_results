@@ -1,0 +1,6 @@
+@Test
+public void v0ValueContainsNonV0Separator() {
+    Cookie cookie = new Cookie("foo", "a()<>@:\\\"/[]?={}b");
+    doTestDefaults(cookie, "foo=\"a()<>@:\\\\\\\"/[]?={}b\"; Version=1", null);
+    doTestAllowSeparators(cookie, "foo=a()<>@:\\\"/[]?={}b", null);
+}

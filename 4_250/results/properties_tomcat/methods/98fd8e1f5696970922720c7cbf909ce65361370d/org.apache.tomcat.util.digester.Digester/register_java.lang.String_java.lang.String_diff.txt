@@ -1,0 +1,27 @@
+/**
+ * <p>Register the specified DTD URL for the specified public identifier.
+ * This must be called before the first call to <code>parse()</code>.
+ * </p><p>
+ * <code>Digester</code> contains an internal <code>EntityResolver</code>
+ * implementation. This maps <code>PUBLICID</code>'s to URLs
+ * (from which the resource will be loaded). A common use case for this
+ * method is to register local URLs (possibly computed at runtime by a
+ * classloader) for DTDs. This allows the performance advantage of using
+ * a local version without having to ensure every <code>SYSTEM</code>
+ * URI on every processed xml document is local. This implementation provides
+ * only basic functionality. If more sophisticated features are required,
+ * using {@link #setEntityResolver} to set a custom resolver is recommended.
+ * </p><p>
+ * <strong>Note:</strong> This method will have no effect when a custom
+ * <code>EntityResolver</code> has been set. (Setting a custom
+ * <code>EntityResolver</code> overrides the internal implementation.)
+ * </p>
+ * @param publicId Public identifier of the DTD to be resolved
+ * @param entityURL The URL to use for reading this DTD
+ */
+public void register(String publicId, String entityURL) {
+    if (log.isDebugEnabled()) {
+        log.debug("register('" + publicId + "', '" + entityURL + "'");
+    }
+    entityValidator.put(publicId, entityURL);
+}

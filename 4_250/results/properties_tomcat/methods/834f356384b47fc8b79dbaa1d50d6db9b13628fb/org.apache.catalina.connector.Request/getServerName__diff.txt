@@ -1,0 +1,7 @@
+/**
+ * @return the server name responding to this Request.
+ */
+@Override
+public String getServerName() {
+    return coyoteRequest.serverName().toString();
+}

@@ -1,0 +1,15 @@
+/*
+         * construct the common authorization header
+         */
+private void prefix(String method) {
+    authHeader = new ByteChunk();
+    authHeader.setBytes(HEADER, 0, HEADER.length);
+    initialOffset = HEADER.length;
+    String methodX = method + " ";
+    byte[] methodBytes = methodX.getBytes(StandardCharsets.ISO_8859_1);
+    try {
+        authHeader.append(methodBytes, 0, methodBytes.length);
+    } catch (IOException ioe) {
+        throw new IllegalStateException("unable to extend ByteChunk:" + ioe.getMessage());
+    }
+}

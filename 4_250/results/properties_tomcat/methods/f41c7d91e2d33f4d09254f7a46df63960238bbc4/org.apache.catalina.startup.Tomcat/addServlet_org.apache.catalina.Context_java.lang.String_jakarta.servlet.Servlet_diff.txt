@@ -1,0 +1,14 @@
+/**
+ * Static version of {@link #addServlet(String, String, Servlet)}.
+ * @param ctx           Context to add Servlet to
+ * @param servletName   Servlet name (used in mappings)
+ * @param servlet       The Servlet to add
+ * @return The wrapper for the servlet
+ */
+public static Wrapper addServlet(Context ctx, String servletName, Servlet servlet) {
+    // will do class for name and set init params
+    Wrapper sw = new ExistingStandardWrapper(servlet);
+    sw.setName(servletName);
+    ctx.addChild(sw);
+    return sw;
+}

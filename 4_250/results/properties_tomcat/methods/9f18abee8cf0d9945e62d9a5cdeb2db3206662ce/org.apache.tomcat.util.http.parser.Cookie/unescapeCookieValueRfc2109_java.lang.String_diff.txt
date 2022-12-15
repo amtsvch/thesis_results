@@ -1,0 +1,27 @@
+public static String unescapeCookieValueRfc2109(String input) {
+    if (input == null || input.length() < 2) {
+        return input;
+    }
+    if (input.charAt(0) != '"' && input.charAt(input.length() - 1) != '"') {
+        return input;
+    }
+    StringBuilder sb = new StringBuilder(input.length());
+    char[] chars = input.toCharArray();
+    boolean escaped = false;
+    for (int i = 1; i < input.length() - 1; i++) {
+        if (chars[i] == '\\') {
+            escaped = true;
+        } else if (escaped) {
+            escaped = false;
+            if (chars[i] < 128) {
+                sb.append(chars[i]);
+            } else {
+                sb.append('\\');
+                sb.append(chars[i]);
+            }
+        } else {
+            sb.append(chars[i]);
+        }
+    }
+    return sb.toString();
+}

@@ -1,0 +1,5 @@
+public void setVariableValue(String variableName, String variableValue) {
+    if (!isNameReserved(variableName)) {
+        ssiExternalResolver.setVariableValue(variableName, variableValue);
+    }
+}

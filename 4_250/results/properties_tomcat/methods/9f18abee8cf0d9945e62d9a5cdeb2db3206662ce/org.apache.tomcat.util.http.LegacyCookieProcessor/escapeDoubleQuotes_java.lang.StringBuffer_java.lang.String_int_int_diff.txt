@@ -1,0 +1,16 @@
+private static void escapeDoubleQuotes(StringBuffer b, String s, int beginIndex, int endIndex) {
+    if (s.indexOf('"') == -1 && s.indexOf('\\') == -1) {
+        b.append(s);
+        return;
+    }
+    for (int i = beginIndex; i < endIndex; i++) {
+        char c = s.charAt(i);
+        if (c == '\\') {
+            b.append('\\').append('\\');
+        } else if (c == '"') {
+            b.append('\\').append('"');
+        } else {
+            b.append(c);
+        }
+    }
+}

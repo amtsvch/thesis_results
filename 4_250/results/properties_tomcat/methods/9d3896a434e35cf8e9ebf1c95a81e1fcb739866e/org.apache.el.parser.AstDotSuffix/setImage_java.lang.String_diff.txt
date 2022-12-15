@@ -1,0 +1,7 @@
+@Override
+public void setImage(String image) {
+    if (!Validation.isIdentifier(image)) {
+        throw new ELException(MessageFactory.get("error.identifier.notjava", image));
+    }
+    this.image = image;
+}

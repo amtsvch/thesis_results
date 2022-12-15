@@ -1,0 +1,16 @@
+@Override
+public synchronized void sendMessage(Member[] destination, ChannelMessage msg, InterceptorPayload payload) throws ChannelException {
+    if (hold == null) {
+        // System.out.println("Skipping message:"+msg);
+        hold = (ChannelMessage) msg.deepclone();
+        dest = new Member[destination.length];
+        System.arraycopy(destination, 0, dest, 0, dest.length);
+    } else {
+        // System.out.println("Sending message:"+msg);
+        super.sendMessage(destination, msg, payload);
+        // System.out.println("Sending message:"+hold);
+        super.sendMessage(dest, hold, null);
+        hold = null;
+        dest = null;
+    }
+}

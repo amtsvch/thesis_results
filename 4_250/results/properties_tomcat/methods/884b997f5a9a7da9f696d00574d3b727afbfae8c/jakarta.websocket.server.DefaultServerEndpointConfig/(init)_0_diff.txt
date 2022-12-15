@@ -1,0 +1,9 @@
+DefaultServerEndpointConfig(Class<?> endpointClass, String path, List<String> subprotocols, List<Extension> extensions, List<Class<? extends Encoder>> encoders, List<Class<? extends Decoder>> decoders, Configurator serverEndpointConfigurator) {
+    this.endpointClass = endpointClass;
+    this.path = path;
+    this.subprotocols = subprotocols;
+    this.extensions = extensions;
+    this.encoders = encoders;
+    this.decoders = decoders;
+    this.serverEndpointConfigurator = serverEndpointConfigurator;
+}

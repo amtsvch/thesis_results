@@ -1,0 +1,7 @@
+@Override
+public void connect() throws IOException {
+    if (!connected) {
+        wrappedJarUrlConnection.connect();
+        connected = true;
+    }
+}

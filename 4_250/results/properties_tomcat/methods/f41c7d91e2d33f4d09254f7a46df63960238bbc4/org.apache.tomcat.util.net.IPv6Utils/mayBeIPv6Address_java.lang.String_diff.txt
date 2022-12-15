@@ -1,0 +1,29 @@
+/**
+ * Heuristic check if string might be an IPv6 address.
+ *
+ * @param input Any string or null
+ * @return true, if input string contains only hex digits and at least two colons, before '.' or '%' character
+ */
+static boolean mayBeIPv6Address(String input) {
+    if (input == null) {
+        return false;
+    }
+    int colonsCounter = 0;
+    int length = input.length();
+    for (int i = 0; i < length; i++) {
+        char c = input.charAt(i);
+        if (c == '.' || c == '%') {
+            // IPv4 in IPv6 or Zone ID detected, end of checking.
+            break;
+        }
+        if (!((c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F') || c == ':')) {
+            return false;
+        } else if (c == ':') {
+            colonsCounter++;
+        }
+    }
+    if (colonsCounter < 2) {
+        return false;
+    }
+    return true;
+}

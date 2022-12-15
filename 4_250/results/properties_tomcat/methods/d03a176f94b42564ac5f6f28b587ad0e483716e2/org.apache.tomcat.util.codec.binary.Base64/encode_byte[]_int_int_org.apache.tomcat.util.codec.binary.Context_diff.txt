@@ -1,0 +1,99 @@
+/**
+ * <p>
+ * Encodes all of the provided data, starting at inPos, for inAvail bytes. Must be called at least twice: once with
+ * the data to encode, and once with inAvail set to "-1" to alert encoder that EOF has been reached, to flush last
+ * remaining bytes (if not multiple of 3).
+ * </p>
+ * <p><b>Note: no padding is added when encoding using the URL-safe alphabet.</b></p>
+ * <p>
+ * Thanks to "commons" project in ws.apache.org for the bitwise operations, and general approach.
+ * https://svn.apache.org/repos/asf/webservices/commons/trunk/modules/util/
+ * </p>
+ *
+ * @param in
+ *            byte[] array of binary data to base64 encode.
+ * @param inPos
+ *            Position to start reading data from.
+ * @param inAvail
+ *            Amount of bytes available from input for encoding.
+ * @param context
+ *            the context to be used
+ */
+@Override
+void encode(final byte[] in, int inPos, final int inAvail, final Context context) {
+    if (context.eof) {
+        return;
+    }
+    // inAvail < 0 is how we're informed of EOF in the underlying data we're
+    // encoding.
+    if (inAvail < 0) {
+        context.eof = true;
+        if (0 == context.modulus && lineLength == 0) {
+            // no leftovers to process and not using chunking
+            return;
+        }
+        final byte[] buffer = ensureBufferSize(encodeSize, context);
+        final int savedPos = context.pos;
+        switch(// 0-2
+        context.modulus) {
+            case // nothing to do here
+            0:
+                break;
+            case // 8 bits = 6 + 2
+            1:
+                // top 6 bits:
+                buffer[context.pos++] = encodeTable[(context.ibitWorkArea >> 2) & MASK_6BITS];
+                // remaining 2:
+                buffer[context.pos++] = encodeTable[(context.ibitWorkArea << 4) & MASK_6BITS];
+                // URL-SAFE skips the padding to further reduce size.
+                if (encodeTable == STANDARD_ENCODE_TABLE) {
+                    buffer[context.pos++] = pad;
+                    buffer[context.pos++] = pad;
+                }
+                break;
+            case // 16 bits = 6 + 6 + 4
+            2:
+                buffer[context.pos++] = encodeTable[(context.ibitWorkArea >> 10) & MASK_6BITS];
+                buffer[context.pos++] = encodeTable[(context.ibitWorkArea >> 4) & MASK_6BITS];
+                buffer[context.pos++] = encodeTable[(context.ibitWorkArea << 2) & MASK_6BITS];
+                // URL-SAFE skips the padding to further reduce size.
+                if (encodeTable == STANDARD_ENCODE_TABLE) {
+                    buffer[context.pos++] = pad;
+                }
+                break;
+            default:
+                throw new IllegalStateException(sm.getString("base64.impossibleModulus", Integer.valueOf(context.modulus)));
+        }
+        // keep track of current line position
+        context.currentLinePos += context.pos - savedPos;
+        // if currentPos == 0 we are at the start of a line, so don't add CRLF
+        if (lineLength > 0 && context.currentLinePos > 0) {
+            System.arraycopy(lineSeparator, 0, buffer, context.pos, lineSeparator.length);
+            context.pos += lineSeparator.length;
+        }
+    } else {
+        for (int i = 0; i < inAvail; i++) {
+            final byte[] buffer = ensureBufferSize(encodeSize, context);
+            context.modulus = (context.modulus + 1) % BYTES_PER_UNENCODED_BLOCK;
+            int b = in[inPos++];
+            if (b < 0) {
+                b += 256;
+            }
+            // BITS_PER_BYTE
+            context.ibitWorkArea = (context.ibitWorkArea << 8) + b;
+            if (0 == context.modulus) {
+                // 3 bytes = 24 bits = 4 * 6 bits to extract
+                buffer[context.pos++] = encodeTable[(context.ibitWorkArea >> 18) & MASK_6BITS];
+                buffer[context.pos++] = encodeTable[(context.ibitWorkArea >> 12) & MASK_6BITS];
+                buffer[context.pos++] = encodeTable[(context.ibitWorkArea >> 6) & MASK_6BITS];
+                buffer[context.pos++] = encodeTable[context.ibitWorkArea & MASK_6BITS];
+                context.currentLinePos += BYTES_PER_ENCODED_BLOCK;
+                if (lineLength > 0 && lineLength <= context.currentLinePos) {
+                    System.arraycopy(lineSeparator, 0, buffer, context.pos, lineSeparator.length);
+                    context.pos += lineSeparator.length;
+                    context.currentLinePos = 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+@Override
+public void memberDisappeared(Member member) {
+    // reset counters - lock free
+    incounter.remove(member);
+    outcounter.remove(member);
+    // clear the remaining queue
+    processLeftOvers(member, true);
+    // notify upwards
+    super.memberDisappeared(member);
+}

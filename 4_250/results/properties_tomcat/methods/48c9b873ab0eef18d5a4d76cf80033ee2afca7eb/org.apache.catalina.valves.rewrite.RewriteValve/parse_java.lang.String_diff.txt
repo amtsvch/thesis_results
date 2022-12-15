@@ -1,0 +1,94 @@
+/**
+ * This factory method will parse a line formed like:
+ *
+ * Example:
+ *  RewriteCond %{REMOTE_HOST}  ^host1.*  [OR]
+ *
+ * @param line A line from the rewrite configuration
+ * @return The condition, rule or map resulting from parsing the line
+ */
+public static Object parse(String line) {
+    QuotedStringTokenizer tokenizer = new QuotedStringTokenizer(line);
+    if (tokenizer.hasMoreTokens()) {
+        String token = tokenizer.nextToken();
+        if (token.equals("RewriteCond")) {
+            // RewriteCond TestString CondPattern [Flags]
+            RewriteCond condition = new RewriteCond();
+            if (tokenizer.countTokens() < 2) {
+                throw new IllegalArgumentException(sm.getString("rewriteValve.invalidLine", line));
+            }
+            condition.setTestString(tokenizer.nextToken());
+            condition.setCondPattern(tokenizer.nextToken());
+            if (tokenizer.hasMoreTokens()) {
+                String flags = tokenizer.nextToken();
+                condition.setFlagsString(flags);
+                if (flags.startsWith("[") && flags.endsWith("]")) {
+                    flags = flags.substring(1, flags.length() - 1);
+                }
+                StringTokenizer flagsTokenizer = new StringTokenizer(flags, ",");
+                while (flagsTokenizer.hasMoreElements()) {
+                    parseCondFlag(line, condition, flagsTokenizer.nextToken());
+                }
+            }
+            return condition;
+        } else if (token.equals("RewriteRule")) {
+            // RewriteRule Pattern Substitution [Flags]
+            RewriteRule rule = new RewriteRule();
+            if (tokenizer.countTokens() < 2) {
+                throw new IllegalArgumentException(sm.getString("rewriteValve.invalidLine", line));
+            }
+            rule.setPatternString(tokenizer.nextToken());
+            rule.setSubstitutionString(tokenizer.nextToken());
+            if (tokenizer.hasMoreTokens()) {
+                String flags = tokenizer.nextToken();
+                rule.setFlagsString(flags);
+                if (flags.startsWith("[") && flags.endsWith("]")) {
+                    flags = flags.substring(1, flags.length() - 1);
+                }
+                StringTokenizer flagsTokenizer = new StringTokenizer(flags, ",");
+                while (flagsTokenizer.hasMoreElements()) {
+                    parseRuleFlag(line, rule, flagsTokenizer.nextToken());
+                }
+            }
+            return rule;
+        } else if (token.equals("RewriteMap")) {
+            // RewriteMap name rewriteMapClassName whateverOptionalParameterInWhateverFormat
+            // FIXME: Possibly implement more special maps from https://httpd.apache.org/docs/2.4/rewrite/rewritemap.html
+            if (tokenizer.countTokens() < 2) {
+                throw new IllegalArgumentException(sm.getString("rewriteValve.invalidLine", line));
+            }
+            String name = tokenizer.nextToken();
+            String rewriteMapClassName = tokenizer.nextToken();
+            RewriteMap map = null;
+            if (rewriteMapClassName.startsWith("int:")) {
+                map = InternalRewriteMap.toMap(rewriteMapClassName.substring("int:".length()));
+            } else if (rewriteMapClassName.startsWith("prg:")) {
+                rewriteMapClassName = rewriteMapClassName.substring("prg:".length());
+            }
+            if (map == null) {
+                try {
+                    map = (RewriteMap) (Class.forName(rewriteMapClassName).getConstructor().newInstance());
+                } catch (Exception e) {
+                    throw new IllegalArgumentException(sm.getString("rewriteValve.invalidMapClassName", line));
+                }
+            }
+            if (tokenizer.hasMoreTokens()) {
+                if (tokenizer.countTokens() == 1) {
+                    map.setParameters(tokenizer.nextToken());
+                } else {
+                    List<String> params = new ArrayList<>();
+                    while (tokenizer.hasMoreTokens()) {
+                        params.add(tokenizer.nextToken());
+                    }
+                    map.setParameters(params.toArray(new String[0]));
+                }
+            }
+            return new Object[] { name, map };
+        } else if (token.startsWith("#")) {
+            // it's a comment, ignore it
+        } else {
+            throw new IllegalArgumentException(sm.getString("rewriteValve.invalidLine", line));
+        }
+    }
+    return null;
+}

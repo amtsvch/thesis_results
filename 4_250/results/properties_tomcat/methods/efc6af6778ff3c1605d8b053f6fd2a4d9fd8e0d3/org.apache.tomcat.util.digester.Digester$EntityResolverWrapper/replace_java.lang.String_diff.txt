@@ -1,0 +1,7 @@
+protected String replace(String input) {
+    try {
+        return IntrospectionUtils.replaceProperties(input, null, source, classLoader);
+    } catch (Exception e) {
+        return input;
+    }
+}

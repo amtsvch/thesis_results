@@ -1,0 +1,30 @@
+/**
+ * Tests adding/replacing beans beans
+ */
+private void doSetValueCreateReplaceTest(boolean canCreate, String beanName) {
+    BeanNameELResolver resolver = createBeanNameELResolver(canCreate);
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    // Get bean one to be sure it has been replaced when testing replace
+    Object bean = resolver.getValue(context, null, BEAN01_NAME);
+    Assert.assertTrue(context.isPropertyResolved());
+    Assert.assertEquals(BEAN01, bean);
+    // Reset context
+    context.setPropertyResolved(false);
+    // Replace BEAN01
+    resolver.setValue(context, null, beanName, BEAN99);
+    if (canCreate || BEAN01_NAME.equals(beanName)) {
+        Assert.assertTrue(context.isPropertyResolved());
+        // Obtain BEAN01 again
+        context.setPropertyResolved(false);
+        bean = resolver.getValue(context, null, beanName);
+        Assert.assertTrue(context.isPropertyResolved());
+        Assert.assertEquals(BEAN99, bean);
+    } else {
+        Assert.assertFalse(context.isPropertyResolved());
+        // Obtain BEAN01 again
+        context.setPropertyResolved(false);
+        bean = resolver.getValue(context, null, BEAN01_NAME);
+        Assert.assertTrue(context.isPropertyResolved());
+        Assert.assertEquals(BEAN01, bean);
+    }
+}

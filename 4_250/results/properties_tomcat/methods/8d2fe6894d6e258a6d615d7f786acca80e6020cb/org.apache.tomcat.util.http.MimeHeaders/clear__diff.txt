@@ -1,0 +1,9 @@
+/**
+ * Clears all header fields.
+ */
+public void clear() {
+    for (int i = 0; i < count; i++) {
+        headers[i].recycle();
+    }
+    count = 0;
+}

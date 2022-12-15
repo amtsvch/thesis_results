@@ -1,0 +1,18 @@
+/**
+ * Check if this class is one of the supported types.
+ * If the class is supported, returns true.  Otherwise,
+ * returns false.
+ * @param ret The class to check
+ * @return boolean True if class is supported
+ */
+private boolean supportedType(Class<?> ret) {
+    for (Class<?> supportedType : supportedTypes) {
+        if (ret == supportedType) {
+            return true;
+        }
+    }
+    if (isBeanCompatible(ret)) {
+        return true;
+    }
+    return false;
+}

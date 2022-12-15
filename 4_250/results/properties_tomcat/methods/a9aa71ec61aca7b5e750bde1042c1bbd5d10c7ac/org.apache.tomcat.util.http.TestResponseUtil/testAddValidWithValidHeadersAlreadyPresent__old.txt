@@ -1,0 +1,11 @@
+@Test
+public void testAddValidWithValidHeadersAlreadyPresent() {
+    TesterResponse response = new TesterResponse();
+    response.getCoyoteResponse();
+    response.addHeader("vary", "foo");
+    response.addHeader("vary", "bar");
+    Set<String> expected = new HashSet<>();
+    expected.add("bar");
+    expected.add("foo");
+    doTestAddVaryFieldName(response, "foo", expected);
+}

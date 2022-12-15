@@ -1,0 +1,36 @@
+/**
+ * Swap idle sessions out to Store if too many are active
+ */
+protected void processMaxActiveSwaps() {
+    if (!getState().isAvailable() || minIdleSwap < 0 || getMaxActiveSessions() < 0) {
+        return;
+    }
+    Session[] sessions = findSessions();
+    // FIXME: Smarter algorithm (LRU)
+    int limit = (int) (getMaxActiveSessions() * 0.9);
+    if (limit >= sessions.length)
+        return;
+    if (log.isDebugEnabled())
+        log.debug(sm.getString("persistentManager.tooManyActive", Integer.valueOf(sessions.length)));
+    int toswap = sessions.length - limit;
+    for (int i = 0; i < sessions.length && toswap > 0; i++) {
+        StandardSession session = (StandardSession) sessions[i];
+        synchronized (session) {
+            int timeIdle = (int) (session.getIdleTimeInternal() / 1000L);
+            if (timeIdle >= minIdleSwap) {
+                if (session.accessCount != null && session.accessCount.get() > 0) {
+                    // Session is currently being accessed - skip it
+                    continue;
+                }
+                if (log.isDebugEnabled())
+                    log.debug(sm.getString("persistentManager.swapTooManyActive", session.getIdInternal(), Integer.valueOf(timeIdle)));
+                try {
+                    swapOut(session);
+                } catch (IOException e) {
+                    // This is logged in writeSession()
+                }
+                toswap--;
+            }
+        }
+    }
+}

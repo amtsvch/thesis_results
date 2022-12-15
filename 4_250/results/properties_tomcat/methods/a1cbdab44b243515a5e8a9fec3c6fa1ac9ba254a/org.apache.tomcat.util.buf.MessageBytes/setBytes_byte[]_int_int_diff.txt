@@ -1,0 +1,14 @@
+/**
+ * Sets the content to the specified subarray of bytes.
+ *
+ * @param b the bytes
+ * @param off the start offset of the bytes
+ * @param len the length of the bytes
+ */
+public void setBytes(byte[] b, int off, int len) {
+    byteC.setBytes(b, off, len);
+    type = T_BYTES;
+    hasStrValue = false;
+    hasHashCode = false;
+    hasLongValue = false;
+}

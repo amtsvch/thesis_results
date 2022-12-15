@@ -1,0 +1,22 @@
+/**
+ * Creates a complete data package
+ * @param cdata - the message data to be contained within the package
+ * @return - a full package (header,size,data,footer)
+ */
+public static byte[] createDataPackage(ChannelData cdata) {
+    // return createDataPackage(cdata.getDataPackage());
+    // avoid one extra byte array creation
+    int dlength = cdata.getDataPackageLength();
+    int length = getDataPackageLength(dlength);
+    byte[] data = new byte[length];
+    int offset = 0;
+    System.arraycopy(START_DATA, 0, data, offset, START_DATA.length);
+    offset += START_DATA.length;
+    toBytes(dlength, data, START_DATA.length);
+    offset += 4;
+    cdata.getDataPackage(data, offset);
+    offset += dlength;
+    System.arraycopy(END_DATA, 0, data, offset, END_DATA.length);
+    offset += END_DATA.length;
+    return data;
+}

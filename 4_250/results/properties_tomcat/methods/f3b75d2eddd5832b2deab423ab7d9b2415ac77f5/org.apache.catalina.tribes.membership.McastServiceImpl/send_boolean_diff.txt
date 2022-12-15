@@ -1,0 +1,8 @@
+/**
+ * Send a ping.
+ * @param checkexpired <code>true</code> to check for expiration
+ * @throws IOException Send error
+ */
+public void send(boolean checkexpired) throws IOException {
+    send(checkexpired, null);
+}

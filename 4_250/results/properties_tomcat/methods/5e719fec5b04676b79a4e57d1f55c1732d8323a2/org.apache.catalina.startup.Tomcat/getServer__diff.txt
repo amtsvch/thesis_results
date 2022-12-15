@@ -1,0 +1,20 @@
+/**
+ * Get the server object. You can add listeners and few more
+ * customizations. JNDI is disabled by default.
+ * @return The Server
+ */
+public Server getServer() {
+    if (server != null) {
+        return server;
+    }
+    System.setProperty("catalina.useNaming", "false");
+    server = new StandardServer();
+    initBaseDir();
+    // Set configuration source
+    ConfigFileLoader.setSource(new CatalinaBaseConfigurationSource(new File(basedir), null));
+    server.setPort(-1);
+    Service service = new StandardService();
+    service.setName("Tomcat");
+    server.addService(service);
+    return server;
+}

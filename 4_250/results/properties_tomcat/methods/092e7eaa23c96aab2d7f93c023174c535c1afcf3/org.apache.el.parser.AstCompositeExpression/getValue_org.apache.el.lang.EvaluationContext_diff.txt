@@ -1,0 +1,14 @@
+@Override
+public Object getValue(EvaluationContext ctx) throws ELException {
+    StringBuilder sb = new StringBuilder(16);
+    Object obj = null;
+    if (this.children != null) {
+        for (Node child : this.children) {
+            obj = child.getValue(ctx);
+            if (obj != null) {
+                sb.append(ELSupport.coerceToString(ctx, obj));
+            }
+        }
+    }
+    return sb.toString();
+}

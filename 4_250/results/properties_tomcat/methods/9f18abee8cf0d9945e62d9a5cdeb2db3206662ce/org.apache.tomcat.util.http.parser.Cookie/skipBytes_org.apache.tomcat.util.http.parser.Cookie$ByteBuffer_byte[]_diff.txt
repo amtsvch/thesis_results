@@ -1,0 +1,14 @@
+private static SkipResult skipBytes(ByteBuffer bb, byte[] target) {
+    int mark = bb.position();
+    for (byte b : target) {
+        if (!bb.hasRemaining()) {
+            bb.position(mark);
+            return SkipResult.EOF;
+        }
+        if (bb.get() != b) {
+            bb.position(mark);
+            return SkipResult.NOT_FOUND;
+        }
+    }
+    return SkipResult.FOUND;
+}

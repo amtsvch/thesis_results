@@ -1,0 +1,60 @@
+/**
+ * Return a User object containing information about the user
+ * with the specified username, if found in the directory;
+ * otherwise return <code>null</code>.
+ *
+ * If the <code>userPassword</code> configuration attribute is
+ * specified, the value of that attribute is retrieved from the
+ * user's directory entry. If the <code>userRoleName</code>
+ * configuration attribute is specified, all values of that
+ * attribute are retrieved from the directory entry.
+ *
+ * @param connection The directory context
+ * @param username Username to be looked up
+ * @param credentials User credentials (optional)
+ * @param curUserPattern Index into userPatternFormatArray
+ * @return the User object
+ * @exception NamingException if a directory server error occurs
+ */
+protected User getUser(JNDIConnection connection, String username, String credentials, int curUserPattern) throws NamingException {
+    User user = null;
+    // Get attributes to retrieve from user entry
+    List<String> list = new ArrayList<>();
+    if (userPassword != null)
+        list.add(userPassword);
+    if (userRoleName != null)
+        list.add(userRoleName);
+    if (userRoleAttribute != null) {
+        list.add(userRoleAttribute);
+    }
+    String[] attrIds = new String[list.size()];
+    list.toArray(attrIds);
+    // Use pattern or search for user entry
+    if (userPatternArray != null && curUserPattern >= 0) {
+        user = getUserByPattern(connection, username, credentials, attrIds, curUserPattern);
+        if (containerLog.isDebugEnabled()) {
+            containerLog.debug("Found user by pattern [" + user + "]");
+        }
+    } else {
+        boolean thisUserSearchAsUser = isUserSearchAsUser();
+        try {
+            if (thisUserSearchAsUser) {
+                userCredentialsAdd(connection.context, username, credentials);
+            }
+            user = getUserBySearch(connection, username, attrIds);
+        } finally {
+            if (thisUserSearchAsUser) {
+                userCredentialsRemove(connection.context);
+            }
+        }
+        if (containerLog.isDebugEnabled()) {
+            containerLog.debug("Found user by search [" + user + "]");
+        }
+    }
+    if (userPassword == null && credentials != null && user != null) {
+        // The password is available. Insert it since it may be required for
+        // role searches.
+        return new User(user.getUserName(), user.getDN(), credentials, user.getRoles(), user.getUserRoleId());
+    }
+    return user;
+}

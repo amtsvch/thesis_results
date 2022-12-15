@@ -1,0 +1,5 @@
+@After
+public void tearDown() throws Exception {
+    channel1.stop(Channel.DEFAULT);
+    channel2.stop(Channel.DEFAULT);
+}

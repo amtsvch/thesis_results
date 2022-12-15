@@ -1,0 +1,22 @@
+@Override
+public void run() {
+    while (doRunSender) {
+        try {
+            send(true);
+            errorCounter = 0;
+        } catch (Exception x) {
+            if (errorCounter == 0)
+                log.warn(sm.getString("mcastServiceImpl.send.failed"), x);
+            else
+                log.debug("Unable to send mcast message.", x);
+            if ((++errorCounter) >= recoveryCounter) {
+                errorCounter = 0;
+                RecoveryThread.recover(McastServiceImpl.this);
+            }
+        }
+        try {
+            Thread.sleep(time);
+        } catch (Exception ignore) {
+        }
+    }
+}

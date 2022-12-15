@@ -1,0 +1,8 @@
+protected void getRandomBytes(byte[] bytes) {
+    SecureRandom random = randoms.poll();
+    if (random == null) {
+        random = createSecureRandom();
+    }
+    random.nextBytes(bytes);
+    randoms.add(random);
+}

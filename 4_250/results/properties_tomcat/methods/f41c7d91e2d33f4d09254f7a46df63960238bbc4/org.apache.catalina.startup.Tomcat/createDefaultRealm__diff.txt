@@ -1,0 +1,11 @@
+// ---------- Helper methods and classes -------------------
+/**
+ * Create an in-memory realm. You can replace it for contexts with a real
+ * one. The Realm created here will be added to the Engine by default and
+ * may be replaced at the Engine level or over-ridden (as per normal Tomcat
+ * behaviour) at the Host or Context level.
+ * @return a realm instance
+ */
+protected Realm createDefaultRealm() {
+    return new SimpleRealm();
+}

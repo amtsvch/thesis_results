@@ -1,0 +1,15 @@
+/**
+ * Append new bytes to buffer.
+ * @see XByteBuffer#countPackages()
+ * @param data new transfer buffer
+ * @param len length in buffer
+ * @param count whether to return the count
+ * @return number of messages that was sent to callback (or -1 if count == false)
+ */
+public int append(ByteBuffer data, int len, boolean count) {
+    buffer.append(data, len);
+    int pkgCnt = -1;
+    if (count)
+        pkgCnt = buffer.countPackages();
+    return pkgCnt;
+}

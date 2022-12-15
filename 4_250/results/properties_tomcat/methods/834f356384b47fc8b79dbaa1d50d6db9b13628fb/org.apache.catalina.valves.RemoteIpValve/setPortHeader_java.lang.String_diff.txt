@@ -1,0 +1,10 @@
+/**
+ * Set the name of the HTTP header used to override the value returned
+ * by {@link Request#getServerPort()} and (optionally depending on {link
+ * {@link #isChangeLocalPort()} {@link Request#getLocalPort()}.
+ *
+ * @param   portHeader  The HTTP header name
+ */
+public void setPortHeader(String portHeader) {
+    this.portHeader = portHeader;
+}

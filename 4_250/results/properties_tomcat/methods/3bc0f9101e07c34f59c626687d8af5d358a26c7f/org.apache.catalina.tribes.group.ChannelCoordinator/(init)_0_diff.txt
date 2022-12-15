@@ -1,0 +1,6 @@
+public ChannelCoordinator(ChannelReceiver receiver, ChannelSender sender, MembershipService service) {
+    this.optionFlag = Channel.SEND_OPTIONS_BYTE_MESSAGE | Channel.SEND_OPTIONS_USE_ACK | Channel.SEND_OPTIONS_SYNCHRONIZED_ACK;
+    this.setClusterReceiver(receiver);
+    this.setClusterSender(sender);
+    this.setMembershipService(service);
+}

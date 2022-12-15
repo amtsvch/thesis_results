@@ -1,0 +1,20 @@
+/**
+ * Tests a given byte array to see if it contains any characters within the alphabet or PAD.
+ *
+ * Intended for use in checking line-ending arrays
+ *
+ * @param arrayOctet
+ *            byte array to test
+ * @return {@code true} if any byte is a valid character in the alphabet or PAD; {@code false} otherwise
+ */
+protected boolean containsAlphabetOrPad(final byte[] arrayOctet) {
+    if (arrayOctet == null) {
+        return false;
+    }
+    for (final byte element : arrayOctet) {
+        if (pad == element || isInAlphabet(element)) {
+            return true;
+        }
+    }
+    return false;
+}

@@ -1,0 +1,40 @@
+private void doThrowableTest(String trigger, MethodUnderTest method) {
+    BeanNameELResolver resolver = createBeanNameELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    ELException elException = null;
+    try {
+        switch(method) {
+            case GET_VALUE:
+                {
+                    resolver.getValue(context, null, trigger);
+                    break;
+                }
+            case SET_VALUE:
+                {
+                    resolver.setValue(context, null, trigger, new Object());
+                    break;
+                }
+            case GET_TYPE:
+                {
+                    resolver.getType(context, null, trigger);
+                    break;
+                }
+            case IS_READ_ONLY:
+                {
+                    resolver.isReadOnly(context, null, trigger);
+                    break;
+                }
+            default:
+                {
+                    // Should never happen
+                    Assert.fail("Missing case for method");
+                }
+        }
+    } catch (ELException e) {
+        elException = e;
+    }
+    Assert.assertFalse(context.isPropertyResolved());
+    Assert.assertNotNull(elException);
+    Throwable cause = elException.getCause();
+    Assert.assertNotNull(cause);
+}

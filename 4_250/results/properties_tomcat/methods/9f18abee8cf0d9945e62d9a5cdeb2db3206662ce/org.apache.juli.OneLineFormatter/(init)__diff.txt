@@ -1,0 +1,7 @@
+public OneLineFormatter() {
+    String timeFormat = LogManager.getLogManager().getProperty(OneLineFormatter.class.getName() + ".timeFormat");
+    if (timeFormat == null) {
+        timeFormat = DEFAULT_TIME_FORMAT;
+    }
+    setTimeFormat(timeFormat);
+}

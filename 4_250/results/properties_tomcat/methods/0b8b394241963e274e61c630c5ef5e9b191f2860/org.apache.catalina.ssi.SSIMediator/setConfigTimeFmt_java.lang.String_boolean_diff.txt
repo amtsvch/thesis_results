@@ -1,0 +1,8 @@
+public void setConfigTimeFmt(String configTimeFmt, boolean fromConstructor) {
+    this.configTimeFmt = configTimeFmt;
+    this.strftime = new Strftime(configTimeFmt, Locale.US);
+    // Variables like DATE_LOCAL, DATE_GMT, and LAST_MODIFIED need to be
+    // updated when
+    // the timefmt changes. This is what Apache SSI does.
+    setDateVariables(fromConstructor);
+}

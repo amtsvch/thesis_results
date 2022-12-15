@@ -1,0 +1,37 @@
+/**
+ * Notify the membership that this member has announced itself.
+ *
+ * @param member - the member that just pinged us
+ * @return - true if this member is new to the cluster, false otherwise.<br>
+ * - false if this member is the local member or updated.
+ */
+public boolean memberAlive(Member member) {
+    // Ignore ourselves
+    if (member.equals(local)) {
+        return false;
+    }
+    boolean result = false;
+    synchronized (membersLock) {
+        MbrEntry entry = map.get(member);
+        if (entry == null) {
+            entry = addMember(member);
+            result = true;
+        } else {
+            // Update the member alive time
+            Member updateMember = entry.getMember();
+            if (updateMember.getMemberAliveTime() != member.getMemberAliveTime()) {
+                // Update fields that can change
+                updateMember.setMemberAliveTime(member.getMemberAliveTime());
+                updateMember.setPayload(member.getPayload());
+                updateMember.setCommand(member.getCommand());
+                // Re-order. Can't sort in place since a call to
+                // getMembers() may then receive an intermediate result.
+                Member[] newMembers = members.clone();
+                Arrays.sort(newMembers, memberComparator);
+                members = newMembers;
+            }
+        }
+        entry.accessed();
+    }
+    return result;
+}

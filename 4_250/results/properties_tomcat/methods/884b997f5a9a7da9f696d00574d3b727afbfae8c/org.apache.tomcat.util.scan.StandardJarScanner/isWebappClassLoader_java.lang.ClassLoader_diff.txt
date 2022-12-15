@@ -1,0 +1,17 @@
+/*
+     * Since class loader hierarchies can get complicated, this method attempts
+     * to apply the following rule: A class loader is a web application class
+     * loader unless it loaded this class (StandardJarScanner) or is a parent
+     * of the class loader that loaded this class.
+     *
+     * This should mean:
+     *   the webapp class loader is an application class loader
+     *   the shared class loader is an application class loader
+     *   the server class loader is not an application class loader
+     *   the common class loader is not an application class loader
+     *   the system class loader is not an application class loader
+     *   the bootstrap class loader is not an application class loader
+     */
+private static boolean isWebappClassLoader(ClassLoader classLoader) {
+    return !CLASSLOADER_HIERARCHY.contains(classLoader);
+}

@@ -1,0 +1,10 @@
+/**
+ * Set the name of the HTTP header used to override the value returned
+ * by {@link Request#getServerName()} and (optionally depending on {link
+ * {@link #isChangeLocalName()} {@link Request#getLocalName()}.
+ *
+ * @param   hostHeader  The HTTP header name
+ */
+public void setHostHeader(String hostHeader) {
+    this.hostHeader = hostHeader;
+}

@@ -1,0 +1,33 @@
+/**                                                                                                    /**                                                                                                 
+* Specify the time format to use for time stamps in log messages.                                      * Specify the time format to use for time stamps in log messages.                                   
+*                                                                                                      *                                                                                                   
+* @param timeFormat The format to use using the                                                        * @param timeFormat The format to use using the                                                     
+*                   {@link java.text.SimpleDateFormat} syntax                                          *                   {@link java.text.SimpleDateFormat} syntax                                       
+*/                                                                                                     */                                                                                                  
+public void setTimeFormat(final String timeFormat) {                                                   public void setTimeFormat(final String timeFormat) {                                                
+final String cachedTimeFormat;                                                                         final String cachedTimeFormat;                                                                      
+if (timeFormat.endsWith(".SSS")) {                                                                     if (timeFormat.endsWith(".SSS")) {                                                                  
+cachedTimeFormat = timeFormat.substring(0, timeFormat.length() - 4);                                   cachedTimeFormat = timeFormat.substring(0, timeFormat.length() - 4);                                
+millisHandling = MillisHandling.APPEND;                                                                millisHandling = MillisHandling.APPEND;                                                             
+} else if (timeFormat.contains("SSS")) {                                                               } else if (timeFormat.contains("SSS")) {                                                            
+millisHandling = MillisHandling.REPLACE_SSS;                                                           millisHandling = MillisHandling.REPLACE_SSS;                                                        
+cachedTimeFormat = timeFormat;                                                                         cachedTimeFormat = timeFormat;                                                                      
+} else if (timeFormat.contains("SS")) {                                                                } else if (timeFormat.contains("SS")) {                                                             
+millisHandling = MillisHandling.REPLACE_SS;                                                            millisHandling = MillisHandling.REPLACE_SS;                                                         
+cachedTimeFormat = timeFormat;                                                                         cachedTimeFormat = timeFormat;                                                                      
+} else if (timeFormat.contains("S")) {                                                                 } else if (timeFormat.contains("S")) {                                                              
+millisHandling = MillisHandling.REPLACE_S;                                                             millisHandling = MillisHandling.REPLACE_S;                                                          
+cachedTimeFormat = timeFormat;                                                                         cachedTimeFormat = timeFormat;                                                                      
+} else {                                                                                               } else {                                                                                            
+millisHandling = MillisHandling.NONE;                                                                  millisHandling = MillisHandling.NONE;                                                               
+cachedTimeFormat = timeFormat;                                                                         cachedTimeFormat = timeFormat;                                                                      
+}                                                                                                      }                                                                                                   
+final DateFormatCache globalDateCache = new DateFormatCache(globalCacheSize, cachedTimeFormat, null)   final DateFormatCache globalDateCache = new DateFormatCache(globalCacheSize, cachedTimeFormat, null)
+localDateCache = new ThreadLocal&lt;DateFormatCache&gt;() {                                          | localDateCache = ThreadLocal.withInitial(() -&gt; new DateFormatCache(localCacheSize, cachedTimeForm
+                                                                                                                                                                                                           
+@Override                                                                                            |                                                                                                     
+protected DateFormatCache initialValue() {                                                           |                                                                                                     
+return new DateFormatCache(localCacheSize, cachedTimeFormat, globalDateCache);                       |                                                                                                     
+}                                                                                                      }                                                                                                   
+};                                                                                                   |                                                                                                     
+}                                                                                                    |                                                                                                     

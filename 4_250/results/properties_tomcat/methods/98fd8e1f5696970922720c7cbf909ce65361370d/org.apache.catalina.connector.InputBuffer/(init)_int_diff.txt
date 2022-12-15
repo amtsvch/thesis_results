@@ -1,0 +1,13 @@
+/**
+ * Alternate constructor which allows specifying the initial buffer size.
+ *
+ * @param size Buffer size to use
+ */
+public InputBuffer(int size) {
+    this.size = size;
+    bb = ByteBuffer.allocate(size);
+    clear(bb);
+    cb = CharBuffer.allocate(size);
+    clear(cb);
+    readLimit = size;
+}

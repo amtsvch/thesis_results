@@ -1,0 +1,9 @@
+/**
+ * Test if a given address matches this netmask.
+ *
+ * @param addr The {@link java.net.InetAddress} to test
+ * @return true on match, false otherwise
+ */
+public boolean matches(final InetAddress addr) {
+    return matches(addr, false);
+}
