@@ -1,6 +1,6 @@
 {
   "measurementConfig" : {
-    "vms" : 100,
+    "vms" : 500,
     "earlyStop" : false,
     "warmup" : 80,
     "iterations" : 80,
@@ -38,7 +38,7 @@
       "statisticTest" : "T_TEST"
     },
     "executionConfig" : {
-      "timeout" : 300000,
+      "timeout" : 600000,
       "redirectSubprocessOutputToFile" : true,
       "useTieredCompilation" : false,
       "removeSnapshots" : false,
@@ -80,14 +80,14 @@
     "otherKiekerPattern" : "public void org.apache.tomcat.websocket.server.TestWsServerContainer.testDuplicatePaths11()",
     "module" : "",
     "statistic" : {
-      "meanOld" : 1877931.8282443509,
-      "meanCurrent" : 1899360.2016494211,
-      "deviationOld" : 76243.62369775197,
-      "deviationCurrent" : 94054.7037773932,
-      "vms" : 98,
-      "callsOld" : 8000,
-      "calls" : 8000,
-      "tvalue" : -1.752041866561604
+      "meanOld" : 1883617.9280387717,
+      "meanCurrent" : 1893290.8646523189,
+      "deviationOld" : 91761.95510125425,
+      "deviationCurrent" : 104066.64215210454,
+      "vms" : 493,
+      "callsOld" : 40000,
+      "calls" : 40000,
+      "tvalue" : -1.548253062858595
     },
     "childs" : [ {
       "call" : "org.apache.tomcat.websocket.server.WsServerContainer#addEndpoint",
@@ -95,14 +95,14 @@
       "otherKiekerPattern" : "void org.apache.tomcat.websocket.server.WsServerContainer.addEndpoint(java.lang.Class,boolean)",
       "module" : "",
       "statistic" : {
-        "meanOld" : 1104929.2169254564,
-        "meanCurrent" : 1123483.7335601798,
-        "deviationOld" : 58952.489040714,
-        "deviationCurrent" : 71473.07910375015,
-        "vms" : 98,
-        "callsOld" : 8000,
-        "calls" : 8000,
-        "tvalue" : -1.9825445886037718
+        "meanOld" : 1106712.3708311282,
+        "meanCurrent" : 1118338.247239759,
+        "deviationOld" : 62546.63419161486,
+        "deviationCurrent" : 71712.88505126056,
+        "vms" : 492,
+        "callsOld" : 40000,
+        "calls" : 40000,
+        "tvalue" : -2.7099941819442255
       },
       "childs" : [ {
         "call" : "org.apache.tomcat.websocket.server.WsServerContainer#validateEncoders",
@@ -110,14 +110,14 @@
         "otherKiekerPattern" : "private static void org.apache.tomcat.websocket.server.WsServerContainer.validateEncoders(java.lang.Class[],org.apache.tomcat.InstanceManager)",
         "module" : "",
         "statistic" : {
-          "meanOld" : 5671.454521808232,
-          "meanCurrent" : 5836.478139617635,
-          "deviationOld" : 579.5110631932905,
-          "deviationCurrent" : 505.72376289836717,
-          "vms" : 100,
-          "callsOld" : 8000,
-          "calls" : 8000,
-          "tvalue" : -2.145536167214122
+          "meanOld" : 5691.073070763727,
+          "meanCurrent" : 5778.64971358948,
+          "deviationOld" : 586.4539512287555,
+          "deviationCurrent" : 506.1320487696607,
+          "vms" : 498,
+          "callsOld" : 40000,
+          "calls" : 40000,
+          "tvalue" : -2.522852820802044
         },
         "childs" : [ ]
       }, {

@@ -1,6 +1,6 @@
 {
   "measurementConfig" : {
-    "vms" : 100,
+    "vms" : 500,
     "earlyStop" : false,
     "warmup" : 80,
     "iterations" : 80,
@@ -38,7 +38,7 @@
       "statisticTest" : "T_TEST"
     },
     "executionConfig" : {
-      "timeout" : 300000,
+      "timeout" : 600000,
       "redirectSubprocessOutputToFile" : true,
       "useTieredCompilation" : false,
       "removeSnapshots" : false,
@@ -80,14 +80,14 @@
     "otherKiekerPattern" : "public void org.apache.tomcat.websocket.server.TestWsServerContainer.testDuplicatePaths24()",
     "module" : "",
     "statistic" : {
-      "meanOld" : 2153263.2006977675,
-      "meanCurrent" : 2040203.3097452484,
-      "deviationOld" : 200056.7317315239,
-      "deviationCurrent" : 73659.92528599754,
-      "vms" : 98,
-      "callsOld" : 8000,
-      "calls" : 8000,
-      "tvalue" : 5.270267056584346
+      "meanOld" : 2035032.593940515,
+      "meanCurrent" : 2040805.9904964662,
+      "deviationOld" : 103810.09214080295,
+      "deviationCurrent" : 92520.31653630892,
+      "vms" : 491,
+      "callsOld" : 40000,
+      "calls" : 40000,
+      "tvalue" : -0.920403316110616
     },
     "childs" : [ {
       "call" : "org.apache.tomcat.websocket.server.WsServerContainer#addEndpoint",
@@ -95,14 +95,14 @@
       "otherKiekerPattern" : "void org.apache.tomcat.websocket.server.WsServerContainer.addEndpoint(java.lang.Class,boolean)",
       "module" : "",
       "statistic" : {
-        "meanOld" : 559367.6428928374,
-        "meanCurrent" : 504595.42974594055,
-        "deviationOld" : 151024.81132816098,
-        "deviationCurrent" : 32386.37932550022,
-        "vms" : 98,
-        "callsOld" : 8000,
-        "calls" : 8000,
-        "tvalue" : 3.5275176766088903
+        "meanOld" : 497613.7872939661,
+        "meanCurrent" : 502687.61912972626,
+        "deviationOld" : 47330.407830125805,
+        "deviationCurrent" : 44704.22646454756,
+        "vms" : 490,
+        "callsOld" : 40000,
+        "calls" : 40000,
+        "tvalue" : -1.725127031249447
       },
       "childs" : [ {
         "call" : "org.apache.tomcat.websocket.server.WsServerContainer#addEndpoint",
@@ -110,14 +110,14 @@
         "otherKiekerPattern" : "void org.apache.tomcat.websocket.server.WsServerContainer.addEndpoint(jakarta.websocket.server.ServerEndpointConfig,boolean)",
         "module" : "",
         "statistic" : {
-          "meanOld" : 790144.1164793931,
-          "meanCurrent" : 790232.1030363595,
-          "deviationOld" : 61185.95749796053,
-          "deviationCurrent" : 37830.78574091435,
-          "vms" : 99,
-          "callsOld" : 24000,
-          "calls" : 24000,
-          "tvalue" : -0.012169798014516772
+          "meanOld" : 765941.9008819356,
+          "meanCurrent" : 774156.72109684,
+          "deviationOld" : 38770.833130020896,
+          "deviationCurrent" : 36637.57433221612,
+          "vms" : 494,
+          "callsOld" : 120000,
+          "calls" : 120000,
+          "tvalue" : -3.424639957081604
         },
         "childs" : [ {
           "call" : "org.apache.tomcat.websocket.pojo.PojoMethodMapping#<init>",
@@ -125,14 +125,14 @@
           "otherKiekerPattern" : "public new org.apache.tomcat.websocket.pojo.PojoMethodMapping.<init>(java.lang.Class,java.util.List,java.lang.String,org.apache.tomcat.InstanceManager)",
           "module" : "",
           "statistic" : {
-            "meanOld" : 44608.48531069089,
-            "meanCurrent" : 46106.90989271846,
-            "deviationOld" : 4371.729376654303,
-            "deviationCurrent" : 2730.388928058785,
-            "vms" : 98,
-            "callsOld" : 24000,
-            "calls" : 24000,
-            "tvalue" : -2.8819915288179305
+            "meanOld" : 45892.548930857694,
+            "meanCurrent" : 45999.77942779557,
+            "deviationOld" : 3810.6203407270136,
+            "deviationCurrent" : 3493.8129588879096,
+            "vms" : 493,
+            "callsOld" : 120000,
+            "calls" : 120000,
+            "tvalue" : -0.46057397751872226
           },
           "childs" : [ ]
         }, {
@@ -159,14 +159,14 @@
       "otherKiekerPattern" : "public void org.apache.tomcat.websocket.server.WsServerContainer.addEndpoint(jakarta.websocket.server.ServerEndpointConfig)",
       "module" : "",
       "statistic" : {
-        "meanOld" : 1039699.404779423,
-        "meanCurrent" : 993142.2571816562,
-        "deviationOld" : 100562.61027138741,
-        "deviationCurrent" : 34696.00611146021,
-        "vms" : 98,
-        "callsOld" : 8000,
-        "calls" : 8000,
-        "tvalue" : 4.334848091734873
+        "meanOld" : 987946.2406111129,
+        "meanCurrent" : 988298.3300093582,
+        "deviationOld" : 49125.83812406329,
+        "deviationCurrent" : 44842.83044673427,
+        "vms" : 489,
+        "callsOld" : 40000,
+        "calls" : 40000,
+        "tvalue" : -0.117031897585754
       },
       "childs" : [ {
         "call" : "org.apache.tomcat.websocket.server.WsServerContainer#addEndpoint",
@@ -174,14 +174,14 @@
         "otherKiekerPattern" : "void org.apache.tomcat.websocket.server.WsServerContainer.addEndpoint(jakarta.websocket.server.ServerEndpointConfig,boolean)",
         "module" : "",
         "statistic" : {
-          "meanOld" : 790144.1164793931,
-          "meanCurrent" : 790232.1030363595,
-          "deviationOld" : 61185.95749796053,
-          "deviationCurrent" : 37830.78574091435,
-          "vms" : 99,
-          "callsOld" : 24000,
-          "calls" : 24000,
-          "tvalue" : -0.012169798014516772
+          "meanOld" : 765941.9008819356,
+          "meanCurrent" : 774156.72109684,
+          "deviationOld" : 38770.833130020896,
+          "deviationCurrent" : 36637.57433221612,
+          "vms" : 494,
+          "callsOld" : 120000,
+          "calls" : 120000,
+          "tvalue" : -3.424639957081604
         },
         "childs" : [ {
           "call" : "org.apache.tomcat.websocket.pojo.PojoMethodMapping#<init>",
@@ -189,14 +189,14 @@
           "otherKiekerPattern" : "public new org.apache.tomcat.websocket.pojo.PojoMethodMapping.<init>(java.lang.Class,java.util.List,java.lang.String,org.apache.tomcat.InstanceManager)",
           "module" : "",
           "statistic" : {
-            "meanOld" : 44608.48531069089,
-            "meanCurrent" : 46106.90989271846,
-            "deviationOld" : 4371.729376654303,
-            "deviationCurrent" : 2730.388928058785,
-            "vms" : 98,
-            "callsOld" : 24000,
-            "calls" : 24000,
-            "tvalue" : -2.8819915288179305
+            "meanOld" : 45892.548930857694,
+            "meanCurrent" : 45999.77942779557,
+            "deviationOld" : 3810.6203407270136,
+            "deviationCurrent" : 3493.8129588879096,
+            "vms" : 493,
+            "callsOld" : 120000,
+            "calls" : 120000,
+            "tvalue" : -0.46057397751872226
           },
           "childs" : [ ]
         }, {
