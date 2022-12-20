@@ -1,0 +1,5 @@
+@Test
+public void tokenVersion() {
+    Cookie cookie = new Cookie("Version", null);
+    Assert.assertEquals("Version", cookie.getName());
+}

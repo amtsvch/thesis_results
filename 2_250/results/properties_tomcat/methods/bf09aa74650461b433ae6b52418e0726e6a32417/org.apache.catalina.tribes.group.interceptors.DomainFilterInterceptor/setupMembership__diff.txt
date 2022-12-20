@@ -1,0 +1,5 @@
+protected synchronized void setupMembership() {
+    if (membership == null) {
+        membership = new Membership(super.getLocalMember(true));
+    }
+}

@@ -1,0 +1,15 @@
+/*
+     * When requestMethod is null
+     *
+     * @throws ServletException
+     */
+@Test
+public void testCheckNullRequestMethod() throws ServletException {
+    TesterHttpServletRequest request = new TesterHttpServletRequest();
+    request.setHeader(CorsFilter.REQUEST_HEADER_ORIGIN, "http://tomcat.apache.org");
+    request.setMethod(null);
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getSpecificOriginFilterConfig());
+    CorsFilter.CORSRequestType requestType = corsFilter.checkRequestType(request);
+    Assert.assertEquals(CorsFilter.CORSRequestType.INVALID_CORS, requestType);
+}

@@ -1,0 +1,9 @@
+public SerializablePrincipal(String name, String[] roles, Principal principal) {
+    this.name = name;
+    this.roles = roles;
+    if (principal instanceof Serializable) {
+        this.principal = principal;
+    } else {
+        this.principal = null;
+    }
+}

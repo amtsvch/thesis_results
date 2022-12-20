@@ -1,0 +1,11 @@
+/**
+ * Tests that a valid property is resolved.
+ */
+@Test
+public void testGetValue02() {
+    StaticFieldELResolver resolver = new StaticFieldELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Object result = resolver.getValue(context, new ELClass(TesterClass.class), PROPERTY01_NAME);
+    Assert.assertEquals(PROPERTY01_NAME, result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

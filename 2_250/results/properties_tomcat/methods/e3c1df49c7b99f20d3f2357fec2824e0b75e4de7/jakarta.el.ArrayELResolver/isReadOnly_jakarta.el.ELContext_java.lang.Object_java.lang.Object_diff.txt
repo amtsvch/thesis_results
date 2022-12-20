@@ -1,0 +1,14 @@
+@Override
+public boolean isReadOnly(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base != null && base.getClass().isArray()) {
+        context.setPropertyResolved(base, property);
+        try {
+            int idx = coerce(property);
+            checkBounds(base, idx);
+        } catch (IllegalArgumentException e) {
+            // ignore
+        }
+    }
+    return this.readOnly;
+}

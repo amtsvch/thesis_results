@@ -1,0 +1,4 @@
+@Test
+public void testBug47371long2() throws Exception {
+    Assert.assertEquals(Long.valueOf(-3), ELArithmetic.subtract("1", "4"));
+}

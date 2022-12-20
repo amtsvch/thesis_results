@@ -1,0 +1,11 @@
+/**
+ * Tests that a valid bean is not resolved if base is non-null.
+ */
+@Test
+public void testGetValue03() {
+    BeanNameELResolver resolver = createBeanNameELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Object result = resolver.getValue(context, new Object(), BEAN01_NAME);
+    Assert.assertNull(result);
+    Assert.assertFalse(context.isPropertyResolved());
+}

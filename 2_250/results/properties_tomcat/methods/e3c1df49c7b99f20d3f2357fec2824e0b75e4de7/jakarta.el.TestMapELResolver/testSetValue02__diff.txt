@@ -1,0 +1,7 @@
+/**
+ * Tests that a valid property is not set if base is not Map.
+ */
+@Test
+public void testSetValue02() {
+    doNegativeTest(new Object(), new Object(), MethodUnderTest.SET_VALUE, false);
+}

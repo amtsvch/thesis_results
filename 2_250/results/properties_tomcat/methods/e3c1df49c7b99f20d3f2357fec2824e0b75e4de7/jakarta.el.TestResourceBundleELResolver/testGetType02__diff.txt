@@ -1,0 +1,8 @@
+/**
+ * Tests that a valid property is not resolved if base is not
+ * ResourceBundle.
+ */
+@Test
+public void testGetType02() {
+    doNegativeTest(new Object(), new Object(), MethodUnderTest.GET_TYPE, true);
+}

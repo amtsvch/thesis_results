@@ -1,0 +1,4 @@
+@Test
+public void testGetMessageTypeGenericMultipleSubclassSwap() {
+    Assert.assertEquals(String.class, Util.getMessageType(new GenericMultipleSubSubSwapMessageHandler()));
+}

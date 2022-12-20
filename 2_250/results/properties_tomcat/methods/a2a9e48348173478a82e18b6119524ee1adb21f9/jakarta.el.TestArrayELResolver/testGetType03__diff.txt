@@ -1,0 +1,12 @@
+/**
+ * Tests that a valid property is resolved.
+ */
+@Test
+public void testGetType03() {
+    ArrayELResolver resolver = new ArrayELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    String[] base = new String[] { "element" };
+    Class<?> result = resolver.getType(context, base, Integer.valueOf(0));
+    Assert.assertEquals(base.getClass().getComponentType(), result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

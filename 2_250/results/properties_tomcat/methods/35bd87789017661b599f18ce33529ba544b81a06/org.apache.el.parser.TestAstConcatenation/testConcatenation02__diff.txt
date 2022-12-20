@@ -1,0 +1,9 @@
+/**
+ * Test coercion to string then concatenation.
+ */
+@Test
+public void testConcatenation02() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("1 += 2", String.class);
+    Assert.assertEquals("12", result);
+}

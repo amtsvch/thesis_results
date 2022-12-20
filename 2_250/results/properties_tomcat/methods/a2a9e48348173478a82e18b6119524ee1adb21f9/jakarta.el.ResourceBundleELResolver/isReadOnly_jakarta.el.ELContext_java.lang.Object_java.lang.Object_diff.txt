@@ -1,0 +1,9 @@
+@Override
+public boolean isReadOnly(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base instanceof ResourceBundle) {
+        context.setPropertyResolved(base, property);
+        return true;
+    }
+    return false;
+}

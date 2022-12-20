@@ -1,6 +1,0 @@
-@Override
-protected String getObjectNameKeyProperties() {
-    StringBuilder keyProperties = new StringBuilder("type=WebResourceRoot");
-    keyProperties.append(context.getMBeanKeyProperties());
-    return keyProperties.toString();
-}

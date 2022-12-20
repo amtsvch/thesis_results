@@ -1,0 +1,94 @@
+/**
+ * Read a serialized version of this session object from the specified
+ * object input stream.
+ * <p>
+ * <b>IMPLEMENTATION NOTE</b>:  The reference to the owning Manager
+ * is not restored by this method, and must be set explicitly.
+ *
+ * @param stream The input stream to read from
+ *
+ * @exception ClassNotFoundException if an unknown class is specified
+ * @exception IOException if an input/output error occurs
+ */
+protected void doReadObject(ObjectInputStream stream) throws ClassNotFoundException, IOException {
+    // Deserialize the scalar instance variables (except Manager)
+    // Transient (may be set later)
+    authType = null;
+    creationTime = ((Long) stream.readObject()).longValue();
+    lastAccessedTime = ((Long) stream.readObject()).longValue();
+    maxInactiveInterval = ((Integer) stream.readObject()).intValue();
+    isNew = ((Boolean) stream.readObject()).booleanValue();
+    isValid = ((Boolean) stream.readObject()).booleanValue();
+    thisAccessedTime = ((Long) stream.readObject()).longValue();
+    // Transient (may be set later)
+    principal = null;
+    // setId((String) stream.readObject());
+    id = (String) stream.readObject();
+    if (manager.getContext().getLogger().isDebugEnabled()) {
+        manager.getContext().getLogger().debug("readObject() loading session " + id);
+    }
+    // The next object read could either be the number of attributes (Integer) or the session's
+    // authType followed by a Principal object (not an Integer)
+    Object nextObject = stream.readObject();
+    if (!(nextObject instanceof Integer)) {
+        setAuthType((String) nextObject);
+        try {
+            setPrincipal((Principal) stream.readObject());
+        } catch (ClassNotFoundException | ObjectStreamException e) {
+            String msg = sm.getString("standardSession.principalNotDeserializable", id);
+            if (manager.getContext().getLogger().isDebugEnabled()) {
+                manager.getContext().getLogger().debug(msg, e);
+            } else {
+                manager.getContext().getLogger().warn(msg);
+            }
+            throw e;
+        }
+        // After that, the next object read should be the number of attributes (Integer)
+        nextObject = stream.readObject();
+    }
+    // Deserialize the attribute count and attribute values
+    if (attributes == null) {
+        attributes = new ConcurrentHashMap<>();
+    }
+    int n = ((Integer) nextObject).intValue();
+    boolean isValidSave = isValid;
+    isValid = true;
+    for (int i = 0; i < n; i++) {
+        String name = (String) stream.readObject();
+        final Object value;
+        try {
+            value = stream.readObject();
+        } catch (WriteAbortedException wae) {
+            if (wae.getCause() instanceof NotSerializableException) {
+                String msg = sm.getString("standardSession.notDeserializable", name, id);
+                if (manager.getContext().getLogger().isDebugEnabled()) {
+                    manager.getContext().getLogger().debug(msg, wae);
+                } else {
+                    manager.getContext().getLogger().warn(msg);
+                }
+                // Skip non serializable attributes
+                continue;
+            }
+            throw wae;
+        }
+        if (manager.getContext().getLogger().isDebugEnabled()) {
+            manager.getContext().getLogger().debug("  loading attribute '" + name + "' with value '" + value + "'");
+        }
+        // Handle the case where the filter configuration was changed while
+        // the web application was stopped.
+        if (exclude(name, value)) {
+            continue;
+        }
+        // ConcurrentHashMap does not allow null keys or values
+        if (null != value) {
+            attributes.put(name, value);
+        }
+    }
+    isValid = isValidSave;
+    if (listeners == null) {
+        listeners = new ArrayList<>();
+    }
+    if (notes == null) {
+        notes = new Hashtable<>();
+    }
+}

@@ -1,0 +1,18 @@
+/**
+ * Tests that if the ListELResolver is constructed with readOnly the method
+ * will return always true, otherwise false.
+ */
+@Test
+public void testIsReadOnly03() {
+    ListELResolver resolver = new ListELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    List<String> list = new ArrayList<>();
+    list.add("key");
+    boolean result = resolver.isReadOnly(context, list, Integer.valueOf(0));
+    Assert.assertFalse(result);
+    Assert.assertTrue(context.isPropertyResolved());
+    resolver = new ListELResolver(true);
+    result = resolver.isReadOnly(context, list, Integer.valueOf(0));
+    Assert.assertTrue(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

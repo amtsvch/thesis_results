@@ -1,0 +1,8 @@
+/**
+ * Tests that a null context results in an NPE as per EL Javadoc.
+ */
+@Test(expected = NullPointerException.class)
+public void testIsReadOnly01() {
+    BeanELResolver resolver = new BeanELResolver();
+    resolver.isReadOnly(null, new Object(), new Object());
+}

@@ -1,0 +1,6 @@
+@Test
+public void testBug53792d() {
+    MethodExpression me = factory.createMethodExpression(context, "#{beanB.sayHello().length()}", null, new Class<?>[] {});
+    Integer result = (Integer) me.invoke(context, new Object[] { "foo" });
+    Assert.assertEquals(beanB.sayHello().length(), result.intValue());
+}

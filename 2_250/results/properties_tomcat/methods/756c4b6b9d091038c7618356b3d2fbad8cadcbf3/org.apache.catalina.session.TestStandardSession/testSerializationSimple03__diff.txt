@@ -1,0 +1,9 @@
+@Test
+public void testSerializationSimple03() throws Exception {
+    StandardSession s1 = new StandardSession(TEST_MANAGER);
+    s1.setValid(true);
+    s1.setAttribute("attr01", "value01");
+    s1.setAttribute("attr02", new NonSerializable());
+    StandardSession s2 = serializeThenDeserialize(s1);
+    validateSame(s1, s2, 1);
+}

@@ -1,0 +1,9 @@
+/**
+ * Tests that getter method throws exception which should be propagated.
+ */
+@Test(expected = ELException.class)
+public void testGetValue07() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    resolver.getValue(context, new TesterBean(BEAN_NAME), PROPERTY01_NAME);
+}

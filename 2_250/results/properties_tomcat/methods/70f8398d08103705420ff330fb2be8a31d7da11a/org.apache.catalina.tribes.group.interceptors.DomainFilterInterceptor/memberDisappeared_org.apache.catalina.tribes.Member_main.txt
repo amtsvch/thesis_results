@@ -1,0 +1,16 @@
+@Override
+public void memberDisappeared(Member member) {
+    if (membership == null) {
+        setupMembership();
+    }
+    boolean notify = false;
+    synchronized (membership) {
+        notify = Arrays.equals(domain, member.getDomain());
+        if (notify) {
+            membership.removeMember(member);
+        }
+    }
+    if (notify) {
+        super.memberDisappeared(member);
+    }
+}

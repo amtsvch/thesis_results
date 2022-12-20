@@ -1,0 +1,7 @@
+@Override                                                                                              @Override                                                                                           
+public void memberAdded(Member member) {                                                               public void memberAdded(Member member) {                                                            
+MembershipListener listener = this.listener;                                                           MembershipListener listener = this.listener;                                                        
+if (listener != null)                                                                                | if (listener != null) {                                                                             
+listener.memberAdded(member);                                                                          listener.memberAdded(member);                                                                       
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

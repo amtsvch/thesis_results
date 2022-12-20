@@ -1,0 +1,16 @@
+@Override                                                                                              @Override                                                                                           
+public void broadcast(ChannelMessage message) throws ChannelException {                                public void broadcast(ChannelMessage message) throws ChannelException {                             
+if (impl == null || (impl.startLevel & Channel.MBR_TX_SEQ) != Channel.MBR_TX_SEQ)                    | if (impl == null || (impl.startLevel & Channel.MBR_TX_SEQ) != Channel.MBR_TX_SEQ) {                 
+throw new ChannelException(sm.getString("mcastService.noStart"));                                      throw new ChannelException(sm.getString("mcastService.noStart"));                                   
+                                                                                                     | }                                                                                                   
+byte[] data = XByteBuffer.createDataPackage((ChannelData) message);                                    byte[] data = XByteBuffer.createDataPackage((ChannelData) message);                                 
+if (data.length &gt; McastServiceImpl.MAX_PACKET_SIZE) {                                               if (data.length &gt; McastServiceImpl.MAX_PACKET_SIZE) {                                            
+throw new ChannelException(sm.getString("mcastService.exceed.maxPacketSize", Integer.toString(data.l   throw new ChannelException(sm.getString("mcastService.exceed.maxPacketSize", Integer.toString(data.l
+}                                                                                                      }                                                                                                   
+DatagramPacket packet = new DatagramPacket(data, 0, data.length);                                      DatagramPacket packet = new DatagramPacket(data, 0, data.length);                                   
+try {                                                                                                  try {                                                                                               
+impl.send(false, packet);                                                                              impl.send(false, packet);                                                                           
+} catch (Exception x) {                                                                                } catch (Exception x) {                                                                             
+throw new ChannelException(x);                                                                         throw new ChannelException(x);                                                                      
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

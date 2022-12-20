@@ -1,0 +1,35 @@
+@Override                                                                                              @Override                                                                                           
+public void sendMessage(Member[] destination, ChannelMessage msg, InterceptorPayload payload) throws   public void sendMessage(Member[] destination, ChannelMessage msg, InterceptorPayload payload) throws
+if (!okToProcess(msg.getOptions())) {                                                                  if (!okToProcess(msg.getOptions())) {                                                               
+super.sendMessage(destination, msg, payload);                                                          super.sendMessage(destination, msg, payload);                                                       
+return;                                                                                                return;                                                                                             
+}                                                                                                      }                                                                                                   
+ChannelException cx = null;                                                                            ChannelException cx = null;                                                                         
+for (Member member : destination) {                                                                    for (Member member : destination) {                                                                 
+try {                                                                                                  try {                                                                                               
+int nr = 0;                                                                                            int nr = 0;                                                                                         
+outLock.writeLock().lock();                                                                            outLock.writeLock().lock();                                                                         
+try {                                                                                                  try {                                                                                               
+nr = incCounter(member);                                                                               nr = incCounter(member);                                                                            
+} finally {                                                                                            } finally {                                                                                         
+outLock.writeLock().unlock();                                                                          outLock.writeLock().unlock();                                                                       
+}                                                                                                      }                                                                                                   
+// reduce byte copy                                                                                    // reduce byte copy                                                                                 
+msg.getMessage().append(nr);                                                                           msg.getMessage().append(nr);                                                                        
+try {                                                                                                  try {                                                                                               
+getNext().sendMessage(new Member[] { member }, msg, payload);                                          getNext().sendMessage(new Member[] { member }, msg, payload);                                       
+} finally {                                                                                            } finally {                                                                                         
+msg.getMessage().trim(4);                                                                              msg.getMessage().trim(4);                                                                           
+}                                                                                                      }                                                                                                   
+} catch (ChannelException x) {                                                                         } catch (ChannelException x) {                                                                      
+if (cx == null)                                                                                      | if (cx == null) {                                                                                   
+cx = x;                                                                                                cx = x;                                                                                             
+                                                                                                     | }                                                                                                   
+cx.addFaultyMember(x.getFaultyMembers());                                                              cx.addFaultyMember(x.getFaultyMembers());                                                           
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+// for                                                                                                 // for                                                                                              
+if (cx != null)                                                                                      | if (cx != null) {                                                                                   
+throw cx;                                                                                              throw cx;                                                                                           
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

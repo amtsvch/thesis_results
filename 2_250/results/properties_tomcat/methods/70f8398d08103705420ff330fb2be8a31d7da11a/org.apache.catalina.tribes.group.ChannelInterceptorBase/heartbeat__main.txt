@@ -1,0 +1,6 @@
+@Override
+public void heartbeat() {
+    if (getNext() != null) {
+        getNext().heartbeat();
+    }
+}

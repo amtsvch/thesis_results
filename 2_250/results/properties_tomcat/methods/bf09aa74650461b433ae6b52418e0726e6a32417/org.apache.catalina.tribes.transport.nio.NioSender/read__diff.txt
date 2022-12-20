@@ -1,0 +1,27 @@
+protected boolean read() throws IOException {
+    // if there is no message here, we are done
+    if (current == null) {
+        return true;
+    }
+    int read = isUdpBased() ? dataChannel.read(readbuf) : socketChannel.read(readbuf);
+    // end of stream
+    if (read == -1) {
+        throw new IOException(sm.getString("nioSender.unable.receive.ack"));
+    } else if (read == 0) {
+        return false;
+    }
+    readbuf.flip();
+    ackbuf.append(readbuf, read);
+    readbuf.clear();
+    if (ackbuf.doesPackageExist()) {
+        byte[] ackcmd = ackbuf.extractDataPackage(true).getBytes();
+        boolean ack = Arrays.equals(ackcmd, org.apache.catalina.tribes.transport.Constants.ACK_DATA);
+        boolean fack = Arrays.equals(ackcmd, org.apache.catalina.tribes.transport.Constants.FAIL_ACK_DATA);
+        if (fack && getThrowOnFailedAck()) {
+            throw new RemoteProcessException(sm.getString("nioSender.receive.failedAck"));
+        }
+        return ack || fack;
+    } else {
+        return false;
+    }
+}

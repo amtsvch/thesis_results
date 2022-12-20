@@ -1,0 +1,11 @@
+/**
+ * Delete the specified directory, including all of its contents and
+ * sub-directories recursively. Any failure will be logged.
+ *
+ * @param dir File object representing the directory to be deleted
+ * @return <code>true</code> if the deletion was successful
+ */
+public static boolean delete(File dir) {
+    // Log failure by default
+    return delete(dir, true);
+}

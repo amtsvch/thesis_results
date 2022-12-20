@@ -1,0 +1,8 @@
+/**
+ * Tests that a null context results in an NPE as per EL Javadoc.
+ */
+@Test(expected = NullPointerException.class)
+public void testSetValue01() {
+    ArrayELResolver resolver = new ArrayELResolver();
+    resolver.setValue(null, new Object(), new Object(), new Object());
+}

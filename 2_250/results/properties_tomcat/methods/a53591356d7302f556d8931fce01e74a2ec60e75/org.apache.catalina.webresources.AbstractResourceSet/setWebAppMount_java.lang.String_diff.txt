@@ -1,9 +1,0 @@
-public final void setWebAppMount(String webAppMount) {
-    checkPath(webAppMount);
-    // Optimise internal processing
-    if (webAppMount.equals("/")) {
-        this.webAppMount = "";
-    } else {
-        this.webAppMount = webAppMount;
-    }
-}

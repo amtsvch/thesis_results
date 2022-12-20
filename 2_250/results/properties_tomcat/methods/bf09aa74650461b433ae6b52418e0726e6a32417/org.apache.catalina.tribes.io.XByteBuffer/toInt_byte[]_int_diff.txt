@@ -1,0 +1,14 @@
+// public static void fillDataPackage(byte[] data, int doff, int dlength, XByteBuffer buf) {
+// int pkglen = getDataPackageLength(dlength);
+// if ( buf.getCapacity() <  pkglen ) buf.expand(pkglen);
+// createDataPackage(data,doff,dlength,buf.getBytesDirect(),buf.getLength());
+// }
+/**
+ * Convert four bytes to an int
+ * @param b - the byte array containing the four bytes
+ * @param off - the offset
+ * @return the integer value constructed from the four bytes
+ */
+public static int toInt(byte[] b, int off) {
+    return ((b[off + 3]) & 0xFF) + (((b[off + 2]) & 0xFF) << 8) + (((b[off + 1]) & 0xFF) << 16) + (((b[off + 0]) & 0xFF) << 24);
+}

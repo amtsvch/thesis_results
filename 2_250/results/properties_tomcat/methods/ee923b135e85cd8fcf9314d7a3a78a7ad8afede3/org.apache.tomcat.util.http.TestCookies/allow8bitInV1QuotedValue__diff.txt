@@ -1,0 +1,6 @@
+@Test
+public void allow8bitInV1QuotedValue() {
+    // Bug 55917
+    FOO_CONTROL.setVersion(1);
+    test(true, "$Version=1; foo=\"b\u00e1r\"", FOO_CONTROL);
+}

@@ -1,0 +1,6 @@
+private void doV1QuoteInQuotedValue(boolean useRfc6265) {
+    FOO.setValue("b'ar");
+    FOO.setVersion(1);
+    A.setVersion(1);
+    test(useRfc6265, "$Version=1;foo=\"b'ar\";a=b", FOO, A);
+}

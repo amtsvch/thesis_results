@@ -1,0 +1,11 @@
+/**
+ * Check if this member has expired.
+ *
+ * @param maxtime The time threshold
+ *
+ * @return <code>true</code> if the member has expired, otherwise
+ *         <code>false</code>
+ */
+public boolean hasExpired(long maxtime) {
+    return !mbr.isLocal() && (System.currentTimeMillis() - lastHeardFrom) > maxtime;
+}

@@ -1,0 +1,9 @@
+@Test
+public void testEmptyPairsOld() {
+    test(false, "foo;a=b; ;bar", A);
+    test(false, "foo;a=b;;bar", A);
+    test(false, "foo;a=b; ;;bar=rab", A, BAR);
+    test(false, "foo;a=b;; ;bar=rab", A, BAR);
+    test(false, "foo;a=b;;#;bar=rab", A, BAR);
+    test(false, "foo;a=b;;\\;bar=rab", A, BAR);
+}

@@ -1,0 +1,14 @@
+@Test
+public void testSingleDataSendNO_ACK() throws Exception {
+    AbstractSender s1 = (AbstractSender) ((ReplicationTransmitter) channel1.getChannelSender()).getTransport();
+    AbstractSender s2 = (AbstractSender) ((ReplicationTransmitter) channel2.getChannelSender()).getTransport();
+    // for debugging
+    s1.setTimeout(Long.MAX_VALUE);
+    // for debugging
+    s2.setTimeout(Long.MAX_VALUE);
+    System.err.println("Starting Single package NO_ACK");
+    channel1.send(new Member[] { channel2.getLocalMember(false) }, Data.createRandomData(1024), Channel.SEND_OPTIONS_MULTICAST);
+    Thread.sleep(500);
+    System.err.println("Finished Single package NO_ACK [" + listener1.count + "]");
+    Assert.assertEquals("Checking success messages.", 1, listener1.count.get());
+}

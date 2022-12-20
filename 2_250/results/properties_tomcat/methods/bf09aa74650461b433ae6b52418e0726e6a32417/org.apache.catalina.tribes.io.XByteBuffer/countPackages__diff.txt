@@ -1,0 +1,8 @@
+/**
+ * Internal mechanism to make a check if a complete package exists
+ * within the buffer
+ * @return - true if a complete package (header,compress,size,data,footer) exists within the buffer
+ */
+public int countPackages() {
+    return countPackages(false);
+}

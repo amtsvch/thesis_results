@@ -1,0 +1,8 @@
+/**
+ * Tests that a null context results in an NPE as per EL Javadoc.
+ */
+@Test(expected = NullPointerException.class)
+public void testIsReadOnly01() {
+    MapELResolver mapELResolver = new MapELResolver();
+    mapELResolver.isReadOnly(null, new Object(), new Object());
+}

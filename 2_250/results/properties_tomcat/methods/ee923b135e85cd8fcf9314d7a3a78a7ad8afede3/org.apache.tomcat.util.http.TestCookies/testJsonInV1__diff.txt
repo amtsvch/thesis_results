@@ -1,0 +1,6 @@
+@Test
+public void testJsonInV1() {
+    // Bug 55921
+    A.setVersion(1);
+    test(true, "$Version=1;{\"a\":true, \"b\":false};a=b", A);
+}

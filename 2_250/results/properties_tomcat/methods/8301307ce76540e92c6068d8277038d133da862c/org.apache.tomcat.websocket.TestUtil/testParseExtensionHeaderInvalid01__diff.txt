@@ -1,0 +1,4 @@
+@Test(expected = IllegalArgumentException.class)
+public void testParseExtensionHeaderInvalid01() {
+    Util.parseExtensionHeader(new ArrayList<>(), "ext;a=\"1;b=2");
+}

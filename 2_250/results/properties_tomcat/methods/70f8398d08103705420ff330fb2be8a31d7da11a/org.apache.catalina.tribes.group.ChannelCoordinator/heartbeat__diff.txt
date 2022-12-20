@@ -1,0 +1,7 @@
+@Override                                                                                              @Override                                                                                           
+public void heartbeat() {                                                                              public void heartbeat() {                                                                           
+if (clusterSender != null)                                                                           | if (clusterSender != null) {                                                                        
+clusterSender.heartbeat();                                                                             clusterSender.heartbeat();                                                                          
+                                                                                                     | }                                                                                                   
+super.heartbeat();                                                                                     super.heartbeat();                                                                                  
+}                                                                                                      }                                                                                                   

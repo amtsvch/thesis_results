@@ -1,0 +1,5 @@
+@Test
+public void attributeMaxAge() {
+    Cookie cookie = new Cookie("Max-Age", null);
+    Assert.assertEquals("Max-Age", cookie.getName());
+}

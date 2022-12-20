@@ -1,0 +1,5 @@
+@Test
+public void testSerialize03() throws ClassNotFoundException, IOException {
+    GenericPrincipal gpIn = new GenericPrincipal(USER, ROLES, PRINCIPAL_NON_SERIALIZABLE);
+    doTest(gpIn);
+}

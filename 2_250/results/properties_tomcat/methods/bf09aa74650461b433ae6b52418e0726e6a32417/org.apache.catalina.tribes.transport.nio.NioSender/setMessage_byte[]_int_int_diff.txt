@@ -1,0 +1,27 @@
+public void setMessage(byte[] data, int offset, int length) throws IOException {
+    if (data != null) {
+        synchronized (this) {
+            current = data;
+            remaining = length;
+            ackbuf.clear();
+            if (writebuf != null) {
+                writebuf.clear();
+            } else {
+                writebuf = getBuffer(length);
+            }
+            if (writebuf.capacity() < length) {
+                writebuf = getBuffer(length);
+            }
+            // TODO use ByteBuffer.wrap to avoid copying the data.
+            writebuf.put(data, offset, length);
+            writebuf.flip();
+            if (isConnected()) {
+                if (isUdpBased()) {
+                    dataChannel.register(getSelector(), SelectionKey.OP_WRITE, this);
+                } else {
+                    socketChannel.register(getSelector(), SelectionKey.OP_WRITE, this);
+                }
+            }
+        }
+    }
+}

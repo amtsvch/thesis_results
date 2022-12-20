@@ -1,0 +1,16 @@
+/**
+ * Import conflicting classes
+ */
+@Test
+public void testImportClass03() {
+    ImportHandler handler = new ImportHandler();
+    handler.importClass("org.apache.tomcat.util.ExceptionUtils");
+    for (int i = 1; i <= 3; i++) {
+        try {
+            handler.importClass("org.apache.jasper.util.ExceptionUtils");
+            Assert.fail("Expected ELException but got none on iteration " + i);
+        } catch (ELException ex) {
+            // Expected
+        }
+    }
+}

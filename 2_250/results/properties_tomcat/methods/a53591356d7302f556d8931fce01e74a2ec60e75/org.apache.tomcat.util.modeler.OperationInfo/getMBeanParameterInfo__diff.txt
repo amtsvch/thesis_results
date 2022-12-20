@@ -1,8 +1,0 @@
-protected MBeanParameterInfo[] getMBeanParameterInfo() {
-    ParameterInfo[] params = getSignature();
-    MBeanParameterInfo[] parameters = new MBeanParameterInfo[params.length];
-    for (int i = 0; i < params.length; i++) {
-        parameters[i] = params[i].createParameterInfo();
-    }
-    return parameters;
-}

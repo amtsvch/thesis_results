@@ -1,0 +1,8 @@
+@Test
+public void testJoinSingleElement() {
+    Set<String> elements = new LinkedHashSet<>();
+    String separator = ",";
+    elements.add("world");
+    String join = CorsFilter.join(elements, separator);
+    Assert.assertTrue("world".equals(join));
+}

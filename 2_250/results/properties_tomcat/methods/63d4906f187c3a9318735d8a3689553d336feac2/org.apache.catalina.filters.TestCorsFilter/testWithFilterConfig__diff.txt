@@ -1,0 +1,12 @@
+@Test
+public void testWithFilterConfig() throws ServletException {
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getDefaultFilterConfig());
+    Assert.assertTrue(corsFilter.getAllowedHttpHeaders().size() == 6);
+    Assert.assertTrue(corsFilter.getAllowedHttpMethods().size() == 4);
+    Assert.assertTrue(corsFilter.getAllowedOrigins().size() == 0);
+    Assert.assertTrue(corsFilter.isAnyOriginAllowed());
+    Assert.assertTrue(corsFilter.getExposedHeaders().size() == 0);
+    Assert.assertFalse(corsFilter.isSupportsCredentials());
+    Assert.assertTrue(corsFilter.getPreflightMaxAge() == 1800);
+}

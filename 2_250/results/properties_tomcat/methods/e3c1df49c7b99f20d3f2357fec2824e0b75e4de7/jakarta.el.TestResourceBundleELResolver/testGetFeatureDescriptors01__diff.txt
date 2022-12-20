@@ -1,0 +1,11 @@
+/**
+ * Tests that a valid FeatureDescriptors are not returned if base is not
+ * ResourceBundle.
+ */
+@Test
+public void testGetFeatureDescriptors01() {
+    ResourceBundleELResolver resolver = new ResourceBundleELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Iterator<FeatureDescriptor> result = resolver.getFeatureDescriptors(context, new Object());
+    Assert.assertNull(result);
+}

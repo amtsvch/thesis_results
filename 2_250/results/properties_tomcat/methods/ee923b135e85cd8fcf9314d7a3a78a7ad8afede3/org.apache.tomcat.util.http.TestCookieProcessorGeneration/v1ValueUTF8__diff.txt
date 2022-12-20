@@ -1,0 +1,7 @@
+@Test
+public void v1ValueUTF8() {
+    String value = "\u2300";
+    Cookie cookie = new Cookie("foo", value);
+    cookie.setVersion(1);
+    doTest(cookie, (String) null, "foo=" + value);
+}

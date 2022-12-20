@@ -1,0 +1,111 @@
+private static void parseCookieRfc2109(ByteBuffer bb, ServerCookies serverCookies, int version) {
+    boolean moreToProcess = true;
+    while (moreToProcess) {
+        skipLWS(bb);
+        boolean parseAttributes = true;
+        ByteBuffer name = readToken(bb);
+        ByteBuffer value = null;
+        ByteBuffer path = null;
+        ByteBuffer domain = null;
+        skipLWS(bb);
+        SkipResult skipResult = skipByte(bb, EQUALS_BYTE);
+        if (skipResult == SkipResult.FOUND) {
+            skipLWS(bb);
+            value = readCookieValueRfc2109(bb, false);
+            if (value == null) {
+                skipInvalidCookie(bb);
+                continue;
+            }
+            skipLWS(bb);
+        }
+        skipResult = skipByte(bb, COMMA_BYTE);
+        if (skipResult == SkipResult.FOUND) {
+            parseAttributes = false;
+        } else {
+            skipResult = skipByte(bb, SEMICOLON_BYTE);
+        }
+        if (skipResult == SkipResult.EOF) {
+            parseAttributes = false;
+            moreToProcess = false;
+        } else if (skipResult == SkipResult.NOT_FOUND) {
+            skipInvalidCookie(bb);
+            continue;
+        }
+        if (parseAttributes) {
+            skipLWS(bb);
+            skipResult = skipBytes(bb, PATH_BYTES);
+            if (skipResult == SkipResult.FOUND) {
+                skipLWS(bb);
+                skipResult = skipByte(bb, EQUALS_BYTE);
+                if (skipResult != SkipResult.FOUND) {
+                    skipInvalidCookie(bb);
+                    continue;
+                }
+                skipLWS(bb);
+                path = readCookieValueRfc2109(bb, true);
+                if (path == null) {
+                    skipInvalidCookie(bb);
+                    continue;
+                }
+                skipLWS(bb);
+                skipResult = skipByte(bb, COMMA_BYTE);
+                if (skipResult == SkipResult.FOUND) {
+                    parseAttributes = false;
+                } else {
+                    skipResult = skipByte(bb, SEMICOLON_BYTE);
+                }
+                if (skipResult == SkipResult.EOF) {
+                    parseAttributes = false;
+                    moreToProcess = false;
+                } else if (skipResult == SkipResult.NOT_FOUND) {
+                    skipInvalidCookie(bb);
+                    continue;
+                }
+            }
+        }
+        if (parseAttributes) {
+            skipLWS(bb);
+            skipResult = skipBytes(bb, DOMAIN_BYTES);
+            if (skipResult == SkipResult.FOUND) {
+                skipLWS(bb);
+                skipResult = skipByte(bb, EQUALS_BYTE);
+                if (skipResult != SkipResult.FOUND) {
+                    skipInvalidCookie(bb);
+                    continue;
+                }
+                skipLWS(bb);
+                domain = readCookieValueRfc2109(bb, false);
+                if (domain == null) {
+                    skipInvalidCookie(bb);
+                    continue;
+                }
+                skipLWS(bb);
+                skipResult = skipByte(bb, COMMA_BYTE);
+                if (skipResult == SkipResult.FOUND) {
+                    parseAttributes = false;
+                } else {
+                    skipResult = skipByte(bb, SEMICOLON_BYTE);
+                }
+                if (skipResult == SkipResult.EOF) {
+                    parseAttributes = false;
+                    moreToProcess = false;
+                } else if (skipResult == SkipResult.NOT_FOUND) {
+                    skipInvalidCookie(bb);
+                    continue;
+                }
+            }
+        }
+        if (name.hasRemaining() && value != null && value.hasRemaining()) {
+            ServerCookie sc = serverCookies.addCookie();
+            sc.setVersion(version);
+            sc.getName().setBytes(name.array(), name.position(), name.remaining());
+            sc.getValue().setBytes(value.array(), value.position(), value.remaining());
+            if (domain != null) {
+                sc.getDomain().setBytes(domain.array(), domain.position(), domain.remaining());
+            }
+            if (path != null) {
+                sc.getPath().setBytes(path.array(), path.position(), path.remaining());
+            }
+        }
+    }
+}

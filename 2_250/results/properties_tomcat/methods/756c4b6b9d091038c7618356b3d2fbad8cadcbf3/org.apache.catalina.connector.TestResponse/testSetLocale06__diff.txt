@@ -1,9 +1,0 @@
-@Test
-public void testSetLocale06() throws IOException {
-    Response response = setupResponse();
-    // Check calling with an unknown character set
-    Assert.assertEquals(ISO_8859_1, response.getCharacterEncoding());
-    response.setLocale(UNDETERMINED);
-    Assert.assertEquals(UNKNOWN, response.getCharacterEncoding());
-    response.getOutputStream();
-}

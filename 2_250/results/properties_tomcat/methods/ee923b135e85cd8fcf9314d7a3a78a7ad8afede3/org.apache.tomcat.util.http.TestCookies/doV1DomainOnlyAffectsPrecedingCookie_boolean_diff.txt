@@ -1,0 +1,6 @@
+private void doV1DomainOnlyAffectsPrecedingCookie(boolean useRfc6265) {
+    FOO.setVersion(1);
+    FOO.setDomain("apache.org");
+    A.setVersion(1);
+    test(useRfc6265, "$Version=1;foo=\"bar\";$Domain=apache.org;a=b", FOO, A);
+}

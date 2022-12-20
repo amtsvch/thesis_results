@@ -1,4 +1,0 @@
-public static URL buildJarSafeUrl(File file) throws MalformedURLException {
-    String safe = makeSafeForJarUrl(file.toURI().toString());
-    return new URL(safe);
-}

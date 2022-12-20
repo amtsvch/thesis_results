@@ -1,0 +1,19 @@
+/**
+ * Sends a heartbeat through the interceptor stack.<br>
+ * Invoke this method from the application on a periodic basis if
+ * you have turned off internal heartbeats <code>channel.setHeartbeat(false)</code>
+ */
+@Override
+public void heartbeat() {
+    super.heartbeat();
+    for (MembershipListener listener : membershipListeners) {
+        if (listener instanceof Heartbeat) {
+            ((Heartbeat) listener).heartbeat();
+        }
+    }
+    for (ChannelListener listener : channelListeners) {
+        if (listener instanceof Heartbeat) {
+            ((Heartbeat) listener).heartbeat();
+        }
+    }
+}

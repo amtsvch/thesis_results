@@ -1,0 +1,8 @@
+/**
+ * Import an invalid static field - does not exist.
+ */
+@Test(expected = ELException.class)
+public void testImportStatic02() {
+    ImportHandler handler = new ImportHandler();
+    handler.importStatic("org.apache.tomcat.util.buf.Constants.PackageXX");
+}

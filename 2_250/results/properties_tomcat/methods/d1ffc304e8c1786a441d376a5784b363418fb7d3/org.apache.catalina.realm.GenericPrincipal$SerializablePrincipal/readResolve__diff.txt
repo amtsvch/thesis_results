@@ -1,0 +1,3 @@
+private Object readResolve() {
+    return new GenericPrincipal(name, Arrays.asList(roles), principal);
+}

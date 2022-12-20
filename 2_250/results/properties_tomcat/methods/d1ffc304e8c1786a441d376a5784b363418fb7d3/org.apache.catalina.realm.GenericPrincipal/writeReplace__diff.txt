@@ -1,0 +1,4 @@
+// ----------------------------------------------------------- Serialization
+private Object writeReplace() {
+    return new SerializablePrincipal(name, roles, userPrincipal);
+}

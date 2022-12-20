@@ -5,9 +5,6 @@
     "94c352d518f3bb03028c450933dfcd95b69c23ff" : { },
     "e9d05842b87b7e88630db42aab2816d2be0e996a" : { },
     "b3ff8357a9559e781ae6f9bcd61738cd7ccae2bf" : {
-      "testcases" : {
-        "org.apache.catalina.valves.TestSSLValve" : [ "testClientCertProviderNotFound", "testSslClientCertHeaderMultiSpace" ]
-      },
       "predecessor" : "e9d05842b87b7e88630db42aab2816d2be0e996a"
     },
     "d4b05768796b29fc25bf853b44fcf36bb04e114c" : { },
@@ -54,6 +51,10 @@
     "dab8bc11b96c6ba9021e73edce402fa6c97c34e3" : { },
     "029d3162f686f0e8da492dec2f364af9c76dd0c1" : { },
     "ee923b135e85cd8fcf9314d7a3a78a7ad8afede3" : {
+      "testcases" : {
+        "jakarta.servlet.http.TestCookieRFC2109Validator" : [ "actualCharactersAllowedInName" ],
+        "org.apache.tomcat.util.http.TestCookieProcessorGeneration" : [ "testSameSiteCookies" ]
+      },
       "predecessor" : "029d3162f686f0e8da492dec2f364af9c76dd0c1"
     },
     "83fdd8b9662e9a58ba83dc99ce64c3f317e2643b" : {
@@ -70,6 +71,11 @@
       "predecessor" : "83ecc674f7a2c5b805fa2200afdca5f57af3a1fb"
     },
     "8301307ce76540e92c6068d8277038d133da862c" : {
+      "testcases" : {
+        "org.apache.catalina.realm.TestJNDIRealm" : [ "testErrorRealm" ],
+        "org.apache.tomcat.websocket.TestWsSession" : [ "testAppendCloseReasonWithTruncation01" ],
+        "org.apache.tomcat.websocket.server.TestWsServerContainer" : [ "testSpecExample3" ]
+      },
       "predecessor" : "9667d291b3bcad0ce22d76911f5ca5e538030f68"
     },
     "513a158ee793b52cc1c0fac7780423760818b631" : {
@@ -77,9 +83,9 @@
         "org.apache.catalina.authenticator.TestDigestAuthenticator" : [ "bug54521" ],
         "org.apache.catalina.authenticator.TestJaspicCallbackHandlerInAuthenticator" : [ "testPasswordValidationCallback" ],
         "org.apache.catalina.core.TestAsyncContextImpl" : [ "testAsyncListenerSupplyRequestResponse" ],
-        "org.apache.catalina.core.TestStandardContext" : [ "testAddPostConstructMethodConflicts", "testAddPreDestroyMethodConflicts" ],
+        "org.apache.catalina.core.TestStandardContext" : [ "testAddPostConstructMethodNullClassName", "testAddPreDestroyMethodNullClassName" ],
         "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ],
-        "org.apache.catalina.session.TestStandardSession" : [ "serializeSkipsNonSerializableAttributes" ],
+        "org.apache.catalina.session.TestStandardSession" : [ "testSerializationSimple01" ],
         "org.apache.catalina.valves.TestRequestFilterValve" : [ "testRemoteAddrValveIPv4" ]
       },
       "predecessor" : "8301307ce76540e92c6068d8277038d133da862c"
@@ -142,7 +148,7 @@
         "org.apache.catalina.realm.TestMemoryRealm" : [ "testBug56246" ],
         "org.apache.catalina.realm.TestRealmBase" : [ "testHttpConstraint" ],
         "org.apache.catalina.session.TestPersistentManager" : [ "testBug62175", "testMinIdleSwap" ],
-        "org.apache.catalina.session.TestStandardSession" : [ "serializeSkipsNonSerializableAttributes", "testSerializationEmpty" ],
+        "org.apache.catalina.session.TestStandardSession" : [ "testSerializationSimple03" ],
         "org.apache.catalina.ssi.TestExpressionParseTree" : [ "testBug55176a" ]
       },
       "predecessor" : "e659a9b2131b12f57c91277eeb0e97c47d7fb3b2"
@@ -152,10 +158,10 @@
         "org.apache.catalina.tribes.group.TestGroupChannelOptionFlag" : [ "testOptionConflict" ],
         "org.apache.catalina.tribes.group.interceptors.TestDomainFilterInterceptor" : [ "testMemberArrival" ],
         "org.apache.catalina.tribes.group.interceptors.TestEncryptInterceptor" : [ "testCFB", "testMultithreaded" ],
+        "org.apache.catalina.tribes.group.interceptors.TestOrderInterceptor" : [ "testOrder1" ],
         "org.apache.catalina.tribes.io.TestChannelData" : [ "testClone" ],
-        "org.apache.catalina.tribes.membership.TestMemberImplSerialization" : [ "testCompare" ],
-        "org.apache.catalina.tribes.test.channel.TestDataIntegrity" : [ "testDataSendACK" ],
-        "org.apache.catalina.tribes.test.channel.TestUdpPackages" : [ "testDataSendACK" ]
+        "org.apache.catalina.tribes.test.channel.TestDataIntegrity" : [ "testDataSendSYNCACK" ],
+        "org.apache.catalina.tribes.test.channel.TestMulticastPackages" : [ "testDataSendSYNCACK", "testSingleDataSendNO_ACK" ]
       },
       "predecessor" : "6a667943c5da6b5d61ac6bec1d7c9de061e3217c"
     },
@@ -165,7 +171,6 @@
     "bd533dba0b54ba2d93fc6fa82f838a8dd32a9074" : {
       "testcases" : {
         "org.apache.catalina.session.TestPersistentManager" : [ "testMinIdleSwap" ],
-        "org.apache.coyote.TestRequest" : [ "test100ContinueExpectationImmediately" ],
         "org.apache.coyote.http11.filters.TestGzipOutputFilter" : [ "testFlushingWithGzip" ],
         "org.apache.coyote.http2.TestHpack" : [ "testDecode" ],
         "org.apache.el.lang.TestELArithmetic" : [ "testBug47371bigDecimal", "testBug47371bigInteger", "testMod01" ],
@@ -205,6 +210,7 @@
         "org.apache.catalina.tribes.group.TestGroupChannelOptionFlag" : [ "testOptionConflict", "testOptionNoConflict" ],
         "org.apache.catalina.tribes.group.interceptors.TestDomainFilterInterceptor" : [ "testMemberArrival" ],
         "org.apache.catalina.tribes.group.interceptors.TestEncryptInterceptor" : [ "testMultithreaded" ],
+        "org.apache.catalina.tribes.group.interceptors.TestOrderInterceptor" : [ "testOrder1" ],
         "org.apache.catalina.tribes.membership.cloud.TestKubernetesJson" : [ "testJson" ],
         "org.apache.el.TestELEvaluation" : [ "testBug42565" ],
         "org.apache.el.TestValueExpressionImpl" : [ "testBug51177ObjectList" ],
@@ -252,6 +258,9 @@
       "predecessor" : "f5a732e74e2a36442b2bf562c665917c4bb1167a"
     },
     "d1ffc304e8c1786a441d376a5784b363418fb7d3" : {
+      "testcases" : {
+        "org.apache.catalina.realm.TestGenericPrincipal" : [ "testSerialize01" ]
+      },
       "predecessor" : "3af490149c40ec115ee71e962521fb71af7df64e"
     },
     "f2125db89528d2fb426ac1c9c36d4beb17e13a87" : { },
@@ -296,10 +305,11 @@
       "testcases" : {
         "jakarta.el.TestBeanELResolver" : [ "testInvokeVarargsCoerce13", "testInvokeVarargsCoerce16" ],
         "jakarta.el.TestELProcessor" : [ "testPrimitiveArray01" ],
+        "org.apache.el.TestELEvaluation" : [ "testBug44994" ],
         "org.apache.el.TestMethodExpressionImpl" : [ "testBug52970", "testInvokeWithSuperAAABBB" ],
         "org.apache.el.parser.TestAstFunction" : [ "testImport01" ],
-        "org.apache.el.stream.TestCollectionOperations" : [ "testForEach01" ],
-        "org.apache.jasper.compiler.TestAttributeParser" : [ "testBug42565", "testLiteral" ]
+        "org.apache.el.parser.TestELParser" : [ "testBug49081" ],
+        "org.apache.el.stream.TestCollectionOperations" : [ "testForEach01" ]
       },
       "predecessor" : "8424677bcd703115ac6f31e1947ecd220e156880"
     },
@@ -344,6 +354,9 @@
       "predecessor" : "a5064b89bc61e26898240f60c3a582f142f12d07"
     },
     "2538f6d74949751901afc5e04014ede4f867152a" : {
+      "testcases" : {
+        "org.apache.coyote.http2.TestAbstractStream" : [ "testCircular02" ]
+      },
       "predecessor" : "356c8ecc774a2c227b1efcc50f159bb57d48b0c5"
     },
     "864dbfc0ea5f7c4ca00b1f08f34ece4e9ed4314e" : {
@@ -400,6 +413,9 @@
       "predecessor" : "92b918574bebc7d5814b6ea8381d365b695a96a3"
     },
     "6c1ec0aafa2d2446c7a50e12b6ec5fbd59ae2cc2" : {
+      "testcases" : {
+        "org.apache.jasper.compiler.TestGenerator" : [ "testEscape01" ]
+      },
       "predecessor" : "1de3b08e6674bd5da9c3a96aa0321bde730609ae"
     },
     "a65466f13beed2f1111e65f5c569cd3b2f706406" : {
@@ -553,14 +569,18 @@
         "jakarta.el.TestELProcessor" : [ "testDefineFunctionName11" ],
         "jakarta.el.TestELResolver" : [ "testDefaultConvertToType" ],
         "jakarta.el.TestUtil" : [ "test01" ],
-        "org.apache.el.TestELEvaluation" : [ "testBug42565", "testBug44994" ],
-        "org.apache.el.lang.TestELSupport" : [ "testCoerceToType15" ],
+        "org.apache.el.TestELEvaluation" : [ "testBug42565", "testBug44994", "testElSupportCompare", "testParserStringLiteral" ],
+        "org.apache.el.lang.TestELSupport" : [ "testBigDecimal" ],
+        "org.apache.el.parser.TestELParser" : [ "testBug49081" ],
         "org.apache.el.stream.TestCollectionOperations" : [ "testAllMatch02", "testForEach01" ],
         "org.apache.jasper.compiler.TestAttributeParser" : [ "testLiteral" ]
       },
       "predecessor" : "a37f7a11a1b644c4e9e965da730824ea656d3a3a"
     },
     "cd6be41aa22e9ceda43089ddeab98dc79cc9be7b" : {
+      "testcases" : {
+        "org.apache.el.lang.TestELSupport" : [ "testCoercetoFunctionalInterface02" ]
+      },
       "predecessor" : "2fcb104294b2676154cb08f00d5665d668792280"
     },
     "1b728785484e2baf9c42b2efdb882547f90fde88" : { },
@@ -590,8 +610,8 @@
     "e3c1df49c7b99f20d3f2357fec2824e0b75e4de7" : {
       "testcases" : {
         "jakarta.el.TestUtil" : [ "test02" ],
-        "org.apache.el.TestELEvaluation" : [ "testBug42565" ],
         "org.apache.el.TestMethodExpressionImpl" : [ "testBug50790a", "testInvokeWithSuperAAABBB" ],
+        "org.apache.el.parser.TestELParser" : [ "testBug49081" ],
         "org.apache.el.stream.TestCollectionOperations" : [ "testForEach01" ]
       },
       "predecessor" : "0fbb05847a7c9ffb00427e48552b9d058fe03a07"
@@ -621,6 +641,9 @@
     },
     "655e300667fa0d71d345df6346f77044768b9092" : { },
     "e16da23186008a56935297d592f81b9566862474" : {
+      "testcases" : {
+        "org.apache.tomcat.util.http.TestMimeHeaders" : [ "testSetValueStringIgnoresCase01" ]
+      },
       "predecessor" : "655e300667fa0d71d345df6346f77044768b9092"
     },
     "5b47371b93d817c670c352824251a697aabb26eb" : { },
@@ -685,7 +708,7 @@
       "testcases" : {
         "org.apache.catalina.authenticator.TestDigestAuthenticator" : [ "bug54521" ],
         "org.apache.catalina.filters.TestCsrfPreventionFilter" : [ "testLruCacheSerializable" ],
-        "org.apache.catalina.tribes.test.channel.TestUdpPackages" : [ "testDataSendSYNCACK" ]
+        "org.apache.catalina.tribes.test.channel.TestUdpPackages" : [ "testDataSendACK" ]
       },
       "predecessor" : "46a87456eb9d187c69ee1524c6b8a61e3871807b"
     },
@@ -713,12 +736,6 @@
         "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ]
       },
       "predecessor" : "3fffc3111775683c20daa3675f918f94b95b8193"
-    },
-    "a53591356d7302f556d8931fce01e74a2ec60e75" : {
-      "testcases" : {
-        "org.apache.catalina.loader.TestVirtualWebappLoader" : [ "testLoaderInstance" ]
-      },
-      "predecessor" : "99b4e286f77f153340dfd8b3e9629cd139b0e3c1"
     }
   },
   "android" : false

@@ -1,0 +1,27 @@
+/**
+ * Unescapes any double quotes in the given cookie value.
+ *
+ * @param bc The cookie value to modify
+ */
+private static final void unescapeDoubleQuotes(ByteChunk bc) {
+    if (bc == null || bc.getLength() == 0 || bc.indexOf('"', 0) == -1) {
+        return;
+    }
+    // Take a copy of the buffer so the original cookie header is not
+    // modified by this unescaping.
+    byte[] original = bc.getBuffer();
+    int len = bc.getLength();
+    byte[] copy = new byte[len];
+    System.arraycopy(original, bc.getStart(), copy, 0, len);
+    int src = 0;
+    int dest = 0;
+    while (src < len) {
+        if (copy[src] == '\\' && src < len && copy[src + 1] == '"') {
+            src++;
+        }
+        copy[dest] = copy[src];
+        dest++;
+        src++;
+    }
+    bc.setBytes(copy, 0, dest);
+}

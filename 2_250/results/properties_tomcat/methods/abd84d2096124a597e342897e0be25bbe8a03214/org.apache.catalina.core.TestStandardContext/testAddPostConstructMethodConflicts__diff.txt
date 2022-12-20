@@ -1,6 +1,0 @@
-@Test(expected = IllegalArgumentException.class)
-public void testAddPostConstructMethodConflicts() {
-    StandardContext standardContext = new StandardContext();
-    standardContext.addPostConstructMethod("a", "a");
-    standardContext.addPostConstructMethod("a", "b");
-}

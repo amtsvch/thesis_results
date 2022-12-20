@@ -1,0 +1,7 @@
+/**
+ * Throwable during resolution should be wrapped and re-thrown.
+ */
+@Test
+public void testGetValue07() {
+    doThrowableTest(TesterBeanNameResolver.THROWABLE_TRIGGER_NAME, MethodUnderTest.GET_VALUE);
+}

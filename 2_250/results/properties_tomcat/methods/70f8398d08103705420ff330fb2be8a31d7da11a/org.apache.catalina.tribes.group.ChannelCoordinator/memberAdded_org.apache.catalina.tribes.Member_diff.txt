@@ -1,0 +1,5 @@
+@Override
+public void memberAdded(Member member) {
+    SenderState.getSenderState(member);
+    super.memberAdded(member);
+}

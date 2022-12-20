@@ -1,0 +1,5 @@
+private static final Object getField(String name, Object target) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+    Field field = target.getClass().getDeclaredField(name);
+    field.setAccessible(true);
+    return field.get(target);
+}

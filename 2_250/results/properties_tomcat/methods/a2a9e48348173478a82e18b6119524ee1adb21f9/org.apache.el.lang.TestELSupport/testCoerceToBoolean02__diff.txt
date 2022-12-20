@@ -1,0 +1,5 @@
+@Test
+public void testCoerceToBoolean02() {
+    Object result = ELSupport.coerceToBoolean(null, null, false);
+    Assert.assertNull("Result: " + result, result);
+}

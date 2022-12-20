@@ -1,0 +1,6 @@
+public void trim(int length) {                                                                         public void trim(int length) {                                                                      
+if ((bufSize - length) &lt; 0)                                                                       | if ((bufSize - length) &lt; 0) {                                                                    
+throw new ArrayIndexOutOfBoundsException(sm.getString("xByteBuffer.unableTrim", Integer.toString(buf   throw new ArrayIndexOutOfBoundsException(sm.getString("xByteBuffer.unableTrim", Integer.toString(buf
+                                                                                                     | }                                                                                                   
+bufSize -= length;                                                                                     bufSize -= length;                                                                                  
+}                                                                                                      }                                                                                                   

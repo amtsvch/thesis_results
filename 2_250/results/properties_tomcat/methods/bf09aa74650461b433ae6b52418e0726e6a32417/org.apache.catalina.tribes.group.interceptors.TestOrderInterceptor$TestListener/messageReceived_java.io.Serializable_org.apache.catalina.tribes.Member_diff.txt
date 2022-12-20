@@ -1,0 +1,11 @@
+@Override                                                                                              @Override                                                                                           
+public synchronized void messageReceived(Serializable msg, Member sender) {                            public synchronized void messageReceived(Serializable msg, Member sender) {                         
+total++;                                                                                               total++;                                                                                            
+Integer i = (Integer) msg;                                                                             Integer i = (Integer) msg;                                                                          
+if (i.intValue() != cnt)                                                                             | if (i.intValue() != cnt) {                                                                          
+fail = true;                                                                                           fail = true;                                                                                        
+else                                                                                                 | } else {                                                                                            
+cnt++;                                                                                                 cnt++;                                                                                              
+                                                                                                     | }                                                                                                   
+System.out.println("Listener[" + id + "] Message received:" + i + " Count:" + total + " Fail:" + fai   System.out.println("Listener[" + id + "] Message received:" + i + " Count:" + total + " Fail:" + fai
+}                                                                                                      }                                                                                                   

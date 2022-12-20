@@ -1,0 +1,7 @@
+@Override                                                                                              @Override                                                                                           
+public void memberDisappeared(Member member) {                                                         public void memberDisappeared(Member member) {                                                      
+// notify upwards                                                                                      // notify upwards                                                                                   
+if (getPrevious() != null)                                                                           | if (getPrevious() != null) {                                                                        
+getPrevious().memberDisappeared(member);                                                               getPrevious().memberDisappeared(member);                                                            
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

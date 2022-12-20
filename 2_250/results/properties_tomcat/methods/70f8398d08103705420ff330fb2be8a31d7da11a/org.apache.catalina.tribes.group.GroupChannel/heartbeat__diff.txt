@@ -1,0 +1,19 @@
+/**                                                                                                    /**                                                                                                 
+* Sends a heartbeat through the interceptor stack.&lt;br&gt;                                           * Sends a heartbeat through the interceptor stack.&lt;br&gt;                                        
+* Invoke this method from the application on a periodic basis if                                       * Invoke this method from the application on a periodic basis if                                    
+* you have turned off internal heartbeats &lt;code&gt;channel.setHeartbeat(false)&lt;/code&gt;         * you have turned off internal heartbeats &lt;code&gt;channel.setHeartbeat(false)&lt;/code&gt;      
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void heartbeat() {                                                                              public void heartbeat() {                                                                           
+super.heartbeat();                                                                                     super.heartbeat();                                                                                  
+for (MembershipListener listener : membershipListeners) {                                              for (MembershipListener listener : membershipListeners) {                                           
+if (listener instanceof Heartbeat)                                                                   | if (listener instanceof Heartbeat) {                                                                
+((Heartbeat) listener).heartbeat();                                                                    ((Heartbeat) listener).heartbeat();                                                                 
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+for (ChannelListener listener : channelListeners) {                                                    for (ChannelListener listener : channelListeners) {                                                 
+if (listener instanceof Heartbeat)                                                                   | if (listener instanceof Heartbeat) {                                                                
+((Heartbeat) listener).heartbeat();                                                                    ((Heartbeat) listener).heartbeat();                                                                 
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

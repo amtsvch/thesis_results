@@ -1,0 +1,8 @@
+protected Counter getOutCounter(Member mbr) {
+    Counter cnt = outcounter.get(mbr);
+    if (cnt == null) {
+        cnt = new Counter();
+        outcounter.put(mbr, cnt);
+    }
+    return cnt;
+}

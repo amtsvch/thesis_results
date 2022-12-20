@@ -1,0 +1,4 @@
+@Test(expected = IllegalArgumentException.class)
+public void testDecorateCORSPropertiesNullRequestNullCORSRequestType() {
+    CorsFilter.decorateCORSProperties(null, null);
+}

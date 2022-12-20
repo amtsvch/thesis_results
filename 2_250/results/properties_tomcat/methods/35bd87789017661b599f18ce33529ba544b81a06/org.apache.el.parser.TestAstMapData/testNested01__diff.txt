@@ -1,0 +1,6 @@
+@Test
+public void testNested01() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("{'simple':{'a':'1','b':'2','c':'3'}," + "'empty':{}," + "'d':'4'}", Map.class);
+    Assert.assertEquals(nestedMap, result);
+}

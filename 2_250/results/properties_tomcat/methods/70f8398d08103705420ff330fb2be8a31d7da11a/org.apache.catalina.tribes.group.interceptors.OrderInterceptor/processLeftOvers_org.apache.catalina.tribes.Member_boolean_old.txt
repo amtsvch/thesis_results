@@ -1,0 +1,9 @@
+protected void processLeftOvers(Member member, boolean force) {
+    MessageOrder tmp = incoming.get(member);
+    if (force) {
+        Counter cnt = getInCounter(member);
+        cnt.setCounter(Integer.MAX_VALUE);
+    }
+    if (tmp != null)
+        processIncoming(tmp);
+}

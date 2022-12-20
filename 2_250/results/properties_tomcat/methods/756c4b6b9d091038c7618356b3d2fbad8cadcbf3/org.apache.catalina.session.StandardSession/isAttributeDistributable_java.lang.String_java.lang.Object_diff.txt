@@ -1,0 +1,11 @@
+/**
+ * {@inheritDoc}
+ * <p>
+ * This implementation simply checks the value for serializability.
+ * Sub-classes might use other distribution technology not based on
+ * serialization and can override this check.
+ */
+@Override
+public boolean isAttributeDistributable(String name, Object value) {
+    return value instanceof Serializable;
+}

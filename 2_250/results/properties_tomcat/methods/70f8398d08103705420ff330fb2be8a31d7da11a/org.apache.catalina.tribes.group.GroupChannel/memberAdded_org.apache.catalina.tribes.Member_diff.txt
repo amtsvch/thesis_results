@@ -1,0 +1,14 @@
+/**                                                                                                    /**                                                                                                 
+* memberAdded gets invoked by the interceptor below the channel                                        * memberAdded gets invoked by the interceptor below the channel                                     
+* and the channel will broadcast it to the membership listeners                                        * and the channel will broadcast it to the membership listeners                                     
+* @param member Member - the new member                                                                * @param member Member - the new member                                                             
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void memberAdded(Member member) {                                                               public void memberAdded(Member member) {                                                            
+// notify upwards                                                                                      // notify upwards                                                                                   
+for (MembershipListener membershipListener : membershipListeners) {                                    for (MembershipListener membershipListener : membershipListeners) {                                 
+if (membershipListener != null)                                                                      | if (membershipListener != null) {                                                                   
+membershipListener.memberAdded(member);                                                                membershipListener.memberAdded(member);                                                             
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

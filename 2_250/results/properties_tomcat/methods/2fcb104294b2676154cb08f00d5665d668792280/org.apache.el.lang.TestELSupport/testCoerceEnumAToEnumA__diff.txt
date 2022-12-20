@@ -1,0 +1,9 @@
+@Test
+public void testCoerceEnumAToEnumA() {
+    Object output = null;
+    try {
+        output = ELSupport.coerceToEnum(null, TestEnumA.VALA1, TestEnumA.class);
+    } finally {
+        Assert.assertEquals(TestEnumA.VALA1, output);
+    }
+}

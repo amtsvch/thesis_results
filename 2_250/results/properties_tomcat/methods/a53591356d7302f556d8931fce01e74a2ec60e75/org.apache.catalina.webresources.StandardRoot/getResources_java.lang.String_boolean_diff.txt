@@ -1,8 +1,0 @@
-private WebResource[] getResources(String path, boolean useClassLoaderResources) {
-    path = validate(path);
-    if (isCachingAllowed()) {
-        return cache.getResources(path, useClassLoaderResources);
-    } else {
-        return getResourcesInternal(path, useClassLoaderResources);
-    }
-}

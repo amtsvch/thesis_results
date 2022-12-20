@@ -1,0 +1,10 @@
+@Override
+protected Number coerce(Number num) {
+    if (num instanceof BigDecimal) {
+        return num;
+    }
+    if (num instanceof BigInteger) {
+        return new BigDecimal((BigInteger) num);
+    }
+    return new BigDecimal(num.doubleValue());
+}

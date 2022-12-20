@@ -1,0 +1,14 @@
+/**                                                                                                    /**                                                                                                 
+* memberDisappeared gets invoked by the interceptor below the channel                                  * memberDisappeared gets invoked by the interceptor below the channel                               
+* and the channel will broadcast it to the membership listeners                                        * and the channel will broadcast it to the membership listeners                                     
+* @param member Member - the member that left or crashed                                               * @param member Member - the member that left or crashed                                            
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void memberDisappeared(Member member) {                                                         public void memberDisappeared(Member member) {                                                      
+// notify upwards                                                                                      // notify upwards                                                                                   
+for (MembershipListener membershipListener : membershipListeners) {                                    for (MembershipListener membershipListener : membershipListeners) {                                 
+if (membershipListener != null)                                                                      | if (membershipListener != null) {                                                                   
+membershipListener.memberDisappeared(member);                                                          membershipListener.memberDisappeared(member);                                                       
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

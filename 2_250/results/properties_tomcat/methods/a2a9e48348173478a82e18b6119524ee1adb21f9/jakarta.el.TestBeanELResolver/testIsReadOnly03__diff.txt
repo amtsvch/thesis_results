@@ -1,0 +1,16 @@
+/**
+ * Tests that if the BeanELResolver is constructed with readOnly the method
+ * will return always true.
+ */
+@Test
+public void testIsReadOnly03() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    boolean result = resolver.isReadOnly(context, new TesterBean(BEAN_NAME), PROPERTY03_NAME);
+    Assert.assertFalse(result);
+    Assert.assertTrue(context.isPropertyResolved());
+    resolver = new BeanELResolver(true);
+    result = resolver.isReadOnly(context, new TesterBean(BEAN_NAME), PROPERTY03_NAME);
+    Assert.assertTrue(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

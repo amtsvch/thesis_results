@@ -1,0 +1,8 @@
+@Test
+public void testGetCommonPropertyType03() {
+    // array base, Integer response
+    ArrayELResolver resolver = new ArrayELResolver();
+    Class<?> clazz = resolver.getCommonPropertyType(null, new Object[] {});
+    Assert.assertNotNull(clazz);
+    Assert.assertEquals(clazz, Integer.class);
+}

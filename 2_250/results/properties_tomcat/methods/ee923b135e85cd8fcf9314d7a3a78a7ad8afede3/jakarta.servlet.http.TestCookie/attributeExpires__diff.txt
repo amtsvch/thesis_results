@@ -1,0 +1,5 @@
+@Test
+public void attributeExpires() {
+    Cookie cookie = new Cookie("Expires", null);
+    Assert.assertEquals("Expires", cookie.getName());
+}

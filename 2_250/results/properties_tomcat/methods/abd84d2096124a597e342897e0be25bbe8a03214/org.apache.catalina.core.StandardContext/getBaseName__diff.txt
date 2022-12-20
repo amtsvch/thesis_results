@@ -1,0 +1,4 @@
+@Override
+public String getBaseName() {
+    return new ContextName(path, webappVersion).getBaseName();
+}

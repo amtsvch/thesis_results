@@ -1,7 +1,0 @@
-// TODO: Should the createWebResourceSet() methods be removed to some
-// utility class for file system based resource sets?
-@Override
-public void createWebResourceSet(ResourceSetType type, String webAppMount, URL url, String internalPath) {
-    BaseLocation baseLocation = new BaseLocation(url);
-    createWebResourceSet(type, webAppMount, baseLocation.getBasePath(), baseLocation.getArchivePath(), internalPath);
-}

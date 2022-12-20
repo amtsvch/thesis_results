@@ -1,0 +1,16 @@
+@Override                                                                                              @Override                                                                                           
+public void memberDisappeared(Member member) {                                                         public void memberDisappeared(Member member) {                                                      
+if (membership == null)                                                                              | if (membership == null) {                                                                           
+setupMembership();                                                                                     setupMembership();                                                                                  
+                                                                                                     | }                                                                                                   
+boolean notify = false;                                                                                boolean notify = false;                                                                             
+synchronized (membership) {                                                                            synchronized (membership) {                                                                         
+notify = Arrays.equals(domain, member.getDomain());                                                    notify = Arrays.equals(domain, member.getDomain());                                                 
+if (notify)                                                                                          | if (notify) {                                                                                       
+membership.removeMember(member);                                                                       membership.removeMember(member);                                                                    
+}                                                                                                      }                                                                                                   
+if (notify)                                                                                          | }                                                                                                   
+                                                                                                     | if (notify) {                                                                                       
+super.memberDisappeared(member);                                                                       super.memberDisappeared(member);                                                                    
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

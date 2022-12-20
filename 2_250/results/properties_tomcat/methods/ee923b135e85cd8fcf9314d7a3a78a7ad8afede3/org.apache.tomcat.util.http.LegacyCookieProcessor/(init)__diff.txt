@@ -1,0 +1,35 @@
+public LegacyCookieProcessor() {
+    // BitSet elements will default to false
+    for (char c : HTTP_SEPARATORS) {
+        httpSeparatorFlags.set(c);
+    }
+    boolean b = STRICT_SERVLET_COMPLIANCE;
+    if (b) {
+        httpSeparatorFlags.set('/');
+    }
+    String separators;
+    if (getAllowHttpSepsInV0()) {
+        // comma, semi-colon and space as defined by netscape
+        separators = ",; ";
+    } else {
+        // separators as defined by RFC2616
+        separators = "()<>@,;:\\\"/[]?={} \t";
+    }
+    // all CHARs except CTLs or separators are allowed without quoting
+    allowedWithoutQuotes.set(0x20, 0x7f);
+    for (char ch : separators.toCharArray()) {
+        allowedWithoutQuotes.clear(ch);
+    }
+    /**
+     * Some browsers (e.g. IE6 and IE7) do not handle quoted Path values even
+     * when Version is set to 1. To allow for this, we support a property
+     * FWD_SLASH_IS_SEPARATOR which, when false, means a '/' character will not
+     * be treated as a separator, potentially avoiding quoting and the ensuing
+     * side effect of having the cookie upgraded to version 1.
+     *
+     * For now, we apply this rule globally rather than just to the Path attribute.
+     */
+    if (!getAllowHttpSepsInV0() && !getForwardSlashIsSeparator()) {
+        allowedWithoutQuotes.set('/');
+    }
+}

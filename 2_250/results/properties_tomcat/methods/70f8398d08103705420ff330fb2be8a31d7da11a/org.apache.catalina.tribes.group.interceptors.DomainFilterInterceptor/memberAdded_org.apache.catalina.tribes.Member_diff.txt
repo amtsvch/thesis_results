@@ -1,0 +1,21 @@
+// messageReceived                                                                                     // messageReceived                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void memberAdded(Member member) {                                                               public void memberAdded(Member member) {                                                            
+if (membership == null)                                                                              | if (membership == null) {                                                                           
+setupMembership();                                                                                     setupMembership();                                                                                  
+                                                                                                     | }                                                                                                   
+boolean notify = false;                                                                                boolean notify = false;                                                                             
+synchronized (membership) {                                                                            synchronized (membership) {                                                                         
+notify = Arrays.equals(domain, member.getDomain());                                                    notify = Arrays.equals(domain, member.getDomain());                                                 
+if (notify)                                                                                          | if (notify) {                                                                                       
+notify = membership.memberAlive(member);                                                               notify = membership.memberAlive(member);                                                            
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+if (notify) {                                                                                          if (notify) {                                                                                       
+super.memberAdded(member);                                                                             super.memberAdded(member);                                                                          
+} else {                                                                                               } else {                                                                                            
+if (log.isInfoEnabled())                                                                             | if (log.isInfoEnabled()) {                                                                          
+log.info(sm.getString("domainFilterInterceptor.member.refused", member));                              log.info(sm.getString("domainFilterInterceptor.member.refused", member));                           
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

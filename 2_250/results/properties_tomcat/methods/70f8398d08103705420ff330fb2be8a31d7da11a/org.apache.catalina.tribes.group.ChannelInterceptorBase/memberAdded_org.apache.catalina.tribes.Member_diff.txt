@@ -1,0 +1,7 @@
+@Override                                                                                              @Override                                                                                           
+public void memberAdded(Member member) {                                                               public void memberAdded(Member member) {                                                            
+// notify upwards                                                                                      // notify upwards                                                                                   
+if (getPrevious() != null)                                                                           | if (getPrevious() != null) {                                                                        
+getPrevious().memberAdded(member);                                                                     getPrevious().memberAdded(member);                                                                  
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

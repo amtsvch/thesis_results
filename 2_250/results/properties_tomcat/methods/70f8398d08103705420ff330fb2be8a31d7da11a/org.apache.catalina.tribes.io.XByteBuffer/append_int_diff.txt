@@ -1,0 +1,9 @@
+public boolean append(int i) {
+    int newcount = bufSize + 4;
+    if (newcount > buf.length) {
+        expand(newcount);
+    }
+    XByteBuffer.toBytes(i, buf, bufSize);
+    bufSize = newcount;
+    return true;
+}

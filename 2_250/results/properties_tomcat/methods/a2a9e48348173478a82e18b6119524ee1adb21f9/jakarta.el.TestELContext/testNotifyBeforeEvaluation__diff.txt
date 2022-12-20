@@ -1,0 +1,13 @@
+/**
+ * Tests that the corresponding listeners will be notified.
+ */
+@Test
+public void testNotifyBeforeEvaluation() {
+    ELContext elContext = new TesterELContext();
+    TesterEvaluationListener listener = new TesterEvaluationListener();
+    elContext.addEvaluationListener(listener);
+    elContext.notifyBeforeEvaluation("before");
+    List<String> events = listener.getBeforeEvaluationExpressions();
+    Assert.assertEquals(1, events.size());
+    Assert.assertEquals("before", events.get(0));
+}

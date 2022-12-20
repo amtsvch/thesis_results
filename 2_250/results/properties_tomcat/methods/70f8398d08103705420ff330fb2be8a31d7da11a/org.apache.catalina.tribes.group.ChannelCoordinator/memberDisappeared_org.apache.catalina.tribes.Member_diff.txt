@@ -1,0 +1,5 @@
+@Override
+public void memberDisappeared(Member member) {
+    SenderState.removeSenderState(member);
+    super.memberDisappeared(member);
+}

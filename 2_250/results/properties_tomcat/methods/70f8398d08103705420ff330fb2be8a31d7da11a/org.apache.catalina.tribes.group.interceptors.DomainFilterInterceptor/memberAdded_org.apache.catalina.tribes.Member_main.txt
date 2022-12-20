@@ -1,0 +1,21 @@
+// messageReceived
+@Override
+public void memberAdded(Member member) {
+    if (membership == null) {
+        setupMembership();
+    }
+    boolean notify = false;
+    synchronized (membership) {
+        notify = Arrays.equals(domain, member.getDomain());
+        if (notify) {
+            notify = membership.memberAlive(member);
+        }
+    }
+    if (notify) {
+        super.memberAdded(member);
+    } else {
+        if (log.isInfoEnabled()) {
+            log.info(sm.getString("domainFilterInterceptor.member.refused", member));
+        }
+    }
+}

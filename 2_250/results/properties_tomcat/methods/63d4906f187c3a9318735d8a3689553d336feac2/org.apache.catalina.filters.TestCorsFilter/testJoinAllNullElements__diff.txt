@@ -1,0 +1,9 @@
+@Test
+public void testJoinAllNullElements() {
+    Set<String> elements = new LinkedHashSet<>();
+    String separator = ",";
+    elements.add(null);
+    elements.add(null);
+    String join = CorsFilter.join(elements, separator);
+    Assert.assertTrue("".equals(join));
+}

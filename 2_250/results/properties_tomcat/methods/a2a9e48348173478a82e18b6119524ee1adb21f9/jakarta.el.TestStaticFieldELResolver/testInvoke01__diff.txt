@@ -1,0 +1,8 @@
+/**
+ * Tests that a null context results in an NPE as per EL Javadoc.
+ */
+@Test(expected = NullPointerException.class)
+public void testInvoke01() {
+    StaticFieldELResolver resolver = new StaticFieldELResolver();
+    resolver.invoke(null, new Object(), new Object(), new Class<?>[] {}, new Object[] {});
+}

@@ -1,0 +1,7 @@
+@Override                                                                                              @Override                                                                                           
+public Member[] getMembers() {                                                                         public Member[] getMembers() {                                                                      
+if (membership == null)                                                                              | if (membership == null) {                                                                           
+setupMembership();                                                                                     setupMembership();                                                                                  
+                                                                                                     | }                                                                                                   
+return membership.getMembers();                                                                        return membership.getMembers();                                                                     
+}                                                                                                      }                                                                                                   

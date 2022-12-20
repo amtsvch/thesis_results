@@ -1,0 +1,14 @@
+/**
+ * memberAdded gets invoked by the interceptor below the channel
+ * and the channel will broadcast it to the membership listeners
+ * @param member Member - the new member
+ */
+@Override
+public void memberAdded(Member member) {
+    // notify upwards
+    for (MembershipListener membershipListener : membershipListeners) {
+        if (membershipListener != null) {
+            membershipListener.memberAdded(member);
+        }
+    }
+}

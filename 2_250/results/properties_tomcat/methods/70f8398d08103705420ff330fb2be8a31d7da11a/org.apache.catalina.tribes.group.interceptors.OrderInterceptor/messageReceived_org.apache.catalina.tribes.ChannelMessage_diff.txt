@@ -1,0 +1,18 @@
+@Override                                                                                              @Override                                                                                           
+public void messageReceived(ChannelMessage msg) {                                                      public void messageReceived(ChannelMessage msg) {                                                   
+if (!okToProcess(msg.getOptions())) {                                                                  if (!okToProcess(msg.getOptions())) {                                                               
+super.messageReceived(msg);                                                                            super.messageReceived(msg);                                                                         
+return;                                                                                                return;                                                                                             
+}                                                                                                      }                                                                                                   
+int msgnr = XByteBuffer.toInt(msg.getMessage().getBytesDirect(), msg.getMessage().getLength() - 4);    int msgnr = XByteBuffer.toInt(msg.getMessage().getBytesDirect(), msg.getMessage().getLength() - 4); 
+msg.getMessage().trim(4);                                                                              msg.getMessage().trim(4);                                                                           
+MessageOrder order = new MessageOrder(msgnr, (ChannelMessage) msg.deepclone());                        MessageOrder order = new MessageOrder(msgnr, (ChannelMessage) msg.deepclone());                     
+inLock.writeLock().lock();                                                                             inLock.writeLock().lock();                                                                          
+try {                                                                                                  try {                                                                                               
+if (processIncoming(order))                                                                          | if (processIncoming(order)) {                                                                       
+processLeftOvers(msg.getAddress(), false);                                                             processLeftOvers(msg.getAddress(), false);                                                          
+                                                                                                     | }                                                                                                   
+} finally {                                                                                            } finally {                                                                                         
+inLock.writeLock().unlock();                                                                           inLock.writeLock().unlock();                                                                        
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

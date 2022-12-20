@@ -1,0 +1,4 @@
+@Test
+public void testBug47371doubleString2() throws Exception {
+    Assert.assertEquals(Double.valueOf(2), ELArithmetic.add("1.", "1"));
+}

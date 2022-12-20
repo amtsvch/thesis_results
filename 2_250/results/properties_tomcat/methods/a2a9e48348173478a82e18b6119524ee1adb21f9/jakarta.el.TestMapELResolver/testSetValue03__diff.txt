@@ -1,0 +1,9 @@
+/**
+ * Tests that an exception is thrown when readOnly is true.
+ */
+@Test(expected = PropertyNotWritableException.class)
+public void testSetValue03() {
+    MapELResolver mapELResolver = new MapELResolver(true);
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    mapELResolver.setValue(context, new HashMap<>(), new Object(), new Object());
+}

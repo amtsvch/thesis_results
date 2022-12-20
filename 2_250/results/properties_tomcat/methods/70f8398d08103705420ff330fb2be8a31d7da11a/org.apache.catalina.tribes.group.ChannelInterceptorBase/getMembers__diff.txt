@@ -1,0 +1,12 @@
+/**                                                                                                    /**                                                                                                 
+* Get all current cluster members                                                                      * Get all current cluster members                                                                   
+* @return all members or empty array                                                                   * @return all members or empty array                                                                
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public Member[] getMembers() {                                                                         public Member[] getMembers() {                                                                      
+if (getNext() != null)                                                                               | if (getNext() != null) {                                                                            
+return getNext().getMembers();                                                                         return getNext().getMembers();                                                                      
+else                                                                                                 | } else {                                                                                            
+return null;                                                                                           return null;                                                                                        
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   

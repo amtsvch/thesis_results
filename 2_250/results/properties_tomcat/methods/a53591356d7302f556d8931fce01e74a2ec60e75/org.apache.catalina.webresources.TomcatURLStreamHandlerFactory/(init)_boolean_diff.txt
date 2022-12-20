@@ -1,9 +1,0 @@
-private TomcatURLStreamHandlerFactory(boolean register) {
-    // Hide default constructor
-    // Singleton pattern to ensure there is only one instance of this
-    // factory
-    this.registered = register;
-    if (register) {
-        URL.setURLStreamHandlerFactory(this);
-    }
-}

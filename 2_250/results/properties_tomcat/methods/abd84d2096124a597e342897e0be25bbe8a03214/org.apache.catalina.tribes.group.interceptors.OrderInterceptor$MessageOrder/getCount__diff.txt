@@ -1,0 +1,9 @@
+public int getCount() {
+    int counter = 1;
+    MessageOrder tmp = next;
+    while (tmp != null) {
+        counter++;
+        tmp = tmp.next;
+    }
+    return counter;
+}

@@ -1,0 +1,19 @@
+public static Data createRandomData(int size, int number) {
+    int i = r.nextInt();
+    i = (i % 127);
+    int length = Math.abs(r.nextInt() % size);
+    if (length < 100) {
+        length += 100;
+    }
+    Data d = new Data();
+    d.length = length;
+    d.key = (byte) i;
+    d.data = new byte[length];
+    Arrays.fill(d.data, d.key);
+    if (number > 0 && d.data.length >= 4) {
+        // populate number
+        d.hasNr = true;
+        XByteBuffer.toBytes(number, d.data, 0);
+    }
+    return d;
+}

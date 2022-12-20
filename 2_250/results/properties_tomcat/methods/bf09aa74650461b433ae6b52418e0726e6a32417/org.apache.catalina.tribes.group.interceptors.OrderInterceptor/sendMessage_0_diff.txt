@@ -1,0 +1,35 @@
+@Override
+public void sendMessage(Member[] destination, ChannelMessage msg, InterceptorPayload payload) throws ChannelException {
+    if (!okToProcess(msg.getOptions())) {
+        super.sendMessage(destination, msg, payload);
+        return;
+    }
+    ChannelException cx = null;
+    for (Member member : destination) {
+        try {
+            int nr = 0;
+            outLock.writeLock().lock();
+            try {
+                nr = incCounter(member);
+            } finally {
+                outLock.writeLock().unlock();
+            }
+            // reduce byte copy
+            msg.getMessage().append(nr);
+            try {
+                getNext().sendMessage(new Member[] { member }, msg, payload);
+            } finally {
+                msg.getMessage().trim(4);
+            }
+        } catch (ChannelException x) {
+            if (cx == null) {
+                cx = x;
+            }
+            cx.addFaultyMember(x.getFaultyMembers());
+        }
+    }
+    // for
+    if (cx != null) {
+        throw cx;
+    }
+}

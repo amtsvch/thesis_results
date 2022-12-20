@@ -1,0 +1,7 @@
+@Override
+public void memberDisappeared(Member member) {
+    MembershipListener listener = this.listener;
+    if (listener != null) {
+        listener.memberDisappeared(member);
+    }
+}

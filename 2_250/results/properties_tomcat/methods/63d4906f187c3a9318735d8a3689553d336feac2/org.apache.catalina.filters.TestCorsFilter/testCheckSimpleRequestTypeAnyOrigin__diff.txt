@@ -1,0 +1,10 @@
+@Test
+public void testCheckSimpleRequestTypeAnyOrigin() throws ServletException {
+    TesterHttpServletRequest request = new TesterHttpServletRequest();
+    request.setHeader(CorsFilter.REQUEST_HEADER_ORIGIN, "http://www.w3.org");
+    request.setMethod("GET");
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getDefaultFilterConfig());
+    CorsFilter.CORSRequestType requestType = corsFilter.checkRequestType(request);
+    Assert.assertEquals(CorsFilter.CORSRequestType.SIMPLE, requestType);
+}

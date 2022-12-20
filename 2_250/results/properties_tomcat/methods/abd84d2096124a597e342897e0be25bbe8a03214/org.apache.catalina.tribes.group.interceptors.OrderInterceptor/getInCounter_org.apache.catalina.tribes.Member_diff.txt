@@ -1,0 +1,10 @@
+protected Counter getInCounter(Member mbr) {
+    Counter cnt = incounter.get(mbr);
+    if (cnt == null) {
+        cnt = new Counter();
+        // always start at 1 for incoming
+        cnt.inc();
+        incounter.put(mbr, cnt);
+    }
+    return cnt;
+}

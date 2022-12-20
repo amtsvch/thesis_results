@@ -1,0 +1,10 @@
+/**
+ * Import an invalid static field - non-public.
+ */
+@Test
+public void testImportStatic03() {
+    ImportHandler handler = new ImportHandler();
+    handler.importStatic("org.apache.tomcat.util.buf.Ascii.toLower");
+    Class<?> result = handler.resolveStatic("toLower");
+    Assert.assertEquals(org.apache.tomcat.util.buf.Ascii.class, result);
+}

@@ -1,0 +1,9 @@
+@Test
+public void testEmptyPairsRfc6265() {
+    test(true, "foo;a=b; ;bar", FOO_EMPTY, A, BAR_EMPTY);
+    test(true, "foo;a=b;;bar", FOO_EMPTY, A, BAR_EMPTY);
+    test(true, "foo;a=b; ;;bar=rab", FOO_EMPTY, A, BAR);
+    test(true, "foo;a=b;; ;bar=rab", FOO_EMPTY, A, BAR);
+    test(true, "foo;a=b;;#;bar=rab", FOO_EMPTY, A, HASH_EMPTY, BAR);
+    test(true, "foo;a=b;;\\;bar=rab", FOO_EMPTY, A, BAR);
+}

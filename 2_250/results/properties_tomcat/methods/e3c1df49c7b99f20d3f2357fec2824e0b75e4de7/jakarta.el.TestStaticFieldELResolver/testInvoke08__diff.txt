@@ -1,0 +1,11 @@
+/**
+ * Tests a void method invocation.
+ */
+@Test
+public void testInvoke08() {
+    StaticFieldELResolver resolver = new StaticFieldELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Object result = resolver.invoke(context, new ELClass(TesterClass.class), METHOD04_NAME, new Class<?>[] {}, new Object[] {});
+    Assert.assertNull(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

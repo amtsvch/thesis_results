@@ -1,0 +1,8 @@
+/**
+ * Tests that a null context results in an NPE as per EL Javadoc.
+ */
+@Test(expected = NullPointerException.class)
+public void testInvoke01() {
+    BeanELResolver resolver = new BeanELResolver();
+    resolver.invoke(null, new Object(), new Object(), new Class<?>[0], new Object[0]);
+}

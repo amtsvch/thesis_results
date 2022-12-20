@@ -1,0 +1,29 @@
+public Stream sorted(final LambdaExpression le) {
+    Iterator<Object> downStream = new OpIterator() {
+
+        private Iterator<Object> sorted = null;
+
+        @Override
+        protected void findNext() {
+            if (sorted == null) {
+                sort(le);
+            }
+            if (sorted.hasNext()) {
+                next = sorted.next();
+                foundNext = true;
+            }
+        }
+
+        @SuppressWarnings({ "rawtypes", "unchecked" })
+        private final void sort(LambdaExpression le) {
+            List list = new ArrayList<>();
+            Comparator<Object> c = new LambdaExpressionComparator(le);
+            while (iterator.hasNext()) {
+                list.add(iterator.next());
+            }
+            list.sort(c);
+            sorted = list.iterator();
+        }
+    };
+    return new Stream(downStream);
+}

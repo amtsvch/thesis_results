@@ -1,0 +1,11 @@
+/**
+ * Tests that a writable bean is reported as writable.
+ */
+@Test
+public void testIsReadOnly02() {
+    BeanNameELResolver resolver = createBeanNameELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    boolean result = resolver.isReadOnly(context, null, BEAN01_NAME);
+    Assert.assertFalse(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

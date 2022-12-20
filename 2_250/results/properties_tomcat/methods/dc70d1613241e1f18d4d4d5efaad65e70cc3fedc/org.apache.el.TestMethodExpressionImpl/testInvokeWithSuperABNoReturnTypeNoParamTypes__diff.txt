@@ -1,6 +1,0 @@
-@Test
-public void testInvokeWithSuperABNoReturnTypeNoParamTypes() {
-    MethodExpression me2 = factory.createMethodExpression(context, "${beanC.sayHello(beanA,beanB)}", null, null);
-    Object r2 = me2.invoke(context, null);
-    Assert.assertEquals("AB: Hello A from B", r2.toString());
-}

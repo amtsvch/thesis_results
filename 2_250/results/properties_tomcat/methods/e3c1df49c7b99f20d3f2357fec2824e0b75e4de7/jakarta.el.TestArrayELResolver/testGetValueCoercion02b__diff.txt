@@ -1,0 +1,9 @@
+@Test
+public void testGetValueCoercion02b() {
+    ArrayELResolver resolver = new ArrayELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    String[] base = new String[] { "element" };
+    Object result = resolver.getValue(context, base, Boolean.TRUE);
+    Assert.assertNull(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

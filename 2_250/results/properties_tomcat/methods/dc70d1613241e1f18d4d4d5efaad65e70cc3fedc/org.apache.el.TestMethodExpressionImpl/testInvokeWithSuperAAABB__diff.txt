@@ -1,9 +1,0 @@
-@Test
-public void testInvokeWithSuperAAABB() {
-    // The Java compiler reports this as ambiguous. Using the parameter that
-    // matches exactly seems reasonable to limit the scope of the method
-    // search so the EL will find a match.
-    MethodExpression me12 = factory.createMethodExpression(context, "${beanC.sayHello(beanAAA,beanBB)}", null, null);
-    Object r12 = me12.invoke(context, null);
-    Assert.assertEquals("ABB: Hello AAA from BB", r12.toString());
-}

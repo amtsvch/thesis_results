@@ -1,9 +1,0 @@
-protected void checkStateForClassLoading(String className) throws ClassNotFoundException {
-    // It is not permitted to load new classes once the web application has
-    // been stopped.
-    try {
-        checkStateForResourceLoading(className);
-    } catch (IllegalStateException ise) {
-        throw new ClassNotFoundException(ise.getMessage(), ise);
-    }
-}

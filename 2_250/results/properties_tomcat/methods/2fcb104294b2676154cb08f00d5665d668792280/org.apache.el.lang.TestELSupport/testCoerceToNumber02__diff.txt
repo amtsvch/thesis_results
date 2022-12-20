@@ -1,0 +1,5 @@
+@Test
+public void testCoerceToNumber02() {
+    Object result = ELSupport.coerceToNumber(null, null, int.class);
+    Assert.assertEquals(Integer.valueOf(0), result);
+}

@@ -1,0 +1,19 @@
+/**
+ * Send buffer to cluster listener (callback).
+ * Is message complete receiver send message to callback?
+ *
+ * @see org.apache.catalina.tribes.transport.ReceiverBase#messageDataReceived(ChannelMessage)
+ * @see XByteBuffer#doesPackageExist()
+ * @see XByteBuffer#extractPackage(boolean)
+ *
+ * @return number of received packages/messages
+ */
+public ChannelMessage[] execute() {
+    int pkgCnt = buffer.countPackages();
+    ChannelMessage[] result = new ChannelMessage[pkgCnt];
+    for (int i = 0; i < pkgCnt; i++) {
+        ChannelMessage data = buffer.extractPackage(true);
+        result[i] = data;
+    }
+    return result;
+}

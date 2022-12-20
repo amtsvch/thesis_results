@@ -1,0 +1,15 @@
+/*
+     * Negative test, when a CORS request arrives, with an empty origin.
+     *
+     * @throws ServletException
+     */
+@Test
+public void testCheckNotCORSRequestTypeEmptyOrigin() throws ServletException {
+    TesterHttpServletRequest request = new TesterHttpServletRequest();
+    request.setHeader(CorsFilter.REQUEST_HEADER_ORIGIN, "");
+    request.setMethod("GET");
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getDefaultFilterConfig());
+    CorsFilter.CORSRequestType requestType = corsFilter.checkRequestType(request);
+    Assert.assertEquals(CorsFilter.CORSRequestType.INVALID_CORS, requestType);
+}

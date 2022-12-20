@@ -1,0 +1,33 @@
+/**
+ * Similar to readCookieValueRfc6265() but also allows a comma to terminate
+ * the value (as permitted by RFC2109).
+ */
+private static ByteBuffer readCookieValue(ByteBuffer bb) {
+    boolean quoted = false;
+    if (bb.hasRemaining()) {
+        if (bb.get() == QUOTE_BYTE) {
+            quoted = true;
+        } else {
+            bb.rewind();
+        }
+    }
+    int start = bb.position();
+    int end = bb.limit();
+    while (bb.hasRemaining()) {
+        byte b = bb.get();
+        if (isCookieOctet[(b & 0xFF)]) {
+            // NO-OP
+        } else if (b == SEMICOLON_BYTE || b == COMMA_BYTE || b == SPACE_BYTE || b == TAB_BYTE) {
+            end = bb.position() - 1;
+            bb.position(end);
+            break;
+        } else if (quoted && b == QUOTE_BYTE) {
+            end = bb.position() - 1;
+            break;
+        } else {
+            // Invalid cookie
+            return null;
+        }
+    }
+    return new ByteBuffer(bb.bytes, start, end - start);
+}

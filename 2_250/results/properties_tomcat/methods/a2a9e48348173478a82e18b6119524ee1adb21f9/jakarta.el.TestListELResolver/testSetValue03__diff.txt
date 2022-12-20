@@ -1,0 +1,9 @@
+/**
+ * Tests that an exception is thrown when readOnly is true.
+ */
+@Test(expected = PropertyNotWritableException.class)
+public void testSetValue03() {
+    ListELResolver resolver = new ListELResolver(true);
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    resolver.setValue(context, new ArrayList<>(), new Object(), new Object());
+}

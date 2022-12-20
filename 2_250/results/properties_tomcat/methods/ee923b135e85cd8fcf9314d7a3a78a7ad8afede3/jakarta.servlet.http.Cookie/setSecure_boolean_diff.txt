@@ -1,0 +1,15 @@
+/**
+ * Indicates to the browser whether the cookie should only be sent using a
+ * secure protocol, such as HTTPS or SSL.
+ * <p>
+ * The default value is <code>false</code>.
+ *
+ * @param flag
+ *            if <code>true</code>, sends the cookie from the browser to the
+ *            server only when using a secure protocol; if
+ *            <code>false</code>, sent on any protocol
+ * @see #getSecure
+ */
+public void setSecure(boolean flag) {
+    secure = flag;
+}

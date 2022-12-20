@@ -1,0 +1,8 @@
+@Test(expected = NullPointerException.class)
+public void testCreateValueExpression3ParamNullExpectedType() {
+    ExpressionFactory factory = ExpressionFactory.newInstance();
+    Assert.assertNotNull(factory);
+    ELContext context = new ELContextImpl(factory);
+    Assert.assertNotNull(context);
+    factory.createValueExpression(context, "foo", null);
+}

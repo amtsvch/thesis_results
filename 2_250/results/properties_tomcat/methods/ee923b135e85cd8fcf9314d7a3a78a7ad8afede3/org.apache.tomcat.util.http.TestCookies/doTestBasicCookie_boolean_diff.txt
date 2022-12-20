@@ -1,0 +1,7 @@
+private void doTestBasicCookie(boolean useRfc6265) {
+    test(useRfc6265, "foo=bar; a=b", FOO, A);
+    test(useRfc6265, "foo=bar;a=b", FOO, A);
+    test(useRfc6265, "foo=bar;a=b;", FOO, A);
+    test(useRfc6265, "foo=bar;a=b; ", FOO, A);
+    test(useRfc6265, "foo=bar;a=b; ;", FOO, A);
+}

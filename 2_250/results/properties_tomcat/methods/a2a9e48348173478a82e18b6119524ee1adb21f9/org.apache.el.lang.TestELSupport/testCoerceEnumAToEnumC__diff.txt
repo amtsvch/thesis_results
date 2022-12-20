@@ -1,0 +1,10 @@
+@Test
+public void testCoerceEnumAToEnumC() {
+    Object output = null;
+    try {
+        output = ELSupport.coerceToEnum(null, TestEnumA.VALA1, TestEnumC.class);
+    } catch (ELException ele) {
+        // Ignore
+    }
+    Assert.assertNull(output);
+}

@@ -1,0 +1,28 @@
+public Stream sorted() {
+    Iterator<Object> downStream = new OpIterator() {
+
+        private Iterator<Object> sorted = null;
+
+        @Override
+        protected void findNext() {
+            if (sorted == null) {
+                sort();
+            }
+            if (sorted.hasNext()) {
+                next = sorted.next();
+                foundNext = true;
+            }
+        }
+
+        @SuppressWarnings({ "rawtypes", "unchecked" })
+        private final void sort() {
+            List list = new ArrayList<>();
+            while (iterator.hasNext()) {
+                list.add(iterator.next());
+            }
+            Collections.sort(list);
+            sorted = list.iterator();
+        }
+    };
+    return new Stream(downStream);
+}

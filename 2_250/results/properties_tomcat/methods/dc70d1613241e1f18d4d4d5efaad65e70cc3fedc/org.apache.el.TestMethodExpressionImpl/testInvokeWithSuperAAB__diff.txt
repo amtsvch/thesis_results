@@ -1,6 +1,0 @@
-@Test
-public void testInvokeWithSuperAAB() {
-    MethodExpression me8 = factory.createMethodExpression(context, "${beanC.sayHello(beanAA,beanB)}", null, null);
-    Object r8 = me8.invoke(context, null);
-    Assert.assertEquals("AAB: Hello AA from B", r8.toString());
-}

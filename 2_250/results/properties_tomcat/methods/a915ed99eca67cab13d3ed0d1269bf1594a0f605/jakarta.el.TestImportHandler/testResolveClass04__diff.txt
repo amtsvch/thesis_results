@@ -1,0 +1,12 @@
+/**
+ * Multiple package imports with a single match.
+ * https://bz.apache.org/bugzilla/show_bug.cgi?id=57113
+ */
+@Test
+public void testResolveClass04() {
+    ImportHandler handler = new ImportHandler();
+    handler.importPackage("java.util");
+    handler.importPackage("java.net");
+    Class<?> clazz = handler.resolveClass("ArrayList");
+    Assert.assertEquals(ArrayList.class, clazz);
+}

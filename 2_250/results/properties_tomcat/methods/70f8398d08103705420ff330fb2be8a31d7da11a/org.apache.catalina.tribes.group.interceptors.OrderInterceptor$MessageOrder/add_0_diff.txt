@@ -1,0 +1,36 @@
+// prev cannot be null                                                                                 // prev cannot be null                                                                              
+@SuppressWarnings("null")                                                                              @SuppressWarnings("null")                                                                           
+public static MessageOrder add(MessageOrder head, MessageOrder add) {                                  public static MessageOrder add(MessageOrder head, MessageOrder add) {                               
+if (head == null)                                                                                    | if (head == null) {                                                                                 
+return add;                                                                                            return add;                                                                                         
+if (add == null)                                                                                     | }                                                                                                   
+                                                                                                     | if (add == null) {                                                                                  
+return head;                                                                                           return head;                                                                                        
+if (head == add)                                                                                     | }                                                                                                   
+                                                                                                     | if (head == add) {                                                                                  
+return add;                                                                                            return add;                                                                                         
+                                                                                                     | }                                                                                                   
+if (head.getMsgNr() &gt; add.getMsgNr()) {                                                             if (head.getMsgNr() &gt; add.getMsgNr()) {                                                          
+add.next = head;                                                                                       add.next = head;                                                                                    
+return add;                                                                                            return add;                                                                                         
+}                                                                                                      }                                                                                                   
+MessageOrder iter = head;                                                                              MessageOrder iter = head;                                                                           
+MessageOrder prev = null;                                                                              MessageOrder prev = null;                                                                           
+while (iter.getMsgNr() &lt; add.getMsgNr() && (iter.next != null)) {                                   while (iter.getMsgNr() &lt; add.getMsgNr() && (iter.next != null)) {                                
+prev = iter;                                                                                           prev = iter;                                                                                        
+iter = iter.next;                                                                                      iter = iter.next;                                                                                   
+}                                                                                                      }                                                                                                   
+if (iter.getMsgNr() &lt; add.getMsgNr()) {                                                             if (iter.getMsgNr() &lt; add.getMsgNr()) {                                                          
+// add after                                                                                           // add after                                                                                        
+add.next = iter.next;                                                                                  add.next = iter.next;                                                                               
+iter.next = add;                                                                                       iter.next = add;                                                                                    
+} else if (iter.getMsgNr() &gt; add.getMsgNr()) {                                                      } else if (iter.getMsgNr() &gt; add.getMsgNr()) {                                                   
+// add before                                                                                          // add before                                                                                       
+// prev cannot be null here, warning suppressed                                                        // prev cannot be null here, warning suppressed                                                     
+prev.next = add;                                                                                       prev.next = add;                                                                                    
+add.next = iter;                                                                                       add.next = iter;                                                                                    
+} else {                                                                                               } else {                                                                                            
+throw new ArithmeticException(sm.getString("orderInterceptor.messageAdded.sameCounter"));              throw new ArithmeticException(sm.getString("orderInterceptor.messageAdded.sameCounter"));           
+}                                                                                                      }                                                                                                   
+return head;                                                                                           return head;                                                                                        
+}                                                                                                      }                                                                                                   
