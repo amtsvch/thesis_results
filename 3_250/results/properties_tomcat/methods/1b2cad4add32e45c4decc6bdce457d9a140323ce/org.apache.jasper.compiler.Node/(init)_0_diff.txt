@@ -1,0 +1,28 @@
+/**
+ * Constructor for Nodes parsed from XML syntax.
+ *
+ * @param qName
+ *            The action's qualified name
+ * @param localName
+ *            The action's local name
+ * @param attrs
+ *            The action's attributes whose name does not start with xmlns
+ * @param nonTaglibXmlnsAttrs
+ *            The action's xmlns attributes that do not represent tag
+ *            libraries
+ * @param taglibAttrs
+ *            The action's xmlns attributes that represent tag libraries
+ * @param start
+ *            The location of the jsp page
+ * @param parent
+ *            The enclosing node
+ */
+public Node(String qName, String localName, Attributes attrs, Attributes nonTaglibXmlnsAttrs, Attributes taglibAttrs, Mark start, Node parent) {
+    this.qName = qName;
+    this.localName = localName;
+    this.attrs = attrs;
+    this.nonTaglibXmlnsAttrs = nonTaglibXmlnsAttrs;
+    this.taglibAttrs = taglibAttrs;
+    this.startMark = start;
+    addToParent(parent);
+}

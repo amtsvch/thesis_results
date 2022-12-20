@@ -1,0 +1,8 @@
+@Test(expected = DeploymentException.class)
+public void testDuplicatePaths02() throws Exception {
+    WsServerContainer sc = new WsServerContainer(new TesterServletContext());
+    ServerEndpointConfig configA = ServerEndpointConfig.Builder.create(Object.class, "/a/b/{var}").build();
+    ServerEndpointConfig configB = ServerEndpointConfig.Builder.create(Object.class, "/a/b/{var}").build();
+    sc.addEndpoint(configA);
+    sc.addEndpoint(configB);
+}

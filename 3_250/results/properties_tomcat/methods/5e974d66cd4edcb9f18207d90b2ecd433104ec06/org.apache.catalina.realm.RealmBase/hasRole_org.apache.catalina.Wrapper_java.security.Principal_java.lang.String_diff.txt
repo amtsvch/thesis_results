@@ -1,0 +1,31 @@
+/**
+ * {@inheritDoc}
+ *
+ * This method or {@link #hasRoleInternal(Principal,
+ * String)} can be overridden by Realm implementations, but the default is
+ * adequate when an instance of <code>GenericPrincipal</code> is used to
+ * represent authenticated Principals from this Realm.
+ */
+@Override
+public boolean hasRole(Wrapper wrapper, Principal principal, String role) {
+    // Check for a role alias
+    if (wrapper != null) {
+        String realRole = wrapper.findSecurityReference(role);
+        if (realRole != null) {
+            role = realRole;
+        }
+    }
+    // Should be overridden in JAASRealm - to avoid pretty inefficient conversions
+    if (principal == null || role == null) {
+        return false;
+    }
+    boolean result = hasRoleInternal(principal, role);
+    if (log.isDebugEnabled()) {
+        String name = principal.getName();
+        if (result)
+            log.debug(sm.getString("realmBase.hasRoleSuccess", name, role));
+        else
+            log.debug(sm.getString("realmBase.hasRoleFailure", name, role));
+    }
+    return result;
+}

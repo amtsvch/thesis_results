@@ -1,0 +1,13 @@
+/**
+ * Called in the unlikely event that an application defines a role named
+ * "**".
+ */
+public void treatAllAuthenticatedUsersAsApplicationRole() {
+    if (authenticatedUsers) {
+        authenticatedUsers = false;
+        String[] results = Arrays.copyOf(authRoles, authRoles.length + 1);
+        results[authRoles.length] = ROLE_ALL_AUTHENTICATED_USERS;
+        authRoles = results;
+        authConstraint = true;
+    }
+}

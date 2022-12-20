@@ -1,0 +1,42 @@
+private void doRoleTest(List<String> userRoles, List<String> constraintOneRoles, List<String> constraintTwoRoles, List<String> applicationRoles, boolean expected) throws IOException {
+    TesterMapRealm mapRealm = new TesterMapRealm();
+    // Configure the security constraints for the resource
+    SecurityConstraint constraintOne = new SecurityConstraint();
+    if (constraintOneRoles != null) {
+        constraintOne.setAuthConstraint(true);
+        for (String constraintRole : constraintOneRoles) {
+            constraintOne.addAuthRole(constraintRole);
+            if (applicationRoles.contains(SecurityConstraint.ROLE_ALL_AUTHENTICATED_USERS)) {
+                constraintOne.treatAllAuthenticatedUsersAsApplicationRole();
+            }
+        }
+    }
+    SecurityConstraint constraintTwo = new SecurityConstraint();
+    if (constraintTwoRoles != null) {
+        constraintTwo.setAuthConstraint(true);
+        for (String constraintRole : constraintTwoRoles) {
+            constraintTwo.addAuthRole(constraintRole);
+            if (applicationRoles.contains(SecurityConstraint.ROLE_ALL_AUTHENTICATED_USERS)) {
+                constraintTwo.treatAllAuthenticatedUsersAsApplicationRole();
+            }
+        }
+    }
+    SecurityConstraint[] constraints = new SecurityConstraint[] { constraintOne, constraintTwo };
+    // Set up the mock request and response
+    Request request = new Request(null);
+    Response response = new TesterResponse();
+    Context context = new TesterContext();
+    for (String applicationRole : applicationRoles) {
+        context.addSecurityRole(applicationRole);
+    }
+    request.getMappingData().context = context;
+    // Set up an authenticated user
+    // Configure the users in the Realm
+    if (userRoles != null) {
+        GenericPrincipal gp = new GenericPrincipal(USER1, userRoles);
+        request.setUserPrincipal(gp);
+    }
+    // Check if user meets constraints
+    boolean result = mapRealm.hasResourcePermission(request, response, constraints, null);
+    Assert.assertEquals(Boolean.valueOf(expected), Boolean.valueOf(result));
+}

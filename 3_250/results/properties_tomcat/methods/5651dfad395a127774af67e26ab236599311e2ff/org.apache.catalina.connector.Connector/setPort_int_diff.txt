@@ -1,0 +1,8 @@
+/**
+ * Set the port number on which we listen for requests.
+ *
+ * @param port The new port number
+ */
+public void setPort(int port) {
+    setProperty("port", String.valueOf(port));
+}

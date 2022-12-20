@@ -1,0 +1,3 @@
+static boolean isControl(byte opCode) {
+    return (opCode & 0x08) != 0;
+}

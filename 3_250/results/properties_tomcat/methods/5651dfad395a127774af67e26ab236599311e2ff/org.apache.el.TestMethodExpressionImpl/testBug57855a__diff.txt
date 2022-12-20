@@ -1,0 +1,5 @@
+@Test(expected = MethodNotFoundException.class)
+public void testBug57855a() {
+    MethodExpression me = factory.createMethodExpression(context, "${beanAA.echo2}", null, new Class[] { String.class });
+    me.invoke(context, new Object[0]);
+}

@@ -1,0 +1,5 @@
+@Override
+public void setSessionIdGenerator(SessionIdGenerator sessionIdGenerator) {
+    this.sessionIdGenerator = sessionIdGenerator;
+    sessionIdGeneratorClass = sessionIdGenerator.getClass();
+}

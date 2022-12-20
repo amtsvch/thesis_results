@@ -1,0 +1,11 @@
+/**
+ * Tests that the propertyResolved is false if base is not ELCLass.
+ */
+@Test
+public void testIsReadOnly03() {
+    StaticFieldELResolver resolver = new StaticFieldELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    boolean result = resolver.isReadOnly(context, new Object(), PROPERTY01_NAME);
+    Assert.assertTrue(result);
+    Assert.assertFalse(context.isPropertyResolved());
+}

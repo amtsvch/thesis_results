@@ -1,0 +1,6 @@
+private void doTestPageDirectiveImport(String importDirective) {
+    PageDirective pd = new PageDirective(null, null, null);
+    pd.addImport(importDirective);
+    List<String> imports = pd.getImports();
+    Assert.assertEquals(3, imports.size());
+}

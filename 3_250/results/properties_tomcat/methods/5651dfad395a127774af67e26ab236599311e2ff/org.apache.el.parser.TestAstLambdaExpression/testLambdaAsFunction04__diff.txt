@@ -1,0 +1,6 @@
+@Test(expected = ELException.class)
+public void testLambdaAsFunction04() {
+    ELProcessor processor = new ELProcessor();
+    // More method parameters than there are nested lambda expressions
+    processor.getValue("v = (()->y->()->2-y); v()(1)()()", Integer.class);
+}

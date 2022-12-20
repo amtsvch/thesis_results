@@ -1,0 +1,7 @@
+/**
+ * Tests that a valid property is not resolved if base is null.
+ */
+@Test
+public void testSetValue02() {
+    doNegativeTest(null, new Object(), MethodUnderTest.SET_VALUE, true);
+}

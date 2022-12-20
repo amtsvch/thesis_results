@@ -1,0 +1,7 @@
+private void doTestIsReadOutOfBounds(int index) {
+    ArrayELResolver resolver = new ArrayELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    String[] base = new String[] { "element" };
+    resolver.isReadOnly(context, base, Integer.valueOf(index));
+    Assert.assertTrue(context.isPropertyResolved());
+}

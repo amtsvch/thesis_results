@@ -1,0 +1,13 @@
+/**
+ * <p>
+ * Header that holds the incoming protocol, usually named <code>X-Forwarded-Proto</code>. If <code>null</code>, request.scheme and
+ * request.secure will not be modified.
+ * </p>
+ * <p>
+ * Default value : <code>null</code>
+ * </p>
+ * @param protocolHeader The header name
+ */
+public void setProtocolHeader(String protocolHeader) {
+    this.protocolHeader = protocolHeader;
+}

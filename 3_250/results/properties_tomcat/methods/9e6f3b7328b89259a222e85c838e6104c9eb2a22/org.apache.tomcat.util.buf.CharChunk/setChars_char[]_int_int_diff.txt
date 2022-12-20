@@ -1,0 +1,14 @@
+/**
+ * Sets the buffer to the specified subarray of characters.
+ *
+ * @param c the characters
+ * @param off the start offset of the characters
+ * @param len the length of the characters
+ */
+public void setChars(char[] c, int off, int len) {
+    buff = c;
+    start = off;
+    end = start + len;
+    isSet = true;
+    hasHashCode = false;
+}

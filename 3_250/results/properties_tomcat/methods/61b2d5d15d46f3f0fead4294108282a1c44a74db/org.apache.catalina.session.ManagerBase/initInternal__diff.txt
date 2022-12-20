@@ -1,0 +1,7 @@
+@Override
+protected void initInternal() throws LifecycleException {
+    super.initInternal();
+    if (context == null) {
+        throw new LifecycleException(sm.getString("managerBase.contextNull"));
+    }
+}

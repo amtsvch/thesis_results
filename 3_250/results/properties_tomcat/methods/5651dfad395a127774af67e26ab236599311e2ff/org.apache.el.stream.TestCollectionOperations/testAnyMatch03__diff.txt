@@ -1,0 +1,6 @@
+@Test(expected = ELException.class)
+public void testAnyMatch03() {
+    ELProcessor processor = new ELProcessor();
+    Optional result = (Optional) processor.getValue("[].stream().anyMatch(x->x==7)", Object.class);
+    result.get();
+}

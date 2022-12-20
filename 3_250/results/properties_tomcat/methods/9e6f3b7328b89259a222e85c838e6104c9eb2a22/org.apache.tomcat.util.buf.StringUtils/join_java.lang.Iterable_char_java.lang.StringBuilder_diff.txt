@@ -1,0 +1,3 @@
+public static void join(Iterable<String> iterable, char separator, StringBuilder sb) {
+    join(iterable, separator, (x) -> x, sb);
+}

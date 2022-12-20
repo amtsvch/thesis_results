@@ -1,0 +1,10 @@
+/**
+ * Tests that an exception will be thrown when a coercion cannot be
+ * performed.
+ */
+@Test(expected = PropertyNotFoundException.class)
+public void testGetType05() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    resolver.getType(context, new Bean(), new Object());
+}

@@ -1,0 +1,7 @@
+@Override
+public void setComment(String comment) {
+    if (!context.getState().equals(LifecycleState.STARTING_PREP)) {
+        throw new IllegalStateException(sm.getString("applicationSessionCookieConfig.ise", "comment", context.getPath()));
+    }
+    this.comment = comment;
+}

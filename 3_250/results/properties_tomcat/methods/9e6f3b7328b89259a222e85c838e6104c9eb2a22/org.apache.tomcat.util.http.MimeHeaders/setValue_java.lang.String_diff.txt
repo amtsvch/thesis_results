@@ -1,0 +1,21 @@
+/**
+ * Allow "set" operations, which removes all current values
+ * for this header.
+ * @param name The header name
+ * @return the message bytes container for the value
+ */
+public MessageBytes setValue(String name) {
+    for (int i = 0; i < count; i++) {
+        if (headers[i].getName().equalsIgnoreCase(name)) {
+            for (int j = i + 1; j < count; j++) {
+                if (headers[j].getName().equalsIgnoreCase(name)) {
+                    removeHeader(j--);
+                }
+            }
+            return headers[i].getValue();
+        }
+    }
+    MimeHeaderField mh = createHeader();
+    mh.getName().setString(name);
+    return mh.getValue();
+}

@@ -1,0 +1,22 @@
+/**
+ * Parses the comma-separated list of class or package names in the
+ * given attribute value and adds each component to this PageDirective's
+ * vector of imported classes and packages.
+ *
+ * @param value
+ *            A comma-separated string of imports.
+ */
+public void addImport(String value) {
+    int start = 0;
+    int index;
+    while ((index = value.indexOf(',', start)) != -1) {
+        imports.add(validateImport(value.substring(start, index)));
+        start = index + 1;
+    }
+    if (start == 0) {
+        // No comma found
+        imports.add(validateImport(value));
+    } else {
+        imports.add(validateImport(value.substring(start)));
+    }
+}

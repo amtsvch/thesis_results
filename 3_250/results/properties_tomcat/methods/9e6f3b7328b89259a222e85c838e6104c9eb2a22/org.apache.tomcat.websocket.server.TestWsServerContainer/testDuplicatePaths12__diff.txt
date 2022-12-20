@@ -1,0 +1,11 @@
+/*
+     * POJO auto deployment followed by programmatic duplicate. Keep POJO.
+     */
+@Test
+public void testDuplicatePaths12() throws Exception {
+    WsServerContainer sc = new WsServerContainer(new TesterServletContext());
+    ServerEndpointConfig configA = ServerEndpointConfig.Builder.create(Pojo.class, "/foo").build();
+    sc.addEndpoint(Pojo.class, true);
+    sc.addEndpoint(configA);
+    Assert.assertNotEquals(configA, sc.findMapping("/foo").getConfig());
+}

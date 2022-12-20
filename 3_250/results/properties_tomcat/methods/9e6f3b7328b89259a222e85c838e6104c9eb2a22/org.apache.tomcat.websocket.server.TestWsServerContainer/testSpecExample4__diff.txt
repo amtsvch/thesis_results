@@ -1,0 +1,9 @@
+@Test
+public void testSpecExample4() throws Exception {
+    WsServerContainer sc = new WsServerContainer(new TesterServletContext());
+    ServerEndpointConfig configA = ServerEndpointConfig.Builder.create(Object.class, "/{var1}/d").build();
+    ServerEndpointConfig configB = ServerEndpointConfig.Builder.create(Object.class, "/b/{var2}").build();
+    sc.addEndpoint(configA);
+    sc.addEndpoint(configB);
+    Assert.assertEquals(configB, sc.findMapping("/b/d").getConfig());
+}

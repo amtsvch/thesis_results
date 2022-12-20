@@ -1,0 +1,16 @@
+/**                                                                                                  |                                                                                                     
+* Set the application root for this Host.  This can be an absolute                                   |                                                                                                     
+* pathname, a relative pathname, or a URL.                                                           |                                                                                                     
+*                                                                                                    |                                                                                                     
+* @param appBase The new application root                                                            |                                                                                                     
+*/                                                                                                   |                                                                                                     
+@Override                                                                                              @Override                                                                                           
+public void setAppBase(String appBase) {                                                               public void setAppBase(String appBase) {                                                            
+if (appBase.trim().equals("")) {                                                                       if (appBase.trim().equals("")) {                                                                    
+log.warn(sm.getString("standardHost.problematicAppBase", getName()));                                  log.warn(sm.getString("standardHost.problematicAppBase", getName()));                               
+}                                                                                                      }                                                                                                   
+String oldAppBase = this.appBase;                                                                      String oldAppBase = this.appBase;                                                                   
+this.appBase = appBase;                                                                                this.appBase = appBase;                                                                             
+support.firePropertyChange("appBase", oldAppBase, this.appBase);                                       support.firePropertyChange("appBase", oldAppBase, this.appBase);                                    
+this.appBaseFile = null;                                                                               this.appBaseFile = null;                                                                            
+}                                                                                                      }                                                                                                   

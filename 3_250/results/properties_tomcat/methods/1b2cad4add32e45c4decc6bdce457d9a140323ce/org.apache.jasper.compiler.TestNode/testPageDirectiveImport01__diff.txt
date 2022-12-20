@@ -1,0 +1,7 @@
+/*
+     * https://bz.apache.org/bugzilla/show_bug.cgi?id=57099
+     */
+@Test(expected = IllegalArgumentException.class)
+public void testPageDirectiveImport01() {
+    doTestPageDirectiveImport("java.io.*;\r\n\timport java.net.*");
+}

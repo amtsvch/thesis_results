@@ -1,0 +1,9 @@
+void shutdown() {
+    synchronized (processesLock) {
+        processes.clear();
+        if (wsBackgroundThread != null) {
+            wsBackgroundThread.halt();
+            wsBackgroundThread = null;
+        }
+    }
+}

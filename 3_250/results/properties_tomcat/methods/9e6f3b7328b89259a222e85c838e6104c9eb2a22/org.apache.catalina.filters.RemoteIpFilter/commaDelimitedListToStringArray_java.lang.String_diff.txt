@@ -1,0 +1,9 @@
+/**
+ * Convert a given comma delimited list of regular expressions into an array of String
+ *
+ * @param commaDelimitedStrings The string to split
+ * @return array of patterns (non <code>null</code>)
+ */
+protected static String[] commaDelimitedListToStringArray(String commaDelimitedStrings) {
+    return (commaDelimitedStrings == null || commaDelimitedStrings.length() == 0) ? new String[0] : commaSeparatedValuesPattern.split(commaDelimitedStrings);
+}

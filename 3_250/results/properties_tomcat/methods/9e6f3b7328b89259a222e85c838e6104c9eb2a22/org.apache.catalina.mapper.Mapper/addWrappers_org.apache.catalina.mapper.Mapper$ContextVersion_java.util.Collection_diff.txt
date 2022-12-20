@@ -1,0 +1,11 @@
+/**
+ * Adds wrappers to the given context.
+ *
+ * @param contextVersion The context to which to add the wrappers
+ * @param wrappers Information on wrapper mappings
+ */
+private void addWrappers(ContextVersion contextVersion, Collection<WrapperMappingInfo> wrappers) {
+    for (WrapperMappingInfo wrapper : wrappers) {
+        addWrapper(contextVersion, wrapper.getMapping(), wrapper.getWrapper(), wrapper.isJspWildCard(), wrapper.isResourceOnly());
+    }
+}

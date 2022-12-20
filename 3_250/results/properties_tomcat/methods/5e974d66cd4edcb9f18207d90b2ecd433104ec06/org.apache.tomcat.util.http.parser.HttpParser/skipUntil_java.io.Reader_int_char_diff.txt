@@ -1,0 +1,14 @@
+/**
+ * Skips all characters until EOF or the specified target is found. Normally
+ * used to skip invalid input until the next separator.
+ */
+static SkipResult skipUntil(Reader input, int c, char target) throws IOException {
+    while (c != -1 && c != target) {
+        c = input.read();
+    }
+    if (c == -1) {
+        return SkipResult.EOF;
+    } else {
+        return SkipResult.FOUND;
+    }
+}

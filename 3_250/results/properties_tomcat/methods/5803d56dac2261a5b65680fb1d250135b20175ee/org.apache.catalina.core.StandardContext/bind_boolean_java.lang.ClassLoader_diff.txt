@@ -1,0 +1,37 @@
+@Override
+public ClassLoader bind(boolean usePrivilegedAction, ClassLoader originalClassLoader) {
+    Loader loader = getLoader();
+    ClassLoader webApplicationClassLoader = null;
+    if (loader != null) {
+        webApplicationClassLoader = loader.getClassLoader();
+    }
+    if (originalClassLoader == null) {
+        if (usePrivilegedAction) {
+            PrivilegedAction<ClassLoader> pa = new PrivilegedGetTccl();
+            originalClassLoader = AccessController.doPrivileged(pa);
+        } else {
+            originalClassLoader = Thread.currentThread().getContextClassLoader();
+        }
+    }
+    if (webApplicationClassLoader == null || webApplicationClassLoader == originalClassLoader) {
+        // Not possible or not necessary to switch class loaders. Return
+        // null to indicate this.
+        return null;
+    }
+    ThreadBindingListener threadBindingListener = getThreadBindingListener();
+    if (usePrivilegedAction) {
+        PrivilegedAction<Void> pa = new PrivilegedSetTccl(webApplicationClassLoader);
+        AccessController.doPrivileged(pa);
+    } else {
+        Thread.currentThread().setContextClassLoader(webApplicationClassLoader);
+    }
+    if (threadBindingListener != null) {
+        try {
+            threadBindingListener.bind();
+        } catch (Throwable t) {
+            ExceptionUtils.handleThrowable(t);
+            log.error(sm.getString("standardContext.threadBindingListenerError", getName()), t);
+        }
+    }
+    return originalClassLoader;
+}

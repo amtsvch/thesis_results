@@ -1,0 +1,9 @@
+/**
+ * Tests that cannot write to a static field.
+ */
+@Test(expected = PropertyNotWritableException.class)
+public void testSetValue02() {
+    StaticFieldELResolver resolver = new StaticFieldELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    resolver.setValue(context, new ELClass(TesterClass.class), PROPERTY01_NAME, PROPERTY01_VALUE);
+}

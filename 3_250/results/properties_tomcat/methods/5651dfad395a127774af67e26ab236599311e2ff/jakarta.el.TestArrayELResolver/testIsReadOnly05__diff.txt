@@ -1,0 +1,4 @@
+@Test(expected = PropertyNotFoundException.class)
+public void testIsReadOnly05() {
+    doTestIsReadOutOfBounds(-1);
+}

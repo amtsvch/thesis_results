@@ -1,0 +1,7 @@
+/**
+ * Tests that the operation is no invoked when the property is not String.
+ */
+@Test
+public void testSetValue04() {
+    doNegativeTest(new ELClass(TesterClass.class), new Object(), MethodUnderTest.SET_VALUE);
+}

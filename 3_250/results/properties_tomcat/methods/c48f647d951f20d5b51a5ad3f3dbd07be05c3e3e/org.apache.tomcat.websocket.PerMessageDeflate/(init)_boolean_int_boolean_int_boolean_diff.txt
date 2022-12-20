@@ -1,0 +1,7 @@
+private PerMessageDeflate(boolean serverContextTakeover, int serverMaxWindowBits, boolean clientContextTakeover, int clientMaxWindowBits, boolean isServer) {
+    this.serverContextTakeover = serverContextTakeover;
+    this.serverMaxWindowBits = serverMaxWindowBits;
+    this.clientContextTakeover = clientContextTakeover;
+    this.clientMaxWindowBits = clientMaxWindowBits;
+    this.isServer = isServer;
+}

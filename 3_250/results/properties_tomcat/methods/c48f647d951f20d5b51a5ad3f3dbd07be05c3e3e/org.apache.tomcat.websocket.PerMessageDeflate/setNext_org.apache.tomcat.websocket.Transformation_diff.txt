@@ -1,0 +1,8 @@
+@Override
+public void setNext(Transformation t) {
+    if (next == null) {
+        this.next = t;
+    } else {
+        next.setNext(t);
+    }
+}

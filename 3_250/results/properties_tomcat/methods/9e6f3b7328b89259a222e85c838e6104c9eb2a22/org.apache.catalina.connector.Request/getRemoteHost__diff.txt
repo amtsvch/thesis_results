@@ -1,0 +1,15 @@
+/**
+ * @return the remote host name making this Request.
+ */
+@Override
+public String getRemoteHost() {
+    if (remoteHost == null) {
+        if (!connector.getEnableLookups()) {
+            remoteHost = getRemoteAddr();
+        } else {
+            coyoteRequest.action(ActionCode.REQ_HOST_ATTRIBUTE, coyoteRequest);
+            remoteHost = coyoteRequest.remoteHost().toString();
+        }
+    }
+    return remoteHost;
+}

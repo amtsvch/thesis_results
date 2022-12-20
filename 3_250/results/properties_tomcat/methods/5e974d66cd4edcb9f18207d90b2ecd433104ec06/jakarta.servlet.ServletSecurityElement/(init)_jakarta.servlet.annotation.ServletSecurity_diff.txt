@@ -1,0 +1,17 @@
+/**
+ * Create from an annotation.
+ * @param annotation Annotation to use as the basis for the new instance
+ * @throws IllegalArgumentException if a method name is specified more than
+ */
+public ServletSecurityElement(ServletSecurity annotation) {
+    this(new HttpConstraintElement(annotation.value().value(), annotation.value().transportGuarantee(), annotation.value().rolesAllowed()));
+    List<HttpMethodConstraintElement> l = new ArrayList<>();
+    HttpMethodConstraint[] constraints = annotation.httpMethodConstraints();
+    if (constraints != null) {
+        for (HttpMethodConstraint constraint : constraints) {
+            HttpMethodConstraintElement e = new HttpMethodConstraintElement(constraint.value(), new HttpConstraintElement(constraint.emptyRoleSemantic(), constraint.transportGuarantee(), constraint.rolesAllowed()));
+            l.add(e);
+        }
+    }
+    addHttpMethodConstraints(l);
+}

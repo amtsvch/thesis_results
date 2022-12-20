@@ -1,0 +1,5 @@
+@Override
+public Method resolveFunction(String prefix, String localName) {
+    String key = prefix + ':' + localName;
+    return methods.get(key);
+}

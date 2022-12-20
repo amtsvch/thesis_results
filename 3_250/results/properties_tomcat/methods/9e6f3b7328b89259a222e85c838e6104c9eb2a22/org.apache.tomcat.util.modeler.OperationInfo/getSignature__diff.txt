@@ -1,0 +1,12 @@
+/**
+ * @return the set of parameters for this operation.
+ */
+public ParameterInfo[] getSignature() {
+    Lock readLock = parametersLock.readLock();
+    readLock.lock();
+    try {
+        return this.parameters;
+    } finally {
+        readLock.unlock();
+    }
+}

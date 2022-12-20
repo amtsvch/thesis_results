@@ -1,0 +1,16 @@
+/**
+ * Updates the sessionMaxAliveTime attribute if the candidate value is
+ * larger than the current value.
+ *
+ * @param sessionAliveTime  The candidate value (in seconds) for the new
+ *                          sessionMaxAliveTime value.
+ */
+public void updateSessionMaxAliveTime(int sessionAliveTime) {
+    if (sessionAliveTime > this.sessionMaxAliveTime) {
+        synchronized (sessionMaxAliveTimeUpdateLock) {
+            if (sessionAliveTime > this.sessionMaxAliveTime) {
+                this.sessionMaxAliveTime = sessionAliveTime;
+            }
+        }
+    }
+}

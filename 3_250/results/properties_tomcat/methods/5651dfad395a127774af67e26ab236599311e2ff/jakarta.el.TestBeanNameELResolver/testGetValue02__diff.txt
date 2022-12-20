@@ -1,0 +1,11 @@
+/**
+ * Tests that a valid bean is resolved.
+ */
+@Test
+public void testGetValue02() {
+    BeanNameELResolver resolver = createBeanNameELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Object result = resolver.getValue(context, null, BEAN01_NAME);
+    Assert.assertEquals(BEAN01, result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

@@ -1,0 +1,4 @@
+@Test(expected = IllegalArgumentException.class)
+public void testPageDirectiveImport06() {
+    doTestPageDirectiveImport("java.util.List;import java.util.ArrayList; import java.util.Set");
+}

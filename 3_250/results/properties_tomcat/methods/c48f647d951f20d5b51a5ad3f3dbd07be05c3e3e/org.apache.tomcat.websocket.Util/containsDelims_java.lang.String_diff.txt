@@ -1,0 +1,16 @@
+private static boolean containsDelims(String input) {
+    if (input == null || input.length() == 0) {
+        return false;
+    }
+    for (char c : input.toCharArray()) {
+        switch(c) {
+            case ',':
+            case ';':
+            case '\"':
+            case '=':
+                return true;
+            default:
+        }
+    }
+    return false;
+}

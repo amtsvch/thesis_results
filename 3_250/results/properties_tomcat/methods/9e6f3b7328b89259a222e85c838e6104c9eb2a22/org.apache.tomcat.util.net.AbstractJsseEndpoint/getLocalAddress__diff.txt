@@ -1,0 +1,12 @@
+@Override
+protected final InetSocketAddress getLocalAddress() throws IOException {
+    NetworkChannel serverSock = getServerSocket();
+    if (serverSock == null) {
+        return null;
+    }
+    SocketAddress sa = serverSock.getLocalAddress();
+    if (sa instanceof InetSocketAddress) {
+        return (InetSocketAddress) sa;
+    }
+    return null;
+}

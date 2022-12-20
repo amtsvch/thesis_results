@@ -1,0 +1,3 @@
+static Class<?> getMessageType(MessageHandler listener) {
+    return Util.getGenericType(MessageHandler.class, listener.getClass()).getClazz();
+}

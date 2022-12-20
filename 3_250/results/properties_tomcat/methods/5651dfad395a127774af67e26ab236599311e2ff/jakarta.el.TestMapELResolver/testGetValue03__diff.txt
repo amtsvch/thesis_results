@@ -1,0 +1,16 @@
+/**
+ * Tests that a valid property is resolved.
+ */
+@Test
+public void testGetValue03() {
+    MapELResolver mapELResolver = new MapELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Map<String, String> map = new HashMap<>();
+    map.put("key", "value");
+    Object result = mapELResolver.getValue(context, map, "key");
+    Assert.assertEquals("value", result);
+    Assert.assertTrue(context.isPropertyResolved());
+    result = mapELResolver.getValue(context, map, "unknown-key");
+    Assert.assertNull(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

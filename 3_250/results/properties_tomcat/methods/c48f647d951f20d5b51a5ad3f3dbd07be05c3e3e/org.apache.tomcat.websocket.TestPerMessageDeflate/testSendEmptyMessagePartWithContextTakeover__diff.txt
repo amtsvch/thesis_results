@@ -1,0 +1,22 @@
+/*
+     * https://bz.apache.org/bugzilla/show_bug.cgi?id=61491
+     */
+@Test
+public void testSendEmptyMessagePartWithContextTakeover() throws IOException {
+    // Set up the extension using defaults
+    List<Parameter> parameters = Collections.emptyList();
+    List<List<Parameter>> preferences = new ArrayList<>();
+    preferences.add(parameters);
+    PerMessageDeflate perMessageDeflate = PerMessageDeflate.negotiate(preferences, true);
+    perMessageDeflate.setNext(new TesterTransformation());
+    ByteBuffer bb1 = ByteBuffer.wrap("A".getBytes(StandardCharsets.UTF_8));
+    MessagePart mp1 = new MessagePart(true, 0, Constants.OPCODE_TEXT, bb1, null, null, -1);
+    List<MessagePart> uncompressedParts1 = new ArrayList<>();
+    uncompressedParts1.add(mp1);
+    perMessageDeflate.sendMessagePart(uncompressedParts1);
+    ByteBuffer bb2 = ByteBuffer.wrap("".getBytes(StandardCharsets.UTF_8));
+    MessagePart mp2 = new MessagePart(true, 0, Constants.OPCODE_TEXT, bb2, null, null, -1);
+    List<MessagePart> uncompressedParts2 = new ArrayList<>();
+    uncompressedParts2.add(mp2);
+    perMessageDeflate.sendMessagePart(uncompressedParts2);
+}

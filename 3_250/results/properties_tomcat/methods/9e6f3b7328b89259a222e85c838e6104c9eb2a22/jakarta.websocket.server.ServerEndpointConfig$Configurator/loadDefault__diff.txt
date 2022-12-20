@@ -1,0 +1,19 @@
+private static Configurator loadDefault() {
+    Configurator result = null;
+    ServiceLoader<Configurator> serviceLoader = ServiceLoader.load(Configurator.class);
+    Iterator<Configurator> iter = serviceLoader.iterator();
+    while (result == null && iter.hasNext()) {
+        result = iter.next();
+    }
+    // Fall-back. Also used by unit tests
+    if (result == null) {
+        try {
+            @SuppressWarnings("unchecked")
+            Class<Configurator> clazz = (Class<Configurator>) Class.forName(DEFAULT_IMPL_CLASSNAME);
+            result = clazz.getConstructor().newInstance();
+        } catch (ReflectiveOperationException | IllegalArgumentException | SecurityException e) {
+            // No options left. Just return null.
+        }
+    }
+    return result;
+}

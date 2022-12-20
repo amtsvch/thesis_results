@@ -1,0 +1,3 @@
+static Class<?> getEncoderType(Class<? extends Encoder> encoder) {
+    return Util.getGenericType(Encoder.class, encoder).getClazz();
+}

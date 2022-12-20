@@ -1,0 +1,9 @@
+@Override
+public boolean isReadOnly(ELContext context, Object base, Object property) {
+    Objects.requireNonNull(context);
+    if (base instanceof Map<?, ?>) {
+        context.setPropertyResolved(base, property);
+        return this.readOnly || UNMODIFIABLE.equals(base.getClass());
+    }
+    return this.readOnly;
+}

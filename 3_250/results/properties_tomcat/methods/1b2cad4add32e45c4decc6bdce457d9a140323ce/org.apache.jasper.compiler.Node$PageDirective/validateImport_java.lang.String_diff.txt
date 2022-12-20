@@ -1,0 +1,13 @@
+/**
+ * Just need enough validation to make sure nothing strange is going on.
+ * The compiler will validate this thoroughly when it tries to compile
+ * the resulting .java file.
+ */
+private String validateImport(String importEntry) {
+    // This should either be a fully-qualified class name or a package
+    // name with a wildcard
+    if (importEntry.indexOf(';') > -1) {
+        throw new IllegalArgumentException(Localizer.getMessage("jsp.error.page.invalid.import"));
+    }
+    return importEntry.trim();
+}
