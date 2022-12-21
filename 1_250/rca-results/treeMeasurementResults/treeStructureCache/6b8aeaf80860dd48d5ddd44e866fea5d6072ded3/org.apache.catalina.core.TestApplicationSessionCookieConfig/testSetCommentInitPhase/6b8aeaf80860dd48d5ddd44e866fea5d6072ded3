@@ -1,0 +1,43 @@
+{
+  "call" : "org.apache.catalina.core.TestApplicationSessionCookieConfig#testSetCommentInitPhase",
+  "kiekerPattern" : "public void org.apache.catalina.core.TestApplicationSessionCookieConfig.testSetCommentInitPhase()",
+  "otherKiekerPattern" : null,
+  "module" : "",
+  "children" : [ {
+    "call" : "org.apache.catalina.core.TestApplicationSessionCookieConfig$CustomContext#setState",
+    "kiekerPattern" : "public synchronized void org.apache.catalina.core.TestApplicationSessionCookieConfig$CustomContext.setState(org.apache.catalina.LifecycleState)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.catalina.core.ApplicationSessionCookieConfig#setComment",
+    "kiekerPattern" : "public void org.apache.catalina.core.ApplicationSessionCookieConfig.setComment(java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.catalina.core.TestApplicationSessionCookieConfig$CustomContext#getState",
+      "kiekerPattern" : "public org.apache.catalina.LifecycleState org.apache.catalina.core.TestApplicationSessionCookieConfig$CustomContext.getState()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.core.ApplicationSessionCookieConfig#setAttribute",
+      "kiekerPattern" : "public void org.apache.catalina.core.ApplicationSessionCookieConfig.setAttribute(java.lang.String,java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.catalina.core.ApplicationSessionCookieConfig#getComment",
+    "kiekerPattern" : "public java.lang.String org.apache.catalina.core.ApplicationSessionCookieConfig.getComment()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.catalina.core.ApplicationSessionCookieConfig#getAttribute",
+      "kiekerPattern" : "public java.lang.String org.apache.catalina.core.ApplicationSessionCookieConfig.getAttribute(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  } ]
+}

@@ -1,0 +1,590 @@
+{
+  "measurementConfig" : {
+    "vms" : 100,
+    "earlyStop" : false,
+    "warmup" : 80,
+    "iterations" : 80,
+    "repetitions" : 100,
+    "logFullData" : true,
+    "useGC" : false,
+    "callSyncBetweenVMs" : true,
+    "waitTimeBetweenVMs" : 1000,
+    "maxLogSizeInMb" : 100,
+    "kiekerConfig" : {
+      "useKieker" : true,
+      "useSourceInstrumentation" : true,
+      "useSelectiveInstrumentation" : true,
+      "useAggregation" : true,
+      "useCircularQueue" : false,
+      "enableAdaptiveMonitoring" : false,
+      "adaptiveInstrumentation" : false,
+      "kiekerAggregationInterval" : 5000,
+      "record" : "DURATION",
+      "onlyOneCallRecording" : false,
+      "extractMethod" : false,
+      "traceSizeInMb" : 100,
+      "kiekerQueueSize" : 10000000,
+      "createDefaultConstructor" : true,
+      "kiekerWaitTime" : 5,
+      "excludeForTracing" : [ "new org.eclipse.jetty.logging.JettyLevel.<init>(..)", "* org.eclipse.jetty.logging.JettyLevel.*(..)", "*[] org.eclipse.jetty.logging.JettyLevel.*(..)", "*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "new org.eclipse.jetty.logging.JettyLoggerConfiguration.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "new org.eclipse.jetty.logging.JettyLoggingServiceProvider.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "new org.eclipse.jetty.logging.JettyLoggerFactory.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "new org.eclipse.jetty.logging.StdErrAppender.<init>(..)", "* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*[] org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "new org.eclipse.jetty.logging.Timestamp.<init>(..)", "* org.eclipse.jetty.logging.Timestamp.*(..)", "*[] org.eclipse.jetty.logging.Timestamp.*(..)", "*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "new org.eclipse.jetty.logging.Timestamp$Tick.<init>(..)", "* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*[] org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "new org.eclipse.jetty.logging.JettyLogger.<init>(..)", "* org.eclipse.jetty.logging.JettyLogger.*(..)", "*[] org.eclipse.jetty.logging.JettyLogger.*(..)", "*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)" ]
+    },
+    "saveAll" : true,
+    "javaVersion" : "11.0.16",
+    "measurementStrategy" : "PARALLEL",
+    "statisticsConfig" : {
+      "type1error" : 0.1,
+      "type2error" : 0.1,
+      "outlierFactor" : 3.29,
+      "statisticTest" : "T_TEST"
+    },
+    "executionConfig" : {
+      "timeout" : 600000,
+      "redirectSubprocessOutputToFile" : true,
+      "useTieredCompilation" : false,
+      "removeSnapshots" : false,
+      "useAlternativeBuildfile" : false,
+      "excludeLog4jSlf4jImpl" : false,
+      "excludeLog4jToSlf4j" : false,
+      "executeBeforeClassInMeasurement" : false,
+      "clearMockitoCaches" : false,
+      "onlyMeasureWorkload" : false,
+      "showStart" : false,
+      "redirectToNull" : true,
+      "createDetailDebugFiles" : true,
+      "testExecutor" : "de.stro18.peass_ant.executor.AntTestExecutor",
+      "clazzFolders" : [ "java", "src/main/java", "webapps/examples/WEB-INF/classes" ],
+      "testClazzFolders" : [ "test" ]
+    },
+    "fixedCommitConfig" : {
+      "commit" : "d26f48db6c18c786158514536b044bef4d05fa0a",
+      "commitOld" : "11079b6b97f3bd1d4ebea7359f8d9b118c1d65b5"
+    }
+  },
+  "causeConfig" : {
+    "splitAggregated" : true,
+    "minTime" : 0.1,
+    "ignoreEOIs" : true,
+    "rcaStrategy" : "UNTIL_SOURCE_CHANGE",
+    "levels" : 1,
+    "testCase" : {
+      "clazz" : "org.apache.el.stream.TestCollectionOperations",
+      "method" : "testForEach01",
+      "module" : "",
+      "params" : null
+    },
+    "propertyFolder" : "/home/matusevich/1-final/peass-ant/results/properties_tomcat"
+  },
+  "nodes" : {
+    "call" : "org.apache.el.stream.TestCollectionOperations#testForEach01",
+    "kiekerPattern" : "public void org.apache.el.stream.TestCollectionOperations.testForEach01()",
+    "otherKiekerPattern" : "public void org.apache.el.stream.TestCollectionOperations.testForEach01()",
+    "module" : "",
+    "statistic" : {
+      "meanOld" : 7400241.51281888,
+      "meanCurrent" : 7444356.412755103,
+      "deviationOld" : 555641.4094437729,
+      "deviationCurrent" : 540172.2967265319,
+      "vms" : 98,
+      "callsOld" : 8000,
+      "calls" : 8000,
+      "tvalue" : -0.5635511467016415
+    },
+    "childs" : [ {
+      "call" : "jakarta.el.ELProcessor#getValue",
+      "kiekerPattern" : "public jakarta.el.T jakarta.el.ELProcessor.getValue(java.lang.String,java.lang.Class)",
+      "otherKiekerPattern" : "public jakarta.el.T jakarta.el.ELProcessor.getValue(java.lang.String,java.lang.Class)",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 3487030.669547193,
+        "meanCurrent" : 3506818.213329082,
+        "deviationOld" : 270002.9978022762,
+        "deviationCurrent" : 258845.36689730204,
+        "vms" : 98,
+        "callsOld" : 24000,
+        "calls" : 24000,
+        "tvalue" : -0.5237115145741622
+      },
+      "childs" : [ {
+        "call" : "org.apache.el.ValueExpressionImpl#getValue",
+        "kiekerPattern" : "public org.apache.el.T org.apache.el.ValueExpressionImpl.getValue(jakarta.el.ELContext)",
+        "otherKiekerPattern" : "public org.apache.el.T org.apache.el.ValueExpressionImpl.getValue(jakarta.el.ELContext)",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 1367712.1448262117,
+          "meanCurrent" : 1373693.6437021683,
+          "deviationOld" : 106594.88830476881,
+          "deviationCurrent" : 101195.46444248006,
+          "vms" : 98,
+          "callsOld" : 120000,
+          "calls" : 120000,
+          "tvalue" : -0.40287109459676484
+        },
+        "childs" : [ {
+          "call" : "org.apache.el.parser.AstValue#getValue",
+          "kiekerPattern" : "public java.lang.Object org.apache.el.parser.AstValue.getValue(org.apache.el.lang.EvaluationContext)",
+          "otherKiekerPattern" : "public java.lang.Object org.apache.el.parser.AstValue.getValue(org.apache.el.lang.EvaluationContext)",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 880840.3480639576,
+            "meanCurrent" : 884793.1943012023,
+            "deviationOld" : 69960.53115522164,
+            "deviationCurrent" : 65330.404311553844,
+            "vms" : 98,
+            "callsOld" : 216000,
+            "calls" : 216000,
+            "tvalue" : -0.40880393993003145
+          },
+          "childs" : [ {
+            "call" : "jakarta.el.CompositeELResolver#invoke",
+            "kiekerPattern" : "public java.lang.Object jakarta.el.CompositeELResolver.invoke(jakarta.el.ELContext,java.lang.Object,java.lang.Object,java.lang.Class[],java.lang.Object[])",
+            "otherKiekerPattern" : "public java.lang.Object jakarta.el.CompositeELResolver.invoke(jakarta.el.ELContext,java.lang.Object,java.lang.Object,java.lang.Class[],java.lang.Object[])",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : 400038.08040816325,
+              "meanCurrent" : 401832.78494579095,
+              "deviationOld" : 30168.95673840818,
+              "deviationCurrent" : 29770.11695577086,
+              "vms" : 98,
+              "callsOld" : 312000,
+              "calls" : 312000,
+              "tvalue" : -0.41918077390031033
+            },
+            "childs" : [ {
+              "call" : "jakarta.el.BeanELResolver#invoke",
+              "kiekerPattern" : "public java.lang.Object jakarta.el.BeanELResolver.invoke(jakarta.el.ELContext,java.lang.Object,java.lang.Object,java.lang.Class[],java.lang.Object[])",
+              "otherKiekerPattern" : "public java.lang.Object jakarta.el.BeanELResolver.invoke(jakarta.el.ELContext,java.lang.Object,java.lang.Object,java.lang.Class[],java.lang.Object[])",
+              "module" : "",
+              "statistic" : {
+                "meanOld" : 931081.487492028,
+                "meanCurrent" : 935271.6435108419,
+                "deviationOld" : 67517.16527224504,
+                "deviationCurrent" : 68049.39073664302,
+                "vms" : 98,
+                "callsOld" : 120000,
+                "calls" : 120000,
+                "tvalue" : -0.4327153681303031
+              },
+              "childs" : [ {
+                "call" : "jakarta.el.Util#findMethod",
+                "kiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.findMethod(java.lang.Class,java.lang.Object,java.lang.String,java.lang.Class[],java.lang.Object[])",
+                "otherKiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.findMethod(java.lang.Class,java.lang.Object,java.lang.String,java.lang.Class[],java.lang.Object[])",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : 217962.6522879463,
+                  "meanCurrent" : 218065.47870312503,
+                  "deviationOld" : 17592.495464912947,
+                  "deviationCurrent" : 20065.44902092072,
+                  "vms" : 99,
+                  "callsOld" : 120000,
+                  "calls" : 120000,
+                  "tvalue" : -0.03836287446797804
+                },
+                "childs" : [ {
+                  "call" : "jakarta.el.Util#getMethod",
+                  "kiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.getMethod(java.lang.Class,java.lang.Object,java.lang.reflect.Method)",
+                  "otherKiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.getMethod(java.lang.Class,java.lang.Object,java.lang.reflect.Method)",
+                  "module" : "",
+                  "statistic" : {
+                    "meanOld" : 17593.8018920068,
+                    "meanCurrent" : 18284.927791806942,
+                    "deviationOld" : 3373.166556818888,
+                    "deviationCurrent" : 4192.159586663817,
+                    "vms" : 98,
+                    "callsOld" : 136000,
+                    "calls" : 136000,
+                    "tvalue" : -1.2754487492757605
+                  },
+                  "childs" : [ {
+                    "call" : "ADDED",
+                    "kiekerPattern" : "ADDED",
+                    "otherKiekerPattern" : "static boolean jakarta.el.Util.canAccess(java.lang.Object,java.lang.reflect.AccessibleObject)",
+                    "statistic" : {
+                      "meanOld" : "NaN",
+                      "meanCurrent" : "NaN",
+                      "deviationOld" : "NaN",
+                      "deviationCurrent" : "NaN",
+                      "vms" : 0,
+                      "callsOld" : 0,
+                      "calls" : 0,
+                      "tvalue" : -1.0,
+                      "change" : true
+                    },
+                    "childs" : [ ]
+                  } ]
+                } ]
+              }, {
+                "call" : "org.apache.el.stream.Stream#forEach",
+                "kiekerPattern" : "public java.lang.Object org.apache.el.stream.Stream.forEach(jakarta.el.LambdaExpression)",
+                "otherKiekerPattern" : "public java.lang.Object org.apache.el.stream.Stream.forEach(jakarta.el.LambdaExpression)",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : 2447426.6296875,
+                  "meanCurrent" : 2454283.3684630105,
+                  "deviationOld" : 186681.58409427313,
+                  "deviationCurrent" : 190651.3301384797,
+                  "vms" : 98,
+                  "callsOld" : 24000,
+                  "calls" : 24000,
+                  "tvalue" : -0.25438817358857235
+                },
+                "childs" : [ {
+                  "call" : "jakarta.el.LambdaExpression#invoke",
+                  "kiekerPattern" : "public jakarta.el.java.lang.Object jakarta.el.LambdaExpression.invoke(java.lang.Object)",
+                  "otherKiekerPattern" : "public jakarta.el.java.lang.Object jakarta.el.LambdaExpression.invoke(java.lang.Object)",
+                  "module" : "",
+                  "statistic" : {
+                    "meanOld" : 794997.0755952381,
+                    "meanCurrent" : 797140.1660607994,
+                    "deviationOld" : 60823.530776656204,
+                    "deviationCurrent" : 61551.055031692566,
+                    "vms" : 98,
+                    "callsOld" : 88000,
+                    "calls" : 88000,
+                    "tvalue" : -0.24517130023302303
+                  },
+                  "childs" : [ {
+                    "call" : "jakarta.el.LambdaExpression#invoke",
+                    "kiekerPattern" : "public java.lang.Object jakarta.el.LambdaExpression.invoke(jakarta.el.ELContext,java.lang.Object)",
+                    "otherKiekerPattern" : "public java.lang.Object jakarta.el.LambdaExpression.invoke(jakarta.el.ELContext,java.lang.Object)",
+                    "module" : "",
+                    "statistic" : {
+                      "meanOld" : 779932.5206313777,
+                      "meanCurrent" : 782079.8619685378,
+                      "deviationOld" : 59320.210275359845,
+                      "deviationCurrent" : 59158.239834544656,
+                      "vms" : 98,
+                      "callsOld" : 88000,
+                      "calls" : 88000,
+                      "tvalue" : -0.2537402422110872
+                    },
+                    "childs" : [ {
+                      "call" : "org.apache.el.ValueExpressionImpl#getValue",
+                      "kiekerPattern" : "public org.apache.el.T org.apache.el.ValueExpressionImpl.getValue(jakarta.el.ELContext)",
+                      "otherKiekerPattern" : "public org.apache.el.T org.apache.el.ValueExpressionImpl.getValue(jakarta.el.ELContext)",
+                      "module" : "",
+                      "statistic" : {
+                        "meanOld" : 1367712.1448262117,
+                        "meanCurrent" : 1373693.6437021683,
+                        "deviationOld" : 106594.88830476881,
+                        "deviationCurrent" : 101195.46444248006,
+                        "vms" : 98,
+                        "callsOld" : 120000,
+                        "calls" : 120000,
+                        "tvalue" : -0.40287109459676484
+                      },
+                      "childs" : [ {
+                        "call" : "org.apache.el.parser.AstValue#getValue",
+                        "kiekerPattern" : "public java.lang.Object org.apache.el.parser.AstValue.getValue(org.apache.el.lang.EvaluationContext)",
+                        "otherKiekerPattern" : "public java.lang.Object org.apache.el.parser.AstValue.getValue(org.apache.el.lang.EvaluationContext)",
+                        "module" : "",
+                        "statistic" : {
+                          "meanOld" : 880840.3480639576,
+                          "meanCurrent" : 884793.1943012023,
+                          "deviationOld" : 69960.53115522164,
+                          "deviationCurrent" : 65330.404311553844,
+                          "vms" : 98,
+                          "callsOld" : 216000,
+                          "calls" : 216000,
+                          "tvalue" : -0.40880393993003145
+                        },
+                        "childs" : [ {
+                          "call" : "org.apache.el.parser.AstMethodParameters#getParameters",
+                          "kiekerPattern" : "public java.lang.Object[] org.apache.el.parser.AstMethodParameters.getParameters(org.apache.el.lang.EvaluationContext)",
+                          "otherKiekerPattern" : "public java.lang.Object[] org.apache.el.parser.AstMethodParameters.getParameters(org.apache.el.lang.EvaluationContext)",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : 224040.88815688773,
+                            "meanCurrent" : 224540.71962372455,
+                            "deviationOld" : 21015.353441118164,
+                            "deviationCurrent" : 19693.75306836322,
+                            "vms" : 98,
+                            "callsOld" : 152000,
+                            "calls" : 152000,
+                            "tvalue" : -0.1718032275877872
+                          },
+                          "childs" : [ {
+                            "call" : "org.apache.el.parser.AstPlus#getValue",
+                            "kiekerPattern" : "public java.lang.Object org.apache.el.parser.AstPlus.getValue(org.apache.el.lang.EvaluationContext)",
+                            "otherKiekerPattern" : "public java.lang.Object org.apache.el.parser.AstPlus.getValue(org.apache.el.lang.EvaluationContext)",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : 415603.82104810997,
+                              "meanCurrent" : 418532.4899659863,
+                              "deviationOld" : 37273.319360347814,
+                              "deviationCurrent" : 37883.943161124254,
+                              "vms" : 97,
+                              "callsOld" : 40000,
+                              "calls" : 40000,
+                              "tvalue" : -0.5441450474338027
+                            },
+                            "childs" : [ {
+                              "call" : "org.apache.el.parser.AstValue#getValue",
+                              "kiekerPattern" : "public java.lang.Object org.apache.el.parser.AstValue.getValue(org.apache.el.lang.EvaluationContext)",
+                              "otherKiekerPattern" : "public java.lang.Object org.apache.el.parser.AstValue.getValue(org.apache.el.lang.EvaluationContext)",
+                              "module" : "",
+                              "statistic" : {
+                                "meanOld" : 880840.3480639576,
+                                "meanCurrent" : 884793.1943012023,
+                                "deviationOld" : 69960.53115522164,
+                                "deviationCurrent" : 65330.404311553844,
+                                "vms" : 98,
+                                "callsOld" : 216000,
+                                "calls" : 216000,
+                                "tvalue" : -0.40880393993003145
+                              },
+                              "childs" : [ {
+                                "call" : "jakarta.el.CompositeELResolver#getValue",
+                                "kiekerPattern" : "public java.lang.Object jakarta.el.CompositeELResolver.getValue(jakarta.el.ELContext,java.lang.Object,java.lang.Object)",
+                                "otherKiekerPattern" : "public java.lang.Object jakarta.el.CompositeELResolver.getValue(jakarta.el.ELContext,java.lang.Object,java.lang.Object)",
+                                "module" : "",
+                                "statistic" : {
+                                  "meanOld" : 109928.85642310495,
+                                  "meanCurrent" : 110463.63128644312,
+                                  "deviationOld" : 10304.282574870067,
+                                  "deviationCurrent" : 10169.145872312709,
+                                  "vms" : 98,
+                                  "callsOld" : 216000,
+                                  "calls" : 216000,
+                                  "tvalue" : -0.3656781285402186
+                                },
+                                "childs" : [ {
+                                  "call" : "jakarta.el.StaticFieldELResolver#getValue",
+                                  "kiekerPattern" : "public java.lang.Object jakarta.el.StaticFieldELResolver.getValue(jakarta.el.ELContext,java.lang.Object,java.lang.Object)",
+                                  "otherKiekerPattern" : "public java.lang.Object jakarta.el.StaticFieldELResolver.getValue(jakarta.el.ELContext,java.lang.Object,java.lang.Object)",
+                                  "module" : "",
+                                  "statistic" : {
+                                    "meanOld" : 4290.114647108843,
+                                    "meanCurrent" : 4260.710763888889,
+                                    "deviationOld" : 442.3246200196872,
+                                    "deviationCurrent" : 528.9915692745421,
+                                    "vms" : 98,
+                                    "callsOld" : 88000,
+                                    "calls" : 88000,
+                                    "tvalue" : 0.4233941769029726
+                                  },
+                                  "childs" : [ ]
+                                }, {
+                                  "call" : "jakarta.el.BeanELResolver#getValue",
+                                  "kiekerPattern" : "public java.lang.Object jakarta.el.BeanELResolver.getValue(jakarta.el.ELContext,java.lang.Object,java.lang.Object)",
+                                  "otherKiekerPattern" : "public java.lang.Object jakarta.el.BeanELResolver.getValue(jakarta.el.ELContext,java.lang.Object,java.lang.Object)",
+                                  "module" : "",
+                                  "statistic" : {
+                                    "meanOld" : 163740.33974999998,
+                                    "meanCurrent" : 165445.87193813128,
+                                    "deviationOld" : 17598.753522217186,
+                                    "deviationCurrent" : 17114.941418065882,
+                                    "vms" : 99,
+                                    "callsOld" : 88000,
+                                    "calls" : 88000,
+                                    "tvalue" : -0.6930560659445749
+                                  },
+                                  "childs" : [ {
+                                    "call" : "jakarta.el.BeanELResolver$BeanProperty#read",
+                                    "kiekerPattern" : "private java.lang.reflect.Method jakarta.el.BeanELResolver$BeanProperty.read(jakarta.el.ELContext,java.lang.Object)",
+                                    "otherKiekerPattern" : "private java.lang.reflect.Method jakarta.el.BeanELResolver$BeanProperty.read(jakarta.el.ELContext,java.lang.Object)",
+                                    "module" : "",
+                                    "statistic" : {
+                                      "meanOld" : 12660.142219387755,
+                                      "meanCurrent" : 12441.194313350341,
+                                      "deviationOld" : 2221.5887836126367,
+                                      "deviationCurrent" : 1861.7902205019723,
+                                      "vms" : 98,
+                                      "callsOld" : 88000,
+                                      "calls" : 88000,
+                                      "tvalue" : 0.7477729374601099
+                                    },
+                                    "childs" : [ {
+                                      "call" : "jakarta.el.Util#getMethod",
+                                      "kiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.getMethod(java.lang.Class,java.lang.Object,java.lang.reflect.Method)",
+                                      "otherKiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.getMethod(java.lang.Class,java.lang.Object,java.lang.reflect.Method)",
+                                      "module" : "",
+                                      "statistic" : {
+                                        "meanOld" : 17593.8018920068,
+                                        "meanCurrent" : 18284.927791806942,
+                                        "deviationOld" : 3373.166556818888,
+                                        "deviationCurrent" : 4192.159586663817,
+                                        "vms" : 98,
+                                        "callsOld" : 136000,
+                                        "calls" : 136000,
+                                        "tvalue" : -1.2754487492757605
+                                      },
+                                      "childs" : [ {
+                                        "call" : "ADDED",
+                                        "kiekerPattern" : "ADDED",
+                                        "otherKiekerPattern" : "static boolean jakarta.el.Util.canAccess(java.lang.Object,java.lang.reflect.AccessibleObject)",
+                                        "statistic" : {
+                                          "meanOld" : "NaN",
+                                          "meanCurrent" : "NaN",
+                                          "deviationOld" : "NaN",
+                                          "deviationCurrent" : "NaN",
+                                          "vms" : 0,
+                                          "callsOld" : 0,
+                                          "calls" : 0,
+                                          "tvalue" : -1.0,
+                                          "change" : true
+                                        },
+                                        "childs" : [ ]
+                                      } ]
+                                    } ]
+                                  } ]
+                                } ]
+                              } ]
+                            } ]
+                          }, {
+                            "call" : "org.apache.el.parser.AstMinus#getValue",
+                            "kiekerPattern" : "public java.lang.Object org.apache.el.parser.AstMinus.getValue(org.apache.el.lang.EvaluationContext)",
+                            "otherKiekerPattern" : "public java.lang.Object org.apache.el.parser.AstMinus.getValue(org.apache.el.lang.EvaluationContext)",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : 212417.88318750003,
+                              "meanCurrent" : 211142.61026936027,
+                              "deviationOld" : 27399.6673159722,
+                              "deviationCurrent" : 28527.906633086845,
+                              "vms" : 99,
+                              "callsOld" : 40000,
+                              "calls" : 40000,
+                              "tvalue" : 0.3215628400612969
+                            },
+                            "childs" : [ {
+                              "call" : "org.apache.el.parser.AstValue#getValue",
+                              "kiekerPattern" : "public java.lang.Object org.apache.el.parser.AstValue.getValue(org.apache.el.lang.EvaluationContext)",
+                              "otherKiekerPattern" : "public java.lang.Object org.apache.el.parser.AstValue.getValue(org.apache.el.lang.EvaluationContext)",
+                              "module" : "",
+                              "statistic" : {
+                                "meanOld" : 880840.3480639576,
+                                "meanCurrent" : 884793.1943012023,
+                                "deviationOld" : 69960.53115522164,
+                                "deviationCurrent" : 65330.404311553844,
+                                "vms" : 98,
+                                "callsOld" : 216000,
+                                "calls" : 216000,
+                                "tvalue" : -0.40880393993003145
+                              },
+                              "childs" : [ {
+                                "call" : "jakarta.el.CompositeELResolver#getValue",
+                                "kiekerPattern" : "public java.lang.Object jakarta.el.CompositeELResolver.getValue(jakarta.el.ELContext,java.lang.Object,java.lang.Object)",
+                                "otherKiekerPattern" : "public java.lang.Object jakarta.el.CompositeELResolver.getValue(jakarta.el.ELContext,java.lang.Object,java.lang.Object)",
+                                "module" : "",
+                                "statistic" : {
+                                  "meanOld" : 109928.85642310495,
+                                  "meanCurrent" : 110463.63128644312,
+                                  "deviationOld" : 10304.282574870067,
+                                  "deviationCurrent" : 10169.145872312709,
+                                  "vms" : 98,
+                                  "callsOld" : 216000,
+                                  "calls" : 216000,
+                                  "tvalue" : -0.3656781285402186
+                                },
+                                "childs" : [ {
+                                  "call" : "jakarta.el.StaticFieldELResolver#getValue",
+                                  "kiekerPattern" : "public java.lang.Object jakarta.el.StaticFieldELResolver.getValue(jakarta.el.ELContext,java.lang.Object,java.lang.Object)",
+                                  "otherKiekerPattern" : "public java.lang.Object jakarta.el.StaticFieldELResolver.getValue(jakarta.el.ELContext,java.lang.Object,java.lang.Object)",
+                                  "module" : "",
+                                  "statistic" : {
+                                    "meanOld" : 4290.114647108843,
+                                    "meanCurrent" : 4260.710763888889,
+                                    "deviationOld" : 442.3246200196872,
+                                    "deviationCurrent" : 528.9915692745421,
+                                    "vms" : 98,
+                                    "callsOld" : 88000,
+                                    "calls" : 88000,
+                                    "tvalue" : 0.4233941769029726
+                                  },
+                                  "childs" : [ ]
+                                } ]
+                              } ]
+                            } ]
+                          } ]
+                        }, {
+                          "call" : "jakarta.el.CompositeELResolver#invoke",
+                          "kiekerPattern" : "public java.lang.Object jakarta.el.CompositeELResolver.invoke(jakarta.el.ELContext,java.lang.Object,java.lang.Object,java.lang.Class[],java.lang.Object[])",
+                          "otherKiekerPattern" : "public java.lang.Object jakarta.el.CompositeELResolver.invoke(jakarta.el.ELContext,java.lang.Object,java.lang.Object,java.lang.Class[],java.lang.Object[])",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : 400038.08040816325,
+                            "meanCurrent" : 401832.78494579095,
+                            "deviationOld" : 30168.95673840818,
+                            "deviationCurrent" : 29770.11695577086,
+                            "vms" : 98,
+                            "callsOld" : 312000,
+                            "calls" : 312000,
+                            "tvalue" : -0.41918077390031033
+                          },
+                          "childs" : [ {
+                            "call" : "jakarta.el.BeanELResolver#invoke",
+                            "kiekerPattern" : "public java.lang.Object jakarta.el.BeanELResolver.invoke(jakarta.el.ELContext,java.lang.Object,java.lang.Object,java.lang.Class[],java.lang.Object[])",
+                            "otherKiekerPattern" : "public java.lang.Object jakarta.el.BeanELResolver.invoke(jakarta.el.ELContext,java.lang.Object,java.lang.Object,java.lang.Class[],java.lang.Object[])",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : 931081.487492028,
+                              "meanCurrent" : 935271.6435108419,
+                              "deviationOld" : 67517.16527224504,
+                              "deviationCurrent" : 68049.39073664302,
+                              "vms" : 98,
+                              "callsOld" : 120000,
+                              "calls" : 120000,
+                              "tvalue" : -0.4327153681303031
+                            },
+                            "childs" : [ {
+                              "call" : "jakarta.el.Util#findMethod",
+                              "kiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.findMethod(java.lang.Class,java.lang.Object,java.lang.String,java.lang.Class[],java.lang.Object[])",
+                              "otherKiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.findMethod(java.lang.Class,java.lang.Object,java.lang.String,java.lang.Class[],java.lang.Object[])",
+                              "module" : "",
+                              "statistic" : {
+                                "meanOld" : 217962.6522879463,
+                                "meanCurrent" : 218065.47870312503,
+                                "deviationOld" : 17592.495464912947,
+                                "deviationCurrent" : 20065.44902092072,
+                                "vms" : 99,
+                                "callsOld" : 120000,
+                                "calls" : 120000,
+                                "tvalue" : -0.03836287446797804
+                              },
+                              "childs" : [ {
+                                "call" : "jakarta.el.Util#getMethod",
+                                "kiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.getMethod(java.lang.Class,java.lang.Object,java.lang.reflect.Method)",
+                                "otherKiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.getMethod(java.lang.Class,java.lang.Object,java.lang.reflect.Method)",
+                                "module" : "",
+                                "statistic" : {
+                                  "meanOld" : 17593.8018920068,
+                                  "meanCurrent" : 18284.927791806942,
+                                  "deviationOld" : 3373.166556818888,
+                                  "deviationCurrent" : 4192.159586663817,
+                                  "vms" : 98,
+                                  "callsOld" : 136000,
+                                  "calls" : 136000,
+                                  "tvalue" : -1.2754487492757605
+                                },
+                                "childs" : [ {
+                                  "call" : "ADDED",
+                                  "kiekerPattern" : "ADDED",
+                                  "otherKiekerPattern" : "static boolean jakarta.el.Util.canAccess(java.lang.Object,java.lang.reflect.AccessibleObject)",
+                                  "statistic" : {
+                                    "meanOld" : "NaN",
+                                    "meanCurrent" : "NaN",
+                                    "deviationOld" : "NaN",
+                                    "deviationCurrent" : "NaN",
+                                    "vms" : 0,
+                                    "callsOld" : 0,
+                                    "calls" : 0,
+                                    "tvalue" : -1.0,
+                                    "change" : true
+                                  },
+                                  "childs" : [ ]
+                                } ]
+                              } ]
+                            } ]
+                          } ]
+                        } ]
+                      } ]
+                    } ]
+                  } ]
+                } ]
+              } ]
+            } ]
+          } ]
+        } ]
+      } ]
+    } ]
+  }
+}

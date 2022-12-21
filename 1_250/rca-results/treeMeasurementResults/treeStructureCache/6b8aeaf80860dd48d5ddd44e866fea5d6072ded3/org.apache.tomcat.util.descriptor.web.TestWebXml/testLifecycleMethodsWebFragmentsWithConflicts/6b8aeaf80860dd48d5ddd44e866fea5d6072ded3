@@ -1,0 +1,439 @@
+{
+  "call" : "org.apache.tomcat.util.descriptor.web.TestWebXml#testLifecycleMethodsWebFragmentsWithConflicts",
+  "kiekerPattern" : "public void org.apache.tomcat.util.descriptor.web.TestWebXml.testLifecycleMethodsWebFragmentsWithConflicts()",
+  "otherKiekerPattern" : null,
+  "module" : "",
+  "children" : [ {
+    "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+    "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+      "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+        "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.util.descriptor.web.XmlEncodingBase#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.util.descriptor.web.XmlEncodingBase.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.juli.logging.LogFactory#<init>",
+    "kiekerPattern" : "private new org.apache.juli.logging.LogFactory.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.juli.logging.LogFactory#getLog",
+    "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.juli.logging.LogFactory#getFactory",
+      "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.juli.logging.LogFactory#getInstance",
+      "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.Class)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.juli.logging.LogFactory#getInstance",
+        "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+          "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+            "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "call" : "jakarta.servlet.SessionTrackingMode#<init>",
+    "kiekerPattern" : "public new jakarta.servlet.SessionTrackingMode.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.util.descriptor.web.SessionConfig#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.util.descriptor.web.SessionConfig.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.util.descriptor.web.WebXml#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.util.descriptor.web.WebXml.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.util.descriptor.web.WebXml#addPostConstructMethods",
+    "kiekerPattern" : "public void org.apache.tomcat.util.descriptor.web.WebXml.addPostConstructMethods(java.lang.String,java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.util.descriptor.web.WebXml#addPreDestroyMethods",
+    "kiekerPattern" : "public void org.apache.tomcat.util.descriptor.web.WebXml.addPreDestroyMethods(java.lang.String,java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.util.descriptor.web.WebXml#merge",
+    "kiekerPattern" : "public boolean org.apache.tomcat.util.descriptor.web.WebXml.merge(java.util.Set)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.descriptor.web.XmlEncodingBase#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.util.descriptor.web.XmlEncodingBase.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.juli.logging.LogFactory#getLog",
+      "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.juli.logging.LogFactory#getFactory",
+        "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.juli.logging.LogFactory#getInstance",
+        "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.Class)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.juli.logging.LogFactory#getInstance",
+          "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+            "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+              "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            } ]
+          } ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.SessionConfig#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.util.descriptor.web.SessionConfig.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.util.descriptor.web.WebXml.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getContextParams",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getContextParams()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#mergeMap",
+      "kiekerPattern" : "private boolean org.apache.tomcat.util.descriptor.web.WebXml.mergeMap(java.util.Map,java.util.Map,java.util.Map,org.apache.tomcat.util.descriptor.web.WebXml,java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getDisplayName",
+      "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.descriptor.web.WebXml.getDisplayName()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getDenyUncoveredHttpMethods",
+      "kiekerPattern" : "public boolean org.apache.tomcat.util.descriptor.web.WebXml.getDenyUncoveredHttpMethods()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getRequestCharacterEncoding",
+      "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.descriptor.web.WebXml.getRequestCharacterEncoding()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getResponseCharacterEncoding",
+      "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.descriptor.web.WebXml.getResponseCharacterEncoding()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getEjbLocalRefs",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getEjbLocalRefs()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#mergeResourceMap",
+      "kiekerPattern" : "private boolean org.apache.tomcat.util.descriptor.web.WebXml.mergeResourceMap(java.util.Map,java.util.Map,java.util.Map,org.apache.tomcat.util.descriptor.web.WebXml)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getEjbRefs",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getEjbRefs()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getEnvEntries",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getEnvEntries()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getErrorPages",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getErrorPages()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getFilterMappings",
+      "kiekerPattern" : "public java.util.Set org.apache.tomcat.util.descriptor.web.WebXml.getFilterMappings()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getFilters",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getFilters()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getJspPropertyGroups",
+      "kiekerPattern" : "public java.util.Set org.apache.tomcat.util.descriptor.web.WebXml.getJspPropertyGroups()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getListeners",
+      "kiekerPattern" : "public java.util.Set org.apache.tomcat.util.descriptor.web.WebXml.getListeners()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getLocaleEncodingMappings",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getLocaleEncodingMappings()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getLoginConfig",
+      "kiekerPattern" : "public org.apache.tomcat.util.descriptor.web.LoginConfig org.apache.tomcat.util.descriptor.web.WebXml.getLoginConfig()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getMessageDestinationRefs",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getMessageDestinationRefs()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getMessageDestinations",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getMessageDestinations()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getMimeMappings",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getMimeMappings()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getResourceEnvRefs",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getResourceEnvRefs()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getResourceRefs",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getResourceRefs()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getSecurityConstraints",
+      "kiekerPattern" : "public java.util.Set org.apache.tomcat.util.descriptor.web.WebXml.getSecurityConstraints()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getSecurityRoles",
+      "kiekerPattern" : "public java.util.Set org.apache.tomcat.util.descriptor.web.WebXml.getSecurityRoles()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getServiceRefs",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getServiceRefs()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getServletMappings",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getServletMappings()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getServlets",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getServlets()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.SessionConfig#getSessionTimeout",
+      "kiekerPattern" : "public java.lang.Integer org.apache.tomcat.util.descriptor.web.SessionConfig.getSessionTimeout()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getSessionConfig",
+      "kiekerPattern" : "public org.apache.tomcat.util.descriptor.web.SessionConfig org.apache.tomcat.util.descriptor.web.WebXml.getSessionConfig()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.SessionConfig#getCookieName",
+      "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.descriptor.web.SessionConfig.getCookieName()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.SessionConfig#setCookieName",
+      "kiekerPattern" : "public void org.apache.tomcat.util.descriptor.web.SessionConfig.setCookieName(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.SessionConfig#getCookieAttributes",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.SessionConfig.getCookieAttributes()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.SessionConfig#getSessionTrackingModes",
+      "kiekerPattern" : "public java.util.EnumSet org.apache.tomcat.util.descriptor.web.SessionConfig.getSessionTrackingModes()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getTaglibs",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getTaglibs()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getWelcomeFiles",
+      "kiekerPattern" : "public java.util.Set org.apache.tomcat.util.descriptor.web.WebXml.getWelcomeFiles()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getPostConstructMethods",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getPostConstructMethods()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#mergeLifecycleCallback",
+      "kiekerPattern" : "private boolean org.apache.tomcat.util.descriptor.web.WebXml.mergeLifecycleCallback(java.util.Map,java.util.Map,org.apache.tomcat.util.descriptor.web.WebXml,java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getName",
+        "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.descriptor.web.WebXml.getName()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getURL",
+        "kiekerPattern" : "public java.net.URL org.apache.tomcat.util.descriptor.web.WebXml.getURL()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.res.StringManager#getString",
+        "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.res.StringManager.getString(java.lang.String,java.lang.Object)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getString",
+          "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.res.StringManager.getString(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.juli.logging.DirectJDKLog#error",
+        "kiekerPattern" : "public final void org.apache.juli.logging.DirectJDKLog.error(java.lang.Object)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.juli.logging.DirectJDKLog#log",
+          "kiekerPattern" : "private void org.apache.juli.logging.DirectJDKLog.log(java.util.logging.Level,java.lang.String,java.lang.Throwable)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getPreDestroyMethods",
+      "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getPreDestroyMethods()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getPostConstructMethods",
+    "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getPostConstructMethods()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.util.descriptor.web.WebXml#getPreDestroyMethods",
+    "kiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.WebXml.getPreDestroyMethods()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  } ]
+}

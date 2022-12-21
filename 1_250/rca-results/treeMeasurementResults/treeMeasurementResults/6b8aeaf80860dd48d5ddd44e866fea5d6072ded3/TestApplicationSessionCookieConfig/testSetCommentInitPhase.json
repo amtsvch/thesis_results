@@ -1,0 +1,158 @@
+{
+  "measurementConfig" : {
+    "vms" : 100,
+    "earlyStop" : false,
+    "warmup" : 80,
+    "iterations" : 80,
+    "repetitions" : 100,
+    "logFullData" : true,
+    "useGC" : false,
+    "callSyncBetweenVMs" : true,
+    "waitTimeBetweenVMs" : 1000,
+    "maxLogSizeInMb" : 100,
+    "kiekerConfig" : {
+      "useKieker" : true,
+      "useSourceInstrumentation" : true,
+      "useSelectiveInstrumentation" : true,
+      "useAggregation" : true,
+      "useCircularQueue" : false,
+      "enableAdaptiveMonitoring" : false,
+      "adaptiveInstrumentation" : false,
+      "kiekerAggregationInterval" : 5000,
+      "record" : "DURATION",
+      "onlyOneCallRecording" : false,
+      "extractMethod" : false,
+      "traceSizeInMb" : 100,
+      "kiekerQueueSize" : 10000000,
+      "createDefaultConstructor" : true,
+      "kiekerWaitTime" : 5,
+      "excludeForTracing" : [ "new org.eclipse.jetty.logging.JettyLevel.<init>(..)", "* org.eclipse.jetty.logging.JettyLevel.*(..)", "*[] org.eclipse.jetty.logging.JettyLevel.*(..)", "*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "new org.eclipse.jetty.logging.JettyLoggerConfiguration.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "new org.eclipse.jetty.logging.JettyLoggingServiceProvider.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "new org.eclipse.jetty.logging.JettyLoggerFactory.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "new org.eclipse.jetty.logging.StdErrAppender.<init>(..)", "* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*[] org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "new org.eclipse.jetty.logging.Timestamp.<init>(..)", "* org.eclipse.jetty.logging.Timestamp.*(..)", "*[] org.eclipse.jetty.logging.Timestamp.*(..)", "*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "new org.eclipse.jetty.logging.Timestamp$Tick.<init>(..)", "* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*[] org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "new org.eclipse.jetty.logging.JettyLogger.<init>(..)", "* org.eclipse.jetty.logging.JettyLogger.*(..)", "*[] org.eclipse.jetty.logging.JettyLogger.*(..)", "*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)" ]
+    },
+    "saveAll" : true,
+    "javaVersion" : "11.0.16",
+    "measurementStrategy" : "PARALLEL",
+    "statisticsConfig" : {
+      "type1error" : 0.1,
+      "type2error" : 0.1,
+      "outlierFactor" : 3.29,
+      "statisticTest" : "T_TEST"
+    },
+    "executionConfig" : {
+      "timeout" : 600000,
+      "redirectSubprocessOutputToFile" : true,
+      "useTieredCompilation" : false,
+      "removeSnapshots" : false,
+      "useAlternativeBuildfile" : false,
+      "excludeLog4jSlf4jImpl" : false,
+      "excludeLog4jToSlf4j" : false,
+      "executeBeforeClassInMeasurement" : false,
+      "clearMockitoCaches" : false,
+      "onlyMeasureWorkload" : false,
+      "showStart" : false,
+      "redirectToNull" : true,
+      "createDetailDebugFiles" : true,
+      "testExecutor" : "de.stro18.peass_ant.executor.AntTestExecutor",
+      "clazzFolders" : [ "java", "src/main/java", "webapps/examples/WEB-INF/classes" ],
+      "testClazzFolders" : [ "test" ]
+    },
+    "fixedCommitConfig" : {
+      "commit" : "6b8aeaf80860dd48d5ddd44e866fea5d6072ded3",
+      "commitOld" : "fa64c162a505bf36c0335d713dea5606f9185dc2"
+    }
+  },
+  "causeConfig" : {
+    "splitAggregated" : true,
+    "minTime" : 0.1,
+    "ignoreEOIs" : true,
+    "rcaStrategy" : "UNTIL_SOURCE_CHANGE",
+    "levels" : 1,
+    "testCase" : {
+      "clazz" : "org.apache.catalina.core.TestApplicationSessionCookieConfig",
+      "method" : "testSetCommentInitPhase",
+      "module" : "",
+      "params" : null
+    },
+    "propertyFolder" : "/home/matusevich/1-final/peass-ant/results/properties_tomcat"
+  },
+  "nodes" : {
+    "call" : "org.apache.catalina.core.TestApplicationSessionCookieConfig#testSetCommentInitPhase",
+    "kiekerPattern" : "public void org.apache.catalina.core.TestApplicationSessionCookieConfig.testSetCommentInitPhase()",
+    "otherKiekerPattern" : "public void org.apache.catalina.core.TestApplicationSessionCookieConfig.testSetCommentInitPhase()",
+    "module" : "",
+    "statistic" : {
+      "meanOld" : 69859.05644132657,
+      "meanCurrent" : 89635.43692010306,
+      "deviationOld" : 29965.68561445693,
+      "deviationCurrent" : 26071.507481790653,
+      "vms" : 97,
+      "callsOld" : 8000,
+      "calls" : 8000,
+      "tvalue" : -4.918016481153521
+    },
+    "childs" : [ {
+      "call" : "org.apache.catalina.core.ApplicationSessionCookieConfig#setComment",
+      "kiekerPattern" : "public void org.apache.catalina.core.ApplicationSessionCookieConfig.setComment(java.lang.String)",
+      "otherKiekerPattern" : "public void org.apache.catalina.core.ApplicationSessionCookieConfig.setComment(java.lang.String)",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 11215.011469072168,
+        "meanCurrent" : 21909.247100515466,
+        "deviationOld" : 6238.830035947213,
+        "deviationCurrent" : 4419.881953437333,
+        "vms" : 97,
+        "callsOld" : 8000,
+        "calls" : 8000,
+        "tvalue" : -13.775656804209186
+      },
+      "childs" : [ {
+        "call" : "ADDED",
+        "kiekerPattern" : "ADDED",
+        "otherKiekerPattern" : "public void org.apache.catalina.core.ApplicationSessionCookieConfig.setAttribute(java.lang.String,java.lang.String)",
+        "statistic" : {
+          "meanOld" : "NaN",
+          "meanCurrent" : "NaN",
+          "deviationOld" : "NaN",
+          "deviationCurrent" : "NaN",
+          "vms" : 0,
+          "callsOld" : 0,
+          "calls" : 0,
+          "tvalue" : -1.0,
+          "change" : true
+        },
+        "childs" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.catalina.core.ApplicationSessionCookieConfig#getComment",
+      "kiekerPattern" : "public java.lang.String org.apache.catalina.core.ApplicationSessionCookieConfig.getComment()",
+      "otherKiekerPattern" : "public java.lang.String org.apache.catalina.core.ApplicationSessionCookieConfig.getComment()",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 5759.2311224489795,
+        "meanCurrent" : 15281.762693298973,
+        "deviationOld" : 1499.4122599977914,
+        "deviationCurrent" : 2888.7521665204126,
+        "vms" : 97,
+        "callsOld" : 8000,
+        "calls" : 8000,
+        "tvalue" : -28.846756852168422
+      },
+      "childs" : [ {
+        "call" : "ADDED",
+        "kiekerPattern" : "ADDED",
+        "otherKiekerPattern" : "public java.lang.String org.apache.catalina.core.ApplicationSessionCookieConfig.getAttribute(java.lang.String)",
+        "statistic" : {
+          "meanOld" : "NaN",
+          "meanCurrent" : "NaN",
+          "deviationOld" : "NaN",
+          "deviationCurrent" : "NaN",
+          "vms" : 0,
+          "callsOld" : 0,
+          "calls" : 0,
+          "tvalue" : -1.0,
+          "change" : true
+        },
+        "childs" : [ ]
+      } ]
+    } ]
+  }
+}
