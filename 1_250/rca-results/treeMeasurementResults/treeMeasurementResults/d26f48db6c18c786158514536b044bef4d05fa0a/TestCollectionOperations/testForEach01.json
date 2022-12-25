@@ -1,6 +1,6 @@
 {
   "measurementConfig" : {
-    "vms" : 100,
+    "vms" : 500,
     "earlyStop" : false,
     "warmup" : 80,
     "iterations" : 80,
@@ -80,14 +80,14 @@
     "otherKiekerPattern" : "public void org.apache.el.stream.TestCollectionOperations.testForEach01()",
     "module" : "",
     "statistic" : {
-      "meanOld" : 7400241.51281888,
-      "meanCurrent" : 7444356.412755103,
-      "deviationOld" : 555641.4094437729,
-      "deviationCurrent" : 540172.2967265319,
-      "vms" : 98,
-      "callsOld" : 8000,
-      "calls" : 8000,
-      "tvalue" : -0.5635511467016415
+      "meanOld" : 7379130.699574747,
+      "meanCurrent" : 7073565.343062499,
+      "deviationOld" : 573577.0373096799,
+      "deviationCurrent" : 979938.7360623621,
+      "vms" : 492,
+      "callsOld" : 40000,
+      "calls" : 40000,
+      "tvalue" : 5.9939081006105495
     },
     "childs" : [ {
       "call" : "jakarta.el.ELProcessor#getValue",
@@ -95,14 +95,14 @@
       "otherKiekerPattern" : "public jakarta.el.T jakarta.el.ELProcessor.getValue(java.lang.String,java.lang.Class)",
       "module" : "",
       "statistic" : {
-        "meanOld" : 3487030.669547193,
-        "meanCurrent" : 3506818.213329082,
-        "deviationOld" : 270002.9978022762,
-        "deviationCurrent" : 258845.36689730204,
-        "vms" : 98,
-        "callsOld" : 24000,
-        "calls" : 24000,
-        "tvalue" : -0.5237115145741622
+        "meanOld" : 3476262.972764176,
+        "meanCurrent" : 3330908.9049687497,
+        "deviationOld" : 273905.54312224203,
+        "deviationCurrent" : 469081.52274241095,
+        "vms" : 492,
+        "callsOld" : 120000,
+        "calls" : 120000,
+        "tvalue" : 5.960117343728694
       },
       "childs" : [ {
         "call" : "org.apache.el.ValueExpressionImpl#getValue",
@@ -110,14 +110,14 @@
         "otherKiekerPattern" : "public org.apache.el.T org.apache.el.ValueExpressionImpl.getValue(jakarta.el.ELContext)",
         "module" : "",
         "statistic" : {
-          "meanOld" : 1367712.1448262117,
-          "meanCurrent" : 1373693.6437021683,
-          "deviationOld" : 106594.88830476881,
-          "deviationCurrent" : 101195.46444248006,
-          "vms" : 98,
-          "callsOld" : 120000,
-          "calls" : 120000,
-          "tvalue" : -0.40287109459676484
+          "meanOld" : 1361267.2944219406,
+          "meanCurrent" : 1306601.4191390637,
+          "deviationOld" : 107288.97900211395,
+          "deviationCurrent" : 182004.73395587728,
+          "vms" : 493,
+          "callsOld" : 600000,
+          "calls" : 600000,
+          "tvalue" : 5.7643238186549
         },
         "childs" : [ {
           "call" : "org.apache.el.parser.AstValue#getValue",
@@ -125,14 +125,14 @@
           "otherKiekerPattern" : "public java.lang.Object org.apache.el.parser.AstValue.getValue(org.apache.el.lang.EvaluationContext)",
           "module" : "",
           "statistic" : {
-            "meanOld" : 880840.3480639576,
-            "meanCurrent" : 884793.1943012023,
-            "deviationOld" : 69960.53115522164,
-            "deviationCurrent" : 65330.404311553844,
-            "vms" : 98,
-            "callsOld" : 216000,
-            "calls" : 216000,
-            "tvalue" : -0.40880393993003145
+            "meanOld" : 876251.6520667989,
+            "meanCurrent" : 840471.2470589281,
+            "deviationOld" : 69030.69994811207,
+            "deviationCurrent" : 116221.1463788652,
+            "vms" : 493,
+            "callsOld" : 1080000,
+            "calls" : 1080000,
+            "tvalue" : 5.896644974022643
           },
           "childs" : [ {
             "call" : "jakarta.el.CompositeELResolver#invoke",
@@ -140,14 +140,14 @@
             "otherKiekerPattern" : "public java.lang.Object jakarta.el.CompositeELResolver.invoke(jakarta.el.ELContext,java.lang.Object,java.lang.Object,java.lang.Class[],java.lang.Object[])",
             "module" : "",
             "statistic" : {
-              "meanOld" : 400038.08040816325,
-              "meanCurrent" : 401832.78494579095,
-              "deviationOld" : 30168.95673840818,
-              "deviationCurrent" : 29770.11695577086,
-              "vms" : 98,
-              "callsOld" : 312000,
-              "calls" : 312000,
-              "tvalue" : -0.41918077390031033
+              "meanOld" : 398262.476696888,
+              "meanCurrent" : 382570.7219137503,
+              "deviationOld" : 31070.069216653217,
+              "deviationCurrent" : 52937.80240713262,
+              "vms" : 493,
+              "callsOld" : 1560000,
+              "calls" : 1560000,
+              "tvalue" : 5.695319544968654
             },
             "childs" : [ {
               "call" : "jakarta.el.BeanELResolver#invoke",
@@ -155,14 +155,14 @@
               "otherKiekerPattern" : "public java.lang.Object jakarta.el.BeanELResolver.invoke(jakarta.el.ELContext,java.lang.Object,java.lang.Object,java.lang.Class[],java.lang.Object[])",
               "module" : "",
               "statistic" : {
-                "meanOld" : 931081.487492028,
-                "meanCurrent" : 935271.6435108419,
-                "deviationOld" : 67517.16527224504,
-                "deviationCurrent" : 68049.39073664302,
-                "vms" : 98,
-                "callsOld" : 120000,
-                "calls" : 120000,
-                "tvalue" : -0.4327153681303031
+                "meanOld" : 928727.932525773,
+                "meanCurrent" : 892339.0375624996,
+                "deviationOld" : 68532.07517218638,
+                "deviationCurrent" : 120511.88644456142,
+                "vms" : 492,
+                "callsOld" : 600000,
+                "calls" : 600000,
+                "tvalue" : 5.8471593053689235
               },
               "childs" : [ {
                 "call" : "jakarta.el.Util#findMethod",
@@ -170,14 +170,14 @@
                 "otherKiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.findMethod(java.lang.Class,java.lang.Object,java.lang.String,java.lang.Class[],java.lang.Object[])",
                 "module" : "",
                 "statistic" : {
-                  "meanOld" : 217962.6522879463,
-                  "meanCurrent" : 218065.47870312503,
-                  "deviationOld" : 17592.495464912947,
-                  "deviationCurrent" : 20065.44902092072,
-                  "vms" : 99,
-                  "callsOld" : 120000,
-                  "calls" : 120000,
-                  "tvalue" : -0.03836287446797804
+                  "meanOld" : 216583.53517385997,
+                  "meanCurrent" : 210089.37979374992,
+                  "deviationOld" : 16745.79236449436,
+                  "deviationCurrent" : 26890.74421569556,
+                  "vms" : 494,
+                  "callsOld" : 600000,
+                  "calls" : 600000,
+                  "tvalue" : 4.568301009887068
                 },
                 "childs" : [ {
                   "call" : "jakarta.el.Util#getMethod",
@@ -185,14 +185,14 @@
                   "otherKiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.getMethod(java.lang.Class,java.lang.Object,java.lang.reflect.Method)",
                   "module" : "",
                   "statistic" : {
-                    "meanOld" : 17593.8018920068,
-                    "meanCurrent" : 18284.927791806942,
-                    "deviationOld" : 3373.166556818888,
-                    "deviationCurrent" : 4192.159586663817,
-                    "vms" : 98,
-                    "callsOld" : 136000,
-                    "calls" : 136000,
-                    "tvalue" : -1.2754487492757605
+                    "meanOld" : 17964.559023534734,
+                    "meanCurrent" : 17705.651912217683,
+                    "deviationOld" : 3645.871407081887,
+                    "deviationCurrent" : 4012.949317520552,
+                    "vms" : 489,
+                    "callsOld" : 680000,
+                    "calls" : 680000,
+                    "tvalue" : 1.0557587676943987
                   },
                   "childs" : [ {
                     "call" : "ADDED",
@@ -218,14 +218,14 @@
                 "otherKiekerPattern" : "public java.lang.Object org.apache.el.stream.Stream.forEach(jakarta.el.LambdaExpression)",
                 "module" : "",
                 "statistic" : {
-                  "meanOld" : 2447426.6296875,
-                  "meanCurrent" : 2454283.3684630105,
-                  "deviationOld" : 186681.58409427313,
-                  "deviationCurrent" : 190651.3301384797,
-                  "vms" : 98,
-                  "callsOld" : 24000,
-                  "calls" : 24000,
-                  "tvalue" : -0.25438817358857235
+                  "meanOld" : 2434259.7906635804,
+                  "meanCurrent" : 2336827.9006312503,
+                  "deviationOld" : 190576.6167244451,
+                  "deviationCurrent" : 323248.22123094765,
+                  "vms" : 493,
+                  "callsOld" : 120000,
+                  "calls" : 120000,
+                  "tvalue" : 5.784471085205409
                 },
                 "childs" : [ {
                   "call" : "jakarta.el.LambdaExpression#invoke",
@@ -233,14 +233,14 @@
                   "otherKiekerPattern" : "public jakarta.el.java.lang.Object jakarta.el.LambdaExpression.invoke(java.lang.Object)",
                   "module" : "",
                   "statistic" : {
-                    "meanOld" : 794997.0755952381,
-                    "meanCurrent" : 797140.1660607994,
-                    "deviationOld" : 60823.530776656204,
-                    "deviationCurrent" : 61551.055031692566,
-                    "vms" : 98,
-                    "callsOld" : 88000,
-                    "calls" : 88000,
-                    "tvalue" : -0.24517130023302303
+                    "meanOld" : 790592.163968193,
+                    "meanCurrent" : 759363.97043125,
+                    "deviationOld" : 61403.47467140514,
+                    "deviationCurrent" : 104485.10051503588,
+                    "vms" : 493,
+                    "callsOld" : 440000,
+                    "calls" : 440000,
+                    "tvalue" : 5.740605772715997
                   },
                   "childs" : [ {
                     "call" : "jakarta.el.LambdaExpression#invoke",
@@ -248,14 +248,14 @@
                     "otherKiekerPattern" : "public java.lang.Object jakarta.el.LambdaExpression.invoke(jakarta.el.ELContext,java.lang.Object)",
                     "module" : "",
                     "statistic" : {
-                      "meanOld" : 779932.5206313777,
-                      "meanCurrent" : 782079.8619685378,
-                      "deviationOld" : 59320.210275359845,
-                      "deviationCurrent" : 59158.239834544656,
-                      "vms" : 98,
-                      "callsOld" : 88000,
-                      "calls" : 88000,
-                      "tvalue" : -0.2537402422110872
+                      "meanOld" : 775591.520284636,
+                      "meanCurrent" : 745288.7259499999,
+                      "deviationOld" : 59467.426611566865,
+                      "deviationCurrent" : 101617.8286246027,
+                      "vms" : 493,
+                      "callsOld" : 440000,
+                      "calls" : 440000,
+                      "tvalue" : 5.733978925084553
                     },
                     "childs" : [ {
                       "call" : "org.apache.el.ValueExpressionImpl#getValue",
@@ -263,14 +263,14 @@
                       "otherKiekerPattern" : "public org.apache.el.T org.apache.el.ValueExpressionImpl.getValue(jakarta.el.ELContext)",
                       "module" : "",
                       "statistic" : {
-                        "meanOld" : 1367712.1448262117,
-                        "meanCurrent" : 1373693.6437021683,
-                        "deviationOld" : 106594.88830476881,
-                        "deviationCurrent" : 101195.46444248006,
-                        "vms" : 98,
-                        "callsOld" : 120000,
-                        "calls" : 120000,
-                        "tvalue" : -0.40287109459676484
+                        "meanOld" : 1361267.2944219406,
+                        "meanCurrent" : 1306601.4191390637,
+                        "deviationOld" : 107288.97900211395,
+                        "deviationCurrent" : 182004.73395587728,
+                        "vms" : 493,
+                        "callsOld" : 600000,
+                        "calls" : 600000,
+                        "tvalue" : 5.7643238186549
                       },
                       "childs" : [ {
                         "call" : "org.apache.el.parser.AstValue#getValue",
@@ -278,14 +278,14 @@
                         "otherKiekerPattern" : "public java.lang.Object org.apache.el.parser.AstValue.getValue(org.apache.el.lang.EvaluationContext)",
                         "module" : "",
                         "statistic" : {
-                          "meanOld" : 880840.3480639576,
-                          "meanCurrent" : 884793.1943012023,
-                          "deviationOld" : 69960.53115522164,
-                          "deviationCurrent" : 65330.404311553844,
-                          "vms" : 98,
-                          "callsOld" : 216000,
-                          "calls" : 216000,
-                          "tvalue" : -0.40880393993003145
+                          "meanOld" : 876251.6520667989,
+                          "meanCurrent" : 840471.2470589281,
+                          "deviationOld" : 69030.69994811207,
+                          "deviationCurrent" : 116221.1463788652,
+                          "vms" : 493,
+                          "callsOld" : 1080000,
+                          "calls" : 1080000,
+                          "tvalue" : 5.896644974022643
                         },
                         "childs" : [ {
                           "call" : "org.apache.el.parser.AstMethodParameters#getParameters",
@@ -293,14 +293,14 @@
                           "otherKiekerPattern" : "public java.lang.Object[] org.apache.el.parser.AstMethodParameters.getParameters(org.apache.el.lang.EvaluationContext)",
                           "module" : "",
                           "statistic" : {
-                            "meanOld" : 224040.88815688773,
-                            "meanCurrent" : 224540.71962372455,
-                            "deviationOld" : 21015.353441118164,
-                            "deviationCurrent" : 19693.75306836322,
-                            "vms" : 98,
-                            "callsOld" : 152000,
-                            "calls" : 152000,
-                            "tvalue" : -0.1718032275877872
+                            "meanOld" : 220821.72943343484,
+                            "meanCurrent" : 212010.43705374995,
+                            "deviationOld" : 20947.82837617413,
+                            "deviationCurrent" : 30258.843069645347,
+                            "vms" : 496,
+                            "callsOld" : 760000,
+                            "calls" : 760000,
+                            "tvalue" : 5.339600134158096
                           },
                           "childs" : [ {
                             "call" : "org.apache.el.parser.AstPlus#getValue",
@@ -308,14 +308,14 @@
                             "otherKiekerPattern" : "public java.lang.Object org.apache.el.parser.AstPlus.getValue(org.apache.el.lang.EvaluationContext)",
                             "module" : "",
                             "statistic" : {
-                              "meanOld" : 415603.82104810997,
-                              "meanCurrent" : 418532.4899659863,
-                              "deviationOld" : 37273.319360347814,
-                              "deviationCurrent" : 37883.943161124254,
-                              "vms" : 97,
-                              "callsOld" : 40000,
-                              "calls" : 40000,
-                              "tvalue" : -0.5441450474338027
+                              "meanOld" : 411650.519998313,
+                              "meanCurrent" : 396760.6357798926,
+                              "deviationOld" : 41737.07620279195,
+                              "deviationCurrent" : 56837.733616190715,
+                              "vms" : 496,
+                              "callsOld" : 200000,
+                              "calls" : 200000,
+                              "tvalue" : 4.708527401148771
                             },
                             "childs" : [ {
                               "call" : "org.apache.el.parser.AstValue#getValue",
@@ -323,14 +323,14 @@
                               "otherKiekerPattern" : "public java.lang.Object org.apache.el.parser.AstValue.getValue(org.apache.el.lang.EvaluationContext)",
                               "module" : "",
                               "statistic" : {
-                                "meanOld" : 880840.3480639576,
-                                "meanCurrent" : 884793.1943012023,
-                                "deviationOld" : 69960.53115522164,
-                                "deviationCurrent" : 65330.404311553844,
-                                "vms" : 98,
-                                "callsOld" : 216000,
-                                "calls" : 216000,
-                                "tvalue" : -0.40880393993003145
+                                "meanOld" : 876251.6520667989,
+                                "meanCurrent" : 840471.2470589281,
+                                "deviationOld" : 69030.69994811207,
+                                "deviationCurrent" : 116221.1463788652,
+                                "vms" : 493,
+                                "callsOld" : 1080000,
+                                "calls" : 1080000,
+                                "tvalue" : 5.896644974022643
                               },
                               "childs" : [ {
                                 "call" : "jakarta.el.CompositeELResolver#getValue",
@@ -338,14 +338,14 @@
                                 "otherKiekerPattern" : "public java.lang.Object jakarta.el.CompositeELResolver.getValue(jakarta.el.ELContext,java.lang.Object,java.lang.Object)",
                                 "module" : "",
                                 "statistic" : {
-                                  "meanOld" : 109928.85642310495,
-                                  "meanCurrent" : 110463.63128644312,
-                                  "deviationOld" : 10304.282574870067,
-                                  "deviationCurrent" : 10169.145872312709,
-                                  "vms" : 98,
-                                  "callsOld" : 216000,
-                                  "calls" : 216000,
-                                  "tvalue" : -0.3656781285402186
+                                  "meanOld" : 108878.20550504506,
+                                  "meanCurrent" : 104469.42631870891,
+                                  "deviationOld" : 10387.372480865033,
+                                  "deviationCurrent" : 14506.125975730934,
+                                  "vms" : 495,
+                                  "callsOld" : 1080000,
+                                  "calls" : 1080000,
+                                  "tvalue" : 5.506662167746275
                                 },
                                 "childs" : [ {
                                   "call" : "jakarta.el.StaticFieldELResolver#getValue",
@@ -353,14 +353,14 @@
                                   "otherKiekerPattern" : "public java.lang.Object jakarta.el.StaticFieldELResolver.getValue(jakarta.el.ELContext,java.lang.Object,java.lang.Object)",
                                   "module" : "",
                                   "statistic" : {
-                                    "meanOld" : 4290.114647108843,
-                                    "meanCurrent" : 4260.710763888889,
-                                    "deviationOld" : 442.3246200196872,
-                                    "deviationCurrent" : 528.9915692745421,
-                                    "vms" : 98,
-                                    "callsOld" : 88000,
-                                    "calls" : 88000,
-                                    "tvalue" : 0.4233941769029726
+                                    "meanOld" : 4356.995460261569,
+                                    "meanCurrent" : 4114.045190692203,
+                                    "deviationOld" : 486.3877870435442,
+                                    "deviationCurrent" : 619.118220745797,
+                                    "vms" : 496,
+                                    "callsOld" : 440000,
+                                    "calls" : 440000,
+                                    "tvalue" : 6.874974053988141
                                   },
                                   "childs" : [ ]
                                 }, {
@@ -369,14 +369,14 @@
                                   "otherKiekerPattern" : "public java.lang.Object jakarta.el.BeanELResolver.getValue(jakarta.el.ELContext,java.lang.Object,java.lang.Object)",
                                   "module" : "",
                                   "statistic" : {
-                                    "meanOld" : 163740.33974999998,
-                                    "meanCurrent" : 165445.87193813128,
-                                    "deviationOld" : 17598.753522217186,
-                                    "deviationCurrent" : 17114.941418065882,
-                                    "vms" : 99,
-                                    "callsOld" : 88000,
-                                    "calls" : 88000,
-                                    "tvalue" : -0.6930560659445749
+                                    "meanOld" : 163608.264857456,
+                                    "meanCurrent" : 157728.59916373235,
+                                    "deviationOld" : 15784.410921312734,
+                                    "deviationCurrent" : 20459.099686244695,
+                                    "vms" : 495,
+                                    "callsOld" : 440000,
+                                    "calls" : 440000,
+                                    "tvalue" : 5.0668887095993576
                                   },
                                   "childs" : [ {
                                     "call" : "jakarta.el.BeanELResolver$BeanProperty#read",
@@ -384,14 +384,14 @@
                                     "otherKiekerPattern" : "private java.lang.reflect.Method jakarta.el.BeanELResolver$BeanProperty.read(jakarta.el.ELContext,java.lang.Object)",
                                     "module" : "",
                                     "statistic" : {
-                                      "meanOld" : 12660.142219387755,
-                                      "meanCurrent" : 12441.194313350341,
-                                      "deviationOld" : 2221.5887836126367,
-                                      "deviationCurrent" : 1861.7902205019723,
-                                      "vms" : 98,
-                                      "callsOld" : 88000,
-                                      "calls" : 88000,
-                                      "tvalue" : 0.7477729374601099
+                                      "meanOld" : 12679.107051767676,
+                                      "meanCurrent" : 12427.544025673395,
+                                      "deviationOld" : 1820.798069275669,
+                                      "deviationCurrent" : 2571.990326949925,
+                                      "vms" : 495,
+                                      "callsOld" : 440000,
+                                      "calls" : 440000,
+                                      "tvalue" : 1.7760908101395874
                                     },
                                     "childs" : [ {
                                       "call" : "jakarta.el.Util#getMethod",
@@ -399,14 +399,14 @@
                                       "otherKiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.getMethod(java.lang.Class,java.lang.Object,java.lang.reflect.Method)",
                                       "module" : "",
                                       "statistic" : {
-                                        "meanOld" : 17593.8018920068,
-                                        "meanCurrent" : 18284.927791806942,
-                                        "deviationOld" : 3373.166556818888,
-                                        "deviationCurrent" : 4192.159586663817,
-                                        "vms" : 98,
-                                        "callsOld" : 136000,
-                                        "calls" : 136000,
-                                        "tvalue" : -1.2754487492757605
+                                        "meanOld" : 17964.559023534734,
+                                        "meanCurrent" : 17705.651912217683,
+                                        "deviationOld" : 3645.871407081887,
+                                        "deviationCurrent" : 4012.949317520552,
+                                        "vms" : 489,
+                                        "callsOld" : 680000,
+                                        "calls" : 680000,
+                                        "tvalue" : 1.0557587676943987
                                       },
                                       "childs" : [ {
                                         "call" : "ADDED",
@@ -436,14 +436,14 @@
                             "otherKiekerPattern" : "public java.lang.Object org.apache.el.parser.AstMinus.getValue(org.apache.el.lang.EvaluationContext)",
                             "module" : "",
                             "statistic" : {
-                              "meanOld" : 212417.88318750003,
-                              "meanCurrent" : 211142.61026936027,
-                              "deviationOld" : 27399.6673159722,
-                              "deviationCurrent" : 28527.906633086845,
-                              "vms" : 99,
-                              "callsOld" : 40000,
-                              "calls" : 40000,
-                              "tvalue" : 0.3215628400612969
+                              "meanOld" : 210426.86304935743,
+                              "meanCurrent" : 201543.54962916675,
+                              "deviationOld" : 22940.96326774608,
+                              "deviationCurrent" : 30992.34476608201,
+                              "vms" : 496,
+                              "callsOld" : 200000,
+                              "calls" : 200000,
+                              "tvalue" : 5.138580228376162
                             },
                             "childs" : [ {
                               "call" : "org.apache.el.parser.AstValue#getValue",
@@ -451,14 +451,14 @@
                               "otherKiekerPattern" : "public java.lang.Object org.apache.el.parser.AstValue.getValue(org.apache.el.lang.EvaluationContext)",
                               "module" : "",
                               "statistic" : {
-                                "meanOld" : 880840.3480639576,
-                                "meanCurrent" : 884793.1943012023,
-                                "deviationOld" : 69960.53115522164,
-                                "deviationCurrent" : 65330.404311553844,
-                                "vms" : 98,
-                                "callsOld" : 216000,
-                                "calls" : 216000,
-                                "tvalue" : -0.40880393993003145
+                                "meanOld" : 876251.6520667989,
+                                "meanCurrent" : 840471.2470589281,
+                                "deviationOld" : 69030.69994811207,
+                                "deviationCurrent" : 116221.1463788652,
+                                "vms" : 493,
+                                "callsOld" : 1080000,
+                                "calls" : 1080000,
+                                "tvalue" : 5.896644974022643
                               },
                               "childs" : [ {
                                 "call" : "jakarta.el.CompositeELResolver#getValue",
@@ -466,14 +466,14 @@
                                 "otherKiekerPattern" : "public java.lang.Object jakarta.el.CompositeELResolver.getValue(jakarta.el.ELContext,java.lang.Object,java.lang.Object)",
                                 "module" : "",
                                 "statistic" : {
-                                  "meanOld" : 109928.85642310495,
-                                  "meanCurrent" : 110463.63128644312,
-                                  "deviationOld" : 10304.282574870067,
-                                  "deviationCurrent" : 10169.145872312709,
-                                  "vms" : 98,
-                                  "callsOld" : 216000,
-                                  "calls" : 216000,
-                                  "tvalue" : -0.3656781285402186
+                                  "meanOld" : 108878.20550504506,
+                                  "meanCurrent" : 104469.42631870891,
+                                  "deviationOld" : 10387.372480865033,
+                                  "deviationCurrent" : 14506.125975730934,
+                                  "vms" : 495,
+                                  "callsOld" : 1080000,
+                                  "calls" : 1080000,
+                                  "tvalue" : 5.506662167746275
                                 },
                                 "childs" : [ {
                                   "call" : "jakarta.el.StaticFieldELResolver#getValue",
@@ -481,14 +481,14 @@
                                   "otherKiekerPattern" : "public java.lang.Object jakarta.el.StaticFieldELResolver.getValue(jakarta.el.ELContext,java.lang.Object,java.lang.Object)",
                                   "module" : "",
                                   "statistic" : {
-                                    "meanOld" : 4290.114647108843,
-                                    "meanCurrent" : 4260.710763888889,
-                                    "deviationOld" : 442.3246200196872,
-                                    "deviationCurrent" : 528.9915692745421,
-                                    "vms" : 98,
-                                    "callsOld" : 88000,
-                                    "calls" : 88000,
-                                    "tvalue" : 0.4233941769029726
+                                    "meanOld" : 4356.995460261569,
+                                    "meanCurrent" : 4114.045190692203,
+                                    "deviationOld" : 486.3877870435442,
+                                    "deviationCurrent" : 619.118220745797,
+                                    "vms" : 496,
+                                    "callsOld" : 440000,
+                                    "calls" : 440000,
+                                    "tvalue" : 6.874974053988141
                                   },
                                   "childs" : [ ]
                                 } ]
@@ -501,14 +501,14 @@
                           "otherKiekerPattern" : "public java.lang.Object jakarta.el.CompositeELResolver.invoke(jakarta.el.ELContext,java.lang.Object,java.lang.Object,java.lang.Class[],java.lang.Object[])",
                           "module" : "",
                           "statistic" : {
-                            "meanOld" : 400038.08040816325,
-                            "meanCurrent" : 401832.78494579095,
-                            "deviationOld" : 30168.95673840818,
-                            "deviationCurrent" : 29770.11695577086,
-                            "vms" : 98,
-                            "callsOld" : 312000,
-                            "calls" : 312000,
-                            "tvalue" : -0.41918077390031033
+                            "meanOld" : 398262.476696888,
+                            "meanCurrent" : 382570.7219137503,
+                            "deviationOld" : 31070.069216653217,
+                            "deviationCurrent" : 52937.80240713262,
+                            "vms" : 493,
+                            "callsOld" : 1560000,
+                            "calls" : 1560000,
+                            "tvalue" : 5.695319544968654
                           },
                           "childs" : [ {
                             "call" : "jakarta.el.BeanELResolver#invoke",
@@ -516,14 +516,14 @@
                             "otherKiekerPattern" : "public java.lang.Object jakarta.el.BeanELResolver.invoke(jakarta.el.ELContext,java.lang.Object,java.lang.Object,java.lang.Class[],java.lang.Object[])",
                             "module" : "",
                             "statistic" : {
-                              "meanOld" : 931081.487492028,
-                              "meanCurrent" : 935271.6435108419,
-                              "deviationOld" : 67517.16527224504,
-                              "deviationCurrent" : 68049.39073664302,
-                              "vms" : 98,
-                              "callsOld" : 120000,
-                              "calls" : 120000,
-                              "tvalue" : -0.4327153681303031
+                              "meanOld" : 928727.932525773,
+                              "meanCurrent" : 892339.0375624996,
+                              "deviationOld" : 68532.07517218638,
+                              "deviationCurrent" : 120511.88644456142,
+                              "vms" : 492,
+                              "callsOld" : 600000,
+                              "calls" : 600000,
+                              "tvalue" : 5.8471593053689235
                             },
                             "childs" : [ {
                               "call" : "jakarta.el.Util#findMethod",
@@ -531,14 +531,14 @@
                               "otherKiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.findMethod(java.lang.Class,java.lang.Object,java.lang.String,java.lang.Class[],java.lang.Object[])",
                               "module" : "",
                               "statistic" : {
-                                "meanOld" : 217962.6522879463,
-                                "meanCurrent" : 218065.47870312503,
-                                "deviationOld" : 17592.495464912947,
-                                "deviationCurrent" : 20065.44902092072,
-                                "vms" : 99,
-                                "callsOld" : 120000,
-                                "calls" : 120000,
-                                "tvalue" : -0.03836287446797804
+                                "meanOld" : 216583.53517385997,
+                                "meanCurrent" : 210089.37979374992,
+                                "deviationOld" : 16745.79236449436,
+                                "deviationCurrent" : 26890.74421569556,
+                                "vms" : 494,
+                                "callsOld" : 600000,
+                                "calls" : 600000,
+                                "tvalue" : 4.568301009887068
                               },
                               "childs" : [ {
                                 "call" : "jakarta.el.Util#getMethod",
@@ -546,14 +546,14 @@
                                 "otherKiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.getMethod(java.lang.Class,java.lang.Object,java.lang.reflect.Method)",
                                 "module" : "",
                                 "statistic" : {
-                                  "meanOld" : 17593.8018920068,
-                                  "meanCurrent" : 18284.927791806942,
-                                  "deviationOld" : 3373.166556818888,
-                                  "deviationCurrent" : 4192.159586663817,
-                                  "vms" : 98,
-                                  "callsOld" : 136000,
-                                  "calls" : 136000,
-                                  "tvalue" : -1.2754487492757605
+                                  "meanOld" : 17964.559023534734,
+                                  "meanCurrent" : 17705.651912217683,
+                                  "deviationOld" : 3645.871407081887,
+                                  "deviationCurrent" : 4012.949317520552,
+                                  "vms" : 489,
+                                  "callsOld" : 680000,
+                                  "calls" : 680000,
+                                  "tvalue" : 1.0557587676943987
                                 },
                                 "childs" : [ {
                                   "call" : "ADDED",

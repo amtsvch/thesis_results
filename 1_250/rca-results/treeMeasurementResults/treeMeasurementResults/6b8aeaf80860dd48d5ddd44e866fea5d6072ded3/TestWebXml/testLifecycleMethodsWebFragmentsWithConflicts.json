@@ -1,6 +1,6 @@
 {
   "measurementConfig" : {
-    "vms" : 100,
+    "vms" : 500,
     "earlyStop" : false,
     "warmup" : 80,
     "iterations" : 80,
@@ -80,14 +80,14 @@
     "otherKiekerPattern" : "public void org.apache.tomcat.util.descriptor.web.TestWebXml.testLifecycleMethodsWebFragmentsWithConflicts()",
     "module" : "",
     "statistic" : {
-      "meanOld" : 4.603271237481447E7,
-      "meanCurrent" : 4.462210954322684E7,
-      "deviationOld" : 3005006.4320539106,
-      "deviationCurrent" : 2723981.3776682876,
-      "vms" : 99,
-      "callsOld" : 8000,
-      "calls" : 8000,
-      "tvalue" : 3.4683208211970853
+      "meanOld" : 4.5460049257090695E7,
+      "meanCurrent" : 4.446146653221442E7,
+      "deviationOld" : 2743410.220500868,
+      "deviationCurrent" : 2692587.454160742,
+      "vms" : 496,
+      "callsOld" : 40000,
+      "calls" : 40000,
+      "tvalue" : 5.785680984187029
     },
     "childs" : [ {
       "call" : "org.apache.tomcat.util.descriptor.web.WebXml#merge",
@@ -95,14 +95,14 @@
       "otherKiekerPattern" : "public boolean org.apache.tomcat.util.descriptor.web.WebXml.merge(java.util.Set)",
       "module" : "",
       "statistic" : {
-        "meanOld" : 2.357471561425954E7,
-        "meanCurrent" : 2.2801936473926067E7,
-        "deviationOld" : 1348278.8449588316,
-        "deviationCurrent" : 1156452.0683404005,
-        "vms" : 100,
-        "callsOld" : 24000,
-        "calls" : 24000,
-        "tvalue" : 4.350502091356042
+        "meanOld" : 2.332873860471193E7,
+        "meanCurrent" : 2.2672556318342663E7,
+        "deviationOld" : 1288116.7837001665,
+        "deviationCurrent" : 1324508.3749944346,
+        "vms" : 499,
+        "callsOld" : 120000,
+        "calls" : 120000,
+        "tvalue" : 7.933604407224405
       },
       "childs" : [ {
         "call" : "org.apache.tomcat.util.descriptor.web.SessionConfig#getCookieDomain",
@@ -110,14 +110,14 @@
         "otherKiekerPattern" : "public java.util.Map org.apache.tomcat.util.descriptor.web.SessionConfig.getCookieAttributes()",
         "module" : "",
         "statistic" : {
-          "meanOld" : 2902.1937755431754,
-          "meanCurrent" : 2969.6488856154547,
-          "deviationOld" : 669.3289592829065,
-          "deviationCurrent" : 230.1518412746773,
-          "vms" : 98,
-          "callsOld" : 120000,
-          "calls" : 88000,
-          "tvalue" : -0.943455771241239
+          "meanOld" : 2855.0796247139333,
+          "meanCurrent" : 2984.0926424323384,
+          "deviationOld" : 365.62037114396543,
+          "deviationCurrent" : 209.84451802709268,
+          "vms" : 493,
+          "callsOld" : 600000,
+          "calls" : 440000,
+          "tvalue" : -6.798589563312661
         },
         "childs" : [ ]
       }, {

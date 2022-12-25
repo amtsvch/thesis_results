@@ -1,6 +1,6 @@
 {
   "measurementConfig" : {
-    "vms" : 100,
+    "vms" : 500,
     "earlyStop" : false,
     "warmup" : 80,
     "iterations" : 80,
@@ -80,14 +80,14 @@
     "otherKiekerPattern" : "public void jakarta.el.TestELProcessor.testEval01()",
     "module" : "",
     "statistic" : {
-      "meanOld" : 5399527.225187503,
-      "meanCurrent" : 5549112.226875,
-      "deviationOld" : 865395.600424164,
-      "deviationCurrent" : 800385.9103652382,
-      "vms" : 100,
-      "callsOld" : 8000,
-      "calls" : 8000,
-      "tvalue" : -1.2689792833892586
+      "meanOld" : 5868633.303163266,
+      "meanCurrent" : 5825851.776283034,
+      "deviationOld" : 562649.1447494086,
+      "deviationCurrent" : 614404.5782150314,
+      "vms" : 491,
+      "callsOld" : 40000,
+      "calls" : 40000,
+      "tvalue" : 1.137978964409321
     },
     "childs" : [ {
       "call" : "jakarta.el.ELProcessor#eval",
@@ -95,14 +95,14 @@
       "otherKiekerPattern" : "public jakarta.el.T jakarta.el.ELProcessor.eval(java.lang.String)",
       "module" : "",
       "statistic" : {
-        "meanOld" : 4927915.0194999995,
-        "meanCurrent" : 5056982.620437498,
-        "deviationOld" : 803694.6139475714,
-        "deviationCurrent" : 744552.1246743915,
-        "vms" : 100,
-        "callsOld" : 8000,
-        "calls" : 8000,
-        "tvalue" : -1.178081750306185
+        "meanOld" : 5372466.047461733,
+        "meanCurrent" : 5314310.593813258,
+        "deviationOld" : 523582.6042980662,
+        "deviationCurrent" : 589108.3667099107,
+        "vms" : 492,
+        "callsOld" : 40000,
+        "calls" : 40000,
+        "tvalue" : 1.6370491486477303
       },
       "childs" : [ {
         "call" : "jakarta.el.ELProcessor#getValue",
@@ -110,14 +110,14 @@
         "otherKiekerPattern" : "public jakarta.el.T jakarta.el.ELProcessor.getValue(java.lang.String,java.lang.Class)",
         "module" : "",
         "statistic" : {
-          "meanOld" : 4890366.586062498,
-          "meanCurrent" : 5013101.1933750035,
-          "deviationOld" : 798490.7873256535,
-          "deviationCurrent" : 737039.184888159,
-          "vms" : 100,
-          "callsOld" : 8000,
-          "calls" : 8000,
-          "tvalue" : -1.1294739943140308
+          "meanOld" : 5330681.496033161,
+          "meanCurrent" : 5273110.517510122,
+          "deviationOld" : 520379.7620141049,
+          "deviationCurrent" : 585733.4204465031,
+          "vms" : 492,
+          "callsOld" : 40000,
+          "calls" : 40000,
+          "tvalue" : 1.6302163683969728
         },
         "childs" : [ {
           "call" : "org.apache.el.ExpressionFactoryImpl#createValueExpression",
@@ -125,14 +125,14 @@
           "otherKiekerPattern" : "public jakarta.el.ValueExpression org.apache.el.ExpressionFactoryImpl.createValueExpression(jakarta.el.ELContext,java.lang.String,java.lang.Class)",
           "module" : "",
           "statistic" : {
-            "meanOld" : 4782950.340687499,
-            "meanCurrent" : 4902638.584562502,
-            "deviationOld" : 785811.441695813,
-            "deviationCurrent" : 725545.7409039348,
-            "vms" : 100,
-            "callsOld" : 8000,
-            "calls" : 8000,
-            "tvalue" : -1.1190625993571428
+            "meanOld" : 5211161.053958758,
+            "meanCurrent" : 5151861.163636363,
+            "deviationOld" : 520903.84594362724,
+            "deviationCurrent" : 583772.5242210419,
+            "vms" : 493,
+            "callsOld" : 40000,
+            "calls" : 40000,
+            "tvalue" : 1.6832611294412314
           },
           "childs" : [ {
             "call" : "org.apache.el.lang.ExpressionBuilder#createValueExpression",
@@ -140,14 +140,14 @@
             "otherKiekerPattern" : "public jakarta.el.ValueExpression org.apache.el.lang.ExpressionBuilder.createValueExpression(java.lang.Class)",
             "module" : "",
             "statistic" : {
-              "meanOld" : 4701205.820374999,
-              "meanCurrent" : 4819072.219062503,
-              "deviationOld" : 774635.2099286072,
-              "deviationCurrent" : 716332.5008030352,
-              "vms" : 100,
-              "callsOld" : 8000,
-              "calls" : 8000,
-              "tvalue" : -1.1171332640970137
+              "meanOld" : 5126640.440682276,
+              "meanCurrent" : 5066512.783800512,
+              "deviationOld" : 516607.3413827128,
+              "deviationCurrent" : 578409.8145231433,
+              "vms" : 493,
+              "callsOld" : 40000,
+              "calls" : 40000,
+              "tvalue" : 1.7218557865741067
             },
             "childs" : [ {
               "call" : "org.apache.el.lang.ExpressionBuilder#build",
@@ -155,14 +155,14 @@
               "otherKiekerPattern" : "private org.apache.el.parser.Node org.apache.el.lang.ExpressionBuilder.build()",
               "module" : "",
               "statistic" : {
-                "meanOld" : 4666787.323999999,
-                "meanCurrent" : 4783587.8889999995,
-                "deviationOld" : 770290.3251121548,
-                "deviationCurrent" : 712901.5962242187,
-                "vms" : 100,
-                "callsOld" : 8000,
-                "calls" : 8000,
-                "tvalue" : -1.112852834617432
+                "meanOld" : 5088033.921117619,
+                "meanCurrent" : 5027615.812436875,
+                "deviationOld" : 513362.26347805647,
+                "deviationCurrent" : 575961.3283549502,
+                "vms" : 493,
+                "callsOld" : 40000,
+                "calls" : 40000,
+                "tvalue" : 1.7391223003675118
               },
               "childs" : [ {
                 "call" : "org.apache.el.lang.ExpressionBuilder#createNodeInternal",
@@ -170,14 +170,14 @@
                 "otherKiekerPattern" : "private static final org.apache.el.parser.Node org.apache.el.lang.ExpressionBuilder.createNodeInternal(java.lang.String)",
                 "module" : "",
                 "statistic" : {
-                  "meanOld" : 4622295.324375002,
-                  "meanCurrent" : 4736798.023875001,
-                  "deviationOld" : 763278.8127728051,
-                  "deviationCurrent" : 707791.7220680115,
-                  "vms" : 100,
-                  "callsOld" : 8000,
-                  "calls" : 8000,
-                  "tvalue" : -1.0999894208724488
+                  "meanOld" : 5038654.014574849,
+                  "meanCurrent" : 4977549.962979803,
+                  "deviationOld" : 509616.4772742426,
+                  "deviationCurrent" : 570275.7591591651,
+                  "vms" : 493,
+                  "callsOld" : 40000,
+                  "calls" : 40000,
+                  "tvalue" : 1.7743491148122434
                 },
                 "childs" : [ {
                   "call" : "org.apache.el.parser.ELParser$LookaheadSuccess#fillInStackTrace",
@@ -201,14 +201,14 @@
                   "otherKiekerPattern" : "public final org.apache.el.parser.AstCompositeExpression org.apache.el.parser.ELParser.CompositeExpression()",
                   "module" : "",
                   "statistic" : {
-                    "meanOld" : 3713496.167749999,
-                    "meanCurrent" : 3789621.733812501,
-                    "deviationOld" : 644758.9120683476,
-                    "deviationCurrent" : 613821.24931734,
-                    "vms" : 100,
-                    "callsOld" : 8000,
-                    "calls" : 8000,
-                    "tvalue" : -0.8551326339370376
+                    "meanOld" : 4042187.530027724,
+                    "meanCurrent" : 3983226.1592867933,
+                    "deviationOld" : 470726.3431255082,
+                    "deviationCurrent" : 498121.52472081676,
+                    "vms" : 496,
+                    "callsOld" : 40000,
+                    "calls" : 40000,
+                    "tvalue" : 1.915994563202928
                   },
                   "childs" : [ {
                     "call" : "org.apache.el.parser.ELParser#jj_ntk",
@@ -216,14 +216,14 @@
                     "otherKiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk_f()",
                     "module" : "",
                     "statistic" : {
-                      "meanOld" : 28873.088278619518,
-                      "meanCurrent" : 31224.493920068024,
-                      "deviationOld" : 5486.271754190119,
-                      "deviationCurrent" : 7342.186920801712,
-                      "vms" : 98,
-                      "callsOld" : 40000,
-                      "calls" : 40000,
-                      "tvalue" : -2.5443125455524553
+                      "meanOld" : 28674.66980013548,
+                      "meanCurrent" : 28859.1136489899,
+                      "deviationOld" : 3998.2663141182347,
+                      "deviationCurrent" : 4127.115882834622,
+                      "vms" : 493,
+                      "callsOld" : 200000,
+                      "calls" : 200000,
+                      "tvalue" : -0.7130882470495111
                     },
                     "childs" : [ ]
                   }, {
@@ -232,14 +232,14 @@
                     "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.DynamicExpression()",
                     "module" : "",
                     "statistic" : {
-                      "meanOld" : 3501689.6853124998,
-                      "meanCurrent" : 3561451.1471875003,
-                      "deviationOld" : 611489.6726053059,
-                      "deviationCurrent" : 579975.3348790928,
-                      "vms" : 100,
-                      "callsOld" : 8000,
-                      "calls" : 8000,
-                      "tvalue" : -0.7090927646278772
+                      "meanOld" : 3818032.747479838,
+                      "meanCurrent" : 3757465.90969002,
+                      "deviationOld" : 451196.13132500846,
+                      "deviationCurrent" : 475889.6345113335,
+                      "vms" : 496,
+                      "callsOld" : 40000,
+                      "calls" : 40000,
+                      "tvalue" : 2.056917252005972
                     },
                     "childs" : [ {
                       "call" : "org.apache.el.parser.ELParser#jj_consume_token",
@@ -247,14 +247,14 @@
                       "otherKiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
                       "module" : "",
                       "statistic" : {
-                        "meanOld" : 788667.869229167,
-                        "meanCurrent" : 783812.9663125003,
-                        "deviationOld" : 130521.62641180397,
-                        "deviationCurrent" : 128019.32747612486,
-                        "vms" : 100,
-                        "callsOld" : 40000,
-                        "calls" : 40000,
-                        "tvalue" : 0.26554972784420483
+                        "meanOld" : 848422.2797397928,
+                        "meanCurrent" : 829319.4074386761,
+                        "deviationOld" : 107904.86378289231,
+                        "deviationCurrent" : 108691.19069368762,
+                        "vms" : 497,
+                        "callsOld" : 200000,
+                        "calls" : 200000,
+                        "tvalue" : 2.7805736968182915
                       },
                       "childs" : [ {
                         "call" : "org.apache.el.parser.ELParser#generateParseException",
@@ -262,14 +262,14 @@
                         "otherKiekerPattern" : "public org.apache.el.parser.ParseException org.apache.el.parser.ELParser.generateParseException()",
                         "module" : "",
                         "statistic" : {
-                          "meanOld" : 2313104.8261875,
-                          "meanCurrent" : 2296298.2920625005,
-                          "deviationOld" : 386796.42826000875,
-                          "deviationCurrent" : 378524.1445992258,
-                          "vms" : 100,
-                          "callsOld" : 8000,
-                          "calls" : 8000,
-                          "tvalue" : 0.3105449013159825
+                          "meanOld" : 2492238.2715361444,
+                          "meanCurrent" : 2434649.984438006,
+                          "deviationOld" : 318855.7375250132,
+                          "deviationCurrent" : 320912.8732831113,
+                          "vms" : 497,
+                          "callsOld" : 40000,
+                          "calls" : 40000,
+                          "tvalue" : 2.837909168307898
                         },
                         "childs" : [ {
                           "call" : "org.apache.el.parser.ELParser#jj_rescan_token",
@@ -277,14 +277,14 @@
                           "otherKiekerPattern" : "private void org.apache.el.parser.ELParser.jj_rescan_token()",
                           "module" : "",
                           "statistic" : {
-                            "meanOld" : 433107.1844065657,
-                            "meanCurrent" : 451051.9309375,
-                            "deviationOld" : 110380.43508054847,
-                            "deviationCurrent" : 112506.8609680968,
-                            "vms" : 99,
-                            "callsOld" : 8000,
-                            "calls" : 8000,
-                            "tvalue" : -1.135727453055314
+                            "meanOld" : 468281.05886892736,
+                            "meanCurrent" : 461350.7911077234,
+                            "deviationOld" : 83000.0983529155,
+                            "deviationCurrent" : 85000.65342321724,
+                            "vms" : 493,
+                            "callsOld" : 40000,
+                            "calls" : 40000,
+                            "tvalue" : 1.2951947510446906
                           },
                           "childs" : [ {
                             "call" : "org.apache.el.parser.ELParser#jj_3_1",
@@ -292,14 +292,14 @@
                             "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_1()",
                             "module" : "",
                             "statistic" : {
-                              "meanOld" : 28127.103898195877,
-                              "meanCurrent" : 28566.826868556698,
-                              "deviationOld" : 9679.503011148758,
-                              "deviationCurrent" : 7313.979908927081,
-                              "vms" : 97,
-                              "callsOld" : 24000,
-                              "calls" : 24000,
-                              "tvalue" : -0.3569687302099296
+                              "meanOld" : 30899.07648870634,
+                              "meanCurrent" : 30662.62733247422,
+                              "deviationOld" : 7017.365793013201,
+                              "deviationCurrent" : 6895.774080169261,
+                              "vms" : 486,
+                              "callsOld" : 120000,
+                              "calls" : 120000,
+                              "tvalue" : 0.5298294022832287
                             },
                             "childs" : [ {
                               "call" : "org.apache.el.parser.ELParser#jj_scan_token",
@@ -307,14 +307,14 @@
                               "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
                               "module" : "",
                               "statistic" : {
-                                "meanOld" : 23033.29559566251,
-                                "meanCurrent" : 23740.046613190734,
-                                "deviationOld" : 4612.569178716971,
-                                "deviationCurrent" : 4635.784009264192,
-                                "vms" : 99,
-                                "callsOld" : 264000,
-                                "calls" : 264000,
-                                "tvalue" : -1.0753089549980426
+                                "meanOld" : 24313.630889037435,
+                                "meanCurrent" : 23947.35461519115,
+                                "deviationOld" : 3443.3496090941812,
+                                "deviationCurrent" : 3582.6792461323516,
+                                "vms" : 496,
+                                "callsOld" : 1320000,
+                                "calls" : 1320000,
+                                "tvalue" : 1.6416697396456275
                               },
                               "childs" : [ {
                                 "call" : "org.apache.el.parser.ELParser#jj_add_error_token",
@@ -322,14 +322,14 @@
                                 "otherKiekerPattern" : "private void org.apache.el.parser.ELParser.jj_add_error_token(int,int)",
                                 "module" : "",
                                 "statistic" : {
-                                  "meanOld" : 14790.416666666666,
-                                  "meanCurrent" : 14418.61674461451,
-                                  "deviationOld" : 2635.4764327376115,
-                                  "deviationCurrent" : 2283.147154311764,
-                                  "vms" : 98,
-                                  "callsOld" : 136000,
-                                  "calls" : 136000,
-                                  "tvalue" : 1.0586174164465196
+                                  "meanOld" : 15450.416491999105,
+                                  "meanCurrent" : 14271.303322909627,
+                                  "deviationOld" : 1763.876872473248,
+                                  "deviationCurrent" : 1794.1342775504097,
+                                  "vms" : 493,
+                                  "callsOld" : 680000,
+                                  "calls" : 680000,
+                                  "tvalue" : 10.405691339924074
                                 },
                                 "childs" : [ ]
                               } ]
@@ -340,14 +340,14 @@
                             "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_2()",
                             "module" : "",
                             "statistic" : {
-                              "meanOld" : 142848.70108418362,
-                              "meanCurrent" : 150460.32921874995,
-                              "deviationOld" : 36915.40728194529,
-                              "deviationCurrent" : 38279.493595723274,
-                              "vms" : 99,
-                              "callsOld" : 24000,
-                              "calls" : 24000,
-                              "tvalue" : -1.4243205165609232
+                              "meanOld" : 150954.74684959368,
+                              "meanCurrent" : 150818.64517621716,
+                              "deviationOld" : 27439.804573255748,
+                              "deviationCurrent" : 28596.580777713127,
+                              "vms" : 492,
+                              "callsOld" : 120000,
+                              "calls" : 120000,
+                              "tvalue" : 0.07621278367683886
                             },
                             "childs" : [ {
                               "call" : "org.apache.el.parser.ELParser#jj_3R_21",
@@ -355,14 +355,14 @@
                               "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_LambdaExpression_124_5_21()",
                               "module" : "",
                               "statistic" : {
-                                "meanOld" : 127122.50564413263,
-                                "meanCurrent" : 132774.89818749996,
-                                "deviationOld" : 33616.209557195,
-                                "deviationCurrent" : 35905.079353489324,
-                                "vms" : 99,
-                                "callsOld" : 24000,
-                                "calls" : 24000,
-                                "tvalue" : -1.14375764515968
+                                "meanOld" : 131846.8970344386,
+                                "meanCurrent" : 131990.60825711387,
+                                "deviationOld" : 23829.23485999909,
+                                "deviationCurrent" : 25649.56414187908,
+                                "vms" : 491,
+                                "callsOld" : 120000,
+                                "calls" : 120000,
+                                "tvalue" : -0.09096308172822686
                               },
                               "childs" : [ ]
                             } ]
@@ -372,14 +372,14 @@
                             "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_5()",
                             "module" : "",
                             "statistic" : {
-                              "meanOld" : 33133.45762117346,
-                              "meanCurrent" : 36894.03019770407,
-                              "deviationOld" : 9683.293755015737,
-                              "deviationCurrent" : 12493.03707276096,
-                              "vms" : 98,
-                              "callsOld" : 24000,
-                              "calls" : 24000,
-                              "tvalue" : -2.355234505962725
+                              "meanOld" : 38022.63392948068,
+                              "meanCurrent" : 39122.48599771807,
+                              "deviationOld" : 10108.97589558178,
+                              "deviationCurrent" : 12972.255523474414,
+                              "vms" : 492,
+                              "callsOld" : 120000,
+                              "calls" : 120000,
+                              "tvalue" : -1.4837598033357307
                             },
                             "childs" : [ {
                               "call" : "org.apache.el.parser.ELParser#jj_scan_token",
@@ -387,14 +387,14 @@
                               "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
                               "module" : "",
                               "statistic" : {
-                                "meanOld" : 23033.29559566251,
-                                "meanCurrent" : 23740.046613190734,
-                                "deviationOld" : 4612.569178716971,
-                                "deviationCurrent" : 4635.784009264192,
-                                "vms" : 99,
-                                "callsOld" : 264000,
-                                "calls" : 264000,
-                                "tvalue" : -1.0753089549980426
+                                "meanOld" : 24313.630889037435,
+                                "meanCurrent" : 23947.35461519115,
+                                "deviationOld" : 3443.3496090941812,
+                                "deviationCurrent" : 3582.6792461323516,
+                                "vms" : 496,
+                                "callsOld" : 1320000,
+                                "calls" : 1320000,
+                                "tvalue" : 1.6416697396456275
                               },
                               "childs" : [ {
                                 "call" : "org.apache.el.parser.ELParser#jj_add_error_token",
@@ -402,14 +402,14 @@
                                 "otherKiekerPattern" : "private void org.apache.el.parser.ELParser.jj_add_error_token(int,int)",
                                 "module" : "",
                                 "statistic" : {
-                                  "meanOld" : 14790.416666666666,
-                                  "meanCurrent" : 14418.61674461451,
-                                  "deviationOld" : 2635.4764327376115,
-                                  "deviationCurrent" : 2283.147154311764,
-                                  "vms" : 98,
-                                  "callsOld" : 136000,
-                                  "calls" : 136000,
-                                  "tvalue" : 1.0586174164465196
+                                  "meanOld" : 15450.416491999105,
+                                  "meanCurrent" : 14271.303322909627,
+                                  "deviationOld" : 1763.876872473248,
+                                  "deviationCurrent" : 1794.1342775504097,
+                                  "vms" : 493,
+                                  "callsOld" : 680000,
+                                  "calls" : 680000,
+                                  "tvalue" : 10.405691339924074
                                 },
                                 "childs" : [ ]
                               } ]
@@ -420,14 +420,14 @@
                             "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_7()",
                             "module" : "",
                             "statistic" : {
-                              "meanOld" : 140212.67875631314,
-                              "meanCurrent" : 150625.14946338383,
-                              "deviationOld" : 41978.3754427868,
-                              "deviationCurrent" : 47425.214480014045,
-                              "vms" : 99,
-                              "callsOld" : 24000,
-                              "calls" : 24000,
-                              "tvalue" : -1.6357876497884871
+                              "meanOld" : 156466.34729420723,
+                              "meanCurrent" : 153117.2939583332,
+                              "deviationOld" : 30598.289847952867,
+                              "deviationCurrent" : 31366.972988021822,
+                              "vms" : 493,
+                              "callsOld" : 120000,
+                              "calls" : 120000,
+                              "tvalue" : 1.6979046514350922
                             },
                             "childs" : [ {
                               "call" : "org.apache.el.parser.ELParser#jj_3R_24",
@@ -435,14 +435,14 @@
                               "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_null_328_18_24()",
                               "module" : "",
                               "statistic" : {
-                                "meanOld" : 65090.65353535354,
-                                "meanCurrent" : 68404.99649234694,
-                                "deviationOld" : 22331.530214736133,
-                                "deviationCurrent" : 23056.610835931337,
-                                "vms" : 98,
-                                "callsOld" : 24000,
-                                "calls" : 24000,
-                                "tvalue" : -1.024688711622389
+                                "meanOld" : 72634.67155677186,
+                                "meanCurrent" : 70023.15319458501,
+                                "deviationOld" : 17845.585749146092,
+                                "deviationCurrent" : 16217.81175247049,
+                                "vms" : 492,
+                                "callsOld" : 120000,
+                                "calls" : 120000,
+                                "tvalue" : 2.4030503118750755
                               },
                               "childs" : [ ]
                             }, {
@@ -451,14 +451,14 @@
                               "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
                               "module" : "",
                               "statistic" : {
-                                "meanOld" : 23033.29559566251,
-                                "meanCurrent" : 23740.046613190734,
-                                "deviationOld" : 4612.569178716971,
-                                "deviationCurrent" : 4635.784009264192,
-                                "vms" : 99,
-                                "callsOld" : 264000,
-                                "calls" : 264000,
-                                "tvalue" : -1.0753089549980426
+                                "meanOld" : 24313.630889037435,
+                                "meanCurrent" : 23947.35461519115,
+                                "deviationOld" : 3443.3496090941812,
+                                "deviationCurrent" : 3582.6792461323516,
+                                "vms" : 496,
+                                "callsOld" : 1320000,
+                                "calls" : 1320000,
+                                "tvalue" : 1.6416697396456275
                               },
                               "childs" : [ {
                                 "call" : "org.apache.el.parser.ELParser#jj_add_error_token",
@@ -466,14 +466,14 @@
                                 "otherKiekerPattern" : "private void org.apache.el.parser.ELParser.jj_add_error_token(int,int)",
                                 "module" : "",
                                 "statistic" : {
-                                  "meanOld" : 14790.416666666666,
-                                  "meanCurrent" : 14418.61674461451,
-                                  "deviationOld" : 2635.4764327376115,
-                                  "deviationCurrent" : 2283.147154311764,
-                                  "vms" : 98,
-                                  "callsOld" : 136000,
-                                  "calls" : 136000,
-                                  "tvalue" : 1.0586174164465196
+                                  "meanOld" : 15450.416491999105,
+                                  "meanCurrent" : 14271.303322909627,
+                                  "deviationOld" : 1763.876872473248,
+                                  "deviationCurrent" : 1794.1342775504097,
+                                  "vms" : 493,
+                                  "callsOld" : 680000,
+                                  "calls" : 680000,
+                                  "tvalue" : 10.405691339924074
                                 },
                                 "childs" : [ ]
                               } ]
@@ -485,14 +485,14 @@
                           "otherKiekerPattern" : "private void org.apache.el.parser.ELParser.jj_add_error_token(int,int)",
                           "module" : "",
                           "statistic" : {
-                            "meanOld" : 14790.416666666666,
-                            "meanCurrent" : 14418.61674461451,
-                            "deviationOld" : 2635.4764327376115,
-                            "deviationCurrent" : 2283.147154311764,
-                            "vms" : 98,
-                            "callsOld" : 136000,
-                            "calls" : 136000,
-                            "tvalue" : 1.0586174164465196
+                            "meanOld" : 15450.416491999105,
+                            "meanCurrent" : 14271.303322909627,
+                            "deviationOld" : 1763.876872473248,
+                            "deviationCurrent" : 1794.1342775504097,
+                            "vms" : 493,
+                            "callsOld" : 680000,
+                            "calls" : 680000,
+                            "tvalue" : 10.405691339924074
                           },
                           "childs" : [ ]
                         }, {
@@ -501,14 +501,14 @@
                           "otherKiekerPattern" : "private static java.lang.String org.apache.el.parser.ParseException.initialise(org.apache.el.parser.Token,org.apache.el.parser.int[][],java.lang.String[])",
                           "module" : "",
                           "statistic" : {
-                            "meanOld" : 918684.1005624998,
-                            "meanCurrent" : 844902.6291875001,
-                            "deviationOld" : 217283.90522928446,
-                            "deviationCurrent" : 215403.0997582857,
-                            "vms" : 100,
-                            "callsOld" : 8000,
-                            "calls" : 8000,
-                            "tvalue" : 2.4114838328611565
+                            "meanOld" : 1027051.6305374993,
+                            "meanCurrent" : 966502.0265374996,
+                            "deviationOld" : 198347.52421900458,
+                            "deviationCurrent" : 206304.17676144422,
+                            "vms" : 500,
+                            "callsOld" : 40000,
+                            "calls" : 40000,
+                            "tvalue" : 4.7309242786000425
                           },
                           "childs" : [ {
                             "call" : "org.apache.el.parser.ParseException#add_escapes",
@@ -516,14 +516,14 @@
                             "otherKiekerPattern" : "static java.lang.String org.apache.el.parser.ParseException.add_escapes(java.lang.String)",
                             "module" : "",
                             "statistic" : {
-                              "meanOld" : 31627.85714285714,
-                              "meanCurrent" : 29252.78144132653,
-                              "deviationOld" : 7174.607747277243,
-                              "deviationCurrent" : 5991.799675007501,
-                              "vms" : 98,
-                              "callsOld" : 8000,
-                              "calls" : 8000,
-                              "tvalue" : 2.5153172859854758
+                              "meanOld" : 31508.90083333332,
+                              "meanCurrent" : 28469.63739878542,
+                              "deviationOld" : 5754.857348467252,
+                              "deviationCurrent" : 4643.154675050156,
+                              "vms" : 494,
+                              "callsOld" : 40000,
+                              "calls" : 40000,
+                              "tvalue" : 9.141012218045626
                             },
                             "childs" : [ ]
                           } ]
@@ -535,14 +535,14 @@
                       "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Expression()",
                       "module" : "",
                       "statistic" : {
-                        "meanOld" : 993169.1749999996,
-                        "meanCurrent" : 1059267.731625001,
-                        "deviationOld" : 227499.46724190563,
-                        "deviationCurrent" : 217740.85160479578,
-                        "vms" : 100,
-                        "callsOld" : 8000,
-                        "calls" : 8000,
-                        "tvalue" : -2.098979514581666
+                        "meanOld" : 1105029.5404300808,
+                        "meanCurrent" : 1102675.7953564276,
+                        "deviationOld" : 154840.631067295,
+                        "deviationCurrent" : 169032.0796541971,
+                        "vms" : 497,
+                        "callsOld" : 40000,
+                        "calls" : 40000,
+                        "tvalue" : 0.2290334696281983
                       },
                       "childs" : [ {
                         "call" : "org.apache.el.parser.ELParser#Semicolon",
@@ -550,14 +550,14 @@
                         "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Semicolon()",
                         "module" : "",
                         "statistic" : {
-                          "meanOld" : 976054.2291249998,
-                          "meanCurrent" : 1040146.5562499998,
-                          "deviationOld" : 224520.2402076668,
-                          "deviationCurrent" : 213201.4577246026,
-                          "vms" : 100,
-                          "callsOld" : 8000,
-                          "calls" : 8000,
-                          "tvalue" : -2.070035601939572
+                          "meanOld" : 1084062.1836219886,
+                          "meanCurrent" : 1082768.641541163,
+                          "deviationOld" : 154566.4906476196,
+                          "deviationCurrent" : 166744.96053489923,
+                          "vms" : 498,
+                          "callsOld" : 40000,
+                          "calls" : 40000,
+                          "tvalue" : 0.1269615743985503
                         },
                         "childs" : [ {
                           "call" : "org.apache.el.parser.ELParser#Assignment",
@@ -565,14 +565,14 @@
                           "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Assignment()",
                           "module" : "",
                           "statistic" : {
-                            "meanOld" : 956265.8195,
-                            "meanCurrent" : 1018266.9880625,
-                            "deviationOld" : 221577.88416962133,
-                            "deviationCurrent" : 208688.3137982375,
-                            "vms" : 100,
-                            "callsOld" : 8000,
-                            "calls" : 8000,
-                            "tvalue" : -2.0369616656795553
+                            "meanOld" : 1059837.2870095563,
+                            "meanCurrent" : 1059899.7071034135,
+                            "deviationOld" : 150963.29603711935,
+                            "deviationCurrent" : 164111.14990648854,
+                            "vms" : 497,
+                            "callsOld" : 40000,
+                            "calls" : 40000,
+                            "tvalue" : -0.006244000684533669
                           },
                           "childs" : [ {
                             "call" : "org.apache.el.parser.ELParser#jj_2_2",
@@ -580,14 +580,14 @@
                             "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_2(int)",
                             "module" : "",
                             "statistic" : {
-                              "meanOld" : 186655.68169191922,
-                              "meanCurrent" : 201815.58169191921,
-                              "deviationOld" : 39256.80676122234,
-                              "deviationCurrent" : 43940.46217080325,
-                              "vms" : 99,
-                              "callsOld" : 8000,
-                              "calls" : 8000,
-                              "tvalue" : -2.559957547562213
+                              "meanOld" : 202034.48835858604,
+                              "meanCurrent" : 204459.5716172031,
+                              "deviationOld" : 33802.72822898736,
+                              "deviationCurrent" : 37762.70344879255,
+                              "vms" : 496,
+                              "callsOld" : 40000,
+                              "calls" : 40000,
+                              "tvalue" : -1.0657682323102264
                             },
                             "childs" : [ {
                               "call" : "org.apache.el.parser.ELParser#jj_3_2",
@@ -595,14 +595,14 @@
                               "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_2()",
                               "module" : "",
                               "statistic" : {
-                                "meanOld" : 142848.70108418362,
-                                "meanCurrent" : 150460.32921874995,
-                                "deviationOld" : 36915.40728194529,
-                                "deviationCurrent" : 38279.493595723274,
-                                "vms" : 99,
-                                "callsOld" : 24000,
-                                "calls" : 24000,
-                                "tvalue" : -1.4243205165609232
+                                "meanOld" : 150954.74684959368,
+                                "meanCurrent" : 150818.64517621716,
+                                "deviationOld" : 27439.804573255748,
+                                "deviationCurrent" : 28596.580777713127,
+                                "vms" : 492,
+                                "callsOld" : 120000,
+                                "calls" : 120000,
+                                "tvalue" : 0.07621278367683886
                               },
                               "childs" : [ {
                                 "call" : "org.apache.el.parser.ELParser#jj_3R_21",
@@ -610,14 +610,14 @@
                                 "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_LambdaExpression_124_5_21()",
                                 "module" : "",
                                 "statistic" : {
-                                  "meanOld" : 127122.50564413263,
-                                  "meanCurrent" : 132774.89818749996,
-                                  "deviationOld" : 33616.209557195,
-                                  "deviationCurrent" : 35905.079353489324,
-                                  "vms" : 99,
-                                  "callsOld" : 24000,
-                                  "calls" : 24000,
-                                  "tvalue" : -1.14375764515968
+                                  "meanOld" : 131846.8970344386,
+                                  "meanCurrent" : 131990.60825711387,
+                                  "deviationOld" : 23829.23485999909,
+                                  "deviationCurrent" : 25649.56414187908,
+                                  "vms" : 491,
+                                  "callsOld" : 120000,
+                                  "calls" : 120000,
+                                  "tvalue" : -0.09096308172822686
                                 },
                                 "childs" : [ ]
                               } ]
@@ -628,14 +628,14 @@
                             "otherKiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk_f()",
                             "module" : "",
                             "statistic" : {
-                              "meanOld" : 28873.088278619518,
-                              "meanCurrent" : 31224.493920068024,
-                              "deviationOld" : 5486.271754190119,
-                              "deviationCurrent" : 7342.186920801712,
-                              "vms" : 98,
-                              "callsOld" : 40000,
-                              "calls" : 40000,
-                              "tvalue" : -2.5443125455524553
+                              "meanOld" : 28674.66980013548,
+                              "meanCurrent" : 28859.1136489899,
+                              "deviationOld" : 3998.2663141182347,
+                              "deviationCurrent" : 4127.115882834622,
+                              "vms" : 493,
+                              "callsOld" : 200000,
+                              "calls" : 200000,
+                              "tvalue" : -0.7130882470495111
                             },
                             "childs" : [ ]
                           }, {
@@ -644,14 +644,14 @@
                             "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Choice()",
                             "module" : "",
                             "statistic" : {
-                              "meanOld" : 639934.8408749998,
-                              "meanCurrent" : 682999.7989374999,
-                              "deviationOld" : 151436.2329026215,
-                              "deviationCurrent" : 141431.58809019686,
-                              "vms" : 100,
-                              "callsOld" : 8000,
-                              "calls" : 8000,
-                              "tvalue" : -2.078328120087205
+                              "meanOld" : 718960.2214034203,
+                              "meanCurrent" : 718541.5227454908,
+                              "deviationOld" : 107050.02560747182,
+                              "deviationCurrent" : 115485.48326133315,
+                              "vms" : 498,
+                              "callsOld" : 40000,
+                              "calls" : 40000,
+                              "tvalue" : 0.05934064551575816
                             },
                             "childs" : [ {
                               "call" : "org.apache.el.parser.ELParser#Or",
@@ -659,14 +659,14 @@
                               "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Or()",
                               "module" : "",
                               "statistic" : {
-                                "meanOld" : 559700.7374375002,
-                                "meanCurrent" : 596422.7526875,
-                                "deviationOld" : 133725.9911075901,
-                                "deviationCurrent" : 122597.31537421803,
-                                "vms" : 100,
-                                "callsOld" : 8000,
-                                "calls" : 8000,
-                                "tvalue" : -2.0241582879362503
+                                "meanOld" : 628191.2142695786,
+                                "meanCurrent" : 624729.0137550206,
+                                "deviationOld" : 94695.48319783271,
+                                "deviationCurrent" : 98052.60689970652,
+                                "vms" : 498,
+                                "callsOld" : 40000,
+                                "calls" : 40000,
+                                "tvalue" : 0.5667949069708287
                               },
                               "childs" : [ {
                                 "call" : "org.apache.el.parser.ELParser#And",
@@ -674,14 +674,14 @@
                                 "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.And()",
                                 "module" : "",
                                 "statistic" : {
-                                  "meanOld" : 538959.5393750003,
-                                  "meanCurrent" : 575945.1006249995,
-                                  "deviationOld" : 129361.98240331215,
-                                  "deviationCurrent" : 119947.90686506197,
-                                  "vms" : 100,
-                                  "callsOld" : 8000,
-                                  "calls" : 8000,
-                                  "tvalue" : -2.096516596851957
+                                  "meanOld" : 605128.7477364191,
+                                  "meanCurrent" : 602110.0108810232,
+                                  "deviationOld" : 91267.87839032261,
+                                  "deviationCurrent" : 95445.76034341601,
+                                  "vms" : 497,
+                                  "callsOld" : 40000,
+                                  "calls" : 40000,
+                                  "tvalue" : 0.509872516770463
                                 },
                                 "childs" : [ {
                                   "call" : "org.apache.el.parser.ELParser#Equality",
@@ -689,14 +689,14 @@
                                   "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Equality()",
                                   "module" : "",
                                   "statistic" : {
-                                    "meanOld" : 519024.8868125001,
-                                    "meanCurrent" : 554860.5029999998,
-                                    "deviationOld" : 126242.0221623552,
-                                    "deviationCurrent" : 117202.8639798792,
-                                    "vms" : 100,
-                                    "callsOld" : 8000,
-                                    "calls" : 8000,
-                                    "tvalue" : -2.0803195668113252
+                                    "meanOld" : 580574.6739793353,
+                                    "meanCurrent" : 578549.8312876509,
+                                    "deviationOld" : 87035.58124404326,
+                                    "deviationCurrent" : 92558.38648106987,
+                                    "vms" : 497,
+                                    "callsOld" : 40000,
+                                    "calls" : 40000,
+                                    "tvalue" : 0.3553149277825864
                                   },
                                   "childs" : [ {
                                     "call" : "org.apache.el.parser.ELParser#Compare",
@@ -704,14 +704,14 @@
                                     "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Compare()",
                                     "module" : "",
                                     "statistic" : {
-                                      "meanOld" : 498264.97050000005,
-                                      "meanCurrent" : 533961.1765000003,
-                                      "deviationOld" : 122845.84732240661,
-                                      "deviationCurrent" : 114755.38232189722,
-                                      "vms" : 100,
-                                      "callsOld" : 8000,
-                                      "calls" : 8000,
-                                      "tvalue" : -2.123424133884158
+                                      "meanOld" : 557478.8781754038,
+                                      "meanCurrent" : 555782.4102284138,
+                                      "deviationOld" : 84496.99135536594,
+                                      "deviationCurrent" : 89870.48977576877,
+                                      "vms" : 497,
+                                      "callsOld" : 40000,
+                                      "calls" : 40000,
+                                      "tvalue" : 0.3066149012606665
                                     },
                                     "childs" : [ {
                                       "call" : "org.apache.el.parser.ELParser#Concatenation",
@@ -719,14 +719,14 @@
                                       "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Concatenation()",
                                       "module" : "",
                                       "statistic" : {
-                                        "meanOld" : 470979.8810606059,
-                                        "meanCurrent" : 512739.0206875001,
-                                        "deviationOld" : 106526.38799591002,
-                                        "deviationCurrent" : 112401.78755421998,
-                                        "vms" : 99,
-                                        "callsOld" : 8000,
-                                        "calls" : 8000,
-                                        "tvalue" : -2.690129171623991
+                                        "meanOld" : 534392.9377268148,
+                                        "meanCurrent" : 531834.9694164987,
+                                        "deviationOld" : 81829.79297843276,
+                                        "deviationCurrent" : 85361.39213044282,
+                                        "vms" : 496,
+                                        "callsOld" : 40000,
+                                        "calls" : 40000,
+                                        "tvalue" : 0.482023881552326
                                       },
                                       "childs" : [ {
                                         "call" : "org.apache.el.parser.ELParser#Math",
@@ -734,14 +734,14 @@
                                         "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Math()",
                                         "module" : "",
                                         "statistic" : {
-                                          "meanOld" : 452444.43863636354,
-                                          "meanCurrent" : 493019.5602500001,
-                                          "deviationOld" : 103193.96456282728,
-                                          "deviationCurrent" : 109855.97245145711,
-                                          "vms" : 99,
-                                          "callsOld" : 8000,
-                                          "calls" : 8000,
-                                          "tvalue" : -2.6856872646328496
+                                          "meanOld" : 512545.8169984877,
+                                          "meanCurrent" : 510049.55912977865,
+                                          "deviationOld" : 79594.74134000245,
+                                          "deviationCurrent" : 82289.37769090149,
+                                          "vms" : 496,
+                                          "callsOld" : 40000,
+                                          "calls" : 40000,
+                                          "tvalue" : 0.4858550552166552
                                         },
                                         "childs" : [ {
                                           "call" : "org.apache.el.parser.ELParser#Multiplication",
@@ -749,14 +749,14 @@
                                           "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Multiplication()",
                                           "module" : "",
                                           "statistic" : {
-                                            "meanOld" : 431810.67878787883,
-                                            "meanCurrent" : 471972.7099374999,
-                                            "deviationOld" : 98404.43533041219,
-                                            "deviationCurrent" : 107055.43278200478,
-                                            "vms" : 99,
-                                            "callsOld" : 8000,
-                                            "calls" : 8000,
-                                            "tvalue" : -2.755604157671228
+                                            "meanOld" : 489370.6876515147,
+                                            "meanCurrent" : 486901.819770665,
+                                            "deviationOld" : 75619.37078363121,
+                                            "deviationCurrent" : 78283.3259810154,
+                                            "vms" : 495,
+                                            "callsOld" : 40000,
+                                            "calls" : 40000,
+                                            "tvalue" : 0.5049295166458223
                                           },
                                           "childs" : [ {
                                             "call" : "org.apache.el.parser.ELParser#Unary",
@@ -764,14 +764,14 @@
                                             "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Unary()",
                                             "module" : "",
                                             "statistic" : {
-                                              "meanOld" : 410293.23573232314,
-                                              "meanCurrent" : 450166.055,
-                                              "deviationOld" : 93585.18198726748,
-                                              "deviationCurrent" : 104559.28677383193,
-                                              "vms" : 99,
-                                              "callsOld" : 8000,
-                                              "calls" : 8000,
-                                              "tvalue" : -2.8351204551326354
+                                              "meanOld" : 465469.15759828663,
+                                              "meanCurrent" : 462576.2927041333,
+                                              "deviationOld" : 73836.76164298804,
+                                              "deviationCurrent" : 75255.38552144963,
+                                              "vms" : 496,
+                                              "callsOld" : 40000,
+                                              "calls" : 40000,
+                                              "tvalue" : 0.611096166095989
                                             },
                                             "childs" : [ {
                                               "call" : "org.apache.el.parser.ELParser#Value",
@@ -779,14 +779,14 @@
                                               "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Value()",
                                               "module" : "",
                                               "statistic" : {
-                                                "meanOld" : 385976.02007575775,
-                                                "meanCurrent" : 419343.41205808084,
-                                                "deviationOld" : 89601.69071293442,
-                                                "deviationCurrent" : 93290.52623887025,
-                                                "vms" : 99,
-                                                "callsOld" : 8000,
-                                                "calls" : 8000,
-                                                "tvalue" : -2.566677568294353
+                                                "meanOld" : 436411.7283014113,
+                                                "meanCurrent" : 433304.56026515167,
+                                                "deviationOld" : 71076.33968027915,
+                                                "deviationCurrent" : 70642.04893269506,
+                                                "vms" : 495,
+                                                "callsOld" : 40000,
+                                                "calls" : 40000,
+                                                "tvalue" : 0.6901991893905558
                                               },
                                               "childs" : [ {
                                                 "call" : "org.apache.el.parser.ELParser#ValuePrefix",
@@ -794,14 +794,14 @@
                                                 "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.ValuePrefix()",
                                                 "module" : "",
                                                 "statistic" : {
-                                                  "meanOld" : 325052.0821338383,
-                                                  "meanCurrent" : 356505.6479166667,
-                                                  "deviationOld" : 76666.00477799769,
-                                                  "deviationCurrent" : 85303.03720234902,
-                                                  "vms" : 99,
-                                                  "callsOld" : 8000,
-                                                  "calls" : 8000,
-                                                  "tvalue" : -2.728687930974018
+                                                  "meanOld" : 367976.0591346154,
+                                                  "meanCurrent" : 365910.2045397382,
+                                                  "deviationOld" : 61996.214280833854,
+                                                  "deviationCurrent" : 63146.04652786243,
+                                                  "vms" : 495,
+                                                  "callsOld" : 40000,
+                                                  "calls" : 40000,
+                                                  "tvalue" : 0.5196660424502325
                                                 },
                                                 "childs" : [ {
                                                   "call" : "org.apache.el.parser.ELParser#NonLiteral",
@@ -809,14 +809,14 @@
                                                   "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.NonLiteral()",
                                                   "module" : "",
                                                   "statistic" : {
-                                                    "meanOld" : 304337.7063762628,
-                                                    "meanCurrent" : 333895.2007575758,
-                                                    "deviationOld" : 73421.56052316267,
-                                                    "deviationCurrent" : 82763.92941349132,
-                                                    "vms" : 99,
-                                                    "callsOld" : 8000,
-                                                    "calls" : 8000,
-                                                    "tvalue" : -2.658177478444029
+                                                    "meanOld" : 343135.328891988,
+                                                    "meanCurrent" : 341320.106476358,
+                                                    "deviationOld" : 58107.90483653379,
+                                                    "deviationCurrent" : 59797.11819737416,
+                                                    "vms" : 495,
+                                                    "callsOld" : 40000,
+                                                    "calls" : 40000,
+                                                    "tvalue" : 0.48438664394111264
                                                   },
                                                   "childs" : [ {
                                                     "call" : "org.apache.el.parser.ELParser#jj_2_6",
@@ -824,14 +824,14 @@
                                                     "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_6(int)",
                                                     "module" : "",
                                                     "statistic" : {
-                                                      "meanOld" : 64083.80631313131,
-                                                      "meanCurrent" : 74695.15688131315,
-                                                      "deviationOld" : 14334.08970943781,
-                                                      "deviationCurrent" : 24928.241871652608,
-                                                      "vms" : 99,
-                                                      "callsOld" : 8000,
-                                                      "calls" : 8000,
-                                                      "tvalue" : -3.671691050321378
+                                                      "meanOld" : 74981.00268775717,
+                                                      "meanCurrent" : 75045.24022073922,
+                                                      "deviationOld" : 14556.039049499184,
+                                                      "deviationCurrent" : 14171.79042217157,
+                                                      "vms" : 486,
+                                                      "callsOld" : 40000,
+                                                      "calls" : 40000,
+                                                      "tvalue" : -0.06974248479271009
                                                     },
                                                     "childs" : [ {
                                                       "call" : "org.apache.el.parser.ELParser#jj_3_6",
@@ -839,14 +839,14 @@
                                                       "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_6()",
                                                       "module" : "",
                                                       "statistic" : {
-                                                        "meanOld" : 41058.424179292924,
-                                                        "meanCurrent" : 49341.53718434342,
-                                                        "deviationOld" : 10102.978025050246,
-                                                        "deviationCurrent" : 22334.12167365246,
-                                                        "vms" : 99,
-                                                        "callsOld" : 8000,
-                                                        "calls" : 8000,
-                                                        "tvalue" : -3.3621429043760105
+                                                        "meanOld" : 48061.78947164947,
+                                                        "meanCurrent" : 47400.09025621118,
+                                                        "deviationOld" : 10390.484972381917,
+                                                        "deviationCurrent" : 8979.232727180552,
+                                                        "vms" : 484,
+                                                        "callsOld" : 40000,
+                                                        "calls" : 40000,
+                                                        "tvalue" : 1.060204071639211
                                                       },
                                                       "childs" : [ {
                                                         "call" : "org.apache.el.parser.ELParser#jj_3R_23",
@@ -854,14 +854,14 @@
                                                         "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_LambdaExpressionOrInvocation_141_5_23()",
                                                         "module" : "",
                                                         "statistic" : {
-                                                          "meanOld" : 22712.71477272727,
-                                                          "meanCurrent" : 26030.035807291668,
-                                                          "deviationOld" : 5943.406481146571,
-                                                          "deviationCurrent" : 10862.998482351168,
-                                                          "vms" : 97,
-                                                          "callsOld" : 8000,
-                                                          "calls" : 8000,
-                                                          "tvalue" : -2.6341014810034746
+                                                          "meanOld" : 26771.477919238667,
+                                                          "meanCurrent" : 26373.717665289263,
+                                                          "deviationOld" : 7171.504919610775,
+                                                          "deviationCurrent" : 6433.5166658119915,
+                                                          "vms" : 485,
+                                                          "callsOld" : 40000,
+                                                          "calls" : 40000,
+                                                          "tvalue" : 0.9093216571508174
                                                         },
                                                         "childs" : [ ]
                                                       } ]
@@ -872,14 +872,14 @@
                                                     "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_7(int)",
                                                     "module" : "",
                                                     "statistic" : {
-                                                      "meanOld" : 118113.18820153068,
-                                                      "meanCurrent" : 134182.8056186869,
-                                                      "deviationOld" : 42429.95858976808,
-                                                      "deviationCurrent" : 55642.238323355574,
-                                                      "vms" : 98,
-                                                      "callsOld" : 8000,
-                                                      "calls" : 8000,
-                                                      "tvalue" : -2.2807268782775574
+                                                      "meanOld" : 137547.2384634889,
+                                                      "meanCurrent" : 134163.29250760638,
+                                                      "deviationOld" : 33241.03465318322,
+                                                      "deviationCurrent" : 32719.715699175602,
+                                                      "vms" : 493,
+                                                      "callsOld" : 40000,
+                                                      "calls" : 40000,
+                                                      "tvalue" : 1.6108782762822609
                                                     },
                                                     "childs" : [ {
                                                       "call" : "org.apache.el.parser.ELParser#jj_3_7",
@@ -887,14 +887,14 @@
                                                       "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_7()",
                                                       "module" : "",
                                                       "statistic" : {
-                                                        "meanOld" : 140212.67875631314,
-                                                        "meanCurrent" : 150625.14946338383,
-                                                        "deviationOld" : 41978.3754427868,
-                                                        "deviationCurrent" : 47425.214480014045,
-                                                        "vms" : 99,
-                                                        "callsOld" : 24000,
-                                                        "calls" : 24000,
-                                                        "tvalue" : -1.6357876497884871
+                                                        "meanOld" : 156466.34729420723,
+                                                        "meanCurrent" : 153117.2939583332,
+                                                        "deviationOld" : 30598.289847952867,
+                                                        "deviationCurrent" : 31366.972988021822,
+                                                        "vms" : 493,
+                                                        "callsOld" : 120000,
+                                                        "calls" : 120000,
+                                                        "tvalue" : 1.6979046514350922
                                                       },
                                                       "childs" : [ {
                                                         "call" : "org.apache.el.parser.ELParser#jj_3R_24",
@@ -902,14 +902,14 @@
                                                         "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_null_328_18_24()",
                                                         "module" : "",
                                                         "statistic" : {
-                                                          "meanOld" : 65090.65353535354,
-                                                          "meanCurrent" : 68404.99649234694,
-                                                          "deviationOld" : 22331.530214736133,
-                                                          "deviationCurrent" : 23056.610835931337,
-                                                          "vms" : 98,
-                                                          "callsOld" : 24000,
-                                                          "calls" : 24000,
-                                                          "tvalue" : -1.024688711622389
+                                                          "meanOld" : 72634.67155677186,
+                                                          "meanCurrent" : 70023.15319458501,
+                                                          "deviationOld" : 17845.585749146092,
+                                                          "deviationCurrent" : 16217.81175247049,
+                                                          "vms" : 492,
+                                                          "callsOld" : 120000,
+                                                          "calls" : 120000,
+                                                          "tvalue" : 2.4030503118750755
                                                         },
                                                         "childs" : [ ]
                                                       } ]
@@ -922,14 +922,14 @@
                                                 "otherKiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk_f()",
                                                 "module" : "",
                                                 "statistic" : {
-                                                  "meanOld" : 28873.088278619518,
-                                                  "meanCurrent" : 31224.493920068024,
-                                                  "deviationOld" : 5486.271754190119,
-                                                  "deviationCurrent" : 7342.186920801712,
-                                                  "vms" : 98,
-                                                  "callsOld" : 40000,
-                                                  "calls" : 40000,
-                                                  "tvalue" : -2.5443125455524553
+                                                  "meanOld" : 28674.66980013548,
+                                                  "meanCurrent" : 28859.1136489899,
+                                                  "deviationOld" : 3998.2663141182347,
+                                                  "deviationCurrent" : 4127.115882834622,
+                                                  "vms" : 493,
+                                                  "callsOld" : 200000,
+                                                  "calls" : 200000,
+                                                  "tvalue" : -0.7130882470495111
                                                 },
                                                 "childs" : [ ]
                                               } ]
@@ -947,14 +947,14 @@
                               "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_5(int)",
                               "module" : "",
                               "statistic" : {
-                                "meanOld" : 45409.32603092784,
-                                "meanCurrent" : 49786.97474226804,
-                                "deviationOld" : 11596.275242476975,
-                                "deviationCurrent" : 14946.561664628156,
-                                "vms" : 97,
-                                "callsOld" : 8000,
-                                "calls" : 8000,
-                                "tvalue" : -2.279093399095819
+                                "meanOld" : 52467.42328608247,
+                                "meanCurrent" : 53924.25264373719,
+                                "deviationOld" : 10405.266365028761,
+                                "deviationCurrent" : 13823.748261543524,
+                                "vms" : 486,
+                                "callsOld" : 40000,
+                                "calls" : 40000,
+                                "tvalue" : -1.8567294184728218
                               },
                               "childs" : [ {
                                 "call" : "org.apache.el.parser.ELParser#jj_3_5",
@@ -962,14 +962,14 @@
                                 "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_5()",
                                 "module" : "",
                                 "statistic" : {
-                                  "meanOld" : 33133.45762117346,
-                                  "meanCurrent" : 36894.03019770407,
-                                  "deviationOld" : 9683.293755015737,
-                                  "deviationCurrent" : 12493.03707276096,
-                                  "vms" : 98,
-                                  "callsOld" : 24000,
-                                  "calls" : 24000,
-                                  "tvalue" : -2.355234505962725
+                                  "meanOld" : 38022.63392948068,
+                                  "meanCurrent" : 39122.48599771807,
+                                  "deviationOld" : 10108.97589558178,
+                                  "deviationCurrent" : 12972.255523474414,
+                                  "vms" : 492,
+                                  "callsOld" : 120000,
+                                  "calls" : 120000,
+                                  "tvalue" : -1.4837598033357307
                                 },
                                 "childs" : [ ]
                               } ]
@@ -980,14 +980,14 @@
                             "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_1(int)",
                             "module" : "",
                             "statistic" : {
-                              "meanOld" : 45738.86088917527,
-                              "meanCurrent" : 46970.64974226804,
-                              "deviationOld" : 17758.20777623018,
-                              "deviationCurrent" : 13240.17225978668,
-                              "vms" : 97,
-                              "callsOld" : 8000,
-                              "calls" : 8000,
-                              "tvalue" : -0.5476883882661289
+                              "meanOld" : 50667.59562757204,
+                              "meanCurrent" : 50851.211614476386,
+                              "deviationOld" : 11372.638341378175,
+                              "deviationCurrent" : 12533.004373667387,
+                              "vms" : 486,
+                              "callsOld" : 40000,
+                              "calls" : 40000,
+                              "tvalue" : -0.23931882375901598
                             },
                             "childs" : [ {
                               "call" : "org.apache.el.parser.ELParser#jj_3_1",
@@ -995,14 +995,14 @@
                               "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_1()",
                               "module" : "",
                               "statistic" : {
-                                "meanOld" : 28127.103898195877,
-                                "meanCurrent" : 28566.826868556698,
-                                "deviationOld" : 9679.503011148758,
-                                "deviationCurrent" : 7313.979908927081,
-                                "vms" : 97,
-                                "callsOld" : 24000,
-                                "calls" : 24000,
-                                "tvalue" : -0.3569687302099296
+                                "meanOld" : 30899.07648870634,
+                                "meanCurrent" : 30662.62733247422,
+                                "deviationOld" : 7017.365793013201,
+                                "deviationCurrent" : 6895.774080169261,
+                                "vms" : 486,
+                                "callsOld" : 120000,
+                                "calls" : 120000,
+                                "tvalue" : 0.5298294022832287
                               },
                               "childs" : [ ]
                             } ]
