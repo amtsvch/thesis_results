@@ -1,0 +1,50 @@
+{
+  "clazz" : "org.apache.catalina.tribes.group.interceptors.TestOrderInterceptor",
+  "methods" : [ {
+    "method" : "testOrder1",
+    "datacollectorResults" : [ {
+      "name" : "de.dagere.kopeme.datacollection.TimeDataCollectorNoGC",
+      "chunks" : [ ],
+      "results" : [ {
+        "value" : 3.51771272402E10,
+        "deviation" : 0.002499101675169682,
+        "min" : 3.5113188183E10,
+        "max" : 3.5331003716E10,
+        "warmup" : 0,
+        "iterations" : 5,
+        "repetitions" : 4,
+        "commit" : null,
+        "vmRunConfiguration" : {
+          "showStart" : false,
+          "executeBeforeClassInMeasurement" : false,
+          "redirectToTemp" : false,
+          "redirectToNull" : true,
+          "useKieker" : false
+        },
+        "javaVersion" : "11.0.17",
+        "cpu" : "model name : Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz",
+        "memory" : "MemTotal: 16275336 kB",
+        "date" : 1671685941145,
+        "fulldata" : {
+          "fileName" : null,
+          "values" : [ {
+            "startTime" : 1671685765068,
+            "value" : 35331003716
+          }, {
+            "startTime" : 1671685800399,
+            "value" : 35163724449
+          }, {
+            "startTime" : 1671685835563,
+            "value" : 35143272776
+          }, {
+            "startTime" : 1671685870707,
+            "value" : 35134447077
+          }, {
+            "startTime" : 1671685905841,
+            "value" : 35113188183
+          } ]
+        }
+      } ]
+    } ]
+  } ]
+}
