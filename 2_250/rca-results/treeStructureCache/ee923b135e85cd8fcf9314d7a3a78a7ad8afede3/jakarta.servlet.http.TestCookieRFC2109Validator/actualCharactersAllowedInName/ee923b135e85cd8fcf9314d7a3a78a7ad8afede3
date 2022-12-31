@@ -1,0 +1,31 @@
+{
+  "call" : "jakarta.servlet.http.TestCookieRFC2109Validator#actualCharactersAllowedInName",
+  "kiekerPattern" : "public void jakarta.servlet.http.TestCookieRFC2109Validator.actualCharactersAllowedInName()",
+  "otherKiekerPattern" : null,
+  "module" : "",
+  "children" : [ {
+    "call" : "jakarta.servlet.http.TestCookie#checkCharInName",
+    "kiekerPattern" : "public static void jakarta.servlet.http.TestCookie.checkCharInName(jakarta.servlet.http.CookieNameValidator,java.util.BitSet)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "jakarta.servlet.http.RFC2109Validator#validate",
+      "kiekerPattern" : "void jakarta.servlet.http.RFC2109Validator.validate(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "jakarta.servlet.http.CookieNameValidator#validate",
+        "kiekerPattern" : "void jakarta.servlet.http.CookieNameValidator.validate(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "jakarta.servlet.http.CookieNameValidator#isToken",
+          "kiekerPattern" : "private boolean jakarta.servlet.http.CookieNameValidator.isToken(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    } ]
+  } ]
+}

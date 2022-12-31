@@ -1,0 +1,757 @@
+{
+  "call" : "jakarta.el.TestBeanELResolver#testInvokeVarargsCoerce16",
+  "kiekerPattern" : "public void jakarta.el.TestBeanELResolver.testInvokeVarargsCoerce16()",
+  "otherKiekerPattern" : null,
+  "module" : "",
+  "children" : [ {
+    "call" : "jakarta.el.ELResolver#<init>",
+    "kiekerPattern" : "public new jakarta.el.ELResolver.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "jakarta.el.BeanELResolver$ConcurrentCache#<init>",
+    "kiekerPattern" : "public new jakarta.el.BeanELResolver$ConcurrentCache.<init>(int)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "jakarta.el.BeanELResolver#<init>",
+    "kiekerPattern" : "public new jakarta.el.BeanELResolver.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "jakarta.el.ELManager#getExpressionFactory",
+    "kiekerPattern" : "public static jakarta.el.ExpressionFactory jakarta.el.ELManager.getExpressionFactory()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "jakarta.el.Util$CacheValue#<init>",
+      "kiekerPattern" : "public new jakarta.el.Util$CacheValue.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.Util#getExpressionFactory",
+      "kiekerPattern" : "static jakarta.el.ExpressionFactory jakarta.el.Util.getExpressionFactory()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "jakarta.el.Util#getContextClassLoader",
+        "kiekerPattern" : "static java.lang.ClassLoader jakarta.el.Util.getContextClassLoader()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "jakarta.el.Util$CacheKey#<init>",
+        "kiekerPattern" : "public new jakarta.el.Util$CacheKey.<init>(java.lang.ClassLoader)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "jakarta.el.Util$CacheKey#hashCode",
+        "kiekerPattern" : "public int jakarta.el.Util$CacheKey.hashCode()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "jakarta.el.Util$CacheValue#<init>",
+        "kiekerPattern" : "public new jakarta.el.Util$CacheValue.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "jakarta.el.Util$CacheValue#getLock",
+        "kiekerPattern" : "public java.util.concurrent.locks.ReadWriteLock jakarta.el.Util$CacheValue.getLock()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "jakarta.el.Util$CacheValue#getExpressionFactory",
+        "kiekerPattern" : "public jakarta.el.ExpressionFactory jakarta.el.Util$CacheValue.getExpressionFactory()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "jakarta.el.ExpressionFactory$CacheValue#<init>",
+        "kiekerPattern" : "public new jakarta.el.ExpressionFactory$CacheValue.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "jakarta.el.ExpressionFactory#newInstance",
+        "kiekerPattern" : "public static jakarta.el.ExpressionFactory jakarta.el.ExpressionFactory.newInstance()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "jakarta.el.ExpressionFactory#newInstance",
+          "kiekerPattern" : "public static jakarta.el.ExpressionFactory jakarta.el.ExpressionFactory.newInstance(java.util.Properties)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "jakarta.el.Util#getContextClassLoader",
+            "kiekerPattern" : "static java.lang.ClassLoader jakarta.el.Util.getContextClassLoader()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "jakarta.el.ExpressionFactory$CacheKey#<init>",
+            "kiekerPattern" : "public new jakarta.el.ExpressionFactory$CacheKey.<init>(java.lang.ClassLoader)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "jakarta.el.ExpressionFactory$CacheKey#hashCode",
+            "kiekerPattern" : "public int jakarta.el.ExpressionFactory$CacheKey.hashCode()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "jakarta.el.ExpressionFactory$CacheValue#<init>",
+            "kiekerPattern" : "public new jakarta.el.ExpressionFactory$CacheValue.<init>()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "jakarta.el.ExpressionFactory$CacheValue#getLock",
+            "kiekerPattern" : "public java.util.concurrent.locks.ReadWriteLock jakarta.el.ExpressionFactory$CacheValue.getLock()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "jakarta.el.ExpressionFactory$CacheValue#getFactoryClass",
+            "kiekerPattern" : "public java.lang.Class jakarta.el.ExpressionFactory$CacheValue.getFactoryClass()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "jakarta.el.ExpressionFactory$CacheValue#getFactoryClassName",
+            "kiekerPattern" : "public java.lang.String jakarta.el.ExpressionFactory$CacheValue.getFactoryClassName()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "jakarta.el.ExpressionFactory#discoverClassName",
+            "kiekerPattern" : "private static java.lang.String jakarta.el.ExpressionFactory.discoverClassName(java.lang.ClassLoader)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "jakarta.el.ExpressionFactory#getClassNameServices",
+              "kiekerPattern" : "private static java.lang.String jakarta.el.ExpressionFactory.getClassNameServices(java.lang.ClassLoader)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "jakarta.el.ExpressionFactory#getClassNameJreDir",
+              "kiekerPattern" : "private static java.lang.String jakarta.el.ExpressionFactory.getClassNameJreDir()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "jakarta.el.ExpressionFactory#getClassNameSysProp",
+              "kiekerPattern" : "private static final java.lang.String jakarta.el.ExpressionFactory.getClassNameSysProp()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            } ]
+          }, {
+            "call" : "jakarta.el.ExpressionFactory$CacheValue#setFactoryClassName",
+            "kiekerPattern" : "public void jakarta.el.ExpressionFactory$CacheValue.setFactoryClassName(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "jakarta.el.ExpressionFactory$CacheValue#setFactoryClass",
+            "kiekerPattern" : "public void jakarta.el.ExpressionFactory$CacheValue.setFactoryClass(java.lang.Class)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "jakarta.el.ExpressionFactory#<init>",
+            "kiekerPattern" : "public new jakarta.el.ExpressionFactory.<init>()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.el.ExpressionFactoryImpl#<init>",
+            "kiekerPattern" : "public new org.apache.el.ExpressionFactoryImpl.<init>()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "call" : "jakarta.el.Util$CacheValue#setExpressionFactory",
+        "kiekerPattern" : "public void jakarta.el.Util$CacheValue.setExpressionFactory(jakarta.el.ExpressionFactory)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "call" : "jakarta.el.ELContext#<init>",
+    "kiekerPattern" : "public new jakarta.el.ELContext.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "jakarta.el.StandardELContext#<init>",
+    "kiekerPattern" : "public new jakarta.el.StandardELContext.<init>(jakarta.el.ExpressionFactory)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "jakarta.el.VariableMapper#<init>",
+      "kiekerPattern" : "public new jakarta.el.VariableMapper.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.StandardELContext$StandardVariableMapper#<init>",
+      "kiekerPattern" : "private new jakarta.el.StandardELContext$StandardVariableMapper.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.ExpressionFactory#getInitFunctionMap",
+      "kiekerPattern" : "public java.util.Map jakarta.el.ExpressionFactory.getInitFunctionMap()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.FunctionMapper#<init>",
+      "kiekerPattern" : "public new jakarta.el.FunctionMapper.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.StandardELContext$StandardFunctionMapper#<init>",
+      "kiekerPattern" : "public new jakarta.el.StandardELContext$StandardFunctionMapper.<init>(java.util.Map)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.ELResolver#<init>",
+      "kiekerPattern" : "public new jakarta.el.ELResolver.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.CompositeELResolver#<init>",
+      "kiekerPattern" : "public new jakarta.el.CompositeELResolver.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.el.ExpressionFactoryImpl#getStreamELResolver",
+      "kiekerPattern" : "public jakarta.el.ELResolver org.apache.el.ExpressionFactoryImpl.getStreamELResolver()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "jakarta.el.ELResolver#<init>",
+        "kiekerPattern" : "public new jakarta.el.ELResolver.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.el.stream.StreamELResolverImpl#<init>",
+        "kiekerPattern" : "public new org.apache.el.stream.StreamELResolverImpl.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "jakarta.el.BeanNameResolver#<init>",
+      "kiekerPattern" : "public new jakarta.el.BeanNameResolver.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.StandardELContext$StandardBeanNameResolver#<init>",
+      "kiekerPattern" : "public new jakarta.el.StandardELContext$StandardBeanNameResolver.<init>(java.util.Map)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.BeanNameELResolver#<init>",
+      "kiekerPattern" : "public new jakarta.el.BeanNameELResolver.<init>(jakarta.el.BeanNameResolver)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.CompositeELResolver#add",
+      "kiekerPattern" : "public void jakarta.el.CompositeELResolver.add(jakarta.el.CompositeELResolver)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.StaticFieldELResolver#<init>",
+      "kiekerPattern" : "public new jakarta.el.StaticFieldELResolver.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.MapELResolver#<init>",
+      "kiekerPattern" : "public new jakarta.el.MapELResolver.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.ResourceBundleELResolver#<init>",
+      "kiekerPattern" : "public new jakarta.el.ResourceBundleELResolver.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.ListELResolver#<init>",
+      "kiekerPattern" : "public new jakarta.el.ListELResolver.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.ArrayELResolver#<init>",
+      "kiekerPattern" : "public new jakarta.el.ArrayELResolver.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.BeanELResolver$ConcurrentCache#<init>",
+      "kiekerPattern" : "public new jakarta.el.BeanELResolver$ConcurrentCache.<init>(int)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.BeanELResolver#<init>",
+      "kiekerPattern" : "public new jakarta.el.BeanELResolver.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "jakarta.el.TesterBean#<init>",
+    "kiekerPattern" : "public new jakarta.el.TesterBean.<init>(java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "jakarta.el.BeanELResolver#invoke",
+    "kiekerPattern" : "public java.lang.Object jakarta.el.BeanELResolver.invoke(jakarta.el.ELContext,java.lang.Object,java.lang.Object,java.lang.Class[],java.lang.Object[])",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "jakarta.el.ELManager#getExpressionFactory",
+      "kiekerPattern" : "public static jakarta.el.ExpressionFactory jakarta.el.ELManager.getExpressionFactory()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "jakarta.el.Util#getExpressionFactory",
+        "kiekerPattern" : "static jakarta.el.ExpressionFactory jakarta.el.Util.getExpressionFactory()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "jakarta.el.Util#getContextClassLoader",
+          "kiekerPattern" : "static java.lang.ClassLoader jakarta.el.Util.getContextClassLoader()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Util$CacheKey#<init>",
+          "kiekerPattern" : "public new jakarta.el.Util$CacheKey.<init>(java.lang.ClassLoader)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Util$CacheKey#hashCode",
+          "kiekerPattern" : "public int jakarta.el.Util$CacheKey.hashCode()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Util$CacheKey#equals",
+          "kiekerPattern" : "public boolean jakarta.el.Util$CacheKey.equals(java.lang.Object)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Util$CacheValue#getLock",
+          "kiekerPattern" : "public java.util.concurrent.locks.ReadWriteLock jakarta.el.Util$CacheValue.getLock()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Util$CacheValue#getExpressionFactory",
+          "kiekerPattern" : "public jakarta.el.ExpressionFactory jakarta.el.Util$CacheValue.getExpressionFactory()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.el.ExpressionFactoryImpl#coerceToType",
+      "kiekerPattern" : "public org.apache.el.T org.apache.el.ExpressionFactoryImpl.coerceToType(java.lang.Object,java.lang.Class)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.el.lang.ELSupport#coerceToType",
+        "kiekerPattern" : "public static final org.apache.el.lang.T org.apache.el.lang.ELSupport.coerceToType(jakarta.el.ELContext,java.lang.Object,java.lang.Class)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "jakarta.el.Util#findMethod",
+      "kiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.findMethod(java.lang.Class,java.lang.Object,java.lang.String,java.lang.Class[],java.lang.Object[])",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "jakarta.el.Util$Wrapper#wrap",
+        "kiekerPattern" : "public static java.util.List jakarta.el.Util$Wrapper.wrap(java.lang.reflect.Method[],java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "jakarta.el.Util$Wrapper#<init>",
+          "kiekerPattern" : "private new jakarta.el.Util$Wrapper.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Util$MethodWrapper#<init>",
+          "kiekerPattern" : "public new jakarta.el.Util$MethodWrapper.<init>(java.lang.reflect.Method)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "jakarta.el.Util#findWrapper",
+        "kiekerPattern" : "private static jakarta.el.Util$ConstructorWrapper jakarta.el.Util.findWrapper(java.lang.Class,java.util.List,java.lang.String,java.lang.Class[],java.lang.Object[])",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "jakarta.el.Util$MethodWrapper#getParameterTypes",
+          "kiekerPattern" : "public java.lang.Class[] jakarta.el.Util$MethodWrapper.getParameterTypes()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Util$MethodWrapper#isVarArgs",
+          "kiekerPattern" : "public boolean jakarta.el.Util$MethodWrapper.isVarArgs()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Util#isAssignableFrom",
+          "kiekerPattern" : "static boolean jakarta.el.Util.isAssignableFrom(java.lang.Class,java.lang.Class)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Util#isCoercibleFrom",
+          "kiekerPattern" : "private static boolean jakarta.el.Util.isCoercibleFrom(java.lang.Object,java.lang.Class)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "jakarta.el.Util#getExpressionFactory",
+            "kiekerPattern" : "static jakarta.el.ExpressionFactory jakarta.el.Util.getExpressionFactory()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "jakarta.el.Util#getContextClassLoader",
+              "kiekerPattern" : "static java.lang.ClassLoader jakarta.el.Util.getContextClassLoader()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "jakarta.el.Util$CacheKey#<init>",
+              "kiekerPattern" : "public new jakarta.el.Util$CacheKey.<init>(java.lang.ClassLoader)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "jakarta.el.Util$CacheKey#hashCode",
+              "kiekerPattern" : "public int jakarta.el.Util$CacheKey.hashCode()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "jakarta.el.Util$CacheKey#equals",
+              "kiekerPattern" : "public boolean jakarta.el.Util$CacheKey.equals(java.lang.Object)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "jakarta.el.Util$CacheValue#getLock",
+              "kiekerPattern" : "public java.util.concurrent.locks.ReadWriteLock jakarta.el.Util$CacheValue.getLock()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "jakarta.el.Util$CacheValue#getExpressionFactory",
+              "kiekerPattern" : "public jakarta.el.ExpressionFactory jakarta.el.Util$CacheValue.getExpressionFactory()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            } ]
+          }, {
+            "call" : "org.apache.el.ExpressionFactoryImpl#coerceToType",
+            "kiekerPattern" : "public org.apache.el.T org.apache.el.ExpressionFactoryImpl.coerceToType(java.lang.Object,java.lang.Class)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.el.lang.ELSupport#coerceToType",
+              "kiekerPattern" : "public static final org.apache.el.lang.T org.apache.el.lang.ELSupport.coerceToType(jakarta.el.ELContext,java.lang.Object,java.lang.Class)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.el.lang.ELArithmetic#<init>",
+                "kiekerPattern" : "protected new org.apache.el.lang.ELArithmetic.<init>()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.el.lang.ELArithmetic$BigDecimalDelegate#<init>",
+                "kiekerPattern" : "public new org.apache.el.lang.ELArithmetic$BigDecimalDelegate.<init>()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.el.lang.ELArithmetic$BigIntegerDelegate#<init>",
+                "kiekerPattern" : "public new org.apache.el.lang.ELArithmetic$BigIntegerDelegate.<init>()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.el.lang.ELArithmetic$DoubleDelegate#<init>",
+                "kiekerPattern" : "public new org.apache.el.lang.ELArithmetic$DoubleDelegate.<init>()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.el.lang.ELArithmetic$LongDelegate#<init>",
+                "kiekerPattern" : "public new org.apache.el.lang.ELArithmetic$LongDelegate.<init>()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.el.lang.ELArithmetic#isNumberType",
+                "kiekerPattern" : "public static final boolean org.apache.el.lang.ELArithmetic.isNumberType(java.lang.Class)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.el.lang.ELSupport#coerceToNumber",
+                "kiekerPattern" : "public static final java.lang.Number org.apache.el.lang.ELSupport.coerceToNumber(jakarta.el.ELContext,java.lang.Object,java.lang.Class)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.el.lang.ELSupport#coerceToNumber",
+                  "kiekerPattern" : "protected static final java.lang.Number org.apache.el.lang.ELSupport.coerceToNumber(java.lang.String,java.lang.Class)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                } ]
+              }, {
+                "call" : "org.apache.el.lang.ELSupport#coerceToBoolean",
+                "kiekerPattern" : "public static final java.lang.Boolean org.apache.el.lang.ELSupport.coerceToBoolean(jakarta.el.ELContext,java.lang.Object,boolean)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              } ]
+            } ]
+          } ]
+        }, {
+          "call" : "jakarta.el.Util$MethodWrapper#isBridge",
+          "kiekerPattern" : "public boolean jakarta.el.Util$MethodWrapper.isBridge()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Util$MatchResult#<init>",
+          "kiekerPattern" : "public new jakarta.el.Util$MatchResult.<init>(int,int,int,int,boolean)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Util$MatchResult#compareTo",
+          "kiekerPattern" : "public int jakarta.el.Util$MatchResult.compareTo(jakarta.el.Util$MatchResult)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "jakarta.el.Util$MatchResult#getExact",
+            "kiekerPattern" : "public int jakarta.el.Util$MatchResult.getExact()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "jakarta.el.Util$MatchResult#getAssignable",
+            "kiekerPattern" : "public int jakarta.el.Util$MatchResult.getAssignable()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "jakarta.el.Util$MatchResult#getCoercible",
+            "kiekerPattern" : "public int jakarta.el.Util$MatchResult.getCoercible()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "jakarta.el.Util$MatchResult#getVarArgs",
+            "kiekerPattern" : "public int jakarta.el.Util$MatchResult.getVarArgs()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "call" : "jakarta.el.Util$MethodWrapper#unWrap",
+        "kiekerPattern" : "public java.lang.reflect.Method jakarta.el.Util$MethodWrapper.unWrap()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "jakarta.el.Util#getMethod",
+        "kiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.getMethod(java.lang.Class,java.lang.Object,java.lang.reflect.Method)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "jakarta.el.Jre9Compat#isSupported",
+          "kiekerPattern" : "public static boolean jakarta.el.Jre9Compat.isSupported()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.JreCompat#<init>",
+          "kiekerPattern" : "new jakarta.el.JreCompat.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Jre9Compat#<init>",
+          "kiekerPattern" : "new jakarta.el.Jre9Compat.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.JreCompat#getInstance",
+          "kiekerPattern" : "public static jakarta.el.JreCompat jakarta.el.JreCompat.getInstance()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Jre9Compat#canAccess",
+          "kiekerPattern" : "public boolean jakarta.el.Jre9Compat.canAccess(java.lang.Object,java.lang.reflect.AccessibleObject)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "jakarta.el.Util#buildParameters",
+      "kiekerPattern" : "static java.lang.Object[] jakarta.el.Util.buildParameters(java.lang.Class[],boolean,java.lang.Object[])",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "jakarta.el.Util#getExpressionFactory",
+        "kiekerPattern" : "static jakarta.el.ExpressionFactory jakarta.el.Util.getExpressionFactory()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "jakarta.el.Util#getContextClassLoader",
+          "kiekerPattern" : "static java.lang.ClassLoader jakarta.el.Util.getContextClassLoader()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Util$CacheKey#<init>",
+          "kiekerPattern" : "public new jakarta.el.Util$CacheKey.<init>(java.lang.ClassLoader)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Util$CacheKey#hashCode",
+          "kiekerPattern" : "public int jakarta.el.Util$CacheKey.hashCode()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Util$CacheKey#equals",
+          "kiekerPattern" : "public boolean jakarta.el.Util$CacheKey.equals(java.lang.Object)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Util$CacheValue#getLock",
+          "kiekerPattern" : "public java.util.concurrent.locks.ReadWriteLock jakarta.el.Util$CacheValue.getLock()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "jakarta.el.Util$CacheValue#getExpressionFactory",
+          "kiekerPattern" : "public jakarta.el.ExpressionFactory jakarta.el.Util$CacheValue.getExpressionFactory()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.el.ExpressionFactoryImpl#coerceToType",
+        "kiekerPattern" : "public org.apache.el.T org.apache.el.ExpressionFactoryImpl.coerceToType(java.lang.Object,java.lang.Class)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.el.lang.ELSupport#coerceToType",
+          "kiekerPattern" : "public static final org.apache.el.lang.T org.apache.el.lang.ELSupport.coerceToType(jakarta.el.ELContext,java.lang.Object,java.lang.Class)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.el.lang.ELArithmetic#isNumberType",
+            "kiekerPattern" : "public static final boolean org.apache.el.lang.ELArithmetic.isNumberType(java.lang.Class)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.el.lang.ELSupport#coerceToBoolean",
+            "kiekerPattern" : "public static final java.lang.Boolean org.apache.el.lang.ELSupport.coerceToBoolean(jakarta.el.ELContext,java.lang.Object,boolean)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.el.lang.ELSupport#coerceToNumber",
+            "kiekerPattern" : "public static final java.lang.Number org.apache.el.lang.ELSupport.coerceToNumber(jakarta.el.ELContext,java.lang.Object,java.lang.Class)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.el.lang.ELSupport#coerceToNumber",
+              "kiekerPattern" : "protected static final java.lang.Number org.apache.el.lang.ELSupport.coerceToNumber(java.lang.String,java.lang.Class)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            } ]
+          } ]
+        } ]
+      } ]
+    }, {
+      "call" : "jakarta.el.TesterBean#getNameVarargs",
+      "kiekerPattern" : "public java.lang.String jakarta.el.TesterBean.getNameVarargs(java.lang.Boolean,java.lang.Integer)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.el.ELContext#setPropertyResolved",
+      "kiekerPattern" : "public void jakarta.el.ELContext.setPropertyResolved(java.lang.Object,java.lang.Object)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "jakarta.el.ELContext#setPropertyResolved",
+        "kiekerPattern" : "public void jakarta.el.ELContext.setPropertyResolved(boolean)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "jakarta.el.ELContext#notifyPropertyResolved",
+        "kiekerPattern" : "public void jakarta.el.ELContext.notifyPropertyResolved(java.lang.Object,java.lang.Object)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    } ]
+  } ]
+}

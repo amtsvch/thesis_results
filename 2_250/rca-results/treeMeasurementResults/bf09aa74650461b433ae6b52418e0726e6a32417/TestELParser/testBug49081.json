@@ -1,0 +1,2910 @@
+{
+  "measurementConfig" : {
+    "vms" : 500,
+    "earlyStop" : false,
+    "warmup" : 80,
+    "iterations" : 80,
+    "repetitions" : 100,
+    "logFullData" : true,
+    "useGC" : false,
+    "callSyncBetweenVMs" : true,
+    "waitTimeBetweenVMs" : 1000,
+    "maxLogSizeInMb" : 100,
+    "kiekerConfig" : {
+      "useKieker" : true,
+      "useSourceInstrumentation" : true,
+      "useSelectiveInstrumentation" : true,
+      "useAggregation" : true,
+      "useCircularQueue" : false,
+      "enableAdaptiveMonitoring" : false,
+      "adaptiveInstrumentation" : false,
+      "kiekerAggregationInterval" : 5000,
+      "record" : "DURATION",
+      "onlyOneCallRecording" : false,
+      "extractMethod" : false,
+      "traceSizeInMb" : 100,
+      "kiekerQueueSize" : 10000000,
+      "createDefaultConstructor" : true,
+      "kiekerWaitTime" : 5,
+      "excludeForTracing" : [ "new org.eclipse.jetty.logging.JettyLevel.<init>(..)", "* org.eclipse.jetty.logging.JettyLevel.*(..)", "*[] org.eclipse.jetty.logging.JettyLevel.*(..)", "*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "new org.eclipse.jetty.logging.JettyLoggerConfiguration.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "new org.eclipse.jetty.logging.JettyLoggingServiceProvider.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "new org.eclipse.jetty.logging.JettyLoggerFactory.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "new org.eclipse.jetty.logging.StdErrAppender.<init>(..)", "* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*[] org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "new org.eclipse.jetty.logging.Timestamp.<init>(..)", "* org.eclipse.jetty.logging.Timestamp.*(..)", "*[] org.eclipse.jetty.logging.Timestamp.*(..)", "*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "new org.eclipse.jetty.logging.Timestamp$Tick.<init>(..)", "* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*[] org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "new org.eclipse.jetty.logging.JettyLogger.<init>(..)", "* org.eclipse.jetty.logging.JettyLogger.*(..)", "*[] org.eclipse.jetty.logging.JettyLogger.*(..)", "*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)" ]
+    },
+    "saveAll" : true,
+    "javaVersion" : "11.0.17",
+    "measurementStrategy" : "PARALLEL",
+    "statisticsConfig" : {
+      "type1error" : 0.1,
+      "type2error" : 0.1,
+      "outlierFactor" : 3.29,
+      "statisticTest" : "T_TEST"
+    },
+    "executionConfig" : {
+      "timeout" : 600000,
+      "redirectSubprocessOutputToFile" : true,
+      "useTieredCompilation" : false,
+      "removeSnapshots" : false,
+      "useAlternativeBuildfile" : false,
+      "excludeLog4jSlf4jImpl" : false,
+      "excludeLog4jToSlf4j" : false,
+      "executeBeforeClassInMeasurement" : false,
+      "clearMockitoCaches" : false,
+      "onlyMeasureWorkload" : false,
+      "showStart" : false,
+      "redirectToNull" : true,
+      "createDetailDebugFiles" : true,
+      "testExecutor" : "de.stro18.peass_ant.executor.AntTestExecutor",
+      "clazzFolders" : [ "java", "src/main/java", "webapps/examples/WEB-INF/classes" ],
+      "testClazzFolders" : [ "test" ]
+    },
+    "fixedCommitConfig" : {
+      "commit" : "bf09aa74650461b433ae6b52418e0726e6a32417",
+      "commitOld" : "da39289475ed046e756ef9327fe8f468af2d1df8"
+    }
+  },
+  "causeConfig" : {
+    "splitAggregated" : true,
+    "minTime" : 0.1,
+    "ignoreEOIs" : true,
+    "rcaStrategy" : "UNTIL_SOURCE_CHANGE",
+    "levels" : 1,
+    "testCase" : {
+      "clazz" : "org.apache.el.parser.TestELParser",
+      "method" : "testBug49081",
+      "module" : "",
+      "params" : null
+    },
+    "propertyFolder" : "/home/matusevich/2-final/peass-ant/results/properties_tomcat"
+  },
+  "nodes" : {
+    "call" : "org.apache.el.parser.TestELParser#testBug49081",
+    "kiekerPattern" : "public void org.apache.el.parser.TestELParser.testBug49081()",
+    "otherKiekerPattern" : "public void org.apache.el.parser.TestELParser.testBug49081()",
+    "module" : "",
+    "statistic" : {
+      "meanOld" : 3070757.7574398792,
+      "meanCurrent" : 3083945.1349597564,
+      "deviationOld" : 375384.64797817526,
+      "deviationCurrent" : 408681.2508098022,
+      "vms" : 498,
+      "callsOld" : 40000,
+      "calls" : 40000,
+      "tvalue" : -0.5302814678248381
+    },
+    "childs" : [ {
+      "call" : "org.apache.el.parser.TestELParser#testExpression",
+      "kiekerPattern" : "private void org.apache.el.parser.TestELParser.testExpression(java.lang.String,java.lang.String)",
+      "otherKiekerPattern" : "private void org.apache.el.parser.TestELParser.testExpression(java.lang.String,java.lang.String)",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 140089.094384084,
+        "meanCurrent" : 140802.09940116882,
+        "deviationOld" : 16088.56739175833,
+        "deviationCurrent" : 17720.34838145332,
+        "vms" : 497,
+        "callsOld" : 1640000,
+        "calls" : 1640000,
+        "tvalue" : -0.6644256536306343
+      },
+      "childs" : [ {
+        "call" : "org.apache.el.ExpressionFactoryImpl#createValueExpression",
+        "kiekerPattern" : "public jakarta.el.ValueExpression org.apache.el.ExpressionFactoryImpl.createValueExpression(jakarta.el.ELContext,java.lang.String,java.lang.Class)",
+        "otherKiekerPattern" : "public jakarta.el.ValueExpression org.apache.el.ExpressionFactoryImpl.createValueExpression(jakarta.el.ELContext,java.lang.String,java.lang.Class)",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 48598.694530798144,
+          "meanCurrent" : 48900.28460276973,
+          "deviationOld" : 6707.082577854606,
+          "deviationCurrent" : 6800.262344842788,
+          "vms" : 492,
+          "callsOld" : 1640000,
+          "calls" : 1640000,
+          "tvalue" : -0.7003554304384043
+        },
+        "childs" : [ {
+          "call" : "org.apache.el.lang.ExpressionBuilder#createValueExpression",
+          "kiekerPattern" : "public jakarta.el.ValueExpression org.apache.el.lang.ExpressionBuilder.createValueExpression(java.lang.Class)",
+          "otherKiekerPattern" : "public jakarta.el.ValueExpression org.apache.el.lang.ExpressionBuilder.createValueExpression(java.lang.Class)",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 35913.874284383426,
+            "meanCurrent" : 36342.53154943376,
+            "deviationOld" : 4854.765644904541,
+            "deviationCurrent" : 5337.478084242478,
+            "vms" : 492,
+            "callsOld" : 1640000,
+            "calls" : 1640000,
+            "tvalue" : -1.3178057935720346
+          },
+          "childs" : [ {
+            "call" : "org.apache.el.lang.ExpressionBuilder#build",
+            "kiekerPattern" : "private org.apache.el.parser.Node org.apache.el.lang.ExpressionBuilder.build()",
+            "otherKiekerPattern" : "private org.apache.el.parser.Node org.apache.el.lang.ExpressionBuilder.build()",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : 27208.227516729712,
+              "meanCurrent" : 27580.183297111937,
+              "deviationOld" : 3844.9137441143257,
+              "deviationCurrent" : 4270.990359955774,
+              "vms" : 492,
+              "callsOld" : 1640000,
+              "calls" : 1640000,
+              "tvalue" : -1.4358187196820824
+            },
+            "childs" : [ {
+              "call" : "org.apache.el.lang.ExpressionBuilder#createNodeInternal",
+              "kiekerPattern" : "private static final org.apache.el.parser.Node org.apache.el.lang.ExpressionBuilder.createNodeInternal(java.lang.String)",
+              "otherKiekerPattern" : "private static final org.apache.el.parser.Node org.apache.el.lang.ExpressionBuilder.createNodeInternal(java.lang.String)",
+              "module" : "",
+              "statistic" : {
+                "meanOld" : 10368.607387026232,
+                "meanCurrent" : 10442.53835120256,
+                "deviationOld" : 1857.2045275269036,
+                "deviationCurrent" : 2043.5796747992108,
+                "vms" : 491,
+                "callsOld" : 1640000,
+                "calls" : 1640000,
+                "tvalue" : -0.5936318986480226
+              },
+              "childs" : [ {
+                "call" : "org.apache.el.parser.ELParser#<init>",
+                "kiekerPattern" : "public new org.apache.el.parser.ELParser.<init>(org.apache.el.parser.java.io.Reader)",
+                "otherKiekerPattern" : "public new org.apache.el.parser.ELParser.<init>(org.apache.el.parser.java.io.Reader)",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : "NaN",
+                  "meanCurrent" : "NaN",
+                  "deviationOld" : "NaN",
+                  "deviationCurrent" : "NaN",
+                  "vms" : 0,
+                  "callsOld" : 0,
+                  "calls" : 0,
+                  "tvalue" : -1.0
+                },
+                "childs" : [ {
+                  "call" : "org.apache.el.parser.ELParserTokenManager#<init>",
+                  "kiekerPattern" : "public new org.apache.el.parser.ELParserTokenManager.<init>(org.apache.el.parser.SimpleCharStream)",
+                  "otherKiekerPattern" : "public new org.apache.el.parser.ELParserTokenManager.<init>(org.apache.el.parser.SimpleCharStream)",
+                  "module" : "",
+                  "statistic" : {
+                    "meanOld" : "NaN",
+                    "meanCurrent" : "NaN",
+                    "deviationOld" : "NaN",
+                    "deviationCurrent" : "NaN",
+                    "vms" : 0,
+                    "callsOld" : 0,
+                    "calls" : 0,
+                    "tvalue" : -1.0
+                  },
+                  "childs" : [ ]
+                } ]
+              }, {
+                "call" : "org.apache.el.parser.ELParser#CompositeExpression",
+                "kiekerPattern" : "public final org.apache.el.parser.AstCompositeExpression org.apache.el.parser.ELParser.CompositeExpression()",
+                "otherKiekerPattern" : "public final org.apache.el.parser.AstCompositeExpression org.apache.el.parser.ELParser.CompositeExpression()",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : "NaN",
+                  "meanCurrent" : "NaN",
+                  "deviationOld" : "NaN",
+                  "deviationCurrent" : "NaN",
+                  "vms" : 0,
+                  "callsOld" : 0,
+                  "calls" : 0,
+                  "tvalue" : -1.0
+                },
+                "childs" : [ {
+                  "call" : "org.apache.el.parser.ELParser#jj_ntk",
+                  "kiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk()",
+                  "otherKiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk()",
+                  "module" : "",
+                  "statistic" : {
+                    "meanOld" : "NaN",
+                    "meanCurrent" : "NaN",
+                    "deviationOld" : "NaN",
+                    "deviationCurrent" : "NaN",
+                    "vms" : 0,
+                    "callsOld" : 0,
+                    "calls" : 0,
+                    "tvalue" : -1.0
+                  },
+                  "childs" : [ {
+                    "call" : "org.apache.el.parser.ELParserTokenManager#getNextToken",
+                    "kiekerPattern" : "public org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.getNextToken()",
+                    "otherKiekerPattern" : "public org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.getNextToken()",
+                    "module" : "",
+                    "statistic" : {
+                      "meanOld" : "NaN",
+                      "meanCurrent" : "NaN",
+                      "deviationOld" : "NaN",
+                      "deviationCurrent" : "NaN",
+                      "vms" : 0,
+                      "callsOld" : 0,
+                      "calls" : 0,
+                      "tvalue" : -1.0
+                    },
+                    "childs" : [ {
+                      "call" : "org.apache.el.parser.SimpleCharStream#BeginToken",
+                      "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.BeginToken()",
+                      "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.BeginToken()",
+                      "module" : "",
+                      "statistic" : {
+                        "meanOld" : "NaN",
+                        "meanCurrent" : "NaN",
+                        "deviationOld" : "NaN",
+                        "deviationCurrent" : "NaN",
+                        "vms" : 0,
+                        "callsOld" : 0,
+                        "calls" : 0,
+                        "tvalue" : -1.0
+                      },
+                      "childs" : [ {
+                        "call" : "org.apache.el.parser.SimpleCharStream#readChar",
+                        "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                        "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                        "module" : "",
+                        "statistic" : {
+                          "meanOld" : "NaN",
+                          "meanCurrent" : "NaN",
+                          "deviationOld" : "NaN",
+                          "deviationCurrent" : "NaN",
+                          "vms" : 0,
+                          "callsOld" : 0,
+                          "calls" : 0,
+                          "tvalue" : -1.0
+                        },
+                        "childs" : [ {
+                          "call" : "org.apache.el.parser.SimpleCharStream#FillBuff",
+                          "kiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.FillBuff()",
+                          "otherKiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.FillBuff()",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : "NaN",
+                            "meanCurrent" : "NaN",
+                            "deviationOld" : "NaN",
+                            "deviationCurrent" : "NaN",
+                            "vms" : 0,
+                            "callsOld" : 0,
+                            "calls" : 0,
+                            "tvalue" : -1.0
+                          },
+                          "childs" : [ {
+                            "call" : "org.apache.el.parser.SimpleCharStream#backup",
+                            "kiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                            "otherKiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : "NaN",
+                              "meanCurrent" : "NaN",
+                              "deviationOld" : "NaN",
+                              "deviationCurrent" : "NaN",
+                              "vms" : 0,
+                              "callsOld" : 0,
+                              "calls" : 0,
+                              "tvalue" : -1.0
+                            },
+                            "childs" : [ ]
+                          } ]
+                        }, {
+                          "call" : "org.apache.el.parser.SimpleCharStream#UpdateLineColumn",
+                          "kiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                          "otherKiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : "NaN",
+                            "meanCurrent" : "NaN",
+                            "deviationOld" : "NaN",
+                            "deviationCurrent" : "NaN",
+                            "vms" : 0,
+                            "callsOld" : 0,
+                            "calls" : 0,
+                            "tvalue" : -1.0
+                          },
+                          "childs" : [ ]
+                        } ]
+                      } ]
+                    }, {
+                      "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveStringLiteralDfa0_0",
+                      "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa0_0()",
+                      "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa0_0()",
+                      "module" : "",
+                      "statistic" : {
+                        "meanOld" : "NaN",
+                        "meanCurrent" : "NaN",
+                        "deviationOld" : "NaN",
+                        "deviationCurrent" : "NaN",
+                        "vms" : 0,
+                        "callsOld" : 0,
+                        "calls" : 0,
+                        "tvalue" : -1.0
+                      },
+                      "childs" : [ {
+                        "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveStringLiteralDfa1_0",
+                        "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa1_0(long)",
+                        "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa1_0(long)",
+                        "module" : "",
+                        "statistic" : {
+                          "meanOld" : "NaN",
+                          "meanCurrent" : "NaN",
+                          "deviationOld" : "NaN",
+                          "deviationCurrent" : "NaN",
+                          "vms" : 0,
+                          "callsOld" : 0,
+                          "calls" : 0,
+                          "tvalue" : -1.0
+                        },
+                        "childs" : [ {
+                          "call" : "org.apache.el.parser.SimpleCharStream#readChar",
+                          "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                          "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : "NaN",
+                            "meanCurrent" : "NaN",
+                            "deviationOld" : "NaN",
+                            "deviationCurrent" : "NaN",
+                            "vms" : 0,
+                            "callsOld" : 0,
+                            "calls" : 0,
+                            "tvalue" : -1.0
+                          },
+                          "childs" : [ {
+                            "call" : "org.apache.el.parser.SimpleCharStream#UpdateLineColumn",
+                            "kiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                            "otherKiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : "NaN",
+                              "meanCurrent" : "NaN",
+                              "deviationOld" : "NaN",
+                              "deviationCurrent" : "NaN",
+                              "vms" : 0,
+                              "callsOld" : 0,
+                              "calls" : 0,
+                              "tvalue" : -1.0
+                            },
+                            "childs" : [ ]
+                          }, {
+                            "call" : "org.apache.el.parser.SimpleCharStream#FillBuff",
+                            "kiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.FillBuff()",
+                            "otherKiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.FillBuff()",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : "NaN",
+                              "meanCurrent" : "NaN",
+                              "deviationOld" : "NaN",
+                              "deviationCurrent" : "NaN",
+                              "vms" : 0,
+                              "callsOld" : 0,
+                              "calls" : 0,
+                              "tvalue" : -1.0
+                            },
+                            "childs" : [ {
+                              "call" : "org.apache.el.parser.SimpleCharStream#backup",
+                              "kiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                              "otherKiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                              "module" : "",
+                              "statistic" : {
+                                "meanOld" : "NaN",
+                                "meanCurrent" : "NaN",
+                                "deviationOld" : "NaN",
+                                "deviationCurrent" : "NaN",
+                                "vms" : 0,
+                                "callsOld" : 0,
+                                "calls" : 0,
+                                "tvalue" : -1.0
+                              },
+                              "childs" : [ ]
+                            } ]
+                          } ]
+                        }, {
+                          "call" : "org.apache.el.parser.ELParserTokenManager#jjStartNfa_0",
+                          "kiekerPattern" : "private final int org.apache.el.parser.ELParserTokenManager.jjStartNfa_0(int,long)",
+                          "otherKiekerPattern" : "private final int org.apache.el.parser.ELParserTokenManager.jjStartNfa_0(int,long)",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : "NaN",
+                            "meanCurrent" : "NaN",
+                            "deviationOld" : "NaN",
+                            "deviationCurrent" : "NaN",
+                            "vms" : 0,
+                            "callsOld" : 0,
+                            "calls" : 0,
+                            "tvalue" : -1.0
+                          },
+                          "childs" : [ {
+                            "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveNfa_0",
+                            "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveNfa_0(int,int)",
+                            "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveNfa_0(int,int)",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : "NaN",
+                              "meanCurrent" : "NaN",
+                              "deviationOld" : "NaN",
+                              "deviationCurrent" : "NaN",
+                              "vms" : 0,
+                              "callsOld" : 0,
+                              "calls" : 0,
+                              "tvalue" : -1.0
+                            },
+                            "childs" : [ ]
+                          } ]
+                        } ]
+                      } ]
+                    }, {
+                      "call" : "org.apache.el.parser.SimpleCharStream#backup",
+                      "kiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                      "otherKiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                      "module" : "",
+                      "statistic" : {
+                        "meanOld" : "NaN",
+                        "meanCurrent" : "NaN",
+                        "deviationOld" : "NaN",
+                        "deviationCurrent" : "NaN",
+                        "vms" : 0,
+                        "callsOld" : 0,
+                        "calls" : 0,
+                        "tvalue" : -1.0
+                      },
+                      "childs" : [ ]
+                    }, {
+                      "call" : "org.apache.el.parser.ELParserTokenManager#jjFillToken",
+                      "kiekerPattern" : "protected org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.jjFillToken()",
+                      "otherKiekerPattern" : "protected org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.jjFillToken()",
+                      "module" : "",
+                      "statistic" : {
+                        "meanOld" : "NaN",
+                        "meanCurrent" : "NaN",
+                        "deviationOld" : "NaN",
+                        "deviationCurrent" : "NaN",
+                        "vms" : 0,
+                        "callsOld" : 0,
+                        "calls" : 0,
+                        "tvalue" : -1.0
+                      },
+                      "childs" : [ {
+                        "call" : "org.apache.el.parser.SimpleCharStream#GetImage",
+                        "kiekerPattern" : "public java.lang.String org.apache.el.parser.SimpleCharStream.GetImage()",
+                        "otherKiekerPattern" : "public java.lang.String org.apache.el.parser.SimpleCharStream.GetImage()",
+                        "module" : "",
+                        "statistic" : {
+                          "meanOld" : "NaN",
+                          "meanCurrent" : "NaN",
+                          "deviationOld" : "NaN",
+                          "deviationCurrent" : "NaN",
+                          "vms" : 0,
+                          "callsOld" : 0,
+                          "calls" : 0,
+                          "tvalue" : -1.0
+                        },
+                        "childs" : [ ]
+                      } ]
+                    } ]
+                  } ]
+                }, {
+                  "call" : "org.apache.el.parser.ELParser#LiteralExpression",
+                  "kiekerPattern" : "public final void org.apache.el.parser.ELParser.LiteralExpression()",
+                  "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.LiteralExpression()",
+                  "module" : "",
+                  "statistic" : {
+                    "meanOld" : "NaN",
+                    "meanCurrent" : "NaN",
+                    "deviationOld" : "NaN",
+                    "deviationCurrent" : "NaN",
+                    "vms" : 0,
+                    "callsOld" : 0,
+                    "calls" : 0,
+                    "tvalue" : -1.0
+                  },
+                  "childs" : [ {
+                    "call" : "org.apache.el.parser.ELParser#jj_consume_token",
+                    "kiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
+                    "otherKiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
+                    "module" : "",
+                    "statistic" : {
+                      "meanOld" : "NaN",
+                      "meanCurrent" : "NaN",
+                      "deviationOld" : "NaN",
+                      "deviationCurrent" : "NaN",
+                      "vms" : 0,
+                      "callsOld" : 0,
+                      "calls" : 0,
+                      "tvalue" : -1.0
+                    },
+                    "childs" : [ ]
+                  } ]
+                }, {
+                  "call" : "org.apache.el.parser.ELParser#DynamicExpression",
+                  "kiekerPattern" : "public final void org.apache.el.parser.ELParser.DynamicExpression()",
+                  "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.DynamicExpression()",
+                  "module" : "",
+                  "statistic" : {
+                    "meanOld" : "NaN",
+                    "meanCurrent" : "NaN",
+                    "deviationOld" : "NaN",
+                    "deviationCurrent" : "NaN",
+                    "vms" : 0,
+                    "callsOld" : 0,
+                    "calls" : 0,
+                    "tvalue" : -1.0
+                  },
+                  "childs" : [ {
+                    "call" : "org.apache.el.parser.ELParser#jj_consume_token",
+                    "kiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
+                    "otherKiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
+                    "module" : "",
+                    "statistic" : {
+                      "meanOld" : "NaN",
+                      "meanCurrent" : "NaN",
+                      "deviationOld" : "NaN",
+                      "deviationCurrent" : "NaN",
+                      "vms" : 0,
+                      "callsOld" : 0,
+                      "calls" : 0,
+                      "tvalue" : -1.0
+                    },
+                    "childs" : [ ]
+                  }, {
+                    "call" : "org.apache.el.parser.ELParser#Expression",
+                    "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Expression()",
+                    "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Expression()",
+                    "module" : "",
+                    "statistic" : {
+                      "meanOld" : "NaN",
+                      "meanCurrent" : "NaN",
+                      "deviationOld" : "NaN",
+                      "deviationCurrent" : "NaN",
+                      "vms" : 0,
+                      "callsOld" : 0,
+                      "calls" : 0,
+                      "tvalue" : -1.0
+                    },
+                    "childs" : [ {
+                      "call" : "org.apache.el.parser.ELParser#Semicolon",
+                      "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Semicolon()",
+                      "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Semicolon()",
+                      "module" : "",
+                      "statistic" : {
+                        "meanOld" : "NaN",
+                        "meanCurrent" : "NaN",
+                        "deviationOld" : "NaN",
+                        "deviationCurrent" : "NaN",
+                        "vms" : 0,
+                        "callsOld" : 0,
+                        "calls" : 0,
+                        "tvalue" : -1.0
+                      },
+                      "childs" : [ {
+                        "call" : "org.apache.el.parser.ELParser#Assignment",
+                        "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Assignment()",
+                        "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Assignment()",
+                        "module" : "",
+                        "statistic" : {
+                          "meanOld" : "NaN",
+                          "meanCurrent" : "NaN",
+                          "deviationOld" : "NaN",
+                          "deviationCurrent" : "NaN",
+                          "vms" : 0,
+                          "callsOld" : 0,
+                          "calls" : 0,
+                          "tvalue" : -1.0
+                        },
+                        "childs" : [ {
+                          "call" : "org.apache.el.parser.ELParser#jj_2_2",
+                          "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_2(int)",
+                          "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_2(int)",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : "NaN",
+                            "meanCurrent" : "NaN",
+                            "deviationOld" : "NaN",
+                            "deviationCurrent" : "NaN",
+                            "vms" : 0,
+                            "callsOld" : 0,
+                            "calls" : 0,
+                            "tvalue" : -1.0
+                          },
+                          "childs" : [ {
+                            "call" : "org.apache.el.parser.ELParser#jj_3_2",
+                            "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_2()",
+                            "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_2()",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : "NaN",
+                              "meanCurrent" : "NaN",
+                              "deviationOld" : "NaN",
+                              "deviationCurrent" : "NaN",
+                              "vms" : 0,
+                              "callsOld" : 0,
+                              "calls" : 0,
+                              "tvalue" : -1.0
+                            },
+                            "childs" : [ {
+                              "call" : "org.apache.el.parser.ELParser#jj_3R_21",
+                              "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_21()",
+                              "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_21()",
+                              "module" : "",
+                              "statistic" : {
+                                "meanOld" : "NaN",
+                                "meanCurrent" : "NaN",
+                                "deviationOld" : "NaN",
+                                "deviationCurrent" : "NaN",
+                                "vms" : 0,
+                                "callsOld" : 0,
+                                "calls" : 0,
+                                "tvalue" : -1.0
+                              },
+                              "childs" : [ {
+                                "call" : "org.apache.el.parser.ELParser#jj_3R_27",
+                                "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_27()",
+                                "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_27()",
+                                "module" : "",
+                                "statistic" : {
+                                  "meanOld" : "NaN",
+                                  "meanCurrent" : "NaN",
+                                  "deviationOld" : "NaN",
+                                  "deviationCurrent" : "NaN",
+                                  "vms" : 0,
+                                  "callsOld" : 0,
+                                  "calls" : 0,
+                                  "tvalue" : -1.0
+                                },
+                                "childs" : [ {
+                                  "call" : "org.apache.el.parser.ELParser#jj_3R_32",
+                                  "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_32()",
+                                  "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_32()",
+                                  "module" : "",
+                                  "statistic" : {
+                                    "meanOld" : "NaN",
+                                    "meanCurrent" : "NaN",
+                                    "deviationOld" : "NaN",
+                                    "deviationCurrent" : "NaN",
+                                    "vms" : 0,
+                                    "callsOld" : 0,
+                                    "calls" : 0,
+                                    "tvalue" : -1.0
+                                  },
+                                  "childs" : [ {
+                                    "call" : "org.apache.el.parser.ELParser#jj_3R_38",
+                                    "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_38()",
+                                    "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_38()",
+                                    "module" : "",
+                                    "statistic" : {
+                                      "meanOld" : "NaN",
+                                      "meanCurrent" : "NaN",
+                                      "deviationOld" : "NaN",
+                                      "deviationCurrent" : "NaN",
+                                      "vms" : 0,
+                                      "callsOld" : 0,
+                                      "calls" : 0,
+                                      "tvalue" : -1.0
+                                    },
+                                    "childs" : [ {
+                                      "call" : "org.apache.el.parser.ELParser#jj_scan_token",
+                                      "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
+                                      "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
+                                      "module" : "",
+                                      "statistic" : {
+                                        "meanOld" : "NaN",
+                                        "meanCurrent" : "NaN",
+                                        "deviationOld" : "NaN",
+                                        "deviationCurrent" : "NaN",
+                                        "vms" : 0,
+                                        "callsOld" : 0,
+                                        "calls" : 0,
+                                        "tvalue" : -1.0
+                                      },
+                                      "childs" : [ {
+                                        "call" : "org.apache.el.parser.ELParserTokenManager#getNextToken",
+                                        "kiekerPattern" : "public org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.getNextToken()",
+                                        "otherKiekerPattern" : "public org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.getNextToken()",
+                                        "module" : "",
+                                        "statistic" : {
+                                          "meanOld" : "NaN",
+                                          "meanCurrent" : "NaN",
+                                          "deviationOld" : "NaN",
+                                          "deviationCurrent" : "NaN",
+                                          "vms" : 0,
+                                          "callsOld" : 0,
+                                          "calls" : 0,
+                                          "tvalue" : -1.0
+                                        },
+                                        "childs" : [ {
+                                          "call" : "org.apache.el.parser.SimpleCharStream#BeginToken",
+                                          "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.BeginToken()",
+                                          "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.BeginToken()",
+                                          "module" : "",
+                                          "statistic" : {
+                                            "meanOld" : "NaN",
+                                            "meanCurrent" : "NaN",
+                                            "deviationOld" : "NaN",
+                                            "deviationCurrent" : "NaN",
+                                            "vms" : 0,
+                                            "callsOld" : 0,
+                                            "calls" : 0,
+                                            "tvalue" : -1.0
+                                          },
+                                          "childs" : [ {
+                                            "call" : "org.apache.el.parser.SimpleCharStream#readChar",
+                                            "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                            "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                            "module" : "",
+                                            "statistic" : {
+                                              "meanOld" : "NaN",
+                                              "meanCurrent" : "NaN",
+                                              "deviationOld" : "NaN",
+                                              "deviationCurrent" : "NaN",
+                                              "vms" : 0,
+                                              "callsOld" : 0,
+                                              "calls" : 0,
+                                              "tvalue" : -1.0
+                                            },
+                                            "childs" : [ {
+                                              "call" : "org.apache.el.parser.SimpleCharStream#UpdateLineColumn",
+                                              "kiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                                              "otherKiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                                              "module" : "",
+                                              "statistic" : {
+                                                "meanOld" : "NaN",
+                                                "meanCurrent" : "NaN",
+                                                "deviationOld" : "NaN",
+                                                "deviationCurrent" : "NaN",
+                                                "vms" : 0,
+                                                "callsOld" : 0,
+                                                "calls" : 0,
+                                                "tvalue" : -1.0
+                                              },
+                                              "childs" : [ ]
+                                            } ]
+                                          } ]
+                                        }, {
+                                          "call" : "org.apache.el.parser.SimpleCharStream#backup",
+                                          "kiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                                          "otherKiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                                          "module" : "",
+                                          "statistic" : {
+                                            "meanOld" : "NaN",
+                                            "meanCurrent" : "NaN",
+                                            "deviationOld" : "NaN",
+                                            "deviationCurrent" : "NaN",
+                                            "vms" : 0,
+                                            "callsOld" : 0,
+                                            "calls" : 0,
+                                            "tvalue" : -1.0
+                                          },
+                                          "childs" : [ ]
+                                        }, {
+                                          "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveStringLiteralDfa0_1",
+                                          "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa0_1()",
+                                          "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa0_1()",
+                                          "module" : "",
+                                          "statistic" : {
+                                            "meanOld" : "NaN",
+                                            "meanCurrent" : "NaN",
+                                            "deviationOld" : "NaN",
+                                            "deviationCurrent" : "NaN",
+                                            "vms" : 0,
+                                            "callsOld" : 0,
+                                            "calls" : 0,
+                                            "tvalue" : -1.0
+                                          },
+                                          "childs" : [ {
+                                            "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveNfa_1",
+                                            "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveNfa_1(int,int)",
+                                            "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveNfa_1(int,int)",
+                                            "module" : "",
+                                            "statistic" : {
+                                              "meanOld" : "NaN",
+                                              "meanCurrent" : "NaN",
+                                              "deviationOld" : "NaN",
+                                              "deviationCurrent" : "NaN",
+                                              "vms" : 0,
+                                              "callsOld" : 0,
+                                              "calls" : 0,
+                                              "tvalue" : -1.0
+                                            },
+                                            "childs" : [ {
+                                              "call" : "org.apache.el.parser.SimpleCharStream#readChar",
+                                              "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                              "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                              "module" : "",
+                                              "statistic" : {
+                                                "meanOld" : "NaN",
+                                                "meanCurrent" : "NaN",
+                                                "deviationOld" : "NaN",
+                                                "deviationCurrent" : "NaN",
+                                                "vms" : 0,
+                                                "callsOld" : 0,
+                                                "calls" : 0,
+                                                "tvalue" : -1.0
+                                              },
+                                              "childs" : [ {
+                                                "call" : "org.apache.el.parser.SimpleCharStream#UpdateLineColumn",
+                                                "kiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                                                "otherKiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                                                "module" : "",
+                                                "statistic" : {
+                                                  "meanOld" : "NaN",
+                                                  "meanCurrent" : "NaN",
+                                                  "deviationOld" : "NaN",
+                                                  "deviationCurrent" : "NaN",
+                                                  "vms" : 0,
+                                                  "callsOld" : 0,
+                                                  "calls" : 0,
+                                                  "tvalue" : -1.0
+                                                },
+                                                "childs" : [ ]
+                                              } ]
+                                            } ]
+                                          } ]
+                                        }, {
+                                          "call" : "org.apache.el.parser.ELParserTokenManager#jjFillToken",
+                                          "kiekerPattern" : "protected org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.jjFillToken()",
+                                          "otherKiekerPattern" : "protected org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.jjFillToken()",
+                                          "module" : "",
+                                          "statistic" : {
+                                            "meanOld" : "NaN",
+                                            "meanCurrent" : "NaN",
+                                            "deviationOld" : "NaN",
+                                            "deviationCurrent" : "NaN",
+                                            "vms" : 0,
+                                            "callsOld" : 0,
+                                            "calls" : 0,
+                                            "tvalue" : -1.0
+                                          },
+                                          "childs" : [ {
+                                            "call" : "org.apache.el.parser.SimpleCharStream#GetImage",
+                                            "kiekerPattern" : "public java.lang.String org.apache.el.parser.SimpleCharStream.GetImage()",
+                                            "otherKiekerPattern" : "public java.lang.String org.apache.el.parser.SimpleCharStream.GetImage()",
+                                            "module" : "",
+                                            "statistic" : {
+                                              "meanOld" : "NaN",
+                                              "meanCurrent" : "NaN",
+                                              "deviationOld" : "NaN",
+                                              "deviationCurrent" : "NaN",
+                                              "vms" : 0,
+                                              "callsOld" : 0,
+                                              "calls" : 0,
+                                              "tvalue" : -1.0
+                                            },
+                                            "childs" : [ ]
+                                          } ]
+                                        } ]
+                                      } ]
+                                    } ]
+                                  } ]
+                                }, {
+                                  "call" : "org.apache.el.parser.ELParser#jj_3R_33",
+                                  "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_33()",
+                                  "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_33()",
+                                  "module" : "",
+                                  "statistic" : {
+                                    "meanOld" : "NaN",
+                                    "meanCurrent" : "NaN",
+                                    "deviationOld" : "NaN",
+                                    "deviationCurrent" : "NaN",
+                                    "vms" : 0,
+                                    "callsOld" : 0,
+                                    "calls" : 0,
+                                    "tvalue" : -1.0
+                                  },
+                                  "childs" : [ {
+                                    "call" : "org.apache.el.parser.ELParser#jj_scan_token",
+                                    "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
+                                    "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
+                                    "module" : "",
+                                    "statistic" : {
+                                      "meanOld" : "NaN",
+                                      "meanCurrent" : "NaN",
+                                      "deviationOld" : "NaN",
+                                      "deviationCurrent" : "NaN",
+                                      "vms" : 0,
+                                      "callsOld" : 0,
+                                      "calls" : 0,
+                                      "tvalue" : -1.0
+                                    },
+                                    "childs" : [ ]
+                                  } ]
+                                } ]
+                              } ]
+                            } ]
+                          } ]
+                        }, {
+                          "call" : "org.apache.el.parser.ELParser#jj_ntk",
+                          "kiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk()",
+                          "otherKiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk()",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : "NaN",
+                            "meanCurrent" : "NaN",
+                            "deviationOld" : "NaN",
+                            "deviationCurrent" : "NaN",
+                            "vms" : 0,
+                            "callsOld" : 0,
+                            "calls" : 0,
+                            "tvalue" : -1.0
+                          },
+                          "childs" : [ ]
+                        }, {
+                          "call" : "org.apache.el.parser.ELParser#Choice",
+                          "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Choice()",
+                          "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Choice()",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : "NaN",
+                            "meanCurrent" : "NaN",
+                            "deviationOld" : "NaN",
+                            "deviationCurrent" : "NaN",
+                            "vms" : 0,
+                            "callsOld" : 0,
+                            "calls" : 0,
+                            "tvalue" : -1.0
+                          },
+                          "childs" : [ {
+                            "call" : "org.apache.el.parser.ELParser#Or",
+                            "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Or()",
+                            "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Or()",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : "NaN",
+                              "meanCurrent" : "NaN",
+                              "deviationOld" : "NaN",
+                              "deviationCurrent" : "NaN",
+                              "vms" : 0,
+                              "callsOld" : 0,
+                              "calls" : 0,
+                              "tvalue" : -1.0
+                            },
+                            "childs" : [ {
+                              "call" : "org.apache.el.parser.ELParser#And",
+                              "kiekerPattern" : "public final void org.apache.el.parser.ELParser.And()",
+                              "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.And()",
+                              "module" : "",
+                              "statistic" : {
+                                "meanOld" : "NaN",
+                                "meanCurrent" : "NaN",
+                                "deviationOld" : "NaN",
+                                "deviationCurrent" : "NaN",
+                                "vms" : 0,
+                                "callsOld" : 0,
+                                "calls" : 0,
+                                "tvalue" : -1.0
+                              },
+                              "childs" : [ {
+                                "call" : "org.apache.el.parser.ELParser#Equality",
+                                "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Equality()",
+                                "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Equality()",
+                                "module" : "",
+                                "statistic" : {
+                                  "meanOld" : "NaN",
+                                  "meanCurrent" : "NaN",
+                                  "deviationOld" : "NaN",
+                                  "deviationCurrent" : "NaN",
+                                  "vms" : 0,
+                                  "callsOld" : 0,
+                                  "calls" : 0,
+                                  "tvalue" : -1.0
+                                },
+                                "childs" : [ {
+                                  "call" : "org.apache.el.parser.ELParser#Compare",
+                                  "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Compare()",
+                                  "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Compare()",
+                                  "module" : "",
+                                  "statistic" : {
+                                    "meanOld" : "NaN",
+                                    "meanCurrent" : "NaN",
+                                    "deviationOld" : "NaN",
+                                    "deviationCurrent" : "NaN",
+                                    "vms" : 0,
+                                    "callsOld" : 0,
+                                    "calls" : 0,
+                                    "tvalue" : -1.0
+                                  },
+                                  "childs" : [ {
+                                    "call" : "org.apache.el.parser.ELParser#Concatenation",
+                                    "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Concatenation()",
+                                    "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Concatenation()",
+                                    "module" : "",
+                                    "statistic" : {
+                                      "meanOld" : "NaN",
+                                      "meanCurrent" : "NaN",
+                                      "deviationOld" : "NaN",
+                                      "deviationCurrent" : "NaN",
+                                      "vms" : 0,
+                                      "callsOld" : 0,
+                                      "calls" : 0,
+                                      "tvalue" : -1.0
+                                    },
+                                    "childs" : [ {
+                                      "call" : "org.apache.el.parser.ELParser#Math",
+                                      "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Math()",
+                                      "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Math()",
+                                      "module" : "",
+                                      "statistic" : {
+                                        "meanOld" : "NaN",
+                                        "meanCurrent" : "NaN",
+                                        "deviationOld" : "NaN",
+                                        "deviationCurrent" : "NaN",
+                                        "vms" : 0,
+                                        "callsOld" : 0,
+                                        "calls" : 0,
+                                        "tvalue" : -1.0
+                                      },
+                                      "childs" : [ {
+                                        "call" : "org.apache.el.parser.ELParser#Multiplication",
+                                        "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Multiplication()",
+                                        "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Multiplication()",
+                                        "module" : "",
+                                        "statistic" : {
+                                          "meanOld" : "NaN",
+                                          "meanCurrent" : "NaN",
+                                          "deviationOld" : "NaN",
+                                          "deviationCurrent" : "NaN",
+                                          "vms" : 0,
+                                          "callsOld" : 0,
+                                          "calls" : 0,
+                                          "tvalue" : -1.0
+                                        },
+                                        "childs" : [ {
+                                          "call" : "org.apache.el.parser.ELParser#Unary",
+                                          "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Unary()",
+                                          "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Unary()",
+                                          "module" : "",
+                                          "statistic" : {
+                                            "meanOld" : "NaN",
+                                            "meanCurrent" : "NaN",
+                                            "deviationOld" : "NaN",
+                                            "deviationCurrent" : "NaN",
+                                            "vms" : 0,
+                                            "callsOld" : 0,
+                                            "calls" : 0,
+                                            "tvalue" : -1.0
+                                          },
+                                          "childs" : [ {
+                                            "call" : "org.apache.el.parser.ELParser#Value",
+                                            "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Value()",
+                                            "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Value()",
+                                            "module" : "",
+                                            "statistic" : {
+                                              "meanOld" : "NaN",
+                                              "meanCurrent" : "NaN",
+                                              "deviationOld" : "NaN",
+                                              "deviationCurrent" : "NaN",
+                                              "vms" : 0,
+                                              "callsOld" : 0,
+                                              "calls" : 0,
+                                              "tvalue" : -1.0
+                                            },
+                                            "childs" : [ {
+                                              "call" : "org.apache.el.parser.ELParser#ValuePrefix",
+                                              "kiekerPattern" : "public final void org.apache.el.parser.ELParser.ValuePrefix()",
+                                              "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.ValuePrefix()",
+                                              "module" : "",
+                                              "statistic" : {
+                                                "meanOld" : "NaN",
+                                                "meanCurrent" : "NaN",
+                                                "deviationOld" : "NaN",
+                                                "deviationCurrent" : "NaN",
+                                                "vms" : 0,
+                                                "callsOld" : 0,
+                                                "calls" : 0,
+                                                "tvalue" : -1.0
+                                              },
+                                              "childs" : [ {
+                                                "call" : "org.apache.el.parser.ELParser#Literal",
+                                                "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Literal()",
+                                                "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Literal()",
+                                                "module" : "",
+                                                "statistic" : {
+                                                  "meanOld" : "NaN",
+                                                  "meanCurrent" : "NaN",
+                                                  "deviationOld" : "NaN",
+                                                  "deviationCurrent" : "NaN",
+                                                  "vms" : 0,
+                                                  "callsOld" : 0,
+                                                  "calls" : 0,
+                                                  "tvalue" : -1.0
+                                                },
+                                                "childs" : [ {
+                                                  "call" : "org.apache.el.parser.ELParser#Integer",
+                                                  "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Integer()",
+                                                  "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Integer()",
+                                                  "module" : "",
+                                                  "statistic" : {
+                                                    "meanOld" : "NaN",
+                                                    "meanCurrent" : "NaN",
+                                                    "deviationOld" : "NaN",
+                                                    "deviationCurrent" : "NaN",
+                                                    "vms" : 0,
+                                                    "callsOld" : 0,
+                                                    "calls" : 0,
+                                                    "tvalue" : -1.0
+                                                  },
+                                                  "childs" : [ {
+                                                    "call" : "org.apache.el.parser.ELParser#jj_consume_token",
+                                                    "kiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
+                                                    "otherKiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
+                                                    "module" : "",
+                                                    "statistic" : {
+                                                      "meanOld" : "NaN",
+                                                      "meanCurrent" : "NaN",
+                                                      "deviationOld" : "NaN",
+                                                      "deviationCurrent" : "NaN",
+                                                      "vms" : 0,
+                                                      "callsOld" : 0,
+                                                      "calls" : 0,
+                                                      "tvalue" : -1.0
+                                                    },
+                                                    "childs" : [ ]
+                                                  } ]
+                                                } ]
+                                              } ]
+                                            }, {
+                                              "call" : "org.apache.el.parser.ELParser#jj_ntk",
+                                              "kiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk()",
+                                              "otherKiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk()",
+                                              "module" : "",
+                                              "statistic" : {
+                                                "meanOld" : "NaN",
+                                                "meanCurrent" : "NaN",
+                                                "deviationOld" : "NaN",
+                                                "deviationCurrent" : "NaN",
+                                                "vms" : 0,
+                                                "callsOld" : 0,
+                                                "calls" : 0,
+                                                "tvalue" : -1.0
+                                              },
+                                              "childs" : [ {
+                                                "call" : "org.apache.el.parser.ELParserTokenManager#getNextToken",
+                                                "kiekerPattern" : "public org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.getNextToken()",
+                                                "otherKiekerPattern" : "public org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.getNextToken()",
+                                                "module" : "",
+                                                "statistic" : {
+                                                  "meanOld" : "NaN",
+                                                  "meanCurrent" : "NaN",
+                                                  "deviationOld" : "NaN",
+                                                  "deviationCurrent" : "NaN",
+                                                  "vms" : 0,
+                                                  "callsOld" : 0,
+                                                  "calls" : 0,
+                                                  "tvalue" : -1.0
+                                                },
+                                                "childs" : [ {
+                                                  "call" : "org.apache.el.parser.SimpleCharStream#BeginToken",
+                                                  "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.BeginToken()",
+                                                  "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.BeginToken()",
+                                                  "module" : "",
+                                                  "statistic" : {
+                                                    "meanOld" : "NaN",
+                                                    "meanCurrent" : "NaN",
+                                                    "deviationOld" : "NaN",
+                                                    "deviationCurrent" : "NaN",
+                                                    "vms" : 0,
+                                                    "callsOld" : 0,
+                                                    "calls" : 0,
+                                                    "tvalue" : -1.0
+                                                  },
+                                                  "childs" : [ {
+                                                    "call" : "org.apache.el.parser.SimpleCharStream#readChar",
+                                                    "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                                    "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                                    "module" : "",
+                                                    "statistic" : {
+                                                      "meanOld" : "NaN",
+                                                      "meanCurrent" : "NaN",
+                                                      "deviationOld" : "NaN",
+                                                      "deviationCurrent" : "NaN",
+                                                      "vms" : 0,
+                                                      "callsOld" : 0,
+                                                      "calls" : 0,
+                                                      "tvalue" : -1.0
+                                                    },
+                                                    "childs" : [ ]
+                                                  } ]
+                                                }, {
+                                                  "call" : "org.apache.el.parser.SimpleCharStream#backup",
+                                                  "kiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                                                  "otherKiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                                                  "module" : "",
+                                                  "statistic" : {
+                                                    "meanOld" : "NaN",
+                                                    "meanCurrent" : "NaN",
+                                                    "deviationOld" : "NaN",
+                                                    "deviationCurrent" : "NaN",
+                                                    "vms" : 0,
+                                                    "callsOld" : 0,
+                                                    "calls" : 0,
+                                                    "tvalue" : -1.0
+                                                  },
+                                                  "childs" : [ ]
+                                                }, {
+                                                  "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveStringLiteralDfa0_1",
+                                                  "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa0_1()",
+                                                  "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa0_1()",
+                                                  "module" : "",
+                                                  "statistic" : {
+                                                    "meanOld" : "NaN",
+                                                    "meanCurrent" : "NaN",
+                                                    "deviationOld" : "NaN",
+                                                    "deviationCurrent" : "NaN",
+                                                    "vms" : 0,
+                                                    "callsOld" : 0,
+                                                    "calls" : 0,
+                                                    "tvalue" : -1.0
+                                                  },
+                                                  "childs" : [ {
+                                                    "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveStringLiteralDfa1_1",
+                                                    "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa1_1(long)",
+                                                    "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa1_1(long)",
+                                                    "module" : "",
+                                                    "statistic" : {
+                                                      "meanOld" : "NaN",
+                                                      "meanCurrent" : "NaN",
+                                                      "deviationOld" : "NaN",
+                                                      "deviationCurrent" : "NaN",
+                                                      "vms" : 0,
+                                                      "callsOld" : 0,
+                                                      "calls" : 0,
+                                                      "tvalue" : -1.0
+                                                    },
+                                                    "childs" : [ {
+                                                      "call" : "org.apache.el.parser.SimpleCharStream#readChar",
+                                                      "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                                      "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                                      "module" : "",
+                                                      "statistic" : {
+                                                        "meanOld" : "NaN",
+                                                        "meanCurrent" : "NaN",
+                                                        "deviationOld" : "NaN",
+                                                        "deviationCurrent" : "NaN",
+                                                        "vms" : 0,
+                                                        "callsOld" : 0,
+                                                        "calls" : 0,
+                                                        "tvalue" : -1.0
+                                                      },
+                                                      "childs" : [ {
+                                                        "call" : "org.apache.el.parser.SimpleCharStream#UpdateLineColumn",
+                                                        "kiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                                                        "otherKiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                                                        "module" : "",
+                                                        "statistic" : {
+                                                          "meanOld" : "NaN",
+                                                          "meanCurrent" : "NaN",
+                                                          "deviationOld" : "NaN",
+                                                          "deviationCurrent" : "NaN",
+                                                          "vms" : 0,
+                                                          "callsOld" : 0,
+                                                          "calls" : 0,
+                                                          "tvalue" : -1.0
+                                                        },
+                                                        "childs" : [ ]
+                                                      } ]
+                                                    }, {
+                                                      "call" : "org.apache.el.parser.ELParserTokenManager#jjStartNfa_1",
+                                                      "kiekerPattern" : "private final int org.apache.el.parser.ELParserTokenManager.jjStartNfa_1(int,long)",
+                                                      "otherKiekerPattern" : "private final int org.apache.el.parser.ELParserTokenManager.jjStartNfa_1(int,long)",
+                                                      "module" : "",
+                                                      "statistic" : {
+                                                        "meanOld" : "NaN",
+                                                        "meanCurrent" : "NaN",
+                                                        "deviationOld" : "NaN",
+                                                        "deviationCurrent" : "NaN",
+                                                        "vms" : 0,
+                                                        "callsOld" : 0,
+                                                        "calls" : 0,
+                                                        "tvalue" : -1.0
+                                                      },
+                                                      "childs" : [ {
+                                                        "call" : "org.apache.el.parser.ELParserTokenManager#jjStopStringLiteralDfa_1",
+                                                        "kiekerPattern" : "private final int org.apache.el.parser.ELParserTokenManager.jjStopStringLiteralDfa_1(int,long)",
+                                                        "otherKiekerPattern" : "private final int org.apache.el.parser.ELParserTokenManager.jjStopStringLiteralDfa_1(int,long)",
+                                                        "module" : "",
+                                                        "statistic" : {
+                                                          "meanOld" : "NaN",
+                                                          "meanCurrent" : "NaN",
+                                                          "deviationOld" : "NaN",
+                                                          "deviationCurrent" : "NaN",
+                                                          "vms" : 0,
+                                                          "callsOld" : 0,
+                                                          "calls" : 0,
+                                                          "tvalue" : -1.0
+                                                        },
+                                                        "childs" : [ ]
+                                                      }, {
+                                                        "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveNfa_1",
+                                                        "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveNfa_1(int,int)",
+                                                        "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveNfa_1(int,int)",
+                                                        "module" : "",
+                                                        "statistic" : {
+                                                          "meanOld" : "NaN",
+                                                          "meanCurrent" : "NaN",
+                                                          "deviationOld" : "NaN",
+                                                          "deviationCurrent" : "NaN",
+                                                          "vms" : 0,
+                                                          "callsOld" : 0,
+                                                          "calls" : 0,
+                                                          "tvalue" : -1.0
+                                                        },
+                                                        "childs" : [ ]
+                                                      } ]
+                                                    } ]
+                                                  } ]
+                                                }, {
+                                                  "call" : "org.apache.el.parser.ELParserTokenManager#TokenLexicalActions",
+                                                  "kiekerPattern" : "void org.apache.el.parser.ELParserTokenManager.TokenLexicalActions(org.apache.el.parser.Token)",
+                                                  "otherKiekerPattern" : "void org.apache.el.parser.ELParserTokenManager.TokenLexicalActions(org.apache.el.parser.Token)",
+                                                  "module" : "",
+                                                  "statistic" : {
+                                                    "meanOld" : "NaN",
+                                                    "meanCurrent" : "NaN",
+                                                    "deviationOld" : "NaN",
+                                                    "deviationCurrent" : "NaN",
+                                                    "vms" : 0,
+                                                    "callsOld" : 0,
+                                                    "calls" : 0,
+                                                    "tvalue" : -1.0
+                                                  },
+                                                  "childs" : [ {
+                                                    "call" : "org.apache.el.parser.ELParserTokenManager#SwitchTo",
+                                                    "kiekerPattern" : "public void org.apache.el.parser.ELParserTokenManager.SwitchTo(int)",
+                                                    "otherKiekerPattern" : "public void org.apache.el.parser.ELParserTokenManager.SwitchTo(int)",
+                                                    "module" : "",
+                                                    "statistic" : {
+                                                      "meanOld" : "NaN",
+                                                      "meanCurrent" : "NaN",
+                                                      "deviationOld" : "NaN",
+                                                      "deviationCurrent" : "NaN",
+                                                      "vms" : 0,
+                                                      "callsOld" : 0,
+                                                      "calls" : 0,
+                                                      "tvalue" : -1.0
+                                                    },
+                                                    "childs" : [ ]
+                                                  } ]
+                                                } ]
+                                              } ]
+                                            } ]
+                                          }, {
+                                            "call" : "org.apache.el.parser.ELParser#jj_ntk",
+                                            "kiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk()",
+                                            "otherKiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk()",
+                                            "module" : "",
+                                            "statistic" : {
+                                              "meanOld" : "NaN",
+                                              "meanCurrent" : "NaN",
+                                              "deviationOld" : "NaN",
+                                              "deviationCurrent" : "NaN",
+                                              "vms" : 0,
+                                              "callsOld" : 0,
+                                              "calls" : 0,
+                                              "tvalue" : -1.0
+                                            },
+                                            "childs" : [ {
+                                              "call" : "org.apache.el.parser.ELParserTokenManager#getNextToken",
+                                              "kiekerPattern" : "public org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.getNextToken()",
+                                              "otherKiekerPattern" : "public org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.getNextToken()",
+                                              "module" : "",
+                                              "statistic" : {
+                                                "meanOld" : "NaN",
+                                                "meanCurrent" : "NaN",
+                                                "deviationOld" : "NaN",
+                                                "deviationCurrent" : "NaN",
+                                                "vms" : 0,
+                                                "callsOld" : 0,
+                                                "calls" : 0,
+                                                "tvalue" : -1.0
+                                              },
+                                              "childs" : [ {
+                                                "call" : "org.apache.el.parser.SimpleCharStream#BeginToken",
+                                                "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.BeginToken()",
+                                                "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.BeginToken()",
+                                                "module" : "",
+                                                "statistic" : {
+                                                  "meanOld" : "NaN",
+                                                  "meanCurrent" : "NaN",
+                                                  "deviationOld" : "NaN",
+                                                  "deviationCurrent" : "NaN",
+                                                  "vms" : 0,
+                                                  "callsOld" : 0,
+                                                  "calls" : 0,
+                                                  "tvalue" : -1.0
+                                                },
+                                                "childs" : [ {
+                                                  "call" : "org.apache.el.parser.SimpleCharStream#readChar",
+                                                  "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                                  "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                                  "module" : "",
+                                                  "statistic" : {
+                                                    "meanOld" : "NaN",
+                                                    "meanCurrent" : "NaN",
+                                                    "deviationOld" : "NaN",
+                                                    "deviationCurrent" : "NaN",
+                                                    "vms" : 0,
+                                                    "callsOld" : 0,
+                                                    "calls" : 0,
+                                                    "tvalue" : -1.0
+                                                  },
+                                                  "childs" : [ ]
+                                                } ]
+                                              }, {
+                                                "call" : "org.apache.el.parser.SimpleCharStream#backup",
+                                                "kiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                                                "otherKiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                                                "module" : "",
+                                                "statistic" : {
+                                                  "meanOld" : "NaN",
+                                                  "meanCurrent" : "NaN",
+                                                  "deviationOld" : "NaN",
+                                                  "deviationCurrent" : "NaN",
+                                                  "vms" : 0,
+                                                  "callsOld" : 0,
+                                                  "calls" : 0,
+                                                  "tvalue" : -1.0
+                                                },
+                                                "childs" : [ ]
+                                              }, {
+                                                "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveStringLiteralDfa0_1",
+                                                "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa0_1()",
+                                                "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa0_1()",
+                                                "module" : "",
+                                                "statistic" : {
+                                                  "meanOld" : "NaN",
+                                                  "meanCurrent" : "NaN",
+                                                  "deviationOld" : "NaN",
+                                                  "deviationCurrent" : "NaN",
+                                                  "vms" : 0,
+                                                  "callsOld" : 0,
+                                                  "calls" : 0,
+                                                  "tvalue" : -1.0
+                                                },
+                                                "childs" : [ {
+                                                  "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveNfa_1",
+                                                  "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveNfa_1(int,int)",
+                                                  "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveNfa_1(int,int)",
+                                                  "module" : "",
+                                                  "statistic" : {
+                                                    "meanOld" : "NaN",
+                                                    "meanCurrent" : "NaN",
+                                                    "deviationOld" : "NaN",
+                                                    "deviationCurrent" : "NaN",
+                                                    "vms" : 0,
+                                                    "callsOld" : 0,
+                                                    "calls" : 0,
+                                                    "tvalue" : -1.0
+                                                  },
+                                                  "childs" : [ {
+                                                    "call" : "org.apache.el.parser.SimpleCharStream#readChar",
+                                                    "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                                    "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                                    "module" : "",
+                                                    "statistic" : {
+                                                      "meanOld" : "NaN",
+                                                      "meanCurrent" : "NaN",
+                                                      "deviationOld" : "NaN",
+                                                      "deviationCurrent" : "NaN",
+                                                      "vms" : 0,
+                                                      "callsOld" : 0,
+                                                      "calls" : 0,
+                                                      "tvalue" : -1.0
+                                                    },
+                                                    "childs" : [ {
+                                                      "call" : "org.apache.el.parser.SimpleCharStream#UpdateLineColumn",
+                                                      "kiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                                                      "otherKiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                                                      "module" : "",
+                                                      "statistic" : {
+                                                        "meanOld" : "NaN",
+                                                        "meanCurrent" : "NaN",
+                                                        "deviationOld" : "NaN",
+                                                        "deviationCurrent" : "NaN",
+                                                        "vms" : 0,
+                                                        "callsOld" : 0,
+                                                        "calls" : 0,
+                                                        "tvalue" : -1.0
+                                                      },
+                                                      "childs" : [ ]
+                                                    } ]
+                                                  } ]
+                                                } ]
+                                              }, {
+                                                "call" : "org.apache.el.parser.ELParserTokenManager#jjFillToken",
+                                                "kiekerPattern" : "protected org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.jjFillToken()",
+                                                "otherKiekerPattern" : "protected org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.jjFillToken()",
+                                                "module" : "",
+                                                "statistic" : {
+                                                  "meanOld" : "NaN",
+                                                  "meanCurrent" : "NaN",
+                                                  "deviationOld" : "NaN",
+                                                  "deviationCurrent" : "NaN",
+                                                  "vms" : 0,
+                                                  "callsOld" : 0,
+                                                  "calls" : 0,
+                                                  "tvalue" : -1.0
+                                                },
+                                                "childs" : [ {
+                                                  "call" : "org.apache.el.parser.SimpleCharStream#GetImage",
+                                                  "kiekerPattern" : "public java.lang.String org.apache.el.parser.SimpleCharStream.GetImage()",
+                                                  "otherKiekerPattern" : "public java.lang.String org.apache.el.parser.SimpleCharStream.GetImage()",
+                                                  "module" : "",
+                                                  "statistic" : {
+                                                    "meanOld" : "NaN",
+                                                    "meanCurrent" : "NaN",
+                                                    "deviationOld" : "NaN",
+                                                    "deviationCurrent" : "NaN",
+                                                    "vms" : 0,
+                                                    "callsOld" : 0,
+                                                    "calls" : 0,
+                                                    "tvalue" : -1.0
+                                                  },
+                                                  "childs" : [ ]
+                                                } ]
+                                              } ]
+                                            } ]
+                                          } ]
+                                        } ]
+                                      }, {
+                                        "call" : "org.apache.el.parser.ELParser#jj_consume_token",
+                                        "kiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
+                                        "otherKiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
+                                        "module" : "",
+                                        "statistic" : {
+                                          "meanOld" : "NaN",
+                                          "meanCurrent" : "NaN",
+                                          "deviationOld" : "NaN",
+                                          "deviationCurrent" : "NaN",
+                                          "vms" : 0,
+                                          "callsOld" : 0,
+                                          "calls" : 0,
+                                          "tvalue" : -1.0
+                                        },
+                                        "childs" : [ ]
+                                      } ]
+                                    } ]
+                                  } ]
+                                } ]
+                              } ]
+                            } ]
+                          }, {
+                            "call" : "org.apache.el.parser.ELParser#jj_2_5",
+                            "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_5(int)",
+                            "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_5(int)",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : "NaN",
+                              "meanCurrent" : "NaN",
+                              "deviationOld" : "NaN",
+                              "deviationCurrent" : "NaN",
+                              "vms" : 0,
+                              "callsOld" : 0,
+                              "calls" : 0,
+                              "tvalue" : -1.0
+                            },
+                            "childs" : [ {
+                              "call" : "org.apache.el.parser.ELParser#jj_3_5",
+                              "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_5()",
+                              "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_5()",
+                              "module" : "",
+                              "statistic" : {
+                                "meanOld" : "NaN",
+                                "meanCurrent" : "NaN",
+                                "deviationOld" : "NaN",
+                                "deviationCurrent" : "NaN",
+                                "vms" : 0,
+                                "callsOld" : 0,
+                                "calls" : 0,
+                                "tvalue" : -1.0
+                              },
+                              "childs" : [ {
+                                "call" : "org.apache.el.parser.ELParser#jj_scan_token",
+                                "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
+                                "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
+                                "module" : "",
+                                "statistic" : {
+                                  "meanOld" : "NaN",
+                                  "meanCurrent" : "NaN",
+                                  "deviationOld" : "NaN",
+                                  "deviationCurrent" : "NaN",
+                                  "vms" : 0,
+                                  "callsOld" : 0,
+                                  "calls" : 0,
+                                  "tvalue" : -1.0
+                                },
+                                "childs" : [ ]
+                              } ]
+                            } ]
+                          } ]
+                        }, {
+                          "call" : "org.apache.el.parser.ELParser#jj_2_1",
+                          "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_1(int)",
+                          "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_1(int)",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : "NaN",
+                            "meanCurrent" : "NaN",
+                            "deviationOld" : "NaN",
+                            "deviationCurrent" : "NaN",
+                            "vms" : 0,
+                            "callsOld" : 0,
+                            "calls" : 0,
+                            "tvalue" : -1.0
+                          },
+                          "childs" : [ {
+                            "call" : "org.apache.el.parser.ELParser#jj_3_1",
+                            "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_1()",
+                            "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_1()",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : "NaN",
+                              "meanCurrent" : "NaN",
+                              "deviationOld" : "NaN",
+                              "deviationCurrent" : "NaN",
+                              "vms" : 0,
+                              "callsOld" : 0,
+                              "calls" : 0,
+                              "tvalue" : -1.0
+                            },
+                            "childs" : [ {
+                              "call" : "org.apache.el.parser.ELParser#jj_scan_token",
+                              "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
+                              "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
+                              "module" : "",
+                              "statistic" : {
+                                "meanOld" : "NaN",
+                                "meanCurrent" : "NaN",
+                                "deviationOld" : "NaN",
+                                "deviationCurrent" : "NaN",
+                                "vms" : 0,
+                                "callsOld" : 0,
+                                "calls" : 0,
+                                "tvalue" : -1.0
+                              },
+                              "childs" : [ ]
+                            } ]
+                          } ]
+                        } ]
+                      } ]
+                    } ]
+                  } ]
+                }, {
+                  "call" : "org.apache.el.parser.ELParser#jj_consume_token",
+                  "kiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
+                  "otherKiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
+                  "module" : "",
+                  "statistic" : {
+                    "meanOld" : "NaN",
+                    "meanCurrent" : "NaN",
+                    "deviationOld" : "NaN",
+                    "deviationCurrent" : "NaN",
+                    "vms" : 0,
+                    "callsOld" : 0,
+                    "calls" : 0,
+                    "tvalue" : -1.0
+                  },
+                  "childs" : [ ]
+                }, {
+                  "call" : "org.apache.el.parser.ELParser#DeferredExpression",
+                  "kiekerPattern" : "public final void org.apache.el.parser.ELParser.DeferredExpression()",
+                  "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.DeferredExpression()",
+                  "module" : "",
+                  "statistic" : {
+                    "meanOld" : "NaN",
+                    "meanCurrent" : "NaN",
+                    "deviationOld" : "NaN",
+                    "deviationCurrent" : "NaN",
+                    "vms" : 0,
+                    "callsOld" : 0,
+                    "calls" : 0,
+                    "tvalue" : -1.0
+                  },
+                  "childs" : [ {
+                    "call" : "org.apache.el.parser.ELParser#jj_consume_token",
+                    "kiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
+                    "otherKiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
+                    "module" : "",
+                    "statistic" : {
+                      "meanOld" : "NaN",
+                      "meanCurrent" : "NaN",
+                      "deviationOld" : "NaN",
+                      "deviationCurrent" : "NaN",
+                      "vms" : 0,
+                      "callsOld" : 0,
+                      "calls" : 0,
+                      "tvalue" : -1.0
+                    },
+                    "childs" : [ ]
+                  }, {
+                    "call" : "org.apache.el.parser.ELParser#Expression",
+                    "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Expression()",
+                    "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Expression()",
+                    "module" : "",
+                    "statistic" : {
+                      "meanOld" : "NaN",
+                      "meanCurrent" : "NaN",
+                      "deviationOld" : "NaN",
+                      "deviationCurrent" : "NaN",
+                      "vms" : 0,
+                      "callsOld" : 0,
+                      "calls" : 0,
+                      "tvalue" : -1.0
+                    },
+                    "childs" : [ {
+                      "call" : "org.apache.el.parser.ELParser#Semicolon",
+                      "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Semicolon()",
+                      "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Semicolon()",
+                      "module" : "",
+                      "statistic" : {
+                        "meanOld" : "NaN",
+                        "meanCurrent" : "NaN",
+                        "deviationOld" : "NaN",
+                        "deviationCurrent" : "NaN",
+                        "vms" : 0,
+                        "callsOld" : 0,
+                        "calls" : 0,
+                        "tvalue" : -1.0
+                      },
+                      "childs" : [ {
+                        "call" : "org.apache.el.parser.ELParser#Assignment",
+                        "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Assignment()",
+                        "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Assignment()",
+                        "module" : "",
+                        "statistic" : {
+                          "meanOld" : "NaN",
+                          "meanCurrent" : "NaN",
+                          "deviationOld" : "NaN",
+                          "deviationCurrent" : "NaN",
+                          "vms" : 0,
+                          "callsOld" : 0,
+                          "calls" : 0,
+                          "tvalue" : -1.0
+                        },
+                        "childs" : [ {
+                          "call" : "org.apache.el.parser.ELParser#jj_2_2",
+                          "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_2(int)",
+                          "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_2(int)",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : "NaN",
+                            "meanCurrent" : "NaN",
+                            "deviationOld" : "NaN",
+                            "deviationCurrent" : "NaN",
+                            "vms" : 0,
+                            "callsOld" : 0,
+                            "calls" : 0,
+                            "tvalue" : -1.0
+                          },
+                          "childs" : [ {
+                            "call" : "org.apache.el.parser.ELParser#jj_3_2",
+                            "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_2()",
+                            "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_2()",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : "NaN",
+                              "meanCurrent" : "NaN",
+                              "deviationOld" : "NaN",
+                              "deviationCurrent" : "NaN",
+                              "vms" : 0,
+                              "callsOld" : 0,
+                              "calls" : 0,
+                              "tvalue" : -1.0
+                            },
+                            "childs" : [ {
+                              "call" : "org.apache.el.parser.ELParser#jj_3R_21",
+                              "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_21()",
+                              "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_21()",
+                              "module" : "",
+                              "statistic" : {
+                                "meanOld" : "NaN",
+                                "meanCurrent" : "NaN",
+                                "deviationOld" : "NaN",
+                                "deviationCurrent" : "NaN",
+                                "vms" : 0,
+                                "callsOld" : 0,
+                                "calls" : 0,
+                                "tvalue" : -1.0
+                              },
+                              "childs" : [ {
+                                "call" : "org.apache.el.parser.ELParser#jj_3R_27",
+                                "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_27()",
+                                "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_27()",
+                                "module" : "",
+                                "statistic" : {
+                                  "meanOld" : "NaN",
+                                  "meanCurrent" : "NaN",
+                                  "deviationOld" : "NaN",
+                                  "deviationCurrent" : "NaN",
+                                  "vms" : 0,
+                                  "callsOld" : 0,
+                                  "calls" : 0,
+                                  "tvalue" : -1.0
+                                },
+                                "childs" : [ {
+                                  "call" : "org.apache.el.parser.ELParser#jj_3R_32",
+                                  "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_32()",
+                                  "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_32()",
+                                  "module" : "",
+                                  "statistic" : {
+                                    "meanOld" : "NaN",
+                                    "meanCurrent" : "NaN",
+                                    "deviationOld" : "NaN",
+                                    "deviationCurrent" : "NaN",
+                                    "vms" : 0,
+                                    "callsOld" : 0,
+                                    "calls" : 0,
+                                    "tvalue" : -1.0
+                                  },
+                                  "childs" : [ {
+                                    "call" : "org.apache.el.parser.ELParser#jj_3R_38",
+                                    "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_38()",
+                                    "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_38()",
+                                    "module" : "",
+                                    "statistic" : {
+                                      "meanOld" : "NaN",
+                                      "meanCurrent" : "NaN",
+                                      "deviationOld" : "NaN",
+                                      "deviationCurrent" : "NaN",
+                                      "vms" : 0,
+                                      "callsOld" : 0,
+                                      "calls" : 0,
+                                      "tvalue" : -1.0
+                                    },
+                                    "childs" : [ {
+                                      "call" : "org.apache.el.parser.ELParser#jj_scan_token",
+                                      "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
+                                      "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
+                                      "module" : "",
+                                      "statistic" : {
+                                        "meanOld" : "NaN",
+                                        "meanCurrent" : "NaN",
+                                        "deviationOld" : "NaN",
+                                        "deviationCurrent" : "NaN",
+                                        "vms" : 0,
+                                        "callsOld" : 0,
+                                        "calls" : 0,
+                                        "tvalue" : -1.0
+                                      },
+                                      "childs" : [ {
+                                        "call" : "org.apache.el.parser.ELParserTokenManager#getNextToken",
+                                        "kiekerPattern" : "public org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.getNextToken()",
+                                        "otherKiekerPattern" : "public org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.getNextToken()",
+                                        "module" : "",
+                                        "statistic" : {
+                                          "meanOld" : "NaN",
+                                          "meanCurrent" : "NaN",
+                                          "deviationOld" : "NaN",
+                                          "deviationCurrent" : "NaN",
+                                          "vms" : 0,
+                                          "callsOld" : 0,
+                                          "calls" : 0,
+                                          "tvalue" : -1.0
+                                        },
+                                        "childs" : [ {
+                                          "call" : "org.apache.el.parser.SimpleCharStream#BeginToken",
+                                          "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.BeginToken()",
+                                          "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.BeginToken()",
+                                          "module" : "",
+                                          "statistic" : {
+                                            "meanOld" : "NaN",
+                                            "meanCurrent" : "NaN",
+                                            "deviationOld" : "NaN",
+                                            "deviationCurrent" : "NaN",
+                                            "vms" : 0,
+                                            "callsOld" : 0,
+                                            "calls" : 0,
+                                            "tvalue" : -1.0
+                                          },
+                                          "childs" : [ {
+                                            "call" : "org.apache.el.parser.SimpleCharStream#readChar",
+                                            "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                            "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                            "module" : "",
+                                            "statistic" : {
+                                              "meanOld" : "NaN",
+                                              "meanCurrent" : "NaN",
+                                              "deviationOld" : "NaN",
+                                              "deviationCurrent" : "NaN",
+                                              "vms" : 0,
+                                              "callsOld" : 0,
+                                              "calls" : 0,
+                                              "tvalue" : -1.0
+                                            },
+                                            "childs" : [ {
+                                              "call" : "org.apache.el.parser.SimpleCharStream#UpdateLineColumn",
+                                              "kiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                                              "otherKiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                                              "module" : "",
+                                              "statistic" : {
+                                                "meanOld" : "NaN",
+                                                "meanCurrent" : "NaN",
+                                                "deviationOld" : "NaN",
+                                                "deviationCurrent" : "NaN",
+                                                "vms" : 0,
+                                                "callsOld" : 0,
+                                                "calls" : 0,
+                                                "tvalue" : -1.0
+                                              },
+                                              "childs" : [ ]
+                                            } ]
+                                          } ]
+                                        }, {
+                                          "call" : "org.apache.el.parser.SimpleCharStream#backup",
+                                          "kiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                                          "otherKiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                                          "module" : "",
+                                          "statistic" : {
+                                            "meanOld" : "NaN",
+                                            "meanCurrent" : "NaN",
+                                            "deviationOld" : "NaN",
+                                            "deviationCurrent" : "NaN",
+                                            "vms" : 0,
+                                            "callsOld" : 0,
+                                            "calls" : 0,
+                                            "tvalue" : -1.0
+                                          },
+                                          "childs" : [ ]
+                                        }, {
+                                          "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveStringLiteralDfa0_1",
+                                          "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa0_1()",
+                                          "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa0_1()",
+                                          "module" : "",
+                                          "statistic" : {
+                                            "meanOld" : "NaN",
+                                            "meanCurrent" : "NaN",
+                                            "deviationOld" : "NaN",
+                                            "deviationCurrent" : "NaN",
+                                            "vms" : 0,
+                                            "callsOld" : 0,
+                                            "calls" : 0,
+                                            "tvalue" : -1.0
+                                          },
+                                          "childs" : [ {
+                                            "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveNfa_1",
+                                            "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveNfa_1(int,int)",
+                                            "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveNfa_1(int,int)",
+                                            "module" : "",
+                                            "statistic" : {
+                                              "meanOld" : "NaN",
+                                              "meanCurrent" : "NaN",
+                                              "deviationOld" : "NaN",
+                                              "deviationCurrent" : "NaN",
+                                              "vms" : 0,
+                                              "callsOld" : 0,
+                                              "calls" : 0,
+                                              "tvalue" : -1.0
+                                            },
+                                            "childs" : [ {
+                                              "call" : "org.apache.el.parser.SimpleCharStream#readChar",
+                                              "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                              "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                              "module" : "",
+                                              "statistic" : {
+                                                "meanOld" : "NaN",
+                                                "meanCurrent" : "NaN",
+                                                "deviationOld" : "NaN",
+                                                "deviationCurrent" : "NaN",
+                                                "vms" : 0,
+                                                "callsOld" : 0,
+                                                "calls" : 0,
+                                                "tvalue" : -1.0
+                                              },
+                                              "childs" : [ {
+                                                "call" : "org.apache.el.parser.SimpleCharStream#UpdateLineColumn",
+                                                "kiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                                                "otherKiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                                                "module" : "",
+                                                "statistic" : {
+                                                  "meanOld" : "NaN",
+                                                  "meanCurrent" : "NaN",
+                                                  "deviationOld" : "NaN",
+                                                  "deviationCurrent" : "NaN",
+                                                  "vms" : 0,
+                                                  "callsOld" : 0,
+                                                  "calls" : 0,
+                                                  "tvalue" : -1.0
+                                                },
+                                                "childs" : [ ]
+                                              } ]
+                                            } ]
+                                          } ]
+                                        }, {
+                                          "call" : "org.apache.el.parser.ELParserTokenManager#jjFillToken",
+                                          "kiekerPattern" : "protected org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.jjFillToken()",
+                                          "otherKiekerPattern" : "protected org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.jjFillToken()",
+                                          "module" : "",
+                                          "statistic" : {
+                                            "meanOld" : "NaN",
+                                            "meanCurrent" : "NaN",
+                                            "deviationOld" : "NaN",
+                                            "deviationCurrent" : "NaN",
+                                            "vms" : 0,
+                                            "callsOld" : 0,
+                                            "calls" : 0,
+                                            "tvalue" : -1.0
+                                          },
+                                          "childs" : [ {
+                                            "call" : "org.apache.el.parser.SimpleCharStream#GetImage",
+                                            "kiekerPattern" : "public java.lang.String org.apache.el.parser.SimpleCharStream.GetImage()",
+                                            "otherKiekerPattern" : "public java.lang.String org.apache.el.parser.SimpleCharStream.GetImage()",
+                                            "module" : "",
+                                            "statistic" : {
+                                              "meanOld" : "NaN",
+                                              "meanCurrent" : "NaN",
+                                              "deviationOld" : "NaN",
+                                              "deviationCurrent" : "NaN",
+                                              "vms" : 0,
+                                              "callsOld" : 0,
+                                              "calls" : 0,
+                                              "tvalue" : -1.0
+                                            },
+                                            "childs" : [ ]
+                                          } ]
+                                        } ]
+                                      } ]
+                                    } ]
+                                  } ]
+                                }, {
+                                  "call" : "org.apache.el.parser.ELParser#jj_3R_33",
+                                  "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_33()",
+                                  "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3R_33()",
+                                  "module" : "",
+                                  "statistic" : {
+                                    "meanOld" : "NaN",
+                                    "meanCurrent" : "NaN",
+                                    "deviationOld" : "NaN",
+                                    "deviationCurrent" : "NaN",
+                                    "vms" : 0,
+                                    "callsOld" : 0,
+                                    "calls" : 0,
+                                    "tvalue" : -1.0
+                                  },
+                                  "childs" : [ {
+                                    "call" : "org.apache.el.parser.ELParser#jj_scan_token",
+                                    "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
+                                    "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
+                                    "module" : "",
+                                    "statistic" : {
+                                      "meanOld" : "NaN",
+                                      "meanCurrent" : "NaN",
+                                      "deviationOld" : "NaN",
+                                      "deviationCurrent" : "NaN",
+                                      "vms" : 0,
+                                      "callsOld" : 0,
+                                      "calls" : 0,
+                                      "tvalue" : -1.0
+                                    },
+                                    "childs" : [ ]
+                                  } ]
+                                } ]
+                              } ]
+                            } ]
+                          } ]
+                        }, {
+                          "call" : "org.apache.el.parser.ELParser#jj_ntk",
+                          "kiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk()",
+                          "otherKiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk()",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : "NaN",
+                            "meanCurrent" : "NaN",
+                            "deviationOld" : "NaN",
+                            "deviationCurrent" : "NaN",
+                            "vms" : 0,
+                            "callsOld" : 0,
+                            "calls" : 0,
+                            "tvalue" : -1.0
+                          },
+                          "childs" : [ ]
+                        }, {
+                          "call" : "org.apache.el.parser.ELParser#Choice",
+                          "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Choice()",
+                          "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Choice()",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : "NaN",
+                            "meanCurrent" : "NaN",
+                            "deviationOld" : "NaN",
+                            "deviationCurrent" : "NaN",
+                            "vms" : 0,
+                            "callsOld" : 0,
+                            "calls" : 0,
+                            "tvalue" : -1.0
+                          },
+                          "childs" : [ {
+                            "call" : "org.apache.el.parser.ELParser#Or",
+                            "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Or()",
+                            "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Or()",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : "NaN",
+                              "meanCurrent" : "NaN",
+                              "deviationOld" : "NaN",
+                              "deviationCurrent" : "NaN",
+                              "vms" : 0,
+                              "callsOld" : 0,
+                              "calls" : 0,
+                              "tvalue" : -1.0
+                            },
+                            "childs" : [ {
+                              "call" : "org.apache.el.parser.ELParser#And",
+                              "kiekerPattern" : "public final void org.apache.el.parser.ELParser.And()",
+                              "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.And()",
+                              "module" : "",
+                              "statistic" : {
+                                "meanOld" : "NaN",
+                                "meanCurrent" : "NaN",
+                                "deviationOld" : "NaN",
+                                "deviationCurrent" : "NaN",
+                                "vms" : 0,
+                                "callsOld" : 0,
+                                "calls" : 0,
+                                "tvalue" : -1.0
+                              },
+                              "childs" : [ {
+                                "call" : "org.apache.el.parser.ELParser#Equality",
+                                "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Equality()",
+                                "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Equality()",
+                                "module" : "",
+                                "statistic" : {
+                                  "meanOld" : "NaN",
+                                  "meanCurrent" : "NaN",
+                                  "deviationOld" : "NaN",
+                                  "deviationCurrent" : "NaN",
+                                  "vms" : 0,
+                                  "callsOld" : 0,
+                                  "calls" : 0,
+                                  "tvalue" : -1.0
+                                },
+                                "childs" : [ {
+                                  "call" : "org.apache.el.parser.ELParser#Compare",
+                                  "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Compare()",
+                                  "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Compare()",
+                                  "module" : "",
+                                  "statistic" : {
+                                    "meanOld" : "NaN",
+                                    "meanCurrent" : "NaN",
+                                    "deviationOld" : "NaN",
+                                    "deviationCurrent" : "NaN",
+                                    "vms" : 0,
+                                    "callsOld" : 0,
+                                    "calls" : 0,
+                                    "tvalue" : -1.0
+                                  },
+                                  "childs" : [ {
+                                    "call" : "org.apache.el.parser.ELParser#Concatenation",
+                                    "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Concatenation()",
+                                    "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Concatenation()",
+                                    "module" : "",
+                                    "statistic" : {
+                                      "meanOld" : "NaN",
+                                      "meanCurrent" : "NaN",
+                                      "deviationOld" : "NaN",
+                                      "deviationCurrent" : "NaN",
+                                      "vms" : 0,
+                                      "callsOld" : 0,
+                                      "calls" : 0,
+                                      "tvalue" : -1.0
+                                    },
+                                    "childs" : [ {
+                                      "call" : "org.apache.el.parser.ELParser#Math",
+                                      "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Math()",
+                                      "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Math()",
+                                      "module" : "",
+                                      "statistic" : {
+                                        "meanOld" : "NaN",
+                                        "meanCurrent" : "NaN",
+                                        "deviationOld" : "NaN",
+                                        "deviationCurrent" : "NaN",
+                                        "vms" : 0,
+                                        "callsOld" : 0,
+                                        "calls" : 0,
+                                        "tvalue" : -1.0
+                                      },
+                                      "childs" : [ {
+                                        "call" : "org.apache.el.parser.ELParser#Multiplication",
+                                        "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Multiplication()",
+                                        "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Multiplication()",
+                                        "module" : "",
+                                        "statistic" : {
+                                          "meanOld" : "NaN",
+                                          "meanCurrent" : "NaN",
+                                          "deviationOld" : "NaN",
+                                          "deviationCurrent" : "NaN",
+                                          "vms" : 0,
+                                          "callsOld" : 0,
+                                          "calls" : 0,
+                                          "tvalue" : -1.0
+                                        },
+                                        "childs" : [ {
+                                          "call" : "org.apache.el.parser.ELParser#Unary",
+                                          "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Unary()",
+                                          "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Unary()",
+                                          "module" : "",
+                                          "statistic" : {
+                                            "meanOld" : "NaN",
+                                            "meanCurrent" : "NaN",
+                                            "deviationOld" : "NaN",
+                                            "deviationCurrent" : "NaN",
+                                            "vms" : 0,
+                                            "callsOld" : 0,
+                                            "calls" : 0,
+                                            "tvalue" : -1.0
+                                          },
+                                          "childs" : [ {
+                                            "call" : "org.apache.el.parser.ELParser#Value",
+                                            "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Value()",
+                                            "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Value()",
+                                            "module" : "",
+                                            "statistic" : {
+                                              "meanOld" : "NaN",
+                                              "meanCurrent" : "NaN",
+                                              "deviationOld" : "NaN",
+                                              "deviationCurrent" : "NaN",
+                                              "vms" : 0,
+                                              "callsOld" : 0,
+                                              "calls" : 0,
+                                              "tvalue" : -1.0
+                                            },
+                                            "childs" : [ {
+                                              "call" : "org.apache.el.parser.ELParser#ValuePrefix",
+                                              "kiekerPattern" : "public final void org.apache.el.parser.ELParser.ValuePrefix()",
+                                              "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.ValuePrefix()",
+                                              "module" : "",
+                                              "statistic" : {
+                                                "meanOld" : "NaN",
+                                                "meanCurrent" : "NaN",
+                                                "deviationOld" : "NaN",
+                                                "deviationCurrent" : "NaN",
+                                                "vms" : 0,
+                                                "callsOld" : 0,
+                                                "calls" : 0,
+                                                "tvalue" : -1.0
+                                              },
+                                              "childs" : [ {
+                                                "call" : "org.apache.el.parser.ELParser#Literal",
+                                                "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Literal()",
+                                                "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Literal()",
+                                                "module" : "",
+                                                "statistic" : {
+                                                  "meanOld" : "NaN",
+                                                  "meanCurrent" : "NaN",
+                                                  "deviationOld" : "NaN",
+                                                  "deviationCurrent" : "NaN",
+                                                  "vms" : 0,
+                                                  "callsOld" : 0,
+                                                  "calls" : 0,
+                                                  "tvalue" : -1.0
+                                                },
+                                                "childs" : [ {
+                                                  "call" : "org.apache.el.parser.ELParser#Integer",
+                                                  "kiekerPattern" : "public final void org.apache.el.parser.ELParser.Integer()",
+                                                  "otherKiekerPattern" : "public final void org.apache.el.parser.ELParser.Integer()",
+                                                  "module" : "",
+                                                  "statistic" : {
+                                                    "meanOld" : "NaN",
+                                                    "meanCurrent" : "NaN",
+                                                    "deviationOld" : "NaN",
+                                                    "deviationCurrent" : "NaN",
+                                                    "vms" : 0,
+                                                    "callsOld" : 0,
+                                                    "calls" : 0,
+                                                    "tvalue" : -1.0
+                                                  },
+                                                  "childs" : [ {
+                                                    "call" : "org.apache.el.parser.ELParser#jj_consume_token",
+                                                    "kiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
+                                                    "otherKiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
+                                                    "module" : "",
+                                                    "statistic" : {
+                                                      "meanOld" : "NaN",
+                                                      "meanCurrent" : "NaN",
+                                                      "deviationOld" : "NaN",
+                                                      "deviationCurrent" : "NaN",
+                                                      "vms" : 0,
+                                                      "callsOld" : 0,
+                                                      "calls" : 0,
+                                                      "tvalue" : -1.0
+                                                    },
+                                                    "childs" : [ ]
+                                                  } ]
+                                                } ]
+                                              } ]
+                                            }, {
+                                              "call" : "org.apache.el.parser.ELParser#jj_ntk",
+                                              "kiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk()",
+                                              "otherKiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk()",
+                                              "module" : "",
+                                              "statistic" : {
+                                                "meanOld" : "NaN",
+                                                "meanCurrent" : "NaN",
+                                                "deviationOld" : "NaN",
+                                                "deviationCurrent" : "NaN",
+                                                "vms" : 0,
+                                                "callsOld" : 0,
+                                                "calls" : 0,
+                                                "tvalue" : -1.0
+                                              },
+                                              "childs" : [ {
+                                                "call" : "org.apache.el.parser.ELParserTokenManager#getNextToken",
+                                                "kiekerPattern" : "public org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.getNextToken()",
+                                                "otherKiekerPattern" : "public org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.getNextToken()",
+                                                "module" : "",
+                                                "statistic" : {
+                                                  "meanOld" : "NaN",
+                                                  "meanCurrent" : "NaN",
+                                                  "deviationOld" : "NaN",
+                                                  "deviationCurrent" : "NaN",
+                                                  "vms" : 0,
+                                                  "callsOld" : 0,
+                                                  "calls" : 0,
+                                                  "tvalue" : -1.0
+                                                },
+                                                "childs" : [ {
+                                                  "call" : "org.apache.el.parser.SimpleCharStream#BeginToken",
+                                                  "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.BeginToken()",
+                                                  "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.BeginToken()",
+                                                  "module" : "",
+                                                  "statistic" : {
+                                                    "meanOld" : "NaN",
+                                                    "meanCurrent" : "NaN",
+                                                    "deviationOld" : "NaN",
+                                                    "deviationCurrent" : "NaN",
+                                                    "vms" : 0,
+                                                    "callsOld" : 0,
+                                                    "calls" : 0,
+                                                    "tvalue" : -1.0
+                                                  },
+                                                  "childs" : [ {
+                                                    "call" : "org.apache.el.parser.SimpleCharStream#readChar",
+                                                    "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                                    "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                                    "module" : "",
+                                                    "statistic" : {
+                                                      "meanOld" : "NaN",
+                                                      "meanCurrent" : "NaN",
+                                                      "deviationOld" : "NaN",
+                                                      "deviationCurrent" : "NaN",
+                                                      "vms" : 0,
+                                                      "callsOld" : 0,
+                                                      "calls" : 0,
+                                                      "tvalue" : -1.0
+                                                    },
+                                                    "childs" : [ ]
+                                                  } ]
+                                                }, {
+                                                  "call" : "org.apache.el.parser.SimpleCharStream#backup",
+                                                  "kiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                                                  "otherKiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                                                  "module" : "",
+                                                  "statistic" : {
+                                                    "meanOld" : "NaN",
+                                                    "meanCurrent" : "NaN",
+                                                    "deviationOld" : "NaN",
+                                                    "deviationCurrent" : "NaN",
+                                                    "vms" : 0,
+                                                    "callsOld" : 0,
+                                                    "calls" : 0,
+                                                    "tvalue" : -1.0
+                                                  },
+                                                  "childs" : [ ]
+                                                }, {
+                                                  "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveStringLiteralDfa0_1",
+                                                  "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa0_1()",
+                                                  "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa0_1()",
+                                                  "module" : "",
+                                                  "statistic" : {
+                                                    "meanOld" : "NaN",
+                                                    "meanCurrent" : "NaN",
+                                                    "deviationOld" : "NaN",
+                                                    "deviationCurrent" : "NaN",
+                                                    "vms" : 0,
+                                                    "callsOld" : 0,
+                                                    "calls" : 0,
+                                                    "tvalue" : -1.0
+                                                  },
+                                                  "childs" : [ {
+                                                    "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveStringLiteralDfa1_1",
+                                                    "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa1_1(long)",
+                                                    "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa1_1(long)",
+                                                    "module" : "",
+                                                    "statistic" : {
+                                                      "meanOld" : "NaN",
+                                                      "meanCurrent" : "NaN",
+                                                      "deviationOld" : "NaN",
+                                                      "deviationCurrent" : "NaN",
+                                                      "vms" : 0,
+                                                      "callsOld" : 0,
+                                                      "calls" : 0,
+                                                      "tvalue" : -1.0
+                                                    },
+                                                    "childs" : [ {
+                                                      "call" : "org.apache.el.parser.SimpleCharStream#readChar",
+                                                      "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                                      "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                                      "module" : "",
+                                                      "statistic" : {
+                                                        "meanOld" : "NaN",
+                                                        "meanCurrent" : "NaN",
+                                                        "deviationOld" : "NaN",
+                                                        "deviationCurrent" : "NaN",
+                                                        "vms" : 0,
+                                                        "callsOld" : 0,
+                                                        "calls" : 0,
+                                                        "tvalue" : -1.0
+                                                      },
+                                                      "childs" : [ {
+                                                        "call" : "org.apache.el.parser.SimpleCharStream#UpdateLineColumn",
+                                                        "kiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                                                        "otherKiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                                                        "module" : "",
+                                                        "statistic" : {
+                                                          "meanOld" : "NaN",
+                                                          "meanCurrent" : "NaN",
+                                                          "deviationOld" : "NaN",
+                                                          "deviationCurrent" : "NaN",
+                                                          "vms" : 0,
+                                                          "callsOld" : 0,
+                                                          "calls" : 0,
+                                                          "tvalue" : -1.0
+                                                        },
+                                                        "childs" : [ ]
+                                                      } ]
+                                                    }, {
+                                                      "call" : "org.apache.el.parser.ELParserTokenManager#jjStartNfa_1",
+                                                      "kiekerPattern" : "private final int org.apache.el.parser.ELParserTokenManager.jjStartNfa_1(int,long)",
+                                                      "otherKiekerPattern" : "private final int org.apache.el.parser.ELParserTokenManager.jjStartNfa_1(int,long)",
+                                                      "module" : "",
+                                                      "statistic" : {
+                                                        "meanOld" : "NaN",
+                                                        "meanCurrent" : "NaN",
+                                                        "deviationOld" : "NaN",
+                                                        "deviationCurrent" : "NaN",
+                                                        "vms" : 0,
+                                                        "callsOld" : 0,
+                                                        "calls" : 0,
+                                                        "tvalue" : -1.0
+                                                      },
+                                                      "childs" : [ {
+                                                        "call" : "org.apache.el.parser.ELParserTokenManager#jjStopStringLiteralDfa_1",
+                                                        "kiekerPattern" : "private final int org.apache.el.parser.ELParserTokenManager.jjStopStringLiteralDfa_1(int,long)",
+                                                        "otherKiekerPattern" : "private final int org.apache.el.parser.ELParserTokenManager.jjStopStringLiteralDfa_1(int,long)",
+                                                        "module" : "",
+                                                        "statistic" : {
+                                                          "meanOld" : "NaN",
+                                                          "meanCurrent" : "NaN",
+                                                          "deviationOld" : "NaN",
+                                                          "deviationCurrent" : "NaN",
+                                                          "vms" : 0,
+                                                          "callsOld" : 0,
+                                                          "calls" : 0,
+                                                          "tvalue" : -1.0
+                                                        },
+                                                        "childs" : [ ]
+                                                      }, {
+                                                        "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveNfa_1",
+                                                        "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveNfa_1(int,int)",
+                                                        "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveNfa_1(int,int)",
+                                                        "module" : "",
+                                                        "statistic" : {
+                                                          "meanOld" : "NaN",
+                                                          "meanCurrent" : "NaN",
+                                                          "deviationOld" : "NaN",
+                                                          "deviationCurrent" : "NaN",
+                                                          "vms" : 0,
+                                                          "callsOld" : 0,
+                                                          "calls" : 0,
+                                                          "tvalue" : -1.0
+                                                        },
+                                                        "childs" : [ ]
+                                                      } ]
+                                                    } ]
+                                                  } ]
+                                                }, {
+                                                  "call" : "org.apache.el.parser.ELParserTokenManager#TokenLexicalActions",
+                                                  "kiekerPattern" : "void org.apache.el.parser.ELParserTokenManager.TokenLexicalActions(org.apache.el.parser.Token)",
+                                                  "otherKiekerPattern" : "void org.apache.el.parser.ELParserTokenManager.TokenLexicalActions(org.apache.el.parser.Token)",
+                                                  "module" : "",
+                                                  "statistic" : {
+                                                    "meanOld" : "NaN",
+                                                    "meanCurrent" : "NaN",
+                                                    "deviationOld" : "NaN",
+                                                    "deviationCurrent" : "NaN",
+                                                    "vms" : 0,
+                                                    "callsOld" : 0,
+                                                    "calls" : 0,
+                                                    "tvalue" : -1.0
+                                                  },
+                                                  "childs" : [ {
+                                                    "call" : "org.apache.el.parser.ELParserTokenManager#SwitchTo",
+                                                    "kiekerPattern" : "public void org.apache.el.parser.ELParserTokenManager.SwitchTo(int)",
+                                                    "otherKiekerPattern" : "public void org.apache.el.parser.ELParserTokenManager.SwitchTo(int)",
+                                                    "module" : "",
+                                                    "statistic" : {
+                                                      "meanOld" : "NaN",
+                                                      "meanCurrent" : "NaN",
+                                                      "deviationOld" : "NaN",
+                                                      "deviationCurrent" : "NaN",
+                                                      "vms" : 0,
+                                                      "callsOld" : 0,
+                                                      "calls" : 0,
+                                                      "tvalue" : -1.0
+                                                    },
+                                                    "childs" : [ ]
+                                                  } ]
+                                                } ]
+                                              } ]
+                                            } ]
+                                          }, {
+                                            "call" : "org.apache.el.parser.ELParser#jj_ntk",
+                                            "kiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk()",
+                                            "otherKiekerPattern" : "private int org.apache.el.parser.ELParser.jj_ntk()",
+                                            "module" : "",
+                                            "statistic" : {
+                                              "meanOld" : "NaN",
+                                              "meanCurrent" : "NaN",
+                                              "deviationOld" : "NaN",
+                                              "deviationCurrent" : "NaN",
+                                              "vms" : 0,
+                                              "callsOld" : 0,
+                                              "calls" : 0,
+                                              "tvalue" : -1.0
+                                            },
+                                            "childs" : [ {
+                                              "call" : "org.apache.el.parser.ELParserTokenManager#getNextToken",
+                                              "kiekerPattern" : "public org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.getNextToken()",
+                                              "otherKiekerPattern" : "public org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.getNextToken()",
+                                              "module" : "",
+                                              "statistic" : {
+                                                "meanOld" : "NaN",
+                                                "meanCurrent" : "NaN",
+                                                "deviationOld" : "NaN",
+                                                "deviationCurrent" : "NaN",
+                                                "vms" : 0,
+                                                "callsOld" : 0,
+                                                "calls" : 0,
+                                                "tvalue" : -1.0
+                                              },
+                                              "childs" : [ {
+                                                "call" : "org.apache.el.parser.SimpleCharStream#BeginToken",
+                                                "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.BeginToken()",
+                                                "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.BeginToken()",
+                                                "module" : "",
+                                                "statistic" : {
+                                                  "meanOld" : "NaN",
+                                                  "meanCurrent" : "NaN",
+                                                  "deviationOld" : "NaN",
+                                                  "deviationCurrent" : "NaN",
+                                                  "vms" : 0,
+                                                  "callsOld" : 0,
+                                                  "calls" : 0,
+                                                  "tvalue" : -1.0
+                                                },
+                                                "childs" : [ {
+                                                  "call" : "org.apache.el.parser.SimpleCharStream#readChar",
+                                                  "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                                  "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                                  "module" : "",
+                                                  "statistic" : {
+                                                    "meanOld" : "NaN",
+                                                    "meanCurrent" : "NaN",
+                                                    "deviationOld" : "NaN",
+                                                    "deviationCurrent" : "NaN",
+                                                    "vms" : 0,
+                                                    "callsOld" : 0,
+                                                    "calls" : 0,
+                                                    "tvalue" : -1.0
+                                                  },
+                                                  "childs" : [ ]
+                                                } ]
+                                              }, {
+                                                "call" : "org.apache.el.parser.SimpleCharStream#backup",
+                                                "kiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                                                "otherKiekerPattern" : "public void org.apache.el.parser.SimpleCharStream.backup(int)",
+                                                "module" : "",
+                                                "statistic" : {
+                                                  "meanOld" : "NaN",
+                                                  "meanCurrent" : "NaN",
+                                                  "deviationOld" : "NaN",
+                                                  "deviationCurrent" : "NaN",
+                                                  "vms" : 0,
+                                                  "callsOld" : 0,
+                                                  "calls" : 0,
+                                                  "tvalue" : -1.0
+                                                },
+                                                "childs" : [ ]
+                                              }, {
+                                                "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveStringLiteralDfa0_1",
+                                                "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa0_1()",
+                                                "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveStringLiteralDfa0_1()",
+                                                "module" : "",
+                                                "statistic" : {
+                                                  "meanOld" : "NaN",
+                                                  "meanCurrent" : "NaN",
+                                                  "deviationOld" : "NaN",
+                                                  "deviationCurrent" : "NaN",
+                                                  "vms" : 0,
+                                                  "callsOld" : 0,
+                                                  "calls" : 0,
+                                                  "tvalue" : -1.0
+                                                },
+                                                "childs" : [ {
+                                                  "call" : "org.apache.el.parser.ELParserTokenManager#jjMoveNfa_1",
+                                                  "kiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveNfa_1(int,int)",
+                                                  "otherKiekerPattern" : "private int org.apache.el.parser.ELParserTokenManager.jjMoveNfa_1(int,int)",
+                                                  "module" : "",
+                                                  "statistic" : {
+                                                    "meanOld" : "NaN",
+                                                    "meanCurrent" : "NaN",
+                                                    "deviationOld" : "NaN",
+                                                    "deviationCurrent" : "NaN",
+                                                    "vms" : 0,
+                                                    "callsOld" : 0,
+                                                    "calls" : 0,
+                                                    "tvalue" : -1.0
+                                                  },
+                                                  "childs" : [ {
+                                                    "call" : "org.apache.el.parser.SimpleCharStream#readChar",
+                                                    "kiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                                    "otherKiekerPattern" : "public char org.apache.el.parser.SimpleCharStream.readChar()",
+                                                    "module" : "",
+                                                    "statistic" : {
+                                                      "meanOld" : "NaN",
+                                                      "meanCurrent" : "NaN",
+                                                      "deviationOld" : "NaN",
+                                                      "deviationCurrent" : "NaN",
+                                                      "vms" : 0,
+                                                      "callsOld" : 0,
+                                                      "calls" : 0,
+                                                      "tvalue" : -1.0
+                                                    },
+                                                    "childs" : [ {
+                                                      "call" : "org.apache.el.parser.SimpleCharStream#UpdateLineColumn",
+                                                      "kiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                                                      "otherKiekerPattern" : "protected void org.apache.el.parser.SimpleCharStream.UpdateLineColumn(char)",
+                                                      "module" : "",
+                                                      "statistic" : {
+                                                        "meanOld" : "NaN",
+                                                        "meanCurrent" : "NaN",
+                                                        "deviationOld" : "NaN",
+                                                        "deviationCurrent" : "NaN",
+                                                        "vms" : 0,
+                                                        "callsOld" : 0,
+                                                        "calls" : 0,
+                                                        "tvalue" : -1.0
+                                                      },
+                                                      "childs" : [ ]
+                                                    } ]
+                                                  } ]
+                                                } ]
+                                              }, {
+                                                "call" : "org.apache.el.parser.ELParserTokenManager#jjFillToken",
+                                                "kiekerPattern" : "protected org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.jjFillToken()",
+                                                "otherKiekerPattern" : "protected org.apache.el.parser.Token org.apache.el.parser.ELParserTokenManager.jjFillToken()",
+                                                "module" : "",
+                                                "statistic" : {
+                                                  "meanOld" : "NaN",
+                                                  "meanCurrent" : "NaN",
+                                                  "deviationOld" : "NaN",
+                                                  "deviationCurrent" : "NaN",
+                                                  "vms" : 0,
+                                                  "callsOld" : 0,
+                                                  "calls" : 0,
+                                                  "tvalue" : -1.0
+                                                },
+                                                "childs" : [ {
+                                                  "call" : "org.apache.el.parser.SimpleCharStream#GetImage",
+                                                  "kiekerPattern" : "public java.lang.String org.apache.el.parser.SimpleCharStream.GetImage()",
+                                                  "otherKiekerPattern" : "public java.lang.String org.apache.el.parser.SimpleCharStream.GetImage()",
+                                                  "module" : "",
+                                                  "statistic" : {
+                                                    "meanOld" : "NaN",
+                                                    "meanCurrent" : "NaN",
+                                                    "deviationOld" : "NaN",
+                                                    "deviationCurrent" : "NaN",
+                                                    "vms" : 0,
+                                                    "callsOld" : 0,
+                                                    "calls" : 0,
+                                                    "tvalue" : -1.0
+                                                  },
+                                                  "childs" : [ ]
+                                                } ]
+                                              } ]
+                                            } ]
+                                          } ]
+                                        } ]
+                                      }, {
+                                        "call" : "org.apache.el.parser.ELParser#jj_consume_token",
+                                        "kiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
+                                        "otherKiekerPattern" : "private org.apache.el.parser.Token org.apache.el.parser.ELParser.jj_consume_token(int)",
+                                        "module" : "",
+                                        "statistic" : {
+                                          "meanOld" : "NaN",
+                                          "meanCurrent" : "NaN",
+                                          "deviationOld" : "NaN",
+                                          "deviationCurrent" : "NaN",
+                                          "vms" : 0,
+                                          "callsOld" : 0,
+                                          "calls" : 0,
+                                          "tvalue" : -1.0
+                                        },
+                                        "childs" : [ ]
+                                      } ]
+                                    } ]
+                                  } ]
+                                } ]
+                              } ]
+                            } ]
+                          }, {
+                            "call" : "org.apache.el.parser.ELParser#jj_2_5",
+                            "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_5(int)",
+                            "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_5(int)",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : "NaN",
+                              "meanCurrent" : "NaN",
+                              "deviationOld" : "NaN",
+                              "deviationCurrent" : "NaN",
+                              "vms" : 0,
+                              "callsOld" : 0,
+                              "calls" : 0,
+                              "tvalue" : -1.0
+                            },
+                            "childs" : [ {
+                              "call" : "org.apache.el.parser.ELParser#jj_3_5",
+                              "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_5()",
+                              "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_5()",
+                              "module" : "",
+                              "statistic" : {
+                                "meanOld" : "NaN",
+                                "meanCurrent" : "NaN",
+                                "deviationOld" : "NaN",
+                                "deviationCurrent" : "NaN",
+                                "vms" : 0,
+                                "callsOld" : 0,
+                                "calls" : 0,
+                                "tvalue" : -1.0
+                              },
+                              "childs" : [ {
+                                "call" : "org.apache.el.parser.ELParser#jj_scan_token",
+                                "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
+                                "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
+                                "module" : "",
+                                "statistic" : {
+                                  "meanOld" : "NaN",
+                                  "meanCurrent" : "NaN",
+                                  "deviationOld" : "NaN",
+                                  "deviationCurrent" : "NaN",
+                                  "vms" : 0,
+                                  "callsOld" : 0,
+                                  "calls" : 0,
+                                  "tvalue" : -1.0
+                                },
+                                "childs" : [ ]
+                              } ]
+                            } ]
+                          } ]
+                        }, {
+                          "call" : "org.apache.el.parser.ELParser#jj_2_1",
+                          "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_1(int)",
+                          "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_2_1(int)",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : "NaN",
+                            "meanCurrent" : "NaN",
+                            "deviationOld" : "NaN",
+                            "deviationCurrent" : "NaN",
+                            "vms" : 0,
+                            "callsOld" : 0,
+                            "calls" : 0,
+                            "tvalue" : -1.0
+                          },
+                          "childs" : [ {
+                            "call" : "org.apache.el.parser.ELParser#jj_3_1",
+                            "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_1()",
+                            "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_3_1()",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : "NaN",
+                              "meanCurrent" : "NaN",
+                              "deviationOld" : "NaN",
+                              "deviationCurrent" : "NaN",
+                              "vms" : 0,
+                              "callsOld" : 0,
+                              "calls" : 0,
+                              "tvalue" : -1.0
+                            },
+                            "childs" : [ {
+                              "call" : "org.apache.el.parser.ELParser#jj_scan_token",
+                              "kiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
+                              "otherKiekerPattern" : "private boolean org.apache.el.parser.ELParser.jj_scan_token(int)",
+                              "module" : "",
+                              "statistic" : {
+                                "meanOld" : "NaN",
+                                "meanCurrent" : "NaN",
+                                "deviationOld" : "NaN",
+                                "deviationCurrent" : "NaN",
+                                "vms" : 0,
+                                "callsOld" : 0,
+                                "calls" : 0,
+                                "tvalue" : -1.0
+                              },
+                              "childs" : [ ]
+                            } ]
+                          } ]
+                        } ]
+                      } ]
+                    } ]
+                  } ]
+                } ]
+              }, {
+                "call" : "org.apache.el.parser.ELParser#ReInit",
+                "kiekerPattern" : "public void org.apache.el.parser.ELParser.ReInit(org.apache.el.parser.java.io.Reader)",
+                "otherKiekerPattern" : "public void org.apache.el.parser.ELParser.ReInit(org.apache.el.parser.java.io.Reader)",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : "NaN",
+                  "meanCurrent" : "NaN",
+                  "deviationOld" : "NaN",
+                  "deviationCurrent" : "NaN",
+                  "vms" : 0,
+                  "callsOld" : 0,
+                  "calls" : 0,
+                  "tvalue" : -1.0
+                },
+                "childs" : [ {
+                  "call" : "org.apache.el.parser.ELParserTokenManager#ReInit",
+                  "kiekerPattern" : "public void org.apache.el.parser.ELParserTokenManager.ReInit(org.apache.el.parser.SimpleCharStream)",
+                  "otherKiekerPattern" : "public void org.apache.el.parser.ELParserTokenManager.ReInit(org.apache.el.parser.SimpleCharStream)",
+                  "module" : "",
+                  "statistic" : {
+                    "meanOld" : "NaN",
+                    "meanCurrent" : "NaN",
+                    "deviationOld" : "NaN",
+                    "deviationCurrent" : "NaN",
+                    "vms" : 0,
+                    "callsOld" : 0,
+                    "calls" : 0,
+                    "tvalue" : -1.0
+                  },
+                  "childs" : [ {
+                    "call" : "org.apache.el.parser.ELParserTokenManager#ReInitRounds",
+                    "kiekerPattern" : "private void org.apache.el.parser.ELParserTokenManager.ReInitRounds()",
+                    "otherKiekerPattern" : "private void org.apache.el.parser.ELParserTokenManager.ReInitRounds()",
+                    "module" : "",
+                    "statistic" : {
+                      "meanOld" : "NaN",
+                      "meanCurrent" : "NaN",
+                      "deviationOld" : "NaN",
+                      "deviationCurrent" : "NaN",
+                      "vms" : 0,
+                      "callsOld" : 0,
+                      "calls" : 0,
+                      "tvalue" : -1.0
+                    },
+                    "childs" : [ ]
+                  } ]
+                } ]
+              } ]
+            } ]
+          } ]
+        } ]
+      } ]
+    } ]
+  }
+}

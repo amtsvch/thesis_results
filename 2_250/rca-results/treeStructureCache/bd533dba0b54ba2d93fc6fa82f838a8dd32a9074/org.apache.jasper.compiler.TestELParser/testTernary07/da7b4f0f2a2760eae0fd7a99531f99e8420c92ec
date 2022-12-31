@@ -1,0 +1,475 @@
+{
+  "call" : "org.apache.jasper.compiler.TestELParser#testTernary07",
+  "kiekerPattern" : "public void org.apache.jasper.compiler.TestELParser.testTernary07()",
+  "otherKiekerPattern" : null,
+  "module" : "",
+  "children" : [ {
+    "call" : "org.apache.jasper.compiler.TestELParser#doTestParser",
+    "kiekerPattern" : "private void org.apache.jasper.compiler.TestELParser.doTestParser(java.lang.String,java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.jasper.compiler.TestELParser#doTestParser",
+      "kiekerPattern" : "private void org.apache.jasper.compiler.TestELParser.doTestParser(java.lang.String,java.lang.String,java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.jasper.compiler.ELParser#parse",
+        "kiekerPattern" : "public static org.apache.jasper.compiler.ELNode.Nodes org.apache.jasper.compiler.ELParser.parse(org.apache.jasper.compiler.ELParser$QuotedString,boolean)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.jasper.compiler.ELParser#<init>",
+          "kiekerPattern" : "public new org.apache.jasper.compiler.ELParser.<init>(org.apache.jasper.compiler.ELParser$QuotedString,boolean)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.jasper.compiler.ELNode$Nodes#<init>",
+            "kiekerPattern" : "public new org.apache.jasper.compiler.ELNode$Nodes.<init>()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        }, {
+          "call" : "org.apache.jasper.compiler.ELParser#hasNextChar",
+          "kiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.hasNextChar()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.jasper.compiler.ELParser#skipUntilEL",
+          "kiekerPattern" : "private org.apache.jasper.compiler.ELParser$QuotedString org.apache.jasper.compiler.ELParser.skipUntilEL()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.jasper.compiler.ELParser#hasNextChar",
+            "kiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.hasNextChar()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.jasper.compiler.ELParser#nextChar",
+            "kiekerPattern" : "private char org.apache.jasper.compiler.ELParser.nextChar()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.jasper.compiler.ELParser#peek",
+            "kiekerPattern" : "private char org.apache.jasper.compiler.ELParser.peek(int)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        }, {
+          "call" : "org.apache.jasper.compiler.ELNode#<init>",
+          "kiekerPattern" : "new org.apache.jasper.compiler.ELNode.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.jasper.compiler.ELNode$Text#<init>",
+          "kiekerPattern" : "new org.apache.jasper.compiler.ELNode$Text.<init>(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.jasper.compiler.ELNode$Nodes#add",
+          "kiekerPattern" : "public void org.apache.jasper.compiler.ELNode$Nodes.add(org.apache.jasper.compiler.ELNode)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.jasper.compiler.ELParser#parseEL",
+          "kiekerPattern" : "private org.apache.jasper.compiler.ELNode.Nodes org.apache.jasper.compiler.ELParser.parseEL()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.jasper.compiler.ELNode$Nodes#<init>",
+            "kiekerPattern" : "public new org.apache.jasper.compiler.ELNode$Nodes.<init>()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.jasper.compiler.ELParser#hasNext",
+            "kiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.hasNext()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.jasper.compiler.ELParser#skipSpaces",
+              "kiekerPattern" : "private void org.apache.jasper.compiler.ELParser.skipSpaces()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.jasper.compiler.ELParser#hasNextChar",
+                "kiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.hasNextChar()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              } ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELParser#hasNextChar",
+              "kiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.hasNextChar()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            } ]
+          }, {
+            "call" : "org.apache.jasper.compiler.ELParser#nextToken",
+            "kiekerPattern" : "private org.apache.jasper.compiler.ELParser$Token org.apache.jasper.compiler.ELParser.nextToken()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.jasper.compiler.ELParser#hasNextChar",
+              "kiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.hasNextChar()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELParser#nextChar",
+              "kiekerPattern" : "private char org.apache.jasper.compiler.ELParser.nextChar()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELParser#getAndResetWhiteSpace",
+              "kiekerPattern" : "private org.apache.jasper.compiler.ELParser$QuotedString org.apache.jasper.compiler.ELParser.getAndResetWhiteSpace()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELParser$Token#<init>",
+              "kiekerPattern" : "new org.apache.jasper.compiler.ELParser$Token.<init>(org.apache.jasper.compiler.ELParser$QuotedString)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELParser$Id#<init>",
+              "kiekerPattern" : "new org.apache.jasper.compiler.ELParser$Id.<init>(org.apache.jasper.compiler.ELParser$QuotedString,org.apache.jasper.compiler.ELParser$QuotedString)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELParser$Char#<init>",
+              "kiekerPattern" : "new org.apache.jasper.compiler.ELParser$Char.<init>(org.apache.jasper.compiler.ELParser$QuotedString,char)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            } ]
+          }, {
+            "call" : "org.apache.jasper.compiler.ELParser#parseFunction",
+            "kiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.parseFunction()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.jasper.compiler.ELParser$Id#toTrimmedString",
+              "kiekerPattern" : "org.apache.jasper.compiler.ELParser$QuotedString org.apache.jasper.compiler.ELParser$Id.toTrimmedString()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELParser#isELReserved",
+              "kiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.isELReserved(org.apache.jasper.compiler.ELParser$QuotedString)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELParser$Id#toString",
+              "kiekerPattern" : "public org.apache.jasper.compiler.ELParser$QuotedString org.apache.jasper.compiler.ELParser$Id.toString()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELParser#hasNext",
+              "kiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.hasNext()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.jasper.compiler.ELParser#skipSpaces",
+                "kiekerPattern" : "private void org.apache.jasper.compiler.ELParser.skipSpaces()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.jasper.compiler.ELParser#hasNextChar",
+                  "kiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.hasNextChar()",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                } ]
+              }, {
+                "call" : "org.apache.jasper.compiler.ELParser#hasNextChar",
+                "kiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.hasNextChar()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              } ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELParser#getIndex",
+              "kiekerPattern" : "private int org.apache.jasper.compiler.ELParser.getIndex()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELParser#nextToken",
+              "kiekerPattern" : "private org.apache.jasper.compiler.ELParser$Token org.apache.jasper.compiler.ELParser.nextToken()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.jasper.compiler.ELParser#hasNextChar",
+                "kiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.hasNextChar()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.jasper.compiler.ELParser#nextChar",
+                "kiekerPattern" : "private char org.apache.jasper.compiler.ELParser.nextChar()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.jasper.compiler.ELParser#getAndResetWhiteSpace",
+                "kiekerPattern" : "private org.apache.jasper.compiler.ELParser$QuotedString org.apache.jasper.compiler.ELParser.getAndResetWhiteSpace()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.jasper.compiler.ELParser$Token#<init>",
+                "kiekerPattern" : "new org.apache.jasper.compiler.ELParser$Token.<init>(org.apache.jasper.compiler.ELParser$QuotedString)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.jasper.compiler.ELParser$Char#<init>",
+                "kiekerPattern" : "new org.apache.jasper.compiler.ELParser$Char.<init>(org.apache.jasper.compiler.ELParser$QuotedString,char)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.jasper.compiler.ELParser$Id#<init>",
+                "kiekerPattern" : "new org.apache.jasper.compiler.ELParser$Id.<init>(org.apache.jasper.compiler.ELParser$QuotedString,org.apache.jasper.compiler.ELParser$QuotedString)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              } ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELParser$Char#toChar",
+              "kiekerPattern" : "char org.apache.jasper.compiler.ELParser$Char.toChar()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELNode#<init>",
+              "kiekerPattern" : "new org.apache.jasper.compiler.ELNode.<init>()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELNode$Function#<init>",
+              "kiekerPattern" : "new org.apache.jasper.compiler.ELNode$Function.<init>(java.lang.String,java.lang.String,java.lang.String)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELNode$Nodes#add",
+              "kiekerPattern" : "public void org.apache.jasper.compiler.ELNode$Nodes.add(org.apache.jasper.compiler.ELNode)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELParser$Token#toChar",
+              "kiekerPattern" : "char org.apache.jasper.compiler.ELParser$Token.toChar()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELParser#setIndex",
+              "kiekerPattern" : "private void org.apache.jasper.compiler.ELParser.setIndex(int)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            } ]
+          }, {
+            "call" : "org.apache.jasper.compiler.ELParser$Id#toString",
+            "kiekerPattern" : "public org.apache.jasper.compiler.ELParser$QuotedString org.apache.jasper.compiler.ELParser$Id.toString()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.jasper.compiler.ELNode#<init>",
+            "kiekerPattern" : "new org.apache.jasper.compiler.ELNode.<init>()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.jasper.compiler.ELNode$ELText#<init>",
+            "kiekerPattern" : "new org.apache.jasper.compiler.ELNode$ELText.<init>(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.jasper.compiler.ELNode$Nodes#add",
+            "kiekerPattern" : "public void org.apache.jasper.compiler.ELNode$Nodes.add(org.apache.jasper.compiler.ELNode)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.jasper.compiler.ELParser$Char#toChar",
+            "kiekerPattern" : "char org.apache.jasper.compiler.ELParser$Char.toChar()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.jasper.compiler.ELParser$Char#toString",
+            "kiekerPattern" : "public org.apache.jasper.compiler.ELParser$QuotedString org.apache.jasper.compiler.ELParser$Char.toString()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.jasper.compiler.ELParser$Token#getWhiteSpace",
+            "kiekerPattern" : "org.apache.jasper.compiler.ELParser$QuotedString org.apache.jasper.compiler.ELParser$Token.getWhiteSpace()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        }, {
+          "call" : "org.apache.jasper.compiler.ELNode$Nodes#isEmpty",
+          "kiekerPattern" : "public boolean org.apache.jasper.compiler.ELNode$Nodes.isEmpty()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.jasper.compiler.ELNode$Root#<init>",
+          "kiekerPattern" : "new org.apache.jasper.compiler.ELNode$Root.<init>(org.apache.jasper.compiler.ELNode.Nodes,char)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.jasper.compiler.ELNode$Visitor#<init>",
+        "kiekerPattern" : "public new org.apache.jasper.compiler.ELNode$Visitor.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.jasper.compiler.ELParser$TextBuilder#<init>",
+        "kiekerPattern" : "protected new org.apache.jasper.compiler.ELParser$TextBuilder.<init>(boolean)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.jasper.compiler.ELNode$Nodes#visit",
+        "kiekerPattern" : "public void org.apache.jasper.compiler.ELNode$Nodes.visit(org.apache.jasper.compiler.ELNode$Visitor)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.jasper.compiler.ELNode$Text#accept",
+          "kiekerPattern" : "public void org.apache.jasper.compiler.ELNode$Text.accept(org.apache.jasper.compiler.ELNode$Visitor)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.jasper.compiler.ELParser$TextBuilder#visit",
+            "kiekerPattern" : "public void org.apache.jasper.compiler.ELParser$TextBuilder.visit(org.apache.jasper.compiler.ELNode.Text)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.jasper.compiler.ELNode$Text#getText",
+              "kiekerPattern" : "public java.lang.String org.apache.jasper.compiler.ELNode$Text.getText()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELParser#escapeLiteralExpression",
+              "kiekerPattern" : "static org.apache.jasper.compiler.ELParser$QuotedString org.apache.jasper.compiler.ELParser.escapeLiteralExpression(org.apache.jasper.compiler.ELParser$QuotedString,boolean)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            } ]
+          } ]
+        }, {
+          "call" : "org.apache.jasper.compiler.ELNode$Root#accept",
+          "kiekerPattern" : "public void org.apache.jasper.compiler.ELNode$Root.accept(org.apache.jasper.compiler.ELNode$Visitor)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.jasper.compiler.ELParser$TextBuilder#visit",
+            "kiekerPattern" : "public void org.apache.jasper.compiler.ELParser$TextBuilder.visit(org.apache.jasper.compiler.ELNode.Root)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.jasper.compiler.ELNode$Root#getType",
+              "kiekerPattern" : "public char org.apache.jasper.compiler.ELNode$Root.getType()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELNode$Root#getExpression",
+              "kiekerPattern" : "public org.apache.jasper.compiler.ELNode.Nodes org.apache.jasper.compiler.ELNode$Root.getExpression()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELNode$Nodes#visit",
+              "kiekerPattern" : "public void org.apache.jasper.compiler.ELNode$Nodes.visit(org.apache.jasper.compiler.ELNode$Visitor)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.jasper.compiler.ELNode$Function#accept",
+                "kiekerPattern" : "public void org.apache.jasper.compiler.ELNode$Function.accept(org.apache.jasper.compiler.ELNode$Visitor)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.jasper.compiler.ELParser$TextBuilder#visit",
+                  "kiekerPattern" : "public void org.apache.jasper.compiler.ELParser$TextBuilder.visit(org.apache.jasper.compiler.ELNode.Function)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ {
+                    "call" : "org.apache.jasper.compiler.ELNode$Function#getOriginalText",
+                    "kiekerPattern" : "public java.lang.String org.apache.jasper.compiler.ELNode$Function.getOriginalText()",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ ]
+                  }, {
+                    "call" : "org.apache.jasper.compiler.ELParser#escapeLiteralExpression",
+                    "kiekerPattern" : "static org.apache.jasper.compiler.ELParser$QuotedString org.apache.jasper.compiler.ELParser.escapeLiteralExpression(org.apache.jasper.compiler.ELParser$QuotedString,boolean)",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ ]
+                  } ]
+                } ]
+              }, {
+                "call" : "org.apache.jasper.compiler.ELNode$ELText#accept",
+                "kiekerPattern" : "public void org.apache.jasper.compiler.ELNode$ELText.accept(org.apache.jasper.compiler.ELNode$Visitor)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.jasper.compiler.ELParser$TextBuilder#visit",
+                  "kiekerPattern" : "public void org.apache.jasper.compiler.ELParser$TextBuilder.visit(org.apache.jasper.compiler.ELNode.ELText)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ {
+                    "call" : "org.apache.jasper.compiler.ELNode$ELText#getText",
+                    "kiekerPattern" : "public java.lang.String org.apache.jasper.compiler.ELNode$ELText.getText()",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ ]
+                  }, {
+                    "call" : "org.apache.jasper.compiler.ELParser#escapeELText",
+                    "kiekerPattern" : "private static org.apache.jasper.compiler.ELParser$QuotedString org.apache.jasper.compiler.ELParser.escapeELText(org.apache.jasper.compiler.ELParser$QuotedString)",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ ]
+                  } ]
+                } ]
+              } ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "call" : "org.apache.jasper.compiler.ELParser$TextBuilder#getText",
+        "kiekerPattern" : "public org.apache.jasper.compiler.ELParser$QuotedString org.apache.jasper.compiler.ELParser$TextBuilder.getText()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    } ]
+  } ]
+}

@@ -1,0 +1,355 @@
+{
+  "measurementConfig" : {
+    "vms" : 50,
+    "earlyStop" : false,
+    "warmup" : 80,
+    "iterations" : 80,
+    "repetitions" : 100,
+    "logFullData" : true,
+    "useGC" : false,
+    "callSyncBetweenVMs" : true,
+    "waitTimeBetweenVMs" : 1000,
+    "maxLogSizeInMb" : 100,
+    "kiekerConfig" : {
+      "useKieker" : true,
+      "useSourceInstrumentation" : true,
+      "useSelectiveInstrumentation" : true,
+      "useAggregation" : true,
+      "useCircularQueue" : false,
+      "enableAdaptiveMonitoring" : false,
+      "adaptiveInstrumentation" : false,
+      "kiekerAggregationInterval" : 5000,
+      "record" : "DURATION",
+      "onlyOneCallRecording" : false,
+      "extractMethod" : false,
+      "traceSizeInMb" : 100,
+      "kiekerQueueSize" : 10000000,
+      "createDefaultConstructor" : true,
+      "kiekerWaitTime" : 5,
+      "excludeForTracing" : [ "new org.eclipse.jetty.logging.JettyLevel.<init>(..)", "* org.eclipse.jetty.logging.JettyLevel.*(..)", "*[] org.eclipse.jetty.logging.JettyLevel.*(..)", "*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "new org.eclipse.jetty.logging.JettyLoggerConfiguration.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "new org.eclipse.jetty.logging.JettyLoggingServiceProvider.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "new org.eclipse.jetty.logging.JettyLoggerFactory.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "new org.eclipse.jetty.logging.StdErrAppender.<init>(..)", "* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*[] org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "new org.eclipse.jetty.logging.Timestamp.<init>(..)", "* org.eclipse.jetty.logging.Timestamp.*(..)", "*[] org.eclipse.jetty.logging.Timestamp.*(..)", "*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "new org.eclipse.jetty.logging.Timestamp$Tick.<init>(..)", "* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*[] org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "new org.eclipse.jetty.logging.JettyLogger.<init>(..)", "* org.eclipse.jetty.logging.JettyLogger.*(..)", "*[] org.eclipse.jetty.logging.JettyLogger.*(..)", "*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)" ]
+    },
+    "saveAll" : true,
+    "javaVersion" : "11.0.17",
+    "measurementStrategy" : "PARALLEL",
+    "statisticsConfig" : {
+      "type1error" : 0.1,
+      "type2error" : 0.1,
+      "outlierFactor" : 3.29,
+      "statisticTest" : "T_TEST"
+    },
+    "executionConfig" : {
+      "timeout" : 600000,
+      "redirectSubprocessOutputToFile" : true,
+      "useTieredCompilation" : false,
+      "removeSnapshots" : false,
+      "useAlternativeBuildfile" : false,
+      "excludeLog4jSlf4jImpl" : false,
+      "excludeLog4jToSlf4j" : false,
+      "executeBeforeClassInMeasurement" : false,
+      "clearMockitoCaches" : false,
+      "onlyMeasureWorkload" : false,
+      "showStart" : false,
+      "redirectToNull" : true,
+      "createDetailDebugFiles" : true,
+      "testExecutor" : "de.stro18.peass_ant.executor.AntTestExecutor",
+      "clazzFolders" : [ "java", "src/main/java", "webapps/examples/WEB-INF/classes" ],
+      "testClazzFolders" : [ "test" ]
+    },
+    "fixedCommitConfig" : {
+      "commit" : "a915ed99eca67cab13d3ed0d1269bf1594a0f605",
+      "commitOld" : "8424677bcd703115ac6f31e1947ecd220e156880"
+    }
+  },
+  "causeConfig" : {
+    "splitAggregated" : true,
+    "minTime" : 0.1,
+    "ignoreEOIs" : true,
+    "rcaStrategy" : "UNTIL_SOURCE_CHANGE",
+    "levels" : 1,
+    "testCase" : {
+      "clazz" : "jakarta.el.TestBeanELResolver",
+      "method" : "testInvokeVarargsCoerce13",
+      "module" : "",
+      "params" : null
+    },
+    "propertyFolder" : "/home/matusevich/2-final/peass-ant/results/properties_tomcat"
+  },
+  "nodes" : {
+    "call" : "jakarta.el.TestBeanELResolver#testInvokeVarargsCoerce13",
+    "kiekerPattern" : "public void jakarta.el.TestBeanELResolver.testInvokeVarargsCoerce13()",
+    "otherKiekerPattern" : "public void jakarta.el.TestBeanELResolver.testInvokeVarargsCoerce13()",
+    "module" : "",
+    "statistic" : {
+      "meanOld" : 2372368.463875,
+      "meanCurrent" : 1613304.2498724493,
+      "deviationOld" : 427379.55373711267,
+      "deviationCurrent" : 283413.72999736416,
+      "vms" : 49,
+      "callsOld" : 4000,
+      "calls" : 4000,
+      "tvalue" : 10.434113821818764
+    },
+    "childs" : [ {
+      "call" : "jakarta.el.BeanELResolver#invoke",
+      "kiekerPattern" : "public java.lang.Object jakarta.el.BeanELResolver.invoke(jakarta.el.ELContext,java.lang.Object,java.lang.Object,java.lang.Class[],java.lang.Object[])",
+      "otherKiekerPattern" : "public java.lang.Object jakarta.el.BeanELResolver.invoke(jakarta.el.ELContext,java.lang.Object,java.lang.Object,java.lang.Class[],java.lang.Object[])",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 1883081.2048749996,
+        "meanCurrent" : 1109978.013010204,
+        "deviationOld" : 366829.1103053684,
+        "deviationCurrent" : 194628.3299200442,
+        "vms" : 49,
+        "callsOld" : 4000,
+        "calls" : 4000,
+        "tvalue" : 13.134919113794343
+      },
+      "childs" : [ {
+        "call" : "jakarta.el.Util#findMethod",
+        "kiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.findMethod(java.lang.Class,java.lang.Object,java.lang.String,java.lang.Class[],java.lang.Object[])",
+        "otherKiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.findMethod(java.lang.Class,java.lang.Object,java.lang.String,java.lang.Class[],java.lang.Object[])",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 1814433.3421249995,
+          "meanCurrent" : 875139.6631377551,
+          "deviationOld" : 356103.12561181374,
+          "deviationCurrent" : 165000.94000097358,
+          "vms" : 49,
+          "callsOld" : 4000,
+          "calls" : 4000,
+          "tvalue" : 16.892549135504513
+        },
+        "childs" : [ {
+          "call" : "jakarta.el.Util#findWrapper",
+          "kiekerPattern" : "private static jakarta.el.Util$ConstructorWrapper jakarta.el.Util.findWrapper(java.lang.Class,java.util.List,java.lang.String,java.lang.Class[],java.lang.Object[])",
+          "otherKiekerPattern" : "private static jakarta.el.Util$ConstructorWrapper jakarta.el.Util.findWrapper(java.lang.Class,java.util.List,java.lang.String,java.lang.Class[],java.lang.Object[])",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 1624197.1026249998,
+            "meanCurrent" : 509911.6859693877,
+            "deviationOld" : 316934.28979355923,
+            "deviationCurrent" : 121179.92497101784,
+            "vms" : 49,
+            "callsOld" : 4000,
+            "calls" : 4000,
+            "tvalue" : 23.190979106016847
+          },
+          "childs" : [ {
+            "call" : "jakarta.el.Util$MatchResult#<init>",
+            "kiekerPattern" : "public new jakarta.el.Util$MatchResult.<init>(int,int,int,boolean)",
+            "otherKiekerPattern" : "public new jakarta.el.Util$MatchResult.<init>(int,int,int,int,boolean)",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : 3300.389291666667,
+              "meanCurrent" : 3323.037074829932,
+              "deviationOld" : 317.7991227728037,
+              "deviationCurrent" : 219.65469328604084,
+              "vms" : 49,
+              "callsOld" : 20000,
+              "calls" : 20000,
+              "tvalue" : -0.4131746175088788
+            },
+            "childs" : [ ]
+          }, {
+            "call" : "jakarta.el.Util$MatchResult#compareTo",
+            "kiekerPattern" : "public int jakarta.el.Util$MatchResult.compareTo(jakarta.el.Util$MatchResult)",
+            "otherKiekerPattern" : "public int jakarta.el.Util$MatchResult.compareTo(jakarta.el.Util$MatchResult)",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : 22919.986000000008,
+              "meanCurrent" : 22664.11128826531,
+              "deviationOld" : 8482.924193473567,
+              "deviationCurrent" : 8408.561235421303,
+              "vms" : 49,
+              "callsOld" : 12000,
+              "calls" : 12000,
+              "tvalue" : 0.150719716485258
+            },
+            "childs" : [ {
+              "call" : "jakarta.el.Util$MatchResult#isBridge",
+              "kiekerPattern" : "public boolean jakarta.el.Util$MatchResult.isBridge()",
+              "otherKiekerPattern" : "public int jakarta.el.Util$MatchResult.getVarArgs()",
+              "module" : "",
+              "statistic" : {
+                "meanOld" : 3306.708801020408,
+                "meanCurrent" : 3297.7433035714284,
+                "deviationOld" : 547.5043830675879,
+                "deviationCurrent" : 263.94864367255633,
+                "vms" : 49,
+                "callsOld" : 12000,
+                "calls" : 12000,
+                "tvalue" : 0.10325388208192007
+              },
+              "childs" : [ ]
+            } ]
+          }, {
+            "call" : "jakarta.el.Util$MatchResult#getExact",
+            "kiekerPattern" : "public int jakarta.el.Util$MatchResult.getExact()",
+            "otherKiekerPattern" : "ADDED",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : "NaN",
+              "meanCurrent" : "NaN",
+              "deviationOld" : "NaN",
+              "deviationCurrent" : "NaN",
+              "vms" : 0,
+              "callsOld" : 0,
+              "calls" : 0,
+              "tvalue" : -1.0,
+              "change" : true
+            },
+            "childs" : [ ]
+          }, {
+            "call" : "jakarta.el.Util#paramString",
+            "kiekerPattern" : "private static final java.lang.String jakarta.el.Util.paramString(java.lang.Class[])",
+            "otherKiekerPattern" : "ADDED",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : "NaN",
+              "meanCurrent" : "NaN",
+              "deviationOld" : "NaN",
+              "deviationCurrent" : "NaN",
+              "vms" : 0,
+              "callsOld" : 0,
+              "calls" : 0,
+              "tvalue" : -1.0,
+              "change" : true
+            },
+            "childs" : [ ]
+          }, {
+            "call" : "jakarta.el.Util#message",
+            "kiekerPattern" : "static java.lang.String jakarta.el.Util.message(jakarta.el.ELContext,java.lang.String,java.lang.Object)",
+            "otherKiekerPattern" : "ADDED",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : "NaN",
+              "meanCurrent" : "NaN",
+              "deviationOld" : "NaN",
+              "deviationCurrent" : "NaN",
+              "vms" : 0,
+              "callsOld" : 0,
+              "calls" : 0,
+              "tvalue" : -1.0,
+              "change" : true
+            },
+            "childs" : [ ]
+          }, {
+            "call" : "jakarta.el.ELException#<init>",
+            "kiekerPattern" : "public new jakarta.el.ELException.<init>(java.lang.String)",
+            "otherKiekerPattern" : "ADDED",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : "NaN",
+              "meanCurrent" : "NaN",
+              "deviationOld" : "NaN",
+              "deviationCurrent" : "NaN",
+              "vms" : 0,
+              "callsOld" : 0,
+              "calls" : 0,
+              "tvalue" : -1.0,
+              "change" : true
+            },
+            "childs" : [ ]
+          }, {
+            "call" : "jakarta.el.MethodNotFoundException#<init>",
+            "kiekerPattern" : "public new jakarta.el.MethodNotFoundException.<init>(java.lang.String)",
+            "otherKiekerPattern" : "ADDED",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : "NaN",
+              "meanCurrent" : "NaN",
+              "deviationOld" : "NaN",
+              "deviationCurrent" : "NaN",
+              "vms" : 0,
+              "callsOld" : 0,
+              "calls" : 0,
+              "tvalue" : -1.0,
+              "change" : true
+            },
+            "childs" : [ ]
+          } ]
+        }, {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public java.lang.reflect.Method jakarta.el.Util$MethodWrapper.unWrap()",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        }, {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "static java.lang.reflect.Method jakarta.el.Util.getMethod(java.lang.Class,java.lang.Object,java.lang.reflect.Method)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        } ]
+      }, {
+        "call" : "ADDED",
+        "kiekerPattern" : "ADDED",
+        "otherKiekerPattern" : "static java.lang.Object[] jakarta.el.Util.buildParameters(java.lang.Class[],boolean,java.lang.Object[])",
+        "statistic" : {
+          "meanOld" : "NaN",
+          "meanCurrent" : "NaN",
+          "deviationOld" : "NaN",
+          "deviationCurrent" : "NaN",
+          "vms" : 0,
+          "callsOld" : 0,
+          "calls" : 0,
+          "tvalue" : -1.0,
+          "change" : true
+        },
+        "childs" : [ ]
+      }, {
+        "call" : "ADDED",
+        "kiekerPattern" : "ADDED",
+        "otherKiekerPattern" : "public java.lang.String jakarta.el.TesterBean.getNameVarargs(java.lang.Boolean,java.lang.Integer)",
+        "statistic" : {
+          "meanOld" : "NaN",
+          "meanCurrent" : "NaN",
+          "deviationOld" : "NaN",
+          "deviationCurrent" : "NaN",
+          "vms" : 0,
+          "callsOld" : 0,
+          "calls" : 0,
+          "tvalue" : -1.0,
+          "change" : true
+        },
+        "childs" : [ ]
+      }, {
+        "call" : "ADDED",
+        "kiekerPattern" : "ADDED",
+        "otherKiekerPattern" : "public void jakarta.el.ELContext.setPropertyResolved(java.lang.Object,java.lang.Object)",
+        "statistic" : {
+          "meanOld" : "NaN",
+          "meanCurrent" : "NaN",
+          "deviationOld" : "NaN",
+          "deviationCurrent" : "NaN",
+          "vms" : 0,
+          "callsOld" : 0,
+          "calls" : 0,
+          "tvalue" : -1.0,
+          "change" : true
+        },
+        "childs" : [ ]
+      } ]
+    } ]
+  }
+}

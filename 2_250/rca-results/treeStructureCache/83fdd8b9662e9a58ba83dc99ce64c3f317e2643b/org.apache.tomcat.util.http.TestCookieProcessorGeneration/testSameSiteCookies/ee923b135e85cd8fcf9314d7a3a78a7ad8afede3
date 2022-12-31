@@ -1,0 +1,361 @@
+{
+  "call" : "org.apache.tomcat.util.http.TestCookieProcessorGeneration#testSameSiteCookies",
+  "kiekerPattern" : "public void org.apache.tomcat.util.http.TestCookieProcessorGeneration.testSameSiteCookies()",
+  "otherKiekerPattern" : null,
+  "module" : "",
+  "children" : [ {
+    "call" : "org.apache.juli.logging.LogFactory#<init>",
+    "kiekerPattern" : "private new org.apache.juli.logging.LogFactory.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.juli.logging.LogFactory#getLog",
+    "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.juli.logging.LogFactory#getFactory",
+      "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.juli.logging.LogFactory#getInstance",
+      "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.Class)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.juli.logging.LogFactory#getInstance",
+        "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+          "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+            "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.util.log.UserDataHelper#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.util.log.UserDataHelper.<init>(org.apache.juli.logging.Log)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+    "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+      "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+        "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.util.http.SameSiteCookies#<init>",
+    "kiekerPattern" : "new org.apache.tomcat.util.http.SameSiteCookies.<init>(java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+    "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+      "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.util.http.CookieProcessorBase#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.util.http.CookieProcessorBase.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.util.http.LegacyCookieProcessor#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.util.http.LegacyCookieProcessor.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.http.LegacyCookieProcessor#getAllowHttpSepsInV0",
+      "kiekerPattern" : "public boolean org.apache.tomcat.util.http.LegacyCookieProcessor.getAllowHttpSepsInV0()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.http.LegacyCookieProcessor#getForwardSlashIsSeparator",
+      "kiekerPattern" : "public boolean org.apache.tomcat.util.http.LegacyCookieProcessor.getForwardSlashIsSeparator()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.util.http.Rfc6265CookieProcessor#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.util.http.Rfc6265CookieProcessor.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "jakarta.servlet.http.CookieNameValidator#<init>",
+    "kiekerPattern" : "protected new jakarta.servlet.http.CookieNameValidator.<init>(java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "jakarta.servlet.http.RFC6265Validator#<init>",
+    "kiekerPattern" : "new jakarta.servlet.http.RFC6265Validator.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "jakarta.servlet.http.Cookie#<init>",
+    "kiekerPattern" : "public new jakarta.servlet.http.Cookie.<init>(java.lang.String,java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "jakarta.servlet.http.CookieNameValidator#validate",
+      "kiekerPattern" : "void jakarta.servlet.http.CookieNameValidator.validate(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "jakarta.servlet.http.CookieNameValidator#isToken",
+        "kiekerPattern" : "private boolean jakarta.servlet.http.CookieNameValidator.isToken(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.util.http.LegacyCookieProcessor#generateHeader",
+    "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.http.LegacyCookieProcessor.generateHeader(jakarta.servlet.http.Cookie,jakarta.servlet.http.HttpServletRequest)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "jakarta.servlet.http.Cookie#getVersion",
+      "kiekerPattern" : "public int jakarta.servlet.http.Cookie.getVersion()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.servlet.http.Cookie#getValue",
+      "kiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getValue()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.servlet.http.Cookie#getPath",
+      "kiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getPath()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.servlet.http.Cookie#getDomain",
+      "kiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getDomain()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.servlet.http.Cookie#getComment",
+      "kiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getComment()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.http.LegacyCookieProcessor#needsQuotes",
+      "kiekerPattern" : "private boolean org.apache.tomcat.util.http.LegacyCookieProcessor.needsQuotes(java.lang.String,int)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.http.LegacyCookieProcessor#alreadyQuoted",
+        "kiekerPattern" : "private static boolean org.apache.tomcat.util.http.LegacyCookieProcessor.alreadyQuoted(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "jakarta.servlet.http.Cookie#getName",
+      "kiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getName()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.http.LegacyCookieProcessor#maybeQuote",
+      "kiekerPattern" : "private void org.apache.tomcat.util.http.LegacyCookieProcessor.maybeQuote(java.lang.StringBuffer,java.lang.String,int)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.http.LegacyCookieProcessor#alreadyQuoted",
+        "kiekerPattern" : "private static boolean org.apache.tomcat.util.http.LegacyCookieProcessor.alreadyQuoted(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.http.LegacyCookieProcessor#needsQuotes",
+        "kiekerPattern" : "private boolean org.apache.tomcat.util.http.LegacyCookieProcessor.needsQuotes(java.lang.String,int)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.http.LegacyCookieProcessor#alreadyQuoted",
+          "kiekerPattern" : "private static boolean org.apache.tomcat.util.http.LegacyCookieProcessor.alreadyQuoted(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "jakarta.servlet.http.Cookie#getMaxAge",
+      "kiekerPattern" : "public int jakarta.servlet.http.Cookie.getMaxAge()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.servlet.http.Cookie#getSecure",
+      "kiekerPattern" : "public boolean jakarta.servlet.http.Cookie.getSecure()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.servlet.http.Cookie#isHttpOnly",
+      "kiekerPattern" : "public boolean jakarta.servlet.http.Cookie.isHttpOnly()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.http.CookieProcessorBase#getSameSiteCookies",
+      "kiekerPattern" : "public org.apache.tomcat.util.http.SameSiteCookies org.apache.tomcat.util.http.CookieProcessorBase.getSameSiteCookies()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.http.SameSiteCookies#getValue",
+      "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.http.SameSiteCookies.getValue()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.util.http.Rfc6265CookieProcessor#generateHeader",
+    "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.http.Rfc6265CookieProcessor.generateHeader(org.apache.tomcat.util.http.jakarta.servlet.http.Cookie,jakarta.servlet.http.HttpServletRequest)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "jakarta.servlet.http.Cookie#getName",
+      "kiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getName()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.servlet.http.Cookie#getValue",
+      "kiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getValue()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.http.Rfc6265CookieProcessor#validateCookieValue",
+      "kiekerPattern" : "private void org.apache.tomcat.util.http.Rfc6265CookieProcessor.validateCookieValue(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.servlet.http.Cookie#getMaxAge",
+      "kiekerPattern" : "public int jakarta.servlet.http.Cookie.getMaxAge()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.servlet.http.Cookie#getDomain",
+      "kiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getDomain()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.servlet.http.Cookie#getPath",
+      "kiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getPath()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.servlet.http.Cookie#getSecure",
+      "kiekerPattern" : "public boolean jakarta.servlet.http.Cookie.getSecure()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "jakarta.servlet.http.Cookie#isHttpOnly",
+      "kiekerPattern" : "public boolean jakarta.servlet.http.Cookie.isHttpOnly()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.http.CookieProcessorBase#getSameSiteCookies",
+      "kiekerPattern" : "public org.apache.tomcat.util.http.SameSiteCookies org.apache.tomcat.util.http.CookieProcessorBase.getSameSiteCookies()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.http.SameSiteCookies#getValue",
+      "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.http.SameSiteCookies.getValue()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.util.http.CookieProcessorBase#setSameSiteCookies",
+    "kiekerPattern" : "public void org.apache.tomcat.util.http.CookieProcessorBase.setSameSiteCookies(java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.http.SameSiteCookies#fromString",
+      "kiekerPattern" : "public static org.apache.tomcat.util.http.SameSiteCookies org.apache.tomcat.util.http.SameSiteCookies.fromString(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.http.SameSiteCookies#getValue",
+        "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.http.SameSiteCookies.getValue()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "call" : "jakarta.servlet.http.Cookie#setSecure",
+    "kiekerPattern" : "public void jakarta.servlet.http.Cookie.setSecure(boolean)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "jakarta.servlet.http.Cookie#setHttpOnly",
+    "kiekerPattern" : "public void jakarta.servlet.http.Cookie.setHttpOnly(boolean)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  } ]
+}

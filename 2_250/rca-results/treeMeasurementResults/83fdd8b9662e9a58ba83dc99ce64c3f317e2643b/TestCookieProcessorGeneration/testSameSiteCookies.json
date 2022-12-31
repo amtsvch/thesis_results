@@ -1,0 +1,590 @@
+{
+  "measurementConfig" : {
+    "vms" : 500,
+    "earlyStop" : false,
+    "warmup" : 80,
+    "iterations" : 80,
+    "repetitions" : 100,
+    "logFullData" : true,
+    "useGC" : false,
+    "callSyncBetweenVMs" : true,
+    "waitTimeBetweenVMs" : 1000,
+    "maxLogSizeInMb" : 100,
+    "kiekerConfig" : {
+      "useKieker" : true,
+      "useSourceInstrumentation" : true,
+      "useSelectiveInstrumentation" : true,
+      "useAggregation" : true,
+      "useCircularQueue" : false,
+      "enableAdaptiveMonitoring" : false,
+      "adaptiveInstrumentation" : false,
+      "kiekerAggregationInterval" : 5000,
+      "record" : "DURATION",
+      "onlyOneCallRecording" : false,
+      "extractMethod" : false,
+      "traceSizeInMb" : 100,
+      "kiekerQueueSize" : 10000000,
+      "createDefaultConstructor" : true,
+      "kiekerWaitTime" : 5,
+      "excludeForTracing" : [ "new org.eclipse.jetty.logging.JettyLevel.<init>(..)", "* org.eclipse.jetty.logging.JettyLevel.*(..)", "*[] org.eclipse.jetty.logging.JettyLevel.*(..)", "*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "new org.eclipse.jetty.logging.JettyLoggerConfiguration.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "new org.eclipse.jetty.logging.JettyLoggingServiceProvider.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "new org.eclipse.jetty.logging.JettyLoggerFactory.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "new org.eclipse.jetty.logging.StdErrAppender.<init>(..)", "* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*[] org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "new org.eclipse.jetty.logging.Timestamp.<init>(..)", "* org.eclipse.jetty.logging.Timestamp.*(..)", "*[] org.eclipse.jetty.logging.Timestamp.*(..)", "*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "new org.eclipse.jetty.logging.Timestamp$Tick.<init>(..)", "* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*[] org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "new org.eclipse.jetty.logging.JettyLogger.<init>(..)", "* org.eclipse.jetty.logging.JettyLogger.*(..)", "*[] org.eclipse.jetty.logging.JettyLogger.*(..)", "*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)" ]
+    },
+    "saveAll" : true,
+    "javaVersion" : "11.0.17",
+    "measurementStrategy" : "PARALLEL",
+    "statisticsConfig" : {
+      "type1error" : 0.1,
+      "type2error" : 0.1,
+      "outlierFactor" : 3.29,
+      "statisticTest" : "T_TEST"
+    },
+    "executionConfig" : {
+      "timeout" : 600000,
+      "redirectSubprocessOutputToFile" : true,
+      "useTieredCompilation" : false,
+      "removeSnapshots" : false,
+      "useAlternativeBuildfile" : false,
+      "excludeLog4jSlf4jImpl" : false,
+      "excludeLog4jToSlf4j" : false,
+      "executeBeforeClassInMeasurement" : false,
+      "clearMockitoCaches" : false,
+      "onlyMeasureWorkload" : false,
+      "showStart" : false,
+      "redirectToNull" : true,
+      "createDetailDebugFiles" : true,
+      "testExecutor" : "de.stro18.peass_ant.executor.AntTestExecutor",
+      "clazzFolders" : [ "java", "src/main/java", "webapps/examples/WEB-INF/classes" ],
+      "testClazzFolders" : [ "test" ]
+    },
+    "fixedCommitConfig" : {
+      "commit" : "83fdd8b9662e9a58ba83dc99ce64c3f317e2643b",
+      "commitOld" : "ee923b135e85cd8fcf9314d7a3a78a7ad8afede3"
+    }
+  },
+  "causeConfig" : {
+    "splitAggregated" : true,
+    "minTime" : 0.1,
+    "ignoreEOIs" : true,
+    "rcaStrategy" : "UNTIL_SOURCE_CHANGE",
+    "levels" : 1,
+    "testCase" : {
+      "clazz" : "org.apache.tomcat.util.http.TestCookieProcessorGeneration",
+      "method" : "testSameSiteCookies",
+      "module" : "",
+      "params" : null
+    },
+    "propertyFolder" : "/home/matusevich/2-final/peass-ant/results/properties_tomcat"
+  },
+  "nodes" : {
+    "call" : "org.apache.tomcat.util.http.TestCookieProcessorGeneration#testSameSiteCookies",
+    "kiekerPattern" : "public void org.apache.tomcat.util.http.TestCookieProcessorGeneration.testSameSiteCookies()",
+    "otherKiekerPattern" : "public void org.apache.tomcat.util.http.TestCookieProcessorGeneration.testSameSiteCookies()",
+    "module" : "",
+    "statistic" : {
+      "meanOld" : 2149325.432144657,
+      "meanCurrent" : 2469184.714924997,
+      "deviationOld" : 321362.88759542536,
+      "deviationCurrent" : 430603.6816692004,
+      "vms" : 498,
+      "callsOld" : 40000,
+      "calls" : 40000,
+      "tvalue" : -13.292289981956031
+    },
+    "childs" : [ {
+      "call" : "jakarta.servlet.http.Cookie#<init>",
+      "kiekerPattern" : "public new jakarta.servlet.http.Cookie.<init>(java.lang.String,java.lang.String)",
+      "otherKiekerPattern" : "public new jakarta.servlet.http.Cookie.<init>(java.lang.String,java.lang.String)",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 56606.61594518448,
+        "meanCurrent" : 61143.25821103239,
+        "deviationOld" : 29740.874554346992,
+        "deviationCurrent" : 30689.64716701627,
+        "vms" : 491,
+        "callsOld" : 40000,
+        "calls" : 40000,
+        "tvalue" : -2.35241512640257
+      },
+      "childs" : [ {
+        "call" : "jakarta.servlet.http.CookieNameValidator#validate",
+        "kiekerPattern" : "void jakarta.servlet.http.CookieNameValidator.validate(java.lang.String)",
+        "otherKiekerPattern" : "void jakarta.servlet.http.CookieNameValidator.validate(java.lang.String)",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 33808.24679123719,
+          "meanCurrent" : 38000.2133910124,
+          "deviationOld" : 15085.24718578,
+          "deviationCurrent" : 14897.165636411894,
+          "vms" : 484,
+          "callsOld" : 40000,
+          "calls" : 40000,
+          "tvalue" : -4.352183096991933
+        },
+        "childs" : [ {
+          "call" : "jakarta.servlet.http.CookieNameValidator#isToken",
+          "kiekerPattern" : "private boolean jakarta.servlet.http.CookieNameValidator.isToken(java.lang.String)",
+          "otherKiekerPattern" : "boolean jakarta.servlet.http.CookieNameValidator.isToken(java.lang.String)",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 11528.958628542514,
+            "meanCurrent" : 15281.200632591093,
+            "deviationOld" : 2842.034658947359,
+            "deviationCurrent" : 5363.781455105878,
+            "vms" : 494,
+            "callsOld" : 40000,
+            "calls" : 40000,
+            "tvalue" : -13.738882410196943
+          },
+          "childs" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.http.LegacyCookieProcessor#generateHeader",
+      "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.http.LegacyCookieProcessor.generateHeader(jakarta.servlet.http.Cookie,jakarta.servlet.http.HttpServletRequest)",
+      "otherKiekerPattern" : "public java.lang.String org.apache.tomcat.util.http.LegacyCookieProcessor.generateHeader(jakarta.servlet.http.Cookie,jakarta.servlet.http.HttpServletRequest)",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 104711.86808080801,
+        "meanCurrent" : 124099.04620555553,
+        "deviationOld" : 20189.70259595367,
+        "deviationCurrent" : 27004.679444579084,
+        "vms" : 497,
+        "callsOld" : 680000,
+        "calls" : 680000,
+        "tvalue" : -12.83387724227279
+      },
+      "childs" : [ {
+        "call" : "jakarta.servlet.http.Cookie#getPath",
+        "kiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getPath()",
+        "otherKiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getPath()",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 2673.039917774368,
+          "meanCurrent" : 4974.274307685756,
+          "deviationOld" : 348.7001959249033,
+          "deviationCurrent" : 751.618024345563,
+          "vms" : 489,
+          "callsOld" : 1400000,
+          "calls" : 1400000,
+          "tvalue" : -61.4169463762092
+        },
+        "childs" : [ {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getAttribute(java.lang.String)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        } ]
+      }, {
+        "call" : "jakarta.servlet.http.Cookie#getDomain",
+        "kiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getDomain()",
+        "otherKiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getDomain()",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 2654.8494960357616,
+          "meanCurrent" : 4711.220063680835,
+          "deviationOld" : 307.9788730400731,
+          "deviationCurrent" : 647.355746421103,
+          "vms" : 494,
+          "callsOld" : 1400000,
+          "calls" : 1400000,
+          "tvalue" : -63.75538967896528
+        },
+        "childs" : [ {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getAttribute(java.lang.String)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        } ]
+      }, {
+        "call" : "jakarta.servlet.http.Cookie#getComment",
+        "kiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getComment()",
+        "otherKiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getComment()",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 2831.8184908158705,
+          "meanCurrent" : 5158.242209157006,
+          "deviationOld" : 326.41280003318604,
+          "deviationCurrent" : 825.806015682911,
+          "vms" : 491,
+          "callsOld" : 680000,
+          "calls" : 680000,
+          "tvalue" : -57.9669366340553
+        },
+        "childs" : [ {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getAttribute(java.lang.String)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        } ]
+      }, {
+        "call" : "jakarta.servlet.http.Cookie#getMaxAge",
+        "kiekerPattern" : "public int jakarta.servlet.http.Cookie.getMaxAge()",
+        "otherKiekerPattern" : "public int jakarta.servlet.http.Cookie.getMaxAge()",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 2614.828576601906,
+          "meanCurrent" : 4812.768649675546,
+          "deviationOld" : 273.9793320361083,
+          "deviationCurrent" : 686.0955032252967,
+          "vms" : 488,
+          "callsOld" : 1400000,
+          "calls" : 1400000,
+          "tvalue" : -65.73147402941846
+        },
+        "childs" : [ {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getAttribute(java.lang.String)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        } ]
+      }, {
+        "call" : "jakarta.servlet.http.Cookie#getSecure",
+        "kiekerPattern" : "public boolean jakarta.servlet.http.Cookie.getSecure()",
+        "otherKiekerPattern" : "public boolean jakarta.servlet.http.Cookie.getSecure()",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 2738.8195154352225,
+          "meanCurrent" : 4795.535885733607,
+          "deviationOld" : 368.05803940767635,
+          "deviationCurrent" : 1010.7315276713293,
+          "vms" : 493,
+          "callsOld" : 1400000,
+          "calls" : 1400000,
+          "tvalue" : -42.45943602945104
+        },
+        "childs" : [ {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getAttribute(java.lang.String)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        } ]
+      }, {
+        "call" : "jakarta.servlet.http.Cookie#isHttpOnly",
+        "kiekerPattern" : "public boolean jakarta.servlet.http.Cookie.isHttpOnly()",
+        "otherKiekerPattern" : "public boolean jakarta.servlet.http.Cookie.isHttpOnly()",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 2762.4194852114224,
+          "meanCurrent" : 5669.104314871274,
+          "deviationOld" : 368.3201662878837,
+          "deviationCurrent" : 1020.5645054934807,
+          "vms" : 493,
+          "callsOld" : 1400000,
+          "calls" : 1400000,
+          "tvalue" : -59.43668138301957
+        },
+        "childs" : [ {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getAttribute(java.lang.String)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.http.Rfc6265CookieProcessor#generateHeader",
+      "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.http.Rfc6265CookieProcessor.generateHeader(org.apache.tomcat.util.http.jakarta.servlet.http.Cookie,jakarta.servlet.http.HttpServletRequest)",
+      "otherKiekerPattern" : "public java.lang.String org.apache.tomcat.util.http.Rfc6265CookieProcessor.generateHeader(org.apache.tomcat.util.http.jakarta.servlet.http.Cookie,jakarta.servlet.http.HttpServletRequest)",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 66459.41202907109,
+        "meanCurrent" : 78055.6463233647,
+        "deviationOld" : 8803.528958610677,
+        "deviationCurrent" : 11828.523062517015,
+        "vms" : 495,
+        "callsOld" : 680000,
+        "calls" : 680000,
+        "tvalue" : -17.50244933810277
+      },
+      "childs" : [ {
+        "call" : "jakarta.servlet.http.Cookie#getMaxAge",
+        "kiekerPattern" : "public int jakarta.servlet.http.Cookie.getMaxAge()",
+        "otherKiekerPattern" : "public int jakarta.servlet.http.Cookie.getMaxAge()",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 2614.828576601906,
+          "meanCurrent" : 4812.768649675546,
+          "deviationOld" : 273.9793320361083,
+          "deviationCurrent" : 686.0955032252967,
+          "vms" : 488,
+          "callsOld" : 1400000,
+          "calls" : 1400000,
+          "tvalue" : -65.73147402941846
+        },
+        "childs" : [ {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getAttribute(java.lang.String)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        } ]
+      }, {
+        "call" : "jakarta.servlet.http.Cookie#getDomain",
+        "kiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getDomain()",
+        "otherKiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getDomain()",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 2654.8494960357616,
+          "meanCurrent" : 4711.220063680835,
+          "deviationOld" : 307.9788730400731,
+          "deviationCurrent" : 647.355746421103,
+          "vms" : 494,
+          "callsOld" : 1400000,
+          "calls" : 1400000,
+          "tvalue" : -63.75538967896528
+        },
+        "childs" : [ {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getAttribute(java.lang.String)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        } ]
+      }, {
+        "call" : "jakarta.servlet.http.Cookie#getPath",
+        "kiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getPath()",
+        "otherKiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getPath()",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 2673.039917774368,
+          "meanCurrent" : 4974.274307685756,
+          "deviationOld" : 348.7001959249033,
+          "deviationCurrent" : 751.618024345563,
+          "vms" : 489,
+          "callsOld" : 1400000,
+          "calls" : 1400000,
+          "tvalue" : -61.4169463762092
+        },
+        "childs" : [ {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getAttribute(java.lang.String)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        } ]
+      }, {
+        "call" : "jakarta.servlet.http.Cookie#getSecure",
+        "kiekerPattern" : "public boolean jakarta.servlet.http.Cookie.getSecure()",
+        "otherKiekerPattern" : "public boolean jakarta.servlet.http.Cookie.getSecure()",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 2738.8195154352225,
+          "meanCurrent" : 4795.535885733607,
+          "deviationOld" : 368.05803940767635,
+          "deviationCurrent" : 1010.7315276713293,
+          "vms" : 493,
+          "callsOld" : 1400000,
+          "calls" : 1400000,
+          "tvalue" : -42.45943602945104
+        },
+        "childs" : [ {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getAttribute(java.lang.String)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        } ]
+      }, {
+        "call" : "jakarta.servlet.http.Cookie#isHttpOnly",
+        "kiekerPattern" : "public boolean jakarta.servlet.http.Cookie.isHttpOnly()",
+        "otherKiekerPattern" : "public boolean jakarta.servlet.http.Cookie.isHttpOnly()",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 2762.4194852114224,
+          "meanCurrent" : 5669.104314871274,
+          "deviationOld" : 368.3201662878837,
+          "deviationCurrent" : 1020.5645054934807,
+          "vms" : 493,
+          "callsOld" : 1400000,
+          "calls" : 1400000,
+          "tvalue" : -59.43668138301957
+        },
+        "childs" : [ {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public java.lang.String jakarta.servlet.http.Cookie.getAttribute(java.lang.String)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "jakarta.servlet.http.Cookie#setSecure",
+      "kiekerPattern" : "public void jakarta.servlet.http.Cookie.setSecure(boolean)",
+      "otherKiekerPattern" : "public void jakarta.servlet.http.Cookie.setSecure(boolean)",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 3796.3853074596755,
+        "meanCurrent" : 19906.26908028456,
+        "deviationOld" : 438.5417327399504,
+        "deviationCurrent" : 5249.55319969172,
+        "vms" : 494,
+        "callsOld" : 40000,
+        "calls" : 40000,
+        "tvalue" : -67.83512079209605
+      },
+      "childs" : [ {
+        "call" : "ADDED",
+        "kiekerPattern" : "ADDED",
+        "otherKiekerPattern" : "private void jakarta.servlet.http.Cookie.setAttributeInternal(java.lang.String,java.lang.String)",
+        "statistic" : {
+          "meanOld" : "NaN",
+          "meanCurrent" : "NaN",
+          "deviationOld" : "NaN",
+          "deviationCurrent" : "NaN",
+          "vms" : 0,
+          "callsOld" : 0,
+          "calls" : 0,
+          "tvalue" : -1.0,
+          "change" : true
+        },
+        "childs" : [ ]
+      } ]
+    }, {
+      "call" : "jakarta.servlet.http.Cookie#setHttpOnly",
+      "kiekerPattern" : "public void jakarta.servlet.http.Cookie.setHttpOnly(boolean)",
+      "otherKiekerPattern" : "public void jakarta.servlet.http.Cookie.setHttpOnly(boolean)",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 3555.4057721327963,
+        "meanCurrent" : 15540.262550607307,
+        "deviationOld" : 499.13441877925413,
+        "deviationCurrent" : 3048.2164044522897,
+        "vms" : 495,
+        "callsOld" : 40000,
+        "calls" : 40000,
+        "tvalue" : -86.24602804082265
+      },
+      "childs" : [ {
+        "call" : "ADDED",
+        "kiekerPattern" : "ADDED",
+        "otherKiekerPattern" : "private void jakarta.servlet.http.Cookie.setAttributeInternal(java.lang.String,java.lang.String)",
+        "statistic" : {
+          "meanOld" : "NaN",
+          "meanCurrent" : "NaN",
+          "deviationOld" : "NaN",
+          "deviationCurrent" : "NaN",
+          "vms" : 0,
+          "callsOld" : 0,
+          "calls" : 0,
+          "tvalue" : -1.0,
+          "change" : true
+        },
+        "childs" : [ ]
+      } ]
+    } ]
+  }
+}

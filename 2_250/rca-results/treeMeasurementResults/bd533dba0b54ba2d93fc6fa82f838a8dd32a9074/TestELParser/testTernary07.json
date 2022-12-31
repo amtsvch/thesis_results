@@ -1,0 +1,238 @@
+{
+  "measurementConfig" : {
+    "vms" : 50,
+    "earlyStop" : false,
+    "warmup" : 80,
+    "iterations" : 80,
+    "repetitions" : 100,
+    "logFullData" : true,
+    "useGC" : false,
+    "callSyncBetweenVMs" : true,
+    "waitTimeBetweenVMs" : 1000,
+    "maxLogSizeInMb" : 100,
+    "kiekerConfig" : {
+      "useKieker" : true,
+      "useSourceInstrumentation" : true,
+      "useSelectiveInstrumentation" : true,
+      "useAggregation" : true,
+      "useCircularQueue" : false,
+      "enableAdaptiveMonitoring" : false,
+      "adaptiveInstrumentation" : false,
+      "kiekerAggregationInterval" : 5000,
+      "record" : "DURATION",
+      "onlyOneCallRecording" : false,
+      "extractMethod" : false,
+      "traceSizeInMb" : 100,
+      "kiekerQueueSize" : 10000000,
+      "createDefaultConstructor" : true,
+      "kiekerWaitTime" : 5,
+      "excludeForTracing" : [ "new org.eclipse.jetty.logging.JettyLevel.<init>(..)", "* org.eclipse.jetty.logging.JettyLevel.*(..)", "*[] org.eclipse.jetty.logging.JettyLevel.*(..)", "*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "new org.eclipse.jetty.logging.JettyLoggerConfiguration.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "new org.eclipse.jetty.logging.JettyLoggingServiceProvider.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "new org.eclipse.jetty.logging.JettyLoggerFactory.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "new org.eclipse.jetty.logging.StdErrAppender.<init>(..)", "* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*[] org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "new org.eclipse.jetty.logging.Timestamp.<init>(..)", "* org.eclipse.jetty.logging.Timestamp.*(..)", "*[] org.eclipse.jetty.logging.Timestamp.*(..)", "*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "new org.eclipse.jetty.logging.Timestamp$Tick.<init>(..)", "* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*[] org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "new org.eclipse.jetty.logging.JettyLogger.<init>(..)", "* org.eclipse.jetty.logging.JettyLogger.*(..)", "*[] org.eclipse.jetty.logging.JettyLogger.*(..)", "*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)" ]
+    },
+    "saveAll" : true,
+    "javaVersion" : "11.0.17",
+    "measurementStrategy" : "PARALLEL",
+    "statisticsConfig" : {
+      "type1error" : 0.1,
+      "type2error" : 0.1,
+      "outlierFactor" : 3.29,
+      "statisticTest" : "T_TEST"
+    },
+    "executionConfig" : {
+      "timeout" : 600000,
+      "redirectSubprocessOutputToFile" : true,
+      "useTieredCompilation" : false,
+      "removeSnapshots" : false,
+      "useAlternativeBuildfile" : false,
+      "excludeLog4jSlf4jImpl" : false,
+      "excludeLog4jToSlf4j" : false,
+      "executeBeforeClassInMeasurement" : false,
+      "clearMockitoCaches" : false,
+      "onlyMeasureWorkload" : false,
+      "showStart" : false,
+      "redirectToNull" : true,
+      "createDetailDebugFiles" : true,
+      "testExecutor" : "de.stro18.peass_ant.executor.AntTestExecutor",
+      "clazzFolders" : [ "java", "src/main/java", "webapps/examples/WEB-INF/classes" ],
+      "testClazzFolders" : [ "test" ]
+    },
+    "fixedCommitConfig" : {
+      "commit" : "bd533dba0b54ba2d93fc6fa82f838a8dd32a9074",
+      "commitOld" : "da7b4f0f2a2760eae0fd7a99531f99e8420c92ec"
+    }
+  },
+  "causeConfig" : {
+    "splitAggregated" : true,
+    "minTime" : 0.1,
+    "ignoreEOIs" : true,
+    "rcaStrategy" : "UNTIL_SOURCE_CHANGE",
+    "levels" : 1,
+    "testCase" : {
+      "clazz" : "org.apache.jasper.compiler.TestELParser",
+      "method" : "testTernary07",
+      "module" : "",
+      "params" : null
+    },
+    "propertyFolder" : "/home/matusevich/2-final/peass-ant/results/properties_tomcat"
+  },
+  "nodes" : {
+    "call" : "org.apache.jasper.compiler.TestELParser#testTernary07",
+    "kiekerPattern" : "public void org.apache.jasper.compiler.TestELParser.testTernary07()",
+    "otherKiekerPattern" : "public void org.apache.jasper.compiler.TestELParser.testTernary07()",
+    "module" : "",
+    "statistic" : {
+      "meanOld" : 1295223.4666250001,
+      "meanCurrent" : 1272995.0620000002,
+      "deviationOld" : 321553.0025993772,
+      "deviationCurrent" : 279020.63367696526,
+      "vms" : 50,
+      "callsOld" : 4000,
+      "calls" : 4000,
+      "tvalue" : 0.369194879482072
+    },
+    "childs" : [ {
+      "call" : "org.apache.jasper.compiler.TestELParser#doTestParser",
+      "kiekerPattern" : "private void org.apache.jasper.compiler.TestELParser.doTestParser(java.lang.String,java.lang.String)",
+      "otherKiekerPattern" : "private void org.apache.jasper.compiler.TestELParser.doTestParser(java.lang.String,java.lang.String)",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 1282357.5911250003,
+        "meanCurrent" : 1258754.3794999996,
+        "deviationOld" : 319890.7706482471,
+        "deviationCurrent" : 277297.9618781968,
+        "vms" : 50,
+        "callsOld" : 4000,
+        "calls" : 4000,
+        "tvalue" : 0.39423728804979397
+      },
+      "childs" : [ {
+        "call" : "org.apache.jasper.compiler.TestELParser#doTestParser",
+        "kiekerPattern" : "private void org.apache.jasper.compiler.TestELParser.doTestParser(java.lang.String,java.lang.String,java.lang.String)",
+        "otherKiekerPattern" : "private void org.apache.jasper.compiler.TestELParser.doTestParser(java.lang.String,java.lang.String,java.lang.String)",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 1266641.8388750001,
+          "meanCurrent" : 1244517.4294999996,
+          "deviationOld" : 314638.81717007334,
+          "deviationCurrent" : 276050.65984796995,
+          "vms" : 50,
+          "callsOld" : 4000,
+          "calls" : 4000,
+          "tvalue" : 0.37375560422143905
+        },
+        "childs" : [ {
+          "call" : "org.apache.jasper.compiler.ELParser#parse",
+          "kiekerPattern" : "public static org.apache.jasper.compiler.ELNode.Nodes org.apache.jasper.compiler.ELParser.parse(org.apache.jasper.compiler.ELParser$QuotedString,boolean)",
+          "otherKiekerPattern" : "public static org.apache.jasper.compiler.ELNode.Nodes org.apache.jasper.compiler.ELParser.parse(org.apache.jasper.compiler.ELParser$QuotedString,boolean)",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 1040522.824234694,
+            "meanCurrent" : 1041129.2298750001,
+            "deviationOld" : 238300.98108043842,
+            "deviationCurrent" : 246855.90477736283,
+            "vms" : 49,
+            "callsOld" : 4000,
+            "calls" : 4000,
+            "tvalue" : -0.012436160225653466
+          },
+          "childs" : [ {
+            "call" : "org.apache.jasper.compiler.ELParser#parseEL",
+            "kiekerPattern" : "private org.apache.jasper.compiler.ELNode.Nodes org.apache.jasper.compiler.ELParser.parseEL()",
+            "otherKiekerPattern" : "private org.apache.jasper.compiler.ELNode.Nodes org.apache.jasper.compiler.ELParser.parseEL()",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : 471638.0940688775,
+              "meanCurrent" : 471606.3074375,
+              "deviationOld" : 110518.45534135473,
+              "deviationCurrent" : 110542.22206596952,
+              "vms" : 49,
+              "callsOld" : 12000,
+              "calls" : 12000,
+              "tvalue" : 0.0014306352404003188
+            },
+            "childs" : [ {
+              "call" : "org.apache.jasper.compiler.ELParser#hasNext",
+              "kiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.hasNext()",
+              "otherKiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.hasNext()",
+              "module" : "",
+              "statistic" : {
+                "meanOld" : 18502.64584056713,
+                "meanCurrent" : 18663.410572562356,
+                "deviationOld" : 4684.759940348969,
+                "deviationCurrent" : 4715.576083023698,
+                "vms" : 48,
+                "callsOld" : 140000,
+                "calls" : 140000,
+                "tvalue" : -0.16843119660866993
+              },
+              "childs" : [ {
+                "call" : "org.apache.jasper.compiler.ELParser#skipSpaces",
+                "kiekerPattern" : "private void org.apache.jasper.compiler.ELParser.skipSpaces()",
+                "otherKiekerPattern" : "private void org.apache.jasper.compiler.ELParser.skipSpaces()",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : 6732.077565192744,
+                  "meanCurrent" : 6691.34907171202,
+                  "deviationOld" : 1462.9419982597383,
+                  "deviationCurrent" : 1090.433602373914,
+                  "vms" : 49,
+                  "callsOld" : 140000,
+                  "calls" : 140000,
+                  "tvalue" : 0.1562512590698179
+                },
+                "childs" : [ ]
+              } ]
+            }, {
+              "call" : "org.apache.jasper.compiler.ELParser#parseFunction",
+              "kiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.parseFunction()",
+              "otherKiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.parseFunction()",
+              "module" : "",
+              "statistic" : {
+                "meanOld" : 43348.97755102041,
+                "meanCurrent" : 44443.22013180273,
+                "deviationOld" : 8942.849895327598,
+                "deviationCurrent" : 9816.102768928353,
+                "vms" : 49,
+                "callsOld" : 44000,
+                "calls" : 44000,
+                "tvalue" : -0.5768302238189044
+              },
+              "childs" : [ {
+                "call" : "org.apache.jasper.compiler.ELParser#hasNext",
+                "kiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.hasNext()",
+                "otherKiekerPattern" : "private boolean org.apache.jasper.compiler.ELParser.hasNext()",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : 18502.64584056713,
+                  "meanCurrent" : 18663.410572562356,
+                  "deviationOld" : 4684.759940348969,
+                  "deviationCurrent" : 4715.576083023698,
+                  "vms" : 48,
+                  "callsOld" : 140000,
+                  "calls" : 140000,
+                  "tvalue" : -0.16843119660866993
+                },
+                "childs" : [ {
+                  "call" : "org.apache.jasper.compiler.ELParser#skipSpaces",
+                  "kiekerPattern" : "private void org.apache.jasper.compiler.ELParser.skipSpaces()",
+                  "otherKiekerPattern" : "private void org.apache.jasper.compiler.ELParser.skipSpaces()",
+                  "module" : "",
+                  "statistic" : {
+                    "meanOld" : 6732.077565192744,
+                    "meanCurrent" : 6691.34907171202,
+                    "deviationOld" : 1462.9419982597383,
+                    "deviationCurrent" : 1090.433602373914,
+                    "vms" : 49,
+                    "callsOld" : 140000,
+                    "calls" : 140000,
+                    "tvalue" : 0.1562512590698179
+                  },
+                  "childs" : [ ]
+                } ]
+              } ]
+            } ]
+          } ]
+        } ]
+      } ]
+    } ]
+  }
+}
