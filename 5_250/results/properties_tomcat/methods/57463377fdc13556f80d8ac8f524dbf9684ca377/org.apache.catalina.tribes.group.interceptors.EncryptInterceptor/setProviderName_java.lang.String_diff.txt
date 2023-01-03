@@ -1,0 +1,11 @@
+/**
+ * Sets the JCA provider name used for cryptographic activities.
+ *
+ * Default is the JVM platform default.
+ *
+ * @param provider The name of the JCA provider.
+ */
+@Override
+public void setProviderName(String provider) {
+    providerName = provider;
+}

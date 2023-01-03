@@ -1,0 +1,142 @@
+/**
+ * {@inheritDoc}
+ */
+@Override
+public void invoke(Request request, Response response) throws IOException, ServletException {
+    final String originalRemoteAddr = request.getRemoteAddr();
+    final String originalRemoteHost = request.getRemoteHost();
+    final String originalScheme = request.getScheme();
+    final boolean originalSecure = request.isSecure();
+    final String originalServerName = request.getServerName();
+    final String originalLocalName = request.getLocalName();
+    final int originalServerPort = request.getServerPort();
+    final int originalLocalPort = request.getLocalPort();
+    final String originalProxiesHeader = request.getHeader(proxiesHeader);
+    final String originalRemoteIpHeader = request.getHeader(remoteIpHeader);
+    boolean isInternal = internalProxies != null && internalProxies.matcher(originalRemoteAddr).matches();
+    if (isInternal || (trustedProxies != null && trustedProxies.matcher(originalRemoteAddr).matches())) {
+        String remoteIp = null;
+        // In java 6, proxiesHeaderValue should be declared as a java.util.Deque
+        LinkedList<String> proxiesHeaderValue = new LinkedList<>();
+        StringBuilder concatRemoteIpHeaderValue = new StringBuilder();
+        for (Enumeration<String> e = request.getHeaders(remoteIpHeader); e.hasMoreElements(); ) {
+            if (concatRemoteIpHeaderValue.length() > 0) {
+                concatRemoteIpHeaderValue.append(", ");
+            }
+            concatRemoteIpHeaderValue.append(e.nextElement());
+        }
+        String[] remoteIpHeaderValue = commaDelimitedListToStringArray(concatRemoteIpHeaderValue.toString());
+        int idx;
+        if (!isInternal) {
+            proxiesHeaderValue.addFirst(originalRemoteAddr);
+        }
+        // loop on remoteIpHeaderValue to find the first trusted remote ip and to build the proxies chain
+        for (idx = remoteIpHeaderValue.length - 1; idx >= 0; idx--) {
+            String currentRemoteIp = remoteIpHeaderValue[idx];
+            remoteIp = currentRemoteIp;
+            if (internalProxies != null && internalProxies.matcher(currentRemoteIp).matches()) {
+                // do nothing, internalProxies IPs are not appended to the
+            } else if (trustedProxies != null && trustedProxies.matcher(currentRemoteIp).matches()) {
+                proxiesHeaderValue.addFirst(currentRemoteIp);
+            } else {
+                // decrement idx because break statement doesn't do it
+                idx--;
+                break;
+            }
+        }
+        // continue to loop on remoteIpHeaderValue to build the new value of the remoteIpHeader
+        LinkedList<String> newRemoteIpHeaderValue = new LinkedList<>();
+        for (; idx >= 0; idx--) {
+            String currentRemoteIp = remoteIpHeaderValue[idx];
+            newRemoteIpHeaderValue.addFirst(currentRemoteIp);
+        }
+        if (remoteIp != null) {
+            request.setRemoteAddr(remoteIp);
+            request.setRemoteHost(remoteIp);
+            if (proxiesHeaderValue.size() == 0) {
+                request.getCoyoteRequest().getMimeHeaders().removeHeader(proxiesHeader);
+            } else {
+                String commaDelimitedListOfProxies = listToCommaDelimitedString(proxiesHeaderValue);
+                request.getCoyoteRequest().getMimeHeaders().setValue(proxiesHeader).setString(commaDelimitedListOfProxies);
+            }
+            if (newRemoteIpHeaderValue.size() == 0) {
+                request.getCoyoteRequest().getMimeHeaders().removeHeader(remoteIpHeader);
+            } else {
+                String commaDelimitedRemoteIpHeaderValue = listToCommaDelimitedString(newRemoteIpHeaderValue);
+                request.getCoyoteRequest().getMimeHeaders().setValue(remoteIpHeader).setString(commaDelimitedRemoteIpHeaderValue);
+            }
+        }
+        if (protocolHeader != null) {
+            String protocolHeaderValue = request.getHeader(protocolHeader);
+            if (protocolHeaderValue == null) {
+                // Don't modify the secure, scheme and serverPort attributes
+                // of the request
+            } else if (isForwardedProtoHeaderValueSecure(protocolHeaderValue)) {
+                request.setSecure(true);
+                request.getCoyoteRequest().scheme().setString("https");
+                setPorts(request, httpsServerPort);
+            } else {
+                request.setSecure(false);
+                request.getCoyoteRequest().scheme().setString("http");
+                setPorts(request, httpServerPort);
+            }
+        }
+        if (hostHeader != null) {
+            String hostHeaderValue = request.getHeader(hostHeader);
+            if (hostHeaderValue != null) {
+                try {
+                    int portIndex = Host.parse(hostHeaderValue);
+                    if (portIndex > -1) {
+                        log.debug(sm.getString("remoteIpValve.invalidHostWithPort", hostHeaderValue, hostHeader));
+                        hostHeaderValue = hostHeaderValue.substring(0, portIndex);
+                    }
+                    request.getCoyoteRequest().serverName().setString(hostHeaderValue);
+                    if (isChangeLocalName()) {
+                        request.getCoyoteRequest().localName().setString(hostHeaderValue);
+                    }
+                } catch (IllegalArgumentException iae) {
+                    log.debug(sm.getString("remoteIpValve.invalidHostHeader", hostHeaderValue, hostHeader));
+                }
+            }
+        }
+        request.setAttribute(Globals.REQUEST_FORWARDED_ATTRIBUTE, Boolean.TRUE);
+        if (log.isDebugEnabled()) {
+            log.debug("Incoming request " + request.getRequestURI() + " with originalRemoteAddr [" + originalRemoteAddr + "], originalRemoteHost=[" + originalRemoteHost + "], originalSecure=[" + originalSecure + "], originalScheme=[" + originalScheme + "], originalServerName=[" + originalServerName + "], originalServerPort=[" + originalServerPort + "] will be seen as newRemoteAddr=[" + request.getRemoteAddr() + "], newRemoteHost=[" + request.getRemoteHost() + "], newSecure=[" + request.isSecure() + "], newScheme=[" + request.getScheme() + "], newServerName=[" + request.getServerName() + "], newServerPort=[" + request.getServerPort() + "]");
+        }
+    } else {
+        if (log.isDebugEnabled()) {
+            log.debug("Skip RemoteIpValve for request " + request.getRequestURI() + " with originalRemoteAddr '" + request.getRemoteAddr() + "'");
+        }
+    }
+    if (requestAttributesEnabled) {
+        request.setAttribute(AccessLog.REMOTE_ADDR_ATTRIBUTE, request.getRemoteAddr());
+        request.setAttribute(Globals.REMOTE_ADDR_ATTRIBUTE, request.getRemoteAddr());
+        request.setAttribute(AccessLog.REMOTE_HOST_ATTRIBUTE, request.getRemoteHost());
+        request.setAttribute(AccessLog.PROTOCOL_ATTRIBUTE, request.getProtocol());
+        request.setAttribute(AccessLog.SERVER_NAME_ATTRIBUTE, request.getServerName());
+        request.setAttribute(AccessLog.SERVER_PORT_ATTRIBUTE, Integer.valueOf(request.getServerPort()));
+    }
+    try {
+        getNext().invoke(request, response);
+    } finally {
+        request.setRemoteAddr(originalRemoteAddr);
+        request.setRemoteHost(originalRemoteHost);
+        request.setSecure(originalSecure);
+        request.getCoyoteRequest().scheme().setString(originalScheme);
+        request.getCoyoteRequest().serverName().setString(originalServerName);
+        request.getCoyoteRequest().localName().setString(originalLocalName);
+        request.setServerPort(originalServerPort);
+        request.setLocalPort(originalLocalPort);
+        MimeHeaders headers = request.getCoyoteRequest().getMimeHeaders();
+        if (originalProxiesHeader == null || originalProxiesHeader.length() == 0) {
+            headers.removeHeader(proxiesHeader);
+        } else {
+            headers.setValue(proxiesHeader).setString(originalProxiesHeader);
+        }
+        if (originalRemoteIpHeader == null || originalRemoteIpHeader.length() == 0) {
+            headers.removeHeader(remoteIpHeader);
+        } else {
+            headers.setValue(remoteIpHeader).setString(originalRemoteIpHeader);
+        }
+    }
+}

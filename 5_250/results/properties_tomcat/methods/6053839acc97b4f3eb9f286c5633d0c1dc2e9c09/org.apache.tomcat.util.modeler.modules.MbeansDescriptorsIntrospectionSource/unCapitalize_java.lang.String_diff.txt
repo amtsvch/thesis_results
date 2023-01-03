@@ -1,0 +1,16 @@
+// -------------------- Utils --------------------
+/**
+ * Converts the first character of the given
+ * String into lower-case.
+ *
+ * @param name The string to convert
+ * @return String
+ */
+private static String unCapitalize(String name) {
+    if (name == null || name.length() == 0) {
+        return name;
+    }
+    char[] chars = name.toCharArray();
+    chars[0] = Character.toLowerCase(chars[0]);
+    return new String(chars);
+}

@@ -1,0 +1,40 @@
+@Override
+public void setContainer(Engine engine) {
+    Engine oldEngine = this.engine;
+    if (oldEngine != null) {
+        oldEngine.setService(null);
+    }
+    this.engine = engine;
+    if (this.engine != null) {
+        this.engine.setService(this);
+    }
+    if (getState().isAvailable()) {
+        if (this.engine != null) {
+            try {
+                this.engine.start();
+            } catch (LifecycleException e) {
+                log.error(sm.getString("standardService.engine.startFailed"), e);
+            }
+        }
+        // Restart MapperListener to pick up new engine.
+        try {
+            mapperListener.stop();
+        } catch (LifecycleException e) {
+            log.error(sm.getString("standardService.mapperListener.stopFailed"), e);
+        }
+        try {
+            mapperListener.start();
+        } catch (LifecycleException e) {
+            log.error(sm.getString("standardService.mapperListener.startFailed"), e);
+        }
+        if (oldEngine != null) {
+            try {
+                oldEngine.stop();
+            } catch (LifecycleException e) {
+                log.error(sm.getString("standardService.engine.stopFailed"), e);
+            }
+        }
+    }
+    // Report this property change to interested listeners
+    support.firePropertyChange("container", oldEngine, this.engine);
+}

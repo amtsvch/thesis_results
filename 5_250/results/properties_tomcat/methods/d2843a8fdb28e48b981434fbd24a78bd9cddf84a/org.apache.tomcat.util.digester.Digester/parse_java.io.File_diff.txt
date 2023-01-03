@@ -1,0 +1,17 @@
+// ------------------------------------------------------- Public Methods
+/**
+ * Parse the content of the specified file using this Digester.  Returns
+ * the root element from the object stack (if any).
+ *
+ * @param file File containing the XML data to be parsed
+ * @return the root object
+ * @exception IOException if an input/output error occurs
+ * @exception SAXException if a parsing exception occurs
+ */
+public Object parse(File file) throws IOException, SAXException {
+    configure();
+    InputSource input = new InputSource(new FileInputStream(file));
+    input.setSystemId("file://" + file.getAbsolutePath());
+    getXMLReader().parse(input);
+    return root;
+}

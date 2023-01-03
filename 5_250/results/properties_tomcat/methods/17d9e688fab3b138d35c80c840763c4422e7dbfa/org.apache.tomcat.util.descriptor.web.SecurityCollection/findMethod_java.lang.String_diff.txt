@@ -1,0 +1,24 @@
+/**
+ * Check if the collection applies to the specified method.
+ * @param method Request method to check
+ * @return <code>true</code> if the specified HTTP request method is
+ * part of this web resource collection.
+ */
+public boolean findMethod(String method) {
+    if (methods.length == 0 && omittedMethods.length == 0)
+        return true;
+    if (methods.length > 0) {
+        for (String s : methods) {
+            if (s.equals(method))
+                return true;
+        }
+        return false;
+    }
+    if (omittedMethods.length > 0) {
+        for (String omittedMethod : omittedMethods) {
+            if (omittedMethod.equals(method))
+                return false;
+        }
+    }
+    return true;
+}

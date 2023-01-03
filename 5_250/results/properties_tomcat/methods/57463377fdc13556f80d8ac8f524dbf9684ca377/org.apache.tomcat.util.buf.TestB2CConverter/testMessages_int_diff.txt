@@ -1,0 +1,14 @@
+private void testMessages(int msgCount) throws Exception {
+    B2CConverter conv = new B2CConverter(StandardCharsets.UTF_16);
+    ByteChunk bc = new ByteChunk();
+    CharChunk cc = new CharChunk(32);
+    for (int i = 0; i < msgCount; i++) {
+        bc.append(UTF16_MESSAGE, 0, UTF16_MESSAGE.length);
+        conv.convert(bc, cc, true);
+        Assert.assertEquals("ABC", cc.toString());
+        bc.recycle();
+        cc.recycle();
+        conv.recycle();
+    }
+    System.out.println(cc);
+}

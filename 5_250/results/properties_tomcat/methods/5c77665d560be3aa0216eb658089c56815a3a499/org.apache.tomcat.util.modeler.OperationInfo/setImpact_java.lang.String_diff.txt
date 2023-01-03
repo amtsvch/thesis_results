@@ -1,0 +1,6 @@
+public void setImpact(String impact) {
+    if (impact == null)
+        this.impact = null;
+    else
+        this.impact = impact.toUpperCase(Locale.ENGLISH);
+}

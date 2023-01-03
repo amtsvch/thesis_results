@@ -1,0 +1,10 @@
+@Override
+public WebResourceRoot getResources() {
+    Lock readLock = resourcesLock.readLock();
+    readLock.lock();
+    try {
+        return resources;
+    } finally {
+        readLock.unlock();
+    }
+}

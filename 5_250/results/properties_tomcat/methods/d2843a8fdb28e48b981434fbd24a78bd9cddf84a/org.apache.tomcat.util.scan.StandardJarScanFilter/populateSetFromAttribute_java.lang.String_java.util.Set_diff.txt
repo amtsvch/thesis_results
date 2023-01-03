@@ -1,0 +1,12 @@
+private static void populateSetFromAttribute(String attribute, Set<String> set) {
+    set.clear();
+    if (attribute != null) {
+        StringTokenizer tokenizer = new StringTokenizer(attribute, ",");
+        while (tokenizer.hasMoreElements()) {
+            String token = tokenizer.nextToken().trim();
+            if (token.length() > 0) {
+                set.add(token);
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+@Test                                                                                                  @Test                                                                                               
+public void testCleanOnInitMultipleHandlers() throws Exception {                                       public void testCleanOnInitMultipleHandlers() throws Exception {                                    
+generateLogFiles(logsDir, PREFIX_1, SUFIX_1, 3);                                                     | generateLogFiles(logsDir, PREFIX_1, SUFFIX_1, 3);                                                   
+FileHandler fh1 = new FileHandler(logsDir.getAbsolutePath(), PREFIX_1, SUFIX_1, Integer.valueOf(2)); | FileHandler fh1 = new FileHandler(logsDir.getAbsolutePath(), PREFIX_1, SUFFIX_1, Integer.valueOf(2))
+FileHandler fh2 = new FileHandler(logsDir.getAbsolutePath(), PREFIX_1, SUFIX_2, Integer.valueOf(2)); | FileHandler fh2 = new FileHandler(logsDir.getAbsolutePath(), PREFIX_1, SUFFIX_2, Integer.valueOf(2))
+FileHandler fh3 = new FileHandler(logsDir.getAbsolutePath(), PREFIX_2, SUFIX_1, Integer.valueOf(2)); | FileHandler fh3 = new FileHandler(logsDir.getAbsolutePath(), PREFIX_2, SUFFIX_1, Integer.valueOf(2))
+FileHandler fh4 = new FileHandler(logsDir.getAbsolutePath(), PREFIX_3, SUFIX_1, Integer.valueOf(2)); | FileHandler fh4 = new FileHandler(logsDir.getAbsolutePath(), PREFIX_3, SUFFIX_1, Integer.valueOf(2))
+fh1.open();                                                                                            fh1.open();                                                                                         
+fh2.open();                                                                                            fh2.open();                                                                                         
+fh3.open();                                                                                            fh3.open();                                                                                         
+fh4.open();                                                                                            fh4.open();                                                                                         
+Thread.sleep(1000);                                                                                    Thread.sleep(1000);                                                                                 
+Assert.assertTrue(logsDir.list().length == 16);                                                        Assert.assertTrue(logsDir.list().length == 16);                                                     
+fh1.close();                                                                                           fh1.close();                                                                                        
+fh2.close();                                                                                           fh2.close();                                                                                        
+fh3.close();                                                                                           fh3.close();                                                                                        
+fh4.close();                                                                                           fh4.close();                                                                                        
+}                                                                                                      }                                                                                                   

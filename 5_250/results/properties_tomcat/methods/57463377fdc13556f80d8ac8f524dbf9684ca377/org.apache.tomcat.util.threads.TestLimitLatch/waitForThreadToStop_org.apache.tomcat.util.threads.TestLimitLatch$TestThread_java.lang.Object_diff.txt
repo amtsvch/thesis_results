@@ -1,0 +1,11 @@
+private boolean waitForThreadToStop(TestThread t, Object lock) throws InterruptedException {
+    long wait = 0;
+    while (t.getStage() < 3 && wait < THREAD_WAIT_TIME) {
+        Thread.sleep(100);
+        wait += 100;
+        synchronized (lock) {
+            lock.notifyAll();
+        }
+    }
+    return t.getStage() == 3;
+}

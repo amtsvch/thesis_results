@@ -1,0 +1,14 @@
+private RegistrationContextImpl findRegistrationContextImpl(String layer, String appContext) {
+    RegistrationContextImpl result;
+    result = layerAppContextRegistrations.get(getRegistrationID(layer, appContext));
+    if (result == null) {
+        result = appContextRegistrations.get(getRegistrationID(null, appContext));
+    }
+    if (result == null) {
+        result = layerRegistrations.get(getRegistrationID(layer, null));
+    }
+    if (result == null) {
+        result = defaultRegistration.get(DEFAULT_REGISTRATION_ID);
+    }
+    return result;
+}

@@ -1,0 +1,20 @@
+/**                                                                                                    /**                                                                                                 
+* Process the end of this element.                                                                     * Process the end of this element.                                                                  
+*                                                                                                      *                                                                                                   
+* @param namespace the namespace URI of the matching element, or an                                    * @param namespace the namespace URI of the matching element, or an                                 
+*   empty string if the parser is not namespace aware or the element has                               *   empty string if the parser is not namespace aware or the element has                            
+*   no namespace                                                                                       *   no namespace                                                                                    
+* @param name the local name if the parser is namespace aware, or just                                 * @param name the local name if the parser is namespace aware, or just                              
+*   the element name otherwise                                                                         *   the element name otherwise                                                                      
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void end(String namespace, String name) throws Exception {                                      public void end(String namespace, String name) throws Exception {                                   
+Object top = digester.pop();                                                                           Object top = digester.pop();                                                                        
+if (digester.log.isDebugEnabled()) {                                                                   if (digester.log.isDebugEnabled()) {                                                                
+digester.log.debug("[ObjectCreateRule]{" + digester.match + "} Pop " + top.getClass().getName());      digester.log.debug("[ObjectCreateRule]{" + digester.match + "} Pop " + top.getClass().getName());   
+}                                                                                                      }                                                                                                   
+StringBuilder code = digester.getGeneratedCode();                                                    |                                                                                                     
+if (code != null) {                                                                                  |                                                                                                     
+code.append(System.lineSeparator());                                                                 |                                                                                                     
+}                                                                                                      }                                                                                                   
+}                                                                                                    |                                                                                                     

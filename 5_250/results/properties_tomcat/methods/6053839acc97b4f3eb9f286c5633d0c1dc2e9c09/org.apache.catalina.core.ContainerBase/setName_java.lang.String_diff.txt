@@ -1,0 +1,20 @@
+/**
+ * Set a name string (suitable for use by humans) that describes this
+ * Container.  Within the set of child containers belonging to a particular
+ * parent, Container names must be unique.
+ *
+ * @param name New name of this container
+ *
+ * @exception IllegalStateException if this Container has already been
+ *  added to the children of a parent Container (after which the name
+ *  may not be changed)
+ */
+@Override
+public void setName(String name) {
+    if (name == null) {
+        throw new IllegalArgumentException(sm.getString("containerBase.nullName"));
+    }
+    String oldName = this.name;
+    this.name = name;
+    support.firePropertyChange("name", oldName, this.name);
+}

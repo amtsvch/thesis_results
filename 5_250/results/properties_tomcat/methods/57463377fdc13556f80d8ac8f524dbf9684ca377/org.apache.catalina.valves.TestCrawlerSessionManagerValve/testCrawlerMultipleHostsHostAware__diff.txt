@@ -1,0 +1,10 @@
+@Test
+public void testCrawlerMultipleHostsHostAware() throws Exception {
+    CrawlerSessionManagerValve valve = new CrawlerSessionManagerValve();
+    valve.setCrawlerUserAgents(valve.getCrawlerUserAgents());
+    valve.setHostAware(true);
+    valve.setContextAware(true);
+    valve.setNext(EasyMock.createMock(Valve.class));
+    verifyCrawlingLocalhost(valve, "localhost");
+    verifyCrawlingLocalhost(valve, "example.invalid");
+}

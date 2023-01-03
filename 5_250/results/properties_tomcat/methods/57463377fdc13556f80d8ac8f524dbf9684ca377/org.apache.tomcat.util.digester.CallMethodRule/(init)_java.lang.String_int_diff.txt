@@ -1,0 +1,12 @@
+// ----------------------------------------------------------- Constructors
+/**
+ * Construct a "call method" rule with the specified method name.  The
+ * parameter types (if any) default to java.lang.String.
+ *
+ * @param methodName Method name of the parent method to call
+ * @param paramCount The number of parameters to collect, or
+ *  zero for a single argument from the body of this element.
+ */
+public CallMethodRule(String methodName, int paramCount) {
+    this(0, methodName, paramCount);
+}

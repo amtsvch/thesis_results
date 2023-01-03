@@ -1,0 +1,43 @@
+// --------------------------------------------------------- Public Methods
+/**
+ * Return the Principal associated with the specified username and
+ * credentials, if there is one; otherwise return <code>null</code>.
+ *
+ * @param username Username of the Principal to look up
+ * @param credentials Password or other credentials to use in
+ *  authenticating this username
+ * @return the associated principal, or <code>null</code> if there is none.
+ */
+@Override
+public Principal authenticate(String username, String credentials) {
+    // No user or no credentials
+    // Can't possibly authenticate, don't bother the database then
+    if (username == null || credentials == null) {
+        if (log.isDebugEnabled())
+            log.debug(sm.getString("memoryRealm.authenticateFailure", username));
+        return null;
+    }
+    GenericPrincipal principal = principals.get(username);
+    String password = null;
+    if (principal != null) {
+        password = this.credentials.get(username);
+    }
+    if (principal == null || password == null) {
+        // User was not found in the database or the password was null
+        // Waste a bit of time as not to reveal that the user does not exist.
+        getCredentialHandler().mutate(credentials);
+        if (log.isDebugEnabled())
+            log.debug(sm.getString("memoryRealm.authenticateFailure", username));
+        return null;
+    }
+    boolean validated = getCredentialHandler().matches(credentials, password);
+    if (validated) {
+        if (log.isDebugEnabled())
+            log.debug(sm.getString("memoryRealm.authenticateSuccess", username));
+        return principal;
+    } else {
+        if (log.isDebugEnabled())
+            log.debug(sm.getString("memoryRealm.authenticateFailure", username));
+        return null;
+    }
+}

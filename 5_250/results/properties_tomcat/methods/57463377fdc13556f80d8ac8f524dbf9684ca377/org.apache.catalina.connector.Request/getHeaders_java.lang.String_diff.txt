@@ -1,0 +1,11 @@
+/**
+ * Return all of the values of the specified header, if any; otherwise,
+ * return an empty enumeration.
+ *
+ * @param name Name of the requested header
+ * @return the enumeration with the header values
+ */
+@Override
+public Enumeration<String> getHeaders(String name) {
+    return coyoteRequest.getMimeHeaders().values(name);
+}

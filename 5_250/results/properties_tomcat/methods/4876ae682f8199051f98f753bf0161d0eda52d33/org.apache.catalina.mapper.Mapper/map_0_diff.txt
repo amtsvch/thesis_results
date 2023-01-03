@@ -1,0 +1,23 @@
+/**
+ * Map the specified host name and URI, mutating the given mapping data.
+ *
+ * @param host Virtual host name
+ * @param uri URI
+ * @param version The version, if any, included in the request to be mapped
+ * @param mappingData This structure will contain the result of the mapping
+ *                    operation
+ * @throws IOException if the buffers are too small to hold the results of
+ *                     the mapping.
+ */
+public void map(MessageBytes host, MessageBytes uri, String version, MappingData mappingData) throws IOException {
+    if (host.isNull()) {
+        String defaultHostName = this.defaultHostName;
+        if (defaultHostName == null) {
+            return;
+        }
+        host.getCharChunk().append(defaultHostName);
+    }
+    host.toChars();
+    uri.toChars();
+    internalMap(host.getCharChunk(), uri.getCharChunk(), version, mappingData);
+}

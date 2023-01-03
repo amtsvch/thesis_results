@@ -1,0 +1,6 @@
+boolean isHeaderSizeExceeded(int unreadSize) {
+    if (maxHeaderSize < 0) {
+        return false;
+    }
+    return (headerSize + unreadSize) > maxHeaderSize;
+}

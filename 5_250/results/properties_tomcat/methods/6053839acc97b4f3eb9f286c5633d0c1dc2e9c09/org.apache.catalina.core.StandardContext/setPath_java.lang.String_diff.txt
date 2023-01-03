@@ -1,0 +1,29 @@
+/**                                                                                                    /**                                                                                                 
+* Set the context path for this Context.                                                               * Set the context path for this Context.                                                            
+*                                                                                                      *                                                                                                   
+* @param path The new context path                                                                     * @param path The new context path                                                                  
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void setPath(String path) {                                                                     public void setPath(String path) {                                                                  
+boolean invalid = false;                                                                               boolean invalid = false;                                                                            
+if (path == null || path.equals("/")) {                                                                if (path == null || path.equals("/")) {                                                             
+invalid = true;                                                                                        invalid = true;                                                                                     
+this.path = "";                                                                                        this.path = "";                                                                                     
+} else if ("".equals(path) || path.startsWith("/")) {                                                | } else if (path.isEmpty() || path.startsWith("/")) {                                                
+this.path = path;                                                                                      this.path = path;                                                                                   
+} else {                                                                                               } else {                                                                                            
+invalid = true;                                                                                        invalid = true;                                                                                     
+this.path = "/" + path;                                                                                this.path = "/" + path;                                                                             
+}                                                                                                      }                                                                                                   
+if (this.path.endsWith("/")) {                                                                         if (this.path.endsWith("/")) {                                                                      
+invalid = true;                                                                                        invalid = true;                                                                                     
+this.path = this.path.substring(0, this.path.length() - 1);                                            this.path = this.path.substring(0, this.path.length() - 1);                                         
+}                                                                                                      }                                                                                                   
+if (invalid) {                                                                                         if (invalid) {                                                                                      
+log.warn(sm.getString("standardContext.pathInvalid", path, this.path));                                log.warn(sm.getString("standardContext.pathInvalid", path, this.path));                             
+}                                                                                                      }                                                                                                   
+encodedPath = URLEncoder.DEFAULT.encode(this.path, StandardCharsets.UTF_8);                            encodedPath = URLEncoder.DEFAULT.encode(this.path, StandardCharsets.UTF_8);                         
+if (getName() == null) {                                                                               if (getName() == null) {                                                                            
+setName(this.path);                                                                                    setName(this.path);                                                                                 
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

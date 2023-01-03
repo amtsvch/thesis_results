@@ -1,0 +1,9 @@
+/**
+ * @return the session associated with this Request, creating one
+ * if necessary and requested.
+ *
+ * @param create Create a new session if one does not exist
+ */
+public Session getSessionInternal(boolean create) {
+    return doGetSession(create);
+}

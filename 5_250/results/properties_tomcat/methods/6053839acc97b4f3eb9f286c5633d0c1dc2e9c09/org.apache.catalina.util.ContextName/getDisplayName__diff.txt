@@ -1,0 +1,13 @@
+public String getDisplayName() {                                                                       public String getDisplayName() {                                                                    
+StringBuilder tmp = new StringBuilder();                                                               StringBuilder tmp = new StringBuilder();                                                            
+if ("".equals(path)) {                                                                                 if ("".equals(path)) {                                                                              
+tmp.append('/');                                                                                       tmp.append('/');                                                                                    
+} else {                                                                                               } else {                                                                                            
+tmp.append(path);                                                                                      tmp.append(path);                                                                                   
+}                                                                                                      }                                                                                                   
+if (!"".equals(version)) {                                                                           | if (!version.isEmpty()) {                                                                           
+tmp.append(VERSION_MARKER);                                                                            tmp.append(VERSION_MARKER);                                                                         
+tmp.append(version);                                                                                   tmp.append(version);                                                                                
+}                                                                                                      }                                                                                                   
+return tmp.toString();                                                                                 return tmp.toString();                                                                              
+}                                                                                                      }                                                                                                   

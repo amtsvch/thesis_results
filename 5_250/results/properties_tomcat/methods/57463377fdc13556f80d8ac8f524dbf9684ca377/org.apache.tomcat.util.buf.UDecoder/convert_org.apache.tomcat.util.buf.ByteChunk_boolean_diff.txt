@@ -1,0 +1,18 @@
+/**
+ * URLDecode, will modify the source. Assumes source bytes are encoded using
+ * a superset of US-ASCII as per RFC 7230. "%2f" will be rejected unless the
+ * input is a query string.
+ *
+ * @param mb    The URL encoded bytes
+ * @param query {@code true} if this is a query string. For a query string
+ *                  '+' will be decoded to ' '
+ *
+ * @throws IOException Invalid %xx URL encoding
+ */
+public void convert(ByteChunk mb, boolean query) throws IOException {
+    if (query) {
+        convert(mb, true, EncodedSolidusHandling.DECODE);
+    } else {
+        convert(mb, false, EncodedSolidusHandling.REJECT);
+    }
+}

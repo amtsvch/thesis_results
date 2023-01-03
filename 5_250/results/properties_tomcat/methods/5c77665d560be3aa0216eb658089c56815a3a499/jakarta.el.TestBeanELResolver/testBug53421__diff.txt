@@ -1,0 +1,21 @@
+@Test                                                                                                  @Test                                                                                               
+public void testBug53421() {                                                                           public void testBug53421() {                                                                        
+ExpressionFactory factory = ExpressionFactory.newInstance();                                           ExpressionFactory factory = ExpressionFactory.newInstance();                                        
+ELContext context = new ELContextImpl(factory);                                                        ELContext context = new ELContextImpl(factory);                                                     
+Bean bean = new Bean();                                                                                Bean bean = new Bean();                                                                             
+ValueExpression varBean = factory.createValueExpression(bean, Bean.class);                             ValueExpression varBean = factory.createValueExpression(bean, Bean.class);                          
+context.getVariableMapper().setVariable("bean", varBean);                                              context.getVariableMapper().setVariable("bean", varBean);                                           
+ValueExpression ve = factory.createValueExpression(context, "${bean.valueA}", String.class);           ValueExpression ve = factory.createValueExpression(context, "${bean.valueA}", String.class);        
+Exception e = null;                                                                                    Exception e = null;                                                                                 
+try {                                                                                                  try {                                                                                               
+ve.getValue(context);                                                                                  ve.getValue(context);                                                                               
+} catch (PropertyNotFoundException pnfe) {                                                             } catch (PropertyNotFoundException pnfe) {                                                          
+e = pnfe;                                                                                              e = pnfe;                                                                                           
+}                                                                                                      }                                                                                                   
+Assert.assertTrue("Wrong exception type", e instanceof PropertyNotFoundException);                   | assertThat("Wrong exception type", e, instanceOf(PropertyNotFoundException.class));                 
+String type = Bean.class.getName();                                                                    String type = Bean.class.getName();                                                                 
+                                                                                                     | // Not possible due to test above                                                                   
+                                                                                                     | @SuppressWarnings("null")                                                                           
+String msg = e.getMessage();                                                                           String msg = e.getMessage();                                                                        
+Assert.assertTrue("No reference to type [" + type + "] where property cannot be found in [" + msg +    Assert.assertTrue("No reference to type [" + type + "] where property cannot be found in [" + msg + 
+}                                                                                                      }                                                                                                   

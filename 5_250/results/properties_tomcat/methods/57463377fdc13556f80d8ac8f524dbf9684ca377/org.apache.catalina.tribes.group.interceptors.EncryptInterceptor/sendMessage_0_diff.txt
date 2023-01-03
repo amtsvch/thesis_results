@@ -1,0 +1,17 @@
+@Override
+public void sendMessage(Member[] destination, ChannelMessage msg, InterceptorPayload payload) throws ChannelException {
+    try {
+        byte[] data = msg.getMessage().getBytes();
+        // See #encrypt(byte[]) for an explanation of the return value
+        byte[][] bytes = encryptionManager.encrypt(data);
+        XByteBuffer xbb = msg.getMessage();
+        // Completely replace the message
+        xbb.clear();
+        xbb.append(bytes[0], 0, bytes[0].length);
+        xbb.append(bytes[1], 0, bytes[1].length);
+        super.sendMessage(destination, msg, payload);
+    } catch (GeneralSecurityException gse) {
+        log.error(sm.getString("encryptInterceptor.encrypt.failed"));
+        throw new ChannelException(gse);
+    }
+}

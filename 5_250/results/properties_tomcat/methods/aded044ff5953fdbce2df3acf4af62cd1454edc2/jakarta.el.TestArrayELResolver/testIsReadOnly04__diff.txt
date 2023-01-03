@@ -1,0 +1,7 @@
+/**
+ * Tests that the key is out of bounds and exception will be thrown.
+ */
+@Test(expected = PropertyNotFoundException.class)
+public void testIsReadOnly04() {
+    doTestIsReadOutOfBounds(1);
+}

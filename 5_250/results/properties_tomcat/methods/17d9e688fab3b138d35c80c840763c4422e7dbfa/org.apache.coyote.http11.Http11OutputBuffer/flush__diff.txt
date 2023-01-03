@@ -1,0 +1,14 @@
+// ----------------------------------------------- HttpOutputBuffer Methods
+/**
+ * Flush the response.
+ *
+ * @throws IOException an underlying I/O error occurred
+ */
+@Override
+public void flush() throws IOException {
+    if (lastActiveFilter == -1) {
+        outputStreamOutputBuffer.flush();
+    } else {
+        activeFilters[lastActiveFilter].flush();
+    }
+}

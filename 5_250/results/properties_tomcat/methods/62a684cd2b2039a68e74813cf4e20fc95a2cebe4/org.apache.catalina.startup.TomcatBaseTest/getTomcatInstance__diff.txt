@@ -1,0 +1,8 @@
+/**
+ * Make the Tomcat instance available to sub-classes.
+ *
+ * @return A Tomcat instance without any pre-configured web applications
+ */
+public Tomcat getTomcatInstance() {
+    return tomcat;
+}

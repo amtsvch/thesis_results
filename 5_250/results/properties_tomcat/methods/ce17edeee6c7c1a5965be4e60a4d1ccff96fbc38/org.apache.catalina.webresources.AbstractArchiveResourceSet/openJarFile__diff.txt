@@ -1,0 +1,13 @@
+protected JarFile openJarFile() throws IOException {                                                   protected JarFile openJarFile() throws IOException {                                                
+synchronized (archiveLock) {                                                                           synchronized (archiveLock) {                                                                        
+if (archive == null) {                                                                                 if (archive == null) {                                                                              
+archive = JreCompat.getInstance().jarFileNewInstance(getBase());                                       archive = JreCompat.getInstance().jarFileNewInstance(getBase());                                    
+                                                                                                     | WebResourceRoot root = getRoot();                                                                   
+                                                                                                     | if ((root.getContext() != null) && root.getContext().getUseBloomFilterForArchives()) {              
+                                                                                                     | jarContents = new JarContents(archive);                                                             
+}                                                                                                      }                                                                                                   
+                                                                                                     | }                                                                                                   
+archiveUseCount++;                                                                                     archiveUseCount++;                                                                                  
+return archive;                                                                                        return archive;                                                                                     
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

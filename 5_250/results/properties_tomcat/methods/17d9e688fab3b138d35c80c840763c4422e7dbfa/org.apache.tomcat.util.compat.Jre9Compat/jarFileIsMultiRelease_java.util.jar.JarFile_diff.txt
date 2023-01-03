@@ -1,0 +1,8 @@
+@Override
+public boolean jarFileIsMultiRelease(JarFile jarFile) {
+    try {
+        return ((Boolean) isMultiReleaseMethod.invoke(jarFile)).booleanValue();
+    } catch (ReflectiveOperationException | IllegalArgumentException e) {
+        return false;
+    }
+}

@@ -1,0 +1,13 @@
+/**
+ * Tests that the propertyResolved is false if base is null.
+ */
+@Test
+public void testIsReadOnly02() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    resolver.isReadOnly(context, null, new Object());
+    Assert.assertFalse(context.isPropertyResolved());
+    resolver = new BeanELResolver(true);
+    resolver.isReadOnly(context, null, new Object());
+    Assert.assertFalse(context.isPropertyResolved());
+}

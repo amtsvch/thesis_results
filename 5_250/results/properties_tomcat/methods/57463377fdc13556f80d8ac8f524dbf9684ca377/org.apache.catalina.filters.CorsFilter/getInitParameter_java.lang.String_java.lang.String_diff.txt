@@ -1,0 +1,19 @@
+/**
+ * This method returns the parameter's value if it exists, or defaultValue
+ * if not.
+ *
+ * @param name          The parameter's name
+ *
+ * @param defaultValue  The default value to return if the parameter does
+ *                      not exist
+ *
+ * @return The parameter's value or the default value if the parameter does
+ *         not exist
+ */
+private String getInitParameter(String name, String defaultValue) {
+    String value = getInitParameter(name);
+    if (value != null) {
+        return value;
+    }
+    return defaultValue;
+}

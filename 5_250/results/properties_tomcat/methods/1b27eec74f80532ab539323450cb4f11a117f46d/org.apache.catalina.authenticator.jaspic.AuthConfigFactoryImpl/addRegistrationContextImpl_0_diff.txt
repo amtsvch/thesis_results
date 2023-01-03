@@ -1,0 +1,63 @@
+private void addRegistrationContextImpl(String layer, String appContext, String registrationID, RegistrationContextImpl registrationContextImpl) {
+    RegistrationContextImpl previous = null;
+    // Add the registration, noting any registration it replaces
+    if (layer != null && appContext != null) {
+        previous = layerAppContextRegistrations.put(registrationID, registrationContextImpl);
+    } else if (layer == null && appContext != null) {
+        previous = appContextRegistrations.put(registrationID, registrationContextImpl);
+    } else if (layer != null && appContext == null) {
+        previous = layerRegistrations.put(registrationID, registrationContextImpl);
+    } else {
+        previous = defaultRegistration.put(registrationID, registrationContextImpl);
+    }
+    if (previous == null) {
+        // No match with previous registration so need to check listeners
+        // for all less specific registrations to see if they need to be
+        // notified of this new registration. That there is no exact match
+        // with a previous registration allows a few short-cuts to be taken
+        if (layer != null && appContext != null) {
+            // Need to check existing appContext registrations
+            // (and layer and default)
+            // appContext must match
+            RegistrationContextImpl registration = appContextRegistrations.get(getRegistrationID(null, appContext));
+            if (registration != null) {
+                for (RegistrationListenerWrapper wrapper : registration.listeners) {
+                    if (layer.equals(wrapper.getMessageLayer()) && appContext.equals(wrapper.getAppContext())) {
+                        registration.listeners.remove(wrapper);
+                        wrapper.listener.notify(wrapper.messageLayer, wrapper.appContext);
+                    }
+                }
+            }
+        }
+        if (appContext != null) {
+            // Need to check existing layer registrations
+            // (and default)
+            // Need to check registrations for all layers
+            for (RegistrationContextImpl registration : layerRegistrations.values()) {
+                for (RegistrationListenerWrapper wrapper : registration.listeners) {
+                    if (appContext.equals(wrapper.getAppContext())) {
+                        registration.listeners.remove(wrapper);
+                        wrapper.listener.notify(wrapper.messageLayer, wrapper.appContext);
+                    }
+                }
+            }
+        }
+        if (layer != null || appContext != null) {
+            // Need to check default
+            for (RegistrationContextImpl registration : defaultRegistration.values()) {
+                for (RegistrationListenerWrapper wrapper : registration.listeners) {
+                    if (appContext != null && appContext.equals(wrapper.getAppContext()) || layer != null && layer.equals(wrapper.getMessageLayer())) {
+                        registration.listeners.remove(wrapper);
+                        wrapper.listener.notify(wrapper.messageLayer, wrapper.appContext);
+                    }
+                }
+            }
+        }
+    } else {
+        // Replaced an existing registration so need to notify those listeners
+        for (RegistrationListenerWrapper wrapper : previous.listeners) {
+            previous.listeners.remove(wrapper);
+            wrapper.listener.notify(wrapper.messageLayer, wrapper.appContext);
+        }
+    }
+}

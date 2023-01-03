@@ -1,0 +1,10 @@
+private final BeanProperty property(ELContext ctx, Object base, Object property) {
+    Class<?> type = base.getClass();
+    String prop = property.toString();
+    BeanProperties props = this.cache.get(type.getName());
+    if (props == null || type != props.getType()) {
+        props = new BeanProperties(type);
+        this.cache.put(type.getName(), props);
+    }
+    return props.get(ctx, prop);
+}

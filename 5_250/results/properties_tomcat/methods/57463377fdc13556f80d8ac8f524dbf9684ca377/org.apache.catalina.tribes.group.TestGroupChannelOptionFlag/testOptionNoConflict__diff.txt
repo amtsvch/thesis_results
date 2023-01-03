@@ -1,0 +1,21 @@
+@Test
+public void testOptionNoConflict() throws Exception {
+    boolean error = false;
+    channel.setOptionCheck(true);
+    ChannelInterceptor i = new TestInterceptor();
+    i.setOptionFlag(128);
+    channel.addInterceptor(i);
+    i = new TestInterceptor();
+    i.setOptionFlag(64);
+    channel.addInterceptor(i);
+    i = new TestInterceptor();
+    i.setOptionFlag(256);
+    channel.addInterceptor(i);
+    try {
+        channel.start(Channel.DEFAULT);
+    } catch (ChannelException x) {
+        if (x.getMessage().contains("option flag conflict"))
+            error = true;
+    }
+    Assert.assertFalse(error);
+}

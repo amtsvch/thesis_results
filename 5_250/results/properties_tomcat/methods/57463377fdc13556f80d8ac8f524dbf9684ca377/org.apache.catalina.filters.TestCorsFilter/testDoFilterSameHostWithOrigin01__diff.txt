@@ -1,0 +1,7 @@
+/*
+     * Negative test, when a non-CORS request arrives, with an origin header.
+     */
+@Test
+public void testDoFilterSameHostWithOrigin01() throws IOException, ServletException {
+    doTestDoFilterSameHostWithOrigin01("http://localhost:8080", "http", "localhost", 8080, false);
+}

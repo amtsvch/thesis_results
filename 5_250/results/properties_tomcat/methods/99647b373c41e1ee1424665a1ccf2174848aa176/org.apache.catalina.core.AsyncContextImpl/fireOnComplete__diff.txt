@@ -1,0 +1,23 @@
+@Override                                                                                              @Override                                                                                           
+public void fireOnComplete() {                                                                         public void fireOnComplete() {                                                                      
+if (log.isDebugEnabled()) {                                                                            if (log.isDebugEnabled()) {                                                                         
+log.debug(sm.getString("asyncContextImpl.fireOnComplete"));                                            log.debug(sm.getString("asyncContextImpl.fireOnComplete"));                                         
+}                                                                                                      }                                                                                                   
+List&lt;AsyncListenerWrapper&gt; listenersCopy = new ArrayList&lt;&gt;(listeners);                     List&lt;AsyncListenerWrapper&gt; listenersCopy = new ArrayList&lt;&gt;(listeners);                  
+ClassLoader oldCL = context.bind(Globals.IS_SECURITY_ENABLED, null);                                   ClassLoader oldCL = context.bind(Globals.IS_SECURITY_ENABLED, null);                                
+try {                                                                                                  try {                                                                                               
+for (AsyncListenerWrapper listener : listenersCopy) {                                                  for (AsyncListenerWrapper listener : listenersCopy) {                                               
+try {                                                                                                  try {                                                                                               
+listener.fireOnComplete(event);                                                                        listener.fireOnComplete(event);                                                                     
+} catch (Throwable t) {                                                                                } catch (Throwable t) {                                                                             
+ExceptionUtils.handleThrowable(t);                                                                     ExceptionUtils.handleThrowable(t);                                                                  
+log.warn(sm.getString("asyncContextImpl.onCompleteError", listener.getClass().getName()), t);          log.warn(sm.getString("asyncContextImpl.onCompleteError", listener.getClass().getName()), t);       
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+} finally {                                                                                            } finally {                                                                                         
+context.fireRequestDestroyEvent(request.getRequest());                                                 context.fireRequestDestroyEvent(request.getRequest());                                              
+clearServletRequestResponse();                                                                         clearServletRequestResponse();                                                                      
+this.context.decrementInProgressAsyncCount();                                                        |                                                                                                     
+context.unbind(Globals.IS_SECURITY_ENABLED, oldCL);                                                    context.unbind(Globals.IS_SECURITY_ENABLED, oldCL);                                                 
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

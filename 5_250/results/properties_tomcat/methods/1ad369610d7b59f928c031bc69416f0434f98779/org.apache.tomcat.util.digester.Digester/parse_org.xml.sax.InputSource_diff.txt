@@ -1,0 +1,14 @@
+/**
+ * Parse the content of the specified input source using this Digester.
+ * Returns the root element from the object stack (if any).
+ *
+ * @param input Input source containing the XML data to be parsed
+ * @return the root object
+ * @exception IOException if an input/output error occurs
+ * @exception SAXException if a parsing exception occurs
+ */
+public Object parse(InputSource input) throws IOException, SAXException {
+    configure();
+    getXMLReader().parse(input);
+    return root;
+}

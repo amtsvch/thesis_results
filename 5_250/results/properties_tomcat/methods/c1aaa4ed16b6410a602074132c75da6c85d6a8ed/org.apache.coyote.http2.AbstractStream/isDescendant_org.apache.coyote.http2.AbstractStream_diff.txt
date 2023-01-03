@@ -1,0 +1,9 @@
+final boolean isDescendant(AbstractStream stream) {
+    // Is the passed in Stream a descendant of this Stream?
+    // Start at the passed in Stream and work up
+    AbstractStream parent = stream.getParentStream();
+    while (parent != null && parent != this) {
+        parent = parent.getParentStream();
+    }
+    return parent != null;
+}

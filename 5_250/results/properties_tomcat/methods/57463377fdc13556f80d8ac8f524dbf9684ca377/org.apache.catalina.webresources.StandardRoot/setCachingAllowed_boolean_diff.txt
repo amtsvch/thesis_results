@@ -1,0 +1,7 @@
+@Override
+public void setCachingAllowed(boolean cachingAllowed) {
+    this.cachingAllowed = cachingAllowed;
+    if (!cachingAllowed) {
+        cache.clear();
+    }
+}

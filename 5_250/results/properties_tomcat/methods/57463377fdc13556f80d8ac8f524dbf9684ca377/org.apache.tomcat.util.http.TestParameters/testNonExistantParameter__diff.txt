@@ -1,0 +1,10 @@
+@Test
+public void testNonExistantParameter() {
+    Parameters p = new Parameters();
+    String value = p.getParameter("foo");
+    Assert.assertNull(value);
+    Enumeration<String> names = p.getParameterNames();
+    Assert.assertFalse(names.hasMoreElements());
+    String[] values = p.getParameterValues("foo");
+    Assert.assertNull(values);
+}

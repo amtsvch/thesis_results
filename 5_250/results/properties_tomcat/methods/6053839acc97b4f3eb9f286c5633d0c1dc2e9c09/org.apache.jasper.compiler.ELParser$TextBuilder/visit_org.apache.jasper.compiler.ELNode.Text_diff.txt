@@ -1,0 +1,4 @@
+@Override
+public void visit(Text n) throws JasperException {
+    output.append(escapeLiteralExpression(n.getText(), isDeferredSyntaxAllowedAsLiteral));
+}

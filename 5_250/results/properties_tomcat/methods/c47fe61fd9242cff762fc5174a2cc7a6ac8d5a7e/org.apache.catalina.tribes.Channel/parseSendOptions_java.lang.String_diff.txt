@@ -1,0 +1,19 @@
+/**
+ * Translates a comma separated list of option names to their bitwise-ORd value
+ * @param input A comma separated list of options, e.g. "async, multicast"
+ * @return a bitwise ORd value of the passed option names
+ */
+public static int parseSendOptions(String input) {
+    try {
+        return Integer.parseInt(input);
+    } catch (NumberFormatException nfe) {
+        final Log log = LogFactory.getLog(Channel.class);
+        log.trace(String.format("Failed to parse [%s] as integer, channelSendOptions possibly set by name(s)", input));
+    }
+    String[] options = input.split("\\s*,\\s*");
+    int result = 0;
+    for (String opt : options) {
+        result |= getSendOptionValue(opt);
+    }
+    return result;
+}

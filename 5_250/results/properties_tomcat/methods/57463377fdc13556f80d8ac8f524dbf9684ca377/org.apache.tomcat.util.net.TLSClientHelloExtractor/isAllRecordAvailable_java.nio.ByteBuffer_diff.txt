@@ -1,0 +1,6 @@
+private static boolean isAllRecordAvailable(ByteBuffer bb) {
+    // Next two bytes (unsigned) are the size of the record. We need all of
+    // it.
+    int size = bb.getChar();
+    return isAvailable(bb, size);
+}

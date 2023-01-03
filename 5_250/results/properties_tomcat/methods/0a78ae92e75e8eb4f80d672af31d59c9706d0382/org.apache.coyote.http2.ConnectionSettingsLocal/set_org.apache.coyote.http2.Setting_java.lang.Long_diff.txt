@@ -1,0 +1,9 @@
+@Override
+final synchronized void set(Setting setting, Long value) {
+    checkSend();
+    if (current.get(setting).longValue() == value.longValue()) {
+        pending.remove(setting);
+    } else {
+        pending.put(setting, value);
+    }
+}

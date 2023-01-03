@@ -1,0 +1,18 @@
+private synchronized void close() throws ChannelException {
+    ChannelException x = null;
+    Object[] members = nioSenders.keySet().toArray();
+    for (Object member : members) {
+        Member mbr = (Member) member;
+        try {
+            NioSender sender = nioSenders.get(mbr);
+            sender.disconnect();
+        } catch (Exception e) {
+            if (x == null)
+                x = new ChannelException(e);
+            x.addFaultyMember(mbr, e);
+        }
+        nioSenders.remove(mbr);
+    }
+    if (x != null)
+        throw x;
+}

@@ -1,0 +1,7 @@
+/**
+ * Add a URL pattern to be part of this web resource collection.
+ * @param pattern The pattern
+ */
+public void addPattern(String pattern) {
+    addPatternDecoded(UDecoder.URLDecode(pattern, StandardCharsets.UTF_8));
+}

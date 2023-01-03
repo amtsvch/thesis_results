@@ -1,0 +1,247 @@
+{
+  "call" : "org.apache.catalina.authenticator.TestJaspicCallbackHandlerInAuthenticator#testDefaultCallbackHandlerCreation",
+  "kiekerPattern" : "public void org.apache.catalina.authenticator.TestJaspicCallbackHandlerInAuthenticator.testDefaultCallbackHandlerCreation()",
+  "otherKiekerPattern" : null,
+  "module" : "",
+  "children" : [ {
+    "call" : "org.apache.catalina.authenticator.TestJaspicCallbackHandlerInAuthenticator#testCallbackHandlerCreation",
+    "kiekerPattern" : "private void org.apache.catalina.authenticator.TestJaspicCallbackHandlerInAuthenticator.testCallbackHandlerCreation(java.lang.String,java.lang.Class)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.catalina.authenticator.TestJaspicCallbackHandlerInAuthenticator#createCallbackHandler",
+      "kiekerPattern" : "private javax.security.auth.callback.CallbackHandler org.apache.catalina.authenticator.TestJaspicCallbackHandlerInAuthenticator.createCallbackHandler(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.juli.logging.LogFactory#<init>",
+        "kiekerPattern" : "private new org.apache.juli.logging.LogFactory.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.juli.logging.LogFactory#getLog",
+        "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.juli.logging.LogFactory#getFactory",
+          "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.juli.logging.LogFactory#getInstance",
+          "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.Class)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.juli.logging.LogFactory#getInstance",
+            "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+              "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+                "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              } ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+            "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+              "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.util.http.ConcurrentDateFormat#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.util.http.ConcurrentDateFormat.<init>(java.lang.String,java.util.Locale,java.util.TimeZone)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.http.ConcurrentDateFormat#createInstance",
+          "kiekerPattern" : "private java.text.SimpleDateFormat org.apache.tomcat.util.http.ConcurrentDateFormat.createInstance()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.util.http.FastHttpDateFormat#formatDate",
+        "kiekerPattern" : "public static final java.lang.String org.apache.tomcat.util.http.FastHttpDateFormat.formatDate(long)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.http.ConcurrentDateFormat#format",
+          "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.http.ConcurrentDateFormat.format(java.util.Date)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.util.http.FastHttpDateFormat#updateFormatCache",
+          "kiekerPattern" : "private static void org.apache.tomcat.util.http.FastHttpDateFormat.updateFormatCache(java.lang.Long,java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.catalina.LifecycleState#<init>",
+        "kiekerPattern" : "private new org.apache.catalina.LifecycleState.<init>(boolean,java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.util.LifecycleBase#<init>",
+        "kiekerPattern" : "public new org.apache.catalina.util.LifecycleBase.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.util.LifecycleMBeanBase#<init>",
+        "kiekerPattern" : "public new org.apache.catalina.util.LifecycleMBeanBase.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.valves.ValveBase#<init>",
+        "kiekerPattern" : "public new org.apache.catalina.valves.ValveBase.<init>(boolean)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.authenticator.AuthenticatorBase#<init>",
+        "kiekerPattern" : "public new org.apache.catalina.authenticator.AuthenticatorBase.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.authenticator.TestJaspicCallbackHandlerInAuthenticator$TestAuthenticator#<init>",
+        "kiekerPattern" : "private new org.apache.catalina.authenticator.TestJaspicCallbackHandlerInAuthenticator$TestAuthenticator.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.authenticator.AuthenticatorBase#createCallbackHandler",
+        "kiekerPattern" : "private javax.security.auth.callback.CallbackHandler org.apache.catalina.authenticator.AuthenticatorBase.createCallbackHandler()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+            "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+              "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+                "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              } ]
+            } ]
+          } ]
+        }, {
+          "call" : "org.apache.juli.logging.LogFactory#getLog",
+          "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.juli.logging.LogFactory#getFactory",
+            "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.juli.logging.LogFactory#getInstance",
+            "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.Class)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.juli.logging.LogFactory#getInstance",
+              "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+                "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+                  "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                } ]
+              } ]
+            } ]
+          } ]
+        }, {
+          "call" : "org.apache.catalina.authenticator.jaspic.CallbackHandlerImpl#<init>",
+          "kiekerPattern" : "public new org.apache.catalina.authenticator.jaspic.CallbackHandlerImpl.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.catalina.authenticator.AuthenticatorBase#getContainer",
+          "kiekerPattern" : "public org.apache.catalina.Container org.apache.catalina.authenticator.AuthenticatorBase.getContainer()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.catalina.authenticator.jaspic.CallbackHandlerImpl#setContainer",
+          "kiekerPattern" : "public void org.apache.catalina.authenticator.jaspic.CallbackHandlerImpl.setContainer(org.apache.catalina.Container)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    } ]
+  } ]
+}

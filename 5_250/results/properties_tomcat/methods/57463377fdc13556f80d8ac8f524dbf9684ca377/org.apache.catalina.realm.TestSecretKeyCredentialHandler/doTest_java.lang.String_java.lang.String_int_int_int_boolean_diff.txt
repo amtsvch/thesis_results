@@ -1,0 +1,15 @@
+private void doTest(String password, String digest, int saltLength, int iterations, int keyLength, boolean expectMatch) throws NoSuchAlgorithmException {
+    SecretKeyCredentialHandler pbech = new SecretKeyCredentialHandler();
+    SecretKeyCredentialHandler verifier = new SecretKeyCredentialHandler();
+    pbech.setAlgorithm(digest);
+    pbech.setIterations(iterations);
+    pbech.setSaltLength(saltLength);
+    pbech.setKeyLength(keyLength);
+    verifier.setAlgorithm(digest);
+    String storedCredential = pbech.mutate(password);
+    if (expectMatch) {
+        Assert.assertTrue("[" + digest + "] [" + saltLength + "] [" + iterations + "] [" + keyLength + "] [" + password + "] [" + storedCredential + "]", verifier.matches(password, storedCredential));
+    } else {
+        Assert.assertFalse("[" + digest + "] [" + saltLength + "] [" + iterations + "] [" + keyLength + "] [" + password + "] [" + storedCredential + "]", verifier.matches(password, storedCredential));
+    }
+}

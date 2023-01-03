@@ -1,0 +1,18 @@
+private static String getClassNameJreDir() {
+    File file = new File(PROPERTY_FILE);
+    if (file.canRead()) {
+        try (InputStream is = new FileInputStream(file)) {
+            Properties props = new Properties();
+            props.load(is);
+            String value = props.getProperty(PROPERTY_NAME);
+            if (value != null && value.trim().length() > 0) {
+                return value.trim();
+            }
+        } catch (FileNotFoundException e) {
+            // Should not happen - ignore it if it does
+        } catch (IOException e) {
+            throw new ELException(Util.message(null, "expressionFactory.readFailed", PROPERTY_FILE), e);
+        }
+    }
+    return null;
+}

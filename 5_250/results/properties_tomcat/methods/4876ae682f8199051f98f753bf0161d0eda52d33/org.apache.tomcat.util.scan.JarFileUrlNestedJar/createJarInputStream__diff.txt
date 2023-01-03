@@ -1,0 +1,4 @@
+@Override
+protected NonClosingJarInputStream createJarInputStream() throws IOException {
+    return new NonClosingJarInputStream(warFile.getInputStream(jarEntry));
+}

@@ -1,0 +1,6 @@
+@Test
+public void testLoadEmpty() {
+    File f = new File("test/conf/jaspic-test-01.xml");
+    Providers result = PersistentProviderRegistrations.loadProviders(f);
+    Assert.assertEquals(0, result.getProviders().size());
+}

@@ -1,0 +1,5 @@
+private SimpleDateFormat createInstance() {
+    SimpleDateFormat sdf = new SimpleDateFormat(format, locale);
+    sdf.setTimeZone(timezone);
+    return sdf;
+}

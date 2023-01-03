@@ -1,0 +1,42 @@
+private void doRelativeOrderingTest(RelativeOrderingTestRunner runner) {
+    // Confirm we have all 720 possible input orders
+    // Set<String> orders = new HashSet<>();
+    // Test all possible input orders since some bugs were discovered that
+    // depended on input order
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 5; j++) {
+            for (int k = 0; k < 4; k++) {
+                for (int l = 0; l < 3; l++) {
+                    for (int m = 0; m < 2; m++) {
+                        setUp();
+                        runner.init();
+                        ArrayList<WebXml> source = new ArrayList<>(fragments.values());
+                        Map<String, WebXml> input = new LinkedHashMap<>();
+                        WebXml one = source.remove(i);
+                        input.put(one.getName(), one);
+                        WebXml two = source.remove(j);
+                        input.put(two.getName(), two);
+                        WebXml three = source.remove(k);
+                        input.put(three.getName(), three);
+                        WebXml four = source.remove(l);
+                        input.put(four.getName(), four);
+                        WebXml five = source.remove(m);
+                        input.put(five.getName(), five);
+                        WebXml six = source.remove(0);
+                        input.put(six.getName(), six);
+                        /*
+                            String order = one.getName() + two.getName() +
+                                    three.getName() + four.getName() +
+                                    five.getName() + six.getName();
+                            orders.add(order);
+                            */
+                        Set<WebXml> ordered = WebXml.orderWebFragments(app, input, null);
+                        populatePositions(ordered);
+                        runner.validate(getOrder(ordered));
+                    }
+                }
+            }
+        }
+    }
+    // System.out.println(orders.size());
+}

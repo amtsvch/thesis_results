@@ -1,0 +1,8 @@
+@Override
+public void close() throws IOException {
+    if (closed.compareAndSet(false, true)) {
+        // Must only call this once else the usage counting will break
+        archiveResourceSet.closeJarFile();
+    }
+    is.close();
+}

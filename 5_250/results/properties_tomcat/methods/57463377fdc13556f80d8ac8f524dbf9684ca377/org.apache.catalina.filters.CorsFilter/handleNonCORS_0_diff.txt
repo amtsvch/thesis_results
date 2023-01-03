@@ -1,0 +1,16 @@
+/**
+ * Handles a request, that's not a CORS request, but is a valid request i.e.
+ * it is not a cross-origin request. This implementation, just forwards the
+ * request down the filter chain.
+ *
+ * @param request The {@link HttpServletRequest} object.
+ * @param response The {@link HttpServletResponse} object.
+ * @param filterChain The {@link FilterChain} object.
+ * @throws IOException an IO error occurred
+ * @throws ServletException Servlet error propagation
+ */
+private void handleNonCORS(final HttpServletRequest request, final HttpServletResponse response, final FilterChain filterChain) throws IOException, ServletException {
+    addStandardHeaders(request, response);
+    // Let request pass.
+    filterChain.doFilter(request, response);
+}

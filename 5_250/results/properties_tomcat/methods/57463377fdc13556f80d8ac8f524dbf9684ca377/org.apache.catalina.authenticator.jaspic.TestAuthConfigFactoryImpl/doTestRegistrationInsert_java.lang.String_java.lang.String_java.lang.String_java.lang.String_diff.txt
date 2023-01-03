@@ -1,0 +1,38 @@
+private void doTestRegistrationInsert(String newLayer, String newAppContext, String expectedListenerLayer, String expectedListenerAppContext) {
+    // Set up
+    AuthConfigFactory factory = new AuthConfigFactoryImpl();
+    AuthConfigProvider acp1 = new SimpleAuthConfigProvider(null, null);
+    factory.registerConfigProvider(acp1, "L_1", "AC_1", null);
+    AuthConfigProvider acp2 = new SimpleAuthConfigProvider(null, null);
+    factory.registerConfigProvider(acp2, null, "AC_2", null);
+    AuthConfigProvider acp3 = new SimpleAuthConfigProvider(null, null);
+    factory.registerConfigProvider(acp3, "L_2", null, null);
+    AuthConfigProvider acp4 = new SimpleAuthConfigProvider(null, null);
+    factory.registerConfigProvider(acp4, null, null, null);
+    SimpleRegistrationListener listener1 = new SimpleRegistrationListener("L_1", "AC_1");
+    factory.getConfigProvider("L_1", "AC_1", listener1);
+    SimpleRegistrationListener listener2 = new SimpleRegistrationListener("L_3", "AC_2");
+    factory.getConfigProvider("L_3", "AC_2", listener2);
+    SimpleRegistrationListener listener3 = new SimpleRegistrationListener("L_2", "AC_3");
+    factory.getConfigProvider("L_2", "AC_3", listener3);
+    SimpleRegistrationListener listener4 = new SimpleRegistrationListener("L_4", "AC_4");
+    factory.getConfigProvider("L_4", "AC_4", listener4);
+    List<SimpleRegistrationListener> listeners = new ArrayList<>();
+    listeners.add(listener1);
+    listeners.add(listener2);
+    listeners.add(listener3);
+    listeners.add(listener4);
+    // Register a new provider that will impact some existing registrations
+    AuthConfigProvider acpNew = new SimpleAuthConfigProvider(null, null);
+    factory.registerConfigProvider(acpNew, newLayer, newAppContext, null);
+    // Check to see if the expected listener fired.
+    for (SimpleRegistrationListener listener : listeners) {
+        if (listener.wasCalled()) {
+            Assert.assertEquals(listener.layer, expectedListenerLayer);
+            Assert.assertEquals(listener.appContext, expectedListenerAppContext);
+            Assert.assertTrue(listener.wasCorrectlyCalled());
+        } else {
+            Assert.assertFalse((listener.layer.equals(expectedListenerLayer) && listener.appContext.equals(expectedListenerAppContext)));
+        }
+    }
+}

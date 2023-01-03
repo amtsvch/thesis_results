@@ -1,0 +1,38 @@
+public void parse(Map<String, RewriteMap> maps) {
+    // Parse the substitution
+    if (!"-".equals(substitutionString)) {
+        substitution = new Substitution();
+        substitution.setSub(substitutionString);
+        substitution.parse(maps);
+        substitution.setEscapeBackReferences(isEscapeBackReferences());
+    }
+    // Parse the pattern
+    if (patternString.startsWith("!")) {
+        positive = false;
+        patternString = patternString.substring(1);
+    }
+    int flags = 0;
+    if (isNocase()) {
+        flags |= Pattern.CASE_INSENSITIVE;
+    }
+    Pattern.compile(patternString, flags);
+    // Parse conditions
+    for (RewriteCond condition : conditions) {
+        condition.parse(maps);
+    }
+    // Parse flag which have substitution values
+    if (isEnv()) {
+        for (String s : envValue) {
+            Substitution newEnvSubstitution = new Substitution();
+            newEnvSubstitution.setSub(s);
+            newEnvSubstitution.parse(maps);
+            envSubstitution.add(newEnvSubstitution);
+            envResult.add(new ThreadLocal<String>());
+        }
+    }
+    if (isCookie()) {
+        cookieSubstitution = new Substitution();
+        cookieSubstitution.setSub(cookieValue);
+        cookieSubstitution.parse(maps);
+    }
+}

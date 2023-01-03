@@ -1,0 +1,7 @@
+@Test
+public void testAverage01() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("[1,2,3,4,5].stream().average()", Object.class);
+    Number average = (Number) ((Optional) result).get();
+    Assert.assertTrue("Result: " + average.toString(), ELSupport.equals(null, Long.valueOf(3), average));
+}

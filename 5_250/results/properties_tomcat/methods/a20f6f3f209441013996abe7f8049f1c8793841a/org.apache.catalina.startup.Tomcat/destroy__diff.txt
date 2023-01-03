@@ -1,0 +1,11 @@
+/**
+ * Destroy the server. This object cannot be used once this method has been
+ * called.
+ *
+ * @throws LifecycleException Destroy error
+ */
+public void destroy() throws LifecycleException {
+    getServer();
+    server.destroy();
+    // Could null out objects here
+}

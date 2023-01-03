@@ -1,0 +1,42 @@
+/**
+ * This is equivalent to adding a web application to a Host's appBase
+ * (usually Tomcat's webapps directory). By default, the equivalent of the
+ * default web.xml will be applied to the web application (see
+ * {@link #initWebappDefaults(String)}). This may be prevented by calling
+ * {@link #setAddDefaultWebXmlToWebapp(boolean)} with {@code false}. Any
+ * <code>WEB-INF/web.xml</code> and <code>META-INF/context.xml</code>
+ * packaged with the application will always be processed and normal web
+ * fragment and {@link jakarta.servlet.ServletContainerInitializer} processing
+ * will always be applied.
+ *
+ * @param host        The host in which the context will be deployed
+ * @param contextPath The context mapping to use, "" for root context.
+ * @param docBase     Base directory for the context, for static files. Must
+ *                        exist, relative to the server home
+ * @param config      Custom context configuration helper. Any configuration
+ *                        will be in addition to equivalent of the default
+ *                        web.xml configuration described above.
+ *
+ * @return the deployed context
+ */
+public Context addWebapp(Host host, String contextPath, String docBase, LifecycleListener config) {
+    silence(host, contextPath);
+    Context ctx = createContext(host, contextPath);
+    ctx.setPath(contextPath);
+    ctx.setDocBase(docBase);
+    if (addDefaultWebXmlToWebapp) {
+        ctx.addLifecycleListener(getDefaultWebXmlListener());
+    }
+    ctx.setConfigFile(getWebappConfigFile(docBase, contextPath));
+    ctx.addLifecycleListener(config);
+    if (addDefaultWebXmlToWebapp && (config instanceof ContextConfig)) {
+        // prevent it from looking ( if it finds one - it'll have dup error )
+        ((ContextConfig) config).setDefaultWebXml(noDefaultWebXmlPath());
+    }
+    if (host == null) {
+        getHost().addChild(ctx);
+    } else {
+        host.addChild(ctx);
+    }
+    return ctx;
+}

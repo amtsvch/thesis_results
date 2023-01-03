@@ -1,0 +1,13 @@
+/**                                                                                                    /**                                                                                                 
+* Register an EvaluationListener with this ELContext.                                                  * Register an EvaluationListener with this ELContext.                                               
+*                                                                                                      *                                                                                                   
+* @param listener The EvaluationListener to register                                                   * @param listener The EvaluationListener to register                                                
+*                                                                                                      *                                                                                                   
+* @since EL 3.0                                                                                        * @since EL 3.0                                                                                     
+*/                                                                                                     */                                                                                                  
+public void addEvaluationListener(EvaluationListener listener) {                                       public void addEvaluationListener(EvaluationListener listener) {                                    
+                                                                                                     | if (listeners == null) {                                                                            
+                                                                                                     | listeners = new ArrayList&lt;&gt;();                                                                
+                                                                                                     | }                                                                                                   
+listeners.add(listener);                                                                               listeners.add(listener);                                                                            
+}                                                                                                      }                                                                                                   

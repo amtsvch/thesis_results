@@ -1,0 +1,25 @@
+@Test
+public void testGetPath() {
+    Assert.assertEquals("", cn1.getPath());
+    Assert.assertEquals("", cn2.getPath());
+    Assert.assertEquals("", cn3.getPath());
+    Assert.assertEquals("/foo", cn4.getPath());
+    Assert.assertEquals("/foo/bar", cn5.getPath());
+    Assert.assertEquals("", cn6.getPath());
+    Assert.assertEquals("", cn7.getPath());
+    Assert.assertEquals("", cn8.getPath());
+    Assert.assertEquals("/foo", cn9.getPath());
+    Assert.assertEquals("/foo/bar", cn10.getPath());
+    Assert.assertEquals("", cn11.getPath());
+    Assert.assertEquals("/foo", cn12.getPath());
+    Assert.assertEquals("/foo/bar", cn13.getPath());
+    Assert.assertEquals("", cn14.getPath());
+    Assert.assertEquals("/foo", cn15.getPath());
+    Assert.assertEquals("/foo/bar", cn16.getPath());
+    Assert.assertEquals("", cn17.getPath());
+    Assert.assertEquals("/ROOT/bar", cn18.getPath());
+    Assert.assertEquals("/ROOT/bar", cn19.getPath());
+    Assert.assertEquals("", cn20.getPath());
+    Assert.assertEquals("/foo.war", cn21.getPath());
+    Assert.assertEquals("/foo", cn22.getPath());
+}

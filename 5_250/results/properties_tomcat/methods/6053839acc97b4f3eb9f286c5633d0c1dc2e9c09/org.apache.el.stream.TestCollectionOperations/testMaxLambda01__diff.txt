@@ -1,0 +1,7 @@
+@Test
+public void testMaxLambda01() {
+    ELProcessor processor = new ELProcessor();
+    processor.defineBean("beans", beans);
+    Object result = processor.getValue("beans.stream().max((x,y)->x.name.compareTo(y.name))", Object.class);
+    Assert.assertEquals(bean03, ((Optional) result).get());
+}

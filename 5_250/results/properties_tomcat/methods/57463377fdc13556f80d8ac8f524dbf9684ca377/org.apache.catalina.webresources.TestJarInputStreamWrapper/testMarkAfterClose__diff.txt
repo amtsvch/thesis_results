@@ -1,0 +1,5 @@
+@Test
+public void testMarkAfterClose() throws Exception {
+    Method m = InputStream.class.getMethod("mark", int.class);
+    testMethodAfterClose(m, Integer.valueOf(1));
+}

@@ -1,0 +1,16 @@
+/*
+     * Happy path test, when a valid CORS Simple request arrives.
+     *
+     * @throws ServletException
+     */
+@Test
+public void testCheckActualRequestTypeMethodPOSTNotSimpleHeaders() throws ServletException {
+    TesterHttpServletRequest request = new TesterHttpServletRequest();
+    request.setHeader(CorsFilter.REQUEST_HEADER_ORIGIN, TesterFilterConfigs.HTTP_TOMCAT_APACHE_ORG);
+    request.setMethod("POST");
+    request.setContentType("application/json");
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getDefaultFilterConfig());
+    CorsFilter.CORSRequestType requestType = corsFilter.checkRequestType(request);
+    Assert.assertEquals(CorsFilter.CORSRequestType.ACTUAL, requestType);
+}

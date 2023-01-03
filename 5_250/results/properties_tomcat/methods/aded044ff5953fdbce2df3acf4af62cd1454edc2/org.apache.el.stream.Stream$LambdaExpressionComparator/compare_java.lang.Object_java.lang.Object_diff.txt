@@ -1,0 +1,4 @@
+@Override
+public int compare(Object o1, Object o2) {
+    return ELSupport.coerceToNumber(null, le.invoke(o1, o2), Integer.class).intValue();
+}

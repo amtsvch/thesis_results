@@ -1,0 +1,11 @@
+private void validateSimple(Providers providers) {
+    Assert.assertEquals(1, providers.getProviders().size());
+    Provider p = providers.getProviders().get(0);
+    Assert.assertEquals("a", p.getClassName());
+    Assert.assertEquals("b", p.getLayer());
+    Assert.assertEquals("c", p.getAppContext());
+    Assert.assertEquals("d", p.getDescription());
+    Assert.assertEquals(2, p.getProperties().size());
+    Assert.assertEquals("f", p.getProperties().get("e"));
+    Assert.assertEquals("h", p.getProperties().get("g"));
+}

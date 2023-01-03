@@ -1,0 +1,6 @@
+@Test
+public void testMissingWithTccl() {
+    Thread.currentThread().setContextClassLoader(TestStringManager.class.getClassLoader());
+    StringManager sm = StringManager.getManager("org.does.not.exist");
+    Assert.assertNull(sm.getLocale());
+}

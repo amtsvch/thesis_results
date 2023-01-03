@@ -1,0 +1,9 @@
+/**
+ * Open (if necessary) and return a connection to the configured
+ * directory server for this Realm.
+ * @return the connection
+ * @exception NamingException if a directory server error occurs
+ */
+protected JNDIConnection get() throws NamingException {
+    return get(false);
+}

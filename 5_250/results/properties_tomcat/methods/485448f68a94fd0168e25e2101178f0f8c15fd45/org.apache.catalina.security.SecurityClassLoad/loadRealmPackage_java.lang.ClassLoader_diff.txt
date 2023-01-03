@@ -1,0 +1,4 @@
+private static final void loadRealmPackage(ClassLoader loader) throws Exception {
+    final String basePackage = "org.apache.catalina.realm.";
+    loader.loadClass(basePackage + "LockOutRealm$LockRecord");
+}

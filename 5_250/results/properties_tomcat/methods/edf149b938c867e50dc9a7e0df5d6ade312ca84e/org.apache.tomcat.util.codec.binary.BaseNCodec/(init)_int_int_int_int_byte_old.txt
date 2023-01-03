@@ -1,0 +1,17 @@
+/**
+ * Note <code>lineLength</code> is rounded down to the nearest multiple of the encoded block size.
+ * If <code>chunkSeparatorLength</code> is zero, then chunking is disabled.
+ * @param unencodedBlockSize the size of an unencoded block (e.g. Base64 = 3)
+ * @param encodedBlockSize the size of an encoded block (e.g. Base64 = 4)
+ * @param lineLength if &gt; 0, use chunking with a length <code>lineLength</code>
+ * @param chunkSeparatorLength the chunk separator length, if relevant
+ * @param pad byte used as padding byte.
+ */
+protected BaseNCodec(final int unencodedBlockSize, final int encodedBlockSize, final int lineLength, final int chunkSeparatorLength, final byte pad) {
+    this.unencodedBlockSize = unencodedBlockSize;
+    this.encodedBlockSize = encodedBlockSize;
+    final boolean useChunking = lineLength > 0 && chunkSeparatorLength > 0;
+    this.lineLength = useChunking ? (lineLength / encodedBlockSize) * encodedBlockSize : 0;
+    this.chunkSeparatorLength = chunkSeparatorLength;
+    this.pad = pad;
+}

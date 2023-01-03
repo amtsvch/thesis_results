@@ -1,0 +1,5 @@
+public ConcurrentCache(int size) {
+    this.size = size;
+    this.eden = new ConcurrentHashMap<>(size);
+    this.longterm = new WeakHashMap<>(size);
+}

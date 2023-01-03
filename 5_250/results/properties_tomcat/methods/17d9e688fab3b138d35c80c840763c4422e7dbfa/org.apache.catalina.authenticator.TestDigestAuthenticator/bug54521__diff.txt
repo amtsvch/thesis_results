@@ -1,0 +1,15 @@
+@Test
+public void bug54521() throws LifecycleException {
+    DigestAuthenticator digestAuthenticator = new DigestAuthenticator();
+    TesterContext context = new TesterContext();
+    context.setServletContext(new TesterServletContext());
+    digestAuthenticator.setContainer(context);
+    digestAuthenticator.start();
+    Request request = new TesterRequest();
+    final int count = 1000;
+    Set<String> nonces = new HashSet<>();
+    for (int i = 0; i < count; i++) {
+        nonces.add(digestAuthenticator.generateNonce(request));
+    }
+    Assert.assertEquals(count, nonces.size());
+}

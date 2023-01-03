@@ -1,0 +1,7 @@
+private static boolean isAvailable(ByteBuffer bb, int size) {
+    if (bb.remaining() < size) {
+        bb.position(bb.limit());
+        return false;
+    }
+    return true;
+}

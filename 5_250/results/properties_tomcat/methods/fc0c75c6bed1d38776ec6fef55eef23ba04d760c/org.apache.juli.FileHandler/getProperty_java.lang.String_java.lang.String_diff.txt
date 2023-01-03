@@ -1,0 +1,9 @@
+private String getProperty(String name, String defaultValue) {
+    String value = LogManager.getLogManager().getProperty(name);
+    if (value == null) {
+        value = defaultValue;
+    } else {
+        value = value.trim();
+    }
+    return value;
+}

@@ -1,0 +1,8 @@
+public WebXmlParser(boolean namespaceAware, boolean validation, boolean blockExternal) {
+    webRuleSet = new WebRuleSet(false);
+    webDigester = DigesterFactory.newDigester(validation, namespaceAware, webRuleSet, blockExternal);
+    webDigester.getParser();
+    webFragmentRuleSet = new WebRuleSet(true);
+    webFragmentDigester = DigesterFactory.newDigester(validation, namespaceAware, webFragmentRuleSet, blockExternal);
+    webFragmentDigester.getParser();
+}

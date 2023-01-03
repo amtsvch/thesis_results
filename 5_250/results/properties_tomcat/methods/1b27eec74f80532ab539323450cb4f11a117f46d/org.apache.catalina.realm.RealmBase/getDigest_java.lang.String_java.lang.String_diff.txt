@@ -1,0 +1,20 @@
+/**
+ * Return the digest associated with given principal's user name.
+ * @param username the user name
+ * @param realmName the realm name
+ * @return the digest for the specified user
+ */
+protected String getDigest(String username, String realmName) {
+    if (hasMessageDigest()) {
+        // Use pre-generated digest
+        return getPassword(username);
+    }
+    String digestValue = username + ":" + realmName + ":" + getPassword(username);
+    byte[] valueBytes = null;
+    try {
+        valueBytes = digestValue.getBytes(getDigestCharset());
+    } catch (UnsupportedEncodingException uee) {
+        throw new IllegalArgumentException(sm.getString("realmBase.invalidDigestEncoding", getDigestEncoding()), uee);
+    }
+    return MD5Encoder.encode(ConcurrentMessageDigest.digestMD5(valueBytes));
+}

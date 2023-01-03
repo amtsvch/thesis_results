@@ -1,0 +1,32 @@
+                                                                                                     | /*                                                                                                  
+                                                                                                     | * General method used when reprioritising a stream and care needs to be                             
+                                                                                                     | * taken not to create circular references.                                                          
+                                                                                                     | *                                                                                                   
+                                                                                                     | * Changes to the priority tree need to be sychronized at the connection                             
+                                                                                                     | * level. This is the caller's responsibility.                                                       
+                                                                                                     | */                                                                                                  
+final void rePrioritise(AbstractStream parent, boolean exclusive, int weight) {                        final void rePrioritise(AbstractStream parent, boolean exclusive, int weight) {                     
+if (log.isDebugEnabled()) {                                                                            if (log.isDebugEnabled()) {                                                                         
+log.debug(sm.getString("stream.reprioritisation.debug", getConnectionId(), getIdAsString(), Boolean.   log.debug(sm.getString("stream.reprioritisation.debug", getConnectionId(), getIdAsString(), Boolean.
+}                                                                                                      }                                                                                                   
+// Check if new parent is a descendant of this stream                                                  // Check if new parent is a descendant of this stream                                               
+if (isDescendant(parent)) {                                                                            if (isDescendant(parent)) {                                                                         
+parent.detachFromParent();                                                                             parent.detachFromParent();                                                                          
+// Cast is always safe since any descendant of this stream must be                                     // Cast is always safe since any descendant of this stream must be                                  
+// an instance of Stream                                                                               // an instance of Stream                                                                            
+getParentStream().addChild((Stream) parent);                                                           getParentStream().addChild((Stream) parent);                                                        
+}                                                                                                      }                                                                                                   
+if (exclusive) {                                                                                       if (exclusive) {                                                                                    
+// Need to move children of the new parent to be children of this                                      // Need to move children of the new parent to be children of this                                   
+// stream. Slightly convoluted to avoid concurrent modification.                                       // stream. Slightly convoluted to avoid concurrent modification.                                    
+Iterator&lt;AbstractNonZeroStream&gt; parentsChildren = parent.getChildStreams().iterator();           Iterator&lt;AbstractNonZeroStream&gt; parentsChildren = parent.getChildStreams().iterator();        
+while (parentsChildren.hasNext()) {                                                                    while (parentsChildren.hasNext()) {                                                                 
+AbstractNonZeroStream parentsChild = parentsChildren.next();                                           AbstractNonZeroStream parentsChild = parentsChildren.next();                                        
+parentsChildren.remove();                                                                              parentsChildren.remove();                                                                           
+this.addChild(parentsChild);                                                                           this.addChild(parentsChild);                                                                        
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+detachFromParent();                                                                                    detachFromParent();                                                                                 
+parent.addChild(this);                                                                                 parent.addChild(this);                                                                              
+this.weight = weight;                                                                                  this.weight = weight;                                                                               
+}                                                                                                      }                                                                                                   

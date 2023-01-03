@@ -1,0 +1,12 @@
+@Override
+public Object getValue(ELContext context) {
+    context.notifyBeforeEvaluation(getExpressionString());
+    Object result;
+    if (this.expectedType != null) {
+        result = context.convertToType(this.value, this.expectedType);
+    } else {
+        result = this.value;
+    }
+    context.notifyAfterEvaluation(getExpressionString());
+    return result;
+}

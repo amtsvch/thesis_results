@@ -1,0 +1,9 @@
+/**
+ * Tests that an exception will be thrown when the property does not exist.
+ */
+@Test(expected = PropertyNotFoundException.class)
+public void testGetValue04() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    resolver.getValue(context, new Bean(), PROPERTY02_NAME);
+}

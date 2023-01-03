@@ -1,0 +1,4 @@
+@Override
+public void scan(Jar jar, String webappPath, boolean isWebapp) throws IOException {
+    callbacks.add(jar.getJarFileURL().toString() + "::" + webappPath + "::" + isWebapp);
+}

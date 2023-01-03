@@ -1,0 +1,12 @@
+private RegistrationContextImpl(String messageLayer, String appContext, String description, boolean persistent, AuthConfigProvider provider, Map<String, String> properties) {
+    this.messageLayer = messageLayer;
+    this.appContext = appContext;
+    this.description = description;
+    this.persistent = persistent;
+    this.provider = provider;
+    Map<String, String> propertiesCopy = new HashMap<>();
+    if (properties != null) {
+        propertiesCopy.putAll(properties);
+    }
+    this.properties = Collections.unmodifiableMap(propertiesCopy);
+}

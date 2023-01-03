@@ -1,0 +1,8 @@
+/**
+ * Tests that a null key results in an NPE as per EL Javadoc.
+ */
+@Test(expected = NullPointerException.class)
+public void testPutContext01() {
+    ELContext elContext = new TesterELContext();
+    elContext.putContext(null, new Object());
+}

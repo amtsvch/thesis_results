@@ -1,0 +1,8 @@
+private boolean isHttpSeparator(final char c) {
+    if (c < 0x20 || c >= 0x7f) {
+        if (c != 0x09) {
+            throw new IllegalArgumentException("Control character in cookie value or attribute.");
+        }
+    }
+    return httpSeparatorFlags.get(c);
+}

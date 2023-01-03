@@ -1,0 +1,8 @@
+private boolean waitForThreadToStart(TestThread t) throws InterruptedException {
+    long wait = 0;
+    while (t.getStage() == 0 && wait < THREAD_WAIT_TIME) {
+        Thread.sleep(100);
+        wait += 100;
+    }
+    return t.getStage() > 0;
+}

@@ -1,0 +1,8 @@
+@Override
+public WebResourceRoot getWebResourceRoot() {
+    TesterWebResourceRoot root = new TesterWebResourceRoot();
+    WebResourceSet webResourceSet = new DirResourceSet(root, "/", getBaseDir().getAbsolutePath(), "/");
+    webResourceSet.setReadOnly(false);
+    root.setMainResources(webResourceSet);
+    return root;
+}

@@ -1,0 +1,7 @@
+private static boolean isClientHello(ByteBuffer bb) {
+    // Client hello is handshake type 1
+    if (bb.get() == 1) {
+        return true;
+    }
+    return false;
+}

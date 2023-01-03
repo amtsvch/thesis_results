@@ -1,0 +1,10 @@
+/**
+ * Enables/disables the option check<br>
+ * Setting this to true, will make the GroupChannel perform a conflict check
+ * on the interceptors. If two interceptors are using the same option flag
+ * and throw an error upon start.
+ * @param optionCheck boolean
+ */
+public void setOptionCheck(boolean optionCheck) {
+    this.optionCheck = optionCheck;
+}

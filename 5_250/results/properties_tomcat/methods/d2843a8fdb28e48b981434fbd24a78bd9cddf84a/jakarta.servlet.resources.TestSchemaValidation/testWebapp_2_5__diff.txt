@@ -1,0 +1,11 @@
+@Test
+public void testWebapp_2_5() throws Exception {
+    XmlErrorHandler handler = new XmlErrorHandler();
+    Digester digester = DigesterFactory.newDigester(true, true, new WebRuleSet(false), true);
+    digester.setErrorHandler(handler);
+    digester.push(new WebXml());
+    WebXml desc = (WebXml) digester.parse(new File("test/webapp-2.5/WEB-INF/web.xml"));
+    Assert.assertEquals("2.5", desc.getVersion());
+    Assert.assertEquals(0, handler.getErrors().size());
+    Assert.assertEquals(0, handler.getWarnings().size());
+}

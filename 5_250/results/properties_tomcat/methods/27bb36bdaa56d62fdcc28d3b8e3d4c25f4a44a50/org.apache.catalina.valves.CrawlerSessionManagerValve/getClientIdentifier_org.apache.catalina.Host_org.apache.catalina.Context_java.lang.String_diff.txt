@@ -1,0 +1,10 @@
+private String getClientIdentifier(Host host, Context context, String clientIp) {
+    StringBuilder result = new StringBuilder(clientIp);
+    if (isHostAware) {
+        result.append('-').append(host.getName());
+    }
+    if (isContextAware && context != null) {
+        result.append(context.getName());
+    }
+    return result.toString();
+}

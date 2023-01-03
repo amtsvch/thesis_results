@@ -1,0 +1,85 @@
+/**
+ * Find the specified class in our local repositories, if possible.  If
+ * not found, throw <code>ClassNotFoundException</code>.
+ *
+ * @param name The binary name of the class to be loaded
+ *
+ * @exception ClassNotFoundException if the class was not found
+ */
+@Override
+public Class<?> findClass(String name) throws ClassNotFoundException {
+    if (log.isDebugEnabled())
+        log.debug("    findClass(" + name + ")");
+    checkStateForClassLoading(name);
+    // (1) Permission to define this class when using a SecurityManager
+    if (securityManager != null) {
+        int i = name.lastIndexOf('.');
+        if (i >= 0) {
+            try {
+                if (log.isTraceEnabled())
+                    log.trace("      securityManager.checkPackageDefinition");
+                securityManager.checkPackageDefinition(name.substring(0, i));
+            } catch (Exception se) {
+                if (log.isTraceEnabled())
+                    log.trace("      -->Exception-->ClassNotFoundException", se);
+                throw new ClassNotFoundException(name, se);
+            }
+        }
+    }
+    // Ask our superclass to locate this class, if possible
+    // (throws ClassNotFoundException if it is not found)
+    Class<?> clazz = null;
+    try {
+        if (log.isTraceEnabled())
+            log.trace("      findClassInternal(" + name + ")");
+        try {
+            if (securityManager != null) {
+                PrivilegedAction<Class<?>> dp = new PrivilegedFindClassByName(name);
+                clazz = AccessController.doPrivileged(dp);
+            } else {
+                clazz = findClassInternal(name);
+            }
+        } catch (AccessControlException ace) {
+            log.warn(sm.getString("webappClassLoader.securityException", name, ace.getMessage()), ace);
+            throw new ClassNotFoundException(name, ace);
+        } catch (RuntimeException e) {
+            if (log.isTraceEnabled())
+                log.trace("      -->RuntimeException Rethrown", e);
+            throw e;
+        }
+        if ((clazz == null) && hasExternalRepositories) {
+            try {
+                clazz = super.findClass(name);
+            } catch (AccessControlException ace) {
+                log.warn(sm.getString("webappClassLoader.securityException", name, ace.getMessage()), ace);
+                throw new ClassNotFoundException(name, ace);
+            } catch (RuntimeException e) {
+                if (log.isTraceEnabled())
+                    log.trace("      -->RuntimeException Rethrown", e);
+                throw e;
+            }
+        }
+        if (clazz == null) {
+            if (log.isDebugEnabled())
+                log.debug("    --> Returning ClassNotFoundException");
+            throw new ClassNotFoundException(name);
+        }
+    } catch (ClassNotFoundException e) {
+        if (log.isTraceEnabled())
+            log.trace("    --> Passing on ClassNotFoundException");
+        throw e;
+    }
+    // Return the class we have located
+    if (log.isTraceEnabled())
+        log.debug("      Returning class " + clazz);
+    if (log.isTraceEnabled()) {
+        ClassLoader cl;
+        if (Globals.IS_SECURITY_ENABLED) {
+            cl = AccessController.doPrivileged(new PrivilegedGetClassLoader(clazz));
+        } else {
+            cl = clazz.getClassLoader();
+        }
+        log.debug("      Loaded by " + cl.toString());
+    }
+    return clazz;
+}

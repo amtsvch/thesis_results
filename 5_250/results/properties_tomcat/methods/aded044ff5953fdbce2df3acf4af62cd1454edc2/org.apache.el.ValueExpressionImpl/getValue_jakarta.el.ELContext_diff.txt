@@ -1,0 +1,16 @@
+/*
+     * (non-Javadoc)
+     *
+     * @see jakarta.el.ValueExpression#getValue(jakarta.el.ELContext)
+     */
+@Override
+public Object getValue(ELContext context) throws PropertyNotFoundException, ELException {
+    EvaluationContext ctx = new EvaluationContext(context, this.fnMapper, this.varMapper);
+    context.notifyBeforeEvaluation(getExpressionString());
+    Object value = this.getNode().getValue(ctx);
+    if (this.expectedType != null) {
+        value = context.convertToType(value, this.expectedType);
+    }
+    context.notifyAfterEvaluation(getExpressionString());
+    return value;
+}

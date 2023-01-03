@@ -1,0 +1,7 @@
+private int getReceivedMessageCount() {
+    int count = 0;
+    for (TestMsgListener listener : listeners) {
+        count += listener.getReceivedCount();
+    }
+    return count;
+}

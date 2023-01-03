@@ -1,0 +1,9 @@
+/**
+ * Releases all waiting threads and causes the {@link #limit} to be ignored
+ * until {@link #reset()} is called.
+ * @return <code>true</code> if release was done
+ */
+public boolean releaseAll() {
+    released = true;
+    return sync.releaseShared(0);
+}

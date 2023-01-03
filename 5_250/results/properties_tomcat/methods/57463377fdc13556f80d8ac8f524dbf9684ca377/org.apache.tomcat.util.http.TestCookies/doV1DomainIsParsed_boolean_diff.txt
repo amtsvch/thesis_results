@@ -1,0 +1,7 @@
+private void doV1DomainIsParsed(boolean useRfc6265) {
+    FOO.setVersion(1);
+    FOO.setDomain("apache.org");
+    A.setVersion(1);
+    A.setDomain("yahoo.com");
+    test(useRfc6265, "$Version=1;foo=\"bar\";$Domain=apache.org;a=b;$Domain=yahoo.com", FOO, A);
+}

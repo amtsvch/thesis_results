@@ -1,0 +1,21 @@
+private boolean needsQuotes(String value, int version) {
+    if (value == null) {
+        return false;
+    }
+    int i = 0;
+    int len = value.length();
+    if (alreadyQuoted(value)) {
+        i++;
+        len--;
+    }
+    for (; i < len; i++) {
+        char c = value.charAt(i);
+        if ((c < 0x20 && c != '\t') || c >= 0x7f) {
+            throw new IllegalArgumentException("Control character in cookie value or attribute.");
+        }
+        if (version == 0 && !allowedWithoutQuotes.get(c) || version == 1 && isHttpSeparator(c)) {
+            return true;
+        }
+    }
+    return false;
+}

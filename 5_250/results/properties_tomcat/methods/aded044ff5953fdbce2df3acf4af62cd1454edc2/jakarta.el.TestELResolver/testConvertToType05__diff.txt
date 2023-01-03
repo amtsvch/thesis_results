@@ -1,0 +1,10 @@
+@Test
+public void testConvertToType05() {
+    CompositeELResolver resolver = new CompositeELResolver();
+    resolver.add(new TesterELResolverOne());
+    resolver.add(new TesterELResolverTwo());
+    ELContext context = new TesterELContext(resolver);
+    ValueExpression ve = ELManager.getExpressionFactory().createValueExpression(context, "1", String.class);
+    String result = (String) ve.getValue(context);
+    Assert.assertEquals("ONE", result);
+}

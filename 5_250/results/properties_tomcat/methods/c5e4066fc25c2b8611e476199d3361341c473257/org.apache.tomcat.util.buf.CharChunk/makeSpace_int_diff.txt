@@ -1,0 +1,42 @@
+/**
+ * Make space for len chars. If len is small, allocate a reserve space too.
+ * Never grow bigger than the limit or {@link AbstractChunk#ARRAY_MAX_SIZE}.
+ *
+ * @param count The size
+ */
+public void makeSpace(int count) {
+    char[] tmp = null;
+    int limit = getLimitInternal();
+    long newSize;
+    long desiredSize = end + count;
+    // Can't grow above the limit
+    if (desiredSize > limit) {
+        desiredSize = limit;
+    }
+    if (buff == null) {
+        if (desiredSize < 256) {
+            // take a minimum
+            desiredSize = 256;
+        }
+        buff = new char[(int) desiredSize];
+    }
+    // limit < buf.length (the buffer is already big)
+    // or we already have space XXX
+    if (desiredSize <= buff.length) {
+        return;
+    }
+    // grow in larger chunks
+    if (desiredSize < 2L * buff.length) {
+        newSize = buff.length * 2L;
+    } else {
+        newSize = buff.length * 2L + count;
+    }
+    if (newSize > limit) {
+        newSize = limit;
+    }
+    tmp = new char[(int) newSize];
+    // Some calling code assumes buffer will not be compacted
+    System.arraycopy(buff, 0, tmp, 0, end);
+    buff = tmp;
+    tmp = null;
+}

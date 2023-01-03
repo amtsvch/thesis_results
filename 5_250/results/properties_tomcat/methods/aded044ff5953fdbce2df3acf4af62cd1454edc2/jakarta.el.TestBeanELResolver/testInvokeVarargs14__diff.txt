@@ -1,0 +1,9 @@
+// Note: The coercion rules are that a null of any type can be coerced to a
+// null of *any* other type so this works.
+@Test
+public void testInvokeVarargs14() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Object result = resolver.invoke(context, new TesterBean(BEAN_NAME), "getNameVarargs", new Class<?>[] { Boolean.class, ArrayList.class }, new Object[] { Boolean.TRUE, null });
+    Assert.assertEquals(BEAN_NAME, result);
+}

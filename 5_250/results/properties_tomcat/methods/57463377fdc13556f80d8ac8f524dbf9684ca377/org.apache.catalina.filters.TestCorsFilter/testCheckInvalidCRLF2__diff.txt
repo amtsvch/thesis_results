@@ -1,0 +1,10 @@
+@Test
+public void testCheckInvalidCRLF2() throws ServletException {
+    TesterHttpServletRequest request = new TesterHttpServletRequest();
+    request.setHeader(CorsFilter.REQUEST_HEADER_ORIGIN, "http://www.w3.org\r\n");
+    request.setMethod("GET");
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getDefaultFilterConfig());
+    CorsFilter.CORSRequestType requestType = corsFilter.checkRequestType(request);
+    Assert.assertEquals(CorsFilter.CORSRequestType.INVALID_CORS, requestType);
+}

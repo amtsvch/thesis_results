@@ -1,0 +1,10 @@
+@Override
+public void setHeader(String name, String value) {
+    int index = headerNames.indexOf(name);
+    if (index != -1) {
+        headerValues.set(index, value);
+    } else {
+        headerNames.add(name);
+        headerValues.add(value);
+    }
+}

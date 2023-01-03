@@ -1,0 +1,10 @@
+/*
+     * Tests for failure, when an invalid {@link HttpServletRequest} is
+     * encountered.
+     */
+@Test(expected = IllegalArgumentException.class)
+public void testCheckRequestTypeNull() {
+    HttpServletRequest request = null;
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.checkRequestType(request);
+}

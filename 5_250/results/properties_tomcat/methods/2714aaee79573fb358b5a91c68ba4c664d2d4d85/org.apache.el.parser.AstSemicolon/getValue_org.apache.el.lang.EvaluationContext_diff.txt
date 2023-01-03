@@ -1,0 +1,6 @@
+@Override
+public Object getValue(EvaluationContext ctx) throws ELException {
+    // Evaluate and throw away
+    children[0].getValue(ctx);
+    return children[1].getValue(ctx);
+}

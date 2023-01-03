@@ -1,0 +1,15 @@
+/*
+     * Tests for failure, when the 'null' origin is used, and it's not in the
+     * list of allowed origins.
+     */
+@Test
+public void testCheckNullOriginNotAllowed() throws ServletException, IOException {
+    TesterHttpServletRequest request = new TesterHttpServletRequest();
+    TesterHttpServletResponse response = new TesterHttpServletResponse();
+    request.setHeader(CorsFilter.REQUEST_HEADER_ORIGIN, "null");
+    request.setMethod("GET");
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getSpecificOriginFilterConfig());
+    corsFilter.doFilter(request, response, filterChain);
+    Assert.assertEquals(HttpServletResponse.SC_FORBIDDEN, response.getStatus());
+}

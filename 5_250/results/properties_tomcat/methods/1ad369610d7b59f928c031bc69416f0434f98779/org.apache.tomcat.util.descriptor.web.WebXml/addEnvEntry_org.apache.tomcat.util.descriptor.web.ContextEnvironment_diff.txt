@@ -1,0 +1,7 @@
+public void addEnvEntry(ContextEnvironment envEntry) {
+    if (envEntries.containsKey(envEntry.getName())) {
+        // env-entry names must be unique within a web(-fragment).xml
+        throw new IllegalArgumentException(sm.getString("webXml.duplicateEnvEntry", envEntry.getName()));
+    }
+    envEntries.put(envEntry.getName(), envEntry);
+}

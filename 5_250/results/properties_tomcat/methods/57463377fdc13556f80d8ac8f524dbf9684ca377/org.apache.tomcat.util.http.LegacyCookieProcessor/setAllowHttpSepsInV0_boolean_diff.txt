@@ -1,0 +1,19 @@
+public void setAllowHttpSepsInV0(boolean allowHttpSepsInV0) {
+    this.allowHttpSepsInV0 = allowHttpSepsInV0;
+    // HTTP separators less comma, semicolon and space since the Netscape
+    // spec defines those as separators too.
+    // '/' is also treated as a special case
+    char[] seps = "()<>@:\\\"[]?={}\t".toCharArray();
+    for (char sep : seps) {
+        if (allowHttpSepsInV0) {
+            allowedWithoutQuotes.set(sep);
+        } else {
+            allowedWithoutQuotes.clear(sep);
+        }
+    }
+    if (getForwardSlashIsSeparator() && !allowHttpSepsInV0) {
+        allowedWithoutQuotes.clear('/');
+    } else {
+        allowedWithoutQuotes.set('/');
+    }
+}

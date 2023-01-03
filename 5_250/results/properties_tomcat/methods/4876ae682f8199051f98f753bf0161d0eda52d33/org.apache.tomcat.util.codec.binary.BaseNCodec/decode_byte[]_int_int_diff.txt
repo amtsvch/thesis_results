@@ -1,0 +1,12 @@
+public byte[] decode(final byte[] pArray, final int off, final int len) {
+    if (pArray == null || len == 0) {
+        return new byte[0];
+    }
+    final Context context = new Context();
+    decode(pArray, off, len, context);
+    // Notify decoder of EOF.
+    decode(pArray, off, EOF, context);
+    final byte[] result = new byte[context.pos];
+    readResults(result, 0, result.length, context);
+    return result;
+}

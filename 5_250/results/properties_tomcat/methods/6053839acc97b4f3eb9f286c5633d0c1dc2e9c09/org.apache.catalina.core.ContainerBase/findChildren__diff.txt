@@ -1,0 +1,11 @@
+/**
+ * Return the set of children Containers associated with this Container.
+ * If this Container has no children, a zero-length array is returned.
+ */
+@Override
+public Container[] findChildren() {
+    synchronized (children) {
+        Container[] results = new Container[children.size()];
+        return children.values().toArray(results);
+    }
+}

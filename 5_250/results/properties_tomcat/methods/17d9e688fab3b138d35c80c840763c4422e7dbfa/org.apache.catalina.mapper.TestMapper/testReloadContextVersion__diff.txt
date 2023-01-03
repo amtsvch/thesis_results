@@ -1,0 +1,60 @@
+@Test
+public void testReloadContextVersion() throws Exception {
+    final String hostName = "iowejoiejfoiew";
+    final int iowPos = 4;
+    final String contextPath = "/foo/bar";
+    final int contextPos = 2;
+    MappingData mappingData = new MappingData();
+    MessageBytes hostMB = MessageBytes.newInstance();
+    MessageBytes uriMB = MessageBytes.newInstance();
+    hostMB.setString(hostName);
+    uriMB.setString("/foo/bar/blah/bobou/foo");
+    // Verifying configuration created by setUp()
+    Mapper.MappedHost mappedHost = mapper.hosts[iowPos];
+    Assert.assertEquals(hostName, mappedHost.name);
+    Mapper.MappedContext mappedContext = mappedHost.contextList.contexts[contextPos];
+    Assert.assertEquals(contextPath, mappedContext.name);
+    Assert.assertEquals(1, mappedContext.versions.length);
+    Assert.assertEquals("0", mappedContext.versions[0].name);
+    Host oldHost = mappedHost.object;
+    Context oldContext = mappedContext.versions[0].object;
+    Assert.assertEquals("context2", oldContext.getName());
+    Context oldContext1 = mappedHost.contextList.contexts[contextPos - 1].versions[0].object;
+    Assert.assertEquals("context1", oldContext1.getName());
+    mappingData.recycle();
+    mapper.map(hostMB, uriMB, null, mappingData);
+    Assert.assertEquals("blah7", mappingData.host.getName());
+    Assert.assertEquals("context2", mappingData.context.getName());
+    Assert.assertEquals("wrapper5", mappingData.wrapper.getName());
+    mappingData.recycle();
+    mapper.map(oldContext, uriMB, mappingData);
+    Assert.assertEquals("wrapper5", mappingData.wrapper.getName());
+    // Mark context as paused
+    // This is what happens when context reload starts
+    mapper.pauseContextVersion(oldContext, hostName, contextPath, "0");
+    mappingData.recycle();
+    mapper.map(hostMB, uriMB, null, mappingData);
+    Assert.assertEquals("blah7", mappingData.host.getName());
+    Assert.assertEquals("context2", mappingData.context.getName());
+    // Wrapper is not mapped for incoming requests if context is paused
+    Assert.assertNull(mappingData.wrapper);
+    mappingData.recycle();
+    mapper.map(oldContext, uriMB, mappingData);
+    // Wrapper is mapped for mapping method used by forward or include dispatch
+    Assert.assertEquals("wrapper5", mappingData.wrapper.getName());
+    // Re-add the same context, but different list of wrappers
+    // This is what happens when context reload completes
+    mapper.addContextVersion(hostName, oldHost, contextPath, "0", oldContext, null, null, Arrays.asList(new WrapperMappingInfo[] { new WrapperMappingInfo("/", createWrapper("newDefaultWrapper"), false, false) }));
+    mappedContext = mappedHost.contextList.contexts[contextPos];
+    Assert.assertEquals(contextPath, mappedContext.name);
+    Assert.assertEquals(1, mappedContext.versions.length);
+    Assert.assertEquals("0", mappedContext.versions[0].name);
+    mappingData.recycle();
+    mapper.map(hostMB, uriMB, null, mappingData);
+    Assert.assertEquals("blah7", mappingData.host.getName());
+    Assert.assertEquals("context2", mappingData.context.getName());
+    Assert.assertEquals("newDefaultWrapper", mappingData.wrapper.getName());
+    mappingData.recycle();
+    mapper.map(oldContext, uriMB, mappingData);
+    Assert.assertEquals("newDefaultWrapper", mappingData.wrapper.getName());
+}

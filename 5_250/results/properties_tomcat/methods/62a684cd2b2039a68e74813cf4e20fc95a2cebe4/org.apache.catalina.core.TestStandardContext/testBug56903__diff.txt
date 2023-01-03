@@ -1,0 +1,6 @@
+@Test
+public void testBug56903() {
+    Context context = new StandardContext();
+    context.setResourceOnlyServlets("a,b,c");
+    MatcherAssert.assertThat(Arrays.asList(context.getResourceOnlyServlets().split(",")), CoreMatchers.hasItems("a", "b", "c"));
+}

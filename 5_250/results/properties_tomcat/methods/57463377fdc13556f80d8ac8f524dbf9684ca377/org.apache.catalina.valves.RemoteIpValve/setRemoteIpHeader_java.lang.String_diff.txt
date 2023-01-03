@@ -1,0 +1,16 @@
+/**
+ * <p>
+ * Name of the http header from which the remote ip is extracted.
+ * </p>
+ * <p>
+ * The value of this header can be comma delimited.
+ * </p>
+ * <p>
+ * Default value : <code>X-Forwarded-For</code>
+ * </p>
+ *
+ * @param remoteIpHeader The header name
+ */
+public void setRemoteIpHeader(String remoteIpHeader) {
+    this.remoteIpHeader = remoteIpHeader;
+}

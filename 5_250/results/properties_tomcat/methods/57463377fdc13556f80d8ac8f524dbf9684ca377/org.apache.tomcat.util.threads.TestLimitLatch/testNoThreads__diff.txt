@@ -1,0 +1,5 @@
+@Test
+public void testNoThreads() throws Exception {
+    LimitLatch latch = new LimitLatch(0);
+    Assert.assertFalse("No threads should be waiting", latch.hasQueuedThreads());
+}

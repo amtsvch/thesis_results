@@ -1,0 +1,21 @@
+/**
+ * Convert an array of strings in a comma delimited string
+ * @param stringList The string list to convert
+ * @return The concatenated string
+ */
+protected static String listToCommaDelimitedString(List<String> stringList) {
+    if (stringList == null) {
+        return "";
+    }
+    StringBuilder result = new StringBuilder();
+    for (Iterator<String> it = stringList.iterator(); it.hasNext(); ) {
+        Object element = it.next();
+        if (element != null) {
+            result.append(element);
+            if (it.hasNext()) {
+                result.append(", ");
+            }
+        }
+    }
+    return result.toString();
+}

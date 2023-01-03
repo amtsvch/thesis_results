@@ -1,0 +1,5 @@
+private void doTestDefaults(Cookie cookie, String expectedLegacy, String expectedRfc6265) {
+    CookieProcessor legacy = new LegacyCookieProcessor();
+    CookieProcessor rfc6265 = new Rfc6265CookieProcessor();
+    doTest(cookie, legacy, expectedLegacy, rfc6265, expectedRfc6265);
+}

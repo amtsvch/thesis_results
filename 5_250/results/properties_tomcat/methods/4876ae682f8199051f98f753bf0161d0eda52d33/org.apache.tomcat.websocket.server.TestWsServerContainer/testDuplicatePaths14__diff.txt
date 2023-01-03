@@ -1,0 +1,10 @@
+/*
+     * POJO auto deployment followed by programmatic on same path.
+     */
+@Test(expected = DeploymentException.class)
+public void testDuplicatePaths14() throws Exception {
+    WsServerContainer sc = new WsServerContainer(new TesterServletContext());
+    ServerEndpointConfig configA = ServerEndpointConfig.Builder.create(Object.class, "/foo").build();
+    sc.addEndpoint(Pojo.class, true);
+    sc.addEndpoint(configA);
+}

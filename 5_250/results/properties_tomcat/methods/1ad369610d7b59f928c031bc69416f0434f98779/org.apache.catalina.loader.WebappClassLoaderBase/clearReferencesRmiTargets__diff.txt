@@ -1,0 +1,74 @@
+/**
+ * This depends on the internals of the Sun JVM so it does everything by
+ * reflection.
+ */
+private void clearReferencesRmiTargets() {
+    try {
+        // Need access to the ccl field of sun.rmi.transport.Target to find
+        // the leaks
+        Class<?> objectTargetClass = Class.forName("sun.rmi.transport.Target");
+        Field cclField = objectTargetClass.getDeclaredField("ccl");
+        cclField.setAccessible(true);
+        // Need access to the stub field to report the leaks
+        Field stubField = objectTargetClass.getDeclaredField("stub");
+        stubField.setAccessible(true);
+        // Clear the objTable map
+        Class<?> objectTableClass = Class.forName("sun.rmi.transport.ObjectTable");
+        Field objTableField = objectTableClass.getDeclaredField("objTable");
+        objTableField.setAccessible(true);
+        Object objTable = objTableField.get(null);
+        if (objTable == null) {
+            return;
+        }
+        Field tableLockField = objectTableClass.getDeclaredField("tableLock");
+        tableLockField.setAccessible(true);
+        Object tableLock = tableLockField.get(null);
+        synchronized (tableLock) {
+            // Iterate over the values in the table
+            if (objTable instanceof Map<?, ?>) {
+                Iterator<?> iter = ((Map<?, ?>) objTable).values().iterator();
+                while (iter.hasNext()) {
+                    Object obj = iter.next();
+                    Object cclObject = cclField.get(obj);
+                    if (this == cclObject) {
+                        iter.remove();
+                        Object stubObject = stubField.get(obj);
+                        log.error(sm.getString("webappClassLoader.clearRmi", stubObject.getClass().getName(), stubObject));
+                    }
+                }
+            }
+            // Clear the implTable map
+            Field implTableField = objectTableClass.getDeclaredField("implTable");
+            implTableField.setAccessible(true);
+            Object implTable = implTableField.get(null);
+            if (implTable == null) {
+                return;
+            }
+            // Iterate over the values in the table
+            if (implTable instanceof Map<?, ?>) {
+                Iterator<?> iter = ((Map<?, ?>) implTable).values().iterator();
+                while (iter.hasNext()) {
+                    Object obj = iter.next();
+                    Object cclObject = cclField.get(obj);
+                    if (this == cclObject) {
+                        iter.remove();
+                    }
+                }
+            }
+        }
+    } catch (ClassNotFoundException e) {
+        log.info(sm.getString("webappClassLoader.clearRmiInfo", getContextName()), e);
+    } catch (SecurityException | NoSuchFieldException | IllegalArgumentException | IllegalAccessException e) {
+        log.warn(sm.getString("webappClassLoader.clearRmiFail", getContextName()), e);
+    } catch (Exception e) {
+        JreCompat jreCompat = JreCompat.getInstance();
+        if (jreCompat.isInstanceOfInaccessibleObjectException(e)) {
+            // Must be running on Java 9 without the necessary command line
+            // options.
+            log.warn(sm.getString("webappClassLoader.addExportsRmi"));
+        } else {
+            // Re-throw all other exceptions
+            throw e;
+        }
+    }
+}

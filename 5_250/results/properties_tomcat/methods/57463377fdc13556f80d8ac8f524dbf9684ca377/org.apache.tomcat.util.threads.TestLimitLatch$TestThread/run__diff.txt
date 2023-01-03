@@ -1,0 +1,17 @@
+@Override
+public void run() {
+    try {
+        stage = 1;
+        latch.countUpOrAwait();
+        stage = 2;
+        if (lock != null) {
+            synchronized (lock) {
+                lock.wait();
+            }
+        }
+        latch.countDown();
+        stage = 3;
+    } catch (InterruptedException x) {
+        x.printStackTrace();
+    }
+}

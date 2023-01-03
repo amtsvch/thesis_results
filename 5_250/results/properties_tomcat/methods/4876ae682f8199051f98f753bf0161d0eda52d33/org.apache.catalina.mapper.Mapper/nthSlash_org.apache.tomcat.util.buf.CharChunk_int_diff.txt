@@ -1,0 +1,17 @@
+/**
+ * Find the position of the nth slash, in the given char chunk.
+ */
+private static final int nthSlash(CharChunk name, int n) {
+    char[] c = name.getBuffer();
+    int end = name.getEnd();
+    int start = name.getStart();
+    int pos = start;
+    int count = 0;
+    while (pos < end) {
+        if ((c[pos++] == '/') && ((++count) == n)) {
+            pos--;
+            break;
+        }
+    }
+    return pos;
+}

@@ -1,0 +1,8 @@
+private void stateChange(State oldState, State newState) {                                             private void stateChange(State oldState, State newState) {                                          
+if (state == oldState) {                                                                               if (state == oldState) {                                                                            
+state = newState;                                                                                      state = newState;                                                                                   
+if (log.isDebugEnabled()) {                                                                            if (log.isDebugEnabled()) {                                                                         
+log.debug(sm.getString("streamStateMachine.debug.change", stream.getConnectionId(), stream.getIdAsSt | log.debug(sm.getString("streamStateMachine.debug.change", connectionId, streamId, oldState, newState
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,22 @@
+/**
+ * Takes a comma separated list and returns a Set<String>.
+ *
+ * @param data
+ *            A comma separated list of strings.
+ * @return Set<String>
+ */
+private Set<String> parseStringToSet(final String data) {
+    String[] splits;
+    if (data != null && data.length() > 0) {
+        splits = data.split(",");
+    } else {
+        splits = new String[] {};
+    }
+    Set<String> set = new HashSet<>();
+    if (splits.length > 0) {
+        for (String split : splits) {
+            set.add(split.trim());
+        }
+    }
+    return set;
+}

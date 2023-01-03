@@ -1,0 +1,12 @@
+/**
+ * Tests that the readOnly is true always when the base is ResourceBundle.
+ */
+@Test
+public void testIsReadOnly03() {
+    ResourceBundleELResolver resolver = new ResourceBundleELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    ResourceBundle resourceBundle = new TesterResourceBundle();
+    boolean result = resolver.isReadOnly(context, resourceBundle, new Object());
+    Assert.assertTrue(result);
+    Assert.assertTrue(context.isPropertyResolved());
+}

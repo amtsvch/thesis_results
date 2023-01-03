@@ -1,0 +1,11 @@
+/**
+ * Constructs a new <code>String</code> by decoding the specified array of bytes using the US-ASCII charset.
+ *
+ * @param bytes
+ *            The bytes to be decoded into characters
+ * @return A new <code>String</code> decoded from the specified array of bytes using the US-ASCII charset,
+ *         or <code>null</code> if the input byte array was <code>null</code>.
+ */
+public static String newStringUsAscii(final byte[] bytes) {
+    return newString(bytes, StandardCharsets.US_ASCII);
+}

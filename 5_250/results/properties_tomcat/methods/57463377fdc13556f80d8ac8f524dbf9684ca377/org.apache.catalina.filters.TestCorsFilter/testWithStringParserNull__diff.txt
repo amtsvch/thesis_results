@@ -1,0 +1,17 @@
+/*
+     * If an init param is null, it's default value will be used.
+     *
+     * @throws ServletException
+     */
+@Test
+public void testWithStringParserNull() throws ServletException {
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getNullFilterConfig());
+    Assert.assertTrue(corsFilter.getAllowedHttpHeaders().size() == 6);
+    Assert.assertTrue(corsFilter.getAllowedHttpMethods().size() == 4);
+    Assert.assertTrue(corsFilter.getAllowedOrigins().size() == 0);
+    Assert.assertFalse(corsFilter.isAnyOriginAllowed());
+    Assert.assertTrue(corsFilter.getExposedHeaders().size() == 0);
+    Assert.assertFalse(corsFilter.isSupportsCredentials());
+    Assert.assertTrue(corsFilter.getPreflightMaxAge() == 1800);
+}

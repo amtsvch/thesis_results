@@ -1,0 +1,15 @@
+protected void addClassPath(Deque<URL> classPathUrlsToProcess) {
+    String classPath = System.getProperty("java.class.path");
+    if (classPath == null || classPath.length() == 0) {
+        return;
+    }
+    String[] classPathEntries = classPath.split(File.pathSeparator);
+    for (String classPathEntry : classPathEntries) {
+        File f = new File(classPathEntry);
+        try {
+            classPathUrlsToProcess.add(f.toURI().toURL());
+        } catch (MalformedURLException e) {
+            log.warn(sm.getString("jarScan.classPath.badEntry", classPathEntry), e);
+        }
+    }
+}

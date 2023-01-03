@@ -1,0 +1,9 @@
+public Digester() {
+    propertySourcesSet = true;
+    if (propertySources != null) {
+        ArrayList<IntrospectionUtils.PropertySource> sourcesList = new ArrayList<>();
+        sourcesList.addAll(Arrays.asList(propertySources));
+        sourcesList.add(source[0]);
+        source = sourcesList.toArray(new IntrospectionUtils.PropertySource[0]);
+    }
+}

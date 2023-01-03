@@ -1,0 +1,22 @@
+/**
+ * Return the <code>isValid</code> flag for this session.
+ */
+@Override
+public boolean isValid() {
+    if (!this.isValid) {
+        return false;
+    }
+    if (this.expiring) {
+        return true;
+    }
+    if (activityCheck && accessCount.get() > 0) {
+        return true;
+    }
+    if (maxInactiveInterval > 0) {
+        int timeIdle = (int) (getIdleTimeInternal() / 1000L);
+        if (timeIdle >= maxInactiveInterval) {
+            expire(true);
+        }
+    }
+    return this.isValid;
+}

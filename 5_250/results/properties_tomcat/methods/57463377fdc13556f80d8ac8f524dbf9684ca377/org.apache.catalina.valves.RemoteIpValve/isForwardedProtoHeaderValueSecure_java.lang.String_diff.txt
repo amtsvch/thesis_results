@@ -1,0 +1,19 @@
+/*
+     * Considers the value to be secure if it exclusively holds forwards for
+     * {@link #protocolHeaderHttpsValue}.
+     */
+private boolean isForwardedProtoHeaderValueSecure(String protocolHeaderValue) {
+    if (!protocolHeaderValue.contains(",")) {
+        return protocolHeaderHttpsValue.equalsIgnoreCase(protocolHeaderValue);
+    }
+    String[] forwardedProtocols = commaDelimitedListToStringArray(protocolHeaderValue);
+    if (forwardedProtocols.length == 0) {
+        return false;
+    }
+    for (String forwardedProtocol : forwardedProtocols) {
+        if (!protocolHeaderHttpsValue.equalsIgnoreCase(forwardedProtocol)) {
+            return false;
+        }
+    }
+    return true;
+}

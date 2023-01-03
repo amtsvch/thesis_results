@@ -1,0 +1,5 @@
+@Test
+public void testPostRequestValidNonceAsParameterInvalidNonceAsHeader() throws Exception {
+    setRequestExpectations(POST_METHOD, session, INVALID_NONCE, new String[] { NONCE }, ACCEPTED_PATH1);
+    testPostRequestParamsScenarios(NONCE, true, true);
+}

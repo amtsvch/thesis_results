@@ -1,0 +1,9 @@
+@Override
+public String getDomainInternal() {
+    Container c = getContainer();
+    if (c == null) {
+        return null;
+    } else {
+        return c.getDomain();
+    }
+}

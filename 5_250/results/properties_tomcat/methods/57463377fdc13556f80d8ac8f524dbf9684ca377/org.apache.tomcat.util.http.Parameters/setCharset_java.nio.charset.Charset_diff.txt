@@ -1,0 +1,9 @@
+public void setCharset(Charset charset) {
+    if (charset == null) {
+        charset = DEFAULT_BODY_CHARSET;
+    }
+    this.charset = charset;
+    if (log.isDebugEnabled()) {
+        log.debug("Set encoding to " + charset.name());
+    }
+}

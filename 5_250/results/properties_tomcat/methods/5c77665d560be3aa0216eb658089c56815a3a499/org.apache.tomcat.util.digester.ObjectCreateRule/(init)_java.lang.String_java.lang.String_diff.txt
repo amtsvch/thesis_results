@@ -1,0 +1,12 @@
+/**
+ * Construct an object create rule with the specified class name and an
+ * optional attribute name containing an override.
+ *
+ * @param className Java class name of the object to be created
+ * @param attributeName Attribute name which, if present, contains an
+ *  override of the class name to create
+ */
+public ObjectCreateRule(String className, String attributeName) {
+    this.className = className;
+    this.attributeName = attributeName;
+}

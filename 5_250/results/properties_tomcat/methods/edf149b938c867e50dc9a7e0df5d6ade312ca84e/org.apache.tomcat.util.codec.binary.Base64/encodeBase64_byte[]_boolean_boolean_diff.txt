@@ -1,0 +1,18 @@
+/**                                                                                                    /**                                                                                                 
+* Encodes binary data using the base64 algorithm, optionally chunking the output into 76 character b   * Encodes binary data using the base64 algorithm, optionally chunking the output into 76 character b
+*                                                                                                      *                                                                                                   
+* @param binaryData                                                                                    * @param binaryData                                                                                 
+*            Array containing binary data to encode.                                                   *            Array containing binary data to encode.                                                
+* @param isChunked                                                                                     * @param isChunked                                                                                  
+*            if &lt;code&gt;true&lt;/code&gt; this encoder will chunk the base64 output into 76 char | *            if {@code true} this encoder will chunk the base64 output into 76 character blocks     
+* @param urlSafe                                                                                       * @param urlSafe                                                                                    
+*            if &lt;code&gt;true&lt;/code&gt; this encoder will emit - and _ instead of the usual +  | *            if {@code true} this encoder will emit - and _ instead of the usual + and / characters.
+*            &lt;b&gt;Note: no padding is added when encoding using the URL-safe alphabet.&lt;/b&gt;   *            &lt;b&gt;Note: no padding is added when encoding using the URL-safe alphabet.&lt;/b&gt;
+* @return Base64-encoded data.                                                                         * @return Base64-encoded data.                                                                      
+* @throws IllegalArgumentException                                                                     * @throws IllegalArgumentException                                                                  
+*             Thrown when the input array needs an output array bigger than {@link Integer#MAX_VALUE   *             Thrown when the input array needs an output array bigger than {@link Integer#MAX_VALUE
+* @since 1.4                                                                                           * @since 1.4                                                                                        
+*/                                                                                                     */                                                                                                  
+public static byte[] encodeBase64(final byte[] binaryData, final boolean isChunked, final boolean ur   public static byte[] encodeBase64(final byte[] binaryData, final boolean isChunked, final boolean ur
+return encodeBase64(binaryData, isChunked, urlSafe, Integer.MAX_VALUE);                                return encodeBase64(binaryData, isChunked, urlSafe, Integer.MAX_VALUE);                             
+}                                                                                                      }                                                                                                   

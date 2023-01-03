@@ -1,0 +1,13 @@
+private void doTestNormalize(String input, String expected) {
+    MessageBytes mb = MessageBytes.newInstance();
+    byte[] b = input.getBytes(StandardCharsets.UTF_8);
+    mb.setBytes(b, 0, b.length);
+    boolean result = CoyoteAdapter.normalize(mb, false);
+    mb.toString();
+    if (expected == null) {
+        Assert.assertFalse(result);
+    } else {
+        Assert.assertTrue(result);
+        Assert.assertEquals(expected, mb.toString());
+    }
+}

@@ -1,0 +1,39 @@
+/**
+ * Set the instance handle of the object against which we will execute
+ * all methods in this ModelMBean management interface.
+ *
+ * The caller can provide the mbean instance or the object name to
+ * the resource, if needed.
+ *
+ * @param resource The resource object to be managed
+ * @param type The type of reference for the managed resource
+ *  ("ObjectReference", "Handle", "IOR", "EJBHandle", or
+ *  "RMIReference")
+ *
+ * @exception InstanceNotFoundException if the managed resource object
+ *  cannot be found
+ * @exception MBeanException if the initializer of the object throws
+ *  an exception
+ * @exception RuntimeOperationsException if the managed resource or the
+ *  resource type is <code>null</code> or invalid
+ */
+public void setManagedResource(Object resource, String type) throws InstanceNotFoundException, MBeanException, RuntimeOperationsException {
+    if (resource == null)
+        throw new RuntimeOperationsException(new IllegalArgumentException(sm.getString("baseModelMBean.nullResource")), sm.getString("baseModelMBean.nullResource"));
+    // if (!"objectreference".equalsIgnoreCase(type))
+    // throw new InvalidTargetObjectTypeException(type);
+    this.resource = resource;
+    this.resourceType = resource.getClass().getName();
+    // // Make the resource aware of the model mbean.
+    // try {
+    // Method m=resource.getClass().getMethod("setModelMBean",
+    // new Class[] {ModelMBean.class});
+    // if( m!= null ) {
+    // m.invoke(resource, new Object[] {this});
+    // }
+    // } catch( NoSuchMethodException t ) {
+    // // ignore
+    // } catch( Throwable t ) {
+    // log.error( "Can't set model mbean ", t );
+    // }
+}

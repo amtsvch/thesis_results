@@ -1,0 +1,5 @@
+public PipedInterceptor(ChannelInterceptor dest) {
+    if (null == dest)
+        throw new IllegalArgumentException("Destination must not be null");
+    this.dest = dest;
+}

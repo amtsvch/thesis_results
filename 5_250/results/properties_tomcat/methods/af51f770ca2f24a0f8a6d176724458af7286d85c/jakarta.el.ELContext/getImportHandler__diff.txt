@@ -1,0 +1,14 @@
+/**
+ * Obtain the ImportHandler for this ELContext, creating one if necessary.
+ * This method is not thread-safe.
+ *
+ * @return the ImportHandler for this ELContext.
+ *
+ * @since EL 3.0
+ */
+public ImportHandler getImportHandler() {
+    if (importHandler == null) {
+        importHandler = new ImportHandler();
+    }
+    return importHandler;
+}

@@ -1,0 +1,14 @@
+/**
+ * Set the authenticated Principal that is associated with this Session.
+ * This provides an <code>Authenticator</code> with a means to cache a
+ * previously authenticated Principal, and avoid potentially expensive
+ * <code>Realm.authenticate()</code> calls on every request.
+ *
+ * @param principal The new Principal, or <code>null</code> if none
+ */
+@Override
+public void setPrincipal(Principal principal) {
+    Principal oldPrincipal = this.principal;
+    this.principal = principal;
+    support.firePropertyChange("principal", oldPrincipal, this.principal);
+}

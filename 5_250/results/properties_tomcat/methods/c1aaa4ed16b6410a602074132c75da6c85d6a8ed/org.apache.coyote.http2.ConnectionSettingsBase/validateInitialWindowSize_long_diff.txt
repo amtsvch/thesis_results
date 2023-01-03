@@ -1,0 +1,6 @@
+private void validateInitialWindowSize(long initialWindowSize) throws T {
+    if (initialWindowSize > MAX_WINDOW_SIZE) {
+        String msg = sm.getString("connectionSettings.windowSizeTooBig", connectionId, Long.toString(initialWindowSize), Long.toString(MAX_WINDOW_SIZE));
+        throwException(msg, Http2Error.FLOW_CONTROL_ERROR);
+    }
+}

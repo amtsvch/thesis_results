@@ -1,0 +1,15 @@
+/**                                                                                                    /**                                                                                                 
+* Constructs a new &lt;code&gt;String&lt;/code&gt; by decoding the specified array of bytes using th | * Constructs a new {@code String} by decoding the specified array of bytes using the given charset. 
+*                                                                                                      *                                                                                                   
+* @param bytes                                                                                         * @param bytes                                                                                      
+*            The bytes to be decoded into characters                                                   *            The bytes to be decoded into characters                                                
+* @param charset                                                                                       * @param charset                                                                                    
+*            The {@link Charset} to encode the &lt;code&gt;String&lt;/code&gt;                       | *            The {@link Charset} to encode the {@code String}; not {@code null}                     
+* @return A new &lt;code&gt;String&lt;/code&gt; decoded from the specified array of bytes using the  | * @return A new {@code String} decoded from the specified array of bytes using the given charset,   
+*         or &lt;code&gt;null&lt;/code&gt; if the input byte array was &lt;code&gt;null&lt;/code&gt; | *         or {@code null} if the input byte array was {@code null}.                                 
+                                                                                                     | * @throws NullPointerException                                                                      
+                                                                                                     | *             Thrown if charset is {@code null}                                                     
+*/                                                                                                     */                                                                                                  
+private static String newString(final byte[] bytes, final Charset charset) {                           private static String newString(final byte[] bytes, final Charset charset) {                        
+return bytes == null ? null : new String(bytes, charset);                                              return bytes == null ? null : new String(bytes, charset);                                           
+}                                                                                                      }                                                                                                   

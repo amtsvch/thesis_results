@@ -1,0 +1,29 @@
+// --------------------------------------------------------- Public Methods                            // --------------------------------------------------------- Public Methods                         
+/**                                                                                                    /**                                                                                                 
+* Process the beginning of this element.                                                               * Process the beginning of this element.                                                            
+*                                                                                                      *                                                                                                   
+* @param namespace the namespace URI of the matching element, or an                                    * @param namespace the namespace URI of the matching element, or an                                 
+*   empty string if the parser is not namespace aware or the element has                               *   empty string if the parser is not namespace aware or the element has                            
+*   no namespace                                                                                       *   no namespace                                                                                    
+* @param name the local name if the parser is namespace aware, or just                                 * @param name the local name if the parser is namespace aware, or just                              
+*   the element name otherwise                                                                         *   the element name otherwise                                                                      
+* @param attributes The attribute list for this element                                                * @param attributes The attribute list for this element                                             
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+public void begin(String namespace, String name, Attributes attributes) throws Exception {             public void begin(String namespace, String name, Attributes attributes) throws Exception {          
+String realClassName = getRealClassName(attributes);                                                   String realClassName = getRealClassName(attributes);                                                
+if (realClassName == null) {                                                                           if (realClassName == null) {                                                                        
+throw new NullPointerException(sm.getString("rule.noClassName", namespace, name));                     throw new NullPointerException(sm.getString("rule.noClassName", namespace, name));                  
+}                                                                                                      }                                                                                                   
+// Instantiate the new object and push it on the context stack                                         // Instantiate the new object and push it on the context stack                                      
+Class&lt;?&gt; clazz = digester.getClassLoader().loadClass(realClassName);                             Class&lt;?&gt; clazz = digester.getClassLoader().loadClass(realClassName);                          
+Object instance = clazz.getConstructor().newInstance();                                                Object instance = clazz.getConstructor().newInstance();                                             
+digester.push(instance);                                                                               digester.push(instance);                                                                            
+StringBuilder code = digester.getGeneratedCode();                                                      StringBuilder code = digester.getGeneratedCode();                                                   
+if (code != null) {                                                                                    if (code != null) {                                                                                 
+code.append(System.lineSeparator());                                                                   code.append(System.lineSeparator());                                                                
+                                                                                                     | code.append(System.lineSeparator());                                                                
+code.append(realClassName).append(' ').append(digester.toVariableName(instance)).append(" = new ");    code.append(realClassName).append(' ').append(digester.toVariableName(instance)).append(" = new "); 
+code.append(realClassName).append("();").append(System.lineSeparator());                               code.append(realClassName).append("();").append(System.lineSeparator());                            
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,24 @@
+@Override
+public void sendMessage(Member[] destination, ChannelMessage message) throws ChannelException {
+    if (!isConnected()) {
+        throw new ChannelException(sm.getString("pooledParallelSender.sender.disconnected"));
+    }
+    ParallelNioSender sender = (ParallelNioSender) getSender();
+    if (sender == null) {
+        ChannelException cx = new ChannelException(sm.getString("pooledParallelSender.unable.retrieveSender.timeout", Long.toString(getMaxWait())));
+        for (Member member : destination) cx.addFaultyMember(member, new NullPointerException(sm.getString("pooledParallelSender.unable.retrieveSender")));
+        throw cx;
+    } else {
+        try {
+            if (!sender.isConnected())
+                sender.connect();
+            sender.sendMessage(destination, message);
+            sender.keepalive();
+        } catch (ChannelException x) {
+            sender.disconnect();
+            throw x;
+        } finally {
+            returnSender(sender);
+        }
+    }
+}

@@ -1,0 +1,11 @@
+/**
+ * Return the first value of the specified header, if any; otherwise,
+ * return <code>null</code>
+ *
+ * @param name Name of the requested header
+ * @return the header value
+ */
+@Override
+public String getHeader(String name) {
+    return coyoteRequest.getHeader(name);
+}

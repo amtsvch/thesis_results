@@ -1,0 +1,11 @@
+/**
+ * Gets the JCA provider name used for cryptographic activities.
+ *
+ * Default is the JVM platform default.
+ *
+ * @return The name of the JCA provider.
+ */
+@Override
+public String getProviderName() {
+    return providerName;
+}

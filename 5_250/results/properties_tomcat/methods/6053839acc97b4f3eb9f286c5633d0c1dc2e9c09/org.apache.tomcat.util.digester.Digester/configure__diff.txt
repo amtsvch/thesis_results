@@ -1,0 +1,23 @@
+// ------------------------------------------------ Parameter Stack Methods
+// ------------------------------------------------------ Protected Methods
+/**
+ * <p>
+ * Provide a hook for lazy configuration of this <code>Digester</code>
+ * instance.  The default implementation does nothing, but subclasses
+ * can override as needed.
+ * </p>
+ *
+ * <p>
+ * <strong>Note</strong> This method may be called more than once.
+ * </p>
+ */
+protected void configure() {
+    // Do not configure more than once
+    if (configured) {
+        return;
+    }
+    log = LogFactory.getLog("org.apache.tomcat.util.digester.Digester");
+    saxLog = LogFactory.getLog("org.apache.tomcat.util.digester.Digester.sax");
+    // Set the configuration flag to avoid repeating
+    configured = true;
+}

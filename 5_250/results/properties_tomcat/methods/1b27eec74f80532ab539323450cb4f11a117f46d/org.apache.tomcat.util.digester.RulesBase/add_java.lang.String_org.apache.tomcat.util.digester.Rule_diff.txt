@@ -1,0 +1,25 @@
+// --------------------------------------------------------- Public Methods
+/**
+ * Register a new Rule instance matching the specified pattern.
+ *
+ * @param pattern Nesting pattern to be matched for this Rule
+ * @param rule Rule instance to be registered
+ */
+@Override
+public void add(String pattern, Rule rule) {
+    // to help users who accidentally add '/' to the end of their patterns
+    int patternLength = pattern.length();
+    if (patternLength > 1 && pattern.endsWith("/")) {
+        pattern = pattern.substring(0, patternLength - 1);
+    }
+    List<Rule> list = cache.get(pattern);
+    if (list == null) {
+        list = new ArrayList<>();
+        cache.put(pattern, list);
+    }
+    list.add(rule);
+    rules.add(rule);
+    if (this.digester != null) {
+        rule.setDigester(this.digester);
+    }
+}

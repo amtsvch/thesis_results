@@ -1,0 +1,41 @@
+public void importStatic(String name) throws jakarta.el.ELException {
+    int lastPeriod = name.lastIndexOf('.');
+    if (lastPeriod < 0) {
+        throw new ELException(Util.message(null, "importHandler.invalidStaticName", name));
+    }
+    String className = name.substring(0, lastPeriod);
+    String fieldOrMethodName = name.substring(lastPeriod + 1);
+    Class<?> clazz = findClass(className, true);
+    if (clazz == null) {
+        throw new ELException(Util.message(null, "importHandler.invalidClassNameForStatic", className, name));
+    }
+    boolean found = false;
+    for (Field field : clazz.getFields()) {
+        if (field.getName().equals(fieldOrMethodName)) {
+            int modifiers = field.getModifiers();
+            if (Modifier.isStatic(modifiers) && Modifier.isPublic(modifiers)) {
+                found = true;
+                break;
+            }
+        }
+    }
+    if (!found) {
+        for (Method method : clazz.getMethods()) {
+            if (method.getName().equals(fieldOrMethodName)) {
+                int modifiers = method.getModifiers();
+                if (Modifier.isStatic(modifiers) && Modifier.isPublic(modifiers)) {
+                    found = true;
+                    break;
+                }
+            }
+        }
+    }
+    if (!found) {
+        throw new ELException(Util.message(null, "importHandler.staticNotFound", fieldOrMethodName, className, name));
+    }
+    Class<?> conflict = statics.get(fieldOrMethodName);
+    if (conflict != null) {
+        throw new ELException(Util.message(null, "importHandler.ambiguousStaticImport", name, conflict.getName() + '.' + fieldOrMethodName));
+    }
+    statics.put(fieldOrMethodName, clazz);
+}

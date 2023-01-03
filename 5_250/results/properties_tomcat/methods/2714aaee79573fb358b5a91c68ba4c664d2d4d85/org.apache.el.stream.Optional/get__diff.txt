@@ -1,0 +1,7 @@
+public Object get() throws ELException {
+    if (obj == null) {
+        throw new ELException(MessageFactory.get("stream.optional.empty"));
+    } else {
+        return obj;
+    }
+}

@@ -1,0 +1,17 @@
+/**
+ * Obtain the context object for the given key.
+ *
+ * @param key The key of the required context object
+ *
+ * @return The value of the context object associated with the given key
+ *
+ * @throws NullPointerException
+ *              If the supplied key is <code>null</code>
+ */
+public Object getContext(Class<?> key) {
+    Objects.requireNonNull(key);
+    if (this.map == null) {
+        return null;
+    }
+    return this.map.get(key);
+}

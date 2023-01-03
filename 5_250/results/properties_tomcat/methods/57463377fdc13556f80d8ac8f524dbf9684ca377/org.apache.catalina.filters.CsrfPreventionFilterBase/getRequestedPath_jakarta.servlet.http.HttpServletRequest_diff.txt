@@ -1,0 +1,7 @@
+protected String getRequestedPath(HttpServletRequest request) {
+    String path = request.getServletPath();
+    if (request.getPathInfo() != null) {
+        path = path + request.getPathInfo();
+    }
+    return path;
+}

@@ -1,0 +1,35 @@
+/**
+ * Set the login configuration descriptor for this web application.
+ *
+ * @param config The new login configuration
+ */
+@Override
+public void setLoginConfig(LoginConfig config) {
+    // Validate the incoming property value
+    if (config == null)
+        throw new IllegalArgumentException(sm.getString("standardContext.loginConfig.required"));
+    String loginPage = config.getLoginPage();
+    if ((loginPage != null) && !loginPage.startsWith("/")) {
+        if (isServlet22()) {
+            if (log.isDebugEnabled())
+                log.debug(sm.getString("standardContext.loginConfig.loginWarning", loginPage));
+            config.setLoginPage("/" + loginPage);
+        } else {
+            throw new IllegalArgumentException(sm.getString("standardContext.loginConfig.loginPage", loginPage));
+        }
+    }
+    String errorPage = config.getErrorPage();
+    if ((errorPage != null) && !errorPage.startsWith("/")) {
+        if (isServlet22()) {
+            if (log.isDebugEnabled())
+                log.debug(sm.getString("standardContext.loginConfig.errorWarning", errorPage));
+            config.setErrorPage("/" + errorPage);
+        } else {
+            throw new IllegalArgumentException(sm.getString("standardContext.loginConfig.errorPage", errorPage));
+        }
+    }
+    // Process the property setting change
+    LoginConfig oldLoginConfig = this.loginConfig;
+    this.loginConfig = config;
+    support.firePropertyChange("loginConfig", oldLoginConfig, this.loginConfig);
+}

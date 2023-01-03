@@ -1,0 +1,35 @@
+@Override
+public void setLoader(Loader loader) {
+    Lock writeLock = loaderLock.writeLock();
+    writeLock.lock();
+    Loader oldLoader = null;
+    try {
+        // Change components if necessary
+        oldLoader = this.loader;
+        if (oldLoader == loader)
+            return;
+        this.loader = loader;
+        // Stop the old component if necessary
+        if (getState().isAvailable() && (oldLoader != null) && (oldLoader instanceof Lifecycle)) {
+            try {
+                ((Lifecycle) oldLoader).stop();
+            } catch (LifecycleException e) {
+                log.error(sm.getString("standardContext.setLoader.stop"), e);
+            }
+        }
+        // Start the new component if necessary
+        if (loader != null)
+            loader.setContext(this);
+        if (getState().isAvailable() && (loader != null) && (loader instanceof Lifecycle)) {
+            try {
+                ((Lifecycle) loader).start();
+            } catch (LifecycleException e) {
+                log.error(sm.getString("standardContext.setLoader.start"), e);
+            }
+        }
+    } finally {
+        writeLock.unlock();
+    }
+    // Report this property change to interested listeners
+    support.firePropertyChange("loader", oldLoader, loader);
+}

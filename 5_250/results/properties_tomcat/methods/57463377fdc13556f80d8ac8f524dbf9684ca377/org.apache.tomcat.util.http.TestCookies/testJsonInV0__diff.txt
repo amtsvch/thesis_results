@@ -1,0 +1,5 @@
+@Test
+public void testJsonInV0() {
+    // Bug 55921
+    test(true, "{\"a\":true, \"b\":false};a=b", A);
+}

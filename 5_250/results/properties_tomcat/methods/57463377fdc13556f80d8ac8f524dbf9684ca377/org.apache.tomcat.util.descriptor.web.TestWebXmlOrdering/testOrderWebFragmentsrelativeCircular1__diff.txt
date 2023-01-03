@@ -1,0 +1,6 @@
+@Test(expected = IllegalArgumentException.class)
+public void testOrderWebFragmentsrelativeCircular1() {
+    a.addBeforeOrdering("b");
+    b.addBeforeOrdering("a");
+    WebXml.orderWebFragments(app, fragments, null);
+}

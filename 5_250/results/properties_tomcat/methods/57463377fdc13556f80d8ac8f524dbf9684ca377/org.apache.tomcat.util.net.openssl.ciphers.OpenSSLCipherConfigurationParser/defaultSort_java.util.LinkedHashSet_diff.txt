@@ -1,0 +1,31 @@
+/*
+     * See
+     * https://github.com/openssl/openssl/blob/7c96dbcdab959fef74c4caae63cdebaa354ab252/ssl/ssl_ciph.c#L1371
+     */
+static LinkedHashSet<Cipher> defaultSort(final LinkedHashSet<Cipher> ciphers) {
+    final LinkedHashSet<Cipher> result = new LinkedHashSet<>(ciphers.size());
+    final LinkedHashSet<Cipher> ecdh = new LinkedHashSet<>(ciphers.size());
+    /* Everything else being equal, prefer ephemeral ECDH over other key exchange mechanisms */
+    ecdh.addAll(filterByKeyExchange(ciphers, Collections.singleton(KeyExchange.EECDH)));
+    /* AES is our preferred symmetric cipher */
+    Set<Encryption> aes = new HashSet<>(Arrays.asList(Encryption.AES128, Encryption.AES128CCM, Encryption.AES128CCM8, Encryption.AES128GCM, Encryption.AES256, Encryption.AES256CCM, Encryption.AES256CCM8, Encryption.AES256GCM));
+    /* Now arrange all ciphers by preference: */
+    result.addAll(filterByEncryption(ecdh, aes));
+    result.addAll(filterByEncryption(ciphers, aes));
+    /* Add everything else */
+    result.addAll(ecdh);
+    result.addAll(ciphers);
+    /* Low priority for MD5 */
+    moveToEnd(result, filterByMessageDigest(result, Collections.singleton(MessageDigest.MD5)));
+    /* Move anonymous ciphers to the end.  Usually, these will remain disabled.
+         * (For applications that allow them, they aren't too bad, but we prefer
+         * authenticated ciphers.) */
+    moveToEnd(result, filterByAuthentication(result, Collections.singleton(Authentication.aNULL)));
+    /* Move ciphers without forward secrecy to the end */
+    moveToEnd(result, filterByAuthentication(result, Collections.singleton(Authentication.ECDH)));
+    moveToEnd(result, filterByKeyExchange(result, Collections.singleton(KeyExchange.RSA)));
+    moveToEnd(result, filterByKeyExchange(result, Collections.singleton(KeyExchange.PSK)));
+    /* RC4 is sort-of broken -- move the the end */
+    moveToEnd(result, filterByEncryption(result, Collections.singleton(Encryption.RC4)));
+    return strengthSort(result);
+}

@@ -1,0 +1,9 @@
+/**
+ * Stop the server.
+ *
+ * @throws LifecycleException Stop error
+ */
+public void stop() throws LifecycleException {
+    getServer();
+    server.stop();
+}

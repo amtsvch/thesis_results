@@ -1,0 +1,14 @@
+/*
+         * The authorization method string is case-insensitive and must
+         * hae at least one space character as a delimiter.
+         */
+private void parseMethod() throws IllegalArgumentException {
+    if (authorization.startsWithIgnoreCase(METHOD, 0)) {
+        // step past the auth method name
+        base64blobOffset = initialOffset + METHOD.length();
+        base64blobLength = authorization.getLength() - METHOD.length();
+    } else {
+        // is this possible, or permitted?
+        throw new IllegalArgumentException("Authorization header method is not \"Basic\"");
+    }
+}

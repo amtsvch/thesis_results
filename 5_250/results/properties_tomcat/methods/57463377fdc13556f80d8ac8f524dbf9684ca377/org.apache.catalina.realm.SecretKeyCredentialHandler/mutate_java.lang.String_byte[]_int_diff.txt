@@ -1,0 +1,4 @@
+@Override
+protected String mutate(String inputCredentials, byte[] salt, int iterations) {
+    return mutate(inputCredentials, salt, iterations, getKeyLength());
+}

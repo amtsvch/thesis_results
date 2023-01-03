@@ -1,0 +1,12 @@
+public String joinDelimited(String delim, String... strings) {
+    StringBuilder result = new StringBuilder();
+    if (strings != null) {
+        for (String s : strings) {
+            if (delim != null && result.length() > 0) {
+                result.append(delim);
+            }
+            result.append(s);
+        }
+    }
+    return result.toString();
+}

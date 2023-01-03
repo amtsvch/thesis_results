@@ -1,0 +1,9 @@
+/**
+ * Instantiates a LimitLatch object with an initial limit.
+ * @param limit - maximum number of concurrent acquisitions of this latch
+ */
+public LimitLatch(long limit) {
+    this.limit = limit;
+    this.count = new AtomicLong(0);
+    this.sync = new Sync();
+}

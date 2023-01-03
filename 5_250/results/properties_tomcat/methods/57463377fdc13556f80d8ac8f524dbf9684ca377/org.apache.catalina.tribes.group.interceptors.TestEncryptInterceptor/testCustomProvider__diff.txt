@@ -1,0 +1,10 @@
+@Test
+public void testCustomProvider() throws Exception {
+    // Explicitly set the provider name
+    src.setProviderName("SunJCE");
+    dest.setProviderName("SunJCE");
+    src.start(Channel.SND_TX_SEQ);
+    dest.start(Channel.SND_TX_SEQ);
+    String testInput = "The quick brown fox jumps over the lazy dog.";
+    Assert.assertEquals("Failed to set custom provider name", testInput, roundTrip(testInput, src, dest));
+}

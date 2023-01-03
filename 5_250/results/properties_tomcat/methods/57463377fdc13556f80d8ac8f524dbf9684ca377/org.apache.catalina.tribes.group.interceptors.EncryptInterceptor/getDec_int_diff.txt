@@ -1,0 +1,8 @@
+private static int getDec(int index) {
+    // Fast for correct values, slower for incorrect ones
+    try {
+        return DEC[index - '0'];
+    } catch (ArrayIndexOutOfBoundsException ex) {
+        return -1;
+    }
+}

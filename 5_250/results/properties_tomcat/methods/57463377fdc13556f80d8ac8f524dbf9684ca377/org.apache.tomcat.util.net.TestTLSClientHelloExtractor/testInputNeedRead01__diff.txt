@@ -1,0 +1,5 @@
+@Test
+public void testInputNeedRead01() throws IOException {
+    ByteBuffer testInput = ByteBuffer.allocate(1024);
+    doTestInputNeedRead(testInput);
+}

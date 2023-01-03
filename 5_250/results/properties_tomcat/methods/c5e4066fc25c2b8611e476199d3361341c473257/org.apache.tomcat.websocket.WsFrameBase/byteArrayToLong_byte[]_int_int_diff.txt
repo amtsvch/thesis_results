@@ -1,0 +1,12 @@
+protected static long byteArrayToLong(byte[] b, int start, int len) throws IOException {
+    if (len > 8) {
+        throw new IOException(sm.getString("wsFrame.byteToLongFail", Long.valueOf(len)));
+    }
+    int shift = 0;
+    long result = 0;
+    for (int i = start + len - 1; i >= start; i--) {
+        result = result + ((b[i] & 0xFFL) << shift);
+        shift += 8;
+    }
+    return result;
+}

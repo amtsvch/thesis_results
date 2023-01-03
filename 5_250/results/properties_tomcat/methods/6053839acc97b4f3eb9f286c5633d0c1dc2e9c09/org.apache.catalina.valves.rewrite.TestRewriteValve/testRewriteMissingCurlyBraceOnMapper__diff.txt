@@ -1,0 +1,9 @@
+@Test
+public void testRewriteMissingCurlyBraceOnMapper() throws Exception {
+    try {
+        doTestRewrite("RewriteRule /b/(.*).html$ /c$_{SERVLET_PATH}", "/b/x.html", "/c");
+        Assert.fail("IAE expected.");
+    } catch (java.lang.IllegalArgumentException e) {
+        // expected as $_{ is invalid
+    }
+}

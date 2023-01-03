@@ -1,0 +1,11 @@
+@Test
+public void testMap01() {
+    ELProcessor processor = new ELProcessor();
+    processor.defineBean("beans", beans);
+    Object result = processor.getValue("beans.stream().map(b->b.name).toList()", List.class);
+    List<String> expected = new ArrayList<>(3);
+    expected.add("bean01");
+    expected.add("bean02");
+    expected.add("bean03");
+    Assert.assertEquals(expected, result);
+}

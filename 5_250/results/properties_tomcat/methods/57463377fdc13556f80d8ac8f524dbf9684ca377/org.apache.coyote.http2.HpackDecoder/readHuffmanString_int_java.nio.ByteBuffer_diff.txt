@@ -1,0 +1,6 @@
+private String readHuffmanString(int length, ByteBuffer buffer) throws HpackException {
+    HPackHuffman.decode(buffer, length, stringBuilder);
+    String ret = stringBuilder.toString();
+    stringBuilder.setLength(0);
+    return ret;
+}

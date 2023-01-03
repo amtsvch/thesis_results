@@ -1,0 +1,30 @@
+public HttpParser(String relaxedPathChars, String relaxedQueryChars) {
+    for (int i = 0; i < ARRAY_SIZE; i++) {
+        // Not valid for request target.
+        // Combination of multiple rules from RFC7230 and RFC 3986. Must be
+        // ASCII, no controls plus a few additional characters excluded
+        if (IS_CONTROL[i] || i == ' ' || i == '\"' || i == '#' || i == '<' || i == '>' || i == '\\' || i == '^' || i == '`' || i == '{' || i == '|' || i == '}') {
+            IS_NOT_REQUEST_TARGET[i] = true;
+        }
+        /*
+             * absolute-path  = 1*( "/" segment )
+             * segment        = *pchar
+             * pchar          = unreserved / pct-encoded / sub-delims / ":" / "@"
+             *
+             * Note pchar allows everything userinfo allows plus "@"
+             */
+        if (IS_USERINFO[i] || i == '@' || i == '/') {
+            IS_ABSOLUTEPATH_RELAXED[i] = true;
+        }
+        /*
+             * query          = *( pchar / "/" / "?" )
+             *
+             * Note query allows everything absolute-path allows plus "?"
+             */
+        if (IS_ABSOLUTEPATH_RELAXED[i] || i == '?') {
+            IS_QUERY_RELAXED[i] = true;
+        }
+    }
+    relax(IS_ABSOLUTEPATH_RELAXED, relaxedPathChars);
+    relax(IS_QUERY_RELAXED, relaxedQueryChars);
+}

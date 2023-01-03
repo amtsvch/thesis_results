@@ -1,0 +1,8 @@
+/**
+ * Constructor.
+ */
+public ELParserTokenManager(SimpleCharStream stream) {
+    if (SimpleCharStream.staticFlag)
+        throw new Error("ERROR: Cannot use a static CharStream class with a non-static lexical analyzer.");
+    input_stream = stream;
+}

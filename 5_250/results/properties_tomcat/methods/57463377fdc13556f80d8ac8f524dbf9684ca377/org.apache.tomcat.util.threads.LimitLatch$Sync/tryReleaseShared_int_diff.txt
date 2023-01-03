@@ -1,0 +1,5 @@
+@Override
+protected boolean tryReleaseShared(int arg) {
+    count.decrementAndGet();
+    return true;
+}

@@ -1,0 +1,17 @@
+/**
+ * Notify interested listeners that an expression will be evaluated.
+ *
+ * @param expression The expression that will be evaluated
+ *
+ * @since EL 3.0
+ */
+public void notifyBeforeEvaluation(String expression) {
+    for (EvaluationListener listener : listeners) {
+        try {
+            listener.beforeEvaluation(this, expression);
+        } catch (Throwable t) {
+            Util.handleThrowable(t);
+            // Ignore - no option to log
+        }
+    }
+}

@@ -1,0 +1,20 @@
+/**                                                                                                    /**                                                                                                 
+* Notify interested listeners that an expression will be evaluated.                                    * Notify interested listeners that an expression will be evaluated.                                 
+*                                                                                                      *                                                                                                   
+* @param expression The expression that will be evaluated                                              * @param expression The expression that will be evaluated                                           
+*                                                                                                      *                                                                                                   
+* @since EL 3.0                                                                                        * @since EL 3.0                                                                                     
+*/                                                                                                     */                                                                                                  
+public void notifyBeforeEvaluation(String expression) {                                                public void notifyBeforeEvaluation(String expression) {                                             
+                                                                                                     | if (listeners == null) {                                                                            
+                                                                                                     | return;                                                                                             
+                                                                                                     | }                                                                                                   
+for (EvaluationListener listener : listeners) {                                                        for (EvaluationListener listener : listeners) {                                                     
+try {                                                                                                  try {                                                                                               
+listener.beforeEvaluation(this, expression);                                                           listener.beforeEvaluation(this, expression);                                                        
+} catch (Throwable t) {                                                                                } catch (Throwable t) {                                                                             
+Util.handleThrowable(t);                                                                               Util.handleThrowable(t);                                                                            
+// Ignore - no option to log                                                                           // Ignore - no option to log                                                                        
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,82 @@
+public static Member getMember(byte[] data, int offset, int length, MemberImpl member) {
+    // package looks like
+    // start package TRIBES_MBR_BEGIN.length
+    // package length - 4 bytes
+    // alive - 8 bytes
+    // port - 4 bytes
+    // secure port - 4 bytes
+    // udp port - 4 bytes
+    // host length - 1 byte
+    // host - hl bytes
+    // clen - 4 bytes
+    // command - clen bytes
+    // dlen - 4 bytes
+    // domain - dlen bytes
+    // uniqueId - 16 bytes
+    // payload length - 4 bytes
+    // payload plen bytes
+    // end package TRIBES_MBR_END.length
+    int pos = offset;
+    if (XByteBuffer.firstIndexOf(data, offset, TRIBES_MBR_BEGIN) != pos) {
+        throw new IllegalArgumentException(sm.getString("memberImpl.invalid.package.begin", org.apache.catalina.tribes.util.Arrays.toString(TRIBES_MBR_BEGIN)));
+    }
+    if (length < (TRIBES_MBR_BEGIN.length + 4)) {
+        throw new ArrayIndexOutOfBoundsException(sm.getString("memberImpl.package.small"));
+    }
+    pos += TRIBES_MBR_BEGIN.length;
+    int bodylength = XByteBuffer.toInt(data, pos);
+    pos += 4;
+    if (length < (bodylength + 4 + TRIBES_MBR_BEGIN.length + TRIBES_MBR_END.length)) {
+        throw new ArrayIndexOutOfBoundsException(sm.getString("memberImpl.notEnough.bytes"));
+    }
+    int endpos = pos + bodylength;
+    if (XByteBuffer.firstIndexOf(data, endpos, TRIBES_MBR_END) != endpos) {
+        throw new IllegalArgumentException(sm.getString("memberImpl.invalid.package.end", org.apache.catalina.tribes.util.Arrays.toString(TRIBES_MBR_END)));
+    }
+    byte[] alived = new byte[8];
+    System.arraycopy(data, pos, alived, 0, 8);
+    pos += 8;
+    byte[] portd = new byte[4];
+    System.arraycopy(data, pos, portd, 0, 4);
+    pos += 4;
+    byte[] sportd = new byte[4];
+    System.arraycopy(data, pos, sportd, 0, 4);
+    pos += 4;
+    byte[] uportd = new byte[4];
+    System.arraycopy(data, pos, uportd, 0, 4);
+    pos += 4;
+    byte hl = data[pos++];
+    byte[] addr = new byte[hl];
+    System.arraycopy(data, pos, addr, 0, hl);
+    pos += hl;
+    int cl = XByteBuffer.toInt(data, pos);
+    pos += 4;
+    byte[] command = new byte[cl];
+    System.arraycopy(data, pos, command, 0, command.length);
+    pos += command.length;
+    int dl = XByteBuffer.toInt(data, pos);
+    pos += 4;
+    byte[] domain = new byte[dl];
+    System.arraycopy(data, pos, domain, 0, domain.length);
+    pos += domain.length;
+    byte[] uniqueId = new byte[16];
+    System.arraycopy(data, pos, uniqueId, 0, 16);
+    pos += 16;
+    int pl = XByteBuffer.toInt(data, pos);
+    pos += 4;
+    byte[] payload = new byte[pl];
+    System.arraycopy(data, pos, payload, 0, payload.length);
+    pos += payload.length;
+    member.setHost(addr);
+    member.setPort(XByteBuffer.toInt(portd, 0));
+    member.setSecurePort(XByteBuffer.toInt(sportd, 0));
+    member.setUdpPort(XByteBuffer.toInt(uportd, 0));
+    member.setMemberAliveTime(XByteBuffer.toLong(alived, 0));
+    member.setUniqueId(uniqueId);
+    member.payload = payload;
+    member.domain = domain;
+    member.command = command;
+    member.dataPkg = new byte[length];
+    System.arraycopy(data, offset, member.dataPkg, 0, length);
+    return member;
+}

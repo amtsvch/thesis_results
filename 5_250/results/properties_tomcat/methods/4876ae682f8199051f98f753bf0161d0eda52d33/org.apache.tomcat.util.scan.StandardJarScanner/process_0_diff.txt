@@ -1,0 +1,47 @@
+/*
+     * Scan a URL for JARs with the optional extensions to look at all files
+     * and all directories.
+     */
+protected void process(JarScanType scanType, JarScannerCallback callback, URL url, String webappPath, boolean isWebapp, Deque<URL> classPathUrlsToProcess) throws IOException {
+    if (log.isTraceEnabled()) {
+        log.trace(sm.getString("jarScan.jarUrlStart", url));
+    }
+    if ("jar".equals(url.getProtocol()) || url.getPath().endsWith(Constants.JAR_EXT)) {
+        try (Jar jar = JarFactory.newInstance(url)) {
+            if (isScanManifest()) {
+                processManifest(jar, isWebapp, classPathUrlsToProcess);
+            }
+            callback.scan(jar, webappPath, isWebapp);
+        }
+    } else if ("file".equals(url.getProtocol())) {
+        File f;
+        try {
+            f = new File(url.toURI());
+            if (f.isFile() && isScanAllFiles()) {
+                // Treat this file as a JAR
+                URL jarURL = UriUtil.buildJarUrl(f);
+                try (Jar jar = JarFactory.newInstance(jarURL)) {
+                    if (isScanManifest()) {
+                        processManifest(jar, isWebapp, classPathUrlsToProcess);
+                    }
+                    callback.scan(jar, webappPath, isWebapp);
+                }
+            } else if (f.isDirectory()) {
+                if (scanType == JarScanType.PLUGGABILITY) {
+                    callback.scan(f, webappPath, isWebapp);
+                } else {
+                    File metainf = new File(f.getAbsoluteFile() + File.separator + "META-INF");
+                    if (metainf.isDirectory()) {
+                        callback.scan(f, webappPath, isWebapp);
+                    }
+                }
+            }
+        } catch (Throwable t) {
+            ExceptionUtils.handleThrowable(t);
+            // Wrap the exception and re-throw
+            IOException ioe = new IOException();
+            ioe.initCause(t);
+            throw ioe;
+        }
+    }
+}

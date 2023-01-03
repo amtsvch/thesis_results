@@ -1,0 +1,7 @@
+private String extractNonceFromRequest(HttpServletRequest request) {
+    String nonceFromRequest = nonceFromRequestHeader.getNonce(request, Constants.CSRF_REST_NONCE_HEADER_NAME);
+    if ((Objects.isNull(nonceFromRequest) || Objects.equals("", nonceFromRequest)) && !getPathsAcceptingParams().isEmpty() && getPathsAcceptingParams().contains(getRequestedPath(request))) {
+        nonceFromRequest = extractNonceFromRequestParams(request);
+    }
+    return nonceFromRequest;
+}

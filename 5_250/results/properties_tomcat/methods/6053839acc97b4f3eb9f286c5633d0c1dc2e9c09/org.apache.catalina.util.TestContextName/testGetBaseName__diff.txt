@@ -1,0 +1,25 @@
+@Test
+public void testGetBaseName() {
+    Assert.assertEquals("ROOT", cn1.getBaseName());
+    Assert.assertEquals("ROOT", cn2.getBaseName());
+    Assert.assertEquals("ROOT", cn3.getBaseName());
+    Assert.assertEquals("foo", cn4.getBaseName());
+    Assert.assertEquals("foo#bar", cn5.getBaseName());
+    Assert.assertEquals("ROOT##A", cn6.getBaseName());
+    Assert.assertEquals("ROOT##B", cn7.getBaseName());
+    Assert.assertEquals("ROOT##C", cn8.getBaseName());
+    Assert.assertEquals("foo##D", cn9.getBaseName());
+    Assert.assertEquals("foo#bar##E", cn10.getBaseName());
+    Assert.assertEquals("ROOT", cn11.getBaseName());
+    Assert.assertEquals("foo", cn12.getBaseName());
+    Assert.assertEquals("foo#bar", cn13.getBaseName());
+    Assert.assertEquals("ROOT##A", cn14.getBaseName());
+    Assert.assertEquals("foo##D", cn15.getBaseName());
+    Assert.assertEquals("foo#bar##E", cn16.getBaseName());
+    Assert.assertEquals("ROOT", cn17.getBaseName());
+    Assert.assertEquals("ROOT#bar", cn18.getBaseName());
+    Assert.assertEquals("ROOT#bar##A", cn19.getBaseName());
+    Assert.assertEquals("ROOT##A", cn20.getBaseName());
+    Assert.assertEquals("foo.war", cn21.getBaseName());
+    Assert.assertEquals("foo", cn22.getBaseName());
+}

@@ -1,0 +1,9 @@
+public String getHostname() {
+    if (this.hostname != null) {
+        return hostname;
+    } else {
+        byte[] host = this.host;
+        this.hostname = org.apache.catalina.tribes.util.Arrays.toString(host, 0, host.length, true);
+        return this.hostname;
+    }
+}

@@ -1,0 +1,10 @@
+@Override
+public boolean isExported(Class<?> type) {
+    try {
+        String packageName = type.getPackage().getName();
+        Object module = getModuleMethod.invoke(type);
+        return ((Boolean) isExportedMethod.invoke(module, packageName)).booleanValue();
+    } catch (ReflectiveOperationException e) {
+        return false;
+    }
+}

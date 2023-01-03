@@ -1,0 +1,122 @@
+// setPropertyMethodVoid is not null when used
+@SuppressWarnings("null")
+public static boolean setProperty(Object o, String name, String value, boolean invokeSetProperty, StringBuilder actualMethod) {
+    if (log.isDebugEnabled())
+        log.debug("IntrospectionUtils: setProperty(" + o.getClass() + " " + name + "=" + value + ")");
+    if (actualMethod == null && XReflectionIntrospectionUtils.isEnabled()) {
+        return XReflectionIntrospectionUtils.setPropertyInternal(o, name, value, invokeSetProperty);
+    }
+    String setter = "set" + capitalize(name);
+    try {
+        Method[] methods = findMethods(o.getClass());
+        Method setPropertyMethodVoid = null;
+        Method setPropertyMethodBool = null;
+        // First, the ideal case - a setFoo( String ) method
+        for (Method item : methods) {
+            Class<?>[] paramT = item.getParameterTypes();
+            if (setter.equals(item.getName()) && paramT.length == 1 && "java.lang.String".equals(paramT[0].getName())) {
+                item.invoke(o, new Object[] { value });
+                if (actualMethod != null) {
+                    actualMethod.append(item.getName()).append("(\"").append(escape(value)).append("\")");
+                }
+                return true;
+            }
+        }
+        // Try a setFoo ( int ) or ( boolean )
+        for (Method method : methods) {
+            boolean ok = true;
+            if (setter.equals(method.getName()) && method.getParameterTypes().length == 1) {
+                // match - find the type and invoke it
+                Class<?> paramType = method.getParameterTypes()[0];
+                Object[] params = new Object[1];
+                // Try a setFoo ( int )
+                if ("java.lang.Integer".equals(paramType.getName()) || "int".equals(paramType.getName())) {
+                    try {
+                        params[0] = Integer.valueOf(value);
+                    } catch (NumberFormatException ex) {
+                        ok = false;
+                    }
+                    if (actualMethod != null) {
+                        actualMethod.append(method.getName()).append("(Integer.valueOf(\"").append(value).append("\"))");
+                    }
+                    // Try a setFoo ( long )
+                } else if ("java.lang.Long".equals(paramType.getName()) || "long".equals(paramType.getName())) {
+                    try {
+                        params[0] = Long.valueOf(value);
+                    } catch (NumberFormatException ex) {
+                        ok = false;
+                    }
+                    if (actualMethod != null) {
+                        actualMethod.append(method.getName()).append("(Long.valueOf(\"").append(value).append("\"))");
+                    }
+                    // Try a setFoo ( boolean )
+                } else if ("java.lang.Boolean".equals(paramType.getName()) || "boolean".equals(paramType.getName())) {
+                    params[0] = Boolean.valueOf(value);
+                    if (actualMethod != null) {
+                        actualMethod.append(method.getName()).append("(Boolean.valueOf(\"").append(value).append("\"))");
+                    }
+                    // Try a setFoo ( InetAddress )
+                } else if ("java.net.InetAddress".equals(paramType.getName())) {
+                    try {
+                        params[0] = InetAddress.getByName(value);
+                    } catch (UnknownHostException exc) {
+                        if (log.isDebugEnabled())
+                            log.debug("IntrospectionUtils: Unable to resolve host name:" + value);
+                        ok = false;
+                    }
+                    if (actualMethod != null) {
+                        actualMethod.append(method.getName()).append("(InetAddress.getByName(\"").append(value).append("\"))");
+                    }
+                    // Unknown type
+                } else {
+                    if (log.isDebugEnabled())
+                        log.debug("IntrospectionUtils: Unknown type " + paramType.getName());
+                }
+                if (ok) {
+                    method.invoke(o, params);
+                    return true;
+                }
+            }
+            // save "setProperty" for later
+            if ("setProperty".equals(method.getName())) {
+                if (method.getReturnType() == Boolean.TYPE) {
+                    setPropertyMethodBool = method;
+                } else {
+                    setPropertyMethodVoid = method;
+                }
+            }
+        }
+        // Ok, no setXXX found, try a setProperty("name", "value")
+        if (invokeSetProperty && (setPropertyMethodBool != null || setPropertyMethodVoid != null)) {
+            if (actualMethod != null) {
+                actualMethod.append("setProperty(\"").append(name).append("\", \"").append(escape(value)).append("\")");
+            }
+            Object[] params = new Object[2];
+            params[0] = name;
+            params[1] = value;
+            if (setPropertyMethodBool != null) {
+                try {
+                    return ((Boolean) setPropertyMethodBool.invoke(o, params)).booleanValue();
+                } catch (IllegalArgumentException biae) {
+                    // the boolean method had the wrong
+                    // parameter types. lets try the other
+                    if (setPropertyMethodVoid != null) {
+                        setPropertyMethodVoid.invoke(o, params);
+                        return true;
+                    } else {
+                        throw biae;
+                    }
+                }
+            } else {
+                setPropertyMethodVoid.invoke(o, params);
+                return true;
+            }
+        }
+    } catch (IllegalArgumentException | SecurityException | IllegalAccessException e) {
+        log.warn(sm.getString("introspectionUtils.setPropertyError", name, value, o.getClass()), e);
+    } catch (InvocationTargetException e) {
+        ExceptionUtils.handleThrowable(e.getCause());
+        log.warn(sm.getString("introspectionUtils.setPropertyError", name, value, o.getClass()), e);
+    }
+    return false;
+}

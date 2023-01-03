@@ -1,0 +1,9 @@
+private void clearReferencesObjectStreamClassCaches() {
+    try {
+        Class<?> clazz = Class.forName("java.io.ObjectStreamClass$Caches");
+        clearCache(clazz, "localDescs");
+        clearCache(clazz, "reflectors");
+    } catch (ReflectiveOperationException | SecurityException | ClassCastException e) {
+        log.warn(sm.getString("webappClassLoader.clearObjectStreamClassCachesFail", getContextName()), e);
+    }
+}

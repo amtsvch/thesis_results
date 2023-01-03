@@ -1,0 +1,22 @@
+static String message(ELContext context, String name, Object... props) {
+    Locale locale = null;
+    if (context != null) {
+        locale = context.getLocale();
+    }
+    if (locale == null) {
+        locale = Locale.getDefault();
+        if (locale == null) {
+            return "";
+        }
+    }
+    ResourceBundle bundle = ResourceBundle.getBundle("jakarta.el.LocalStrings", locale);
+    try {
+        String template = bundle.getString(name);
+        if (props != null) {
+            template = MessageFormat.format(template, props);
+        }
+        return template;
+    } catch (MissingResourceException e) {
+        return "Missing Resource: '" + name + "' for Locale " + locale.getDisplayName();
+    }
+}

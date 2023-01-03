@@ -1,0 +1,25 @@
+@Test
+public void testGetDisplayName() {
+    Assert.assertEquals("/", cn1.getDisplayName());
+    Assert.assertEquals("/", cn2.getDisplayName());
+    Assert.assertEquals("/", cn3.getDisplayName());
+    Assert.assertEquals("/foo", cn4.getDisplayName());
+    Assert.assertEquals("/foo/bar", cn5.getDisplayName());
+    Assert.assertEquals("/##A", cn6.getDisplayName());
+    Assert.assertEquals("/##B", cn7.getDisplayName());
+    Assert.assertEquals("/##C", cn8.getDisplayName());
+    Assert.assertEquals("/foo##D", cn9.getDisplayName());
+    Assert.assertEquals("/foo/bar##E", cn10.getDisplayName());
+    Assert.assertEquals("/", cn11.getDisplayName());
+    Assert.assertEquals("/foo", cn12.getDisplayName());
+    Assert.assertEquals("/foo/bar", cn13.getDisplayName());
+    Assert.assertEquals("/##A", cn14.getDisplayName());
+    Assert.assertEquals("/foo##D", cn15.getDisplayName());
+    Assert.assertEquals("/foo/bar##E", cn16.getDisplayName());
+    Assert.assertEquals("/", cn17.getDisplayName());
+    Assert.assertEquals("/ROOT/bar", cn18.getDisplayName());
+    Assert.assertEquals("/ROOT/bar##A", cn19.getDisplayName());
+    Assert.assertEquals("/##A", cn20.getDisplayName());
+    Assert.assertEquals("/foo.war", cn21.getDisplayName());
+    Assert.assertEquals("/foo", cn22.getDisplayName());
+}

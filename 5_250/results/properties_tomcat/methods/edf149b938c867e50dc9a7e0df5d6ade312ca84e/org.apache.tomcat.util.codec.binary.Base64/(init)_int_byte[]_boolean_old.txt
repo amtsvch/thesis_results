@@ -1,0 +1,54 @@
+/**
+ * Creates a Base64 codec used for decoding (all modes) and encoding in URL-unsafe mode.
+ * <p>
+ * When encoding the line length and line separator are given in the constructor, and the encoding table is
+ * STANDARD_ENCODE_TABLE.
+ * </p>
+ * <p>
+ * Line lengths that aren't multiples of 4 will still essentially end up being multiples of 4 in the encoded data.
+ * </p>
+ * <p>
+ * When decoding all variants are supported.
+ * </p>
+ *
+ * @param lineLength
+ *            Each line of encoded data will be at most of the given length (rounded down to nearest multiple of
+ *            4). If lineLength &lt;= 0, then the output will not be divided into lines (chunks). Ignored when
+ *            decoding.
+ * @param lineSeparator
+ *            Each line of encoded data will end with this sequence of bytes.
+ * @param urlSafe
+ *            Instead of emitting '+' and '/' we emit '-' and '_' respectively. urlSafe is only applied to encode
+ *            operations. Decoding seamlessly handles both modes.
+ *            <b>Note: no padding is added when using the URL-safe alphabet.</b>
+ * @throws IllegalArgumentException
+ *             The provided lineSeparator included some base64 characters. That's not going to work!
+ * @since 1.4
+ */
+public Base64(final int lineLength, final byte[] lineSeparator, final boolean urlSafe) {
+    super(BYTES_PER_UNENCODED_BLOCK, BYTES_PER_ENCODED_BLOCK, lineLength, lineSeparator == null ? 0 : lineSeparator.length);
+    // Needs to be set early to avoid NPE during call to containsAlphabetOrPad() below
+    this.decodeTable = urlSafe ? URL_SAFE_DECODE_TABLE : STANDARD_DECODE_TABLE;
+    // TODO could be simplified if there is no requirement to reject invalid line sep when length <=0
+    // @see test case Base64Test.testConstructors()
+    if (lineSeparator != null) {
+        if (containsAlphabetOrPad(lineSeparator)) {
+            final String sep = StringUtils.newStringUtf8(lineSeparator);
+            throw new IllegalArgumentException(sm.getString("base64.lineSeparator", sep));
+        }
+        if (lineLength > 0) {
+            // null line-sep forces no chunking rather than throwing IAE
+            this.encodeSize = BYTES_PER_ENCODED_BLOCK + lineSeparator.length;
+            this.lineSeparator = new byte[lineSeparator.length];
+            System.arraycopy(lineSeparator, 0, this.lineSeparator, 0, lineSeparator.length);
+        } else {
+            this.encodeSize = BYTES_PER_ENCODED_BLOCK;
+            this.lineSeparator = null;
+        }
+    } else {
+        this.encodeSize = BYTES_PER_ENCODED_BLOCK;
+        this.lineSeparator = null;
+    }
+    this.decodeSize = this.encodeSize - 1;
+    this.encodeTable = urlSafe ? URL_SAFE_ENCODE_TABLE : STANDARD_ENCODE_TABLE;
+}

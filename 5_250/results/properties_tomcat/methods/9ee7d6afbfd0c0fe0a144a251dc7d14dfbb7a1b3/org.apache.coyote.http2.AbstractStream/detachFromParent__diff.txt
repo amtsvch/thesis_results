@@ -1,0 +1,6 @@
+final void detachFromParent() {
+    if (parentStream != null) {
+        parentStream.getChildStreams().remove(this);
+        parentStream = null;
+    }
+}

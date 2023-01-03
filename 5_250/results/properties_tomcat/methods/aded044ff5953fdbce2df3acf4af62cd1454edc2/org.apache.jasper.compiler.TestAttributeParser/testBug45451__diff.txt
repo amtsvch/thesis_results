@@ -1,0 +1,6 @@
+@Test
+public void testBug45451() {
+    Assert.assertEquals("2", evalAttr("${1+1}", '\"'));
+    Assert.assertEquals("${1+1}", evalAttr("\\${1+1}", '\"'));
+    Assert.assertEquals("\\2", evalAttr("\\\\${1+1}", '\"'));
+}

@@ -1,0 +1,6 @@
+@Test
+public void testGetRequestNoSessionNoNonce() throws Exception {
+    setRequestExpectations(GET_METHOD, null, null);
+    filter.doFilter(request, response, filterChain);
+    verifyContinueChain();
+}

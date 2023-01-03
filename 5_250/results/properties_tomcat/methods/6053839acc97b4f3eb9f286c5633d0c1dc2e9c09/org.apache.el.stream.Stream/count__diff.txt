@@ -1,0 +1,8 @@
+public Long count() {
+    long count = 0;
+    while (iterator.hasNext()) {
+        iterator.next();
+        count++;
+    }
+    return Long.valueOf(count);
+}

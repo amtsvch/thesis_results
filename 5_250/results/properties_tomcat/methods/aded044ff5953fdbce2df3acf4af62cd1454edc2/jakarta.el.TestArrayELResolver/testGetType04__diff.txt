@@ -1,0 +1,10 @@
+/**
+ * Tests that the key is out of bounds and exception will be thrown.
+ */
+@Test(expected = PropertyNotFoundException.class)
+public void testGetType04() {
+    ArrayELResolver resolver = new ArrayELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    String[] base = new String[] { "element" };
+    resolver.getType(context, base, Integer.valueOf(1));
+}

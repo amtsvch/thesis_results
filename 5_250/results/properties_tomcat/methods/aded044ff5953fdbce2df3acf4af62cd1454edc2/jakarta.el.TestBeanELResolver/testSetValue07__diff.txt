@@ -1,0 +1,10 @@
+/**
+ * Tests that an exception will be thrown when the property does not have
+ * setter method.
+ */
+@Test(expected = PropertyNotWritableException.class)
+public void testSetValue07() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    resolver.setValue(context, new TesterBean(BEAN_NAME), PROPERTY01_NAME, PROPERTY_VALUE);
+}

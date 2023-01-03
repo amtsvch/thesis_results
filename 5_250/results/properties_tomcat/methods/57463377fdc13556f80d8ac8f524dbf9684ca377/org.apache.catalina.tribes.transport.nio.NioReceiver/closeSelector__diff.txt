@@ -1,0 +1,26 @@
+private void closeSelector() throws IOException {
+    Selector selector = this.selector.getAndSet(null);
+    if (selector == null)
+        return;
+    try {
+        // look at each key in the selected set
+        for (SelectionKey key : selector.keys()) {
+            key.channel().close();
+            key.attach(null);
+            key.cancel();
+        }
+    } catch (IOException ignore) {
+        if (log.isWarnEnabled()) {
+            log.warn(sm.getString("nioReceiver.cleanup.fail"), ignore);
+        }
+    } catch (ClosedSelectorException ignore) {
+        // Ignore
+    }
+    try {
+        selector.selectNow();
+    } catch (Throwable t) {
+        ExceptionUtils.handleThrowable(t);
+        // Ignore everything else
+    }
+    selector.close();
+}

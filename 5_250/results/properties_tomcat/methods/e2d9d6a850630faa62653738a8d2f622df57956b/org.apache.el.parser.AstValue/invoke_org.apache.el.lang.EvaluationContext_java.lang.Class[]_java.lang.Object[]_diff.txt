@@ -1,0 +1,36 @@
+@Override
+public // Interface el.parser.Node uses a raw type (and is auto-generated)
+Object invoke(EvaluationContext ctx, @SuppressWarnings("rawtypes") Class[] paramTypes, Object[] paramValues) throws ELException {
+    Target t = getTarget(ctx);
+    Method m = null;
+    Object[] values = null;
+    Class<?>[] types = null;
+    if (isParametersProvided()) {
+        values = ((AstMethodParameters) this.jjtGetChild(this.jjtGetNumChildren() - 1)).getParameters(ctx);
+        types = getTypesFromValues(values);
+    } else {
+        values = paramValues;
+        types = paramTypes;
+    }
+    m = ReflectionUtil.getMethod(ctx, t.base, t.property, types, values);
+    // Handle varArgs and any coercion required
+    values = convertArgs(ctx, values, m);
+    Object result = null;
+    try {
+        result = m.invoke(t.base, values);
+    } catch (IllegalAccessException iae) {
+        throw new ELException(iae);
+    } catch (IllegalArgumentException iae) {
+        throw new ELException(iae);
+    } catch (InvocationTargetException ite) {
+        Throwable cause = ite.getCause();
+        if (cause instanceof ThreadDeath) {
+            throw (ThreadDeath) cause;
+        }
+        if (cause instanceof VirtualMachineError) {
+            throw (VirtualMachineError) cause;
+        }
+        throw new ELException(cause);
+    }
+    return result;
+}

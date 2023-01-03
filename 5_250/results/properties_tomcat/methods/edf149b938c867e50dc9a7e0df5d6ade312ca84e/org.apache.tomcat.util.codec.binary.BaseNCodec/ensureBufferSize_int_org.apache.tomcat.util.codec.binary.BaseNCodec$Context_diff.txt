@@ -1,0 +1,19 @@
+/**                                                                                                    /**                                                                                                 
+* Ensure that the buffer has room for &lt;code&gt;size&lt;/code&gt; bytes                            | * Ensure that the buffer has room for {@code size} bytes                                            
+*                                                                                                      *                                                                                                   
+* @param size minimum spare space required                                                             * @param size minimum spare space required                                                          
+* @param context the context to be used                                                                * @param context the context to be used                                                             
+* @return the buffer                                                                                   * @return the buffer                                                                                
+*/                                                                                                     */                                                                                                  
+protected byte[] ensureBufferSize(final int size, final Context context) {                             protected byte[] ensureBufferSize(final int size, final Context context) {                          
+if (context.buffer == null) {                                                                          if (context.buffer == null) {                                                                       
+context.buffer = new byte[getDefaultBufferSize()];                                                   | context.buffer = new byte[Math.max(size, getDefaultBufferSize())];                                  
+context.pos = 0;                                                                                       context.pos = 0;                                                                                    
+context.readPos = 0;                                                                                   context.readPos = 0;                                                                                
+// Overflow-conscious:                                                                                 // Overflow-conscious:                                                                              
+// x + y &gt; z  ==  x + y - z &gt; 0                                                                  // x + y &gt; z  ==  x + y - z &gt; 0                                                               
+} else if (context.pos + size - context.buffer.length &gt; 0) {                                        } else if (context.pos + size - context.buffer.length &gt; 0) {                                     
+return resizeBuffer(context, context.pos + size);                                                      return resizeBuffer(context, context.pos + size);                                                   
+}                                                                                                      }                                                                                                   
+return context.buffer;                                                                                 return context.buffer;                                                                              
+}                                                                                                      }                                                                                                   

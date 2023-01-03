@@ -1,0 +1,18 @@
+@Before
+public void setUp() throws Exception {
+    File logsBase = new File(System.getProperty("tomcat.test.temp", "output/tmp"));
+    if (!logsBase.mkdirs() && !logsBase.isDirectory()) {
+        Assert.fail("Unable to create logs directory.");
+    }
+    Path logsBasePath = FileSystems.getDefault().getPath(logsBase.getAbsolutePath());
+    logsDir = Files.createTempDirectory(logsBasePath, "test").toFile();
+    generateLogFiles(logsDir, PREFIX_1, SUFFIX_2, 3);
+    generateLogFiles(logsDir, PREFIX_2, SUFFIX_1, 3);
+    generateLogFiles(logsDir, PREFIX_3, SUFFIX_1, 3);
+    generateLogFiles(logsDir, PREFIX_4, SUFFIX_1, 3);
+    String date = LocalDateTime.now().minusDays(3).toString().replaceAll(":", "-");
+    File file = new File(logsDir, PREFIX_1 + date + SUFFIX_1);
+    if (!file.createNewFile()) {
+        Assert.fail("Unable to create " + file.getAbsolutePath());
+    }
+}

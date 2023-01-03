@@ -1,0 +1,15 @@
+/*
+         * This method allows injection of cribbed base64 blobs,
+         * without any validation of the contents
+         */
+private BasicAuthHeader(String method, String fakeBase64) {
+    prefix(method);
+    byte[] fakeBytes = fakeBase64.getBytes(StandardCharsets.ISO_8859_1);
+    try {
+        authHeader.append(fakeBytes, 0, fakeBytes.length);
+    } catch (IOException ioe) {
+        throw new IllegalStateException("unable to extend ByteChunk:" + ioe.getMessage());
+    }
+    // emulate tomcat server - offset points to method in header
+    authHeader.setOffset(initialOffset);
+}

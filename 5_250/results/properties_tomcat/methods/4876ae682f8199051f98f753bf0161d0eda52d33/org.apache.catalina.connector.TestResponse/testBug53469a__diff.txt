@@ -1,0 +1,8 @@
+@Test
+public void testBug53469a() throws Exception {
+    Request req = new TesterRequest();
+    Response resp = new Response();
+    resp.setRequest(req);
+    String result = resp.encodeURL("../bar.html");
+    Assert.assertEquals("../bar.html", result);
+}

@@ -1,0 +1,10 @@
+public FileHandler(String directory, String prefix, String suffix, Integer maxDays, Boolean rotatable, Integer bufferSize) {
+    this.directory = directory;
+    this.prefix = prefix;
+    this.suffix = suffix;
+    this.maxDays = maxDays;
+    this.rotatable = rotatable;
+    this.bufferSize = bufferSize;
+    configure();
+    clean();
+}

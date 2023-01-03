@@ -1,0 +1,79 @@
+/**
+ * Configure from <code>LogManager</code> properties.
+ */
+private void configure() {
+    // allow classes to override
+    String className = this.getClass().getName();
+    ClassLoader cl = Thread.currentThread().getContextClassLoader();
+    // Retrieve configuration of logging file name
+    if (rotatable == null) {
+        rotatable = Boolean.valueOf(getProperty(className + ".rotatable", "true"));
+    }
+    if (directory == null) {
+        directory = getProperty(className + ".directory", "logs");
+    }
+    if (prefix == null) {
+        prefix = getProperty(className + ".prefix", "juli.");
+    }
+    if (suffix == null) {
+        suffix = getProperty(className + ".suffix", ".log");
+    }
+    // https://bz.apache.org/bugzilla/show_bug.cgi?id=61232
+    boolean shouldCheckForRedundantSeparator = !rotatable.booleanValue() && !prefix.isEmpty() && !suffix.isEmpty();
+    // assuming separator is just one char, if there are use cases with
+    // more, the notion of separator might be introduced
+    if (shouldCheckForRedundantSeparator && (prefix.charAt(prefix.length() - 1) == suffix.charAt(0))) {
+        suffix = suffix.substring(1);
+    }
+    pattern = Pattern.compile("^(" + Pattern.quote(prefix) + ")\\d{4}-\\d{1,2}-\\d{1,2}(" + Pattern.quote(suffix) + ")$");
+    if (maxDays == null) {
+        String sMaxDays = getProperty(className + ".maxDays", String.valueOf(DEFAULT_MAX_DAYS));
+        try {
+            maxDays = Integer.valueOf(sMaxDays);
+        } catch (NumberFormatException ignore) {
+            maxDays = Integer.valueOf(DEFAULT_MAX_DAYS);
+        }
+    }
+    if (bufferSize == null) {
+        String sBufferSize = getProperty(className + ".bufferSize", String.valueOf(DEFAULT_BUFFER_SIZE));
+        try {
+            bufferSize = Integer.valueOf(sBufferSize);
+        } catch (NumberFormatException ignore) {
+            bufferSize = Integer.valueOf(DEFAULT_BUFFER_SIZE);
+        }
+    }
+    // Get encoding for the logging file
+    String encoding = getProperty(className + ".encoding", null);
+    if (encoding != null && encoding.length() > 0) {
+        try {
+            setEncoding(encoding);
+        } catch (UnsupportedEncodingException ex) {
+            // Ignore
+        }
+    }
+    // Get logging level for the handler
+    setLevel(Level.parse(getProperty(className + ".level", "" + Level.ALL)));
+    // Get filter configuration
+    String filterName = getProperty(className + ".filter", null);
+    if (filterName != null) {
+        try {
+            setFilter((Filter) cl.loadClass(filterName).getConstructor().newInstance());
+        } catch (Exception e) {
+            // Ignore
+        }
+    }
+    // Set formatter
+    String formatterName = getProperty(className + ".formatter", null);
+    if (formatterName != null) {
+        try {
+            setFormatter((Formatter) cl.loadClass(formatterName).getConstructor().newInstance());
+        } catch (Exception e) {
+            // Ignore and fallback to defaults
+            setFormatter(new OneLineFormatter());
+        }
+    } else {
+        setFormatter(new OneLineFormatter());
+    }
+    // Set error manager
+    setErrorManager(new ErrorManager());
+}

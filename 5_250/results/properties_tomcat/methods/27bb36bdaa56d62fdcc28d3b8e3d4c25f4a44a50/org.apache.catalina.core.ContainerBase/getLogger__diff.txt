@@ -1,0 +1,10 @@
+/**
+ * Return the Logger for this Container.
+ */
+@Override
+public Log getLogger() {
+    if (logger != null)
+        return logger;
+    logger = LogFactory.getLog(getLogName());
+    return logger;
+}

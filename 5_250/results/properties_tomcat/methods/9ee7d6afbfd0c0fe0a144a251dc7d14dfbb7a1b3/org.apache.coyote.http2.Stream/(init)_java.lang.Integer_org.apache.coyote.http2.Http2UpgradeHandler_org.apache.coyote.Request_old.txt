@@ -1,0 +1,41 @@
+Stream(Integer identifier, Http2UpgradeHandler handler, Request coyoteRequest) {
+    super(identifier);
+    this.handler = handler;
+    handler.addChild(this);
+    setWindowSize(handler.getRemoteSettings().getInitialWindowSize());
+    state = new StreamStateMachine(this);
+    if (coyoteRequest == null) {
+        // HTTP/2 new request
+        this.coyoteRequest = new Request();
+        this.inputBuffer = new StreamInputBuffer();
+        this.coyoteRequest.setInputBuffer(inputBuffer);
+    } else {
+        // HTTP/2 Push or HTTP/1.1 upgrade
+        this.coyoteRequest = coyoteRequest;
+        this.inputBuffer = null;
+        // Headers have been read by this point
+        state.receivedStartOfHeaders();
+        if (HTTP_UPGRADE_STREAM.equals(identifier)) {
+            // Populate coyoteRequest from headers (HTTP/1.1 only)
+            try {
+                prepareRequest();
+            } catch (IllegalArgumentException iae) {
+                // Something in the headers is invalid
+                // Set correct return status
+                coyoteResponse.setStatus(400);
+                // Set error flag. This triggers error processing rather than
+                // the normal mapping
+                coyoteResponse.setError();
+            }
+        }
+        // TODO Assuming the body has been read at this point is not valid
+        state.receivedEndOfStream();
+    }
+    this.coyoteRequest.setSendfile(handler.hasAsyncIO() && handler.getProtocol().getUseSendfile());
+    this.coyoteResponse.setOutputBuffer(http2OutputBuffer);
+    this.coyoteRequest.setResponse(coyoteResponse);
+    this.coyoteRequest.protocol().setString("HTTP/2.0");
+    if (this.coyoteRequest.getStartTimeNanos() < 0) {
+        this.coyoteRequest.setStartTimeNanos(System.nanoTime());
+    }
+}

@@ -1,0 +1,6 @@
+public void addAfterOrderingOthers() {
+    if (before.contains(ORDER_OTHERS)) {
+        throw new IllegalArgumentException(sm.getString("webXml.multipleOther"));
+    }
+    after.add(ORDER_OTHERS);
+}

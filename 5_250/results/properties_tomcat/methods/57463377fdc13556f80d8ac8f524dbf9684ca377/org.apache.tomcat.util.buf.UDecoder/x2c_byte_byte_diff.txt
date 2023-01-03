@@ -1,0 +1,6 @@
+private static int x2c(byte b1, byte b2) {
+    int digit = (b1 >= 'A') ? ((b1 & 0xDF) - 'A') + 10 : (b1 - '0');
+    digit *= 16;
+    digit += (b2 >= 'A') ? ((b2 & 0xDF) - 'A') + 10 : (b2 - '0');
+    return digit;
+}

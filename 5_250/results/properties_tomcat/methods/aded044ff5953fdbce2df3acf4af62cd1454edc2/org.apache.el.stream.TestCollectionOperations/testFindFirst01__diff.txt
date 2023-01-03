@@ -1,0 +1,7 @@
+@Test
+public void testFindFirst01() {
+    ELProcessor processor = new ELProcessor();
+    processor.defineBean("beans", beans);
+    Optional result = (Optional) processor.getValue("beans.stream().findFirst()", Object.class);
+    Assert.assertEquals(bean01, result.get());
+}

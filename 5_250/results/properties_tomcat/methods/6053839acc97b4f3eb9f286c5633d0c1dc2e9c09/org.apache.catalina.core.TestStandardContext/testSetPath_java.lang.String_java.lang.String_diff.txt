@@ -1,0 +1,5 @@
+private void testSetPath(String value, String expectedValue) {
+    StandardContext context = new StandardContext();
+    context.setPath(value);
+    Assert.assertEquals(expectedValue, context.getPath());
+}

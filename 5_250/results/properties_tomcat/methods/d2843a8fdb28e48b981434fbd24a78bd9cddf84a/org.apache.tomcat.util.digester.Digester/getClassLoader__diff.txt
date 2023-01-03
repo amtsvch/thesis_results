@@ -1,0 +1,23 @@
+/**
+ * Return the class loader to be used for instantiating application objects
+ * when required.  This is determined based upon the following rules:
+ * <ul>
+ * <li>The class loader set by <code>setClassLoader()</code>, if any</li>
+ * <li>The thread context class loader, if it exists and the
+ *     <code>useContextClassLoader</code> property is set to true</li>
+ * <li>The class loader used to load the Digester class itself.
+ * </ul>
+ * @return the classloader
+ */
+public ClassLoader getClassLoader() {
+    if (this.classLoader != null) {
+        return this.classLoader;
+    }
+    if (this.useContextClassLoader) {
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        if (classLoader != null) {
+            return classLoader;
+        }
+    }
+    return this.getClass().getClassLoader();
+}

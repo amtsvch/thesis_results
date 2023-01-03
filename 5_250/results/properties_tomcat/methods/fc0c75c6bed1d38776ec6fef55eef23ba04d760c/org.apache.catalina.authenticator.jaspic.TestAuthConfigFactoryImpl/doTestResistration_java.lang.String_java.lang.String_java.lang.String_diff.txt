@@ -1,0 +1,17 @@
+private void doTestResistration(String layer, String appContext, String expectedRegId) {             |                                                                                                     
+AuthConfigFactory factory = new AuthConfigFactoryImpl();                                             |                                                                                                     
+AuthConfigProvider acp1 = new SimpleAuthConfigProvider(null, null);                                  |                                                                                                     
+SimpleRegistrationListener listener = new SimpleRegistrationListener(layer, appContext);             |                                                                                                     
+String regId = factory.registerConfigProvider(acp1, layer, appContext, null);                        |                                                                                                     
+Assert.assertEquals(expectedRegId, regId);                                                           |                                                                                                     
+factory.getConfigProvider(layer, appContext, listener);                                              |                                                                                                     
+factory.removeRegistration(regId);                                                                   |                                                                                                     
+Assert.assertTrue(listener.wasCorrectlyCalled());                                                    |                                                                                                     
+listener.reset();                                                                                    |                                                                                                     
+factory.registerConfigProvider(acp1, layer, appContext, null);                                       |                                                                                                     
+factory.getConfigProvider(layer, appContext, listener);                                              |                                                                                                     
+// Replace it                                                                                        |                                                                                                     
+AuthConfigProvider acp2 = new SimpleAuthConfigProvider(null, null);                                  |                                                                                                     
+factory.registerConfigProvider(acp2, layer, appContext, null);                                       |                                                                                                     
+Assert.assertTrue(listener.wasCorrectlyCalled());                                                    |                                                                                                     
+}                                                                                                    |                                                                                                     

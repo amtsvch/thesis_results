@@ -1,0 +1,6 @@
+@Override
+public Class<?> getType(EvaluationContext ctx) throws ELException {
+    // Evaluate and throw away
+    children[0].getType(ctx);
+    return children[1].getType(ctx);
+}

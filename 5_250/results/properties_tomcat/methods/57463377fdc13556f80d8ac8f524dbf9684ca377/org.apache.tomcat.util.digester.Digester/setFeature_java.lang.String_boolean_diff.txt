@@ -1,0 +1,23 @@
+/**
+ * Sets a flag indicating whether the requested feature is supported
+ * by the underlying implementation of <code>org.xml.sax.XMLReader</code>.
+ * See <a href="http://www.saxproject.org/apidoc/xml/sax/package-summary.html#package-description">
+ * http://www.saxproject.org/apidoc/xml/sax/package-summary.html#package-description</a>
+ * for information about the standard SAX2 feature flags.  In order to be
+ * effective, this method must be called <strong>before</strong> the
+ * <code>getParser()</code> method is called for the first time, either
+ * directly or indirectly.
+ *
+ * @param feature Name of the feature to set the status for
+ * @param value The new value for this feature
+ *
+ * @exception ParserConfigurationException if a parser configuration error
+ *  occurs
+ * @exception SAXNotRecognizedException if the property name is
+ *  not recognized
+ * @exception SAXNotSupportedException if the property name is
+ *  recognized but not supported
+ */
+public void setFeature(String feature, boolean value) throws ParserConfigurationException, SAXNotRecognizedException, SAXNotSupportedException {
+    getFactory().setFeature(feature, value);
+}

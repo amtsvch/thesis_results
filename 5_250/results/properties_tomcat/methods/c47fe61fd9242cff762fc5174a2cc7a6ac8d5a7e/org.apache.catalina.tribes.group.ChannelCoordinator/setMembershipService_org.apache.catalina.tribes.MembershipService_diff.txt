@@ -1,0 +1,4 @@
+public void setMembershipService(MembershipService membershipService) {
+    this.membershipService = membershipService;
+    this.membershipService.setMembershipListener(this);
+}

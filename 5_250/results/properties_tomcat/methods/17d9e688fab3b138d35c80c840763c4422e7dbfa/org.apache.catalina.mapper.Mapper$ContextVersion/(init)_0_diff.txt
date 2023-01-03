@@ -1,0 +1,7 @@
+public ContextVersion(String version, String path, int slashCount, Context context, WebResourceRoot resources, String[] welcomeResources) {
+    super(version, context);
+    this.path = path;
+    this.slashCount = slashCount;
+    this.resources = resources;
+    this.welcomeResources = welcomeResources;
+}

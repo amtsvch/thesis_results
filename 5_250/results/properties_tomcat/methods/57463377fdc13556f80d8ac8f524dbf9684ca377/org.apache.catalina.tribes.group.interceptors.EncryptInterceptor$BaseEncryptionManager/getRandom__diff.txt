@@ -1,0 +1,7 @@
+private SecureRandom getRandom() {
+    SecureRandom random = randomPool.poll();
+    if (null == random) {
+        random = new SecureRandom();
+    }
+    return random;
+}

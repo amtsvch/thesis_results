@@ -1,0 +1,8 @@
+@Override
+public InputSource resolveEntity(String name, String publicId, String baseURI, String systemId) throws SAXException, IOException {
+    name = replace(name);
+    publicId = replace(publicId);
+    baseURI = replace(baseURI);
+    systemId = replace(systemId);
+    return entityResolver2.resolveEntity(name, publicId, baseURI, systemId);
+}

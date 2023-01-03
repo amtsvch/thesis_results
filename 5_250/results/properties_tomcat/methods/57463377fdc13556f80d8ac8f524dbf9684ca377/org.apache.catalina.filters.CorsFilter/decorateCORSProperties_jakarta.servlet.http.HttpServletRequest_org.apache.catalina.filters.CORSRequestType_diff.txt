@@ -1,0 +1,49 @@
+/**
+ * Decorates the {@link HttpServletRequest}, with CORS attributes.
+ * <ul>
+ * <li><b>cors.isCorsRequest:</b> Flag to determine if request is a CORS
+ * request. Set to <code>true</code> if CORS request; <code>false</code>
+ * otherwise.</li>
+ * <li><b>cors.request.origin:</b> The Origin URL.</li>
+ * <li><b>cors.request.type:</b> Type of request. Values:
+ * <code>simple</code> or <code>preflight</code> or <code>not_cors</code> or
+ * <code>invalid_cors</code></li>
+ * <li><b>cors.request.headers:</b> Request headers sent as
+ * 'Access-Control-Request-Headers' header, for pre-flight request.</li>
+ * </ul>
+ *
+ * @param request The {@link HttpServletRequest} object.
+ * @param corsRequestType The {@link CORSRequestType} object.
+ */
+protected static void decorateCORSProperties(final HttpServletRequest request, final CORSRequestType corsRequestType) {
+    if (request == null) {
+        throw new IllegalArgumentException(sm.getString("corsFilter.nullRequest"));
+    }
+    if (corsRequestType == null) {
+        throw new IllegalArgumentException(sm.getString("corsFilter.nullRequestType"));
+    }
+    switch(corsRequestType) {
+        case SIMPLE:
+        case ACTUAL:
+            request.setAttribute(CorsFilter.HTTP_REQUEST_ATTRIBUTE_IS_CORS_REQUEST, Boolean.TRUE);
+            request.setAttribute(CorsFilter.HTTP_REQUEST_ATTRIBUTE_ORIGIN, request.getHeader(CorsFilter.REQUEST_HEADER_ORIGIN));
+            request.setAttribute(CorsFilter.HTTP_REQUEST_ATTRIBUTE_REQUEST_TYPE, corsRequestType.name().toLowerCase(Locale.ENGLISH));
+            break;
+        case PRE_FLIGHT:
+            request.setAttribute(CorsFilter.HTTP_REQUEST_ATTRIBUTE_IS_CORS_REQUEST, Boolean.TRUE);
+            request.setAttribute(CorsFilter.HTTP_REQUEST_ATTRIBUTE_ORIGIN, request.getHeader(CorsFilter.REQUEST_HEADER_ORIGIN));
+            request.setAttribute(CorsFilter.HTTP_REQUEST_ATTRIBUTE_REQUEST_TYPE, corsRequestType.name().toLowerCase(Locale.ENGLISH));
+            String headers = request.getHeader(REQUEST_HEADER_ACCESS_CONTROL_REQUEST_HEADERS);
+            if (headers == null) {
+                headers = "";
+            }
+            request.setAttribute(CorsFilter.HTTP_REQUEST_ATTRIBUTE_REQUEST_HEADERS, headers);
+            break;
+        case NOT_CORS:
+            request.setAttribute(CorsFilter.HTTP_REQUEST_ATTRIBUTE_IS_CORS_REQUEST, Boolean.FALSE);
+            break;
+        default:
+            // Don't set any attributes
+            break;
+    }
+}

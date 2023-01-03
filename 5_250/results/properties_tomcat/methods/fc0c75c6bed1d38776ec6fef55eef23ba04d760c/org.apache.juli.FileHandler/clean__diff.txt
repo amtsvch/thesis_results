@@ -1,0 +1,14 @@
+private void clean() {
+    if (maxDays.intValue() <= 0) {
+        return;
+    }
+    DELETE_FILES_SERVICE.submit(() -> {
+        try (DirectoryStream<Path> files = streamFilesForDelete()) {
+            for (Path file : files) {
+                Files.delete(file);
+            }
+        } catch (IOException e) {
+            reportError("Unable to delete log files older than [" + maxDays + "] days", null, ErrorManager.GENERIC_FAILURE);
+        }
+    });
+}

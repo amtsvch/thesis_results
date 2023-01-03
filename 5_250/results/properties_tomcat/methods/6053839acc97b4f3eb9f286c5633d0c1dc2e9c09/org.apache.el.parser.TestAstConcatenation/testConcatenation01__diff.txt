@@ -1,0 +1,9 @@
+/**
+ * Test string concatenation.
+ */
+@Test
+public void testConcatenation01() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("'a' += 'b'", String.class);
+    Assert.assertEquals("ab", result);
+}

@@ -1,0 +1,8 @@
+/**
+ * Get the service object. Can be used to add more
+ * connectors and few other global settings.
+ * @return The service
+ */
+public Service getService() {
+    return getServer().findServices()[0];
+}

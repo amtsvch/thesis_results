@@ -1,0 +1,219 @@
+/**
+ * Parses a cookie header after the initial "Cookie:"
+ * [WS][$]token[WS]=[WS](token|QV)[;|,]
+ * RFC 2965 / RFC 2109
+ * JVK
+ */
+private final void processCookieHeader(byte[] bytes, int off, int len, ServerCookies serverCookies) {
+    if (len <= 0 || bytes == null) {
+        return;
+    }
+    int end = off + len;
+    int pos = off;
+    int nameStart = 0;
+    int nameEnd = 0;
+    int valueStart = 0;
+    int valueEnd = 0;
+    int version = 0;
+    ServerCookie sc = null;
+    boolean isSpecial;
+    boolean isQuoted;
+    while (pos < end) {
+        isSpecial = false;
+        isQuoted = false;
+        // Skip whitespace and non-token characters (separators)
+        while (pos < end && (isHttpSeparator((char) bytes[pos]) && !getAllowHttpSepsInV0() || isV0Separator((char) bytes[pos]) || isWhiteSpace(bytes[pos]))) {
+            pos++;
+        }
+        if (pos >= end) {
+            return;
+        }
+        // Detect Special cookies
+        if (bytes[pos] == '$') {
+            isSpecial = true;
+            pos++;
+        }
+        // Get the cookie/attribute name. This must be a token
+        valueEnd = valueStart = nameStart = pos;
+        pos = nameEnd = getTokenEndPosition(bytes, pos, end, version, true);
+        // Skip whitespace
+        while (pos < end && isWhiteSpace(bytes[pos])) {
+            pos++;
+        }
+        // Check for an '=' -- This could also be a name-only
+        // cookie at the end of the cookie header, so if we
+        // are past the end of the header, but we have a name
+        // skip to the name-only part.
+        if (pos < (end - 1) && bytes[pos] == '=') {
+            // Skip whitespace
+            do {
+                pos++;
+            } while (pos < end && isWhiteSpace(bytes[pos]));
+            if (pos >= end) {
+                return;
+            }
+            // Determine what type of value this is, quoted value,
+            // token, name-only with an '=', or other (bad)
+            switch(bytes[pos]) {
+                case // Quoted Value
+                '"':
+                    isQuoted = true;
+                    // strip "
+                    valueStart = pos + 1;
+                    // getQuotedValue returns the position before
+                    // at the last quote. This must be dealt with
+                    // when the bytes are copied into the cookie
+                    valueEnd = getQuotedValueEndPosition(bytes, valueStart, end);
+                    // We need pos to advance
+                    pos = valueEnd;
+                    // Handles cases where the quoted value is
+                    // unterminated and at the end of the header,
+                    // e.g. [myname="value]
+                    if (pos >= end) {
+                        return;
+                    }
+                    break;
+                case ';':
+                case ',':
+                    // Name-only cookie with an '=' after the name token
+                    // This may not be RFC compliant
+                    valueStart = valueEnd = -1;
+                    // The position is OK (On a delimiter)
+                    break;
+                default:
+                    if (version == 0 && !isV0Separator((char) bytes[pos]) && getAllowHttpSepsInV0() || !isHttpSeparator((char) bytes[pos]) || bytes[pos] == '=') {
+                        // Token
+                        valueStart = pos;
+                        // getToken returns the position at the delimiter
+                        // or other non-token character
+                        valueEnd = getTokenEndPosition(bytes, valueStart, end, version, false);
+                        // We need pos to advance
+                        pos = valueEnd;
+                        // Edge case. If value starts with '=' but this is not
+                        // allowed in a value make sure we treat this as no
+                        // value being present
+                        if (valueStart == valueEnd) {
+                            valueStart = -1;
+                            valueEnd = -1;
+                        }
+                    } else {
+                        // INVALID COOKIE, advance to next delimiter
+                        // The starting character of the cookie value was
+                        // not valid.
+                        UserDataHelper.Mode logMode = userDataLog.getNextMode();
+                        if (logMode != null) {
+                            String message = sm.getString("cookies.invalidCookieToken");
+                            switch(logMode) {
+                                case INFO_THEN_DEBUG:
+                                    message += sm.getString("cookies.fallToDebug");
+                                // $FALL-THROUGH$
+                                case INFO:
+                                    log.info(message);
+                                    break;
+                                case DEBUG:
+                                    log.debug(message);
+                            }
+                        }
+                        while (pos < end && bytes[pos] != ';' && bytes[pos] != ',') {
+                            pos++;
+                        }
+                        pos++;
+                        // Make sure no special avpairs can be attributed to
+                        // the previous cookie by setting the current cookie
+                        // to null
+                        sc = null;
+                        continue;
+                    }
+            }
+        } else {
+            // Name only cookie
+            valueStart = valueEnd = -1;
+            pos = nameEnd;
+        }
+        // We should have an avpair or name-only cookie at this
+        // point. Perform some basic checks to make sure we are
+        // in a good state.
+        // Skip whitespace
+        while (pos < end && isWhiteSpace(bytes[pos])) {
+            pos++;
+        }
+        // Make sure that after the cookie we have a separator. This
+        // is only important if this is not the last cookie pair
+        while (pos < end && bytes[pos] != ';' && bytes[pos] != ',') {
+            pos++;
+        }
+        pos++;
+        // All checks passed. Add the cookie, start with the
+        // special avpairs first
+        if (isSpecial) {
+            isSpecial = false;
+            // $Version must be the first avpair in the cookie header
+            // (sc must be null)
+            if (equals("Version", bytes, nameStart, nameEnd) && sc == null) {
+                // Set version
+                if (bytes[valueStart] == '1' && valueEnd == (valueStart + 1)) {
+                    version = 1;
+                } else {
+                    // unknown version (Versioning is not very strict)
+                }
+                continue;
+            }
+            // We need an active cookie for Path/Port/etc.
+            if (sc == null) {
+                continue;
+            }
+            // Domain is more common, so it goes first
+            if (equals("Domain", bytes, nameStart, nameEnd)) {
+                sc.getDomain().setBytes(bytes, valueStart, valueEnd - valueStart);
+                continue;
+            }
+            if (equals("Path", bytes, nameStart, nameEnd)) {
+                sc.getPath().setBytes(bytes, valueStart, valueEnd - valueStart);
+                continue;
+            }
+            // v2 cookie attributes - skip them
+            if (equals("Port", bytes, nameStart, nameEnd)) {
+                continue;
+            }
+            if (equals("CommentURL", bytes, nameStart, nameEnd)) {
+                continue;
+            }
+            // Unknown cookie, complain
+            UserDataHelper.Mode logMode = userDataLog.getNextMode();
+            if (logMode != null) {
+                String message = sm.getString("cookies.invalidSpecial");
+                switch(logMode) {
+                    case INFO_THEN_DEBUG:
+                        message += sm.getString("cookies.fallToDebug");
+                    // $FALL-THROUGH$
+                    case INFO:
+                        log.info(message);
+                        break;
+                    case DEBUG:
+                        log.debug(message);
+                }
+            }
+        } else {
+            // Normal Cookie
+            if (valueStart == -1 && !getAllowNameOnly()) {
+                // Skip name only cookies if not supported
+                continue;
+            }
+            sc = serverCookies.addCookie();
+            sc.setVersion(version);
+            sc.getName().setBytes(bytes, nameStart, nameEnd - nameStart);
+            if (valueStart != -1) {
+                // Normal AVPair
+                sc.getValue().setBytes(bytes, valueStart, valueEnd - valueStart);
+                if (isQuoted) {
+                    // We know this is a byte value so this is safe
+                    unescapeDoubleQuotes(sc.getValue().getByteChunk());
+                }
+            } else {
+                // Name Only
+                sc.getValue().setString("");
+            }
+            continue;
+        }
+    }
+}

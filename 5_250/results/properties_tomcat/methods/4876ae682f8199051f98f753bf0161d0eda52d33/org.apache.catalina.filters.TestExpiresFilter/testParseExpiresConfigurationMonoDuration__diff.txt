@@ -1,0 +1,9 @@
+@Test
+public void testParseExpiresConfigurationMonoDuration() {
+    ExpiresFilter expiresFilter = new ExpiresFilter();
+    ExpiresConfiguration actualConfiguration = expiresFilter.parseExpiresConfiguration("access plus 2 hours");
+    Assert.assertEquals(StartingPoint.ACCESS_TIME, actualConfiguration.getStartingPoint());
+    Assert.assertEquals(1, actualConfiguration.getDurations().size());
+    Assert.assertEquals(2, actualConfiguration.getDurations().get(0).getAmount());
+    Assert.assertEquals(DurationUnit.HOUR, actualConfiguration.getDurations().get(0).getUnit());
+}

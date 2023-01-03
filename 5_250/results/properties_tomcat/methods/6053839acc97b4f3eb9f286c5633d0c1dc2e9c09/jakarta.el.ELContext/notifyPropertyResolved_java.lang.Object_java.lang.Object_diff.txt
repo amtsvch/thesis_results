@@ -1,0 +1,18 @@
+/**
+ * Notify interested listeners that a property has been resolved.
+ *
+ * @param base     The object on which the property was resolved
+ * @param property The property that was resolved
+ *
+ * @since EL 3.0
+ */
+public void notifyPropertyResolved(Object base, Object property) {
+    for (EvaluationListener listener : listeners) {
+        try {
+            listener.propertyResolved(this, base, property);
+        } catch (Throwable t) {
+            Util.handleThrowable(t);
+            // Ignore - no option to log
+        }
+    }
+}

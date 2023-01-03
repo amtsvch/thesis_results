@@ -1,0 +1,41 @@
+@Test
+public void testTenWait() throws Exception {
+    LimitLatch latch = new LimitLatch(10);
+    Object lock = new Object();
+    checkWaitingThreadCount(latch, 0);
+    TestThread[] testThreads = new TestThread[30];
+    for (int i = 0; i < 30; i++) {
+        testThreads[i] = new TestThread(latch, lock);
+        testThreads[i].start();
+    }
+    // Should have 10 threads in stage 2 and 20 in stage 1
+    for (int i = 0; i < 30; i++) {
+        if (!waitForThreadToStart(testThreads[i])) {
+            Assert.fail("Test thread [" + i + "] did not start");
+        }
+    }
+    if (!waitForThreadsToReachStage(testThreads, 20, 10, 0)) {
+        Assert.fail("Failed at 20-10-00");
+    }
+    checkWaitingThreadCount(latch, 20);
+    synchronized (lock) {
+        lock.notifyAll();
+    }
+    if (!waitForThreadsToReachStage(testThreads, 10, 10, 10)) {
+        Assert.fail("Failed at 10-10-10");
+    }
+    checkWaitingThreadCount(latch, 10);
+    synchronized (lock) {
+        lock.notifyAll();
+    }
+    if (!waitForThreadsToReachStage(testThreads, 0, 10, 20)) {
+        Assert.fail("Failed at 00-10-20");
+    }
+    checkWaitingThreadCount(latch, 0);
+    synchronized (lock) {
+        lock.notifyAll();
+    }
+    if (!waitForThreadsToReachStage(testThreads, 0, 0, 30)) {
+        Assert.fail("Failed at 00-00-30");
+    }
+}

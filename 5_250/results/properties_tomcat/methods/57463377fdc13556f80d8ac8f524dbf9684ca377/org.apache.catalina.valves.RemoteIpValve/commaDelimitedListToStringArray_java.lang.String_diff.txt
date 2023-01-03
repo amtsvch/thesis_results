@@ -1,0 +1,8 @@
+/**
+ * Convert a given comma delimited String into an array of String
+ * @param commaDelimitedStrings The string to convert
+ * @return array of String (non <code>null</code>)
+ */
+protected static String[] commaDelimitedListToStringArray(String commaDelimitedStrings) {
+    return (commaDelimitedStrings == null || commaDelimitedStrings.length() == 0) ? new String[0] : commaSeparatedValuesPattern.split(commaDelimitedStrings);
+}

@@ -1,0 +1,76 @@
+/**
+ * Decodes the provided frame data. If this method leaves data in the buffer
+ * then this buffer should be compacted so this data is preserved, unless
+ * there is no more data in which case this should be considered a protocol error.
+ *
+ * @param buffer The buffer
+ *
+ * @throws HpackException If the packed data is not valid
+ */
+void decode(ByteBuffer buffer) throws HpackException {
+    while (buffer.hasRemaining()) {
+        int originalPos = buffer.position();
+        byte b = buffer.get();
+        if ((b & 0b10000000) != 0) {
+            // if the first bit is set it is an indexed header field
+            // unget the byte
+            buffer.position(buffer.position() - 1);
+            // prefix is 7
+            int index = Hpack.decodeInteger(buffer, 7);
+            if (index == -1) {
+                buffer.position(originalPos);
+                return;
+            } else if (index == 0) {
+                throw new HpackException(sm.getString("hpackdecoder.zeroNotValidHeaderTableIndex"));
+            }
+            handleIndex(index);
+        } else if ((b & 0b01000000) != 0) {
+            // Literal Header Field with Incremental Indexing
+            String headerName = readHeaderName(buffer, 6);
+            if (headerName == null) {
+                buffer.position(originalPos);
+                return;
+            }
+            String headerValue = readHpackString(buffer);
+            if (headerValue == null) {
+                buffer.position(originalPos);
+                return;
+            }
+            emitHeader(headerName, headerValue);
+            addEntryToHeaderTable(new Hpack.HeaderField(headerName, headerValue));
+        } else if ((b & 0b11110000) == 0) {
+            // Literal Header Field without Indexing
+            String headerName = readHeaderName(buffer, 4);
+            if (headerName == null) {
+                buffer.position(originalPos);
+                return;
+            }
+            String headerValue = readHpackString(buffer);
+            if (headerValue == null) {
+                buffer.position(originalPos);
+                return;
+            }
+            emitHeader(headerName, headerValue);
+        } else if ((b & 0b11110000) == 0b00010000) {
+            // Literal Header Field never indexed
+            String headerName = readHeaderName(buffer, 4);
+            if (headerName == null) {
+                buffer.position(originalPos);
+                return;
+            }
+            String headerValue = readHpackString(buffer);
+            if (headerValue == null) {
+                buffer.position(originalPos);
+                return;
+            }
+            emitHeader(headerName, headerValue);
+        } else if ((b & 0b11100000) == 0b00100000) {
+            // context update max table size change
+            if (!handleMaxMemorySizeChange(buffer, originalPos)) {
+                return;
+            }
+        } else {
+            throw new RuntimeException(sm.getString("hpackdecoder.notImplemented"));
+        }
+    }
+}

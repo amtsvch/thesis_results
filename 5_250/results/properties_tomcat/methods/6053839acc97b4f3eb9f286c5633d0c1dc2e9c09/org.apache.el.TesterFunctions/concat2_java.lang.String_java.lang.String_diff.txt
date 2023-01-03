@@ -1,0 +1,7 @@
+public static String concat2(String prefix, String... inputs) {
+    StringBuilder result = new StringBuilder(prefix);
+    for (String input : inputs) {
+        result.append(input);
+    }
+    return result.toString();
+}

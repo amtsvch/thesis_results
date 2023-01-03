@@ -1,0 +1,13 @@
+/*
+     * Reverse header order of getLocaleMultipleHeaders01() and make sure the
+     * result is the same.
+     */
+@Test
+public void getLocaleMultipleHeaders02() throws Exception {
+    TesterRequest req = new TesterRequest();
+    req.addHeader("accept-language", "en-gb");
+    req.addHeader("accept-language", "en;q=0.5");
+    Locale actual = req.getLocale();
+    Locale expected = Locale.forLanguageTag("en-gb");
+    Assert.assertEquals(expected, actual);
+}

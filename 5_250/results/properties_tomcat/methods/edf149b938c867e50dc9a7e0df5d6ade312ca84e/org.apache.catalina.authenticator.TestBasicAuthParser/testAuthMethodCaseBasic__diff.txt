@@ -1,0 +1,12 @@
+/*
+     * verify the parser follows RFC2617 by treating the auth-scheme
+     * token as case-insensitive.
+     */
+@Test
+public void testAuthMethodCaseBasic() throws Exception {
+    final String METHOD = "bAsIc";
+    final BasicAuthHeader AUTH_HEADER = new BasicAuthHeader(METHOD, USER_NAME, PASSWORD);
+    BasicAuthenticator.BasicCredentials credentials = new BasicAuthenticator.BasicCredentials(AUTH_HEADER.getHeader(), StandardCharsets.UTF_8, true);
+    Assert.assertEquals(USER_NAME, credentials.getUsername());
+    Assert.assertEquals(PASSWORD, credentials.getPassword());
+}

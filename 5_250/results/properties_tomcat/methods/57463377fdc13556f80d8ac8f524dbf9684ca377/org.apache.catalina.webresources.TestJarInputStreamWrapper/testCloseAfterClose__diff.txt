@@ -1,0 +1,5 @@
+@Test
+public void testCloseAfterClose() throws Exception {
+    Method m = InputStream.class.getMethod("close", (Class<?>[]) null);
+    testMethodAfterClose(m, (Object[]) null);
+}

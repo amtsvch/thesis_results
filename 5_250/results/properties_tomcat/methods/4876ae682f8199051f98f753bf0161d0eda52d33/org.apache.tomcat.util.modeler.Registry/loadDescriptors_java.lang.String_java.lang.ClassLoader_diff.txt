@@ -1,0 +1,28 @@
+/**
+ * Lookup the component descriptor in the package and in the parent
+ * packages.
+ *
+ * @param packageName The package name
+ * @param classLoader The class loader
+ */
+public void loadDescriptors(String packageName, ClassLoader classLoader) {
+    String res = packageName.replace('.', '/');
+    if (log.isTraceEnabled()) {
+        log.trace("Finding descriptor " + res);
+    }
+    if (searchedPaths.get(packageName) != null) {
+        return;
+    }
+    String descriptors = res + "/mbeans-descriptors.xml";
+    URL dURL = classLoader.getResource(descriptors);
+    if (dURL == null) {
+        return;
+    }
+    log.debug("Found " + dURL);
+    searchedPaths.put(packageName, dURL);
+    try {
+        load("MbeansDescriptorsDigesterSource", dURL, null);
+    } catch (Exception ex) {
+        log.error(sm.getString("registry.loadError", dURL));
+    }
+}

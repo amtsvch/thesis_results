@@ -1,0 +1,10 @@
+@Override
+public String registerConfigProvider(AuthConfigProvider provider, String layer, String appContext, String description) {
+    if (log.isDebugEnabled()) {
+        log.debug(sm.getString("authConfigFactoryImpl.registerInstance", provider.getClass().getName(), layer, appContext));
+    }
+    String registrationID = getRegistrationID(layer, appContext);
+    RegistrationContextImpl registrationContextImpl = new RegistrationContextImpl(layer, appContext, description, false, provider, null);
+    addRegistrationContextImpl(layer, appContext, registrationID, registrationContextImpl);
+    return registrationID;
+}

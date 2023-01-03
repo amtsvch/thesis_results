@@ -1,0 +1,69 @@
+@Override
+public final WebResource getResource(String path) {
+    checkPath(path);
+    String webAppMount = getWebAppMount();
+    WebResourceRoot root = getRoot();
+    /*
+         * Implementation notes
+         *
+         * The path parameter passed into this method always starts with '/'.
+         *
+         * The path parameter passed into this method may or may not end with a
+         * '/'. JarFile.getEntry() will return a matching directory entry
+         * whether or not the name ends in a '/'. However, if the entry is
+         * requested without the '/' subsequent calls to JarEntry.isDirectory()
+         * will return false.
+         *
+         * Paths in JARs never start with '/'. Leading '/' need to be removed
+         * before any JarFile.getEntry() call.
+         */
+    // If the JAR has been mounted below the web application root, return
+    // an empty resource for requests outside of the mount point.
+    if (path.startsWith(webAppMount)) {
+        String pathInJar = getInternalPath() + path.substring(webAppMount.length(), path.length());
+        // Always strip off the leading '/' to get the JAR path
+        if (pathInJar.length() > 0 && pathInJar.charAt(0) == '/') {
+            pathInJar = pathInJar.substring(1);
+        }
+        if (pathInJar.equals("")) {
+            // Special case
+            // This is a directory resource so the path must end with /
+            if (!path.endsWith("/")) {
+                path = path + "/";
+            }
+            return new JarResourceRoot(root, new File(getBase()), baseUrlString, path);
+        } else {
+            JarEntry jarEntry = null;
+            if (isMultiRelease()) {
+                // Calls JarFile.getJarEntry() which is multi-release aware
+                jarEntry = getArchiveEntry(pathInJar);
+            } else {
+                Map<String, JarEntry> jarEntries = getArchiveEntries(true);
+                if (!(pathInJar.charAt(pathInJar.length() - 1) == '/')) {
+                    if (jarEntries == null) {
+                        jarEntry = getArchiveEntry(pathInJar + '/');
+                    } else {
+                        jarEntry = jarEntries.get(pathInJar + '/');
+                    }
+                    if (jarEntry != null) {
+                        path = path + '/';
+                    }
+                }
+                if (jarEntry == null) {
+                    if (jarEntries == null) {
+                        jarEntry = getArchiveEntry(pathInJar);
+                    } else {
+                        jarEntry = jarEntries.get(pathInJar);
+                    }
+                }
+            }
+            if (jarEntry == null) {
+                return new EmptyResource(root, path);
+            } else {
+                return createArchiveResource(jarEntry, path, getManifest());
+            }
+        }
+    } else {
+        return new EmptyResource(root, path);
+    }
+}

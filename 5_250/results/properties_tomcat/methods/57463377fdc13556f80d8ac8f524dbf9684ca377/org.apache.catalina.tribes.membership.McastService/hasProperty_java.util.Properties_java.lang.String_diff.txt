@@ -1,0 +1,9 @@
+/**
+ * Check if a required property is available.
+ * @param properties The set of properties
+ * @param name The property to check for
+ */
+protected void hasProperty(Properties properties, String name) {
+    if (properties.getProperty(name) == null)
+        throw new IllegalArgumentException(sm.getString("mcastService.missing.property", name));
+}

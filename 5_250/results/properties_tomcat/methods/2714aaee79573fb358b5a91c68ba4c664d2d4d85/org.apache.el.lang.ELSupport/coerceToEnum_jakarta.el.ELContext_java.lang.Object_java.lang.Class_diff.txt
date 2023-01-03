@@ -1,0 +1,33 @@
+// Going to have to have some casts /raw types somewhere so doing it here
+// keeps them all in one place. There might be a neater / better solution
+// but I couldn't find it
+@SuppressWarnings("unchecked")
+public static final Enum<?> coerceToEnum(final ELContext ctx, final Object obj, @SuppressWarnings("rawtypes") Class type) {
+    if (ctx != null) {
+        boolean originalIsPropertyResolved = ctx.isPropertyResolved();
+        try {
+            Object result = ctx.getELResolver().convertToType(ctx, obj, type);
+            if (ctx.isPropertyResolved()) {
+                return (Enum<?>) result;
+            }
+        } finally {
+            ctx.setPropertyResolved(originalIsPropertyResolved);
+        }
+    }
+    if (obj == null || "".equals(obj)) {
+        return null;
+    }
+    if (type.isAssignableFrom(obj.getClass())) {
+        return (Enum<?>) obj;
+    }
+    if (!(obj instanceof String)) {
+        throw new ELException(MessageFactory.get("error.convert", obj, obj.getClass(), type));
+    }
+    Enum<?> result;
+    try {
+        result = Enum.valueOf(type, (String) obj);
+    } catch (IllegalArgumentException iae) {
+        throw new ELException(MessageFactory.get("error.convert", obj, obj.getClass(), type));
+    }
+    return result;
+}

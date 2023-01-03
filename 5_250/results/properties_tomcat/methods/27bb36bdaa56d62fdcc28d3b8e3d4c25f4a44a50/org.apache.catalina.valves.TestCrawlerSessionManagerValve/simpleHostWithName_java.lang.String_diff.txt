@@ -1,0 +1,6 @@
+private Host simpleHostWithName(String hostname) {
+    Host host = EasyMock.createMock(Host.class);
+    EasyMock.expect(host.getName()).andReturn(hostname);
+    EasyMock.replay(host);
+    return host;
+}

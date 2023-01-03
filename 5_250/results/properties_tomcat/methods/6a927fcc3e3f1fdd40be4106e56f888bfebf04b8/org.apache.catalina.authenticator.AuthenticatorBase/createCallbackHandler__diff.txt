@@ -1,0 +1,25 @@
+private CallbackHandler createCallbackHandler() {                                                      private CallbackHandler createCallbackHandler() {                                                   
+CallbackHandler callbackHandler = null;                                                                CallbackHandler callbackHandler = null;                                                             
+if (jaspicCallbackHandlerClass == null) {                                                            |                                                                                                     
+callbackHandler = CallbackHandlerImpl.getInstance();                                                 |                                                                                                     
+} else {                                                                                             |                                                                                                     
+Class&lt;?&gt; clazz = null;                                                                           Class&lt;?&gt; clazz = null;                                                                        
+try {                                                                                                  try {                                                                                               
+clazz = Class.forName(jaspicCallbackHandlerClass, true, Thread.currentThread().getContextClassLoader   clazz = Class.forName(jaspicCallbackHandlerClass, true, Thread.currentThread().getContextClassLoader
+} catch (ClassNotFoundException e) {                                                                   } catch (ClassNotFoundException e) {                                                                
+// Proceed with the retry below                                                                        // Proceed with the retry below                                                                     
+}                                                                                                      }                                                                                                   
+try {                                                                                                  try {                                                                                               
+if (clazz == null) {                                                                                   if (clazz == null) {                                                                                
+clazz = Class.forName(jaspicCallbackHandlerClass);                                                     clazz = Class.forName(jaspicCallbackHandlerClass);                                                  
+}                                                                                                      }                                                                                                   
+callbackHandler = (CallbackHandler) clazz.getConstructor().newInstance();                              callbackHandler = (CallbackHandler) clazz.getConstructor().newInstance();                           
+} catch (ReflectiveOperationException e) {                                                             } catch (ReflectiveOperationException e) {                                                          
+throw new SecurityException(e);                                                                        throw new SecurityException(e);                                                                     
+}                                                                                                      }                                                                                                   
+                                                                                                     | if (callbackHandler instanceof Contained) {                                                         
+                                                                                                     | ((Contained) callbackHandler).setContainer(getContainer());                                         
+}                                                                                                      }                                                                                                   
+                                                                                                     | jaspicCallbackHandler = callbackHandler;                                                            
+return callbackHandler;                                                                                return callbackHandler;                                                                             
+}                                                                                                      }                                                                                                   

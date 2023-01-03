@@ -1,0 +1,7 @@
+@Test
+public void testBug46933() {
+    // Check null args are OK
+    sm.getString("namingContext.nameNotBound");
+    sm.getString("namingContext.nameNotBound", (Object[]) null);
+    sm.getString("namingContext.nameNotBound", new Object[1]);
+}

@@ -1,0 +1,5 @@
+// ----------------------------------------------- LexicalHandler Methods
+@Override
+public void startDTD(String name, String publicId, String systemId) throws SAXException {
+    setPublicId(publicId);
+}

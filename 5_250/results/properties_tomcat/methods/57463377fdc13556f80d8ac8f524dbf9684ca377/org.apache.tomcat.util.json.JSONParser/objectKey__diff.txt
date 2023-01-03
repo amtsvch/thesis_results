@@ -1,0 +1,60 @@
+final public String objectKey() throws ParseException {
+    Object o;
+    String key;
+    switch(jj_nt.kind) {
+        case STRING_SINGLE_EMPTY:
+        case STRING_DOUBLE_EMPTY:
+        case STRING_SINGLE_NONEMPTY:
+        case STRING_DOUBLE_NONEMPTY:
+            {
+                key = string();
+                break;
+            }
+        case SYMBOL:
+            {
+                key = symbol();
+                break;
+            }
+        case NULL:
+            {
+                nullValue();
+                key = null;
+                break;
+            }
+        case NUMBER_INTEGER:
+        case NUMBER_DECIMAL:
+        case TRUE:
+        case FALSE:
+            {
+                switch(jj_nt.kind) {
+                    case TRUE:
+                    case FALSE:
+                        {
+                            o = booleanValue();
+                            break;
+                        }
+                    case NUMBER_INTEGER:
+                    case NUMBER_DECIMAL:
+                        {
+                            o = number();
+                            break;
+                        }
+                    default:
+                        jj_la1[1] = jj_gen;
+                        jj_consume_token(-1);
+                        throw new ParseException();
+                }
+                key = o.toString();
+                break;
+            }
+        default:
+            jj_la1[2] = jj_gen;
+            jj_consume_token(-1);
+            throw new ParseException();
+    }
+    {
+        if ("" != null)
+            return key;
+    }
+    throw new Error("Missing return statement in function");
+}

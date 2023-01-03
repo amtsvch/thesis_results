@@ -1,0 +1,14 @@
+/**
+ * Tests that the context object will be added to the map with context
+ * objects. The key is used as unique identifier of the context object in
+ * the map.
+ */
+@Test
+public void testPutContext03() {
+    ELContext elContext = new TesterELContext();
+    Assert.assertNull(elContext.getContext(String.class));
+    elContext.putContext(String.class, "test");
+    Assert.assertEquals("test", elContext.getContext(String.class));
+    elContext.putContext(String.class, "test1");
+    Assert.assertEquals("test1", elContext.getContext(String.class));
+}

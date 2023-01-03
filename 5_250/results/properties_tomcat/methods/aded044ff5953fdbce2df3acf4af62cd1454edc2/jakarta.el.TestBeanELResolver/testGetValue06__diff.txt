@@ -1,0 +1,9 @@
+/**
+ * Tests that an exception will be thrown when the property is not readable.
+ */
+@Test(expected = PropertyNotFoundException.class)
+public void testGetValue06() {
+    BeanELResolver resolver = new BeanELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    resolver.getValue(context, new Bean(), PROPERTY01_NAME);
+}

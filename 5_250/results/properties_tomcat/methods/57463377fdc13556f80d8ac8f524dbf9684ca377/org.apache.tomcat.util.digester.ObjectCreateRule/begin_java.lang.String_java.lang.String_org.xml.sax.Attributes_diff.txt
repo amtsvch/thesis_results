@@ -1,0 +1,28 @@
+// --------------------------------------------------------- Public Methods
+/**
+ * Process the beginning of this element.
+ *
+ * @param namespace the namespace URI of the matching element, or an
+ *   empty string if the parser is not namespace aware or the element has
+ *   no namespace
+ * @param name the local name if the parser is namespace aware, or just
+ *   the element name otherwise
+ * @param attributes The attribute list for this element
+ */
+@Override
+public void begin(String namespace, String name, Attributes attributes) throws Exception {
+    String realClassName = getRealClassName(attributes);
+    if (realClassName == null) {
+        throw new NullPointerException(sm.getString("rule.noClassName", namespace, name));
+    }
+    // Instantiate the new object and push it on the context stack
+    Class<?> clazz = digester.getClassLoader().loadClass(realClassName);
+    Object instance = clazz.getConstructor().newInstance();
+    digester.push(instance);
+    StringBuilder code = digester.getGeneratedCode();
+    if (code != null) {
+        code.append(System.lineSeparator());
+        code.append(realClassName).append(' ').append(digester.toVariableName(instance)).append(" = new ");
+        code.append(realClassName).append("();").append(System.lineSeparator());
+    }
+}

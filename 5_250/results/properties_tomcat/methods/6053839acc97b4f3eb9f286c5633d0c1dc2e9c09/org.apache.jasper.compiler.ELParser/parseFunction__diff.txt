@@ -1,0 +1,39 @@
+/**
+ * Parse for a function FunctionInvokation ::= (identifier ':')? identifier
+ * '(' (Expression (,Expression)*)? ')' Note: currently we don't parse
+ * arguments
+ */
+private boolean parseFunction() {
+    if (!(curToken instanceof Id) || isELReserved(curToken.toTrimmedString()) || prevToken instanceof Char && prevToken.toChar() == '.') {
+        return false;
+    }
+    // Function prefix
+    String s1 = null;
+    // Function name
+    String s2 = curToken.toTrimmedString();
+    int start = index - curToken.toString().length();
+    Token original = curToken;
+    if (hasNext()) {
+        int mark = getIndex() - whiteSpace.length();
+        curToken = nextToken();
+        if (curToken.toChar() == ':') {
+            if (hasNext()) {
+                Token t2 = nextToken();
+                if (t2 instanceof Id) {
+                    s1 = s2;
+                    s2 = t2.toTrimmedString();
+                    if (hasNext()) {
+                        curToken = nextToken();
+                    }
+                }
+            }
+        }
+        if (curToken.toChar() == '(') {
+            ELexpr.add(new ELNode.Function(s1, s2, expression.substring(start, index - 1)));
+            return true;
+        }
+        curToken = original;
+        setIndex(mark);
+    }
+    return false;
+}

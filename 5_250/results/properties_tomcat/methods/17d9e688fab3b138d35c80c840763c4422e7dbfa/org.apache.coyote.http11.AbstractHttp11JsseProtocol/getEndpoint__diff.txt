@@ -1,0 +1,5 @@
+@Override
+protected AbstractJsseEndpoint<S, ?> getEndpoint() {
+    // Over-ridden to add cast
+    return (AbstractJsseEndpoint<S, ?>) super.getEndpoint();
+}

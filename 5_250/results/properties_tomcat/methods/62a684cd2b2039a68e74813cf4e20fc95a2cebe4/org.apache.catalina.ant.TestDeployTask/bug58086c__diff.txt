@@ -1,0 +1,6 @@
+@Test(expected = BuildException.class)
+public void bug58086c() {
+    DeployTask deployTask = new DeployTask();
+    setDefaults(deployTask);
+    testExecute(deployTask, "sc:./test/deployment/context.war");
+}

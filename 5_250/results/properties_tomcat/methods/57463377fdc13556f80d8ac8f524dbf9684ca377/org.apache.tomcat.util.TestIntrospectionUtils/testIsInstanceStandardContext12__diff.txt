@@ -1,0 +1,5 @@
+// And one to check that non-matches return false
+@Test
+public void testIsInstanceStandardContext12() {
+    Assert.assertFalse(IntrospectionUtils.isInstance(StandardContext.class, "com.example.Other"));
+}

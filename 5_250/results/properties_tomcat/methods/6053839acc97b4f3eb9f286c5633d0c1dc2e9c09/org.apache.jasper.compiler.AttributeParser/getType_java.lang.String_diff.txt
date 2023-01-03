@@ -1,0 +1,32 @@
+/*
+     * Determines the type of expression by looking for the first unquoted ${
+     * or #{.
+     */
+private char getType(String value) {
+    if (value == null) {
+        return 0;
+    }
+    if (isELIgnored) {
+        return 0;
+    }
+    int j = 0;
+    int len = value.length();
+    char current;
+    while (j < len) {
+        current = value.charAt(j);
+        if (current == '\\') {
+            // Escape character - skip a character
+            j++;
+        } else if (current == '#' && !isDeferredSyntaxAllowedAsLiteral) {
+            if (j < (len - 1) && value.charAt(j + 1) == '{') {
+                return '#';
+            }
+        } else if (current == '$') {
+            if (j < (len - 1) && value.charAt(j + 1) == '{') {
+                return '$';
+            }
+        }
+        j++;
+    }
+    return 0;
+}

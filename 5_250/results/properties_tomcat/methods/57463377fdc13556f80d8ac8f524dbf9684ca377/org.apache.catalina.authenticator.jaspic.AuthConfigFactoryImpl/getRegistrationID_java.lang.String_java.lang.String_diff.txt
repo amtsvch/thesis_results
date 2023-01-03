@@ -1,0 +1,9 @@
+private static String getRegistrationID(String layer, String appContext) {
+    if (layer != null && layer.length() == 0) {
+        throw new IllegalArgumentException(sm.getString("authConfigFactoryImpl.zeroLengthMessageLayer"));
+    }
+    if (appContext != null && appContext.length() == 0) {
+        throw new IllegalArgumentException(sm.getString("authConfigFactoryImpl.zeroLengthAppContext"));
+    }
+    return (layer == null ? "" : layer) + ":" + (appContext == null ? "" : appContext);
+}

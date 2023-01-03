@@ -1,0 +1,14 @@
+@Override
+public Object next() {
+    if (foundNext) {
+        foundNext = false;
+        return next;
+    }
+    findNext();
+    if (foundNext) {
+        foundNext = false;
+        return next;
+    } else {
+        throw new NoSuchElementException();
+    }
+}

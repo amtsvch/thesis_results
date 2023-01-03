@@ -1,0 +1,26 @@
+final public String string() throws ParseException {
+    String s;
+    switch(jj_nt.kind) {
+        case STRING_DOUBLE_EMPTY:
+        case STRING_DOUBLE_NONEMPTY:
+            {
+                s = doubleQuoteString();
+                break;
+            }
+        case STRING_SINGLE_EMPTY:
+        case STRING_SINGLE_NONEMPTY:
+            {
+                s = singleQuoteString();
+                break;
+            }
+        default:
+            jj_la1[10] = jj_gen;
+            jj_consume_token(-1);
+            throw new ParseException();
+    }
+    {
+        if ("" != null)
+            return s;
+    }
+    throw new Error("Missing return statement in function");
+}

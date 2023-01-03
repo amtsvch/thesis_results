@@ -1,0 +1,72 @@
+/*
+ * Assignment
+ */
+final public void Assignment() throws ParseException {
+    if (jj_2_2(4)) {
+        LambdaExpression();
+    } else {
+        switch((jj_ntk == -1) ? jj_ntk() : jj_ntk) {
+            case START_SET_OR_MAP:
+            case INTEGER_LITERAL:
+            case FLOATING_POINT_LITERAL:
+            case STRING_LITERAL:
+            case TRUE:
+            case FALSE:
+            case NULL:
+            case LPAREN:
+            case LBRACK:
+            case NOT0:
+            case NOT1:
+            case EMPTY:
+            case MINUS:
+            case IDENTIFIER:
+                Choice();
+                label_3: while (true) {
+                    if (jj_2_1(2)) {
+                        ;
+                    } else {
+                        break label_3;
+                    }
+                    jj_consume_token(ASSIGN);
+                    AstAssign jjtn001 = new AstAssign(JJTASSIGN);
+                    boolean jjtc001 = true;
+                    jjtree.openNodeScope(jjtn001);
+                    try {
+                        Assignment();
+                    } catch (Throwable jjte001) {
+                        if (jjtc001) {
+                            jjtree.clearNodeScope(jjtn001);
+                            jjtc001 = false;
+                        } else {
+                            jjtree.popNode();
+                        }
+                        if (jjte001 instanceof RuntimeException) {
+                            {
+                                if (true)
+                                    throw (RuntimeException) jjte001;
+                            }
+                        }
+                        if (jjte001 instanceof ParseException) {
+                            {
+                                if (true)
+                                    throw (ParseException) jjte001;
+                            }
+                        }
+                        {
+                            if (true)
+                                throw (Error) jjte001;
+                        }
+                    } finally {
+                        if (jjtc001) {
+                            jjtree.closeNodeScope(jjtn001, 2);
+                        }
+                    }
+                }
+                break;
+            default:
+                jj_la1[3] = jj_gen;
+                jj_consume_token(-1);
+                throw new ParseException();
+        }
+    }
+}

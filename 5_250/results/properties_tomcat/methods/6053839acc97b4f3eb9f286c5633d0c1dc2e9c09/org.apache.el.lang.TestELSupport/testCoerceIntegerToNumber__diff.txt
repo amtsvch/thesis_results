@@ -1,0 +1,6 @@
+@Test
+public void testCoerceIntegerToNumber() {
+    Integer input = Integer.valueOf(4390241);
+    Object output = ELSupport.coerceToType(null, input, Number.class);
+    Assert.assertEquals(input, output);
+}

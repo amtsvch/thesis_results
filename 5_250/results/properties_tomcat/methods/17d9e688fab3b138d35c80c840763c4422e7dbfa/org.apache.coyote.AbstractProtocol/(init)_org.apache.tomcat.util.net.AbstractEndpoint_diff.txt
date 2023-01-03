@@ -1,0 +1,5 @@
+public AbstractProtocol(AbstractEndpoint<S, ?> endpoint) {
+    this.endpoint = endpoint;
+    setConnectionLinger(Constants.DEFAULT_CONNECTION_LINGER);
+    setTcpNoDelay(Constants.DEFAULT_TCP_NO_DELAY);
+}

@@ -1,0 +1,6 @@
+private void checkSend() {
+    if (sendInProgress) {
+        // Coding error. No need for i18n
+        throw new IllegalStateException();
+    }
+}

@@ -1,0 +1,515 @@
+{
+  "clazz" : "org.apache.catalina.core.TestAsyncContextImpl",
+  "methods" : [ {
+    "method" : "testAsyncListenerSupplyRequestResponse",
+    "datacollectorResults" : [ {
+      "name" : "de.dagere.kopeme.datacollection.TimeDataCollectorNoGC",
+      "chunks" : [ ],
+      "results" : [ {
+        "value" : 4.807982605624999E7,
+        "deviation" : 0.7656088954799987,
+        "min" : 1.2214029E7,
+        "max" : 2.48009171E8,
+        "warmup" : 0,
+        "iterations" : 160,
+        "repetitions" : 100,
+        "commit" : null,
+        "vmRunConfiguration" : {
+          "showStart" : false,
+          "executeBeforeClassInMeasurement" : false,
+          "redirectToTemp" : false,
+          "redirectToNull" : true,
+          "useKieker" : false
+        },
+        "javaVersion" : "11.0.16",
+        "cpu" : "model name : Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz",
+        "memory" : "MemTotal: 16280676 kB",
+        "date" : 1672452861983,
+        "fulldata" : {
+          "fileName" : null,
+          "values" : [ {
+            "startTime" : 1672452854089,
+            "value" : 248009171
+          }, {
+            "startTime" : 1672452854337,
+            "value" : 80525198
+          }, {
+            "startTime" : 1672452854418,
+            "value" : 89772458
+          }, {
+            "startTime" : 1672452854508,
+            "value" : 58345196
+          }, {
+            "startTime" : 1672452854566,
+            "value" : 47978919
+          }, {
+            "startTime" : 1672452854614,
+            "value" : 45986828
+          }, {
+            "startTime" : 1672452854660,
+            "value" : 35329539
+          }, {
+            "startTime" : 1672452854695,
+            "value" : 60928853
+          }, {
+            "startTime" : 1672452854756,
+            "value" : 23968177
+          }, {
+            "startTime" : 1672452854780,
+            "value" : 24366068
+          }, {
+            "startTime" : 1672452854805,
+            "value" : 74563367
+          }, {
+            "startTime" : 1672452854879,
+            "value" : 26926595
+          }, {
+            "startTime" : 1672452854906,
+            "value" : 76438124
+          }, {
+            "startTime" : 1672452854983,
+            "value" : 30798565
+          }, {
+            "startTime" : 1672452855014,
+            "value" : 67554157
+          }, {
+            "startTime" : 1672452855081,
+            "value" : 29555304
+          }, {
+            "startTime" : 1672452855111,
+            "value" : 69759089
+          }, {
+            "startTime" : 1672452855181,
+            "value" : 28255606
+          }, {
+            "startTime" : 1672452855209,
+            "value" : 26768638
+          }, {
+            "startTime" : 1672452855236,
+            "value" : 67036013
+          }, {
+            "startTime" : 1672452855303,
+            "value" : 20323604
+          }, {
+            "startTime" : 1672452855323,
+            "value" : 84035032
+          }, {
+            "startTime" : 1672452855407,
+            "value" : 19312867
+          }, {
+            "startTime" : 1672452855427,
+            "value" : 85774980
+          }, {
+            "startTime" : 1672452855512,
+            "value" : 19550665
+          }, {
+            "startTime" : 1672452855532,
+            "value" : 80687621
+          }, {
+            "startTime" : 1672452855613,
+            "value" : 21013991
+          }, {
+            "startTime" : 1672452855634,
+            "value" : 19246039
+          }, {
+            "startTime" : 1672452855653,
+            "value" : 80052928
+          }, {
+            "startTime" : 1672452855733,
+            "value" : 15704809
+          }, {
+            "startTime" : 1672452855749,
+            "value" : 90177221
+          }, {
+            "startTime" : 1672452855839,
+            "value" : 15019947
+          }, {
+            "startTime" : 1672452855854,
+            "value" : 89448034
+          }, {
+            "startTime" : 1672452855944,
+            "value" : 20084545
+          }, {
+            "startTime" : 1672452855964,
+            "value" : 22191975
+          }, {
+            "startTime" : 1672452855986,
+            "value" : 80567707
+          }, {
+            "startTime" : 1672452856067,
+            "value" : 18871514
+          }, {
+            "startTime" : 1672452856086,
+            "value" : 84870432
+          }, {
+            "startTime" : 1672452856170,
+            "value" : 21070478
+          }, {
+            "startTime" : 1672452856192,
+            "value" : 80453465
+          }, {
+            "startTime" : 1672452856272,
+            "value" : 23969091
+          }, {
+            "startTime" : 1672452856296,
+            "value" : 74940667
+          }, {
+            "startTime" : 1672452856371,
+            "value" : 21004422
+          }, {
+            "startTime" : 1672452856392,
+            "value" : 22248315
+          }, {
+            "startTime" : 1672452856414,
+            "value" : 76321604
+          }, {
+            "startTime" : 1672452856491,
+            "value" : 17455878
+          }, {
+            "startTime" : 1672452856508,
+            "value" : 90033627
+          }, {
+            "startTime" : 1672452856598,
+            "value" : 17236826
+          }, {
+            "startTime" : 1672452856616,
+            "value" : 80841499
+          }, {
+            "startTime" : 1672452856696,
+            "value" : 17798753
+          }, {
+            "startTime" : 1672452856714,
+            "value" : 17251078
+          }, {
+            "startTime" : 1672452856732,
+            "value" : 84739236
+          }, {
+            "startTime" : 1672452856816,
+            "value" : 15054986
+          }, {
+            "startTime" : 1672452856831,
+            "value" : 89570421
+          }, {
+            "startTime" : 1672452856921,
+            "value" : 19304793
+          }, {
+            "startTime" : 1672452856940,
+            "value" : 79791055
+          }, {
+            "startTime" : 1672452857020,
+            "value" : 15898530
+          }, {
+            "startTime" : 1672452857036,
+            "value" : 83060840
+          }, {
+            "startTime" : 1672452857119,
+            "value" : 19827005
+          }, {
+            "startTime" : 1672452857139,
+            "value" : 15158901
+          }, {
+            "startTime" : 1672452857154,
+            "value" : 87957927
+          }, {
+            "startTime" : 1672452857242,
+            "value" : 14733207
+          }, {
+            "startTime" : 1672452857257,
+            "value" : 87124610
+          }, {
+            "startTime" : 1672452857344,
+            "value" : 20661890
+          }, {
+            "startTime" : 1672452857365,
+            "value" : 77303140
+          }, {
+            "startTime" : 1672452857442,
+            "value" : 19042542
+          }, {
+            "startTime" : 1672452857461,
+            "value" : 78960484
+          }, {
+            "startTime" : 1672452857540,
+            "value" : 13813761
+          }, {
+            "startTime" : 1672452857554,
+            "value" : 15989787
+          }, {
+            "startTime" : 1672452857570,
+            "value" : 88076875
+          }, {
+            "startTime" : 1672452857658,
+            "value" : 17233328
+          }, {
+            "startTime" : 1672452857676,
+            "value" : 79744981
+          }, {
+            "startTime" : 1672452857755,
+            "value" : 13536673
+          }, {
+            "startTime" : 1672452857769,
+            "value" : 16151070
+          }, {
+            "startTime" : 1672452857785,
+            "value" : 88251628
+          }, {
+            "startTime" : 1672452857874,
+            "value" : 15906240
+          }, {
+            "startTime" : 1672452857889,
+            "value" : 86460018
+          }, {
+            "startTime" : 1672452857976,
+            "value" : 15386439
+          }, {
+            "startTime" : 1672452857991,
+            "value" : 81617206
+          }, {
+            "startTime" : 1672452858073,
+            "value" : 15339058
+          }, {
+            "startTime" : 1672452858088,
+            "value" : 17543376
+          }, {
+            "startTime" : 1672452858106,
+            "value" : 86196949
+          }, {
+            "startTime" : 1672452858192,
+            "value" : 17922746
+          }, {
+            "startTime" : 1672452858210,
+            "value" : 77017363
+          }, {
+            "startTime" : 1672452858287,
+            "value" : 14905108
+          }, {
+            "startTime" : 1672452858302,
+            "value" : 84269669
+          }, {
+            "startTime" : 1672452858387,
+            "value" : 14332705
+          }, {
+            "startTime" : 1672452858401,
+            "value" : 84812870
+          }, {
+            "startTime" : 1672452858486,
+            "value" : 13007825
+          }, {
+            "startTime" : 1672452858499,
+            "value" : 13310201
+          }, {
+            "startTime" : 1672452858512,
+            "value" : 85735616
+          }, {
+            "startTime" : 1672452858598,
+            "value" : 12214029
+          }, {
+            "startTime" : 1672452858610,
+            "value" : 90322713
+          }, {
+            "startTime" : 1672452858701,
+            "value" : 14620500
+          }, {
+            "startTime" : 1672452858715,
+            "value" : 12626798
+          }, {
+            "startTime" : 1672452858728,
+            "value" : 92192283
+          }, {
+            "startTime" : 1672452858820,
+            "value" : 12735890
+          }, {
+            "startTime" : 1672452858833,
+            "value" : 81629598
+          }, {
+            "startTime" : 1672452858915,
+            "value" : 12248014
+          }, {
+            "startTime" : 1672452858927,
+            "value" : 90580825
+          }, {
+            "startTime" : 1672452859017,
+            "value" : 14473931
+          }, {
+            "startTime" : 1672452859032,
+            "value" : 85982386
+          }, {
+            "startTime" : 1672452859118,
+            "value" : 18319108
+          }, {
+            "startTime" : 1672452859136,
+            "value" : 12334753
+          }, {
+            "startTime" : 1672452859149,
+            "value" : 88893178
+          }, {
+            "startTime" : 1672452859238,
+            "value" : 12371461
+          }, {
+            "startTime" : 1672452859250,
+            "value" : 91917466
+          }, {
+            "startTime" : 1672452859342,
+            "value" : 19100981
+          }, {
+            "startTime" : 1672452859361,
+            "value" : 83378519
+          }, {
+            "startTime" : 1672452859445,
+            "value" : 30890565
+          }, {
+            "startTime" : 1672452859476,
+            "value" : 14407461
+          }, {
+            "startTime" : 1672452859490,
+            "value" : 91002634
+          }, {
+            "startTime" : 1672452859581,
+            "value" : 14479863
+          }, {
+            "startTime" : 1672452859596,
+            "value" : 90438489
+          }, {
+            "startTime" : 1672452859686,
+            "value" : 35045212
+          }, {
+            "startTime" : 1672452859721,
+            "value" : 18889818
+          }, {
+            "startTime" : 1672452859740,
+            "value" : 13575917
+          }, {
+            "startTime" : 1672452859754,
+            "value" : 87619823
+          }, {
+            "startTime" : 1672452859841,
+            "value" : 12771594
+          }, {
+            "startTime" : 1672452859854,
+            "value" : 91322419
+          }, {
+            "startTime" : 1672452859946,
+            "value" : 13139992
+          }, {
+            "startTime" : 1672452859959,
+            "value" : 14529566
+          }, {
+            "startTime" : 1672452859973,
+            "value" : 94565477
+          }, {
+            "startTime" : 1672452860068,
+            "value" : 12606624
+          }, {
+            "startTime" : 1672452860081,
+            "value" : 86475838
+          }, {
+            "startTime" : 1672452860167,
+            "value" : 22985158
+          }, {
+            "startTime" : 1672452860190,
+            "value" : 17689473
+          }, {
+            "startTime" : 1672452860208,
+            "value" : 81701459
+          }, {
+            "startTime" : 1672452860290,
+            "value" : 13710600
+          }, {
+            "startTime" : 1672452860303,
+            "value" : 12708649
+          }, {
+            "startTime" : 1672452860316,
+            "value" : 87274790
+          }, {
+            "startTime" : 1672452860403,
+            "value" : 12277065
+          }, {
+            "startTime" : 1672452860416,
+            "value" : 88650210
+          }, {
+            "startTime" : 1672452860504,
+            "value" : 12889002
+          }, {
+            "startTime" : 1672452860517,
+            "value" : 87400154
+          }, {
+            "startTime" : 1672452860605,
+            "value" : 14023486
+          }, {
+            "startTime" : 1672452860619,
+            "value" : 12877233
+          }, {
+            "startTime" : 1672452860632,
+            "value" : 88290923
+          }, {
+            "startTime" : 1672452860720,
+            "value" : 15336743
+          }, {
+            "startTime" : 1672452860735,
+            "value" : 85031805
+          }, {
+            "startTime" : 1672452860820,
+            "value" : 14050195
+          }, {
+            "startTime" : 1672452860834,
+            "value" : 86539112
+          }, {
+            "startTime" : 1672452860921,
+            "value" : 13953148
+          }, {
+            "startTime" : 1672452860935,
+            "value" : 14166911
+          }, {
+            "startTime" : 1672452860949,
+            "value" : 94183519
+          }, {
+            "startTime" : 1672452861043,
+            "value" : 15524299
+          }, {
+            "startTime" : 1672452861059,
+            "value" : 78684123
+          }, {
+            "startTime" : 1672452861138,
+            "value" : 14757623
+          }, {
+            "startTime" : 1672452861152,
+            "value" : 85359265
+          }, {
+            "startTime" : 1672452861238,
+            "value" : 13476291
+          }, {
+            "startTime" : 1672452861251,
+            "value" : 86809174
+          }, {
+            "startTime" : 1672452861338,
+            "value" : 12420061
+          }, {
+            "startTime" : 1672452861351,
+            "value" : 87884897
+          }, {
+            "startTime" : 1672452861439,
+            "value" : 13256064
+          }, {
+            "startTime" : 1672452861452,
+            "value" : 23139346
+          }, {
+            "startTime" : 1672452861475,
+            "value" : 95788143
+          }, {
+            "startTime" : 1672452861571,
+            "value" : 22870390
+          }, {
+            "startTime" : 1672452861594,
+            "value" : 109937621
+          }, {
+            "startTime" : 1672452861704,
+            "value" : 40073646
+          }, {
+            "startTime" : 1672452861744,
+            "value" : 44171328
+          } ]
+        }
+      } ]
+    } ]
+  } ]
+}

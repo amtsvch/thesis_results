@@ -1,0 +1,7 @@
+/**
+ * Method to check if a package exists in this byte buffer.
+ * @return - true if a complete package (header,options,size,data,footer) exists within the buffer
+ */
+public boolean doesPackageExist() {
+    return (countPackages(true) > 0);
+}

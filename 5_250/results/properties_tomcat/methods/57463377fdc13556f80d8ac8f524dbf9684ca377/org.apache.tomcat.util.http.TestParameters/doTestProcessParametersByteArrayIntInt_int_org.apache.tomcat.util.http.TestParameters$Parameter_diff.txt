@@ -1,0 +1,28 @@
+private long doTestProcessParametersByteArrayIntInt(int limit, Parameter... parameters) {
+    // Build the byte array
+    StringBuilder input = new StringBuilder();
+    boolean first = true;
+    for (Parameter parameter : parameters) {
+        if (first) {
+            first = false;
+        } else {
+            input.append('&');
+        }
+        input.append(parameter.toString());
+    }
+    byte[] data = input.toString().getBytes();
+    Parameters p = new Parameters();
+    p.setCharset(StandardCharsets.UTF_8);
+    p.setLimit(limit);
+    long start = System.nanoTime();
+    p.processParameters(data, 0, data.length);
+    long end = System.nanoTime();
+    if (limit == -1) {
+        validateParameters(parameters, p);
+    } else {
+        Parameter[] limitParameters = new Parameter[limit];
+        System.arraycopy(parameters, 0, limitParameters, 0, limit);
+        validateParameters(limitParameters, p);
+    }
+    return end - start;
+}

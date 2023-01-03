@@ -1,0 +1,18 @@
+@Override
+public String[] getRegistrationIDs(AuthConfigProvider provider) {
+    List<String> result = new ArrayList<>();
+    if (provider == null) {
+        result.addAll(layerAppContextRegistrations.keySet());
+        result.addAll(appContextRegistrations.keySet());
+        result.addAll(layerRegistrations.keySet());
+        if (!defaultRegistration.isEmpty()) {
+            result.add(DEFAULT_REGISTRATION_ID);
+        }
+    } else {
+        findProvider(provider, layerAppContextRegistrations, result);
+        findProvider(provider, appContextRegistrations, result);
+        findProvider(provider, layerRegistrations, result);
+        findProvider(provider, defaultRegistration, result);
+    }
+    return result.toArray(EMPTY_STRING_ARRAY);
+}

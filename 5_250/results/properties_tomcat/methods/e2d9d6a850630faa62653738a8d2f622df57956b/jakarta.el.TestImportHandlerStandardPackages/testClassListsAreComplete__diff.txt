@@ -1,0 +1,14 @@
+@Test                                                                                                  @Test                                                                                               
+public void testClassListsAreComplete() throws Exception {                                             public void testClassListsAreComplete() throws Exception {                                          
+// Use reflection to get hold of the internal Map                                                      // Use reflection to get hold of the internal Map                                                   
+Class&lt;?&gt; clazz = ImportHandler.class;                                                            Class&lt;?&gt; clazz = ImportHandler.class;                                                         
+Field f = clazz.getDeclaredField("standardPackages");                                                  Field f = clazz.getDeclaredField("standardPackages");                                               
+f.setAccessible(true);                                                                                 f.setAccessible(true);                                                                              
+Object obj = f.get(null);                                                                              Object obj = f.get(null);                                                                           
+Assert.assertTrue("Not Map", obj instanceof Map);                                                    |                                                                                                     
+@SuppressWarnings("unchecked")                                                                         @SuppressWarnings("unchecked")                                                                      
+Map&lt;String, Set&lt;String&gt;&gt; standardPackageName = (Map&lt;String, Set&lt;String&gt;&gt;) ob   Map&lt;String, Set&lt;String&gt;&gt; standardPackageName = (Map&lt;String, Set&lt;String&gt;&gt;) ob
+for (Map.Entry&lt;String, Set&lt;String&gt;&gt; entry : standardPackageName.entrySet()) {              for (Map.Entry&lt;String, Set&lt;String&gt;&gt; entry : standardPackageName.entrySet()) {           
+checkPackageClassList(entry.getKey(), entry.getValue());                                               checkPackageClassList(entry.getKey(), entry.getValue());                                            
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

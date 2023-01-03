@@ -1,0 +1,16 @@
+private DirectoryStream<Path> streamFilesForDelete() throws IOException {
+    LocalDate maxDaysOffset = LocalDate.now().minus(maxDays.intValue(), ChronoUnit.DAYS);
+    return Files.newDirectoryStream(new File(directory).toPath(), path -> {
+        boolean result = false;
+        String date = obtainDateFromPath(path);
+        if (date != null) {
+            try {
+                LocalDate dateFromFile = LocalDate.from(DateTimeFormatter.ISO_LOCAL_DATE.parse(date));
+                result = dateFromFile.isBefore(maxDaysOffset);
+            } catch (DateTimeException e) {
+                // no-op
+            }
+        }
+        return result;
+    });
+}

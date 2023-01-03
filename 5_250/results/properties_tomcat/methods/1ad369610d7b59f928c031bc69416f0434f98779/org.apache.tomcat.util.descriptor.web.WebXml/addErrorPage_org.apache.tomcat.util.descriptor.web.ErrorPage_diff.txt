@@ -1,0 +1,4 @@
+public void addErrorPage(ErrorPage errorPage) {
+    errorPage.setCharset(getCharset());
+    errorPages.put(errorPage.getName(), errorPage);
+}

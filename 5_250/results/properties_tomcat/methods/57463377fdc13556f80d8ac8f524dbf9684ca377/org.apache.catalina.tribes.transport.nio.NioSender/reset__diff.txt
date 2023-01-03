@@ -1,0 +1,15 @@
+public void reset() {
+    if (isConnected() && readbuf == null) {
+        readbuf = getReadBuffer();
+    }
+    if (readbuf != null)
+        readbuf.clear();
+    if (writebuf != null)
+        writebuf.clear();
+    current = null;
+    ackbuf.clear();
+    remaining = 0;
+    complete = false;
+    setAttempt(0);
+    setUdpBased(false);
+}

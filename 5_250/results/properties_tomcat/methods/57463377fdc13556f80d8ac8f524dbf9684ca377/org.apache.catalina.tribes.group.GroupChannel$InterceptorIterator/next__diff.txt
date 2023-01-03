@@ -1,0 +1,9 @@
+@Override
+public ChannelInterceptor next() {
+    ChannelInterceptor result = null;
+    if (hasNext()) {
+        result = start;
+        start = start.getNext();
+    }
+    return result;
+}

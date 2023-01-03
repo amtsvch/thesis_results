@@ -1,0 +1,6 @@
+@Test
+public void testAverage04() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("[].stream().average().orElseGet(()->10)", Object.class);
+    Assert.assertEquals(Long.valueOf(10), result);
+}

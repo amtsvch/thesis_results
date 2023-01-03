@@ -1,0 +1,6 @@
+@Test(expected = ELException.class)
+public void testAverage03() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("[].stream().average()", Object.class);
+    ((Optional) result).get();
+}

@@ -1,0 +1,4 @@
+@Test
+public void v0NullValue() {
+    doTest(new Cookie("foo", null), "foo=\"\"", "foo=");
+}

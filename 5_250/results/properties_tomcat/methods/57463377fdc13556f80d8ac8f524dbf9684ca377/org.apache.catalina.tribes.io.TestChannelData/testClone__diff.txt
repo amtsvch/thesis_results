@@ -1,0 +1,8 @@
+@Test
+public void testClone() {
+    ChannelData original = new ChannelData();
+    ChannelData clone = original.clone();
+    Assert.assertFalse(original == clone);
+    Assert.assertTrue(original.getClass() == clone.getClass());
+    Assert.assertTrue(original.equals(clone));
+}

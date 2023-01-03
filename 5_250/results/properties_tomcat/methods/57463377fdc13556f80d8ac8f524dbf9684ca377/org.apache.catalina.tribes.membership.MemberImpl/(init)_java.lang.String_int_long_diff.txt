@@ -1,0 +1,15 @@
+/**
+ * Construct a new member object.
+ *
+ * @param host - the tcp listen host
+ * @param port - the tcp listen port
+ * @param aliveTime - the number of milliseconds since this member was created
+ *
+ * @throws IOException If there is an error converting the host name to an
+ *                     IP address
+ */
+public MemberImpl(String host, int port, long aliveTime) throws IOException {
+    setHostname(host);
+    this.port = port;
+    this.memberAliveTime = aliveTime;
+}

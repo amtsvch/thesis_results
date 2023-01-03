@@ -1,0 +1,30 @@
+private static final void loadConnectorPackage(ClassLoader loader) throws Exception {
+    final String basePackage = "org.apache.catalina.connector.";
+    loader.loadClass(basePackage + "RequestFacade$GetAttributePrivilegedAction");
+    loader.loadClass(basePackage + "RequestFacade$GetParameterMapPrivilegedAction");
+    loader.loadClass(basePackage + "RequestFacade$GetRequestDispatcherPrivilegedAction");
+    loader.loadClass(basePackage + "RequestFacade$GetParameterPrivilegedAction");
+    loader.loadClass(basePackage + "RequestFacade$GetParameterNamesPrivilegedAction");
+    loader.loadClass(basePackage + "RequestFacade$GetParameterValuePrivilegedAction");
+    loader.loadClass(basePackage + "RequestFacade$GetCharacterEncodingPrivilegedAction");
+    loader.loadClass(basePackage + "RequestFacade$GetHeadersPrivilegedAction");
+    loader.loadClass(basePackage + "RequestFacade$GetHeaderNamesPrivilegedAction");
+    loader.loadClass(basePackage + "RequestFacade$GetCookiesPrivilegedAction");
+    loader.loadClass(basePackage + "RequestFacade$GetLocalePrivilegedAction");
+    loader.loadClass(basePackage + "RequestFacade$GetLocalesPrivilegedAction");
+    loader.loadClass(basePackage + "ResponseFacade$SetContentTypePrivilegedAction");
+    loader.loadClass(basePackage + "ResponseFacade$DateHeaderPrivilegedAction");
+    loader.loadClass(basePackage + "RequestFacade$GetSessionPrivilegedAction");
+    loader.loadClass(basePackage + "ResponseFacade$FlushBufferPrivilegedAction");
+    loader.loadClass(basePackage + "OutputBuffer$PrivilegedCreateConverter");
+    loader.loadClass(basePackage + "CoyoteInputStream$PrivilegedAvailable");
+    loader.loadClass(basePackage + "CoyoteInputStream$PrivilegedClose");
+    loader.loadClass(basePackage + "CoyoteInputStream$PrivilegedRead");
+    loader.loadClass(basePackage + "CoyoteInputStream$PrivilegedReadArray");
+    loader.loadClass(basePackage + "CoyoteInputStream$PrivilegedReadBuffer");
+    loader.loadClass(basePackage + "CoyoteOutputStream");
+    loader.loadClass(basePackage + "InputBuffer$PrivilegedCreateConverter");
+    loader.loadClass(basePackage + "Response$PrivilegedDoIsEncodable");
+    loader.loadClass(basePackage + "Response$PrivilegedGenerateCookieString");
+    loader.loadClass(basePackage + "Response$PrivilegedEncodeUrl");
+}

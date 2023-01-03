@@ -1,0 +1,10 @@
+// ----------------------------------------------- EntityResolver Methods
+/**
+ * Set the <code>EntityResolver</code> used by SAX when resolving
+ * public id and system id.
+ * This must be called before the first call to <code>parse()</code>.
+ * @param entityResolver a class that implement the <code>EntityResolver</code> interface.
+ */
+public void setEntityResolver(EntityResolver entityResolver) {
+    this.entityResolver = entityResolver;
+}

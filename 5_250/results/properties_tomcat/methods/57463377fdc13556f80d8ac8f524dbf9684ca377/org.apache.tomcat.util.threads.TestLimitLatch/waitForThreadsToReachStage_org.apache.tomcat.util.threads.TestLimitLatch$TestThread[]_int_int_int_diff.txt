@@ -1,0 +1,27 @@
+private boolean waitForThreadsToReachStage(TestThread[] testThreads, int stage1Target, int stage2Target, int stage3Target) throws InterruptedException {
+    long wait = 0;
+    int stage1 = 0;
+    int stage2 = 0;
+    int stage3 = 0;
+    while ((stage1 != stage1Target || stage2 != stage2Target || stage3 != stage3Target) && wait < THREAD_WAIT_TIME) {
+        stage1 = 0;
+        stage2 = 0;
+        stage3 = 0;
+        for (TestThread testThread : testThreads) {
+            switch(testThread.getStage()) {
+                case 1:
+                    stage1++;
+                    break;
+                case 2:
+                    stage2++;
+                    break;
+                case 3:
+                    stage3++;
+                    break;
+            }
+        }
+        Thread.sleep(100);
+        wait += 100;
+    }
+    return stage1 == stage1Target && stage2 == stage2Target && stage3 == stage3Target;
+}

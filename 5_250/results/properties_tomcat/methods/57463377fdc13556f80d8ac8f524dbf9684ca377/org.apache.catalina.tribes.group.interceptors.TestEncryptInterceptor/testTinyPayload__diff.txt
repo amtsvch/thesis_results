@@ -1,0 +1,7 @@
+@Test
+public void testTinyPayload() throws Exception {
+    src.start(Channel.SND_TX_SEQ);
+    dest.start(Channel.SND_TX_SEQ);
+    String testInput = "x";
+    Assert.assertEquals("Tiny payload roundtrip failed", testInput, roundTrip(testInput, src, dest));
+}

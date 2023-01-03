@@ -1,0 +1,18 @@
+public BeanProperties(Class<?> type) throws ELException {
+    this.type = type;
+    this.properties = new HashMap<>();
+    try {
+        BeanInfo info = Introspector.getBeanInfo(this.type);
+        PropertyDescriptor[] pds = info.getPropertyDescriptors();
+        for (PropertyDescriptor pd : pds) {
+            this.properties.put(pd.getName(), new BeanProperty(type, pd));
+        }
+        if (System.getSecurityManager() != null) {
+            // When running with SecurityManager, some classes may be
+            // not accessible, but have accessible interfaces.
+            populateFromInterfaces(type);
+        }
+    } catch (IntrospectionException ie) {
+        throw new ELException(ie);
+    }
+}

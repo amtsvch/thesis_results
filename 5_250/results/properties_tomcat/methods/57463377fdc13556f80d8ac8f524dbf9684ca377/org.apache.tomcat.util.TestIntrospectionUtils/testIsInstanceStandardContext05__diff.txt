@@ -1,0 +1,4 @@
+@Test
+public void testIsInstanceStandardContext05() {
+    Assert.assertTrue(IntrospectionUtils.isInstance(StandardContext.class, "org.apache.catalina.Lifecycle"));
+}

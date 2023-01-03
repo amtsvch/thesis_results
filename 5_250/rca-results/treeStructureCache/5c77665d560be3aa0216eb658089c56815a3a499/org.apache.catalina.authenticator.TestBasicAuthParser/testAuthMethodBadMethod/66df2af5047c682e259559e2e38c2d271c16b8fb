@@ -1,0 +1,409 @@
+{
+  "call" : "org.apache.catalina.authenticator.TestBasicAuthParser#testAuthMethodBadMethod",
+  "kiekerPattern" : "public void org.apache.catalina.authenticator.TestBasicAuthParser.testAuthMethodBadMethod()",
+  "otherKiekerPattern" : null,
+  "module" : "",
+  "children" : [ {
+    "call" : "org.apache.catalina.authenticator.TestBasicAuthParser$BasicAuthHeader#<init>",
+    "kiekerPattern" : "private new org.apache.catalina.authenticator.TestBasicAuthParser$BasicAuthHeader.<init>(java.lang.String,java.lang.String,java.lang.String,java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.catalina.authenticator.TestBasicAuthParser$BasicAuthHeader#prefix",
+      "kiekerPattern" : "private void org.apache.catalina.authenticator.TestBasicAuthParser$BasicAuthHeader.prefix(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+            "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+              "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.util.buf.AbstractChunk#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.util.buf.AbstractChunk.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.buf.ByteChunk#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.util.buf.ByteChunk.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.buf.ByteChunk#setBytes",
+        "kiekerPattern" : "public void org.apache.tomcat.util.buf.ByteChunk.setBytes(byte[],int,int)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.buf.ByteChunk#append",
+        "kiekerPattern" : "public void org.apache.tomcat.util.buf.ByteChunk.append(byte[],int,int)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.buf.ByteChunk#makeSpace",
+          "kiekerPattern" : "public void org.apache.tomcat.util.buf.ByteChunk.makeSpace(int)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.buf.AbstractChunk#getLimitInternal",
+            "kiekerPattern" : "protected int org.apache.tomcat.util.buf.AbstractChunk.getLimitInternal()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        }, {
+          "call" : "org.apache.tomcat.util.buf.AbstractChunk#getLimitInternal",
+          "kiekerPattern" : "protected int org.apache.tomcat.util.buf.AbstractChunk.getLimitInternal()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+      "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+            "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.codec.binary.Base64#encodeBase64String",
+      "kiekerPattern" : "public static java.lang.String org.apache.tomcat.util.codec.binary.Base64.encodeBase64String(byte[])",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.codec.binary.Base64#encodeBase64",
+        "kiekerPattern" : "public static byte[] org.apache.tomcat.util.codec.binary.Base64.encodeBase64(byte[],boolean)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.codec.binary.Base64#encodeBase64",
+          "kiekerPattern" : "public static byte[] org.apache.tomcat.util.codec.binary.Base64.encodeBase64(byte[],boolean,boolean)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.codec.binary.Base64#encodeBase64",
+            "kiekerPattern" : "public static byte[] org.apache.tomcat.util.codec.binary.Base64.encodeBase64(byte[],boolean,boolean,int)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.tomcat.util.codec.binary.BaseNCodec#<init>",
+              "kiekerPattern" : "protected new org.apache.tomcat.util.codec.binary.BaseNCodec.<init>(int,int,int,int,byte)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.tomcat.util.codec.binary.BaseNCodec#<init>",
+              "kiekerPattern" : "protected new org.apache.tomcat.util.codec.binary.BaseNCodec.<init>(int,int,int,int)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.tomcat.util.codec.binary.Base64#<init>",
+              "kiekerPattern" : "public new org.apache.tomcat.util.codec.binary.Base64.<init>(int,byte[],boolean)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.tomcat.util.codec.binary.BaseNCodec#containsAlphabetOrPad",
+                "kiekerPattern" : "protected boolean org.apache.tomcat.util.codec.binary.BaseNCodec.containsAlphabetOrPad(byte[])",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.tomcat.util.codec.binary.Base64#isInAlphabet",
+                  "kiekerPattern" : "protected boolean org.apache.tomcat.util.codec.binary.Base64.isInAlphabet(byte)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                } ]
+              } ]
+            }, {
+              "call" : "org.apache.tomcat.util.codec.binary.BaseNCodec#getEncodedLength",
+              "kiekerPattern" : "public long org.apache.tomcat.util.codec.binary.BaseNCodec.getEncodedLength(byte[])",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.tomcat.util.codec.binary.BaseNCodec#encode",
+              "kiekerPattern" : "public byte[] org.apache.tomcat.util.codec.binary.BaseNCodec.encode(byte[])",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.tomcat.util.codec.binary.BaseNCodec#encode",
+                "kiekerPattern" : "public byte[] org.apache.tomcat.util.codec.binary.BaseNCodec.encode(byte[],int,int)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.tomcat.util.codec.binary.BaseNCodec$Context#<init>",
+                  "kiekerPattern" : "new org.apache.tomcat.util.codec.binary.BaseNCodec$Context.<init>()",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                }, {
+                  "call" : "org.apache.tomcat.util.codec.binary.Base64#encode",
+                  "kiekerPattern" : "void org.apache.tomcat.util.codec.binary.Base64.encode(byte[],int,int,org.apache.tomcat.util.codec.binary.Context)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ {
+                    "call" : "org.apache.tomcat.util.codec.binary.BaseNCodec#ensureBufferSize",
+                    "kiekerPattern" : "protected byte[] org.apache.tomcat.util.codec.binary.BaseNCodec.ensureBufferSize(int,org.apache.tomcat.util.codec.binary.BaseNCodec$Context)",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ {
+                      "call" : "org.apache.tomcat.util.codec.binary.BaseNCodec#getDefaultBufferSize",
+                      "kiekerPattern" : "protected int org.apache.tomcat.util.codec.binary.BaseNCodec.getDefaultBufferSize()",
+                      "otherKiekerPattern" : null,
+                      "module" : "",
+                      "children" : [ ]
+                    } ]
+                  } ]
+                }, {
+                  "call" : "org.apache.tomcat.util.codec.binary.BaseNCodec#readResults",
+                  "kiekerPattern" : "int org.apache.tomcat.util.codec.binary.BaseNCodec.readResults(byte[],int,int,org.apache.tomcat.util.codec.binary.BaseNCodec$Context)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ {
+                    "call" : "org.apache.tomcat.util.codec.binary.BaseNCodec#available",
+                    "kiekerPattern" : "int org.apache.tomcat.util.codec.binary.BaseNCodec.available(org.apache.tomcat.util.codec.binary.BaseNCodec$Context)",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ ]
+                  } ]
+                } ]
+              } ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.util.codec.binary.StringUtils#newStringUsAscii",
+        "kiekerPattern" : "public static java.lang.String org.apache.tomcat.util.codec.binary.StringUtils.newStringUsAscii(byte[])",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.codec.binary.StringUtils#newString",
+          "kiekerPattern" : "private static java.lang.String org.apache.tomcat.util.codec.binary.StringUtils.newString(byte[],java.nio.charset.Charset)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.buf.ByteChunk#append",
+      "kiekerPattern" : "public void org.apache.tomcat.util.buf.ByteChunk.append(byte[],int,int)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.buf.ByteChunk#makeSpace",
+        "kiekerPattern" : "public void org.apache.tomcat.util.buf.ByteChunk.makeSpace(int)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.buf.AbstractChunk#getLimitInternal",
+          "kiekerPattern" : "protected int org.apache.tomcat.util.buf.AbstractChunk.getLimitInternal()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.util.buf.AbstractChunk#getLimitInternal",
+        "kiekerPattern" : "protected int org.apache.tomcat.util.buf.AbstractChunk.getLimitInternal()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.buf.AbstractChunk#setOffset",
+      "kiekerPattern" : "public void org.apache.tomcat.util.buf.AbstractChunk.setOffset(int)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.catalina.authenticator.TestBasicAuthParser$BasicAuthHeader#<init>",
+    "kiekerPattern" : "private new org.apache.catalina.authenticator.TestBasicAuthParser$BasicAuthHeader.<init>(java.lang.String,java.lang.String,java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.catalina.authenticator.TestBasicAuthParser$BasicAuthHeader#getHeader",
+    "kiekerPattern" : "private org.apache.tomcat.util.buf.ByteChunk org.apache.catalina.authenticator.TestBasicAuthParser$BasicAuthHeader.getHeader()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.juli.logging.LogFactory#<init>",
+    "kiekerPattern" : "private new org.apache.juli.logging.LogFactory.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.juli.logging.LogFactory#getLog",
+    "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.juli.logging.LogFactory#getFactory",
+      "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.juli.logging.LogFactory#getInstance",
+      "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.Class)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.juli.logging.LogFactory#getInstance",
+        "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+          "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+            "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+    "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+      "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+          "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+    "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+      "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.util.http.ConcurrentDateFormat#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.util.http.ConcurrentDateFormat.<init>(java.lang.String,java.util.Locale,java.util.TimeZone)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.http.ConcurrentDateFormat#createInstance",
+      "kiekerPattern" : "private java.text.SimpleDateFormat org.apache.tomcat.util.http.ConcurrentDateFormat.createInstance()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.util.http.FastHttpDateFormat#formatDate",
+    "kiekerPattern" : "public static final java.lang.String org.apache.tomcat.util.http.FastHttpDateFormat.formatDate(long)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.http.ConcurrentDateFormat#format",
+      "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.http.ConcurrentDateFormat.format(java.util.Date)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.http.FastHttpDateFormat#updateFormatCache",
+      "kiekerPattern" : "private static void org.apache.tomcat.util.http.FastHttpDateFormat.updateFormatCache(java.lang.Long,java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.catalina.authenticator.BasicAuthenticator$BasicCredentials#<init>",
+    "kiekerPattern" : "public new org.apache.catalina.authenticator.BasicAuthenticator$BasicCredentials.<init>(org.apache.tomcat.util.buf.ByteChunk,java.nio.charset.Charset,boolean)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.buf.AbstractChunk#getOffset",
+      "kiekerPattern" : "public int org.apache.tomcat.util.buf.AbstractChunk.getOffset()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.authenticator.BasicAuthenticator$BasicCredentials#parseMethod",
+      "kiekerPattern" : "private void org.apache.catalina.authenticator.BasicAuthenticator$BasicCredentials.parseMethod()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.buf.ByteChunk#startsWithIgnoreCase",
+        "kiekerPattern" : "public boolean org.apache.tomcat.util.buf.ByteChunk.startsWithIgnoreCase(java.lang.String,int)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.buf.Ascii#toLower",
+          "kiekerPattern" : "public static int org.apache.tomcat.util.buf.Ascii.toLower(int)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    } ]
+  } ]
+}

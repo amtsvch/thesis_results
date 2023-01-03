@@ -1,0 +1,24 @@
+/**
+ * Map a method to a function name.
+ *
+ * @param prefix    Function prefix
+ * @param function  Function name
+ * @param method    Method
+ *
+ * @throws NullPointerException
+ *              If any of the arguments are null
+ * @throws NoSuchMethodException
+ *              If the method is not static
+ */
+public void defineFunction(String prefix, String function, Method method) throws java.lang.NoSuchMethodException {
+    if (prefix == null || function == null || method == null) {
+        throw new NullPointerException(Util.message(context, "elProcessor.defineFunctionNullParams"));
+    }
+    int modifiers = method.getModifiers();
+    // Check for static, public method and module access for Java 9+
+    JreCompat jreCompat = JreCompat.getInstance();
+    if (!Modifier.isStatic(modifiers) || !jreCompat.canAcccess(null, method)) {
+        throw new NoSuchMethodException(Util.message(context, "elProcessor.defineFunctionInvalidMethod", method.getName(), method.getDeclaringClass().getName()));
+    }
+    manager.mapFunction(prefix, function, method);
+}

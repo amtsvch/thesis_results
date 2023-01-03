@@ -1,0 +1,7 @@
+void setHeaderEmitter(HeaderEmitter headerEmitter) {
+    this.headerEmitter = headerEmitter;
+    // Reset limit tracking
+    headerCount = 0;
+    countedCookie = false;
+    headerSize = 0;
+}

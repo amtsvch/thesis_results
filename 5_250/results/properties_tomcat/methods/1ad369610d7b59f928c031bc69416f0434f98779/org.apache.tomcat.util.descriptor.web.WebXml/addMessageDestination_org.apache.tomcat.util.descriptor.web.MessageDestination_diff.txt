@@ -1,0 +1,8 @@
+public void addMessageDestination(MessageDestination messageDestination) {
+    if (messageDestinations.containsKey(messageDestination.getName())) {
+        // message-destination names must be unique within a
+        // web(-fragment).xml
+        throw new IllegalArgumentException(sm.getString("webXml.duplicateMessageDestination", messageDestination.getName()));
+    }
+    messageDestinations.put(messageDestination.getName(), messageDestination);
+}

@@ -1,0 +1,20 @@
+/**
+ * Release all object references, and initialize instance variables, in
+ * preparation for reuse of this object.
+ */
+@Override
+public void recycle() {
+    // Reset the instance variables associated with this Session
+    attributes.clear();
+    setAuthType(null);
+    creationTime = 0L;
+    expiring = false;
+    id = null;
+    lastAccessedTime = 0L;
+    maxInactiveInterval = -1;
+    notes.clear();
+    setPrincipal(null);
+    isNew = false;
+    isValid = false;
+    manager = null;
+}

@@ -1,0 +1,8 @@
+private Cipher createCipher() throws NoSuchAlgorithmException, NoSuchPaddingException, NoSuchProviderException {
+    String providerName = getProviderName();
+    if (null == providerName) {
+        return Cipher.getInstance(getAlgorithm());
+    } else {
+        return Cipher.getInstance(getAlgorithm(), providerName);
+    }
+}

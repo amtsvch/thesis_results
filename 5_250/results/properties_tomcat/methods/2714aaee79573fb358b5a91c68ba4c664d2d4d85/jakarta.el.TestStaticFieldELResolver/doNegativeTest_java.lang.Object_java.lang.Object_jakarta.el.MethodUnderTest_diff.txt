@@ -1,0 +1,35 @@
+private void doNegativeTest(Object elClass, Object trigger, MethodUnderTest method) {
+    StaticFieldELResolver resolver = new StaticFieldELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    Object result = null;
+    switch(method) {
+        case GET_VALUE:
+            {
+                result = resolver.getValue(context, elClass, trigger);
+                break;
+            }
+        case SET_VALUE:
+            {
+                resolver.setValue(context, elClass, trigger, PROPERTY01_VALUE);
+                result = resolver.getValue(context, elClass, trigger);
+                break;
+            }
+        case GET_TYPE:
+            {
+                result = resolver.getType(context, elClass, trigger);
+                break;
+            }
+        case INVOKE:
+            {
+                result = resolver.invoke(context, elClass, trigger, new Class<?>[] { String.class }, new Object[] { "test" });
+                break;
+            }
+        default:
+            {
+                // Should never happen
+                Assert.fail("Missing case for method");
+            }
+    }
+    Assert.assertNull(result);
+    Assert.assertFalse(context.isPropertyResolved());
+}

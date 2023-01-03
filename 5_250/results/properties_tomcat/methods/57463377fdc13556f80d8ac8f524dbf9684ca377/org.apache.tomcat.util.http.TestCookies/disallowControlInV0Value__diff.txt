@@ -1,0 +1,5 @@
+@Test
+public void disallowControlInV0Value() {
+    // Bug 55917
+    test(true, "foo=b\010r");
+}

@@ -1,0 +1,5 @@
+@Test
+public void testURLDecodeStringValidIso88591End() {
+    String result = UDecoder.URLDecode("xxxx%41", StandardCharsets.ISO_8859_1);
+    Assert.assertEquals("xxxxA", result);
+}

@@ -1,0 +1,6 @@
+static void moveToEnd(final LinkedHashSet<Cipher> ciphers, final Collection<Cipher> toBeMovedCiphers) {
+    List<Cipher> movedCiphers = new ArrayList<>(toBeMovedCiphers);
+    movedCiphers.retainAll(ciphers);
+    ciphers.removeAll(movedCiphers);
+    ciphers.addAll(movedCiphers);
+}

@@ -1,0 +1,11 @@
+/**                                                                                                    /**                                                                                                 
+* Returns whether or not the &lt;code&gt;octet&lt;/code&gt; is in the Base64 alphabet.               | * Returns whether or not the {@code octet} is in the Base64 alphabet.                               
+*                                                                                                      *                                                                                                   
+* @param octet                                                                                         * @param octet                                                                                      
+*            The value to test                                                                         *            The value to test                                                                      
+* @return &lt;code&gt;true&lt;/code&gt; if the value is defined in the the Base64 alphabet &lt;code& | * @return {@code true} if the value is defined in the the Base64 alphabet {@code false} otherwise.  
+*/                                                                                                     */                                                                                                  
+@Override                                                                                              @Override                                                                                           
+protected boolean isInAlphabet(final byte octet) {                                                     protected boolean isInAlphabet(final byte octet) {                                                  
+return octet &gt;= 0 && octet &lt; decodeTable.length && decodeTable[octet] != -1;                     return octet &gt;= 0 && octet &lt; decodeTable.length && decodeTable[octet] != -1;                  
+}                                                                                                      }                                                                                                   

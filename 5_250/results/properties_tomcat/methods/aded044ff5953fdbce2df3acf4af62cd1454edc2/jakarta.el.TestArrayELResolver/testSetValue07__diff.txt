@@ -1,0 +1,11 @@
+/**
+ * Tests that an exception will be thrown if the value is not from the
+ * corresponding type.
+ */
+@Test(expected = ClassCastException.class)
+public void testSetValue07() {
+    ArrayELResolver resolver = new ArrayELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    String[] base = new String[] { "element" };
+    resolver.setValue(context, base, Integer.valueOf(0), Integer.valueOf(1));
+}

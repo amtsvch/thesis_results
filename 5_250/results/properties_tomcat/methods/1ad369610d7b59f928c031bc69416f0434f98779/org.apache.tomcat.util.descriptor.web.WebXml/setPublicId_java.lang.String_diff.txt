@@ -1,0 +1,21 @@
+public void setPublicId(String publicId) {
+    // Update major and minor version
+    if (publicId == null) {
+        return;
+    }
+    switch(publicId) {
+        case XmlIdentifiers.WEB_22_PUBLIC:
+            majorVersion = 2;
+            minorVersion = 2;
+            this.publicId = publicId;
+            break;
+        case XmlIdentifiers.WEB_23_PUBLIC:
+            majorVersion = 2;
+            minorVersion = 3;
+            this.publicId = publicId;
+            break;
+        default:
+            log.warn(sm.getString("webXml.unrecognisedPublicId", publicId));
+            break;
+    }
+}

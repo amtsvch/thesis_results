@@ -1,0 +1,12 @@
+private void addHttpMethodConstraints(Collection<HttpMethodConstraintElement> httpMethodConstraints) {
+    if (httpMethodConstraints == null) {
+        return;
+    }
+    for (HttpMethodConstraintElement constraint : httpMethodConstraints) {
+        String method = constraint.getMethodName();
+        if (methodConstraints.containsKey(method)) {
+            throw new IllegalArgumentException("Duplicate method name: " + method);
+        }
+        methodConstraints.put(method, constraint);
+    }
+}

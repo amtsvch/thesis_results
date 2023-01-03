@@ -1,0 +1,14 @@
+/**
+ * Sets the content to be a char[]
+ *
+ * @param c the chars
+ * @param off the start offset of the chars
+ * @param len the length of the chars
+ */
+public void setChars(char[] c, int off, int len) {
+    charC.setChars(c, off, len);
+    type = T_CHARS;
+    hasStrValue = false;
+    hasHashCode = false;
+    hasLongValue = false;
+}

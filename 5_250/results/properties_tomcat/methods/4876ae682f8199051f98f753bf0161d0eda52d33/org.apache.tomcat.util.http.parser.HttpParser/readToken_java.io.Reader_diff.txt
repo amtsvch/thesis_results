@@ -1,0 +1,24 @@
+/**
+ * @return  the token if one was found, the empty string if no data was
+ *          available to read or <code>null</code> if data other than a
+ *          token was found
+ */
+static String readToken(Reader input) throws IOException {
+    StringBuilder result = new StringBuilder();
+    skipLws(input);
+    input.mark(1);
+    int c = input.read();
+    while (c != -1 && isToken(c)) {
+        result.append((char) c);
+        input.mark(1);
+        c = input.read();
+    }
+    // Use mark(1)/reset() rather than skip(-1) since skip() is a NOP
+    // once the end of the String has been reached.
+    input.reset();
+    if (c != -1 && result.length() == 0) {
+        return null;
+    } else {
+        return result.toString();
+    }
+}

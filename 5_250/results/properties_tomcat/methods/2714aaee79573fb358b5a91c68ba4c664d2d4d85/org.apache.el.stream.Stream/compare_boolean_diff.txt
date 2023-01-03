@@ -1,0 +1,29 @@
+@SuppressWarnings({ "rawtypes", "unchecked" })
+private Optional compare(boolean isMax) {
+    Comparable result = null;
+    if (iterator.hasNext()) {
+        Object obj = iterator.next();
+        if ((obj instanceof Comparable)) {
+            result = (Comparable) obj;
+        } else {
+            throw new ELException(MessageFactory.get("stream.compare.notComparable"));
+        }
+    }
+    while (iterator.hasNext()) {
+        Object obj = iterator.next();
+        if ((obj instanceof Comparable)) {
+            if (isMax && ((Comparable) obj).compareTo(result) > 0) {
+                result = (Comparable) obj;
+            } else if (!isMax && ((Comparable) obj).compareTo(result) < 0) {
+                result = (Comparable) obj;
+            }
+        } else {
+            throw new ELException(MessageFactory.get("stream.compare.notComparable"));
+        }
+    }
+    if (result == null) {
+        return Optional.EMPTY;
+    } else {
+        return new Optional(result);
+    }
+}

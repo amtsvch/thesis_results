@@ -1,0 +1,8 @@
+private NamingEnumeration&lt;SearchResult&gt; mockSearchResults(String password) throws NamingExcept   private NamingEnumeration&lt;SearchResult&gt; mockSearchResults(String password) throws NamingExcept
+@SuppressWarnings("unchecked")                                                                       |                                                                                                     
+NamingEnumeration&lt;SearchResult&gt; searchResults = EasyMock.createNiceMock(NamingEnumeration.clas   NamingEnumeration&lt;SearchResult&gt; searchResults = EasyMock.createNiceMock(NamingEnumeration.clas
+EasyMock.expect(Boolean.valueOf(searchResults.hasMore())).andReturn(Boolean.TRUE).andReturn(Boolean.   EasyMock.expect(Boolean.valueOf(searchResults.hasMore())).andReturn(Boolean.TRUE).andReturn(Boolean.
+EasyMock.expect(searchResults.next()).andReturn(new SearchResult("ANY RESULT", "", new BasicAttribut   EasyMock.expect(searchResults.next()).andReturn(new SearchResult("ANY RESULT", "", new BasicAttribut
+EasyMock.replay(searchResults);                                                                        EasyMock.replay(searchResults);                                                                     
+return searchResults;                                                                                  return searchResults;                                                                               
+}                                                                                                      }                                                                                                   

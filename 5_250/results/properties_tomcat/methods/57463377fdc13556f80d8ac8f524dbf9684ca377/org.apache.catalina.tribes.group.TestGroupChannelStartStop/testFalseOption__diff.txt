@@ -1,0 +1,20 @@
+@Test
+public void testFalseOption() throws Exception {
+    // should get ignored by the underlying components
+    int flag = 0xFFF0;
+    int count = 0;
+    try {
+        channel.start(flag);
+        count++;
+    } catch (Exception x) {
+        x.printStackTrace();
+    }
+    try {
+        channel.start(flag);
+        count++;
+    } catch (Exception x) {
+        // expected
+    }
+    Assert.assertEquals(count, 2);
+    channel.stop(Channel.DEFAULT);
+}

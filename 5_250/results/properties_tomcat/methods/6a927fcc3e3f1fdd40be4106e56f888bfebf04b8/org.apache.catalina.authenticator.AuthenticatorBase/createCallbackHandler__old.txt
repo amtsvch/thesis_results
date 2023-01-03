@@ -1,0 +1,22 @@
+private CallbackHandler createCallbackHandler() {
+    CallbackHandler callbackHandler = null;
+    if (jaspicCallbackHandlerClass == null) {
+        callbackHandler = CallbackHandlerImpl.getInstance();
+    } else {
+        Class<?> clazz = null;
+        try {
+            clazz = Class.forName(jaspicCallbackHandlerClass, true, Thread.currentThread().getContextClassLoader());
+        } catch (ClassNotFoundException e) {
+            // Proceed with the retry below
+        }
+        try {
+            if (clazz == null) {
+                clazz = Class.forName(jaspicCallbackHandlerClass);
+            }
+            callbackHandler = (CallbackHandler) clazz.getConstructor().newInstance();
+        } catch (ReflectiveOperationException e) {
+            throw new SecurityException(e);
+        }
+    }
+    return callbackHandler;
+}

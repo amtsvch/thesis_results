@@ -1,0 +1,6 @@
+@Test
+public void testStringInputForMapSendOptions() {
+    BackupManager manager = new BackupManager();
+    manager.setMapSendOptions("async, multicast");
+    Assert.assertEquals(Channel.SEND_OPTIONS_ASYNCHRONOUS | Channel.SEND_OPTIONS_MULTICAST, manager.getMapSendOptions());
+}

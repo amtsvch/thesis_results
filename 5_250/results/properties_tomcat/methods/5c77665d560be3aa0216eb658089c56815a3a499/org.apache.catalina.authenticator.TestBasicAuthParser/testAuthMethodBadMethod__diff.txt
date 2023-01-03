@@ -1,0 +1,17 @@
+/*                                                                                                     /*                                                                                                  
+* Confirm the Basic parser rejects an invalid authentication method.                                   * Confirm the Basic parser rejects an invalid authentication method.                                
+*/                                                                                                     */                                                                                                  
+@Test                                                                                                | @Test(expected = IllegalArgumentException.class)                                                    
+public void testAuthMethodBadMethod() throws Exception {                                               public void testAuthMethodBadMethod() throws Exception {                                            
+final String METHOD = "BadMethod";                                                                     final String METHOD = "BadMethod";                                                                  
+final BasicAuthHeader AUTH_HEADER = new BasicAuthHeader(METHOD, USER_NAME, PASSWORD);                  final BasicAuthHeader AUTH_HEADER = new BasicAuthHeader(METHOD, USER_NAME, PASSWORD);               
+@SuppressWarnings("unused")                                                                            @SuppressWarnings("unused")                                                                         
+BasicAuthenticator.BasicCredentials credentials = null;                                              | BasicAuthenticator.BasicCredentials credentials = new BasicAuthenticator.BasicCredentials(AUTH_HEADE
+try {                                                                                                |                                                                                                     
+credentials = new BasicAuthenticator.BasicCredentials(AUTH_HEADER.getHeader(), StandardCharsets.UTF_ |                                                                                                     
+Assert.fail("IllegalArgumentException expected");                                                    |                                                                                                     
+} catch (Exception e) {                                                                              |                                                                                                     
+Assert.assertTrue(e instanceof IllegalArgumentException);                                            |                                                                                                     
+Assert.assertTrue(e.getMessage().contains("header method"));                                         |                                                                                                     
+}                                                                                                      }                                                                                                   
+}                                                                                                    |                                                                                                     

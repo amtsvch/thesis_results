@@ -1,0 +1,5 @@
+@Test
+public void disallow8bitInV1UnquotedValue() {
+    // Bug 55917
+    test(true, "$Version=1; foo=b\u00e1r");
+}

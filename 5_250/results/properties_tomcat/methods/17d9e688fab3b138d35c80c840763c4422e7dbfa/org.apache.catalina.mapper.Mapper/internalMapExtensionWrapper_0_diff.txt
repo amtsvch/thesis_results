@@ -1,0 +1,42 @@
+/**
+ * Extension mappings.
+ *
+ * @param wrappers          Set of wrappers to check for matches
+ * @param path              Path to map
+ * @param mappingData       Mapping data for result
+ * @param resourceExpected  Is this mapping expecting to find a resource
+ */
+private final void internalMapExtensionWrapper(MappedWrapper[] wrappers, CharChunk path, MappingData mappingData, boolean resourceExpected) {
+    char[] buf = path.getBuffer();
+    int pathEnd = path.getEnd();
+    int servletPath = path.getOffset();
+    int slash = -1;
+    for (int i = pathEnd - 1; i >= servletPath; i--) {
+        if (buf[i] == '/') {
+            slash = i;
+            break;
+        }
+    }
+    if (slash >= 0) {
+        int period = -1;
+        for (int i = pathEnd - 1; i > slash; i--) {
+            if (buf[i] == '.') {
+                period = i;
+                break;
+            }
+        }
+        if (period >= 0) {
+            path.setOffset(period + 1);
+            path.setEnd(pathEnd);
+            MappedWrapper wrapper = exactFind(wrappers, path);
+            if (wrapper != null && (resourceExpected || !wrapper.resourceOnly)) {
+                mappingData.wrapperPath.setChars(buf, servletPath, pathEnd - servletPath);
+                mappingData.requestPath.setChars(buf, servletPath, pathEnd - servletPath);
+                mappingData.wrapper = wrapper.object;
+                mappingData.matchType = MappingMatch.EXTENSION;
+            }
+            path.setOffset(servletPath);
+            path.setEnd(pathEnd);
+        }
+    }
+}

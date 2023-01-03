@@ -1,0 +1,9 @@
+private CallbackHandler createCallbackHandler(String callbackHandlerImplClassName) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    TestAuthenticator authenticator = new TestAuthenticator();
+    if (callbackHandlerImplClassName != null) {
+        authenticator.setJaspicCallbackHandlerClass(callbackHandlerImplClassName);
+    }
+    Method createCallbackHandlerMethod = AuthenticatorBase.class.getDeclaredMethod("createCallbackHandler");
+    createCallbackHandlerMethod.setAccessible(true);
+    return (CallbackHandler) createCallbackHandlerMethod.invoke(authenticator);
+}

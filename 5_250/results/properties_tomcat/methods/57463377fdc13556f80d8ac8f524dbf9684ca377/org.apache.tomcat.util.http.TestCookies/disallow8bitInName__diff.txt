@@ -1,0 +1,5 @@
+@Test
+public void disallow8bitInName() {
+    // Bug 55917
+    test(true, "f\u00f6o=bar");
+}

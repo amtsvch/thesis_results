@@ -1,0 +1,11 @@
+@Before
+public void setUp() {
+    // set CATALINA_BASE to test so that the file with persistent providers will be written in test/conf folder
+    oldCatalinaBase = System.getProperty(Globals.CATALINA_BASE_PROP);
+    System.setProperty(Globals.CATALINA_BASE_PROP, "test");
+    if (TEST_CONFIG_FILE.exists()) {
+        if (!TEST_CONFIG_FILE.delete()) {
+            Assert.fail("Failed to delete " + TEST_CONFIG_FILE);
+        }
+    }
+}

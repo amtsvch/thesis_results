@@ -1,0 +1,45 @@
+{
+  "clazz" : "org.apache.juli.TestFileHandler",
+  "methods" : [ {
+    "method" : "testCleanDisabled",
+    "datacollectorResults" : [ {
+      "name" : "de.dagere.kopeme.datacollection.TimeDataCollectorNoGC",
+      "chunks" : [ ],
+      "results" : [ {
+        "value" : 6.243952320243333E11,
+        "deviation" : 1.4535442268184429,
+        "min" : 1.00350650467E11,
+        "max" : 1.672385371165E12,
+        "warmup" : 0,
+        "iterations" : 1,
+        "repetitions" : 100,
+        "commit" : null,
+        "vmRunConfiguration" : {
+          "showStart" : false,
+          "executeBeforeClassInMeasurement" : false,
+          "redirectToTemp" : false,
+          "redirectToNull" : true,
+          "useKieker" : false
+        },
+        "javaVersion" : "11.0.16",
+        "cpu" : "model name : Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz",
+        "memory" : "MemTotal: 16280676 kB",
+        "date" : 1672385470622,
+        "error" : true,
+        "fulldata" : {
+          "fileName" : null,
+          "values" : [ {
+            "startTime" : 1672385170365,
+            "value" : 100449674441
+          }, {
+            "startTime" : 1672385270815,
+            "value" : 100350650467
+          }, {
+            "startTime" : 1672385371165,
+            "value" : 1672385371165
+          } ]
+        }
+      } ]
+    } ]
+  } ]
+}

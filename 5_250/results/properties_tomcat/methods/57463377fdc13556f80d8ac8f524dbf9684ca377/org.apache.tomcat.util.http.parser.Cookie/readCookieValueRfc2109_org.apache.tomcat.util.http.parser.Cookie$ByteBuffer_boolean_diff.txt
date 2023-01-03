@@ -1,0 +1,14 @@
+private static ByteBuffer readCookieValueRfc2109(ByteBuffer bb, boolean allowForwardSlash) {
+    if (!bb.hasRemaining()) {
+        return null;
+    }
+    if (bb.peek() == QUOTE_BYTE) {
+        return readQuotedString(bb);
+    } else {
+        if (allowForwardSlash) {
+            return readTokenAllowForwardSlash(bb);
+        } else {
+            return readToken(bb);
+        }
+    }
+}

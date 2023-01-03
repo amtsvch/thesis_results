@@ -1,0 +1,38 @@
+/**
+ * Convert an object to Boolean.
+ * Null and empty string are false.
+ * @param ctx the context in which this conversion is taking place
+ * @param obj the object to convert
+ * @param primitive is the target a primitive in which case coercion to null
+ *                  is not permitted
+ * @return the Boolean value of the object
+ * @throws ELException if object is not Boolean or String
+ */
+public static final Boolean coerceToBoolean(final ELContext ctx, final Object obj, boolean primitive) throws ELException {
+    if (ctx != null) {
+        boolean originalIsPropertyResolved = ctx.isPropertyResolved();
+        try {
+            Object result = ctx.getELResolver().convertToType(ctx, obj, Boolean.class);
+            if (ctx.isPropertyResolved()) {
+                return (Boolean) result;
+            }
+        } finally {
+            ctx.setPropertyResolved(originalIsPropertyResolved);
+        }
+    }
+    if (!COERCE_TO_ZERO && !primitive) {
+        if (obj == null) {
+            return null;
+        }
+    }
+    if (obj == null || "".equals(obj)) {
+        return Boolean.FALSE;
+    }
+    if (obj instanceof Boolean) {
+        return (Boolean) obj;
+    }
+    if (obj instanceof String) {
+        return Boolean.valueOf((String) obj);
+    }
+    throw new ELException(MessageFactory.get("error.convert", obj, obj.getClass(), Boolean.class));
+}

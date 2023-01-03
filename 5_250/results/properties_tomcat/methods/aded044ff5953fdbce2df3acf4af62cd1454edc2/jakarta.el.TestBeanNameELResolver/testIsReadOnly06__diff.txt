@@ -1,0 +1,10 @@
+/**
+ * Beans that don't exist should not resolve
+ */
+@Test
+public void testIsReadOnly06() {
+    BeanNameELResolver resolver = createBeanNameELResolver();
+    ELContext context = new StandardELContext(ELManager.getExpressionFactory());
+    resolver.isReadOnly(context, null, BEAN99_NAME);
+    Assert.assertFalse(context.isPropertyResolved());
+}

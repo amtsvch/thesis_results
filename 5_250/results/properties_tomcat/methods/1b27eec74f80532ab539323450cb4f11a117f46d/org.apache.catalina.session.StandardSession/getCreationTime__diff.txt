@@ -1,0 +1,14 @@
+// ------------------------------------------------- HttpSession Properties
+/**
+ * Return the time when this session was created, in milliseconds since
+ * midnight, January 1, 1970 GMT.
+ *
+ * @exception IllegalStateException if this method is called on an
+ *  invalidated session
+ */
+@Override
+public long getCreationTime() {
+    if (!isValidInternal())
+        throw new IllegalStateException(sm.getString("standardSession.getCreationTime.ise"));
+    return this.creationTime;
+}

@@ -1,0 +1,6 @@
+@Test
+public void testImport01() {
+    ELProcessor processor = new ELProcessor();
+    Object result = processor.getValue("Integer.MAX_VALUE", Integer.class);
+    Assert.assertEquals(Integer.valueOf(Integer.MAX_VALUE), result);
+}

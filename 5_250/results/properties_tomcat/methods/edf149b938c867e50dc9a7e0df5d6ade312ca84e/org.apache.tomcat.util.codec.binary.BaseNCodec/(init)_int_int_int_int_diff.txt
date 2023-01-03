@@ -1,0 +1,11 @@
+/**                                                                                                    /**                                                                                                 
+* Note &lt;code&gt;lineLength&lt;/code&gt; is rounded down to the nearest multiple of the encoded bl | * Note {@code lineLength} is rounded down to the nearest multiple of the encoded block size.        
+* If &lt;code&gt;chunkSeparatorLength&lt;/code&gt; is zero, then chunking is disabled.               | * If {@code chunkSeparatorLength} is zero, then chunking is disabled.                               
+* @param unencodedBlockSize the size of an unencoded block (e.g. Base64 = 3)                           * @param unencodedBlockSize the size of an unencoded block (e.g. Base64 = 3)                        
+* @param encodedBlockSize the size of an encoded block (e.g. Base64 = 4)                               * @param encodedBlockSize the size of an encoded block (e.g. Base64 = 4)                            
+* @param lineLength if &gt; 0, use chunking with a length &lt;code&gt;lineLength&lt;/code&gt;        | * @param lineLength if &gt; 0, use chunking with a length {@code lineLength}                        
+* @param chunkSeparatorLength the chunk separator length, if relevant                                  * @param chunkSeparatorLength the chunk separator length, if relevant                               
+*/                                                                                                     */                                                                                                  
+protected BaseNCodec(final int unencodedBlockSize, final int encodedBlockSize, final int lineLength,   protected BaseNCodec(final int unencodedBlockSize, final int encodedBlockSize, final int lineLength,
+this(unencodedBlockSize, encodedBlockSize, lineLength, chunkSeparatorLength, PAD_DEFAULT);             this(unencodedBlockSize, encodedBlockSize, lineLength, chunkSeparatorLength, PAD_DEFAULT);          
+}                                                                                                      }                                                                                                   

@@ -1,0 +1,5 @@
+private void savePersistentProviders(Providers providers, Map<String, RegistrationContextImpl> registrations) {
+    for (Entry<String, RegistrationContextImpl> entry : registrations.entrySet()) {
+        savePersistentProvider(providers, entry.getValue());
+    }
+}

@@ -1,0 +1,11 @@
+@Override
+public void begin(String namespace, String name, Attributes attributes) throws Exception {
+    Variable variable = new Variable();
+    digester.push(variable);
+    StringBuilder code = digester.getGeneratedCode();
+    if (code != null) {
+        code.append(System.lineSeparator());
+        code.append(TldRuleSet.class.getName()).append(".Variable ").append(digester.toVariableName(variable)).append(" = new ");
+        code.append(TldRuleSet.class.getName()).append(".Variable").append("();").append(System.lineSeparator());
+    }
+}

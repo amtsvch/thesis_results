@@ -1,0 +1,9 @@
+/**
+ * Specify the session timeout (in seconds) for a crawler's session. This is
+ * typically lower than that for a user session. The default is 60 seconds.
+ *
+ * @param sessionInactiveInterval   The new timeout for crawler sessions
+ */
+public void setSessionInactiveInterval(int sessionInactiveInterval) {
+    this.sessionInactiveInterval = sessionInactiveInterval;
+}

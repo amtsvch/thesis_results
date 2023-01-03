@@ -1,0 +1,6 @@
+@Override
+public String registerConfigProvider(String className, @SuppressWarnings("rawtypes") Map properties, String layer, String appContext, String description) {
+    String registrationID = doRegisterConfigProvider(className, properties, layer, appContext, description);
+    savePersistentRegistrations();
+    return registrationID;
+}

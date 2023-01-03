@@ -1,0 +1,6 @@
+@Test
+public void testBug56425a() {
+    ELProcessor processor = new ELProcessor();
+    processor.defineBean("string", "a-b-c-d");
+    Assert.assertEquals("a_b_c_d", processor.eval("string.replace(\"-\",\"_\")"));
+}

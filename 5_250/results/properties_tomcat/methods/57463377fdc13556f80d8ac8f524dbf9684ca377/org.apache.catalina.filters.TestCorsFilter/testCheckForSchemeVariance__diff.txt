@@ -1,0 +1,16 @@
+/*
+     * "http://tomcat.apache.org" is an allowed origin and
+     * "https://tomcat.apache.org" is not, because scheme doesn't match
+     *
+     * @throws ServletException
+     */
+@Test
+public void testCheckForSchemeVariance() throws ServletException {
+    TesterHttpServletRequest request = new TesterHttpServletRequest();
+    request.setHeader(CorsFilter.REQUEST_HEADER_ORIGIN, "https://tomcat.apache.org");
+    request.setMethod("POST");
+    CorsFilter corsFilter = new CorsFilter();
+    corsFilter.init(TesterFilterConfigs.getSpecificOriginFilterConfig());
+    CorsFilter.CORSRequestType requestType = corsFilter.checkRequestType(request);
+    Assert.assertEquals(CorsFilter.CORSRequestType.INVALID_CORS, requestType);
+}

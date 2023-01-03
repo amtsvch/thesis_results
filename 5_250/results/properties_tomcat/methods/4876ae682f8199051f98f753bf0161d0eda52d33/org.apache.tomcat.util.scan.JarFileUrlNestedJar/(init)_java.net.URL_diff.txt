@@ -1,0 +1,10 @@
+public JarFileUrlNestedJar(URL url) throws IOException {
+    super(url);
+    JarURLConnection jarConn = (JarURLConnection) url.openConnection();
+    jarConn.setUseCaches(false);
+    warFile = jarConn.getJarFile();
+    String urlAsString = url.toString();
+    int pathStart = urlAsString.indexOf("!/") + 2;
+    String jarPath = urlAsString.substring(pathStart);
+    jarEntry = warFile.getJarEntry(jarPath);
+}

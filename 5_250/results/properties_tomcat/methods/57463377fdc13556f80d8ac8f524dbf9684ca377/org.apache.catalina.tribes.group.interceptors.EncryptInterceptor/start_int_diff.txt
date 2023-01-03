@@ -1,0 +1,12 @@
+@Override
+public void start(int svc) throws ChannelException {
+    validateChannelChain();
+    if (Channel.SND_TX_SEQ == (svc & Channel.SND_TX_SEQ)) {
+        try {
+            encryptionManager = createEncryptionManager(getEncryptionAlgorithm(), getEncryptionKeyInternal(), getProviderName());
+        } catch (GeneralSecurityException gse) {
+            throw new ChannelException(sm.getString("encryptInterceptor.init.failed"), gse);
+        }
+    }
+    super.start(svc);
+}

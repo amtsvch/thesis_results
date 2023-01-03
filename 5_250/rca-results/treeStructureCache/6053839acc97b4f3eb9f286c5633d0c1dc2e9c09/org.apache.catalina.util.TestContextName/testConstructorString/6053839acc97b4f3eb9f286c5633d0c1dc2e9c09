@@ -1,0 +1,73 @@
+{
+  "call" : "org.apache.catalina.util.TestContextName#testConstructorString",
+  "kiekerPattern" : "public void org.apache.catalina.util.TestContextName.testConstructorString()",
+  "otherKiekerPattern" : null,
+  "module" : "",
+  "children" : [ {
+    "call" : "org.apache.catalina.util.TestContextName#doTestConstructorString",
+    "kiekerPattern" : "private void org.apache.catalina.util.TestContextName.doTestConstructorString(org.apache.catalina.util.TestContextName)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.catalina.util.ContextName#getBaseName",
+      "kiekerPattern" : "public java.lang.String org.apache.catalina.util.ContextName.getBaseName()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.util.ContextName#<init>",
+      "kiekerPattern" : "public new org.apache.catalina.util.ContextName.<init>(java.lang.String,boolean)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.util.TestContextName#doCompare",
+      "kiekerPattern" : "private void org.apache.catalina.util.TestContextName.doCompare(org.apache.catalina.util.TestContextName,org.apache.catalina.util.TestContextName)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.catalina.util.ContextName#getBaseName",
+        "kiekerPattern" : "public java.lang.String org.apache.catalina.util.ContextName.getBaseName()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.util.ContextName#getDisplayName",
+        "kiekerPattern" : "public java.lang.String org.apache.catalina.util.ContextName.getDisplayName()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.util.ContextName#getName",
+        "kiekerPattern" : "public java.lang.String org.apache.catalina.util.ContextName.getName()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.util.ContextName#getPath",
+        "kiekerPattern" : "public java.lang.String org.apache.catalina.util.ContextName.getPath()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.util.ContextName#getVersion",
+        "kiekerPattern" : "public java.lang.String org.apache.catalina.util.ContextName.getVersion()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.catalina.util.ContextName#getDisplayName",
+      "kiekerPattern" : "public java.lang.String org.apache.catalina.util.ContextName.getDisplayName()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.util.ContextName#getName",
+      "kiekerPattern" : "public java.lang.String org.apache.catalina.util.ContextName.getName()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  } ]
+}

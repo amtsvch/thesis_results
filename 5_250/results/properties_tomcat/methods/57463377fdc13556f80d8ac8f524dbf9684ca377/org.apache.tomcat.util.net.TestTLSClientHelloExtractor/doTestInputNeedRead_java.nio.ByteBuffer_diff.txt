@@ -1,0 +1,6 @@
+public void doTestInputNeedRead(ByteBuffer input) throws IOException {
+    TLSClientHelloExtractor extractor = new TLSClientHelloExtractor(input);
+    // Expect this to fail
+    ExtractorResult result = extractor.getResult();
+    Assert.assertEquals(ExtractorResult.NEED_READ, result);
+}

@@ -1,0 +1,18 @@
+/**
+ * @return the SAXParser we will use to parse the input stream.  If there
+ * is a problem creating the parser, return <code>null</code>.
+ */
+public SAXParser getParser() {
+    // Return the parser we already created (if any)
+    if (parser != null) {
+        return parser;
+    }
+    // Create a new parser
+    try {
+        parser = getFactory().newSAXParser();
+    } catch (Exception e) {
+        log.error(sm.getString("digester.createParserError"), e);
+        return null;
+    }
+    return parser;
+}

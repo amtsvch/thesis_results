@@ -1,0 +1,52 @@
+protected void parse(BufferedReader reader) throws LifecycleException {
+    List<RewriteRule> rules = new ArrayList<>();
+    List<RewriteCond> conditions = new ArrayList<>();
+    while (true) {
+        try {
+            String line = reader.readLine();
+            if (line == null) {
+                break;
+            }
+            Object result = parse(line);
+            if (result instanceof RewriteRule) {
+                RewriteRule rule = (RewriteRule) result;
+                if (containerLog.isDebugEnabled()) {
+                    containerLog.debug("Add rule with pattern " + rule.getPatternString() + " and substitution " + rule.getSubstitutionString());
+                }
+                for (int i = (conditions.size() - 1); i > 0; i--) {
+                    if (conditions.get(i - 1).isOrnext()) {
+                        conditions.get(i).setOrnext(true);
+                    }
+                }
+                for (RewriteCond condition : conditions) {
+                    if (containerLog.isDebugEnabled()) {
+                        RewriteCond cond = condition;
+                        containerLog.debug("Add condition " + cond.getCondPattern() + " test " + cond.getTestString() + " to rule with pattern " + rule.getPatternString() + " and substitution " + rule.getSubstitutionString() + (cond.isOrnext() ? " [OR]" : "") + (cond.isNocase() ? " [NC]" : ""));
+                    }
+                    rule.addCondition(condition);
+                }
+                conditions.clear();
+                rules.add(rule);
+            } else if (result instanceof RewriteCond) {
+                conditions.add((RewriteCond) result);
+            } else if (result instanceof Object[]) {
+                String mapName = (String) ((Object[]) result)[0];
+                RewriteMap map = (RewriteMap) ((Object[]) result)[1];
+                maps.put(mapName, map);
+                // Keep the original configuration line as it is not possible to get
+                // the parameters back without an API change
+                mapsConfiguration.add(line);
+                if (map instanceof Lifecycle) {
+                    ((Lifecycle) map).start();
+                }
+            }
+        } catch (IOException e) {
+            containerLog.error(sm.getString("rewriteValve.readError"), e);
+        }
+    }
+    this.rules = rules.toArray(new RewriteRule[0]);
+    // Finish parsing the rules
+    for (RewriteRule rule : this.rules) {
+        rule.parse(maps);
+    }
+}

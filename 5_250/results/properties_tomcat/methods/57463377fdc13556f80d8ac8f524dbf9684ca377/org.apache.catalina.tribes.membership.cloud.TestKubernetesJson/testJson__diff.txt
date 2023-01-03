@@ -1,0 +1,10 @@
+@Test
+public void testJson() throws Exception {
+    startTime = Instant.now();
+    List<MemberImpl> members = new ArrayList<>();
+    parsePods(new StringReader(OPENSHIFT_JSON_POD_LIST), members);
+    Assert.assertTrue(members.size() == 2);
+    Assert.assertTrue("10.130.140.153".equals(members.get(0).getHostname()));
+    Assert.assertTrue("tcp://10.130.140.153:0".equals(members.get(0).getName()));
+    members.clear();
+}

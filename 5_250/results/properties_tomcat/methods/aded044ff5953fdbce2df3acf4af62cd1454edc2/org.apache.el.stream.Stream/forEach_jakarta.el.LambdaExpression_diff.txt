@@ -1,0 +1,6 @@
+public Object forEach(final LambdaExpression le) {
+    while (iterator.hasNext()) {
+        le.invoke(iterator.next());
+    }
+    return null;
+}

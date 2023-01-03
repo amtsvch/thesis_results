@@ -1,0 +1,11 @@
+/*
+     * Work through input looking for literals and expressions until the input
+     * has all been read.
+     */
+private String getUnquoted() {
+    while (i < size) {
+        parseLiteral();
+        parseEL();
+    }
+    return result.toString();
+}

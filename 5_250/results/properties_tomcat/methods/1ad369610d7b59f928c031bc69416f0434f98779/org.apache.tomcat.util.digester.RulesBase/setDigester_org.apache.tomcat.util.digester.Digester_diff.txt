@@ -1,0 +1,12 @@
+/**
+ * Set the Digester instance with which this Rules instance is associated.
+ *
+ * @param digester The newly associated Digester instance
+ */
+@Override
+public void setDigester(Digester digester) {
+    this.digester = digester;
+    for (Rule item : rules) {
+        item.setDigester(digester);
+    }
+}

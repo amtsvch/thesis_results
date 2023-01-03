@@ -1,0 +1,12 @@
+@Test
+public void testCrawlerIpsPositive() throws Exception {
+    CrawlerSessionManagerValve valve = new CrawlerSessionManagerValve();
+    valve.setCrawlerIps("216\\.58\\.206\\.174");
+    valve.setCrawlerUserAgents(valve.getCrawlerUserAgents());
+    valve.setNext(EasyMock.createMock(Valve.class));
+    HttpSession session = createSessionExpectations(valve, true);
+    Request request = createRequestExpectations("216.58.206.174", session, true);
+    EasyMock.replay(request, session);
+    valve.invoke(request, EasyMock.createMock(Response.class));
+    EasyMock.verify(request, session);
+}

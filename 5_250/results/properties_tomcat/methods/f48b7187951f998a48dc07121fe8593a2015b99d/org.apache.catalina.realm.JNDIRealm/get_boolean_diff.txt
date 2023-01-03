@@ -1,0 +1,29 @@
+/**                                                                                                  |                                                                                                     
+* Open (if necessary) and return a connection to the configured                                      |                                                                                                     
+* directory server for this Realm.                                                                   |                                                                                                     
+* @param create when pooling, this forces creation of a new connection,                              |                                                                                                     
+*   for example after an error                                                                       |                                                                                                     
+* @return the connection                                                                             |                                                                                                     
+* @exception NamingException if a directory server error occurs                                      |                                                                                                     
+*/                                                                                                   |                                                                                                     
+protected JNDIConnection get(boolean create) throws NamingException {                                |                                                                                                     
+JNDIConnection connection = null;                                                                    |                                                                                                     
+// Use the pool if available, otherwise use the single connection                                    |                                                                                                     
+if (connectionPool != null) {                                                                        |                                                                                                     
+if (create) {                                                                                        |                                                                                                     
+connection = create();                                                                               |                                                                                                     
+} else {                                                                                             |                                                                                                     
+connection = connectionPool.pop();                                                                   |                                                                                                     
+if (connection == null) {                                                                            |                                                                                                     
+connection = create();                                                                               |                                                                                                     
+}                                                                                                    |                                                                                                     
+}                                                                                                    |                                                                                                     
+} else {                                                                                             |                                                                                                     
+singleConnectionLock.lock();                                                                         |                                                                                                     
+connection = singleConnection;                                                                       |                                                                                                     
+}                                                                                                    |                                                                                                     
+if (connection.context == null) {                                                                    |                                                                                                     
+open(connection);                                                                                    |                                                                                                     
+}                                                                                                    |                                                                                                     
+return connection;                                                                                   |                                                                                                     
+}                                                                                                    |                                                                                                     

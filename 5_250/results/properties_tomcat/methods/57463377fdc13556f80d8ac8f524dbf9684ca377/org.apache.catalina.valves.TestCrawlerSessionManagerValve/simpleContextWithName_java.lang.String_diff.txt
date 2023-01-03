@@ -1,0 +1,9 @@
+private Context simpleContextWithName(String contextPath) {
+    if (contextPath == null) {
+        return null;
+    }
+    Context context = EasyMock.createMock(Context.class);
+    EasyMock.expect(context.getName()).andReturn(contextPath);
+    EasyMock.replay(context);
+    return context;
+}

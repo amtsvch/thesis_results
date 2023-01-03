@@ -1,0 +1,4 @@
+@Test
+public void doubleQuoteMiddle() {
+    Assert.assertEquals("\"foo\"\"bar\"", ExtendedAccessLogValve.wrap("foo\"bar"));
+}

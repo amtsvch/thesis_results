@@ -1,0 +1,46 @@
+/**
+ * Creates a new StringManager for a given package. This is a
+ * private method and all access to it is arbitrated by the
+ * static getManager method call so that only one StringManager
+ * per package will be created.
+ *
+ * @param packageName Name of package to create StringManager for.
+ */
+private StringManager(String packageName, Locale locale) {
+    String bundleName = packageName + ".LocalStrings";
+    ResourceBundle bnd = null;
+    try {
+        // The ROOT Locale uses English. If English is requested, force the
+        // use of the ROOT Locale else incorrect results may be obtained if
+        // the system default locale is not English and translations are
+        // available for the system default locale.
+        if (locale.getLanguage().equals(Locale.ENGLISH.getLanguage())) {
+            locale = Locale.ROOT;
+        }
+        bnd = ResourceBundle.getBundle(bundleName, locale);
+    } catch (MissingResourceException ex) {
+        // Try from the current loader (that's the case for trusted apps)
+        // Should only be required if using a TC5 style classloader structure
+        // where common != shared != server
+        ClassLoader cl = Thread.currentThread().getContextClassLoader();
+        if (cl != null) {
+            try {
+                bnd = ResourceBundle.getBundle(bundleName, locale, cl);
+            } catch (MissingResourceException ex2) {
+                // Ignore
+            }
+        }
+    }
+    bundle = bnd;
+    // Get the actual locale, which may be different from the requested one
+    if (bundle != null) {
+        Locale bundleLocale = bundle.getLocale();
+        if (bundleLocale.equals(Locale.ROOT)) {
+            this.locale = Locale.ENGLISH;
+        } else {
+            this.locale = bundleLocale;
+        }
+    } else {
+        this.locale = null;
+    }
+}

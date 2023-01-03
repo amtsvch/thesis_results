@@ -1,0 +1,15 @@
+private void savePersistentProvider(Providers providers, RegistrationContextImpl registrationContextImpl) {
+    if (registrationContextImpl != null && registrationContextImpl.isPersistent()) {
+        Provider provider = new Provider();
+        provider.setAppContext(registrationContextImpl.getAppContext());
+        if (registrationContextImpl.getProvider() != null) {
+            provider.setClassName(registrationContextImpl.getProvider().getClass().getName());
+        }
+        provider.setDescription(registrationContextImpl.getDescription());
+        provider.setLayer(registrationContextImpl.getMessageLayer());
+        for (Entry<String, String> property : registrationContextImpl.getProperties().entrySet()) {
+            provider.addProperty(property.getKey(), property.getValue());
+        }
+        providers.addProvider(provider);
+    }
+}

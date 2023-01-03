@@ -1,0 +1,17 @@
+/**
+ * Notify interested listeners that an expression has been evaluated.
+ *
+ * @param expression The expression that was evaluated
+ *
+ * @since EL 3.0
+ */
+public void notifyAfterEvaluation(String expression) {
+    for (EvaluationListener listener : listeners) {
+        try {
+            listener.afterEvaluation(this, expression);
+        } catch (Throwable t) {
+            Util.handleThrowable(t);
+            // Ignore - no option to log
+        }
+    }
+}

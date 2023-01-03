@@ -1,0 +1,8 @@
+@Override
+protected Number coerce(Number num) {
+    if (num instanceof Double)
+        return num;
+    if (num instanceof BigInteger)
+        return new BigDecimal((BigInteger) num);
+    return Double.valueOf(num.doubleValue());
+}

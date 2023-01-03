@@ -1,0 +1,25 @@
+final void rePrioritise(AbstractStream parent, boolean exclusive, int weight) {
+    if (log.isDebugEnabled()) {
+        log.debug(sm.getString("stream.reprioritisation.debug", getConnectionId(), getIdentifier(), Boolean.toString(exclusive), parent.getIdentifier(), Integer.toString(weight)));
+    }
+    // Check if new parent is a descendant of this stream
+    if (isDescendant(parent)) {
+        parent.detachFromParent();
+        // Cast is always safe since any descendant of this stream must be
+        // an instance of Stream
+        getParentStream().addChild((Stream) parent);
+    }
+    if (exclusive) {
+        // Need to move children of the new parent to be children of this
+        // stream. Slightly convoluted to avoid concurrent modification.
+        Iterator<Stream> parentsChildren = parent.getChildStreams().iterator();
+        while (parentsChildren.hasNext()) {
+            Stream parentsChild = parentsChildren.next();
+            parentsChildren.remove();
+            this.addChild(parentsChild);
+        }
+    }
+    detachFromParent();
+    parent.addChild(this);
+    this.weight = weight;
+}

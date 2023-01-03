@@ -1,0 +1,36 @@
+@Override                                                                                              @Override                                                                                           
+public void destroy() throws Exception {                                                               public void destroy() throws Exception {                                                            
+if (getLog().isInfoEnabled()) {                                                                        if (getLog().isInfoEnabled()) {                                                                     
+getLog().info(sm.getString("abstractProtocolHandler.destroy", getName()));                             getLog().info(sm.getString("abstractProtocolHandler.destroy", getName()));                          
+logPortOffset();                                                                                       logPortOffset();                                                                                    
+}                                                                                                      }                                                                                                   
+                                                                                                     | UpgradeProtocol[] upgradeProtocols = findUpgradeProtocols();                                        
+                                                                                                     | for (UpgradeProtocol upgradeProtocol : upgradeProtocols) {                                          
+try {                                                                                                  try {                                                                                               
+                                                                                                     | upgradeProtocol.destroy();                                                                          
+                                                                                                     | } catch (Throwable t) {                                                                             
+                                                                                                     | ExceptionUtils.handleThrowable(t);                                                                  
+                                                                                                     | getLog().error(sm.getString("abstractProtocol.upgradeProtocolDestroyError"), t);                    
+                                                                                                     | }                                                                                                   
+                                                                                                     | }                                                                                                   
+                                                                                                     | try {                                                                                               
+endpoint.destroy();                                                                                    endpoint.destroy();                                                                                 
+} finally {                                                                                            } finally {                                                                                         
+if (oname != null) {                                                                                   if (oname != null) {                                                                                
+if (mserver == null) {                                                                                 if (mserver == null) {                                                                              
+Registry.getRegistry(null, null).unregisterComponent(oname);                                           Registry.getRegistry(null, null).unregisterComponent(oname);                                        
+} else {                                                                                               } else {                                                                                            
+// Possibly registered with a different MBeanServer                                                    // Possibly registered with a different MBeanServer                                                 
+try {                                                                                                  try {                                                                                               
+mserver.unregisterMBean(oname);                                                                        mserver.unregisterMBean(oname);                                                                     
+} catch (MBeanRegistrationException | InstanceNotFoundException e) {                                   } catch (MBeanRegistrationException | InstanceNotFoundException e) {                                
+getLog().info(sm.getString("abstractProtocol.mbeanDeregistrationFailed", oname, mserver));             getLog().info(sm.getString("abstractProtocol.mbeanDeregistrationFailed", oname, mserver));          
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+                                                                                                     | ObjectName rgOname = getGlobalRequestProcessorMBeanName();                                          
+if (rgOname != null) {                                                                                 if (rgOname != null) {                                                                              
+Registry.getRegistry(null, null).unregisterComponent(rgOname);                                         Registry.getRegistry(null, null).unregisterComponent(rgOname);                                      
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

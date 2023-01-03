@@ -1,0 +1,16 @@
+@Test
+public void testOneThreadNoWait() throws Exception {
+    LimitLatch latch = new LimitLatch(1);
+    Object lock = new Object();
+    checkWaitingThreadCount(latch, 0);
+    TestThread testThread = new TestThread(latch, lock);
+    testThread.start();
+    if (!waitForThreadToStart(testThread)) {
+        Assert.fail("Test thread did not start");
+    }
+    checkWaitingThreadCount(latch, 0);
+    if (!waitForThreadToStop(testThread, lock)) {
+        Assert.fail("Test thread did not stop");
+    }
+    checkWaitingThreadCount(latch, 0);
+}

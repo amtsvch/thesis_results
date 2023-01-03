@@ -1,0 +1,5 @@
+private void doTestBaseLocation(URL url, String expectedBasePath, String expectedArchivePath) {
+    BaseLocation baseLocation = new BaseLocation(url);
+    Assert.assertEquals(expectedBasePath, baseLocation.getBasePath());
+    Assert.assertEquals(expectedArchivePath, baseLocation.getArchivePath());
+}

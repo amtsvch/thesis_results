@@ -1,0 +1,23 @@
+/**
+ * Decrypts the input <code>bytes</code>.
+ *
+ * @param bytes The data to decrypt.
+ *
+ * @return The decrypted data.
+ *
+ * @throws GeneralSecurityException If the input data cannot be decrypted.
+ */
+private byte[] decrypt(byte[] bytes) throws GeneralSecurityException {
+    Cipher cipher = null;
+    int ivSize = getIVSize();
+    AlgorithmParameterSpec IV = generateIV(bytes, 0, ivSize);
+    try {
+        cipher = getCipher();
+        cipher.init(Cipher.DECRYPT_MODE, getSecretKey(), IV);
+        // Decrypt remainder of the message.
+        return cipher.doFinal(bytes, ivSize, bytes.length - ivSize);
+    } finally {
+        if (null != cipher)
+            returnCipher(cipher);
+    }
+}

@@ -1,0 +1,14 @@
+@Test
+public void testGeneral() throws Exception {
+    for (String digest : ALGORITHMS) {
+        for (String password : PASSWORDS) {
+            for (int saltLength : SALTLENGTHS) {
+                for (int iterations : ITERATIONS) {
+                    for (int keyLength : KEYLENGTHS) {
+                        doTest(password, digest, saltLength, iterations, keyLength, true);
+                    }
+                }
+            }
+        }
+    }
+}

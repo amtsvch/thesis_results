@@ -1,0 +1,19 @@
+private AuthConfigProvider createAuthConfigProvider(String className, @SuppressWarnings("rawtypes") Map properties) throws SecurityException {
+    Class<?> clazz = null;
+    AuthConfigProvider provider = null;
+    try {
+        clazz = Class.forName(className, true, Thread.currentThread().getContextClassLoader());
+    } catch (ClassNotFoundException e) {
+        // Ignore so the re-try below can proceed
+    }
+    try {
+        if (clazz == null) {
+            clazz = Class.forName(className);
+        }
+        Constructor<?> constructor = clazz.getConstructor(Map.class, AuthConfigFactory.class);
+        provider = (AuthConfigProvider) constructor.newInstance(properties, null);
+    } catch (ReflectiveOperationException | IllegalArgumentException e) {
+        throw new SecurityException(e);
+    }
+    return provider;
+}

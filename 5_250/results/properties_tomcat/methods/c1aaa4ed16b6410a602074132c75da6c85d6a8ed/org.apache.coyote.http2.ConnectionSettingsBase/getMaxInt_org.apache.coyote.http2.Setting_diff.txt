@@ -1,0 +1,8 @@
+private synchronized int getMaxInt(Setting setting) {
+    long result = getMax(setting);
+    if (result > Integer.MAX_VALUE) {
+        return Integer.MAX_VALUE;
+    } else {
+        return (int) result;
+    }
+}

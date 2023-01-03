@@ -1,0 +1,14 @@
+/**
+ * Sets the encryption key for encryption and decryption. The length of the
+ * key must be appropriate for the algorithm being used.
+ *
+ * @param key The encryption key.
+ */
+@Override
+public void setEncryptionKey(byte[] key) {
+    if (null == key) {
+        encryptionKeyBytes = null;
+    } else {
+        encryptionKeyBytes = key.clone();
+    }
+}

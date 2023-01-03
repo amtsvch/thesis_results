@@ -1,0 +1,25 @@
+@Test
+public void testGetName() {
+    Assert.assertEquals("", cn1.getName());
+    Assert.assertEquals("", cn2.getName());
+    Assert.assertEquals("", cn3.getName());
+    Assert.assertEquals("/foo", cn4.getName());
+    Assert.assertEquals("/foo/bar", cn5.getName());
+    Assert.assertEquals("##A", cn6.getName());
+    Assert.assertEquals("##B", cn7.getName());
+    Assert.assertEquals("##C", cn8.getName());
+    Assert.assertEquals("/foo##D", cn9.getName());
+    Assert.assertEquals("/foo/bar##E", cn10.getName());
+    Assert.assertEquals("", cn11.getName());
+    Assert.assertEquals("/foo", cn12.getName());
+    Assert.assertEquals("/foo/bar", cn13.getName());
+    Assert.assertEquals("##A", cn14.getName());
+    Assert.assertEquals("/foo##D", cn15.getName());
+    Assert.assertEquals("/foo/bar##E", cn16.getName());
+    Assert.assertEquals("", cn17.getName());
+    Assert.assertEquals("/ROOT/bar", cn18.getName());
+    Assert.assertEquals("/ROOT/bar##A", cn19.getName());
+    Assert.assertEquals("##A", cn20.getName());
+    Assert.assertEquals("/foo.war", cn21.getName());
+    Assert.assertEquals("/foo", cn22.getName());
+}

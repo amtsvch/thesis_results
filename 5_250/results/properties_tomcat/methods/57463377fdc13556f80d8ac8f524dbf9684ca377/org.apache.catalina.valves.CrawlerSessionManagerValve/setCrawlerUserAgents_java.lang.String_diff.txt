@@ -1,0 +1,15 @@
+/**
+ * Specify the regular expression (using {@link Pattern}) that will be used
+ * to identify crawlers based in the User-Agent header provided. The default
+ * is ".*GoogleBot.*|.*bingbot.*|.*Yahoo! Slurp.*"
+ *
+ * @param crawlerUserAgents The regular expression using {@link Pattern}
+ */
+public void setCrawlerUserAgents(String crawlerUserAgents) {
+    this.crawlerUserAgents = crawlerUserAgents;
+    if (crawlerUserAgents == null || crawlerUserAgents.length() == 0) {
+        uaPattern = null;
+    } else {
+        uaPattern = Pattern.compile(crawlerUserAgents);
+    }
+}

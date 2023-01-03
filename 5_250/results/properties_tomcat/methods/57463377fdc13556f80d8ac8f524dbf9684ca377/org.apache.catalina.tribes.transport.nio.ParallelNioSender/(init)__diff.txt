@@ -1,0 +1,4 @@
+public ParallelNioSender() throws IOException {
+    selector = Selector.open();
+    setConnected(true);
+}

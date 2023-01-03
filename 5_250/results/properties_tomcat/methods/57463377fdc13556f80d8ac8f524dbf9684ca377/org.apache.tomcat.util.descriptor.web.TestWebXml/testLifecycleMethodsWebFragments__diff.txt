@@ -1,0 +1,22 @@
+@Test
+public void testLifecycleMethodsWebFragments() {
+    WebXml webxml = new WebXml();
+    WebXml fragment1 = new WebXml();
+    fragment1.addPostConstructMethods("a", "a");
+    fragment1.addPreDestroyMethods("b", "b");
+    WebXml fragment2 = new WebXml();
+    fragment2.addPostConstructMethods("c", "c");
+    fragment2.addPreDestroyMethods("d", "d");
+    Set<WebXml> fragments = new HashSet<>();
+    fragments.add(fragment1);
+    fragments.add(fragment2);
+    webxml.merge(fragments);
+    Map<String, String> postConstructMethods = webxml.getPostConstructMethods();
+    Map<String, String> preDestroyMethods = webxml.getPreDestroyMethods();
+    Assert.assertEquals(2, postConstructMethods.size());
+    Assert.assertEquals(2, preDestroyMethods.size());
+    Assert.assertEquals("a", postConstructMethods.get("a"));
+    Assert.assertEquals("c", postConstructMethods.get("c"));
+    Assert.assertEquals("b", preDestroyMethods.get("b"));
+    Assert.assertEquals("d", preDestroyMethods.get("d"));
+}

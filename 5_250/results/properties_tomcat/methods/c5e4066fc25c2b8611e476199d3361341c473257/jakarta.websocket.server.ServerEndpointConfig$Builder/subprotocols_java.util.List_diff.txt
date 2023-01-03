@@ -1,0 +1,8 @@
+public Builder subprotocols(List<String> subprotocols) {
+    if (subprotocols == null || subprotocols.size() == 0) {
+        this.subprotocols = Collections.emptyList();
+    } else {
+        this.subprotocols = Collections.unmodifiableList(subprotocols);
+    }
+    return this;
+}

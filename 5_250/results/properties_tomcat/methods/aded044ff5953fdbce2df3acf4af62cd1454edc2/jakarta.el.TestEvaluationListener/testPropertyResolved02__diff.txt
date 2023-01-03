@@ -1,0 +1,24 @@
+@Test
+public void testPropertyResolved02() {
+    ELContext context = new TesterELContext();
+    ELResolver resolver = new BeanELResolver();
+    TesterBean bean = new TesterBean("test");
+    TesterEvaluationListener listener = new TesterEvaluationListener();
+    context.addEvaluationListener(listener);
+    Exception exception = null;
+    try {
+        resolver.getValue(context, bean, "foo");
+    } catch (PropertyNotFoundException e) {
+        exception = e;
+    }
+    Assert.assertNotNull(exception);
+    // Still expect the property to be resolved and the listener to fire
+    // since the vent is at the time of resolution. The EL spec could be a
+    // lot clear on this.
+    Assert.assertTrue(context.isPropertyResolved());
+    List<Pair> events = listener.getResolvedProperties();
+    Assert.assertEquals(1, events.size());
+    Pair p = events.get(0);
+    Assert.assertEquals(bean, p.getBase());
+    Assert.assertEquals("foo", p.getProperty());
+}

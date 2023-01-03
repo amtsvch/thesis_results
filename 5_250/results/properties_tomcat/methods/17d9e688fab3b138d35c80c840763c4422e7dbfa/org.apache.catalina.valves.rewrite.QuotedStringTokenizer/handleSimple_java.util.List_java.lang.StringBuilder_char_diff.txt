@@ -1,0 +1,10 @@
+private WordMode handleSimple(List<String> tokens, StringBuilder currentToken, char currentChar) {
+    if (Character.isWhitespace(currentChar)) {
+        tokens.add(currentToken.toString());
+        currentToken.setLength(0);
+        return WordMode.SPACES;
+    } else {
+        currentToken.append(currentChar);
+    }
+    return WordMode.SIMPLE;
+}

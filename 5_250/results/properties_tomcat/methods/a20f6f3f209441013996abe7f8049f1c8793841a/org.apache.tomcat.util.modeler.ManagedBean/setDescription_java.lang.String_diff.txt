@@ -1,0 +1,9 @@
+public void setDescription(String description) {
+    mBeanInfoLock.writeLock().lock();
+    try {
+        this.description = description;
+        this.info = null;
+    } finally {
+        mBeanInfoLock.writeLock().unlock();
+    }
+}

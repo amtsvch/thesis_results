@@ -1,0 +1,2365 @@
+{
+  "call" : "org.apache.catalina.authenticator.TestDigestAuthenticator#bug54521",
+  "kiekerPattern" : "public void org.apache.catalina.authenticator.TestDigestAuthenticator.bug54521()",
+  "otherKiekerPattern" : null,
+  "module" : "",
+  "children" : [ {
+    "call" : "org.apache.catalina.util.LifecycleBase#<init>",
+    "kiekerPattern" : "public new org.apache.catalina.util.LifecycleBase.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.catalina.util.LifecycleMBeanBase#<init>",
+    "kiekerPattern" : "public new org.apache.catalina.util.LifecycleMBeanBase.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.catalina.valves.ValveBase#<init>",
+    "kiekerPattern" : "public new org.apache.catalina.valves.ValveBase.<init>(boolean)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.juli.logging.LogFactory#getLog",
+    "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.juli.logging.LogFactory#getFactory",
+      "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.juli.logging.LogFactory#getInstance",
+      "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.Class)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.juli.logging.LogFactory#getInstance",
+        "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+          "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+            "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "call" : "org.apache.catalina.authenticator.AuthenticatorBase#<init>",
+    "kiekerPattern" : "public new org.apache.catalina.authenticator.AuthenticatorBase.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.catalina.authenticator.DigestAuthenticator#<init>",
+    "kiekerPattern" : "public new org.apache.catalina.authenticator.DigestAuthenticator.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.catalina.authenticator.AuthenticatorBase#setCache",
+      "kiekerPattern" : "public void org.apache.catalina.authenticator.AuthenticatorBase.setCache(boolean)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.unittest.TesterContext#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.unittest.TesterContext.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.unittest.TesterSessionCookieConfig#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.unittest.TesterSessionCookieConfig.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.unittest.TesterServletContext#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.unittest.TesterServletContext.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.unittest.TesterContext#setServletContext",
+    "kiekerPattern" : "public void org.apache.tomcat.unittest.TesterContext.setServletContext(jakarta.servlet.ServletContext)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.catalina.authenticator.AuthenticatorBase#setContainer",
+    "kiekerPattern" : "public void org.apache.catalina.authenticator.AuthenticatorBase.setContainer(org.apache.catalina.Container)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.catalina.valves.ValveBase#setContainer",
+      "kiekerPattern" : "public void org.apache.catalina.valves.ValveBase.setContainer(org.apache.catalina.Container)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.catalina.util.LifecycleBase#start",
+    "kiekerPattern" : "public final synchronized void org.apache.catalina.util.LifecycleBase.start()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.catalina.util.LifecycleBase#init",
+      "kiekerPattern" : "public final synchronized void org.apache.catalina.util.LifecycleBase.init()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.catalina.util.LifecycleBase#setStateInternal",
+        "kiekerPattern" : "private synchronized void org.apache.catalina.util.LifecycleBase.setStateInternal(org.apache.catalina.LifecycleState,java.lang.Object,boolean)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+          "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.catalina.LifecycleState#getLifecycleEvent",
+          "kiekerPattern" : "public java.lang.String org.apache.catalina.LifecycleState.getLifecycleEvent()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.catalina.util.LifecycleBase#fireLifecycleEvent",
+          "kiekerPattern" : "protected void org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(java.lang.String,java.lang.Object)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.catalina.LifecycleEvent#<init>",
+            "kiekerPattern" : "public new org.apache.catalina.LifecycleEvent.<init>(org.apache.catalina.Lifecycle,java.lang.String,java.lang.Object)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "call" : "org.apache.catalina.valves.ValveBase#initInternal",
+        "kiekerPattern" : "protected void org.apache.catalina.valves.ValveBase.initInternal()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.catalina.util.LifecycleMBeanBase#initInternal",
+          "kiekerPattern" : "protected void org.apache.catalina.util.LifecycleMBeanBase.initInternal()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.catalina.valves.ValveBase#getObjectNameKeyProperties",
+            "kiekerPattern" : "public java.lang.String org.apache.catalina.valves.ValveBase.getObjectNameKeyProperties()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.catalina.authenticator.AuthenticatorBase#getContainer",
+              "kiekerPattern" : "public org.apache.catalina.Container org.apache.catalina.authenticator.AuthenticatorBase.getContainer()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.tomcat.unittest.TesterContext#getMBeanKeyProperties",
+              "kiekerPattern" : "public java.lang.String org.apache.tomcat.unittest.TesterContext.getMBeanKeyProperties()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.tomcat.unittest.TesterContext#getPipeline",
+              "kiekerPattern" : "public org.apache.catalina.Pipeline org.apache.tomcat.unittest.TesterContext.getPipeline()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            } ]
+          }, {
+            "call" : "org.apache.catalina.util.LifecycleMBeanBase#register",
+            "kiekerPattern" : "protected final javax.management.ObjectName org.apache.catalina.util.LifecycleMBeanBase.register(java.lang.Object,java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.catalina.util.LifecycleMBeanBase#getDomain",
+              "kiekerPattern" : "public final java.lang.String org.apache.catalina.util.LifecycleMBeanBase.getDomain()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.catalina.valves.ValveBase#getDomainInternal",
+                "kiekerPattern" : "public java.lang.String org.apache.catalina.valves.ValveBase.getDomainInternal()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.catalina.authenticator.AuthenticatorBase#getContainer",
+                  "kiekerPattern" : "public org.apache.catalina.Container org.apache.catalina.authenticator.AuthenticatorBase.getContainer()",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                }, {
+                  "call" : "org.apache.tomcat.unittest.TesterContext#getDomain",
+                  "kiekerPattern" : "public java.lang.String org.apache.tomcat.unittest.TesterContext.getDomain()",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                } ]
+              } ]
+            }, {
+              "call" : "org.apache.juli.logging.LogFactory#getLog",
+              "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.juli.logging.LogFactory#getFactory",
+                "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.juli.logging.LogFactory#getInstance",
+                "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.Class)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.juli.logging.LogFactory#getInstance",
+                  "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ {
+                    "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+                    "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ {
+                      "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+                      "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+                      "otherKiekerPattern" : null,
+                      "module" : "",
+                      "children" : [ ]
+                    } ]
+                  } ]
+                } ]
+              } ]
+            }, {
+              "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+              "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                  "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                } ]
+              } ]
+            }, {
+              "call" : "org.apache.tomcat.util.modeler.Registry#getRegistry",
+              "kiekerPattern" : "public static synchronized org.apache.tomcat.util.modeler.Registry org.apache.tomcat.util.modeler.Registry.getRegistry(java.lang.Object,java.lang.Object)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.tomcat.util.compat.JreCompat#isGraalAvailable",
+                "kiekerPattern" : "public static boolean org.apache.tomcat.util.compat.JreCompat.isGraalAvailable()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.tomcat.util.modeler.Registry#<init>",
+                "kiekerPattern" : "protected new org.apache.tomcat.util.modeler.Registry.<init>()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              } ]
+            }, {
+              "call" : "org.apache.tomcat.util.modeler.Registry#registerComponent",
+              "kiekerPattern" : "public void org.apache.tomcat.util.modeler.Registry.registerComponent(java.lang.Object,javax.management.ObjectName,java.lang.String)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.tomcat.util.modeler.Registry#findManagedBean",
+                "kiekerPattern" : "public org.apache.tomcat.util.modeler.ManagedBean org.apache.tomcat.util.modeler.Registry.findManagedBean(java.lang.Object,java.lang.Class,java.lang.String)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.tomcat.util.modeler.Registry#findManagedBean",
+                  "kiekerPattern" : "public org.apache.tomcat.util.modeler.ManagedBean org.apache.tomcat.util.modeler.Registry.findManagedBean(java.lang.String)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                }, {
+                  "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                  "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                }, {
+                  "call" : "org.apache.tomcat.util.modeler.Registry#findDescriptor",
+                  "kiekerPattern" : "private void org.apache.tomcat.util.modeler.Registry.findDescriptor(java.lang.Class,java.lang.String)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ {
+                    "call" : "org.apache.tomcat.util.modeler.Registry#loadDescriptors",
+                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.Registry.loadDescriptors(java.lang.String,java.lang.ClassLoader)",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ {
+                      "call" : "org.apache.juli.logging.DirectJDKLog#isTraceEnabled",
+                      "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isTraceEnabled()",
+                      "otherKiekerPattern" : null,
+                      "module" : "",
+                      "children" : [ ]
+                    }, {
+                      "call" : "org.apache.juli.logging.DirectJDKLog#debug",
+                      "kiekerPattern" : "public final void org.apache.juli.logging.DirectJDKLog.debug(java.lang.Object)",
+                      "otherKiekerPattern" : null,
+                      "module" : "",
+                      "children" : [ {
+                        "call" : "org.apache.juli.logging.DirectJDKLog#log",
+                        "kiekerPattern" : "private void org.apache.juli.logging.DirectJDKLog.log(java.util.logging.Level,java.lang.String,java.lang.Throwable)",
+                        "otherKiekerPattern" : null,
+                        "module" : "",
+                        "children" : [ ]
+                      } ]
+                    }, {
+                      "call" : "org.apache.tomcat.util.modeler.Registry#load",
+                      "kiekerPattern" : "public java.util.List org.apache.tomcat.util.modeler.Registry.load(java.lang.String,java.lang.Object,java.lang.String)",
+                      "otherKiekerPattern" : null,
+                      "module" : "",
+                      "children" : [ {
+                        "call" : "org.apache.juli.logging.DirectJDKLog#isTraceEnabled",
+                        "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isTraceEnabled()",
+                        "otherKiekerPattern" : null,
+                        "module" : "",
+                        "children" : [ ]
+                      }, {
+                        "call" : "org.apache.tomcat.util.modeler.Registry#getModelerSource",
+                        "kiekerPattern" : "private org.apache.tomcat.util.modeler.modules.ModelerSource org.apache.tomcat.util.modeler.Registry.getModelerSource(java.lang.String)",
+                        "otherKiekerPattern" : null,
+                        "module" : "",
+                        "children" : [ {
+                          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                          "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+                          "otherKiekerPattern" : null,
+                          "module" : "",
+                          "children" : [ {
+                            "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                            "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+                            "otherKiekerPattern" : null,
+                            "module" : "",
+                            "children" : [ {
+                              "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                              "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ ]
+                            } ]
+                          } ]
+                        }, {
+                          "call" : "org.apache.juli.logging.LogFactory#getLog",
+                          "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+                          "otherKiekerPattern" : null,
+                          "module" : "",
+                          "children" : [ {
+                            "call" : "org.apache.juli.logging.LogFactory#getFactory",
+                            "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+                            "otherKiekerPattern" : null,
+                            "module" : "",
+                            "children" : [ ]
+                          }, {
+                            "call" : "org.apache.juli.logging.LogFactory#getInstance",
+                            "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.Class)",
+                            "otherKiekerPattern" : null,
+                            "module" : "",
+                            "children" : [ {
+                              "call" : "org.apache.juli.logging.LogFactory#getInstance",
+                              "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+                                "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+                                  "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                } ]
+                              } ]
+                            } ]
+                          } ]
+                        }, {
+                          "call" : "org.apache.tomcat.util.modeler.modules.ModelerSource#<init>",
+                          "kiekerPattern" : "public new org.apache.tomcat.util.modeler.modules.ModelerSource.<init>()",
+                          "otherKiekerPattern" : null,
+                          "module" : "",
+                          "children" : [ ]
+                        }, {
+                          "call" : "org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource#<init>",
+                          "kiekerPattern" : "public new org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource.<init>()",
+                          "otherKiekerPattern" : null,
+                          "module" : "",
+                          "children" : [ ]
+                        } ]
+                      }, {
+                        "call" : "org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource#loadDescriptors",
+                        "kiekerPattern" : "public java.util.List org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource.loadDescriptors(org.apache.tomcat.util.modeler.Registry,java.lang.String,java.lang.Object)",
+                        "otherKiekerPattern" : null,
+                        "module" : "",
+                        "children" : [ {
+                          "call" : "org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource#setRegistry",
+                          "kiekerPattern" : "public void org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource.setRegistry(org.apache.tomcat.util.modeler.Registry)",
+                          "otherKiekerPattern" : null,
+                          "module" : "",
+                          "children" : [ ]
+                        }, {
+                          "call" : "org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource#setSource",
+                          "kiekerPattern" : "public void org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource.setSource(java.lang.Object)",
+                          "otherKiekerPattern" : null,
+                          "module" : "",
+                          "children" : [ ]
+                        }, {
+                          "call" : "org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource#execute",
+                          "kiekerPattern" : "public void org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource.execute()",
+                          "otherKiekerPattern" : null,
+                          "module" : "",
+                          "children" : [ {
+                            "call" : "org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource#createDigester",
+                            "kiekerPattern" : "private static org.apache.tomcat.util.digester.Digester org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource.createDigester()",
+                            "otherKiekerPattern" : null,
+                            "module" : "",
+                            "children" : [ {
+                              "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                              "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                                "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                                  "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+                                    "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  } ]
+                                } ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester$SystemPropertySource#<init>",
+                              "kiekerPattern" : "private new org.apache.tomcat.util.digester.Digester$SystemPropertySource.<init>()",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.ArrayStack#<init>",
+                              "kiekerPattern" : "public new org.apache.tomcat.util.digester.ArrayStack.<init>()",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.ArrayStack#<init>",
+                              "kiekerPattern" : "public new org.apache.tomcat.util.digester.ArrayStack.<init>(int)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ ]
+                            }, {
+                              "call" : "org.apache.juli.logging.LogFactory#getLog",
+                              "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.juli.logging.LogFactory#getFactory",
+                                "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.juli.logging.LogFactory#getInstance",
+                                "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.Class)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.juli.logging.LogFactory#getInstance",
+                                  "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+                                    "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ {
+                                      "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+                                      "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+                                      "otherKiekerPattern" : null,
+                                      "module" : "",
+                                      "children" : [ ]
+                                    } ]
+                                  } ]
+                                } ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.juli.logging.LogFactory#getLog",
+                              "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.String)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.juli.logging.LogFactory#getFactory",
+                                "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.juli.logging.LogFactory#getInstance",
+                                "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+                                  "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+                                    "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  } ]
+                                } ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#<init>",
+                              "kiekerPattern" : "public new org.apache.tomcat.util.digester.Digester.<init>()",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#setNamespaceAware",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.setNamespaceAware(boolean)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#setValidating",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.setValidating(boolean)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.modeler.Registry#getRegistry",
+                              "kiekerPattern" : "public static synchronized org.apache.tomcat.util.modeler.Registry org.apache.tomcat.util.modeler.Registry.getRegistry(java.lang.Object,java.lang.Object)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#register",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.register(java.lang.String,java.lang.String)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                                "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#addObjectCreate",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.addObjectCreate(java.lang.String,java.lang.String)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                                "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                                  "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                                    "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  } ]
+                                } ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Rule#<init>",
+                                "kiekerPattern" : "public new org.apache.tomcat.util.digester.Rule.<init>()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.ObjectCreateRule#<init>",
+                                "kiekerPattern" : "public new org.apache.tomcat.util.digester.ObjectCreateRule.<init>(java.lang.String,java.lang.String)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.ObjectCreateRule#<init>",
+                                "kiekerPattern" : "public new org.apache.tomcat.util.digester.ObjectCreateRule.<init>(java.lang.String)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Digester#addRule",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.addRule(java.lang.String,org.apache.tomcat.util.digester.Rule)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.tomcat.util.digester.Rule#setDigester",
+                                  "kiekerPattern" : "public void org.apache.tomcat.util.digester.Rule.setDigester(org.apache.tomcat.util.digester.Digester)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#getRules",
+                                  "kiekerPattern" : "public org.apache.tomcat.util.digester.Rules org.apache.tomcat.util.digester.Digester.getRules()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.tomcat.util.digester.RulesBase#<init>",
+                                    "kiekerPattern" : "public new org.apache.tomcat.util.digester.RulesBase.<init>()",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.digester.RulesBase#setDigester",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.digester.RulesBase.setDigester(org.apache.tomcat.util.digester.Digester)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  } ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.digester.RulesBase#add",
+                                  "kiekerPattern" : "public void org.apache.tomcat.util.digester.RulesBase.add(java.lang.String,org.apache.tomcat.util.digester.Rule)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.tomcat.util.digester.Rule#setDigester",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.digester.Rule.setDigester(org.apache.tomcat.util.digester.Digester)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  } ]
+                                } ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#addSetProperties",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.addSetProperties(java.lang.String)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.tomcat.util.digester.Rule#<init>",
+                                "kiekerPattern" : "public new org.apache.tomcat.util.digester.Rule.<init>()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.SetPropertiesRule#<init>",
+                                "kiekerPattern" : "public new org.apache.tomcat.util.digester.SetPropertiesRule.<init>()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Digester#addRule",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.addRule(java.lang.String,org.apache.tomcat.util.digester.Rule)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.tomcat.util.digester.Rule#setDigester",
+                                  "kiekerPattern" : "public void org.apache.tomcat.util.digester.Rule.setDigester(org.apache.tomcat.util.digester.Digester)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#getRules",
+                                  "kiekerPattern" : "public org.apache.tomcat.util.digester.Rules org.apache.tomcat.util.digester.Digester.getRules()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.digester.RulesBase#add",
+                                  "kiekerPattern" : "public void org.apache.tomcat.util.digester.RulesBase.add(java.lang.String,org.apache.tomcat.util.digester.Rule)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.tomcat.util.digester.Rule#setDigester",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.digester.Rule.setDigester(org.apache.tomcat.util.digester.Digester)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  } ]
+                                } ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#addSetNext",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.addSetNext(java.lang.String,java.lang.String,java.lang.String)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.tomcat.util.digester.Rule#<init>",
+                                "kiekerPattern" : "public new org.apache.tomcat.util.digester.Rule.<init>()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.SetNextRule#<init>",
+                                "kiekerPattern" : "public new org.apache.tomcat.util.digester.SetNextRule.<init>(java.lang.String,java.lang.String)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Digester#addRule",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.addRule(java.lang.String,org.apache.tomcat.util.digester.Rule)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.tomcat.util.digester.Rule#setDigester",
+                                  "kiekerPattern" : "public void org.apache.tomcat.util.digester.Rule.setDigester(org.apache.tomcat.util.digester.Digester)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#getRules",
+                                  "kiekerPattern" : "public org.apache.tomcat.util.digester.Rules org.apache.tomcat.util.digester.Digester.getRules()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.digester.RulesBase#add",
+                                  "kiekerPattern" : "public void org.apache.tomcat.util.digester.RulesBase.add(java.lang.String,org.apache.tomcat.util.digester.Rule)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.tomcat.util.digester.Rule#setDigester",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.digester.Rule.setDigester(org.apache.tomcat.util.digester.Digester)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  } ]
+                                } ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#addCallMethod",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.addCallMethod(java.lang.String,java.lang.String,int)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.tomcat.util.digester.Rule#<init>",
+                                "kiekerPattern" : "public new org.apache.tomcat.util.digester.Rule.<init>()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.CallMethodRule#<init>",
+                                "kiekerPattern" : "public new org.apache.tomcat.util.digester.CallMethodRule.<init>(int,java.lang.String,int)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.CallMethodRule#<init>",
+                                "kiekerPattern" : "public new org.apache.tomcat.util.digester.CallMethodRule.<init>(java.lang.String,int)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Digester#addRule",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.addRule(java.lang.String,org.apache.tomcat.util.digester.Rule)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.tomcat.util.digester.Rule#setDigester",
+                                  "kiekerPattern" : "public void org.apache.tomcat.util.digester.Rule.setDigester(org.apache.tomcat.util.digester.Digester)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#getRules",
+                                  "kiekerPattern" : "public org.apache.tomcat.util.digester.Rules org.apache.tomcat.util.digester.Digester.getRules()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.digester.RulesBase#add",
+                                  "kiekerPattern" : "public void org.apache.tomcat.util.digester.RulesBase.add(java.lang.String,org.apache.tomcat.util.digester.Rule)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.tomcat.util.digester.Rule#setDigester",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.digester.Rule.setDigester(org.apache.tomcat.util.digester.Digester)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  } ]
+                                } ]
+                              } ]
+                            } ]
+                          }, {
+                            "call" : "org.apache.tomcat.util.digester.Digester#push",
+                            "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.push(java.lang.Object)",
+                            "otherKiekerPattern" : null,
+                            "module" : "",
+                            "children" : [ {
+                              "call" : "org.apache.tomcat.util.digester.ArrayStack#push",
+                              "kiekerPattern" : "public org.apache.tomcat.util.digester.E org.apache.tomcat.util.digester.ArrayStack.push(org.apache.tomcat.util.digester.E)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ ]
+                            } ]
+                          }, {
+                            "call" : "org.apache.tomcat.util.digester.Digester#parse",
+                            "kiekerPattern" : "public java.lang.Object org.apache.tomcat.util.digester.Digester.parse(java.io.InputStream)",
+                            "otherKiekerPattern" : null,
+                            "module" : "",
+                            "children" : [ {
+                              "call" : "org.apache.tomcat.util.digester.Digester#configure",
+                              "kiekerPattern" : "protected void org.apache.tomcat.util.digester.Digester.configure()",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.juli.logging.LogFactory#getLog",
+                                "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.String)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.juli.logging.LogFactory#getFactory",
+                                  "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.juli.logging.LogFactory#getInstance",
+                                  "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+                                    "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ {
+                                      "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+                                      "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+                                      "otherKiekerPattern" : null,
+                                      "module" : "",
+                                      "children" : [ ]
+                                    } ]
+                                  } ]
+                                } ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#getXMLReader",
+                              "kiekerPattern" : "public org.xml.sax.XMLReader org.apache.tomcat.util.digester.Digester.getXMLReader()",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.tomcat.util.digester.Digester#getParser",
+                                "kiekerPattern" : "public javax.xml.parsers.SAXParser org.apache.tomcat.util.digester.Digester.getParser()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#getFactory",
+                                  "kiekerPattern" : "public javax.xml.parsers.SAXParserFactory org.apache.tomcat.util.digester.Digester.getFactory()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                } ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Digester#getEntityResolver",
+                                "kiekerPattern" : "public org.xml.sax.EntityResolver org.apache.tomcat.util.digester.Digester.getEntityResolver()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Digester$EntityResolverWrapper#<init>",
+                                "kiekerPattern" : "public new org.apache.tomcat.util.digester.Digester$EntityResolverWrapper.<init>(org.xml.sax.EntityResolver,org.apache.tomcat.util.IntrospectionUtils.PropertySource[],java.lang.ClassLoader)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Digester$EntityResolver2Wrapper#<init>",
+                                "kiekerPattern" : "public new org.apache.tomcat.util.digester.Digester$EntityResolver2Wrapper.<init>(org.xml.sax.ext.EntityResolver2,org.apache.tomcat.util.IntrospectionUtils.PropertySource[],java.lang.ClassLoader)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#setDocumentLocator",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.setDocumentLocator(org.xml.sax.Locator)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                                "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#startDocument",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.startDocument()",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                                "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Digester#configure",
+                                "kiekerPattern" : "protected void org.apache.tomcat.util.digester.Digester.configure()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#startDTD",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.startDTD(java.lang.String,java.lang.String,java.lang.String)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.tomcat.util.digester.Digester#setPublicId",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.setPublicId(java.lang.String)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester$EntityResolver2Wrapper#resolveEntity",
+                              "kiekerPattern" : "public org.xml.sax.InputSource org.apache.tomcat.util.digester.Digester$EntityResolver2Wrapper.resolveEntity(java.lang.String,java.lang.String,java.lang.String,java.lang.String)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.tomcat.util.digester.Digester$EntityResolverWrapper#replace",
+                                "kiekerPattern" : "protected java.lang.String org.apache.tomcat.util.digester.Digester$EntityResolverWrapper.replace(java.lang.String)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.tomcat.util.IntrospectionUtils#replaceProperties",
+                                  "kiekerPattern" : "public static java.lang.String org.apache.tomcat.util.IntrospectionUtils.replaceProperties(java.lang.String,java.util.Hashtable,org.apache.tomcat.util.IntrospectionUtils$SecurePropertySource[],java.lang.ClassLoader)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.tomcat.util.IntrospectionUtils#replaceProperties",
+                                    "kiekerPattern" : "private static java.lang.String org.apache.tomcat.util.IntrospectionUtils.replaceProperties(java.lang.String,java.util.Hashtable,org.apache.tomcat.util.IntrospectionUtils$SecurePropertySource[],java.lang.ClassLoader,int)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  } ]
+                                } ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Digester#resolveEntity",
+                                "kiekerPattern" : "public org.xml.sax.InputSource org.apache.tomcat.util.digester.Digester.resolveEntity(java.lang.String,java.lang.String,java.lang.String,java.lang.String)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                                  "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                } ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#startElement",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.startElement(java.lang.String,java.lang.String,java.lang.String,org.xml.sax.Attributes)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                                "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Digester#updateAttributes",
+                                "kiekerPattern" : "private org.xml.sax.Attributes org.apache.tomcat.util.digester.Digester.updateAttributes(org.xml.sax.Attributes)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#getClassLoader",
+                                  "kiekerPattern" : "public java.lang.ClassLoader org.apache.tomcat.util.digester.Digester.getClassLoader()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.IntrospectionUtils#replaceProperties",
+                                  "kiekerPattern" : "public static java.lang.String org.apache.tomcat.util.IntrospectionUtils.replaceProperties(java.lang.String,java.util.Hashtable,org.apache.tomcat.util.IntrospectionUtils$SecurePropertySource[],java.lang.ClassLoader)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.tomcat.util.IntrospectionUtils#replaceProperties",
+                                    "kiekerPattern" : "private static java.lang.String org.apache.tomcat.util.IntrospectionUtils.replaceProperties(java.lang.String,java.util.Hashtable,org.apache.tomcat.util.IntrospectionUtils$SecurePropertySource[],java.lang.ClassLoader,int)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  } ]
+                                } ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.ArrayStack#push",
+                                "kiekerPattern" : "public org.apache.tomcat.util.digester.E org.apache.tomcat.util.digester.ArrayStack.push(org.apache.tomcat.util.digester.E)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Digester#getRules",
+                                "kiekerPattern" : "public org.apache.tomcat.util.digester.Rules org.apache.tomcat.util.digester.Digester.getRules()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.RulesBase#match",
+                                "kiekerPattern" : "public java.util.List org.apache.tomcat.util.digester.RulesBase.match(java.lang.String,java.lang.String)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.tomcat.util.digester.RulesBase#lookup",
+                                  "kiekerPattern" : "protected java.util.List org.apache.tomcat.util.digester.RulesBase.lookup(java.lang.String,java.lang.String)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                } ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.ObjectCreateRule#begin",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.ObjectCreateRule.begin(java.lang.String,java.lang.String,org.xml.sax.Attributes)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.tomcat.util.digester.ObjectCreateRule#getRealClassName",
+                                  "kiekerPattern" : "protected java.lang.String org.apache.tomcat.util.digester.ObjectCreateRule.getRealClassName(org.xml.sax.Attributes)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#getClassLoader",
+                                  "kiekerPattern" : "public java.lang.ClassLoader org.apache.tomcat.util.digester.Digester.getClassLoader()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                                  "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                                    "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ {
+                                      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                                      "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+                                      "otherKiekerPattern" : null,
+                                      "module" : "",
+                                      "children" : [ ]
+                                    } ]
+                                  } ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.modeler.ManagedBean#<init>",
+                                  "kiekerPattern" : "public new org.apache.tomcat.util.modeler.ManagedBean.<init>()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.tomcat.util.modeler.FeatureInfo#<init>",
+                                    "kiekerPattern" : "public new org.apache.tomcat.util.modeler.FeatureInfo.<init>()",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.AttributeInfo#<init>",
+                                    "kiekerPattern" : "public new org.apache.tomcat.util.modeler.AttributeInfo.<init>()",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.FeatureInfo#setName",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.FeatureInfo.setName(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.FeatureInfo#setDescription",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.FeatureInfo.setDescription(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.FeatureInfo#setType",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.FeatureInfo.setType(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.AttributeInfo#setWriteable",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.AttributeInfo.setWriteable(boolean)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.ManagedBean#addAttribute",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.ManagedBean.addAttribute(org.apache.tomcat.util.modeler.AttributeInfo)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ {
+                                      "call" : "org.apache.tomcat.util.modeler.FeatureInfo#getName",
+                                      "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.modeler.FeatureInfo.getName()",
+                                      "otherKiekerPattern" : null,
+                                      "module" : "",
+                                      "children" : [ ]
+                                    } ]
+                                  } ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#push",
+                                  "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.push(java.lang.Object)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.tomcat.util.digester.ArrayStack#push",
+                                    "kiekerPattern" : "public org.apache.tomcat.util.digester.E org.apache.tomcat.util.digester.ArrayStack.push(org.apache.tomcat.util.digester.E)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  } ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#getGeneratedCode",
+                                  "kiekerPattern" : "public java.lang.StringBuilder org.apache.tomcat.util.digester.Digester.getGeneratedCode()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.modeler.FeatureInfo#<init>",
+                                  "kiekerPattern" : "public new org.apache.tomcat.util.modeler.FeatureInfo.<init>()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.modeler.AttributeInfo#<init>",
+                                  "kiekerPattern" : "public new org.apache.tomcat.util.modeler.AttributeInfo.<init>()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.modeler.OperationInfo#<init>",
+                                  "kiekerPattern" : "public new org.apache.tomcat.util.modeler.OperationInfo.<init>()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.modeler.ParameterInfo#<init>",
+                                  "kiekerPattern" : "public new org.apache.tomcat.util.modeler.ParameterInfo.<init>()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                } ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.SetPropertiesRule#begin",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.SetPropertiesRule.begin(java.lang.String,java.lang.String,org.xml.sax.Attributes)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#peek",
+                                  "kiekerPattern" : "public java.lang.Object org.apache.tomcat.util.digester.Digester.peek()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.tomcat.util.digester.ArrayStack#peek",
+                                    "kiekerPattern" : "public org.apache.tomcat.util.digester.E org.apache.tomcat.util.digester.ArrayStack.peek()",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  } ]
+                                }, {
+                                  "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                                  "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#getGeneratedCode",
+                                  "kiekerPattern" : "public java.lang.StringBuilder org.apache.tomcat.util.digester.Digester.getGeneratedCode()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#isFakeAttribute",
+                                  "kiekerPattern" : "public boolean org.apache.tomcat.util.digester.Digester.isFakeAttribute(java.lang.Object,java.lang.String)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.IntrospectionUtils#setProperty",
+                                  "kiekerPattern" : "public static boolean org.apache.tomcat.util.IntrospectionUtils.setProperty(java.lang.Object,java.lang.String,java.lang.String,boolean,java.lang.StringBuilder)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                                    "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.XReflectionIntrospectionUtils#isEnabled",
+                                    "kiekerPattern" : "static boolean org.apache.tomcat.util.XReflectionIntrospectionUtils.isEnabled()",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.IntrospectionUtils#capitalize",
+                                    "kiekerPattern" : "public static java.lang.String org.apache.tomcat.util.IntrospectionUtils.capitalize(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.IntrospectionUtils#findMethods",
+                                    "kiekerPattern" : "public static java.lang.reflect.Method[] org.apache.tomcat.util.IntrospectionUtils.findMethods(java.lang.Class)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.ManagedBean#setName",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.ManagedBean.setName(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.ManagedBean#setDescription",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.ManagedBean.setDescription(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.ManagedBean#setDomain",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.ManagedBean.setDomain(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.ManagedBean#setGroup",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.ManagedBean.setGroup(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.ManagedBean#setType",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.ManagedBean.setType(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.FeatureInfo#setName",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.FeatureInfo.setName(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.FeatureInfo#setDescription",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.FeatureInfo.setDescription(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.FeatureInfo#setType",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.FeatureInfo.setType(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.AttributeInfo#setWriteable",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.AttributeInfo.setWriteable(boolean)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.ManagedBean#setClassName",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.ManagedBean.setClassName(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.OperationInfo#setImpact",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.OperationInfo.setImpact(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.OperationInfo#setReturnType",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.OperationInfo.setReturnType(java.lang.String)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  } ]
+                                } ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Rule#begin",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.Rule.begin(java.lang.String,java.lang.String,org.xml.sax.Attributes)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#ignorableWhitespace",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.ignorableWhitespace(char[],int,int)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                                "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#endElement",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.endElement(java.lang.String,java.lang.String,java.lang.String)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                                "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Digester#updateBodyText",
+                                "kiekerPattern" : "private java.lang.StringBuilder org.apache.tomcat.util.digester.Digester.updateBodyText(java.lang.StringBuilder)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#getClassLoader",
+                                  "kiekerPattern" : "public java.lang.ClassLoader org.apache.tomcat.util.digester.Digester.getClassLoader()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.IntrospectionUtils#replaceProperties",
+                                  "kiekerPattern" : "public static java.lang.String org.apache.tomcat.util.IntrospectionUtils.replaceProperties(java.lang.String,java.util.Hashtable,org.apache.tomcat.util.IntrospectionUtils$SecurePropertySource[],java.lang.ClassLoader)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.tomcat.util.IntrospectionUtils#replaceProperties",
+                                    "kiekerPattern" : "private static java.lang.String org.apache.tomcat.util.IntrospectionUtils.replaceProperties(java.lang.String,java.util.Hashtable,org.apache.tomcat.util.IntrospectionUtils$SecurePropertySource[],java.lang.ClassLoader,int)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  } ]
+                                } ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.ArrayStack#pop",
+                                "kiekerPattern" : "public org.apache.tomcat.util.digester.E org.apache.tomcat.util.digester.ArrayStack.pop()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Rule#body",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.Rule.body(java.lang.String,java.lang.String,java.lang.String)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.SetNextRule#end",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.SetNextRule.end(java.lang.String,java.lang.String)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#peek",
+                                  "kiekerPattern" : "public java.lang.Object org.apache.tomcat.util.digester.Digester.peek(int)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.tomcat.util.digester.ArrayStack#peek",
+                                    "kiekerPattern" : "public org.apache.tomcat.util.digester.E org.apache.tomcat.util.digester.ArrayStack.peek(int)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  } ]
+                                }, {
+                                  "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                                  "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#getClassLoader",
+                                  "kiekerPattern" : "public java.lang.ClassLoader org.apache.tomcat.util.digester.Digester.getClassLoader()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.IntrospectionUtils#callMethod1",
+                                  "kiekerPattern" : "public static java.lang.Object org.apache.tomcat.util.IntrospectionUtils.callMethod1(java.lang.Object,java.lang.String,java.lang.Object,java.lang.String,java.lang.ClassLoader)",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                                    "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.IntrospectionUtils#findMethod",
+                                    "kiekerPattern" : "public static java.lang.reflect.Method org.apache.tomcat.util.IntrospectionUtils.findMethod(java.lang.Class,java.lang.String,java.lang.Class[])",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ {
+                                      "call" : "org.apache.tomcat.util.IntrospectionUtils#findMethods",
+                                      "kiekerPattern" : "public static java.lang.reflect.Method[] org.apache.tomcat.util.IntrospectionUtils.findMethods(java.lang.Class)",
+                                      "otherKiekerPattern" : null,
+                                      "module" : "",
+                                      "children" : [ ]
+                                    } ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.ManagedBean#addAttribute",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.ManagedBean.addAttribute(org.apache.tomcat.util.modeler.AttributeInfo)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ {
+                                      "call" : "org.apache.tomcat.util.modeler.FeatureInfo#getName",
+                                      "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.modeler.FeatureInfo.getName()",
+                                      "otherKiekerPattern" : null,
+                                      "module" : "",
+                                      "children" : [ ]
+                                    } ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.OperationInfo#addParameter",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.OperationInfo.addParameter(org.apache.tomcat.util.modeler.ParameterInfo)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.ManagedBean#addOperation",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.ManagedBean.addOperation(org.apache.tomcat.util.modeler.OperationInfo)",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ {
+                                      "call" : "org.apache.tomcat.util.modeler.ManagedBean#createOperationKey",
+                                      "kiekerPattern" : "private java.lang.String org.apache.tomcat.util.modeler.ManagedBean.createOperationKey(org.apache.tomcat.util.modeler.OperationInfo)",
+                                      "otherKiekerPattern" : null,
+                                      "module" : "",
+                                      "children" : [ {
+                                        "call" : "org.apache.tomcat.util.modeler.FeatureInfo#getName",
+                                        "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.modeler.FeatureInfo.getName()",
+                                        "otherKiekerPattern" : null,
+                                        "module" : "",
+                                        "children" : [ ]
+                                      }, {
+                                        "call" : "org.apache.tomcat.util.modeler.OperationInfo#getSignature",
+                                        "kiekerPattern" : "public org.apache.tomcat.util.modeler.ParameterInfo[] org.apache.tomcat.util.modeler.OperationInfo.getSignature()",
+                                        "otherKiekerPattern" : null,
+                                        "module" : "",
+                                        "children" : [ ]
+                                      }, {
+                                        "call" : "org.apache.tomcat.util.buf.StringUtils#join",
+                                        "kiekerPattern" : "public static void org.apache.tomcat.util.buf.StringUtils.join(org.apache.tomcat.util.buf.T[],char,java.util.function.Function,java.lang.StringBuilder)",
+                                        "otherKiekerPattern" : null,
+                                        "module" : "",
+                                        "children" : [ {
+                                          "call" : "org.apache.tomcat.util.buf.StringUtils#join",
+                                          "kiekerPattern" : "public static void org.apache.tomcat.util.buf.StringUtils.join(java.lang.Iterable,char,java.util.function.Function,java.lang.StringBuilder)",
+                                          "otherKiekerPattern" : null,
+                                          "module" : "",
+                                          "children" : [ {
+                                            "call" : "org.apache.tomcat.util.modeler.FeatureInfo#getType",
+                                            "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.modeler.FeatureInfo.getType()",
+                                            "otherKiekerPattern" : null,
+                                            "module" : "",
+                                            "children" : [ ]
+                                          } ]
+                                        } ]
+                                      } ]
+                                    } ]
+                                  } ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#getGeneratedCode",
+                                  "kiekerPattern" : "public java.lang.StringBuilder org.apache.tomcat.util.digester.Digester.getGeneratedCode()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                } ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Rule#end",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.Rule.end(java.lang.String,java.lang.String)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.ObjectCreateRule#end",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.ObjectCreateRule.end(java.lang.String,java.lang.String)",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#pop",
+                                  "kiekerPattern" : "public java.lang.Object org.apache.tomcat.util.digester.Digester.pop()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ {
+                                    "call" : "org.apache.tomcat.util.digester.ArrayStack#pop",
+                                    "kiekerPattern" : "public org.apache.tomcat.util.digester.E org.apache.tomcat.util.digester.ArrayStack.pop()",
+                                    "otherKiekerPattern" : null,
+                                    "module" : "",
+                                    "children" : [ ]
+                                  } ]
+                                }, {
+                                  "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                                  "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.digester.Digester#getGeneratedCode",
+                                  "kiekerPattern" : "public java.lang.StringBuilder org.apache.tomcat.util.digester.Digester.getGeneratedCode()",
+                                  "otherKiekerPattern" : null,
+                                  "module" : "",
+                                  "children" : [ ]
+                                } ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#endDocument",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.endDocument()",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ {
+                                "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                                "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Digester#getCount",
+                                "kiekerPattern" : "public int org.apache.tomcat.util.digester.Digester.getCount()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Digester#getRules",
+                                "kiekerPattern" : "public org.apache.tomcat.util.digester.Rules org.apache.tomcat.util.digester.Digester.getRules()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.RulesBase#rules",
+                                "kiekerPattern" : "public java.util.List org.apache.tomcat.util.digester.RulesBase.rules()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Rule#finish",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.Rule.finish()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.CallMethodRule#finish",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.CallMethodRule.finish()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.Digester#clear",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.clear()",
+                                "otherKiekerPattern" : null,
+                                "module" : "",
+                                "children" : [ ]
+                              } ]
+                            } ]
+                          }, {
+                            "call" : "org.apache.tomcat.util.digester.Digester#reset",
+                            "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.reset()",
+                            "otherKiekerPattern" : null,
+                            "module" : "",
+                            "children" : [ {
+                              "call" : "org.apache.tomcat.util.digester.Digester#setErrorHandler",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.setErrorHandler(org.xml.sax.ErrorHandler)",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#clear",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.clear()",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ ]
+                            } ]
+                          }, {
+                            "call" : "org.apache.tomcat.util.modeler.Registry#addManagedBean",
+                            "kiekerPattern" : "public void org.apache.tomcat.util.modeler.Registry.addManagedBean(org.apache.tomcat.util.modeler.ManagedBean)",
+                            "otherKiekerPattern" : null,
+                            "module" : "",
+                            "children" : [ {
+                              "call" : "org.apache.tomcat.util.modeler.ManagedBean#getName",
+                              "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.modeler.ManagedBean.getName()",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.modeler.ManagedBean#getType",
+                              "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.modeler.ManagedBean.getType()",
+                              "otherKiekerPattern" : null,
+                              "module" : "",
+                              "children" : [ ]
+                            } ]
+                          } ]
+                        } ]
+                      } ]
+                    } ]
+                  } ]
+                } ]
+              }, {
+                "call" : "org.apache.tomcat.util.modeler.ManagedBean#createMBean",
+                "kiekerPattern" : "public javax.management.DynamicMBean org.apache.tomcat.util.modeler.ManagedBean.createMBean(java.lang.Object)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.tomcat.util.modeler.ManagedBean#getClassName",
+                  "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.modeler.ManagedBean.getClassName()",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                }, {
+                  "call" : "org.apache.tomcat.util.modeler.BaseModelMBean#<init>",
+                  "kiekerPattern" : "public new org.apache.tomcat.util.modeler.BaseModelMBean.<init>()",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                }, {
+                  "call" : "org.apache.tomcat.util.modeler.BaseModelMBean#setManagedBean",
+                  "kiekerPattern" : "public void org.apache.tomcat.util.modeler.BaseModelMBean.setManagedBean(org.apache.tomcat.util.modeler.ManagedBean)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                }, {
+                  "call" : "org.apache.tomcat.util.modeler.BaseModelMBean#setManagedResource",
+                  "kiekerPattern" : "public void org.apache.tomcat.util.modeler.BaseModelMBean.setManagedResource(java.lang.Object,java.lang.String)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                } ]
+              }, {
+                "call" : "org.apache.tomcat.util.modeler.Registry#getMBeanServer",
+                "kiekerPattern" : "public javax.management.MBeanServer org.apache.tomcat.util.modeler.Registry.getMBeanServer()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                  "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                } ]
+              }, {
+                "call" : "org.apache.tomcat.util.modeler.BaseModelMBean#getMBeanInfo",
+                "kiekerPattern" : "public javax.management.MBeanInfo org.apache.tomcat.util.modeler.BaseModelMBean.getMBeanInfo()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.tomcat.util.modeler.ManagedBean#getMBeanInfo",
+                  "kiekerPattern" : "javax.management.MBeanInfo org.apache.tomcat.util.modeler.ManagedBean.getMBeanInfo()",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ {
+                    "call" : "org.apache.tomcat.util.modeler.ManagedBean#getAttributes",
+                    "kiekerPattern" : "public org.apache.tomcat.util.modeler.AttributeInfo[] org.apache.tomcat.util.modeler.ManagedBean.getAttributes()",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ ]
+                  }, {
+                    "call" : "org.apache.tomcat.util.modeler.AttributeInfo#createAttributeInfo",
+                    "kiekerPattern" : "javax.management.MBeanAttributeInfo org.apache.tomcat.util.modeler.AttributeInfo.createAttributeInfo()",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ {
+                      "call" : "org.apache.tomcat.util.modeler.FeatureInfo#getName",
+                      "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.modeler.FeatureInfo.getName()",
+                      "otherKiekerPattern" : null,
+                      "module" : "",
+                      "children" : [ ]
+                    }, {
+                      "call" : "org.apache.tomcat.util.modeler.FeatureInfo#getType",
+                      "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.modeler.FeatureInfo.getType()",
+                      "otherKiekerPattern" : null,
+                      "module" : "",
+                      "children" : [ ]
+                    }, {
+                      "call" : "org.apache.tomcat.util.modeler.FeatureInfo#getDescription",
+                      "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.modeler.FeatureInfo.getDescription()",
+                      "otherKiekerPattern" : null,
+                      "module" : "",
+                      "children" : [ ]
+                    }, {
+                      "call" : "org.apache.tomcat.util.modeler.AttributeInfo#isReadable",
+                      "kiekerPattern" : "public boolean org.apache.tomcat.util.modeler.AttributeInfo.isReadable()",
+                      "otherKiekerPattern" : null,
+                      "module" : "",
+                      "children" : [ ]
+                    }, {
+                      "call" : "org.apache.tomcat.util.modeler.AttributeInfo#isWriteable",
+                      "kiekerPattern" : "public boolean org.apache.tomcat.util.modeler.AttributeInfo.isWriteable()",
+                      "otherKiekerPattern" : null,
+                      "module" : "",
+                      "children" : [ ]
+                    } ]
+                  }, {
+                    "call" : "org.apache.tomcat.util.modeler.ManagedBean#getOperations",
+                    "kiekerPattern" : "public org.apache.tomcat.util.modeler.OperationInfo[] org.apache.tomcat.util.modeler.ManagedBean.getOperations()",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ ]
+                  }, {
+                    "call" : "org.apache.tomcat.util.modeler.ManagedBean#getNotifications",
+                    "kiekerPattern" : "public org.apache.tomcat.util.modeler.NotificationInfo[] org.apache.tomcat.util.modeler.ManagedBean.getNotifications()",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ ]
+                  }, {
+                    "call" : "org.apache.tomcat.util.modeler.ManagedBean#getClassName",
+                    "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.modeler.ManagedBean.getClassName()",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ ]
+                  }, {
+                    "call" : "org.apache.tomcat.util.modeler.ManagedBean#getDescription",
+                    "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.modeler.ManagedBean.getDescription()",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ ]
+                  } ]
+                } ]
+              }, {
+                "call" : "org.apache.tomcat.util.modeler.BaseModelMBean#preRegister",
+                "kiekerPattern" : "public javax.management.ObjectName org.apache.tomcat.util.modeler.BaseModelMBean.preRegister(javax.management.MBeanServer,javax.management.ObjectName)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                  "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                }, {
+                  "call" : "org.apache.catalina.util.LifecycleMBeanBase#preRegister",
+                  "kiekerPattern" : "public final javax.management.ObjectName org.apache.catalina.util.LifecycleMBeanBase.preRegister(javax.management.MBeanServer,javax.management.ObjectName)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                } ]
+              }, {
+                "call" : "org.apache.tomcat.util.modeler.BaseModelMBean#postRegister",
+                "kiekerPattern" : "public void org.apache.tomcat.util.modeler.BaseModelMBean.postRegister(java.lang.Boolean)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.catalina.util.LifecycleMBeanBase#postRegister",
+                  "kiekerPattern" : "public final void org.apache.catalina.util.LifecycleMBeanBase.postRegister(java.lang.Boolean)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                } ]
+              } ]
+            } ]
+          } ]
+        }, {
+          "call" : "org.apache.catalina.authenticator.AuthenticatorBase#getContainer",
+          "kiekerPattern" : "public org.apache.catalina.Container org.apache.catalina.authenticator.AuthenticatorBase.getContainer()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.unittest.TesterContext#getLogger",
+          "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.tomcat.unittest.TesterContext.getLogger()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.catalina.util.LifecycleBase#setStateInternal",
+      "kiekerPattern" : "private synchronized void org.apache.catalina.util.LifecycleBase.setStateInternal(org.apache.catalina.LifecycleState,java.lang.Object,boolean)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+        "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.LifecycleState#getLifecycleEvent",
+        "kiekerPattern" : "public java.lang.String org.apache.catalina.LifecycleState.getLifecycleEvent()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.util.LifecycleBase#fireLifecycleEvent",
+        "kiekerPattern" : "protected void org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(java.lang.String,java.lang.Object)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.catalina.LifecycleEvent#<init>",
+          "kiekerPattern" : "public new org.apache.catalina.LifecycleEvent.<init>(org.apache.catalina.Lifecycle,java.lang.String,java.lang.Object)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.catalina.authenticator.DigestAuthenticator#startInternal",
+      "kiekerPattern" : "protected synchronized void org.apache.catalina.authenticator.DigestAuthenticator.startInternal()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.catalina.authenticator.AuthenticatorBase#startInternal",
+        "kiekerPattern" : "protected synchronized void org.apache.catalina.authenticator.AuthenticatorBase.startInternal()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.unittest.TesterContext#getServletContext",
+          "kiekerPattern" : "public jakarta.servlet.ServletContext org.apache.tomcat.unittest.TesterContext.getServletContext()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.unittest.TesterServletContext#getVirtualServerName",
+          "kiekerPattern" : "public java.lang.String org.apache.tomcat.unittest.TesterServletContext.getVirtualServerName()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.unittest.TesterServletContext#getContextPath",
+          "kiekerPattern" : "public java.lang.String org.apache.tomcat.unittest.TesterServletContext.getContextPath()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.unittest.TesterContext#getParent",
+          "kiekerPattern" : "public org.apache.catalina.Container org.apache.tomcat.unittest.TesterContext.getParent()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+          "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+            "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        }, {
+          "call" : "org.apache.catalina.util.LifecycleBase#<init>",
+          "kiekerPattern" : "public new org.apache.catalina.util.LifecycleBase.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.juli.logging.LogFactory#getLog",
+          "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.juli.logging.LogFactory#getFactory",
+            "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.juli.logging.LogFactory#getInstance",
+            "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.Class)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.juli.logging.LogFactory#getInstance",
+              "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+                "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+                  "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                } ]
+              } ]
+            } ]
+          } ]
+        }, {
+          "call" : "org.apache.catalina.util.SessionIdGeneratorBase#<init>",
+          "kiekerPattern" : "public new org.apache.catalina.util.SessionIdGeneratorBase.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.catalina.util.StandardSessionIdGenerator#<init>",
+          "kiekerPattern" : "public new org.apache.catalina.util.StandardSessionIdGenerator.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.catalina.authenticator.AuthenticatorBase#getSecureRandomAlgorithm",
+          "kiekerPattern" : "public java.lang.String org.apache.catalina.authenticator.AuthenticatorBase.getSecureRandomAlgorithm()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.catalina.util.SessionIdGeneratorBase#setSecureRandomAlgorithm",
+          "kiekerPattern" : "public void org.apache.catalina.util.SessionIdGeneratorBase.setSecureRandomAlgorithm(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.catalina.authenticator.AuthenticatorBase#getSecureRandomClass",
+          "kiekerPattern" : "public java.lang.String org.apache.catalina.authenticator.AuthenticatorBase.getSecureRandomClass()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.catalina.util.SessionIdGeneratorBase#setSecureRandomClass",
+          "kiekerPattern" : "public void org.apache.catalina.util.SessionIdGeneratorBase.setSecureRandomClass(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.catalina.authenticator.AuthenticatorBase#getSecureRandomProvider",
+          "kiekerPattern" : "public java.lang.String org.apache.catalina.authenticator.AuthenticatorBase.getSecureRandomProvider()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.catalina.util.SessionIdGeneratorBase#setSecureRandomProvider",
+          "kiekerPattern" : "public void org.apache.catalina.util.SessionIdGeneratorBase.setSecureRandomProvider(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.catalina.valves.ValveBase#startInternal",
+          "kiekerPattern" : "protected synchronized void org.apache.catalina.valves.ValveBase.startInternal()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.catalina.util.LifecycleBase#setState",
+            "kiekerPattern" : "protected synchronized void org.apache.catalina.util.LifecycleBase.setState(org.apache.catalina.LifecycleState)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.catalina.util.LifecycleBase#setStateInternal",
+              "kiekerPattern" : "private synchronized void org.apache.catalina.util.LifecycleBase.setStateInternal(org.apache.catalina.LifecycleState,java.lang.Object,boolean)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.catalina.LifecycleState#getLifecycleEvent",
+                "kiekerPattern" : "public java.lang.String org.apache.catalina.LifecycleState.getLifecycleEvent()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.catalina.util.LifecycleBase#fireLifecycleEvent",
+                "kiekerPattern" : "protected void org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(java.lang.String,java.lang.Object)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.catalina.LifecycleEvent#<init>",
+                  "kiekerPattern" : "public new org.apache.catalina.LifecycleEvent.<init>(org.apache.catalina.Lifecycle,java.lang.String,java.lang.Object)",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ ]
+                } ]
+              } ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "call" : "org.apache.catalina.authenticator.DigestAuthenticator#getKey",
+        "kiekerPattern" : "public java.lang.String org.apache.catalina.authenticator.DigestAuthenticator.getKey()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.util.SessionIdGeneratorBase#generateSessionId",
+        "kiekerPattern" : "public java.lang.String org.apache.catalina.util.SessionIdGeneratorBase.generateSessionId()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.catalina.util.StandardSessionIdGenerator#generateSessionId",
+          "kiekerPattern" : "public java.lang.String org.apache.catalina.util.StandardSessionIdGenerator.generateSessionId(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.catalina.util.SessionIdGeneratorBase#getSessionIdLength",
+            "kiekerPattern" : "public int org.apache.catalina.util.SessionIdGeneratorBase.getSessionIdLength()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          }, {
+            "call" : "org.apache.catalina.util.SessionIdGeneratorBase#getRandomBytes",
+            "kiekerPattern" : "protected void org.apache.catalina.util.SessionIdGeneratorBase.getRandomBytes(byte[])",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.catalina.util.SessionIdGeneratorBase#createSecureRandom",
+              "kiekerPattern" : "private java.security.SecureRandom org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            } ]
+          }, {
+            "call" : "org.apache.catalina.util.SessionIdGeneratorBase#getJvmRoute",
+            "kiekerPattern" : "public java.lang.String org.apache.catalina.util.SessionIdGeneratorBase.getJvmRoute()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "call" : "org.apache.catalina.authenticator.DigestAuthenticator#setKey",
+        "kiekerPattern" : "public void org.apache.catalina.authenticator.DigestAuthenticator.setKey(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.authenticator.DigestAuthenticator#getOpaque",
+        "kiekerPattern" : "public java.lang.String org.apache.catalina.authenticator.DigestAuthenticator.getOpaque()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.authenticator.DigestAuthenticator#setOpaque",
+        "kiekerPattern" : "public void org.apache.catalina.authenticator.DigestAuthenticator.setOpaque(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+    "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+      "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "call" : "org.apache.catalina.connector.InputBuffer#<init>",
+    "kiekerPattern" : "public new org.apache.catalina.connector.InputBuffer.<init>(int)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.catalina.connector.InputBuffer#clear",
+      "kiekerPattern" : "private void org.apache.catalina.connector.InputBuffer.clear(java.nio.Buffer)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.catalina.connector.InputBuffer#<init>",
+    "kiekerPattern" : "public new org.apache.catalina.connector.InputBuffer.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "jakarta.servlet.ServletInputStream#<init>",
+    "kiekerPattern" : "protected new jakarta.servlet.ServletInputStream.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.catalina.connector.CoyoteInputStream#<init>",
+    "kiekerPattern" : "protected new org.apache.catalina.connector.CoyoteInputStream.<init>(org.apache.catalina.connector.InputBuffer)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.catalina.connector.CoyoteReader#<init>",
+    "kiekerPattern" : "public new org.apache.catalina.connector.CoyoteReader.<init>(org.apache.catalina.connector.InputBuffer)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+    "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+      "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.catalina.util.ParameterMap#<init>",
+    "kiekerPattern" : "public new org.apache.catalina.util.ParameterMap.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.util.buf.MessageBytes$MessageBytesFactory#<init>",
+    "kiekerPattern" : "protected new org.apache.tomcat.util.buf.MessageBytes$MessageBytesFactory.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.util.buf.MessageBytes#newInstance",
+    "kiekerPattern" : "public static org.apache.tomcat.util.buf.MessageBytes org.apache.tomcat.util.buf.MessageBytes.newInstance()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.buf.MessageBytes$MessageBytesFactory#newInstance",
+      "kiekerPattern" : "public org.apache.tomcat.util.buf.MessageBytes org.apache.tomcat.util.buf.MessageBytes$MessageBytesFactory.newInstance()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+            "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.util.buf.AbstractChunk#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.util.buf.AbstractChunk.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.buf.ByteChunk#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.util.buf.ByteChunk.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.buf.CharChunk#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.util.buf.CharChunk.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.buf.MessageBytes#<init>",
+        "kiekerPattern" : "private new org.apache.tomcat.util.buf.MessageBytes.<init>()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "call" : "org.apache.catalina.mapper.MappingData#<init>",
+    "kiekerPattern" : "public new org.apache.catalina.mapper.MappingData.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.catalina.core.ApplicationMapping#<init>",
+    "kiekerPattern" : "public new org.apache.catalina.core.ApplicationMapping.<init>(org.apache.catalina.mapper.MappingData)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.catalina.connector.Request#<init>",
+    "kiekerPattern" : "public new org.apache.catalina.connector.Request.<init>(org.apache.catalina.connector.Connector)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.unittest.TesterRequest#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.unittest.TesterRequest.<init>(boolean)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.unittest.TesterContext#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.unittest.TesterContext.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.unittest.TesterSessionCookieConfig#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.unittest.TesterSessionCookieConfig.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.unittest.TesterServletContext#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.unittest.TesterServletContext.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.unittest.TesterContext#setServletContext",
+      "kiekerPattern" : "public void org.apache.tomcat.unittest.TesterContext.setServletContext(jakarta.servlet.ServletContext)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.unittest.TesterRequest#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.unittest.TesterRequest.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.catalina.authenticator.DigestAuthenticator#generateNonce",
+    "kiekerPattern" : "protected java.lang.String org.apache.catalina.authenticator.DigestAuthenticator.generateNonce(org.apache.catalina.connector.Request)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.unittest.TesterRequest#getRemoteAddr",
+      "kiekerPattern" : "public java.lang.String org.apache.tomcat.unittest.TesterRequest.getRemoteAddr()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.authenticator.DigestAuthenticator#getKey",
+      "kiekerPattern" : "public java.lang.String org.apache.catalina.authenticator.DigestAuthenticator.getKey()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+      "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+            "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.security.ConcurrentMessageDigest#init",
+      "kiekerPattern" : "public static void org.apache.tomcat.util.security.ConcurrentMessageDigest.init(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.tomcat.util.security.ConcurrentMessageDigest#digestMD5",
+      "kiekerPattern" : "public static byte[] org.apache.tomcat.util.security.ConcurrentMessageDigest.digestMD5(byte[])",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.security.ConcurrentMessageDigest#digest",
+        "kiekerPattern" : "public static byte[] org.apache.tomcat.util.security.ConcurrentMessageDigest.digest(java.lang.String,byte[])",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.security.ConcurrentMessageDigest#digest",
+          "kiekerPattern" : "public static byte[] org.apache.tomcat.util.security.ConcurrentMessageDigest.digest(java.lang.String,int,byte[])",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.security.MD5Encoder#encode",
+      "kiekerPattern" : "public static java.lang.String org.apache.tomcat.util.security.MD5Encoder.encode(byte[])",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.authenticator.DigestAuthenticator#getNonceCountWindowSize",
+      "kiekerPattern" : "public int org.apache.catalina.authenticator.DigestAuthenticator.getNonceCountWindowSize()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.authenticator.DigestAuthenticator$NonceInfo#<init>",
+      "kiekerPattern" : "public new org.apache.catalina.authenticator.DigestAuthenticator$NonceInfo.<init>(long,int)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.authenticator.DigestAuthenticator#getNonceCacheSize",
+      "kiekerPattern" : "public int org.apache.catalina.authenticator.DigestAuthenticator.getNonceCacheSize()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  } ]
+}

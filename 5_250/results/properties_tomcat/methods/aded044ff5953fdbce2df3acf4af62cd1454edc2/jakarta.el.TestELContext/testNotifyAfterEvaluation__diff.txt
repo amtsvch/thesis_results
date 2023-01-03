@@ -1,0 +1,13 @@
+/**
+ * Tests that the corresponding listeners will be notified.
+ */
+@Test
+public void testNotifyAfterEvaluation() {
+    ELContext elContext = new TesterELContext();
+    TesterEvaluationListener listener = new TesterEvaluationListener();
+    elContext.addEvaluationListener(listener);
+    elContext.notifyAfterEvaluation("after");
+    List<String> events = listener.getAfterEvaluationExpressions();
+    Assert.assertEquals(1, events.size());
+    Assert.assertEquals("after", events.get(0));
+}

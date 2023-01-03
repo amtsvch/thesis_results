@@ -1,0 +1,8 @@
+@Test
+public void testDefineFunctionName01() throws Exception {
+    ELProcessor elp = new ELProcessor();
+    // java.lang should be automatically imported so no need for full class
+    // name
+    elp.defineFunction("fn", "toBoolean", "Boolean", "valueOf");
+    Assert.assertEquals(Boolean.valueOf(true), elp.eval("fn:toBoolean(true)"));
+}

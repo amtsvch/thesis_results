@@ -1,0 +1,5 @@
+public void addPreDestroyMethods(String clazz, String method) {
+    if (!preDestroyMethods.containsKey(clazz)) {
+        preDestroyMethods.put(clazz, method);
+    }
+}

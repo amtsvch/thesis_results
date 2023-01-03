@@ -1,0 +1,14 @@
+@Test                                                                                                  @Test                                                                                               
+public void testMap02() {                                                                              public void testMap02() {                                                                           
+ELProcessor processor = new ELProcessor();                                                             ELProcessor processor = new ELProcessor();                                                          
+processor.defineBean("beans", beans);                                                                  processor.defineBean("beans", beans);                                                               
+Object result = processor.getValue("beans.stream().filter(b-&gt;b.valLong &gt; 1).map(b-&gt;[b.name,   Object result = processor.getValue("beans.stream().filter(b-&gt;b.valLong &gt; 1).map(b-&gt;[b.name,
+Assert.assertTrue(result instanceof List);                                                           |                                                                                                     
+@SuppressWarnings("unchecked")                                                                         @SuppressWarnings("unchecked")                                                                      
+List&lt;List&lt;Object&gt;&gt; list = (List&lt;List&lt;Object&gt;&gt;) result;                         List&lt;List&lt;Object&gt;&gt; list = (List&lt;List&lt;Object&gt;&gt;) result;                      
+Assert.assertEquals(2, list.size());                                                                   Assert.assertEquals(2, list.size());                                                                
+Assert.assertEquals("bean02", list.get(0).get(0));                                                     Assert.assertEquals("bean02", list.get(0).get(0));                                                  
+Assert.assertEquals(Long.valueOf(2), list.get(0).get(1));                                              Assert.assertEquals(Long.valueOf(2), list.get(0).get(1));                                           
+Assert.assertEquals("bean03", list.get(1).get(0));                                                     Assert.assertEquals("bean03", list.get(1).get(0));                                                  
+Assert.assertEquals(Long.valueOf(3), list.get(1).get(1));                                              Assert.assertEquals(Long.valueOf(3), list.get(1).get(1));                                           
+}                                                                                                      }                                                                                                   

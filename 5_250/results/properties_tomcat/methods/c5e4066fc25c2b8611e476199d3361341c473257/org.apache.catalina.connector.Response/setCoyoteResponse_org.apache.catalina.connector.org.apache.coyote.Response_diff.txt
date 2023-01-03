@@ -1,0 +1,9 @@
+/**
+ * Set the Coyote response.
+ *
+ * @param coyoteResponse The Coyote response
+ */
+public void setCoyoteResponse(org.apache.coyote.Response coyoteResponse) {
+    this.coyoteResponse = coyoteResponse;
+    outputBuffer.setResponse(coyoteResponse);
+}

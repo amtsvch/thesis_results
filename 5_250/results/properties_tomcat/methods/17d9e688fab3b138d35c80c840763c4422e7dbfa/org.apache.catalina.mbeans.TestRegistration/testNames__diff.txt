@@ -1,0 +1,10 @@
+/*
+     * Confirm that, as far as ObjectName is concerned, the order of the key
+     * properties is not significant.
+     */
+@Test
+public void testNames() throws MalformedObjectNameException {
+    ObjectName on1 = new ObjectName("test:foo=a,bar=b");
+    ObjectName on2 = new ObjectName("test:bar=b,foo=a");
+    Assert.assertTrue(on1.equals(on2));
+}

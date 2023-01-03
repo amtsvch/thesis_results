@@ -1,0 +1,7 @@
+@Test(expected = IllegalArgumentException.class)
+public void testBug54387a() {
+    // Multiple servlets may not be mapped to the same url-pattern
+    WebXml webxml = new WebXml();
+    webxml.addServletMapping("/foo", "a");
+    webxml.addServletMapping("/foo", "b");
+}

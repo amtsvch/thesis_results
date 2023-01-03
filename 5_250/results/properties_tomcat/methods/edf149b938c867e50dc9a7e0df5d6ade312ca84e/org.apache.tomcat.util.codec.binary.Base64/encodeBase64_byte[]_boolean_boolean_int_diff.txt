@@ -1,0 +1,30 @@
+/**                                                                                                    /**                                                                                                 
+* Encodes binary data using the base64 algorithm, optionally chunking the output into 76 character b   * Encodes binary data using the base64 algorithm, optionally chunking the output into 76 character b
+*                                                                                                      *                                                                                                   
+* @param binaryData                                                                                    * @param binaryData                                                                                 
+*            Array containing binary data to encode.                                                   *            Array containing binary data to encode.                                                
+* @param isChunked                                                                                     * @param isChunked                                                                                  
+*            if &lt;code&gt;true&lt;/code&gt; this encoder will chunk the base64 output into 76 char | *            if {@code true} this encoder will chunk the base64 output into 76 character blocks     
+* @param urlSafe                                                                                       * @param urlSafe                                                                                    
+*            if &lt;code&gt;true&lt;/code&gt; this encoder will emit - and _ instead of the usual +  | *            if {@code true} this encoder will emit - and _ instead of the usual + and / characters.
+*            &lt;b&gt;Note: no padding is added when encoding using the URL-safe alphabet.&lt;/b&gt;   *            &lt;b&gt;Note: no padding is added when encoding using the URL-safe alphabet.&lt;/b&gt;
+* @param maxResultSize                                                                                 * @param maxResultSize                                                                              
+*            The maximum result size to accept.                                                        *            The maximum result size to accept.                                                     
+* @return Base64-encoded data.                                                                         * @return Base64-encoded data.                                                                      
+* @throws IllegalArgumentException                                                                     * @throws IllegalArgumentException                                                                  
+*             Thrown when the input array needs an output array bigger than maxResultSize              *             Thrown when the input array needs an output array bigger than maxResultSize           
+* @since 1.4                                                                                           * @since 1.4                                                                                        
+*/                                                                                                     */                                                                                                  
+public static byte[] encodeBase64(final byte[] binaryData, final boolean isChunked, final boolean ur   public static byte[] encodeBase64(final byte[] binaryData, final boolean isChunked, final boolean ur
+if (binaryData == null || binaryData.length == 0) {                                                    if (binaryData == null || binaryData.length == 0) {                                                 
+return binaryData;                                                                                     return binaryData;                                                                                  
+}                                                                                                      }                                                                                                   
+// Create this so can use the super-class method                                                       // Create this so can use the super-class method                                                    
+// Also ensures that the same roundings are performed by the ctor and the code                         // Also ensures that the same roundings are performed by the ctor and the code                      
+final Base64 b64 = isChunked ? new Base64(urlSafe) : new Base64(0, CHUNK_SEPARATOR, urlSafe);          final Base64 b64 = isChunked ? new Base64(urlSafe) : new Base64(0, CHUNK_SEPARATOR, urlSafe);       
+final long len = b64.getEncodedLength(binaryData);                                                     final long len = b64.getEncodedLength(binaryData);                                                  
+if (len &gt; maxResultSize) {                                                                          if (len &gt; maxResultSize) {                                                                       
+throw new IllegalArgumentException(sm.getString("base64.inputTooLarge", Long.valueOf(len), Integer.v   throw new IllegalArgumentException(sm.getString("base64.inputTooLarge", Long.valueOf(len), Integer.v
+}                                                                                                      }                                                                                                   
+return b64.encode(binaryData);                                                                         return b64.encode(binaryData);                                                                      
+}                                                                                                      }                                                                                                   

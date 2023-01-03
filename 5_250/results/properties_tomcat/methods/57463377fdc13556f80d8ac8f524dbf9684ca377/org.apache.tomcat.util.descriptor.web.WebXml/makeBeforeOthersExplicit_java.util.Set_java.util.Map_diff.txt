@@ -1,0 +1,11 @@
+private static void makeBeforeOthersExplicit(Set<String> beforeOrdering, Map<String, WebXml> fragments) {
+    for (String before : beforeOrdering) {
+        if (!before.equals(ORDER_OTHERS)) {
+            WebXml webXml = fragments.get(before);
+            if (!webXml.getBeforeOrdering().contains(ORDER_OTHERS)) {
+                webXml.addBeforeOrderingOthers();
+                makeBeforeOthersExplicit(webXml.getAfterOrdering(), fragments);
+            }
+        }
+    }
+}

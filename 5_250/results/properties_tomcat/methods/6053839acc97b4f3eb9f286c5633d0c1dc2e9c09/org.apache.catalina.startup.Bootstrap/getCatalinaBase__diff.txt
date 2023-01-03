@@ -1,0 +1,9 @@
+/**
+ * Obtain the name of the configured base (instance) directory. Note that
+ * home and base may be the same (and are by default). If this is not set
+ * the value returned by {@link #getCatalinaHome()} will be used.
+ * @return the catalina base
+ */
+public static String getCatalinaBase() {
+    return catalinaBaseFile.getPath();
+}

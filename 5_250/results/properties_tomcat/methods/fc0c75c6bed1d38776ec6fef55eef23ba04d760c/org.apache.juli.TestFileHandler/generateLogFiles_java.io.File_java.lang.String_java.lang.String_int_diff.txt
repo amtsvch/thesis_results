@@ -1,0 +1,9 @@
+private void generateLogFiles(File dir, String prefix, String sufix, int amount) throws IOException  | private void generateLogFiles(File dir, String prefix, String suffix, int amount) throws IOException
+for (int i = 0; i &lt; amount; i++) {                                                                  for (int i = 0; i &lt; amount; i++) {                                                               
+String date = LocalDate.now().minusDays(i + 1).toString().substring(0, 10);                            String date = LocalDate.now().minusDays(i + 1).toString().substring(0, 10);                         
+File file = new File(dir, prefix + date + sufix);                                                    | File file = new File(dir, prefix + date + suffix);                                                  
+if (!file.createNewFile()) {                                                                           if (!file.createNewFile()) {                                                                        
+Assert.fail("Unable to create " + file.getAbsolutePath());                                             Assert.fail("Unable to create " + file.getAbsolutePath());                                          
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   

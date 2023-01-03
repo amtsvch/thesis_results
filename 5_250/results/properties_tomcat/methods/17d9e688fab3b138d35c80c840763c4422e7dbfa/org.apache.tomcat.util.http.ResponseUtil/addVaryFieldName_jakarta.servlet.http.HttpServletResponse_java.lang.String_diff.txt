@@ -1,0 +1,3 @@
+public static void addVaryFieldName(HttpServletResponse response, String name) {
+    addVaryFieldName(new ResponseAdapter(response), name);
+}

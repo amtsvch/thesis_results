@@ -1,0 +1,5 @@
+public NonceInfo(long currentTime, int seenWindowSize) {
+    this.timestamp = currentTime;
+    seen = new boolean[seenWindowSize];
+    offset = seenWindowSize / 2;
+}

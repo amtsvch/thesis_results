@@ -1,0 +1,7 @@
+/**
+ * Reset the decoder state.
+ */
+public void recycle() {
+    decoder.reset();
+    leftovers.position(0);
+}

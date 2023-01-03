@@ -1,0 +1,7 @@
+@Override
+public Session findSession(String id) throws IOException {
+    if (id == null) {
+        return null;
+    }
+    return sessions.get(id);
+}

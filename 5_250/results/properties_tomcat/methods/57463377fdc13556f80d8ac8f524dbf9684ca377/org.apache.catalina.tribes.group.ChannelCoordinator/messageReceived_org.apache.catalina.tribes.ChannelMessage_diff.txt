@@ -1,0 +1,7 @@
+@Override
+public void messageReceived(ChannelMessage msg) {
+    if (Logs.MESSAGES.isTraceEnabled()) {
+        Logs.MESSAGES.trace("ChannelCoordinator - Received msg:" + new UniqueId(msg.getUniqueId()) + " at " + new java.sql.Timestamp(System.currentTimeMillis()) + " from " + msg.getAddress().getName());
+    }
+    super.messageReceived(msg);
+}

@@ -1,0 +1,3 @@
+static Set<Cipher> filterByEncryption(Set<Cipher> ciphers, Set<Encryption> enc) {
+    return filter(ciphers, null, null, null, enc, null, null);
+}

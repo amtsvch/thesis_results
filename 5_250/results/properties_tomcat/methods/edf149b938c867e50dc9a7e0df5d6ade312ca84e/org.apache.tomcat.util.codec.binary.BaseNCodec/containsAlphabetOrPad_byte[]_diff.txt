@@ -1,0 +1,20 @@
+/**                                                                                                    /**                                                                                                 
+* Tests a given byte array to see if it contains any characters within the alphabet or PAD.            * Tests a given byte array to see if it contains any characters within the alphabet or PAD.         
+*                                                                                                      *                                                                                                   
+* Intended for use in checking line-ending arrays                                                      * Intended for use in checking line-ending arrays                                                   
+*                                                                                                      *                                                                                                   
+* @param arrayOctet                                                                                    * @param arrayOctet                                                                                 
+*            byte array to test                                                                        *            byte array to test                                                                     
+* @return &lt;code&gt;true&lt;/code&gt; if any byte is a valid character in the alphabet or PAD; &lt | * @return {@code true} if any byte is a valid character in the alphabet or PAD; {@code false} otherw
+*/                                                                                                     */                                                                                                  
+protected boolean containsAlphabetOrPad(final byte[] arrayOctet) {                                     protected boolean containsAlphabetOrPad(final byte[] arrayOctet) {                                  
+if (arrayOctet == null) {                                                                              if (arrayOctet == null) {                                                                           
+return false;                                                                                          return false;                                                                                       
+}                                                                                                      }                                                                                                   
+for (final byte element : arrayOctet) {                                                                for (final byte element : arrayOctet) {                                                             
+if (pad == element || isInAlphabet(element)) {                                                         if (pad == element || isInAlphabet(element)) {                                                      
+return true;                                                                                           return true;                                                                                        
+}                                                                                                      }                                                                                                   
+}                                                                                                      }                                                                                                   
+return false;                                                                                          return false;                                                                                       
+}                                                                                                      }                                                                                                   

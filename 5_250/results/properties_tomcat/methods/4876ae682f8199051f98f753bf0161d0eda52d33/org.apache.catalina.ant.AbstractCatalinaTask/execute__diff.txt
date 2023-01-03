@@ -1,0 +1,14 @@
+// --------------------------------------------------------- Public Methods
+/**
+ * Execute the specified command. This logic only performs the common
+ * attribute validation required by all subclasses; it does not perform any
+ * functional logic directly.
+ *
+ * @exception BuildException if a validation error occurs
+ */
+@Override
+public void execute() throws BuildException {
+    if ((username == null) || (password == null) || (url == null)) {
+        throw new BuildException("Must specify all of 'username', 'password', and 'url'");
+    }
+}

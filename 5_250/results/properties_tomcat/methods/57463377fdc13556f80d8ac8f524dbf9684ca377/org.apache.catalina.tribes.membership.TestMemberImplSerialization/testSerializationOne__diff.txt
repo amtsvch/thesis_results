@@ -1,0 +1,22 @@
+@Test
+public void testSerializationOne() throws Exception {
+    Member m = m1;
+    byte[] md1 = m.getData(false, true);
+    byte[] mda1 = m.getData(false, false);
+    Assert.assertTrue(Arrays.equals(md1, mda1));
+    Assert.assertTrue(md1 == mda1);
+    mda1 = m.getData(true, true);
+    Member ma1 = MemberImpl.getMember(mda1);
+    Assert.assertTrue(compareMembers(m, ma1));
+    mda1 = p1.getData(false);
+    Assert.assertFalse(Arrays.equals(md1, mda1));
+    ma1 = MemberImpl.getMember(mda1);
+    Assert.assertTrue(compareMembers(p1, ma1));
+    md1 = m.getData(true, true);
+    Thread.sleep(50);
+    mda1 = m.getData(true, true);
+    Member a1 = MemberImpl.getMember(md1);
+    Member a2 = MemberImpl.getMember(mda1);
+    Assert.assertTrue(a1.equals(a2));
+    Assert.assertFalse(Arrays.equals(md1, mda1));
+}

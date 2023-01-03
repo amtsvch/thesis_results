@@ -1,0 +1,10 @@
+private void silence(Host host, String contextPath) {
+    String loggerName = getLoggerName(host, contextPath);
+    Logger logger = Logger.getLogger(loggerName);
+    pinnedLoggers.put(loggerName, logger);
+    if (silent) {
+        logger.setLevel(Level.WARNING);
+    } else {
+        logger.setLevel(Level.INFO);
+    }
+}

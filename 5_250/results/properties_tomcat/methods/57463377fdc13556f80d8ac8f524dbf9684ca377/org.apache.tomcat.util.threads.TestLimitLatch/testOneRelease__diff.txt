@@ -1,0 +1,18 @@
+@Test
+public void testOneRelease() throws Exception {
+    LimitLatch latch = new LimitLatch(1);
+    Object lock = new Object();
+    checkWaitingThreadCount(latch, 0);
+    TestThread testThread = new TestThread(latch, lock);
+    latch.countUpOrAwait();
+    testThread.start();
+    if (!waitForThreadToStart(testThread)) {
+        Assert.fail("Test thread did not start");
+    }
+    checkWaitingThreadCount(latch, 1);
+    latch.releaseAll();
+    if (!waitForThreadToStop(testThread, lock)) {
+        Assert.fail("Test thread did not stop");
+    }
+    checkWaitingThreadCount(latch, 0);
+}

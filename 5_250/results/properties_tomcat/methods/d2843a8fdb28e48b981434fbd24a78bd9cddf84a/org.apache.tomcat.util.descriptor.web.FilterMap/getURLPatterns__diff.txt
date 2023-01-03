@@ -1,0 +1,7 @@
+public String[] getURLPatterns() {
+    if (matchAllUrlPatterns) {
+        return new String[] {};
+    } else {
+        return this.urlPatterns;
+    }
+}

@@ -1,0 +1,38 @@
+private List<String> tokenizeText(String inputText) {
+    List<String> tokens = new ArrayList<>();
+    int pos = 0;
+    int length = inputText.length();
+    WordMode currentMode = WordMode.SPACES;
+    StringBuilder currentToken = new StringBuilder();
+    while (pos < length) {
+        char currentChar = inputText.charAt(pos);
+        switch(currentMode) {
+            case SPACES:
+                currentMode = handleSpaces(currentToken, currentChar);
+                break;
+            case QUOTED:
+                currentMode = handleQuoted(tokens, currentToken, currentChar);
+                break;
+            case ESCAPED:
+                currentToken.append(currentChar);
+                currentMode = WordMode.QUOTED;
+                break;
+            case SIMPLE:
+                currentMode = handleSimple(tokens, currentToken, currentChar);
+                break;
+            case COMMENT:
+                if (currentChar == '\r' || currentChar == '\n') {
+                    currentMode = WordMode.SPACES;
+                }
+                break;
+            default:
+                throw new IllegalStateException(sm.getString("quotedStringTokenizer.tokenizeError", inputText, Integer.valueOf(pos), currentMode));
+        }
+        pos++;
+    }
+    String possibleLastToken = currentToken.toString();
+    if (!possibleLastToken.isEmpty()) {
+        tokens.add(possibleLastToken);
+    }
+    return tokens;
+}

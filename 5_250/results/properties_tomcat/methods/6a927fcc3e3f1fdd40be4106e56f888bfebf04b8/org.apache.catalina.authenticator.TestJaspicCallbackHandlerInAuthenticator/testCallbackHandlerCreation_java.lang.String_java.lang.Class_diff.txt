@@ -1,0 +1,8 @@
+private void testCallbackHandlerCreation(String callbackHandlerImplClassName, Class&lt;?&gt; callbac   private void testCallbackHandlerCreation(String callbackHandlerImplClassName, Class&lt;?&gt; callbac
+TestAuthenticator authenticator = new TestAuthenticator();                                           | CallbackHandler callbackHandler = createCallbackHandler(callbackHandlerImplClassName);              
+authenticator.setJaspicCallbackHandlerClass(callbackHandlerImplClassName);                           |                                                                                                     
+Method createCallbackHandlerMethod = AuthenticatorBase.class.getDeclaredMethod("createCallbackHandle |                                                                                                     
+createCallbackHandlerMethod.setAccessible(true);                                                     |                                                                                                     
+CallbackHandler callbackHandler = (CallbackHandler) createCallbackHandlerMethod.invoke(authenticator |                                                                                                     
+Assert.assertTrue(callbackHandlerImplClass.isInstance(callbackHandler));                               Assert.assertTrue(callbackHandlerImplClass.isInstance(callbackHandler));                            
+}                                                                                                      }                                                                                                   

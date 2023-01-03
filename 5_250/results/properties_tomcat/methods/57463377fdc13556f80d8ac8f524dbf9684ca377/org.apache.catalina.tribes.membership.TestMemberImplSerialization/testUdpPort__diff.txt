@@ -1,0 +1,9 @@
+@Test
+public void testUdpPort() throws Exception {
+    byte[] md1 = m1.getData();
+    byte[] md2 = m2.getData();
+    Member a1 = MemberImpl.getMember(md1);
+    Member a2 = MemberImpl.getMember(md2);
+    Assert.assertTrue(a1.getUdpPort() == a2.getUdpPort());
+    Assert.assertTrue(a1.getUdpPort() == udpPort);
+}

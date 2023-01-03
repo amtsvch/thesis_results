@@ -1,0 +1,174 @@
+{
+  "measurementConfig" : {
+    "vms" : 100,
+    "earlyStop" : false,
+    "warmup" : 80,
+    "iterations" : 80,
+    "repetitions" : 100,
+    "logFullData" : true,
+    "useGC" : false,
+    "callSyncBetweenVMs" : true,
+    "waitTimeBetweenVMs" : 1000,
+    "maxLogSizeInMb" : 100,
+    "kiekerConfig" : {
+      "useKieker" : true,
+      "useSourceInstrumentation" : true,
+      "useSelectiveInstrumentation" : true,
+      "useAggregation" : true,
+      "useCircularQueue" : false,
+      "enableAdaptiveMonitoring" : false,
+      "adaptiveInstrumentation" : false,
+      "kiekerAggregationInterval" : 5000,
+      "record" : "DURATION",
+      "onlyOneCallRecording" : false,
+      "extractMethod" : false,
+      "traceSizeInMb" : 100,
+      "kiekerQueueSize" : 10000000,
+      "createDefaultConstructor" : true,
+      "kiekerWaitTime" : 5,
+      "excludeForTracing" : [ "new org.eclipse.jetty.logging.JettyLevel.<init>(..)", "* org.eclipse.jetty.logging.JettyLevel.*(..)", "*[] org.eclipse.jetty.logging.JettyLevel.*(..)", "*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "new org.eclipse.jetty.logging.JettyLoggerConfiguration.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "new org.eclipse.jetty.logging.JettyLoggingServiceProvider.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "new org.eclipse.jetty.logging.JettyLoggerFactory.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "new org.eclipse.jetty.logging.StdErrAppender.<init>(..)", "* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*[] org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "new org.eclipse.jetty.logging.Timestamp.<init>(..)", "* org.eclipse.jetty.logging.Timestamp.*(..)", "*[] org.eclipse.jetty.logging.Timestamp.*(..)", "*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "new org.eclipse.jetty.logging.Timestamp$Tick.<init>(..)", "* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*[] org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "new org.eclipse.jetty.logging.JettyLogger.<init>(..)", "* org.eclipse.jetty.logging.JettyLogger.*(..)", "*[] org.eclipse.jetty.logging.JettyLogger.*(..)", "*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)" ]
+    },
+    "saveAll" : true,
+    "javaVersion" : "11.0.16",
+    "measurementStrategy" : "PARALLEL",
+    "statisticsConfig" : {
+      "type1error" : 0.1,
+      "type2error" : 0.1,
+      "outlierFactor" : 3.29,
+      "statisticTest" : "T_TEST"
+    },
+    "executionConfig" : {
+      "timeout" : 600000,
+      "redirectSubprocessOutputToFile" : true,
+      "useTieredCompilation" : false,
+      "removeSnapshots" : false,
+      "useAlternativeBuildfile" : false,
+      "excludeLog4jSlf4jImpl" : false,
+      "excludeLog4jToSlf4j" : false,
+      "executeBeforeClassInMeasurement" : false,
+      "clearMockitoCaches" : false,
+      "onlyMeasureWorkload" : false,
+      "showStart" : false,
+      "redirectToNull" : true,
+      "createDetailDebugFiles" : true,
+      "testExecutor" : "de.stro18.peass_ant.executor.AntTestExecutor",
+      "clazzFolders" : [ "java", "src/main/java", "webapps/examples/WEB-INF/classes" ],
+      "testClazzFolders" : [ "test" ]
+    },
+    "fixedCommitConfig" : {
+      "commit" : "6053839acc97b4f3eb9f286c5633d0c1dc2e9c09",
+      "commitOld" : "83a03b434cb8d9b561656cd1dfaf2f91a0bf79cc"
+    }
+  },
+  "causeConfig" : {
+    "splitAggregated" : true,
+    "minTime" : 0.1,
+    "ignoreEOIs" : true,
+    "rcaStrategy" : "UNTIL_SOURCE_CHANGE",
+    "levels" : 1,
+    "testCase" : {
+      "clazz" : "org.apache.catalina.util.TestContextName",
+      "method" : "testConstructorString",
+      "module" : "",
+      "params" : null
+    },
+    "propertyFolder" : "/home/matusevich/5-final/peass-ant/results/properties_tomcat"
+  },
+  "nodes" : {
+    "call" : "org.apache.catalina.util.TestContextName#testConstructorString",
+    "kiekerPattern" : "public void org.apache.catalina.util.TestContextName.testConstructorString()",
+    "otherKiekerPattern" : "public void org.apache.catalina.util.TestContextName.testConstructorString()",
+    "module" : "",
+    "statistic" : {
+      "meanOld" : 7813569.213005048,
+      "meanCurrent" : 4231895.568437499,
+      "deviationOld" : 547005.0339529332,
+      "deviationCurrent" : 378256.14973365207,
+      "vms" : 99,
+      "callsOld" : 8000,
+      "calls" : 8000,
+      "tvalue" : 53.67258947933669
+    },
+    "childs" : [ {
+      "call" : "org.apache.catalina.util.TestContextName#doTestConstructorString",
+      "kiekerPattern" : "private void org.apache.catalina.util.TestContextName.doTestConstructorString(org.apache.catalina.util.TestContextName)",
+      "otherKiekerPattern" : "private void org.apache.catalina.util.TestContextName.doTestConstructorString(org.apache.catalina.util.TestContextName)",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 350692.75240472914,
+        "meanCurrent" : 188342.95384943188,
+        "deviationOld" : 24433.798054683284,
+        "deviationCurrent" : 16758.8681288916,
+        "vms" : 99,
+        "callsOld" : 344000,
+        "calls" : 344000,
+        "tvalue" : 54.6072178163162
+      },
+      "childs" : [ {
+        "call" : "org.apache.catalina.util.ContextName#<init>",
+        "kiekerPattern" : "public new org.apache.catalina.util.ContextName.<init>(java.lang.String,boolean)",
+        "otherKiekerPattern" : "public new org.apache.catalina.util.ContextName.<init>(java.lang.String,boolean)",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 71168.34059343433,
+          "meanCurrent" : 17690.862264692372,
+          "deviationOld" : 4892.520950151222,
+          "deviationCurrent" : 1587.5289404641296,
+          "vms" : 99,
+          "callsOld" : 1224000,
+          "calls" : 1224000,
+          "tvalue" : 103.44705752953041
+        },
+        "childs" : [ ]
+      }, {
+        "call" : "org.apache.catalina.util.TestContextName#doCompare",
+        "kiekerPattern" : "private void org.apache.catalina.util.TestContextName.doCompare(org.apache.catalina.util.TestContextName,org.apache.catalina.util.TestContextName)",
+        "otherKiekerPattern" : "private void org.apache.catalina.util.TestContextName.doCompare(org.apache.catalina.util.TestContextName,org.apache.catalina.util.TestContextName)",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 29578.290954545442,
+          "meanCurrent" : 29338.898589015178,
+          "deviationOld" : 2713.5504198429726,
+          "deviationCurrent" : 2677.045517627227,
+          "vms" : 100,
+          "callsOld" : 1048000,
+          "calls" : 1048000,
+          "tvalue" : 0.6280273486517169
+        },
+        "childs" : [ {
+          "call" : "org.apache.catalina.util.ContextName#getDisplayName",
+          "kiekerPattern" : "public java.lang.String org.apache.catalina.util.ContextName.getDisplayName()",
+          "otherKiekerPattern" : "public java.lang.String org.apache.catalina.util.ContextName.getDisplayName()",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 6297.2694259969785,
+            "meanCurrent" : 6761.165330762985,
+            "deviationOld" : 548.3624893421512,
+            "deviationCurrent" : 603.5642783414044,
+            "vms" : 99,
+            "callsOld" : 2456000,
+            "calls" : 2456000,
+            "tvalue" : -5.675746573657196
+          },
+          "childs" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.catalina.util.ContextName#getDisplayName",
+        "kiekerPattern" : "public java.lang.String org.apache.catalina.util.ContextName.getDisplayName()",
+        "otherKiekerPattern" : "public java.lang.String org.apache.catalina.util.ContextName.getDisplayName()",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 6297.2694259969785,
+          "meanCurrent" : 6761.165330762985,
+          "deviationOld" : 548.3624893421512,
+          "deviationCurrent" : 603.5642783414044,
+          "vms" : 99,
+          "callsOld" : 2456000,
+          "calls" : 2456000,
+          "tvalue" : -5.675746573657196
+        },
+        "childs" : [ ]
+      } ]
+    } ]
+  }
+}

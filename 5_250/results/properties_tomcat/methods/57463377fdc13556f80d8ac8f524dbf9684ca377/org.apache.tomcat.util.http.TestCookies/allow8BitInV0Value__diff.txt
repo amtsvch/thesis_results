@@ -1,0 +1,5 @@
+@Test
+public void allow8BitInV0Value() {
+    // Bug 55917
+    test(true, "foo=b\u00e1r", FOO_CONTROL);
+}

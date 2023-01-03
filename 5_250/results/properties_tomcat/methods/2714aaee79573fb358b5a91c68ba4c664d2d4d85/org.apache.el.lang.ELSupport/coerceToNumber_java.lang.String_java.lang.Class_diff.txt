@@ -1,0 +1,59 @@
+protected static final Number coerceToNumber(final String val, final Class<?> type) throws ELException {
+    if (Long.TYPE == type || Long.class.equals(type)) {
+        try {
+            return Long.valueOf(val);
+        } catch (NumberFormatException nfe) {
+            throw new ELException(MessageFactory.get("error.convert", val, String.class, type));
+        }
+    }
+    if (Integer.TYPE == type || Integer.class.equals(type)) {
+        try {
+            return Integer.valueOf(val);
+        } catch (NumberFormatException nfe) {
+            throw new ELException(MessageFactory.get("error.convert", val, String.class, type));
+        }
+    }
+    if (Double.TYPE == type || Double.class.equals(type)) {
+        try {
+            return Double.valueOf(val);
+        } catch (NumberFormatException nfe) {
+            throw new ELException(MessageFactory.get("error.convert", val, String.class, type));
+        }
+    }
+    if (BigInteger.class.equals(type)) {
+        try {
+            return new BigInteger(val);
+        } catch (NumberFormatException nfe) {
+            throw new ELException(MessageFactory.get("error.convert", val, String.class, type));
+        }
+    }
+    if (BigDecimal.class.equals(type)) {
+        try {
+            return new BigDecimal(val);
+        } catch (NumberFormatException nfe) {
+            throw new ELException(MessageFactory.get("error.convert", val, String.class, type));
+        }
+    }
+    if (Byte.TYPE == type || Byte.class.equals(type)) {
+        try {
+            return Byte.valueOf(val);
+        } catch (NumberFormatException nfe) {
+            throw new ELException(MessageFactory.get("error.convert", val, String.class, type));
+        }
+    }
+    if (Short.TYPE == type || Short.class.equals(type)) {
+        try {
+            return Short.valueOf(val);
+        } catch (NumberFormatException nfe) {
+            throw new ELException(MessageFactory.get("error.convert", val, String.class, type));
+        }
+    }
+    if (Float.TYPE == type || Float.class.equals(type)) {
+        try {
+            return Float.valueOf(val);
+        } catch (NumberFormatException nfe) {
+            throw new ELException(MessageFactory.get("error.convert", val, String.class, type));
+        }
+    }
+    throw new ELException(MessageFactory.get("error.convert", val, String.class, type));
+}

@@ -1,0 +1,30 @@
+private void testMethodAfterClose(Method m, Object... params) throws IOException {
+    InputStream unwrapped = getUnwrappedClosedInputStream();
+    InputStream wrapped = getWrappedClosedInputStream();
+    Object unwrappedReturn = null;
+    Exception unwrappedException = null;
+    Object wrappedReturn = null;
+    Exception wrappedException = null;
+    try {
+        unwrappedReturn = m.invoke(unwrapped, params);
+    } catch (Exception e) {
+        unwrappedException = e;
+    }
+    try {
+        wrappedReturn = m.invoke(wrapped, params);
+    } catch (Exception e) {
+        wrappedException = e;
+    }
+    if (unwrappedReturn == null) {
+        Assert.assertNull(wrappedReturn);
+    } else {
+        Assert.assertNotNull(wrappedReturn);
+        Assert.assertEquals(unwrappedReturn, wrappedReturn);
+    }
+    if (unwrappedException == null) {
+        Assert.assertNull(wrappedException);
+    } else {
+        Assert.assertNotNull(wrappedException);
+        Assert.assertEquals(unwrappedException.getClass(), wrappedException.getClass());
+    }
+}

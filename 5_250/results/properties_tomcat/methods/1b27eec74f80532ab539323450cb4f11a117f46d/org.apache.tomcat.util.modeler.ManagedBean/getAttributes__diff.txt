@@ -1,0 +1,9 @@
+// ------------------------------------------------------------- Properties
+/**
+ * @return the collection of attributes for this MBean.
+ */
+public AttributeInfo[] getAttributes() {
+    AttributeInfo[] result = new AttributeInfo[attributes.size()];
+    attributes.values().toArray(result);
+    return result;
+}

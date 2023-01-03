@@ -1,0 +1,33 @@
+/**
+ * Specify the time format to use for time stamps in log messages.
+ *
+ * @param timeFormat The format to use using the
+ *                   {@link java.text.SimpleDateFormat} syntax
+ */
+public void setTimeFormat(final String timeFormat) {
+    final String cachedTimeFormat;
+    if (timeFormat.endsWith(".SSS")) {
+        cachedTimeFormat = timeFormat.substring(0, timeFormat.length() - 4);
+        millisHandling = MillisHandling.APPEND;
+    } else if (timeFormat.contains("SSS")) {
+        millisHandling = MillisHandling.REPLACE_SSS;
+        cachedTimeFormat = timeFormat;
+    } else if (timeFormat.contains("SS")) {
+        millisHandling = MillisHandling.REPLACE_SS;
+        cachedTimeFormat = timeFormat;
+    } else if (timeFormat.contains("S")) {
+        millisHandling = MillisHandling.REPLACE_S;
+        cachedTimeFormat = timeFormat;
+    } else {
+        millisHandling = MillisHandling.NONE;
+        cachedTimeFormat = timeFormat;
+    }
+    final DateFormatCache globalDateCache = new DateFormatCache(globalCacheSize, cachedTimeFormat, null);
+    localDateCache = new ThreadLocal<DateFormatCache>() {
+
+        @Override
+        protected DateFormatCache initialValue() {
+            return new DateFormatCache(localCacheSize, cachedTimeFormat, globalDateCache);
+        }
+    };
+}

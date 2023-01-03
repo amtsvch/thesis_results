@@ -1,0 +1,13 @@
+public String getDisplayName() {
+    StringBuilder tmp = new StringBuilder();
+    if ("".equals(path)) {
+        tmp.append('/');
+    } else {
+        tmp.append(path);
+    }
+    if (!"".equals(version)) {
+        tmp.append(VERSION_MARKER);
+        tmp.append(version);
+    }
+    return tmp.toString();
+}

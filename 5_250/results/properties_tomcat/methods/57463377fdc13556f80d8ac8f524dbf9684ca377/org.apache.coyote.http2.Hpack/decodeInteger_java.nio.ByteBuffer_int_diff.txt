@@ -1,0 +1,41 @@
+/**
+ * Decodes an integer in the HPACK prefix format. If the return value is -1
+ * it means that there was not enough data in the buffer to complete the decoding
+ * sequence.
+ * <p/>
+ * If this method returns -1 then the source buffer will not have been modified.
+ *
+ * @param source The buffer that contains the integer
+ * @param n      The encoding prefix length
+ * @return The encoded integer, or -1 if there was not enough data
+ */
+static int decodeInteger(ByteBuffer source, int n) throws HpackException {
+    if (source.remaining() == 0) {
+        return -1;
+    }
+    int count = 1;
+    int sp = source.position();
+    int mask = PREFIX_TABLE[n];
+    int i = mask & source.get();
+    int b;
+    if (i < PREFIX_TABLE[n]) {
+        return i;
+    } else {
+        int m = 0;
+        do {
+            if (count++ > MAX_INTEGER_OCTETS) {
+                throw new HpackException(sm.getString("hpack.integerEncodedOverTooManyOctets", Integer.valueOf(MAX_INTEGER_OCTETS)));
+            }
+            if (source.remaining() == 0) {
+                // we have run out of data
+                // reset
+                source.position(sp);
+                return -1;
+            }
+            b = source.get();
+            i = i + (b & 127) * (PREFIX_TABLE[m] + 1);
+            m += 7;
+        } while ((b & 128) == 128);
+    }
+    return i;
+}

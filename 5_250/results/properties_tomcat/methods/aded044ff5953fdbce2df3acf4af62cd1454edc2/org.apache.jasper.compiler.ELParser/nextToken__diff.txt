@@ -1,0 +1,26 @@
+/*
+     * Implementation note: This method assumes that it is always preceded by a
+     * call to hasNext() in order for whitespace handling to be correct.
+     *
+     * @return The next token in the EL expression buffer.
+     */
+private Token nextToken() {
+    prevToken = curToken;
+    if (hasNextChar()) {
+        char ch = nextChar();
+        if (Character.isJavaIdentifierStart(ch)) {
+            int start = index - 1;
+            while (index < expression.length() && Character.isJavaIdentifierPart(ch = expression.charAt(index))) {
+                nextChar();
+            }
+            return new Id(getAndResetWhiteSpace(), expression.substring(start, index));
+        }
+        if (ch == '\'' || ch == '"') {
+            return parseQuotedChars(ch);
+        } else {
+            // For now...
+            return new Char(getAndResetWhiteSpace(), ch);
+        }
+    }
+    return null;
+}

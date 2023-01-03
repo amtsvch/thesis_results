@@ -1,0 +1,8 @@
+private void validateChannelChain() throws ChannelException {
+    ChannelInterceptor interceptor = getPrevious();
+    while (null != interceptor) {
+        if (interceptor instanceof TcpFailureDetector)
+            throw new ChannelConfigException(sm.getString("encryptInterceptor.tcpFailureDetector.ordering"));
+        interceptor = interceptor.getPrevious();
+    }
+}
