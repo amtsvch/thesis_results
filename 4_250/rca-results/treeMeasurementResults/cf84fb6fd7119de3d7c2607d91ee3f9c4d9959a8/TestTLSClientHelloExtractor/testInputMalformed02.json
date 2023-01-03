@@ -1,0 +1,142 @@
+{
+  "measurementConfig" : {
+    "vms" : 100,
+    "earlyStop" : false,
+    "warmup" : 80,
+    "iterations" : 80,
+    "repetitions" : 100,
+    "logFullData" : true,
+    "useGC" : false,
+    "callSyncBetweenVMs" : true,
+    "waitTimeBetweenVMs" : 1000,
+    "maxLogSizeInMb" : 100,
+    "kiekerConfig" : {
+      "useKieker" : true,
+      "useSourceInstrumentation" : true,
+      "useSelectiveInstrumentation" : true,
+      "useAggregation" : true,
+      "useCircularQueue" : false,
+      "enableAdaptiveMonitoring" : false,
+      "adaptiveInstrumentation" : false,
+      "kiekerAggregationInterval" : 5000,
+      "record" : "DURATION",
+      "onlyOneCallRecording" : false,
+      "extractMethod" : false,
+      "traceSizeInMb" : 100,
+      "kiekerQueueSize" : 10000000,
+      "createDefaultConstructor" : true,
+      "kiekerWaitTime" : 5,
+      "excludeForTracing" : [ "new org.eclipse.jetty.logging.JettyLevel.<init>(..)", "* org.eclipse.jetty.logging.JettyLevel.*(..)", "*[] org.eclipse.jetty.logging.JettyLevel.*(..)", "*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "new org.eclipse.jetty.logging.JettyLoggerConfiguration.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "new org.eclipse.jetty.logging.JettyLoggingServiceProvider.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "new org.eclipse.jetty.logging.JettyLoggerFactory.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "new org.eclipse.jetty.logging.StdErrAppender.<init>(..)", "* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*[] org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "new org.eclipse.jetty.logging.Timestamp.<init>(..)", "* org.eclipse.jetty.logging.Timestamp.*(..)", "*[] org.eclipse.jetty.logging.Timestamp.*(..)", "*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "new org.eclipse.jetty.logging.Timestamp$Tick.<init>(..)", "* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*[] org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "new org.eclipse.jetty.logging.JettyLogger.<init>(..)", "* org.eclipse.jetty.logging.JettyLogger.*(..)", "*[] org.eclipse.jetty.logging.JettyLogger.*(..)", "*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)" ]
+    },
+    "saveAll" : true,
+    "javaVersion" : "11.0.17",
+    "measurementStrategy" : "PARALLEL",
+    "statisticsConfig" : {
+      "type1error" : 0.1,
+      "type2error" : 0.1,
+      "outlierFactor" : 3.29,
+      "statisticTest" : "MANN_WHITNEY_TEST"
+    },
+    "executionConfig" : {
+      "timeout" : 600000,
+      "redirectSubprocessOutputToFile" : true,
+      "useTieredCompilation" : false,
+      "removeSnapshots" : false,
+      "useAlternativeBuildfile" : false,
+      "excludeLog4jSlf4jImpl" : false,
+      "excludeLog4jToSlf4j" : false,
+      "executeBeforeClassInMeasurement" : false,
+      "clearMockitoCaches" : false,
+      "onlyMeasureWorkload" : false,
+      "showStart" : false,
+      "redirectToNull" : true,
+      "createDetailDebugFiles" : true,
+      "testExecutor" : "de.stro18.peass_ant.executor.AntTestExecutor",
+      "clazzFolders" : [ "java", "src/main/java", "webapps/examples/WEB-INF/classes" ],
+      "testClazzFolders" : [ "test" ]
+    },
+    "fixedCommitConfig" : {
+      "commit" : "cf84fb6fd7119de3d7c2607d91ee3f9c4d9959a8",
+      "commitOld" : "3bc0f9101e07c34f59c626687d8af5d358a26c7f"
+    }
+  },
+  "causeConfig" : {
+    "splitAggregated" : true,
+    "minTime" : 0.1,
+    "ignoreEOIs" : true,
+    "rcaStrategy" : "UNTIL_SOURCE_CHANGE",
+    "levels" : 1,
+    "testCase" : {
+      "clazz" : "org.apache.tomcat.util.net.TestTLSClientHelloExtractor",
+      "method" : "testInputMalformed02",
+      "module" : "",
+      "params" : null
+    },
+    "propertyFolder" : "/home/matusevich/4-final/peass-ant/results/properties_tomcat"
+  },
+  "nodes" : {
+    "call" : "org.apache.tomcat.util.net.TestTLSClientHelloExtractor#testInputMalformed02",
+    "kiekerPattern" : "public void org.apache.tomcat.util.net.TestTLSClientHelloExtractor.testInputMalformed02()",
+    "otherKiekerPattern" : "public void org.apache.tomcat.util.net.TestTLSClientHelloExtractor.testInputMalformed02()",
+    "module" : "",
+    "statistic" : {
+      "meanOld" : 946710.1963749998,
+      "meanCurrent" : 880599.3255624998,
+      "deviationOld" : 313131.75489371637,
+      "deviationCurrent" : 210739.10634604865,
+      "vms" : 100,
+      "callsOld" : 8000,
+      "calls" : 8000,
+      "tvalue" : 1.7515504368844226
+    },
+    "childs" : [ {
+      "call" : "org.apache.tomcat.util.net.TestTLSClientHelloExtractor#doTestInputNeedRead",
+      "kiekerPattern" : "public void org.apache.tomcat.util.net.TestTLSClientHelloExtractor.doTestInputNeedRead(java.nio.ByteBuffer)",
+      "otherKiekerPattern" : "public void org.apache.tomcat.util.net.TestTLSClientHelloExtractor.doTestInputNeedRead(java.nio.ByteBuffer)",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 860265.5361875,
+        "meanCurrent" : 793445.2196875002,
+        "deviationOld" : 281457.2184342958,
+        "deviationCurrent" : 179706.6218913947,
+        "vms" : 100,
+        "callsOld" : 8000,
+        "calls" : 8000,
+        "tvalue" : 2.000997231783025
+      },
+      "childs" : [ {
+        "call" : "org.apache.tomcat.util.net.TLSClientHelloExtractor#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.util.net.TLSClientHelloExtractor.<init>(java.nio.ByteBuffer)",
+        "otherKiekerPattern" : "public new org.apache.tomcat.util.net.TLSClientHelloExtractor.<init>(java.nio.ByteBuffer)",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 752446.4060625,
+          "meanCurrent" : 680146.6570075761,
+          "deviationOld" : 259567.70472630125,
+          "deviationCurrent" : 146047.74094644416,
+          "vms" : 99,
+          "callsOld" : 8000,
+          "calls" : 8000,
+          "tvalue" : 2.42457227017237
+        },
+        "childs" : [ {
+          "call" : "org.apache.tomcat.util.net.TLSClientHelloExtractor#skipBytes",
+          "kiekerPattern" : "private static void org.apache.tomcat.util.net.TLSClientHelloExtractor.skipBytes(java.nio.ByteBuffer,int)",
+          "otherKiekerPattern" : "private static java.lang.String org.apache.tomcat.util.net.TLSClientHelloExtractor.readProtocol(java.nio.ByteBuffer)",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 307639.02989690704,
+            "meanCurrent" : 262707.8406565657,
+            "deviationOld" : 86168.21380928658,
+            "deviationCurrent" : 35848.8774588632,
+            "vms" : 98,
+            "callsOld" : 8000,
+            "calls" : 8000,
+            "tvalue" : 4.7486521444618965
+          },
+          "childs" : [ ]
+        } ]
+      } ]
+    } ]
+  }
+}

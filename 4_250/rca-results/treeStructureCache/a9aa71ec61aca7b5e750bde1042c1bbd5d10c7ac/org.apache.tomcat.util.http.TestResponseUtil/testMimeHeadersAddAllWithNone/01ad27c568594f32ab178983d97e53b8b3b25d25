@@ -1,0 +1,241 @@
+{
+  "call" : "org.apache.tomcat.util.http.TestResponseUtil#testMimeHeadersAddAllWithNone",
+  "kiekerPattern" : "public void org.apache.tomcat.util.http.TestResponseUtil.testMimeHeadersAddAllWithNone()",
+  "otherKiekerPattern" : null,
+  "module" : "",
+  "children" : [ {
+    "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+    "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+      "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+        "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    } ]
+  }, {
+    "call" : "org.apache.tomcat.util.http.MimeHeaders#<init>",
+    "kiekerPattern" : "public new org.apache.tomcat.util.http.MimeHeaders.<init>()",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ ]
+  }, {
+    "call" : "org.apache.tomcat.util.http.TestResponseUtil#doTestAddVaryFieldName",
+    "kiekerPattern" : "private void org.apache.tomcat.util.http.TestResponseUtil.doTestAddVaryFieldName(org.apache.tomcat.util.http.MimeHeaders,java.lang.String,java.util.Set)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.http.ResponseUtil#addVaryFieldName",
+      "kiekerPattern" : "public static void org.apache.tomcat.util.http.ResponseUtil.addVaryFieldName(org.apache.tomcat.util.http.MimeHeaders,java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.http.ResponseUtil$HeaderAdapter#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.util.http.ResponseUtil$HeaderAdapter.<init>(org.apache.tomcat.util.http.MimeHeaders)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.http.ResponseUtil#addVaryFieldName",
+        "kiekerPattern" : "private static void org.apache.tomcat.util.http.ResponseUtil.addVaryFieldName(org.apache.tomcat.util.http.ResponseUtil$ResponseAdapter,java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.http.ResponseUtil$HeaderAdapter#getHeaders",
+          "kiekerPattern" : "public java.util.Collection org.apache.tomcat.util.http.ResponseUtil$HeaderAdapter.getHeaders(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.http.MimeHeaders#values",
+            "kiekerPattern" : "public java.util.Enumeration org.apache.tomcat.util.http.MimeHeaders.values(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.tomcat.util.http.ValuesEnumerator#<init>",
+              "kiekerPattern" : "new org.apache.tomcat.util.http.ValuesEnumerator.<init>(org.apache.tomcat.util.http.MimeHeaders,java.lang.String)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.tomcat.util.http.MimeHeaders#size",
+                "kiekerPattern" : "public int org.apache.tomcat.util.http.MimeHeaders.size()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.tomcat.util.http.ValuesEnumerator#findNext",
+                "kiekerPattern" : "private void org.apache.tomcat.util.http.ValuesEnumerator.findNext()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              } ]
+            } ]
+          }, {
+            "call" : "org.apache.tomcat.util.http.ValuesEnumerator#hasMoreElements",
+            "kiekerPattern" : "public boolean org.apache.tomcat.util.http.ValuesEnumerator.hasMoreElements()",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        }, {
+          "call" : "org.apache.tomcat.util.http.ResponseUtil$HeaderAdapter#addHeader",
+          "kiekerPattern" : "public void org.apache.tomcat.util.http.ResponseUtil$HeaderAdapter.addHeader(java.lang.String,java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.http.MimeHeaders#addValue",
+            "kiekerPattern" : "public org.apache.tomcat.util.buf.MessageBytes org.apache.tomcat.util.http.MimeHeaders.addValue(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.tomcat.util.http.MimeHeaders#createHeader",
+              "kiekerPattern" : "private org.apache.tomcat.util.http.MimeHeaderField org.apache.tomcat.util.http.MimeHeaders.createHeader()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.tomcat.util.buf.MessageBytes$MessageBytesFactory#<init>",
+                "kiekerPattern" : "protected new org.apache.tomcat.util.buf.MessageBytes$MessageBytesFactory.<init>()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              }, {
+                "call" : "org.apache.tomcat.util.buf.MessageBytes#newInstance",
+                "kiekerPattern" : "public static org.apache.tomcat.util.buf.MessageBytes org.apache.tomcat.util.buf.MessageBytes.newInstance()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ {
+                  "call" : "org.apache.tomcat.util.buf.MessageBytes$MessageBytesFactory#newInstance",
+                  "kiekerPattern" : "public org.apache.tomcat.util.buf.MessageBytes org.apache.tomcat.util.buf.MessageBytes$MessageBytesFactory.newInstance()",
+                  "otherKiekerPattern" : null,
+                  "module" : "",
+                  "children" : [ {
+                    "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                    "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ {
+                      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                      "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+                      "otherKiekerPattern" : null,
+                      "module" : "",
+                      "children" : [ {
+                        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                        "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+                        "otherKiekerPattern" : null,
+                        "module" : "",
+                        "children" : [ {
+                          "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+                          "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+                          "otherKiekerPattern" : null,
+                          "module" : "",
+                          "children" : [ ]
+                        } ]
+                      } ]
+                    } ]
+                  }, {
+                    "call" : "org.apache.tomcat.util.buf.AbstractChunk#<init>",
+                    "kiekerPattern" : "public new org.apache.tomcat.util.buf.AbstractChunk.<init>()",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ ]
+                  }, {
+                    "call" : "org.apache.tomcat.util.buf.ByteChunk#<init>",
+                    "kiekerPattern" : "public new org.apache.tomcat.util.buf.ByteChunk.<init>()",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ ]
+                  }, {
+                    "call" : "org.apache.tomcat.util.buf.CharChunk#<init>",
+                    "kiekerPattern" : "public new org.apache.tomcat.util.buf.CharChunk.<init>()",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ ]
+                  }, {
+                    "call" : "org.apache.tomcat.util.buf.MessageBytes#<init>",
+                    "kiekerPattern" : "private new org.apache.tomcat.util.buf.MessageBytes.<init>()",
+                    "otherKiekerPattern" : null,
+                    "module" : "",
+                    "children" : [ ]
+                  } ]
+                } ]
+              }, {
+                "call" : "org.apache.tomcat.util.http.MimeHeaderField#<init>",
+                "kiekerPattern" : "public new org.apache.tomcat.util.http.MimeHeaderField.<init>()",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              } ]
+            }, {
+              "call" : "org.apache.tomcat.util.http.MimeHeaderField#getName",
+              "kiekerPattern" : "public org.apache.tomcat.util.buf.MessageBytes org.apache.tomcat.util.http.MimeHeaderField.getName()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.tomcat.util.buf.MessageBytes#setString",
+              "kiekerPattern" : "public void org.apache.tomcat.util.buf.MessageBytes.setString(java.lang.String)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            }, {
+              "call" : "org.apache.tomcat.util.http.MimeHeaderField#getValue",
+              "kiekerPattern" : "public org.apache.tomcat.util.buf.MessageBytes org.apache.tomcat.util.http.MimeHeaderField.getValue()",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            } ]
+          }, {
+            "call" : "org.apache.tomcat.util.buf.MessageBytes#setString",
+            "kiekerPattern" : "public void org.apache.tomcat.util.buf.MessageBytes.setString(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.http.MimeHeaders#getHeader",
+      "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.http.MimeHeaders.getHeader(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.http.MimeHeaders#getValue",
+        "kiekerPattern" : "public org.apache.tomcat.util.buf.MessageBytes org.apache.tomcat.util.http.MimeHeaders.getValue(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.http.MimeHeaderField#getName",
+          "kiekerPattern" : "public org.apache.tomcat.util.buf.MessageBytes org.apache.tomcat.util.http.MimeHeaderField.getName()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.util.buf.MessageBytes#equalsIgnoreCase",
+          "kiekerPattern" : "public boolean org.apache.tomcat.util.buf.MessageBytes.equalsIgnoreCase(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        }, {
+          "call" : "org.apache.tomcat.util.http.MimeHeaderField#getValue",
+          "kiekerPattern" : "public org.apache.tomcat.util.buf.MessageBytes org.apache.tomcat.util.http.MimeHeaderField.getValue()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.util.buf.MessageBytes#toString",
+        "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.buf.MessageBytes.toString()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    } ]
+  } ]
+}

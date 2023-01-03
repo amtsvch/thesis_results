@@ -1,0 +1,139 @@
+{
+  "call" : "org.apache.tomcat.util.net.TestTLSClientHelloExtractor#testInputMalformed02",
+  "kiekerPattern" : "public void org.apache.tomcat.util.net.TestTLSClientHelloExtractor.testInputMalformed02()",
+  "otherKiekerPattern" : null,
+  "module" : "",
+  "children" : [ {
+    "call" : "org.apache.tomcat.util.net.TestTLSClientHelloExtractor#doTestInputNeedRead",
+    "kiekerPattern" : "public void org.apache.tomcat.util.net.TestTLSClientHelloExtractor.doTestInputNeedRead(java.nio.ByteBuffer)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.juli.logging.LogFactory#<init>",
+      "kiekerPattern" : "private new org.apache.juli.logging.LogFactory.<init>()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.juli.logging.LogFactory#getLog",
+      "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.juli.logging.LogFactory#getFactory",
+        "kiekerPattern" : "public static org.apache.juli.logging.LogFactory org.apache.juli.logging.LogFactory.getFactory()",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.juli.logging.LogFactory#getInstance",
+        "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.Class)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.juli.logging.LogFactory#getInstance",
+          "kiekerPattern" : "public org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getInstance(java.lang.String)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.juli.logging.DirectJDKLog#getInstance",
+            "kiekerPattern" : "static org.apache.juli.logging.DirectJDKLog org.apache.juli.logging.DirectJDKLog.getInstance(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.juli.logging.DirectJDKLog#<init>",
+              "kiekerPattern" : "public new org.apache.juli.logging.DirectJDKLog.<init>(java.lang.String)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ ]
+            } ]
+          } ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+      "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+        "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+            "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ ]
+          } ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.net.TLSClientHelloExtractor#<init>",
+      "kiekerPattern" : "public new org.apache.tomcat.util.net.TLSClientHelloExtractor.<init>(java.nio.ByteBuffer)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.tomcat.util.net.TLSClientHelloExtractor#isAvailable",
+        "kiekerPattern" : "private static boolean org.apache.tomcat.util.net.TLSClientHelloExtractor.isAvailable(java.nio.ByteBuffer,int)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.net.TLSClientHelloExtractor#isTLSHandshake",
+        "kiekerPattern" : "private static boolean org.apache.tomcat.util.net.TLSClientHelloExtractor.isTLSHandshake(java.nio.ByteBuffer)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.net.TLSClientHelloExtractor#isAllRecordAvailable",
+        "kiekerPattern" : "private static boolean org.apache.tomcat.util.net.TLSClientHelloExtractor.isAllRecordAvailable(java.nio.ByteBuffer)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.net.TLSClientHelloExtractor#isAvailable",
+          "kiekerPattern" : "private static boolean org.apache.tomcat.util.net.TLSClientHelloExtractor.isAvailable(java.nio.ByteBuffer,int)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.util.net.TLSClientHelloExtractor#isClientHello",
+        "kiekerPattern" : "private static boolean org.apache.tomcat.util.net.TLSClientHelloExtractor.isClientHello(java.nio.ByteBuffer)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.net.TLSClientHelloExtractor#isAllClientHelloAvailable",
+        "kiekerPattern" : "private static boolean org.apache.tomcat.util.net.TLSClientHelloExtractor.isAllClientHelloAvailable(java.nio.ByteBuffer)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.net.TLSClientHelloExtractor#isAvailable",
+          "kiekerPattern" : "private static boolean org.apache.tomcat.util.net.TLSClientHelloExtractor.isAvailable(java.nio.ByteBuffer,int)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.tomcat.util.net.TLSClientHelloExtractor#skipBytes",
+        "kiekerPattern" : "private static void org.apache.tomcat.util.net.TLSClientHelloExtractor.skipBytes(java.nio.ByteBuffer,int)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.res.StringManager#getString",
+        "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.res.StringManager.getString(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    } ]
+  } ]
+}

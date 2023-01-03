@@ -1,0 +1,85 @@
+{
+  "call" : "org.apache.tomcat.util.file.TestConfigFileLoader#test01",
+  "kiekerPattern" : "public void org.apache.tomcat.util.file.TestConfigFileLoader.test01()",
+  "otherKiekerPattern" : null,
+  "module" : "",
+  "children" : [ {
+    "call" : "org.apache.tomcat.util.file.TestConfigFileLoader#doTest",
+    "kiekerPattern" : "private void org.apache.tomcat.util.file.TestConfigFileLoader.doTest(java.lang.String)",
+    "otherKiekerPattern" : null,
+    "module" : "",
+    "children" : [ {
+      "call" : "org.apache.tomcat.util.file.ConfigFileLoader#getSource",
+      "kiekerPattern" : "public static final org.apache.tomcat.util.file.ConfigurationSource org.apache.tomcat.util.file.ConfigFileLoader.getSource()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    }, {
+      "call" : "org.apache.catalina.startup.CatalinaBaseConfigurationSource#getResource",
+      "kiekerPattern" : "public org.apache.catalina.startup.Resource org.apache.catalina.startup.CatalinaBaseConfigurationSource.getResource(java.lang.String)",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ {
+        "call" : "org.apache.catalina.webresources.TomcatURLStreamHandlerFactory#createURLStreamHandler",
+        "kiekerPattern" : "public java.net.URLStreamHandler org.apache.catalina.webresources.TomcatURLStreamHandlerFactory.createURLStreamHandler(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+          "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ {
+            "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+            "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+            "otherKiekerPattern" : null,
+            "module" : "",
+            "children" : [ {
+              "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+              "kiekerPattern" : "public static final synchronized org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String,java.util.Locale)",
+              "otherKiekerPattern" : null,
+              "module" : "",
+              "children" : [ {
+                "call" : "org.apache.tomcat.util.res.StringManager#<init>",
+                "kiekerPattern" : "private new org.apache.tomcat.util.res.StringManager.<init>(java.lang.String,java.util.Locale)",
+                "otherKiekerPattern" : null,
+                "module" : "",
+                "children" : [ ]
+              } ]
+            } ]
+          } ]
+        }, {
+          "call" : "org.apache.catalina.webresources.ClasspathURLStreamHandler#<init>",
+          "kiekerPattern" : "public new org.apache.catalina.webresources.ClasspathURLStreamHandler.<init>()",
+          "otherKiekerPattern" : null,
+          "module" : "",
+          "children" : [ ]
+        } ]
+      }, {
+        "call" : "org.apache.catalina.startup.CatalinaBaseConfigurationSource#getURIInternal",
+        "kiekerPattern" : "private java.net.URI org.apache.catalina.startup.CatalinaBaseConfigurationSource.getURIInternal(java.lang.String)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.catalina.webresources.ClasspathURLStreamHandler#openConnection",
+        "kiekerPattern" : "protected java.net.URLConnection org.apache.catalina.webresources.ClasspathURLStreamHandler.openConnection(java.net.URL)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      }, {
+        "call" : "org.apache.tomcat.util.file.ConfigurationSource$Resource#<init>",
+        "kiekerPattern" : "public new org.apache.tomcat.util.file.ConfigurationSource$Resource.<init>(org.apache.tomcat.util.file.ConfigurationSource,java.io.InputStream,java.net.URI)",
+        "otherKiekerPattern" : null,
+        "module" : "",
+        "children" : [ ]
+      } ]
+    }, {
+      "call" : "org.apache.tomcat.util.file.ConfigurationSource$Resource#getInputStream",
+      "kiekerPattern" : "public java.io.InputStream org.apache.tomcat.util.file.ConfigurationSource$Resource.getInputStream()",
+      "otherKiekerPattern" : null,
+      "module" : "",
+      "children" : [ ]
+    } ]
+  } ]
+}

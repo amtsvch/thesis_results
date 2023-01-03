@@ -1,0 +1,142 @@
+{
+  "measurementConfig" : {
+    "vms" : 100,
+    "earlyStop" : false,
+    "warmup" : 80,
+    "iterations" : 80,
+    "repetitions" : 100,
+    "logFullData" : true,
+    "useGC" : false,
+    "callSyncBetweenVMs" : true,
+    "waitTimeBetweenVMs" : 1000,
+    "maxLogSizeInMb" : 100,
+    "kiekerConfig" : {
+      "useKieker" : true,
+      "useSourceInstrumentation" : true,
+      "useSelectiveInstrumentation" : true,
+      "useAggregation" : true,
+      "useCircularQueue" : false,
+      "enableAdaptiveMonitoring" : false,
+      "adaptiveInstrumentation" : false,
+      "kiekerAggregationInterval" : 5000,
+      "record" : "DURATION",
+      "onlyOneCallRecording" : false,
+      "extractMethod" : false,
+      "traceSizeInMb" : 100,
+      "kiekerQueueSize" : 10000000,
+      "createDefaultConstructor" : true,
+      "kiekerWaitTime" : 5,
+      "excludeForTracing" : [ "new org.eclipse.jetty.logging.JettyLevel.<init>(..)", "* org.eclipse.jetty.logging.JettyLevel.*(..)", "*[] org.eclipse.jetty.logging.JettyLevel.*(..)", "*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "new org.eclipse.jetty.logging.JettyLoggerConfiguration.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "new org.eclipse.jetty.logging.JettyLoggingServiceProvider.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "new org.eclipse.jetty.logging.JettyLoggerFactory.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "new org.eclipse.jetty.logging.StdErrAppender.<init>(..)", "* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*[] org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "new org.eclipse.jetty.logging.Timestamp.<init>(..)", "* org.eclipse.jetty.logging.Timestamp.*(..)", "*[] org.eclipse.jetty.logging.Timestamp.*(..)", "*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "new org.eclipse.jetty.logging.Timestamp$Tick.<init>(..)", "* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*[] org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "new org.eclipse.jetty.logging.JettyLogger.<init>(..)", "* org.eclipse.jetty.logging.JettyLogger.*(..)", "*[] org.eclipse.jetty.logging.JettyLogger.*(..)", "*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)" ]
+    },
+    "saveAll" : true,
+    "javaVersion" : "11.0.17",
+    "measurementStrategy" : "PARALLEL",
+    "statisticsConfig" : {
+      "type1error" : 0.1,
+      "type2error" : 0.1,
+      "outlierFactor" : 3.29,
+      "statisticTest" : "MANN_WHITNEY_TEST"
+    },
+    "executionConfig" : {
+      "timeout" : 600000,
+      "redirectSubprocessOutputToFile" : true,
+      "useTieredCompilation" : false,
+      "removeSnapshots" : false,
+      "useAlternativeBuildfile" : false,
+      "excludeLog4jSlf4jImpl" : false,
+      "excludeLog4jToSlf4j" : false,
+      "executeBeforeClassInMeasurement" : false,
+      "clearMockitoCaches" : false,
+      "onlyMeasureWorkload" : false,
+      "showStart" : false,
+      "redirectToNull" : true,
+      "createDetailDebugFiles" : true,
+      "testExecutor" : "de.stro18.peass_ant.executor.AntTestExecutor",
+      "clazzFolders" : [ "java", "src/main/java", "webapps/examples/WEB-INF/classes" ],
+      "testClazzFolders" : [ "test" ]
+    },
+    "fixedCommitConfig" : {
+      "commit" : "43581c6908745c7d4cfa232ac45e22c37009e0d2",
+      "commitOld" : "719d428a6ced6a4559bbccb6addd74feed0622bc"
+    }
+  },
+  "causeConfig" : {
+    "splitAggregated" : true,
+    "minTime" : 0.1,
+    "ignoreEOIs" : true,
+    "rcaStrategy" : "UNTIL_SOURCE_CHANGE",
+    "levels" : 1,
+    "testCase" : {
+      "clazz" : "org.apache.tomcat.util.file.TestConfigFileLoader",
+      "method" : "test01",
+      "module" : "",
+      "params" : null
+    },
+    "propertyFolder" : "/home/matusevich/4-final/peass-ant/results/properties_tomcat"
+  },
+  "nodes" : {
+    "call" : "org.apache.tomcat.util.file.TestConfigFileLoader#test01",
+    "kiekerPattern" : "public void org.apache.tomcat.util.file.TestConfigFileLoader.test01()",
+    "otherKiekerPattern" : "public void org.apache.tomcat.util.file.TestConfigFileLoader.test01()",
+    "module" : "",
+    "statistic" : {
+      "meanOld" : 8534270.784722224,
+      "meanCurrent" : 6401202.104750004,
+      "deviationOld" : 375810.31942532194,
+      "deviationCurrent" : 569298.792943105,
+      "vms" : 99,
+      "callsOld" : 8000,
+      "calls" : 8000,
+      "tvalue" : 31.221768997137175
+    },
+    "childs" : [ {
+      "call" : "org.apache.tomcat.util.file.TestConfigFileLoader#doTest",
+      "kiekerPattern" : "private void org.apache.tomcat.util.file.TestConfigFileLoader.doTest(java.lang.String)",
+      "otherKiekerPattern" : "private void org.apache.tomcat.util.file.TestConfigFileLoader.doTest(java.lang.String)",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 8514376.760290405,
+        "meanCurrent" : 6383618.696374998,
+        "deviationOld" : 374721.8997886618,
+        "deviationCurrent" : 566396.116708236,
+        "vms" : 99,
+        "callsOld" : 8000,
+        "calls" : 8000,
+        "tvalue" : 31.32656865528827
+      },
+      "childs" : [ {
+        "call" : "org.apache.catalina.startup.CatalinaBaseConfigurationSource#getResource",
+        "kiekerPattern" : "public org.apache.catalina.startup.Resource org.apache.catalina.startup.CatalinaBaseConfigurationSource.getResource(java.lang.String)",
+        "otherKiekerPattern" : "public org.apache.catalina.startup.Resource org.apache.catalina.startup.CatalinaBaseConfigurationSource.getResource(java.lang.String)",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 8383145.486174244,
+          "meanCurrent" : 6258120.284250002,
+          "deviationOld" : 369717.5459926632,
+          "deviationCurrent" : 550070.576507251,
+          "vms" : 99,
+          "callsOld" : 8000,
+          "calls" : 8000,
+          "tvalue" : 32.012344594638435
+        },
+        "childs" : [ {
+          "call" : "org.apache.catalina.startup.CatalinaBaseConfigurationSource#getURI",
+          "kiekerPattern" : "public java.net.URI org.apache.catalina.startup.CatalinaBaseConfigurationSource.getURI(java.lang.String)",
+          "otherKiekerPattern" : "private java.net.URI org.apache.catalina.startup.CatalinaBaseConfigurationSource.getURIInternal(java.lang.String)",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 2354874.0586096942,
+            "meanCurrent" : 118398.13037499998,
+            "deviationOld" : 111643.48565675128,
+            "deviationCurrent" : 12396.33545001446,
+            "vms" : 99,
+            "callsOld" : 8000,
+            "calls" : 8000,
+            "tvalue" : 197.1224034694944
+          },
+          "childs" : [ ]
+        } ]
+      } ]
+    } ]
+  }
+}

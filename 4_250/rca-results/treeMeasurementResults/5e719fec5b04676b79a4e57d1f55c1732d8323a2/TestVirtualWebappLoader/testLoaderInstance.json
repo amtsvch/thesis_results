@@ -1,0 +1,1621 @@
+{
+  "measurementConfig" : {
+    "vms" : 100,
+    "earlyStop" : false,
+    "warmup" : 80,
+    "iterations" : 80,
+    "repetitions" : 100,
+    "logFullData" : true,
+    "useGC" : false,
+    "callSyncBetweenVMs" : true,
+    "waitTimeBetweenVMs" : 1000,
+    "maxLogSizeInMb" : 100,
+    "kiekerConfig" : {
+      "useKieker" : true,
+      "useSourceInstrumentation" : true,
+      "useSelectiveInstrumentation" : true,
+      "useAggregation" : true,
+      "useCircularQueue" : false,
+      "enableAdaptiveMonitoring" : false,
+      "adaptiveInstrumentation" : false,
+      "kiekerAggregationInterval" : 5000,
+      "record" : "DURATION",
+      "onlyOneCallRecording" : false,
+      "extractMethod" : false,
+      "traceSizeInMb" : 100,
+      "kiekerQueueSize" : 10000000,
+      "createDefaultConstructor" : true,
+      "kiekerWaitTime" : 5,
+      "excludeForTracing" : [ "new org.eclipse.jetty.logging.JettyLevel.<init>(..)", "* org.eclipse.jetty.logging.JettyLevel.*(..)", "*[] org.eclipse.jetty.logging.JettyLevel.*(..)", "*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLevel.*(..)", "new org.eclipse.jetty.logging.JettyLoggerConfiguration.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerConfiguration.*(..)", "new org.eclipse.jetty.logging.JettyLoggingServiceProvider.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggingServiceProvider.*(..)", "new org.eclipse.jetty.logging.JettyLoggerFactory.<init>(..)", "* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*[] org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLoggerFactory.*(..)", "new org.eclipse.jetty.logging.StdErrAppender.<init>(..)", "* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*[] org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.StdErrAppender.*(..)", "new org.eclipse.jetty.logging.Timestamp.<init>(..)", "* org.eclipse.jetty.logging.Timestamp.*(..)", "*[] org.eclipse.jetty.logging.Timestamp.*(..)", "*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp.*(..)", "new org.eclipse.jetty.logging.Timestamp$Tick.<init>(..)", "* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*[] org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.Timestamp$Tick.*(..)", "new org.eclipse.jetty.logging.JettyLogger.<init>(..)", "* org.eclipse.jetty.logging.JettyLogger.*(..)", "*[] org.eclipse.jetty.logging.JettyLogger.*(..)", "*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)", "*.*.*.*.* org.eclipse.jetty.logging.JettyLogger.*(..)" ]
+    },
+    "saveAll" : true,
+    "javaVersion" : "11.0.17",
+    "measurementStrategy" : "PARALLEL",
+    "statisticsConfig" : {
+      "type1error" : 0.1,
+      "type2error" : 0.1,
+      "outlierFactor" : 3.29,
+      "statisticTest" : "MANN_WHITNEY_TEST"
+    },
+    "executionConfig" : {
+      "timeout" : 600000,
+      "redirectSubprocessOutputToFile" : true,
+      "useTieredCompilation" : false,
+      "removeSnapshots" : false,
+      "useAlternativeBuildfile" : false,
+      "excludeLog4jSlf4jImpl" : false,
+      "excludeLog4jToSlf4j" : false,
+      "executeBeforeClassInMeasurement" : false,
+      "clearMockitoCaches" : false,
+      "onlyMeasureWorkload" : false,
+      "showStart" : false,
+      "redirectToNull" : true,
+      "createDetailDebugFiles" : true,
+      "testExecutor" : "de.stro18.peass_ant.executor.AntTestExecutor",
+      "clazzFolders" : [ "java", "src/main/java", "webapps/examples/WEB-INF/classes" ],
+      "testClazzFolders" : [ "test" ]
+    },
+    "fixedCommitConfig" : {
+      "commit" : "5e719fec5b04676b79a4e57d1f55c1732d8323a2",
+      "commitOld" : "39f3b06ae9f18d27d5f1620d34037e17394d03f3"
+    }
+  },
+  "causeConfig" : {
+    "splitAggregated" : true,
+    "minTime" : 0.1,
+    "ignoreEOIs" : true,
+    "rcaStrategy" : "UNTIL_SOURCE_CHANGE",
+    "levels" : 1,
+    "testCase" : {
+      "clazz" : "org.apache.catalina.loader.TestVirtualWebappLoader",
+      "method" : "testLoaderInstance",
+      "module" : "",
+      "params" : null
+    },
+    "propertyFolder" : "/home/matusevich/4-final/peass-ant/results/properties_tomcat"
+  },
+  "nodes" : {
+    "call" : "org.apache.catalina.loader.TestVirtualWebappLoader#testLoaderInstance",
+    "kiekerPattern" : "public void org.apache.catalina.loader.TestVirtualWebappLoader.testLoaderInstance()",
+    "otherKiekerPattern" : "public void org.apache.catalina.loader.TestVirtualWebappLoader.testLoaderInstance()",
+    "module" : "",
+    "statistic" : {
+      "meanOld" : 3.404137855293825E7,
+      "meanCurrent" : 1.1853136723490514E8,
+      "deviationOld" : 968598.5582887755,
+      "deviationCurrent" : 1950740.8060074283,
+      "vms" : 100,
+      "callsOld" : 8000,
+      "calls" : 8000,
+      "tvalue" : -387.9291940551957
+    },
+    "childs" : [ {
+      "call" : "org.apache.catalina.util.LifecycleBase#start",
+      "kiekerPattern" : "public final synchronized void org.apache.catalina.util.LifecycleBase.start()",
+      "otherKiekerPattern" : "public final synchronized void org.apache.catalina.util.LifecycleBase.start()",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 2601850.316228544,
+        "meanCurrent" : 6243585.036752168,
+        "deviationOld" : 134913.36592977395,
+        "deviationCurrent" : 103985.07114182736,
+        "vms" : 100,
+        "callsOld" : 8000,
+        "calls" : 56000,
+        "tvalue" : -213.7965420019117
+      },
+      "childs" : [ {
+        "call" : "org.apache.catalina.util.LifecycleBase#init",
+        "kiekerPattern" : "public final synchronized void org.apache.catalina.util.LifecycleBase.init()",
+        "otherKiekerPattern" : "public final synchronized void org.apache.catalina.util.LifecycleBase.init()",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 811638.5175222632,
+          "meanCurrent" : 1830527.8687130308,
+          "deviationOld" : 63726.69023672254,
+          "deviationCurrent" : 41699.4859215876,
+          "vms" : 99,
+          "callsOld" : 8000,
+          "calls" : 56000,
+          "tvalue" : -132.84167175015875
+        },
+        "childs" : [ {
+          "call" : "org.apache.catalina.util.LifecycleMBeanBase#initInternal",
+          "kiekerPattern" : "protected void org.apache.catalina.util.LifecycleMBeanBase.initInternal()",
+          "otherKiekerPattern" : "protected void org.apache.catalina.util.LifecycleMBeanBase.initInternal()",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 789928.5528792958,
+            "meanCurrent" : 1398135.6355467294,
+            "deviationOld" : 63239.019698842436,
+            "deviationCurrent" : 58449.2618036488,
+            "vms" : 98,
+            "callsOld" : 8000,
+            "calls" : 24000,
+            "tvalue" : -70.08215545150597
+          },
+          "childs" : [ {
+            "call" : "org.apache.catalina.util.LifecycleMBeanBase#register",
+            "kiekerPattern" : "protected final javax.management.ObjectName org.apache.catalina.util.LifecycleMBeanBase.register(java.lang.Object,java.lang.String)",
+            "otherKiekerPattern" : "protected final javax.management.ObjectName org.apache.catalina.util.LifecycleMBeanBase.register(java.lang.Object,java.lang.String)",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : 734790.5071669328,
+              "meanCurrent" : 964134.4619933687,
+              "deviationOld" : 58853.464003606554,
+              "deviationCurrent" : 33503.757539979124,
+              "vms" : 98,
+              "callsOld" : 8000,
+              "calls" : 40000,
+              "tvalue" : -33.566791924379245
+            },
+            "childs" : [ {
+              "call" : "org.apache.catalina.util.LifecycleMBeanBase#getDomain",
+              "kiekerPattern" : "public final java.lang.String org.apache.catalina.util.LifecycleMBeanBase.getDomain()",
+              "otherKiekerPattern" : "public final java.lang.String org.apache.catalina.util.LifecycleMBeanBase.getDomain()",
+              "module" : "",
+              "statistic" : {
+                "meanOld" : 58586.94395527626,
+                "meanCurrent" : 31802.11106707931,
+                "deviationOld" : 8466.026876493564,
+                "deviationCurrent" : 5011.5960734108085,
+                "vms" : 98,
+                "callsOld" : 72000,
+                "calls" : 136000,
+                "tvalue" : 26.98716785856731
+              },
+              "childs" : [ {
+                "call" : "org.apache.catalina.loader.WebappLoader#getDomainInternal",
+                "kiekerPattern" : "protected java.lang.String org.apache.catalina.loader.WebappLoader.getDomainInternal()",
+                "otherKiekerPattern" : "protected java.lang.String org.apache.catalina.loader.WebappLoader.getDomainInternal()",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : 64080.10384957687,
+                  "meanCurrent" : 17651.127678206798,
+                  "deviationOld" : 3000.7836376893774,
+                  "deviationCurrent" : 1324.0813790878444,
+                  "vms" : 98,
+                  "callsOld" : 8000,
+                  "calls" : 8000,
+                  "tvalue" : 140.7285693448189
+                },
+                "childs" : [ {
+                  "call" : "org.apache.catalina.util.LifecycleMBeanBase#getDomain",
+                  "kiekerPattern" : "public final java.lang.String org.apache.catalina.util.LifecycleMBeanBase.getDomain()",
+                  "otherKiekerPattern" : "public final java.lang.String org.apache.catalina.util.LifecycleMBeanBase.getDomain()",
+                  "module" : "",
+                  "statistic" : {
+                    "meanOld" : 58586.94395527626,
+                    "meanCurrent" : 31802.11106707931,
+                    "deviationOld" : 8466.026876493564,
+                    "deviationCurrent" : 5011.5960734108085,
+                    "vms" : 98,
+                    "callsOld" : 72000,
+                    "calls" : 136000,
+                    "tvalue" : 26.98716785856731
+                  },
+                  "childs" : [ {
+                    "call" : "org.apache.catalina.core.ContainerBase#getDomainInternal",
+                    "kiekerPattern" : "protected java.lang.String org.apache.catalina.core.ContainerBase.getDomainInternal()",
+                    "otherKiekerPattern" : "ADDED",
+                    "module" : "",
+                    "statistic" : {
+                      "meanOld" : "NaN",
+                      "meanCurrent" : "NaN",
+                      "deviationOld" : "NaN",
+                      "deviationCurrent" : "NaN",
+                      "vms" : 0,
+                      "callsOld" : 0,
+                      "calls" : 0,
+                      "tvalue" : -1.0,
+                      "change" : true
+                    },
+                    "childs" : [ ]
+                  } ]
+                } ]
+              } ]
+            }, {
+              "call" : "org.apache.juli.logging.LogFactory#getLog",
+              "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+              "otherKiekerPattern" : "ADDED",
+              "module" : "",
+              "statistic" : {
+                "meanOld" : "NaN",
+                "meanCurrent" : "NaN",
+                "deviationOld" : "NaN",
+                "deviationCurrent" : "NaN",
+                "vms" : 0,
+                "callsOld" : 0,
+                "calls" : 0,
+                "tvalue" : -1.0,
+                "change" : true
+              },
+              "childs" : [ ]
+            }, {
+              "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+              "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+              "otherKiekerPattern" : "ADDED",
+              "module" : "",
+              "statistic" : {
+                "meanOld" : "NaN",
+                "meanCurrent" : "NaN",
+                "deviationOld" : "NaN",
+                "deviationCurrent" : "NaN",
+                "vms" : 0,
+                "callsOld" : 0,
+                "calls" : 0,
+                "tvalue" : -1.0,
+                "change" : true
+              },
+              "childs" : [ ]
+            }, {
+              "call" : "org.apache.tomcat.util.modeler.Registry#getRegistry",
+              "kiekerPattern" : "public static synchronized org.apache.tomcat.util.modeler.Registry org.apache.tomcat.util.modeler.Registry.getRegistry(java.lang.Object,java.lang.Object)",
+              "otherKiekerPattern" : "public static synchronized org.apache.tomcat.util.modeler.Registry org.apache.tomcat.util.modeler.Registry.getRegistry(java.lang.Object,java.lang.Object)",
+              "module" : "",
+              "statistic" : {
+                "meanOld" : 3622.237614413766,
+                "meanCurrent" : 3484.6877199571127,
+                "deviationOld" : 137.04372958491138,
+                "deviationCurrent" : 177.71813702154998,
+                "vms" : 99,
+                "callsOld" : 280100,
+                "calls" : 296100,
+                "tvalue" : 6.09838230562722
+              },
+              "childs" : [ {
+                "call" : "org.apache.tomcat.util.compat.JreCompat#isGraalAvailable",
+                "kiekerPattern" : "public static boolean org.apache.tomcat.util.compat.JreCompat.isGraalAvailable()",
+                "otherKiekerPattern" : "ADDED",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : "NaN",
+                  "meanCurrent" : "NaN",
+                  "deviationOld" : "NaN",
+                  "deviationCurrent" : "NaN",
+                  "vms" : 0,
+                  "callsOld" : 0,
+                  "calls" : 0,
+                  "tvalue" : -1.0,
+                  "change" : true
+                },
+                "childs" : [ ]
+              }, {
+                "call" : "org.apache.tomcat.util.modeler.Registry#<init>",
+                "kiekerPattern" : "protected new org.apache.tomcat.util.modeler.Registry.<init>()",
+                "otherKiekerPattern" : "ADDED",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : "NaN",
+                  "meanCurrent" : "NaN",
+                  "deviationOld" : "NaN",
+                  "deviationCurrent" : "NaN",
+                  "vms" : 0,
+                  "callsOld" : 0,
+                  "calls" : 0,
+                  "tvalue" : -1.0,
+                  "change" : true
+                },
+                "childs" : [ ]
+              } ]
+            }, {
+              "call" : "org.apache.tomcat.util.modeler.Registry#registerComponent",
+              "kiekerPattern" : "public void org.apache.tomcat.util.modeler.Registry.registerComponent(java.lang.Object,javax.management.ObjectName,java.lang.String)",
+              "otherKiekerPattern" : "public void org.apache.tomcat.util.modeler.Registry.registerComponent(java.lang.Object,javax.management.ObjectName,java.lang.String)",
+              "module" : "",
+              "statistic" : {
+                "meanOld" : 363927.3301776129,
+                "meanCurrent" : 488313.260016779,
+                "deviationOld" : 45703.31503686317,
+                "deviationCurrent" : 22399.808505520006,
+                "vms" : 99,
+                "callsOld" : 8000,
+                "calls" : 56000,
+                "tvalue" : -24.239941777908236
+              },
+              "childs" : [ {
+                "call" : "org.apache.tomcat.util.modeler.Registry#findManagedBean",
+                "kiekerPattern" : "public org.apache.tomcat.util.modeler.ManagedBean org.apache.tomcat.util.modeler.Registry.findManagedBean(java.lang.Object,java.lang.Class,java.lang.String)",
+                "otherKiekerPattern" : "public org.apache.tomcat.util.modeler.ManagedBean org.apache.tomcat.util.modeler.Registry.findManagedBean(java.lang.Object,java.lang.Class,java.lang.String)",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : 29026.88029411342,
+                  "meanCurrent" : 108615.36258733286,
+                  "deviationOld" : 3682.5943153460707,
+                  "deviationCurrent" : 16349.752140937871,
+                  "vms" : 99,
+                  "callsOld" : 8000,
+                  "calls" : 56000,
+                  "tvalue" : -47.25095438888141
+                },
+                "childs" : [ {
+                  "call" : "org.apache.tomcat.util.modeler.Registry#findDescriptor",
+                  "kiekerPattern" : "private void org.apache.tomcat.util.modeler.Registry.findDescriptor(java.lang.Class,java.lang.String)",
+                  "otherKiekerPattern" : "private void org.apache.tomcat.util.modeler.Registry.findDescriptor(java.lang.Class,java.lang.String)",
+                  "module" : "",
+                  "statistic" : {
+                    "meanOld" : "NaN",
+                    "meanCurrent" : "NaN",
+                    "deviationOld" : "NaN",
+                    "deviationCurrent" : "NaN",
+                    "vms" : 0,
+                    "callsOld" : 0,
+                    "calls" : 0,
+                    "tvalue" : -1.0
+                  },
+                  "childs" : [ {
+                    "call" : "org.apache.tomcat.util.modeler.Registry#loadDescriptors",
+                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.Registry.loadDescriptors(java.lang.String,java.lang.ClassLoader)",
+                    "otherKiekerPattern" : "public void org.apache.tomcat.util.modeler.Registry.loadDescriptors(java.lang.String,java.lang.ClassLoader)",
+                    "module" : "",
+                    "statistic" : {
+                      "meanOld" : "NaN",
+                      "meanCurrent" : "NaN",
+                      "deviationOld" : "NaN",
+                      "deviationCurrent" : "NaN",
+                      "vms" : 0,
+                      "callsOld" : 0,
+                      "calls" : 0,
+                      "tvalue" : -1.0
+                    },
+                    "childs" : [ {
+                      "call" : "org.apache.tomcat.util.modeler.Registry#load",
+                      "kiekerPattern" : "public java.util.List org.apache.tomcat.util.modeler.Registry.load(java.lang.String,java.lang.Object,java.lang.String)",
+                      "otherKiekerPattern" : "public java.util.List org.apache.tomcat.util.modeler.Registry.load(java.lang.String,java.lang.Object,java.lang.String)",
+                      "module" : "",
+                      "statistic" : {
+                        "meanOld" : "NaN",
+                        "meanCurrent" : "NaN",
+                        "deviationOld" : "NaN",
+                        "deviationCurrent" : "NaN",
+                        "vms" : 0,
+                        "callsOld" : 0,
+                        "calls" : 0,
+                        "tvalue" : -1.0
+                      },
+                      "childs" : [ {
+                        "call" : "org.apache.tomcat.util.modeler.Registry#getModelerSource",
+                        "kiekerPattern" : "private org.apache.tomcat.util.modeler.modules.ModelerSource org.apache.tomcat.util.modeler.Registry.getModelerSource(java.lang.String)",
+                        "otherKiekerPattern" : "private org.apache.tomcat.util.modeler.modules.ModelerSource org.apache.tomcat.util.modeler.Registry.getModelerSource(java.lang.String)",
+                        "module" : "",
+                        "statistic" : {
+                          "meanOld" : "NaN",
+                          "meanCurrent" : "NaN",
+                          "deviationOld" : "NaN",
+                          "deviationCurrent" : "NaN",
+                          "vms" : 0,
+                          "callsOld" : 0,
+                          "calls" : 0,
+                          "tvalue" : -1.0
+                        },
+                        "childs" : [ {
+                          "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                          "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+                          "otherKiekerPattern" : "ADDED",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : "NaN",
+                            "meanCurrent" : "NaN",
+                            "deviationOld" : "NaN",
+                            "deviationCurrent" : "NaN",
+                            "vms" : 0,
+                            "callsOld" : 0,
+                            "calls" : 0,
+                            "tvalue" : -1.0,
+                            "change" : true
+                          },
+                          "childs" : [ ]
+                        }, {
+                          "call" : "org.apache.juli.logging.LogFactory#getLog",
+                          "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+                          "otherKiekerPattern" : "ADDED",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : "NaN",
+                            "meanCurrent" : "NaN",
+                            "deviationOld" : "NaN",
+                            "deviationCurrent" : "NaN",
+                            "vms" : 0,
+                            "callsOld" : 0,
+                            "calls" : 0,
+                            "tvalue" : -1.0,
+                            "change" : true
+                          },
+                          "childs" : [ ]
+                        } ]
+                      }, {
+                        "call" : "org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource#loadDescriptors",
+                        "kiekerPattern" : "public java.util.List org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource.loadDescriptors(org.apache.tomcat.util.modeler.Registry,java.lang.String,java.lang.Object)",
+                        "otherKiekerPattern" : "public java.util.List org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource.loadDescriptors(org.apache.tomcat.util.modeler.Registry,java.lang.String,java.lang.Object)",
+                        "module" : "",
+                        "statistic" : {
+                          "meanOld" : "NaN",
+                          "meanCurrent" : "NaN",
+                          "deviationOld" : "NaN",
+                          "deviationCurrent" : "NaN",
+                          "vms" : 0,
+                          "callsOld" : 0,
+                          "calls" : 0,
+                          "tvalue" : -1.0
+                        },
+                        "childs" : [ {
+                          "call" : "org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource#execute",
+                          "kiekerPattern" : "public void org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource.execute()",
+                          "otherKiekerPattern" : "public void org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource.execute()",
+                          "module" : "",
+                          "statistic" : {
+                            "meanOld" : "NaN",
+                            "meanCurrent" : "NaN",
+                            "deviationOld" : "NaN",
+                            "deviationCurrent" : "NaN",
+                            "vms" : 0,
+                            "callsOld" : 0,
+                            "calls" : 0,
+                            "tvalue" : -1.0
+                          },
+                          "childs" : [ {
+                            "call" : "org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource#createDigester",
+                            "kiekerPattern" : "private static org.apache.tomcat.util.digester.Digester org.apache.tomcat.util.modeler.modules.MbeansDescriptorsDigesterSource.createDigester()",
+                            "otherKiekerPattern" : "ADDED",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : "NaN",
+                              "meanCurrent" : "NaN",
+                              "deviationOld" : "NaN",
+                              "deviationCurrent" : "NaN",
+                              "vms" : 0,
+                              "callsOld" : 0,
+                              "calls" : 0,
+                              "tvalue" : -1.0,
+                              "change" : true
+                            },
+                            "childs" : [ ]
+                          }, {
+                            "call" : "org.apache.tomcat.util.digester.Digester#parse",
+                            "kiekerPattern" : "public java.lang.Object org.apache.tomcat.util.digester.Digester.parse(java.io.InputStream)",
+                            "otherKiekerPattern" : "public java.lang.Object org.apache.tomcat.util.digester.Digester.parse(java.io.InputStream)",
+                            "module" : "",
+                            "statistic" : {
+                              "meanOld" : "NaN",
+                              "meanCurrent" : "NaN",
+                              "deviationOld" : "NaN",
+                              "deviationCurrent" : "NaN",
+                              "vms" : 0,
+                              "callsOld" : 0,
+                              "calls" : 0,
+                              "tvalue" : -1.0
+                            },
+                            "childs" : [ {
+                              "call" : "org.apache.tomcat.util.digester.Digester#getXMLReader",
+                              "kiekerPattern" : "public org.xml.sax.XMLReader org.apache.tomcat.util.digester.Digester.getXMLReader()",
+                              "otherKiekerPattern" : "public org.xml.sax.XMLReader org.apache.tomcat.util.digester.Digester.getXMLReader()",
+                              "module" : "",
+                              "statistic" : {
+                                "meanOld" : "NaN",
+                                "meanCurrent" : "NaN",
+                                "deviationOld" : "NaN",
+                                "deviationCurrent" : "NaN",
+                                "vms" : 0,
+                                "callsOld" : 0,
+                                "calls" : 0,
+                                "tvalue" : -1.0
+                              },
+                              "childs" : [ {
+                                "call" : "org.apache.tomcat.util.digester.Digester#getParser",
+                                "kiekerPattern" : "public javax.xml.parsers.SAXParser org.apache.tomcat.util.digester.Digester.getParser()",
+                                "otherKiekerPattern" : "ADDED",
+                                "module" : "",
+                                "statistic" : {
+                                  "meanOld" : "NaN",
+                                  "meanCurrent" : "NaN",
+                                  "deviationOld" : "NaN",
+                                  "deviationCurrent" : "NaN",
+                                  "vms" : 0,
+                                  "callsOld" : 0,
+                                  "calls" : 0,
+                                  "tvalue" : -1.0,
+                                  "change" : true
+                                },
+                                "childs" : [ ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#startElement",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.startElement(java.lang.String,java.lang.String,java.lang.String,org.xml.sax.Attributes)",
+                              "otherKiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.startElement(java.lang.String,java.lang.String,java.lang.String,org.xml.sax.Attributes)",
+                              "module" : "",
+                              "statistic" : {
+                                "meanOld" : "NaN",
+                                "meanCurrent" : "NaN",
+                                "deviationOld" : "NaN",
+                                "deviationCurrent" : "NaN",
+                                "vms" : 0,
+                                "callsOld" : 0,
+                                "calls" : 0,
+                                "tvalue" : -1.0
+                              },
+                              "childs" : [ {
+                                "call" : "org.apache.tomcat.util.digester.ObjectCreateRule#begin",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.ObjectCreateRule.begin(java.lang.String,java.lang.String,org.xml.sax.Attributes)",
+                                "otherKiekerPattern" : "public void org.apache.tomcat.util.digester.ObjectCreateRule.begin(java.lang.String,java.lang.String,org.xml.sax.Attributes)",
+                                "module" : "",
+                                "statistic" : {
+                                  "meanOld" : "NaN",
+                                  "meanCurrent" : "NaN",
+                                  "deviationOld" : "NaN",
+                                  "deviationCurrent" : "NaN",
+                                  "vms" : 0,
+                                  "callsOld" : 0,
+                                  "calls" : 0,
+                                  "tvalue" : -1.0
+                                },
+                                "childs" : [ {
+                                  "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+                                  "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.Class)",
+                                  "otherKiekerPattern" : "ADDED",
+                                  "module" : "",
+                                  "statistic" : {
+                                    "meanOld" : "NaN",
+                                    "meanCurrent" : "NaN",
+                                    "deviationOld" : "NaN",
+                                    "deviationCurrent" : "NaN",
+                                    "vms" : 0,
+                                    "callsOld" : 0,
+                                    "calls" : 0,
+                                    "tvalue" : -1.0,
+                                    "change" : true
+                                  },
+                                  "childs" : [ ]
+                                }, {
+                                  "call" : "org.apache.tomcat.util.modeler.ParameterInfo#<init>",
+                                  "kiekerPattern" : "public new org.apache.tomcat.util.modeler.ParameterInfo.<init>()",
+                                  "otherKiekerPattern" : "ADDED",
+                                  "module" : "",
+                                  "statistic" : {
+                                    "meanOld" : "NaN",
+                                    "meanCurrent" : "NaN",
+                                    "deviationOld" : "NaN",
+                                    "deviationCurrent" : "NaN",
+                                    "vms" : 0,
+                                    "callsOld" : 0,
+                                    "calls" : 0,
+                                    "tvalue" : -1.0,
+                                    "change" : true
+                                  },
+                                  "childs" : [ ]
+                                } ]
+                              }, {
+                                "call" : "org.apache.tomcat.util.digester.SetPropertiesRule#begin",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.SetPropertiesRule.begin(java.lang.String,java.lang.String,org.xml.sax.Attributes)",
+                                "otherKiekerPattern" : "public void org.apache.tomcat.util.digester.SetPropertiesRule.begin(java.lang.String,java.lang.String,org.xml.sax.Attributes)",
+                                "module" : "",
+                                "statistic" : {
+                                  "meanOld" : "NaN",
+                                  "meanCurrent" : "NaN",
+                                  "deviationOld" : "NaN",
+                                  "deviationCurrent" : "NaN",
+                                  "vms" : 0,
+                                  "callsOld" : 0,
+                                  "calls" : 0,
+                                  "tvalue" : -1.0
+                                },
+                                "childs" : [ {
+                                  "call" : "org.apache.tomcat.util.IntrospectionUtils#setProperty",
+                                  "kiekerPattern" : "public static boolean org.apache.tomcat.util.IntrospectionUtils.setProperty(java.lang.Object,java.lang.String,java.lang.String,boolean,java.lang.StringBuilder)",
+                                  "otherKiekerPattern" : "public static boolean org.apache.tomcat.util.IntrospectionUtils.setProperty(java.lang.Object,java.lang.String,java.lang.String,boolean,java.lang.StringBuilder)",
+                                  "module" : "",
+                                  "statistic" : {
+                                    "meanOld" : 757487.5077183954,
+                                    "meanCurrent" : 793536.6489851595,
+                                    "deviationOld" : 50562.42094889554,
+                                    "deviationCurrent" : 41698.02624466633,
+                                    "vms" : 99,
+                                    "callsOld" : 40200,
+                                    "calls" : 40300,
+                                    "tvalue" : -5.4673541065638025
+                                  },
+                                  "childs" : [ {
+                                    "call" : "org.apache.tomcat.util.modeler.ManagedBean#setClassName",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.ManagedBean.setClassName(java.lang.String)",
+                                    "otherKiekerPattern" : "ADDED",
+                                    "module" : "",
+                                    "statistic" : {
+                                      "meanOld" : "NaN",
+                                      "meanCurrent" : "NaN",
+                                      "deviationOld" : "NaN",
+                                      "deviationCurrent" : "NaN",
+                                      "vms" : 0,
+                                      "callsOld" : 0,
+                                      "calls" : 0,
+                                      "tvalue" : -1.0,
+                                      "change" : true
+                                    },
+                                    "childs" : [ ]
+                                  } ]
+                                } ]
+                              } ]
+                            }, {
+                              "call" : "org.apache.tomcat.util.digester.Digester#endElement",
+                              "kiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.endElement(java.lang.String,java.lang.String,java.lang.String)",
+                              "otherKiekerPattern" : "public void org.apache.tomcat.util.digester.Digester.endElement(java.lang.String,java.lang.String,java.lang.String)",
+                              "module" : "",
+                              "statistic" : {
+                                "meanOld" : "NaN",
+                                "meanCurrent" : "NaN",
+                                "deviationOld" : "NaN",
+                                "deviationCurrent" : "NaN",
+                                "vms" : 0,
+                                "callsOld" : 0,
+                                "calls" : 0,
+                                "tvalue" : -1.0
+                              },
+                              "childs" : [ {
+                                "call" : "org.apache.tomcat.util.digester.SetNextRule#end",
+                                "kiekerPattern" : "public void org.apache.tomcat.util.digester.SetNextRule.end(java.lang.String,java.lang.String)",
+                                "otherKiekerPattern" : "public void org.apache.tomcat.util.digester.SetNextRule.end(java.lang.String,java.lang.String)",
+                                "module" : "",
+                                "statistic" : {
+                                  "meanOld" : "NaN",
+                                  "meanCurrent" : "NaN",
+                                  "deviationOld" : "NaN",
+                                  "deviationCurrent" : "NaN",
+                                  "vms" : 0,
+                                  "callsOld" : 0,
+                                  "calls" : 0,
+                                  "tvalue" : -1.0
+                                },
+                                "childs" : [ {
+                                  "call" : "org.apache.tomcat.util.IntrospectionUtils#callMethod1",
+                                  "kiekerPattern" : "public static java.lang.Object org.apache.tomcat.util.IntrospectionUtils.callMethod1(java.lang.Object,java.lang.String,java.lang.Object,java.lang.String,java.lang.ClassLoader)",
+                                  "otherKiekerPattern" : "public static java.lang.Object org.apache.tomcat.util.IntrospectionUtils.callMethod1(java.lang.Object,java.lang.String,java.lang.Object,java.lang.String,java.lang.ClassLoader)",
+                                  "module" : "",
+                                  "statistic" : {
+                                    "meanOld" : "NaN",
+                                    "meanCurrent" : "NaN",
+                                    "deviationOld" : "NaN",
+                                    "deviationCurrent" : "NaN",
+                                    "vms" : 0,
+                                    "callsOld" : 0,
+                                    "calls" : 0,
+                                    "tvalue" : -1.0
+                                  },
+                                  "childs" : [ {
+                                    "call" : "org.apache.tomcat.util.modeler.ManagedBean#addOperation",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.ManagedBean.addOperation(org.apache.tomcat.util.modeler.OperationInfo)",
+                                    "otherKiekerPattern" : "public void org.apache.tomcat.util.modeler.ManagedBean.addOperation(org.apache.tomcat.util.modeler.OperationInfo)",
+                                    "module" : "",
+                                    "statistic" : {
+                                      "meanOld" : "NaN",
+                                      "meanCurrent" : "NaN",
+                                      "deviationOld" : "NaN",
+                                      "deviationCurrent" : "NaN",
+                                      "vms" : 0,
+                                      "callsOld" : 0,
+                                      "calls" : 0,
+                                      "tvalue" : -1.0
+                                    },
+                                    "childs" : [ {
+                                      "call" : "org.apache.tomcat.util.modeler.ManagedBean#createOperationKey",
+                                      "kiekerPattern" : "private java.lang.String org.apache.tomcat.util.modeler.ManagedBean.createOperationKey(org.apache.tomcat.util.modeler.OperationInfo)",
+                                      "otherKiekerPattern" : "private java.lang.String org.apache.tomcat.util.modeler.ManagedBean.createOperationKey(org.apache.tomcat.util.modeler.OperationInfo)",
+                                      "module" : "",
+                                      "statistic" : {
+                                        "meanOld" : "NaN",
+                                        "meanCurrent" : "NaN",
+                                        "deviationOld" : "NaN",
+                                        "deviationCurrent" : "NaN",
+                                        "vms" : 0,
+                                        "callsOld" : 0,
+                                        "calls" : 0,
+                                        "tvalue" : -1.0
+                                      },
+                                      "childs" : [ {
+                                        "call" : "org.apache.tomcat.util.buf.StringUtils#join",
+                                        "kiekerPattern" : "public static void org.apache.tomcat.util.buf.StringUtils.join(org.apache.tomcat.util.buf.T[],char,java.util.function.Function,java.lang.StringBuilder)",
+                                        "otherKiekerPattern" : "public static void org.apache.tomcat.util.buf.StringUtils.join(org.apache.tomcat.util.buf.T[],char,java.util.function.Function,java.lang.StringBuilder)",
+                                        "module" : "",
+                                        "statistic" : {
+                                          "meanOld" : "NaN",
+                                          "meanCurrent" : "NaN",
+                                          "deviationOld" : "NaN",
+                                          "deviationCurrent" : "NaN",
+                                          "vms" : 0,
+                                          "callsOld" : 0,
+                                          "calls" : 0,
+                                          "tvalue" : -1.0
+                                        },
+                                        "childs" : [ {
+                                          "call" : "org.apache.tomcat.util.buf.StringUtils#join",
+                                          "kiekerPattern" : "public static void org.apache.tomcat.util.buf.StringUtils.join(java.lang.Iterable,char,java.util.function.Function,java.lang.StringBuilder)",
+                                          "otherKiekerPattern" : "public static void org.apache.tomcat.util.buf.StringUtils.join(java.lang.Iterable,char,java.util.function.Function,java.lang.StringBuilder)",
+                                          "module" : "",
+                                          "statistic" : {
+                                            "meanOld" : "NaN",
+                                            "meanCurrent" : "NaN",
+                                            "deviationOld" : "NaN",
+                                            "deviationCurrent" : "NaN",
+                                            "vms" : 0,
+                                            "callsOld" : 0,
+                                            "calls" : 0,
+                                            "tvalue" : -1.0
+                                          },
+                                          "childs" : [ {
+                                            "call" : "org.apache.tomcat.util.modeler.FeatureInfo#getType",
+                                            "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.modeler.FeatureInfo.getType()",
+                                            "otherKiekerPattern" : "ADDED",
+                                            "module" : "",
+                                            "statistic" : {
+                                              "meanOld" : "NaN",
+                                              "meanCurrent" : "NaN",
+                                              "deviationOld" : "NaN",
+                                              "deviationCurrent" : "NaN",
+                                              "vms" : 0,
+                                              "callsOld" : 0,
+                                              "calls" : 0,
+                                              "tvalue" : -1.0,
+                                              "change" : true
+                                            },
+                                            "childs" : [ ]
+                                          } ]
+                                        } ]
+                                      } ]
+                                    } ]
+                                  }, {
+                                    "call" : "org.apache.tomcat.util.modeler.OperationInfo#addParameter",
+                                    "kiekerPattern" : "public void org.apache.tomcat.util.modeler.OperationInfo.addParameter(org.apache.tomcat.util.modeler.ParameterInfo)",
+                                    "otherKiekerPattern" : "ADDED",
+                                    "module" : "",
+                                    "statistic" : {
+                                      "meanOld" : "NaN",
+                                      "meanCurrent" : "NaN",
+                                      "deviationOld" : "NaN",
+                                      "deviationCurrent" : "NaN",
+                                      "vms" : 0,
+                                      "callsOld" : 0,
+                                      "calls" : 0,
+                                      "tvalue" : -1.0,
+                                      "change" : true
+                                    },
+                                    "childs" : [ ]
+                                  } ]
+                                } ]
+                              } ]
+                            } ]
+                          } ]
+                        } ]
+                      } ]
+                    } ]
+                  } ]
+                } ]
+              }, {
+                "call" : "org.apache.tomcat.util.modeler.Registry#getMBeanServer",
+                "kiekerPattern" : "public javax.management.MBeanServer org.apache.tomcat.util.modeler.Registry.getMBeanServer()",
+                "otherKiekerPattern" : "public javax.management.MBeanServer org.apache.tomcat.util.modeler.Registry.getMBeanServer()",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : 3822.936662668864,
+                  "meanCurrent" : 3165.702203036278,
+                  "deviationOld" : 245.03463549711927,
+                  "deviationCurrent" : 166.10653680357873,
+                  "vms" : 99,
+                  "callsOld" : 72000,
+                  "calls" : 216000,
+                  "tvalue" : 22.166448182085386
+                },
+                "childs" : [ {
+                  "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
+                  "kiekerPattern" : "public final boolean org.apache.juli.logging.DirectJDKLog.isDebugEnabled()",
+                  "otherKiekerPattern" : "ADDED",
+                  "module" : "",
+                  "statistic" : {
+                    "meanOld" : "NaN",
+                    "meanCurrent" : "NaN",
+                    "deviationOld" : "NaN",
+                    "deviationCurrent" : "NaN",
+                    "vms" : 0,
+                    "callsOld" : 0,
+                    "calls" : 0,
+                    "tvalue" : -1.0,
+                    "change" : true
+                  },
+                  "childs" : [ ]
+                } ]
+              } ]
+            } ]
+          } ]
+        } ]
+      }, {
+        "call" : "org.apache.catalina.loader.WebappLoader#startInternal",
+        "kiekerPattern" : "protected void org.apache.catalina.loader.WebappLoader.startInternal()",
+        "otherKiekerPattern" : "protected void org.apache.catalina.loader.WebappLoader.startInternal()",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 1739961.827864681,
+          "meanCurrent" : 6521015.6462117145,
+          "deviationOld" : 99905.45153741786,
+          "deviationCurrent" : 263808.2157982346,
+          "vms" : 99,
+          "callsOld" : 8000,
+          "calls" : 8000,
+          "tvalue" : -169.37838274541636
+        },
+        "childs" : [ {
+          "call" : "org.apache.tomcat.util.res.StringManager#getString",
+          "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.res.StringManager.getString(java.lang.String,java.lang.Object)",
+          "otherKiekerPattern" : "private org.apache.catalina.loader.WebappClassLoaderBase org.apache.catalina.loader.WebappLoader.createClassLoader()",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 296643.70000142406,
+            "meanCurrent" : 6236.923424105813,
+            "deviationOld" : 25488.305510651746,
+            "deviationCurrent" : 753.3949262658911,
+            "vms" : 98,
+            "callsOld" : 40000,
+            "calls" : 8000,
+            "tvalue" : 112.74289460712343
+          },
+          "childs" : [ ]
+        }, {
+          "call" : "org.apache.juli.logging.DirectJDKLog#info",
+          "kiekerPattern" : "public final void org.apache.juli.logging.DirectJDKLog.info(java.lang.Object)",
+          "otherKiekerPattern" : "public void org.apache.catalina.loader.WebappClassLoaderBase.setResources(org.apache.catalina.WebResourceRoot)",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 1551872.9240828892,
+            "meanCurrent" : 6902.070571675391,
+            "deviationOld" : 55148.63836648121,
+            "deviationCurrent" : 716.8815695876333,
+            "vms" : 99,
+            "callsOld" : 40000,
+            "calls" : 8000,
+            "tvalue" : 280.1225417380717
+          },
+          "childs" : [ ]
+        }, {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public void org.apache.catalina.loader.WebappClassLoaderBase.setDelegate(boolean)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        }, {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "private void org.apache.catalina.loader.WebappLoader.setClassPath()",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        }, {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "private void org.apache.catalina.loader.WebappLoader.setPermissions()",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        }, {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public void org.apache.catalina.loader.WebappClassLoaderBase.start()",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        }, {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public java.lang.String org.apache.catalina.core.ContainerBase.getName()",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        }, {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public final java.lang.String org.apache.catalina.util.LifecycleMBeanBase.getDomain()",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        }, {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public org.apache.catalina.Container org.apache.catalina.core.ContainerBase.getParent()",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        }, {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public java.lang.String org.apache.catalina.core.StandardHost.getName()",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        }, {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public static synchronized org.apache.tomcat.util.modeler.Registry org.apache.tomcat.util.modeler.Registry.getRegistry(java.lang.Object,java.lang.Object)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        }, {
+          "call" : "ADDED",
+          "kiekerPattern" : "ADDED",
+          "otherKiekerPattern" : "public void org.apache.tomcat.util.modeler.Registry.registerComponent(java.lang.Object,javax.management.ObjectName,java.lang.String)",
+          "statistic" : {
+            "meanOld" : "NaN",
+            "meanCurrent" : "NaN",
+            "deviationOld" : "NaN",
+            "deviationCurrent" : "NaN",
+            "vms" : 0,
+            "callsOld" : 0,
+            "calls" : 0,
+            "tvalue" : -1.0,
+            "change" : true
+          },
+          "childs" : [ ]
+        } ]
+      } ]
+    }, {
+      "call" : "org.apache.catalina.util.LifecycleBase#stop",
+      "kiekerPattern" : "public final synchronized void org.apache.catalina.util.LifecycleBase.stop()",
+      "otherKiekerPattern" : "public final synchronized void org.apache.catalina.util.LifecycleBase.stop()",
+      "module" : "",
+      "statistic" : {
+        "meanOld" : 1.5827556086946407E7,
+        "meanCurrent" : 4.075997832748076E7,
+        "deviationOld" : 417632.21634530165,
+        "deviationCurrent" : 787143.8088877881,
+        "vms" : 100,
+        "callsOld" : 24000,
+        "calls" : 24000,
+        "tvalue" : -279.80207326819374
+      },
+      "childs" : [ {
+        "call" : "org.apache.catalina.loader.WebappLoader#stopInternal",
+        "kiekerPattern" : "protected void org.apache.catalina.loader.WebappLoader.stopInternal()",
+        "otherKiekerPattern" : "protected void org.apache.catalina.loader.WebappLoader.stopInternal()",
+        "module" : "",
+        "statistic" : {
+          "meanOld" : 2.938187496190019E7,
+          "meanCurrent" : 7.189830656594159E7,
+          "deviationOld" : 874662.118548907,
+          "deviationCurrent" : 1933792.9961051208,
+          "vms" : 99,
+          "callsOld" : 8000,
+          "calls" : 8000,
+          "tvalue" : -199.48760399377295
+        },
+        "childs" : [ {
+          "call" : "org.apache.catalina.core.StandardContext#getServletContext",
+          "kiekerPattern" : "public jakarta.servlet.ServletContext org.apache.catalina.core.StandardContext.getServletContext()",
+          "otherKiekerPattern" : "public jakarta.servlet.ServletContext org.apache.catalina.core.StandardContext.getServletContext()",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 505692.01097999554,
+            "meanCurrent" : 520378.7435433095,
+            "deviationOld" : 68500.17586376907,
+            "deviationCurrent" : 46040.30750963405,
+            "vms" : 99,
+            "callsOld" : 8000,
+            "calls" : 24000,
+            "tvalue" : -1.7670834010613314
+          },
+          "childs" : [ {
+            "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+            "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+            "otherKiekerPattern" : "ADDED",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : "NaN",
+              "meanCurrent" : "NaN",
+              "deviationOld" : "NaN",
+              "deviationCurrent" : "NaN",
+              "vms" : 0,
+              "callsOld" : 0,
+              "calls" : 0,
+              "tvalue" : -1.0,
+              "change" : true
+            },
+            "childs" : [ ]
+          }, {
+            "call" : "org.apache.catalina.core.ApplicationContextFacade#<init>",
+            "kiekerPattern" : "public new org.apache.catalina.core.ApplicationContextFacade.<init>(org.apache.catalina.core.ApplicationContext)",
+            "otherKiekerPattern" : "ADDED",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : "NaN",
+              "meanCurrent" : "NaN",
+              "deviationOld" : "NaN",
+              "deviationCurrent" : "NaN",
+              "vms" : 0,
+              "callsOld" : 0,
+              "calls" : 0,
+              "tvalue" : -1.0,
+              "change" : true
+            },
+            "childs" : [ ]
+          }, {
+            "call" : "org.apache.catalina.core.ApplicationContext#<init>",
+            "kiekerPattern" : "public new org.apache.catalina.core.ApplicationContext.<init>(org.apache.catalina.core.StandardContext)",
+            "otherKiekerPattern" : "ADDED",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : "NaN",
+              "meanCurrent" : "NaN",
+              "deviationOld" : "NaN",
+              "deviationCurrent" : "NaN",
+              "vms" : 0,
+              "callsOld" : 0,
+              "calls" : 0,
+              "tvalue" : -1.0,
+              "change" : true
+            },
+            "childs" : [ ]
+          } ]
+        }, {
+          "call" : "org.apache.catalina.core.ApplicationContextFacade#removeAttribute",
+          "kiekerPattern" : "public void org.apache.catalina.core.ApplicationContextFacade.removeAttribute(java.lang.String)",
+          "otherKiekerPattern" : "public void org.apache.catalina.core.ApplicationContextFacade.removeAttribute(java.lang.String)",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 41661.592139301225,
+            "meanCurrent" : 110206.44534477332,
+            "deviationOld" : 3165.9663122513252,
+            "deviationCurrent" : 9349.07081568068,
+            "vms" : 99,
+            "callsOld" : 8000,
+            "calls" : 8000,
+            "tvalue" : -69.40749588857236
+          },
+          "childs" : [ {
+            "call" : "org.apache.juli.logging.LogFactory#getLog",
+            "kiekerPattern" : "public static org.apache.juli.logging.Log org.apache.juli.logging.LogFactory.getLog(java.lang.Class)",
+            "otherKiekerPattern" : "ADDED",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : "NaN",
+              "meanCurrent" : "NaN",
+              "deviationOld" : "NaN",
+              "deviationCurrent" : "NaN",
+              "vms" : 0,
+              "callsOld" : 0,
+              "calls" : 0,
+              "tvalue" : -1.0,
+              "change" : true
+            },
+            "childs" : [ ]
+          }, {
+            "call" : "org.apache.tomcat.util.res.StringManager#getManager",
+            "kiekerPattern" : "public static final org.apache.tomcat.util.res.StringManager org.apache.tomcat.util.res.StringManager.getManager(java.lang.String)",
+            "otherKiekerPattern" : "ADDED",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : "NaN",
+              "meanCurrent" : "NaN",
+              "deviationOld" : "NaN",
+              "deviationCurrent" : "NaN",
+              "vms" : 0,
+              "callsOld" : 0,
+              "calls" : 0,
+              "tvalue" : -1.0,
+              "change" : true
+            },
+            "childs" : [ ]
+          }, {
+            "call" : "org.apache.catalina.core.ApplicationContext#removeAttribute",
+            "kiekerPattern" : "public void org.apache.catalina.core.ApplicationContext.removeAttribute(java.lang.String)",
+            "otherKiekerPattern" : "public void org.apache.catalina.core.ApplicationContext.removeAttribute(java.lang.String)",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : 22363.70153890493,
+              "meanCurrent" : 162261.7131221238,
+              "deviationOld" : 1976.9473275839696,
+              "deviationCurrent" : 8301.11176081466,
+              "vms" : 99,
+              "callsOld" : 8000,
+              "calls" : 8000,
+              "tvalue" : -163.1223285356345
+            },
+            "childs" : [ {
+              "call" : "ADDED",
+              "kiekerPattern" : "ADDED",
+              "otherKiekerPattern" : "public java.lang.Object[] org.apache.catalina.core.StandardContext.getApplicationEventListeners()",
+              "statistic" : {
+                "meanOld" : "NaN",
+                "meanCurrent" : "NaN",
+                "deviationOld" : "NaN",
+                "deviationCurrent" : "NaN",
+                "vms" : 0,
+                "callsOld" : 0,
+                "calls" : 0,
+                "tvalue" : -1.0,
+                "change" : true
+              },
+              "childs" : [ ]
+            } ]
+          } ]
+        }, {
+          "call" : "org.apache.catalina.loader.WebappClassLoaderBase#stop",
+          "kiekerPattern" : "public void org.apache.catalina.loader.WebappClassLoaderBase.stop()",
+          "otherKiekerPattern" : "public void org.apache.catalina.loader.WebappClassLoaderBase.stop()",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 2.8167495687906448E7,
+            "meanCurrent" : 8.625489399825196E7,
+            "deviationOld" : 839630.6646167828,
+            "deviationCurrent" : 1567687.241204755,
+            "vms" : 100,
+            "callsOld" : 8000,
+            "calls" : 8000,
+            "tvalue" : -326.63161398056644
+          },
+          "childs" : [ {
+            "call" : "org.apache.catalina.loader.WebappClassLoaderBase#clearReferences",
+            "kiekerPattern" : "protected void org.apache.catalina.loader.WebappClassLoaderBase.clearReferences()",
+            "otherKiekerPattern" : "protected void org.apache.catalina.loader.WebappClassLoaderBase.clearReferences()",
+            "module" : "",
+            "statistic" : {
+              "meanOld" : 2.91957604699078E7,
+              "meanCurrent" : 7.064599113167225E7,
+              "deviationOld" : 1502387.368818471,
+              "deviationCurrent" : 1890873.411676951,
+              "vms" : 99,
+              "callsOld" : 8000,
+              "calls" : 8000,
+              "tvalue" : -171.10257403791104
+            },
+            "childs" : [ {
+              "call" : "org.apache.catalina.loader.WebappClassLoaderBase#clearReferencesJdbc",
+              "kiekerPattern" : "private final void org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc()",
+              "otherKiekerPattern" : "private final void org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc()",
+              "module" : "",
+              "statistic" : {
+                "meanOld" : 2.2489705537974544E7,
+                "meanCurrent" : 6.3819432364621766E7,
+                "deviationOld" : 684082.7201766366,
+                "deviationCurrent" : 1589587.863061592,
+                "vms" : 99,
+                "callsOld" : 8000,
+                "calls" : 8000,
+                "tvalue" : -237.81475524149883
+              },
+              "childs" : [ {
+                "call" : "org.apache.catalina.loader.WebappClassLoaderBase#loadClass",
+                "kiekerPattern" : "public java.lang.Class org.apache.catalina.loader.WebappClassLoaderBase.loadClass(java.lang.String)",
+                "otherKiekerPattern" : "public java.lang.Class org.apache.catalina.loader.WebappClassLoaderBase.loadClass(java.lang.String)",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : 580721.8262574709,
+                  "meanCurrent" : 2709875.6170249325,
+                  "deviationOld" : 24176.717476747042,
+                  "deviationCurrent" : 44786.726107202616,
+                  "vms" : 100,
+                  "callsOld" : 120000,
+                  "calls" : 200000,
+                  "tvalue" : -418.33730278941533
+                },
+                "childs" : [ {
+                  "call" : "org.apache.catalina.loader.WebappClassLoaderBase#loadClass",
+                  "kiekerPattern" : "public java.lang.Class org.apache.catalina.loader.WebappClassLoaderBase.loadClass(java.lang.String,boolean)",
+                  "otherKiekerPattern" : "public java.lang.Class org.apache.catalina.loader.WebappClassLoaderBase.loadClass(java.lang.String,boolean)",
+                  "module" : "",
+                  "statistic" : {
+                    "meanOld" : 563141.9134220183,
+                    "meanCurrent" : 2702165.1538609485,
+                    "deviationOld" : 23652.951689884576,
+                    "deviationCurrent" : 45455.42063373492,
+                    "vms" : 100,
+                    "callsOld" : 120000,
+                    "calls" : 200000,
+                    "tvalue" : -417.44231972282523
+                  },
+                  "childs" : [ {
+                    "call" : "org.apache.catalina.loader.WebappClassLoaderBase#findClass",
+                    "kiekerPattern" : "public java.lang.Class org.apache.catalina.loader.WebappClassLoaderBase.findClass(java.lang.String)",
+                    "otherKiekerPattern" : "public java.lang.Class org.apache.catalina.loader.WebappClassLoaderBase.findClass(java.lang.String)",
+                    "module" : "",
+                    "statistic" : {
+                      "meanOld" : "NaN",
+                      "meanCurrent" : 5642456.637193033,
+                      "deviationOld" : "NaN",
+                      "deviationCurrent" : 92234.53850052968,
+                      "vms" : 100,
+                      "callsOld" : 0,
+                      "calls" : 72000,
+                      "tvalue" : -1.0
+                    },
+                    "childs" : [ {
+                      "call" : "org.apache.catalina.loader.WebappClassLoaderBase#findClassInternal",
+                      "kiekerPattern" : "protected java.lang.Class org.apache.catalina.loader.WebappClassLoaderBase.findClassInternal(java.lang.String)",
+                      "otherKiekerPattern" : "protected java.lang.Class org.apache.catalina.loader.WebappClassLoaderBase.findClassInternal(java.lang.String)",
+                      "module" : "",
+                      "statistic" : {
+                        "meanOld" : "NaN",
+                        "meanCurrent" : 5074946.8031142475,
+                        "deviationOld" : "NaN",
+                        "deviationCurrent" : 76579.29805278633,
+                        "vms" : 100,
+                        "callsOld" : 0,
+                        "calls" : 72000,
+                        "tvalue" : -1.0
+                      },
+                      "childs" : [ {
+                        "call" : "ADDED",
+                        "kiekerPattern" : "ADDED",
+                        "otherKiekerPattern" : "public org.apache.catalina.WebResource org.apache.catalina.webresources.StandardRoot.getClassLoaderResource(java.lang.String)",
+                        "statistic" : {
+                          "meanOld" : "NaN",
+                          "meanCurrent" : "NaN",
+                          "deviationOld" : "NaN",
+                          "deviationCurrent" : "NaN",
+                          "vms" : 0,
+                          "callsOld" : 0,
+                          "calls" : 0,
+                          "tvalue" : -1.0,
+                          "change" : true
+                        },
+                        "childs" : [ ]
+                      }, {
+                        "call" : "ADDED",
+                        "kiekerPattern" : "ADDED",
+                        "otherKiekerPattern" : "public boolean org.apache.catalina.webresources.EmptyResource.exists()",
+                        "statistic" : {
+                          "meanOld" : "NaN",
+                          "meanCurrent" : "NaN",
+                          "deviationOld" : "NaN",
+                          "deviationCurrent" : "NaN",
+                          "vms" : 0,
+                          "callsOld" : 0,
+                          "calls" : 0,
+                          "tvalue" : -1.0,
+                          "change" : true
+                        },
+                        "childs" : [ ]
+                      } ]
+                    } ]
+                  } ]
+                } ]
+              }, {
+                "call" : "org.apache.tomcat.util.ExceptionUtils#unwrapInvocationTargetException",
+                "kiekerPattern" : "public static java.lang.Throwable org.apache.tomcat.util.ExceptionUtils.unwrapInvocationTargetException(java.lang.Throwable)",
+                "otherKiekerPattern" : "public new org.apache.catalina.loader.JdbcLeakPrevention.<init>()",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : "NaN",
+                  "meanCurrent" : 242.3375276061691,
+                  "deviationOld" : "NaN",
+                  "deviationCurrent" : 16.043574768131265,
+                  "vms" : 99,
+                  "callsOld" : 0,
+                  "calls" : 1592000,
+                  "tvalue" : -1.0
+                },
+                "childs" : [ ]
+              }, {
+                "call" : "org.apache.tomcat.util.ExceptionUtils#handleThrowable",
+                "kiekerPattern" : "public static void org.apache.tomcat.util.ExceptionUtils.handleThrowable(java.lang.Throwable)",
+                "otherKiekerPattern" : "public java.util.List org.apache.catalina.loader.JdbcLeakPrevention.clearJdbcDriverRegistrations()",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : "NaN",
+                  "meanCurrent" : 42528.57803953402,
+                  "deviationOld" : "NaN",
+                  "deviationCurrent" : 1571.3991455129749,
+                  "vms" : 99,
+                  "callsOld" : 0,
+                  "calls" : 1592000,
+                  "tvalue" : -1.0
+                },
+                "childs" : [ ]
+              }, {
+                "call" : "org.apache.catalina.loader.WebappClassLoaderBase#getContextName",
+                "kiekerPattern" : "public java.lang.String org.apache.catalina.loader.WebappClassLoaderBase.getContextName()",
+                "otherKiekerPattern" : "ADDED",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : "NaN",
+                  "meanCurrent" : "NaN",
+                  "deviationOld" : "NaN",
+                  "deviationCurrent" : "NaN",
+                  "vms" : 0,
+                  "callsOld" : 0,
+                  "calls" : 0,
+                  "tvalue" : -1.0,
+                  "change" : true
+                },
+                "childs" : [ ]
+              }, {
+                "call" : "org.apache.tomcat.util.res.StringManager#getString",
+                "kiekerPattern" : "public java.lang.String org.apache.tomcat.util.res.StringManager.getString(java.lang.String,java.lang.Object)",
+                "otherKiekerPattern" : "ADDED",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : "NaN",
+                  "meanCurrent" : "NaN",
+                  "deviationOld" : "NaN",
+                  "deviationCurrent" : "NaN",
+                  "vms" : 0,
+                  "callsOld" : 0,
+                  "calls" : 0,
+                  "tvalue" : -1.0,
+                  "change" : true
+                },
+                "childs" : [ ]
+              }, {
+                "call" : "org.apache.juli.logging.DirectJDKLog#warn",
+                "kiekerPattern" : "public final void org.apache.juli.logging.DirectJDKLog.warn(java.lang.Object,java.lang.Throwable)",
+                "otherKiekerPattern" : "ADDED",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : "NaN",
+                  "meanCurrent" : "NaN",
+                  "deviationOld" : "NaN",
+                  "deviationCurrent" : "NaN",
+                  "vms" : 0,
+                  "callsOld" : 0,
+                  "calls" : 0,
+                  "tvalue" : -1.0,
+                  "change" : true
+                },
+                "childs" : [ ]
+              } ]
+            }, {
+              "call" : "org.apache.catalina.loader.WebappClassLoaderBase#clearReferencesObjectStreamClassCaches",
+              "kiekerPattern" : "private void org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesObjectStreamClassCaches()",
+              "otherKiekerPattern" : "private void org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesObjectStreamClassCaches()",
+              "module" : "",
+              "statistic" : {
+                "meanOld" : 2686405.2182841767,
+                "meanCurrent" : 3523042.2610444534,
+                "deviationOld" : 150772.83575557912,
+                "deviationCurrent" : 248467.98149289345,
+                "vms" : 99,
+                "callsOld" : 8000,
+                "calls" : 8000,
+                "tvalue" : -28.680831676283045
+              },
+              "childs" : [ {
+                "call" : "org.apache.catalina.loader.WebappClassLoaderBase#getContextName",
+                "kiekerPattern" : "public java.lang.String org.apache.catalina.loader.WebappClassLoaderBase.getContextName()",
+                "otherKiekerPattern" : "public java.lang.String org.apache.catalina.loader.WebappClassLoaderBase.getContextName()",
+                "module" : "",
+                "statistic" : {
+                  "meanOld" : 4403.382165272113,
+                  "meanCurrent" : 55207.06616673482,
+                  "deviationOld" : 530.3550036060063,
+                  "deviationCurrent" : 7749.601411292523,
+                  "vms" : 99,
+                  "callsOld" : 8000,
+                  "calls" : 8000,
+                  "tvalue" : -65.07720858654709
+                },
+                "childs" : [ {
+                  "call" : "ADDED",
+                  "kiekerPattern" : "ADDED",
+                  "otherKiekerPattern" : "public org.apache.catalina.Context org.apache.catalina.webresources.StandardRoot.getContext()",
+                  "statistic" : {
+                    "meanOld" : "NaN",
+                    "meanCurrent" : "NaN",
+                    "deviationOld" : "NaN",
+                    "deviationCurrent" : "NaN",
+                    "vms" : 0,
+                    "callsOld" : 0,
+                    "calls" : 0,
+                    "tvalue" : -1.0,
+                    "change" : true
+                  },
+                  "childs" : [ ]
+                }, {
+                  "call" : "ADDED",
+                  "kiekerPattern" : "ADDED",
+                  "otherKiekerPattern" : "public java.lang.String org.apache.catalina.core.StandardContext.getBaseName()",
+                  "statistic" : {
+                    "meanOld" : "NaN",
+                    "meanCurrent" : "NaN",
+                    "deviationOld" : "NaN",
+                    "deviationCurrent" : "NaN",
+                    "vms" : 0,
+                    "callsOld" : 0,
+                    "calls" : 0,
+                    "tvalue" : -1.0,
+                    "change" : true
+                  },
+                  "childs" : [ ]
+                } ]
+              } ]
+            } ]
+          } ]
+        }, {
+          "call" : "org.apache.tomcat.util.modeler.Registry#unregisterComponent",
+          "kiekerPattern" : "public void org.apache.tomcat.util.modeler.Registry.unregisterComponent(javax.management.ObjectName)",
+          "otherKiekerPattern" : "public void org.apache.tomcat.util.modeler.Registry.unregisterComponent(javax.management.ObjectName)",
+          "module" : "",
+          "statistic" : {
+            "meanOld" : 50007.31197055992,
+            "meanCurrent" : 49179.641725655245,
+            "deviationOld" : 2422.8150686998856,
+            "deviationCurrent" : 3399.318122663144,
+            "vms" : 99,
+            "callsOld" : 280000,
+            "calls" : 248000,
+            "tvalue" : 1.9728024771171455
+          },
+          "childs" : [ {
+            "call" : "ADDED",
+            "kiekerPattern" : "ADDED",
+            "otherKiekerPattern" : "public void org.apache.tomcat.util.modeler.BaseModelMBean.preDeregister()",
+            "statistic" : {
+              "meanOld" : "NaN",
+              "meanCurrent" : "NaN",
+              "deviationOld" : "NaN",
+              "deviationCurrent" : "NaN",
+              "vms" : 0,
+              "callsOld" : 0,
+              "calls" : 0,
+              "tvalue" : -1.0,
+              "change" : true
+            },
+            "childs" : [ ]
+          }, {
+            "call" : "ADDED",
+            "kiekerPattern" : "ADDED",
+            "otherKiekerPattern" : "public void org.apache.tomcat.util.modeler.BaseModelMBean.postDeregister()",
+            "statistic" : {
+              "meanOld" : "NaN",
+              "meanCurrent" : "NaN",
+              "deviationOld" : "NaN",
+              "deviationCurrent" : "NaN",
+              "vms" : 0,
+              "callsOld" : 0,
+              "calls" : 0,
+              "tvalue" : -1.0,
+              "change" : true
+            },
+            "childs" : [ ]
+          } ]
+        } ]
+      } ]
+    }, {
+      "call" : "ADDED",
+      "kiekerPattern" : "ADDED",
+      "otherKiekerPattern" : "public new org.apache.catalina.webresources.Cache.<init>(org.apache.catalina.webresources.StandardRoot)",
+      "statistic" : {
+        "meanOld" : "NaN",
+        "meanCurrent" : "NaN",
+        "deviationOld" : "NaN",
+        "deviationCurrent" : "NaN",
+        "vms" : 0,
+        "callsOld" : 0,
+        "calls" : 0,
+        "tvalue" : -1.0,
+        "change" : true
+      },
+      "childs" : [ ]
+    }, {
+      "call" : "ADDED",
+      "kiekerPattern" : "ADDED",
+      "otherKiekerPattern" : "public new org.apache.catalina.webresources.StandardRoot.<init>(org.apache.catalina.Context)",
+      "statistic" : {
+        "meanOld" : "NaN",
+        "meanCurrent" : "NaN",
+        "deviationOld" : "NaN",
+        "deviationCurrent" : "NaN",
+        "vms" : 0,
+        "callsOld" : 0,
+        "calls" : 0,
+        "tvalue" : -1.0,
+        "change" : true
+      },
+      "childs" : [ ]
+    }, {
+      "call" : "ADDED",
+      "kiekerPattern" : "ADDED",
+      "otherKiekerPattern" : "public void org.apache.catalina.core.StandardContext.setResources(org.apache.catalina.WebResourceRoot)",
+      "statistic" : {
+        "meanOld" : "NaN",
+        "meanCurrent" : "NaN",
+        "deviationOld" : "NaN",
+        "deviationCurrent" : "NaN",
+        "vms" : 0,
+        "callsOld" : 0,
+        "calls" : 0,
+        "tvalue" : -1.0,
+        "change" : true
+      },
+      "childs" : [ ]
+    }, {
+      "call" : "ADDED",
+      "kiekerPattern" : "ADDED",
+      "otherKiekerPattern" : "public void org.apache.catalina.core.StandardContext.resourcesStart()",
+      "statistic" : {
+        "meanOld" : "NaN",
+        "meanCurrent" : "NaN",
+        "deviationOld" : "NaN",
+        "deviationCurrent" : "NaN",
+        "vms" : 0,
+        "callsOld" : 0,
+        "calls" : 0,
+        "tvalue" : -1.0,
+        "change" : true
+      },
+      "childs" : [ ]
+    } ]
+  }
+}
