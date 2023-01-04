@@ -1,6 +1,6 @@
 {
   "measurementConfig" : {
-    "vms" : 100,
+    "vms" : 500,
     "earlyStop" : false,
     "warmup" : 80,
     "iterations" : 80,
@@ -80,14 +80,14 @@
     "otherKiekerPattern" : "public void org.apache.catalina.loader.TestVirtualWebappLoader.testLoaderInstance()",
     "module" : "",
     "statistic" : {
-      "meanOld" : 3.404137855293825E7,
-      "meanCurrent" : 1.1853136723490514E8,
-      "deviationOld" : 968598.5582887755,
-      "deviationCurrent" : 1950740.8060074283,
-      "vms" : 100,
-      "callsOld" : 8000,
-      "calls" : 8000,
-      "tvalue" : -387.9291940551957
+      "meanOld" : 3.411911160603031E7,
+      "meanCurrent" : 1.1851666757887289E8,
+      "deviationOld" : 788478.2416442123,
+      "deviationCurrent" : 2030956.9452761528,
+      "vms" : 499,
+      "callsOld" : 40000,
+      "calls" : 40000,
+      "tvalue" : -865.354646873516
     },
     "childs" : [ {
       "call" : "org.apache.catalina.util.LifecycleBase#start",
@@ -95,14 +95,14 @@
       "otherKiekerPattern" : "public final synchronized void org.apache.catalina.util.LifecycleBase.start()",
       "module" : "",
       "statistic" : {
-        "meanOld" : 2601850.316228544,
-        "meanCurrent" : 6243585.036752168,
-        "deviationOld" : 134913.36592977395,
-        "deviationCurrent" : 103985.07114182736,
-        "vms" : 100,
-        "callsOld" : 8000,
-        "calls" : 56000,
-        "tvalue" : -213.7965420019117
+        "meanOld" : 2595254.583196156,
+        "meanCurrent" : 6235573.072122504,
+        "deviationOld" : 119586.19507252253,
+        "deviationCurrent" : 103207.61972439697,
+        "vms" : 497,
+        "callsOld" : 40000,
+        "calls" : 280000,
+        "tvalue" : -513.7585436331591
       },
       "childs" : [ {
         "call" : "org.apache.catalina.util.LifecycleBase#init",
@@ -110,14 +110,14 @@
         "otherKiekerPattern" : "public final synchronized void org.apache.catalina.util.LifecycleBase.init()",
         "module" : "",
         "statistic" : {
-          "meanOld" : 811638.5175222632,
-          "meanCurrent" : 1830527.8687130308,
-          "deviationOld" : 63726.69023672254,
-          "deviationCurrent" : 41699.4859215876,
-          "vms" : 99,
-          "callsOld" : 8000,
-          "calls" : 56000,
-          "tvalue" : -132.84167175015875
+          "meanOld" : 811963.7771615756,
+          "meanCurrent" : 1831960.2287420684,
+          "deviationOld" : 62408.438301561415,
+          "deviationCurrent" : 39914.2066881013,
+          "vms" : 496,
+          "callsOld" : 40000,
+          "calls" : 280000,
+          "tvalue" : -306.38231892199207
         },
         "childs" : [ {
           "call" : "org.apache.catalina.util.LifecycleMBeanBase#initInternal",
@@ -125,14 +125,14 @@
           "otherKiekerPattern" : "protected void org.apache.catalina.util.LifecycleMBeanBase.initInternal()",
           "module" : "",
           "statistic" : {
-            "meanOld" : 789928.5528792958,
-            "meanCurrent" : 1398135.6355467294,
-            "deviationOld" : 63239.019698842436,
-            "deviationCurrent" : 58449.2618036488,
-            "vms" : 98,
-            "callsOld" : 8000,
-            "calls" : 24000,
-            "tvalue" : -70.08215545150597
+            "meanOld" : 789483.7013838536,
+            "meanCurrent" : 1401231.2739535985,
+            "deviationOld" : 61014.00091167523,
+            "deviationCurrent" : 57579.00399865135,
+            "vms" : 495,
+            "callsOld" : 40000,
+            "calls" : 120000,
+            "tvalue" : -162.29269705341954
           },
           "childs" : [ {
             "call" : "org.apache.catalina.util.LifecycleMBeanBase#register",
@@ -140,14 +140,14 @@
             "otherKiekerPattern" : "protected final javax.management.ObjectName org.apache.catalina.util.LifecycleMBeanBase.register(java.lang.Object,java.lang.String)",
             "module" : "",
             "statistic" : {
-              "meanOld" : 734790.5071669328,
-              "meanCurrent" : 964134.4619933687,
-              "deviationOld" : 58853.464003606554,
-              "deviationCurrent" : 33503.757539979124,
-              "vms" : 98,
-              "callsOld" : 8000,
-              "calls" : 40000,
-              "tvalue" : -33.566791924379245
+              "meanOld" : 736040.6651166242,
+              "meanCurrent" : 968457.3409050906,
+              "deviationOld" : 56687.34242364132,
+              "deviationCurrent" : 36286.89668982463,
+              "vms" : 495,
+              "callsOld" : 40000,
+              "calls" : 200000,
+              "tvalue" : -76.75004745700298
             },
             "childs" : [ {
               "call" : "org.apache.catalina.util.LifecycleMBeanBase#getDomain",
@@ -155,14 +155,14 @@
               "otherKiekerPattern" : "public final java.lang.String org.apache.catalina.util.LifecycleMBeanBase.getDomain()",
               "module" : "",
               "statistic" : {
-                "meanOld" : 58586.94395527626,
-                "meanCurrent" : 31802.11106707931,
-                "deviationOld" : 8466.026876493564,
-                "deviationCurrent" : 5011.5960734108085,
-                "vms" : 98,
-                "callsOld" : 72000,
-                "calls" : 136000,
-                "tvalue" : 26.98716785856731
+                "meanOld" : 59574.32086506576,
+                "meanCurrent" : 31149.04474722563,
+                "deviationOld" : 8630.286329314067,
+                "deviationCurrent" : 4042.9817723312663,
+                "vms" : 490,
+                "callsOld" : 360000,
+                "calls" : 680000,
+                "tvalue" : 66.03490416098371
               },
               "childs" : [ {
                 "call" : "org.apache.catalina.loader.WebappLoader#getDomainInternal",
@@ -170,14 +170,14 @@
                 "otherKiekerPattern" : "protected java.lang.String org.apache.catalina.loader.WebappLoader.getDomainInternal()",
                 "module" : "",
                 "statistic" : {
-                  "meanOld" : 64080.10384957687,
-                  "meanCurrent" : 17651.127678206798,
-                  "deviationOld" : 3000.7836376893774,
-                  "deviationCurrent" : 1324.0813790878444,
-                  "vms" : 98,
-                  "callsOld" : 8000,
-                  "calls" : 8000,
-                  "tvalue" : 140.7285693448189
+                  "meanOld" : 64848.48842521412,
+                  "meanCurrent" : 17776.91728758358,
+                  "deviationOld" : 3538.609523797293,
+                  "deviationCurrent" : 1460.7091779079321,
+                  "vms" : 495,
+                  "callsOld" : 40000,
+                  "calls" : 40000,
+                  "tvalue" : 273.4096383102649
                 },
                 "childs" : [ {
                   "call" : "org.apache.catalina.util.LifecycleMBeanBase#getDomain",
@@ -185,14 +185,14 @@
                   "otherKiekerPattern" : "public final java.lang.String org.apache.catalina.util.LifecycleMBeanBase.getDomain()",
                   "module" : "",
                   "statistic" : {
-                    "meanOld" : 58586.94395527626,
-                    "meanCurrent" : 31802.11106707931,
-                    "deviationOld" : 8466.026876493564,
-                    "deviationCurrent" : 5011.5960734108085,
-                    "vms" : 98,
-                    "callsOld" : 72000,
-                    "calls" : 136000,
-                    "tvalue" : 26.98716785856731
+                    "meanOld" : 59574.32086506576,
+                    "meanCurrent" : 31149.04474722563,
+                    "deviationOld" : 8630.286329314067,
+                    "deviationCurrent" : 4042.9817723312663,
+                    "vms" : 490,
+                    "callsOld" : 360000,
+                    "calls" : 680000,
+                    "tvalue" : 66.03490416098371
                   },
                   "childs" : [ {
                     "call" : "org.apache.catalina.core.ContainerBase#getDomainInternal",
@@ -254,14 +254,14 @@
               "otherKiekerPattern" : "public static synchronized org.apache.tomcat.util.modeler.Registry org.apache.tomcat.util.modeler.Registry.getRegistry(java.lang.Object,java.lang.Object)",
               "module" : "",
               "statistic" : {
-                "meanOld" : 3622.237614413766,
-                "meanCurrent" : 3484.6877199571127,
-                "deviationOld" : 137.04372958491138,
-                "deviationCurrent" : 177.71813702154998,
-                "vms" : 99,
-                "callsOld" : 280100,
-                "calls" : 296100,
-                "tvalue" : 6.09838230562722
+                "meanOld" : 3626.542442954753,
+                "meanCurrent" : 3491.5226423314452,
+                "deviationOld" : 167.00163770577086,
+                "deviationCurrent" : 174.2868314572341,
+                "vms" : 497,
+                "callsOld" : 1400500,
+                "calls" : 1480500,
+                "tvalue" : 12.470105187502467
               },
               "childs" : [ {
                 "call" : "org.apache.tomcat.util.compat.JreCompat#isGraalAvailable",
@@ -304,14 +304,14 @@
               "otherKiekerPattern" : "public void org.apache.tomcat.util.modeler.Registry.registerComponent(java.lang.Object,javax.management.ObjectName,java.lang.String)",
               "module" : "",
               "statistic" : {
-                "meanOld" : 363927.3301776129,
-                "meanCurrent" : 488313.260016779,
-                "deviationOld" : 45703.31503686317,
-                "deviationCurrent" : 22399.808505520006,
-                "vms" : 99,
-                "callsOld" : 8000,
-                "calls" : 56000,
-                "tvalue" : -24.239941777908236
+                "meanOld" : 355108.8578086435,
+                "meanCurrent" : 491917.80105978565,
+                "deviationOld" : 32326.05267243223,
+                "deviationCurrent" : 23907.155675386275,
+                "vms" : 494,
+                "callsOld" : 40000,
+                "calls" : 280000,
+                "tvalue" : -75.53935713975861
               },
               "childs" : [ {
                 "call" : "org.apache.tomcat.util.modeler.Registry#findManagedBean",
@@ -319,14 +319,14 @@
                 "otherKiekerPattern" : "public org.apache.tomcat.util.modeler.ManagedBean org.apache.tomcat.util.modeler.Registry.findManagedBean(java.lang.Object,java.lang.Class,java.lang.String)",
                 "module" : "",
                 "statistic" : {
-                  "meanOld" : 29026.88029411342,
-                  "meanCurrent" : 108615.36258733286,
-                  "deviationOld" : 3682.5943153460707,
-                  "deviationCurrent" : 16349.752140937871,
-                  "vms" : 99,
-                  "callsOld" : 8000,
-                  "calls" : 56000,
-                  "tvalue" : -47.25095438888141
+                  "meanOld" : 28335.524442200054,
+                  "meanCurrent" : 109762.63460043648,
+                  "deviationOld" : 3456.8606330699204,
+                  "deviationCurrent" : 17680.040996773405,
+                  "vms" : 498,
+                  "callsOld" : 40000,
+                  "calls" : 280000,
+                  "tvalue" : -100.8680835047137
                 },
                 "childs" : [ {
                   "call" : "org.apache.tomcat.util.modeler.Registry#findDescriptor",
@@ -604,14 +604,14 @@
                                   "otherKiekerPattern" : "public static boolean org.apache.tomcat.util.IntrospectionUtils.setProperty(java.lang.Object,java.lang.String,java.lang.String,boolean,java.lang.StringBuilder)",
                                   "module" : "",
                                   "statistic" : {
-                                    "meanOld" : 757487.5077183954,
-                                    "meanCurrent" : 793536.6489851595,
-                                    "deviationOld" : 50562.42094889554,
-                                    "deviationCurrent" : 41698.02624466633,
-                                    "vms" : 99,
-                                    "callsOld" : 40200,
-                                    "calls" : 40300,
-                                    "tvalue" : -5.4673541065638025
+                                    "meanOld" : 770754.809651304,
+                                    "meanCurrent" : 792685.1137765384,
+                                    "deviationOld" : 55125.8750330121,
+                                    "deviationCurrent" : 42745.84777802153,
+                                    "vms" : 499,
+                                    "callsOld" : 201000,
+                                    "calls" : 201500,
+                                    "tvalue" : -7.0227267242635465
                                   },
                                   "childs" : [ {
                                     "call" : "org.apache.tomcat.util.modeler.ManagedBean#setClassName",
@@ -792,14 +792,14 @@
                 "otherKiekerPattern" : "public javax.management.MBeanServer org.apache.tomcat.util.modeler.Registry.getMBeanServer()",
                 "module" : "",
                 "statistic" : {
-                  "meanOld" : 3822.936662668864,
-                  "meanCurrent" : 3165.702203036278,
-                  "deviationOld" : 245.03463549711927,
-                  "deviationCurrent" : 166.10653680357873,
-                  "vms" : 99,
-                  "callsOld" : 72000,
-                  "calls" : 216000,
-                  "tvalue" : 22.166448182085386
+                  "meanOld" : 3853.304037090965,
+                  "meanCurrent" : 3167.657743770523,
+                  "deviationOld" : 266.0307282683011,
+                  "deviationCurrent" : 164.8952703880706,
+                  "vms" : 496,
+                  "callsOld" : 360000,
+                  "calls" : 1080000,
+                  "tvalue" : 48.82320156193664
                 },
                 "childs" : [ {
                   "call" : "org.apache.juli.logging.DirectJDKLog#isDebugEnabled",
@@ -829,14 +829,14 @@
         "otherKiekerPattern" : "protected void org.apache.catalina.loader.WebappLoader.startInternal()",
         "module" : "",
         "statistic" : {
-          "meanOld" : 1739961.827864681,
-          "meanCurrent" : 6521015.6462117145,
-          "deviationOld" : 99905.45153741786,
-          "deviationCurrent" : 263808.2157982346,
-          "vms" : 99,
-          "callsOld" : 8000,
-          "calls" : 8000,
-          "tvalue" : -169.37838274541636
+          "meanOld" : 1735784.782669515,
+          "meanCurrent" : 6477665.363559066,
+          "deviationOld" : 84719.11336196694,
+          "deviationCurrent" : 242357.34951749336,
+          "vms" : 494,
+          "callsOld" : 40000,
+          "calls" : 40000,
+          "tvalue" : -411.4810744976542
         },
         "childs" : [ {
           "call" : "org.apache.tomcat.util.res.StringManager#getString",
@@ -844,14 +844,14 @@
           "otherKiekerPattern" : "private org.apache.catalina.loader.WebappClassLoaderBase org.apache.catalina.loader.WebappLoader.createClassLoader()",
           "module" : "",
           "statistic" : {
-            "meanOld" : 296643.70000142406,
-            "meanCurrent" : 6236.923424105813,
-            "deviationOld" : 25488.305510651746,
-            "deviationCurrent" : 753.3949262658911,
-            "vms" : 98,
-            "callsOld" : 40000,
-            "calls" : 8000,
-            "tvalue" : 112.74289460712343
+            "meanOld" : 296444.3929806577,
+            "meanCurrent" : 6304.4693318939935,
+            "deviationOld" : 25039.641880494237,
+            "deviationCurrent" : 930.1729256190306,
+            "vms" : 494,
+            "callsOld" : 200000,
+            "calls" : 40000,
+            "tvalue" : 258.13950067339266
           },
           "childs" : [ ]
         }, {
@@ -860,14 +860,14 @@
           "otherKiekerPattern" : "public void org.apache.catalina.loader.WebappClassLoaderBase.setResources(org.apache.catalina.WebResourceRoot)",
           "module" : "",
           "statistic" : {
-            "meanOld" : 1551872.9240828892,
-            "meanCurrent" : 6902.070571675391,
-            "deviationOld" : 55148.63836648121,
-            "deviationCurrent" : 716.8815695876333,
-            "vms" : 99,
-            "callsOld" : 40000,
-            "calls" : 8000,
-            "tvalue" : 280.1225417380717
+            "meanOld" : 1554313.581773304,
+            "meanCurrent" : 6919.91073759825,
+            "deviationOld" : 48055.799005368324,
+            "deviationCurrent" : 706.9904752247868,
+            "vms" : 493,
+            "callsOld" : 200000,
+            "calls" : 40000,
+            "tvalue" : 718.4916547338281
           },
           "childs" : [ ]
         }, {
@@ -1038,14 +1038,14 @@
       "otherKiekerPattern" : "public final synchronized void org.apache.catalina.util.LifecycleBase.stop()",
       "module" : "",
       "statistic" : {
-        "meanOld" : 1.5827556086946407E7,
-        "meanCurrent" : 4.075997832748076E7,
-        "deviationOld" : 417632.21634530165,
-        "deviationCurrent" : 787143.8088877881,
-        "vms" : 100,
-        "callsOld" : 24000,
-        "calls" : 24000,
-        "tvalue" : -279.80207326819374
+        "meanOld" : 1.5834214010087483E7,
+        "meanCurrent" : 4.058353313510911E7,
+        "deviationOld" : 375052.177988742,
+        "deviationCurrent" : 743880.538252255,
+        "vms" : 499,
+        "callsOld" : 120000,
+        "calls" : 120000,
+        "tvalue" : -663.6311869185305
       },
       "childs" : [ {
         "call" : "org.apache.catalina.loader.WebappLoader#stopInternal",
@@ -1053,14 +1053,14 @@
         "otherKiekerPattern" : "protected void org.apache.catalina.loader.WebappLoader.stopInternal()",
         "module" : "",
         "statistic" : {
-          "meanOld" : 2.938187496190019E7,
-          "meanCurrent" : 7.189830656594159E7,
-          "deviationOld" : 874662.118548907,
-          "deviationCurrent" : 1933792.9961051208,
-          "vms" : 99,
-          "callsOld" : 8000,
-          "calls" : 8000,
-          "tvalue" : -199.48760399377295
+          "meanOld" : 2.944553831885703E7,
+          "meanCurrent" : 7.128854841200376E7,
+          "deviationOld" : 705909.1822015848,
+          "deviationCurrent" : 1914221.5265556953,
+          "vms" : 498,
+          "callsOld" : 40000,
+          "calls" : 40000,
+          "tvalue" : -457.675604317945
         },
         "childs" : [ {
           "call" : "org.apache.catalina.core.StandardContext#getServletContext",
@@ -1068,14 +1068,14 @@
           "otherKiekerPattern" : "public jakarta.servlet.ServletContext org.apache.catalina.core.StandardContext.getServletContext()",
           "module" : "",
           "statistic" : {
-            "meanOld" : 505692.01097999554,
-            "meanCurrent" : 520378.7435433095,
-            "deviationOld" : 68500.17586376907,
-            "deviationCurrent" : 46040.30750963405,
-            "vms" : 99,
-            "callsOld" : 8000,
-            "calls" : 24000,
-            "tvalue" : -1.7670834010613314
+            "meanOld" : 511976.4430229626,
+            "meanCurrent" : 517483.8552156318,
+            "deviationOld" : 71110.64708813935,
+            "deviationCurrent" : 47562.6511066159,
+            "vms" : 495,
+            "callsOld" : 40000,
+            "calls" : 120000,
+            "tvalue" : -1.4316015842414926
           },
           "childs" : [ {
             "call" : "org.apache.tomcat.util.res.StringManager#getManager",
@@ -1135,14 +1135,14 @@
           "otherKiekerPattern" : "public void org.apache.catalina.core.ApplicationContextFacade.removeAttribute(java.lang.String)",
           "module" : "",
           "statistic" : {
-            "meanOld" : 41661.592139301225,
-            "meanCurrent" : 110206.44534477332,
-            "deviationOld" : 3165.9663122513252,
-            "deviationCurrent" : 9349.07081568068,
-            "vms" : 99,
-            "callsOld" : 8000,
-            "calls" : 8000,
-            "tvalue" : -69.40749588857236
+            "meanOld" : 42115.9803306664,
+            "meanCurrent" : 108528.21859306679,
+            "deviationOld" : 3311.9950921335408,
+            "deviationCurrent" : 10472.701162192589,
+            "vms" : 498,
+            "callsOld" : 40000,
+            "calls" : 40000,
+            "tvalue" : -134.81790916773298
           },
           "childs" : [ {
             "call" : "org.apache.juli.logging.LogFactory#getLog",
@@ -1184,14 +1184,14 @@
             "otherKiekerPattern" : "public void org.apache.catalina.core.ApplicationContext.removeAttribute(java.lang.String)",
             "module" : "",
             "statistic" : {
-              "meanOld" : 22363.70153890493,
-              "meanCurrent" : 162261.7131221238,
-              "deviationOld" : 1976.9473275839696,
-              "deviationCurrent" : 8301.11176081466,
-              "vms" : 99,
-              "callsOld" : 8000,
-              "calls" : 8000,
-              "tvalue" : -163.1223285356345
+              "meanOld" : 22698.999395400704,
+              "meanCurrent" : 163048.56435768612,
+              "deviationOld" : 2144.113855231085,
+              "deviationCurrent" : 10921.026144439507,
+              "vms" : 496,
+              "callsOld" : 40000,
+              "calls" : 40000,
+              "tvalue" : -280.3362081248519
             },
             "childs" : [ {
               "call" : "ADDED",
@@ -1217,14 +1217,14 @@
           "otherKiekerPattern" : "public void org.apache.catalina.loader.WebappClassLoaderBase.stop()",
           "module" : "",
           "statistic" : {
-            "meanOld" : 2.8167495687906448E7,
-            "meanCurrent" : 8.625489399825196E7,
-            "deviationOld" : 839630.6646167828,
-            "deviationCurrent" : 1567687.241204755,
-            "vms" : 100,
-            "callsOld" : 8000,
-            "calls" : 8000,
-            "tvalue" : -326.63161398056644
+            "meanOld" : 2.822172383914662E7,
+            "meanCurrent" : 8.621539310622804E7,
+            "deviationOld" : 672523.9123411045,
+            "deviationCurrent" : 1610550.3934992005,
+            "vms" : 498,
+            "callsOld" : 40000,
+            "calls" : 40000,
+            "tvalue" : -742.1466000552433
           },
           "childs" : [ {
             "call" : "org.apache.catalina.loader.WebappClassLoaderBase#clearReferences",
@@ -1232,14 +1232,14 @@
             "otherKiekerPattern" : "protected void org.apache.catalina.loader.WebappClassLoaderBase.clearReferences()",
             "module" : "",
             "statistic" : {
-              "meanOld" : 2.91957604699078E7,
-              "meanCurrent" : 7.064599113167225E7,
-              "deviationOld" : 1502387.368818471,
-              "deviationCurrent" : 1890873.411676951,
-              "vms" : 99,
-              "callsOld" : 8000,
-              "calls" : 8000,
-              "tvalue" : -171.10257403791104
+              "meanOld" : 2.938108646417282E7,
+              "meanCurrent" : 7.004927829872179E7,
+              "deviationOld" : 1250070.0095014349,
+              "deviationCurrent" : 1857318.6130769148,
+              "vms" : 499,
+              "callsOld" : 40000,
+              "calls" : 40000,
+              "tvalue" : -405.6221383144234
             },
             "childs" : [ {
               "call" : "org.apache.catalina.loader.WebappClassLoaderBase#clearReferencesJdbc",
@@ -1247,14 +1247,14 @@
               "otherKiekerPattern" : "private final void org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc()",
               "module" : "",
               "statistic" : {
-                "meanOld" : 2.2489705537974544E7,
-                "meanCurrent" : 6.3819432364621766E7,
-                "deviationOld" : 684082.7201766366,
-                "deviationCurrent" : 1589587.863061592,
-                "vms" : 99,
-                "callsOld" : 8000,
-                "calls" : 8000,
-                "tvalue" : -237.81475524149883
+                "meanOld" : 2.253145908642742E7,
+                "meanCurrent" : 6.326255539913859E7,
+                "deviationOld" : 537201.4743230441,
+                "deviationCurrent" : 1550551.7108015122,
+                "vms" : 497,
+                "callsOld" : 40000,
+                "calls" : 40000,
+                "tvalue" : -553.3533769946752
               },
               "childs" : [ {
                 "call" : "org.apache.catalina.loader.WebappClassLoaderBase#loadClass",
@@ -1262,14 +1262,14 @@
                 "otherKiekerPattern" : "public java.lang.Class org.apache.catalina.loader.WebappClassLoaderBase.loadClass(java.lang.String)",
                 "module" : "",
                 "statistic" : {
-                  "meanOld" : 580721.8262574709,
-                  "meanCurrent" : 2709875.6170249325,
-                  "deviationOld" : 24176.717476747042,
-                  "deviationCurrent" : 44786.726107202616,
-                  "vms" : 100,
-                  "callsOld" : 120000,
-                  "calls" : 200000,
-                  "tvalue" : -418.33730278941533
+                  "meanOld" : 582104.2641578795,
+                  "meanCurrent" : 2699312.4191081817,
+                  "deviationOld" : 20728.07605946315,
+                  "deviationCurrent" : 40133.60963378976,
+                  "vms" : 497,
+                  "callsOld" : 600000,
+                  "calls" : 1000000,
+                  "tvalue" : -1046.3670662347206
                 },
                 "childs" : [ {
                   "call" : "org.apache.catalina.loader.WebappClassLoaderBase#loadClass",
@@ -1277,14 +1277,14 @@
                   "otherKiekerPattern" : "public java.lang.Class org.apache.catalina.loader.WebappClassLoaderBase.loadClass(java.lang.String,boolean)",
                   "module" : "",
                   "statistic" : {
-                    "meanOld" : 563141.9134220183,
-                    "meanCurrent" : 2702165.1538609485,
-                    "deviationOld" : 23652.951689884576,
-                    "deviationCurrent" : 45455.42063373492,
-                    "vms" : 100,
-                    "callsOld" : 120000,
-                    "calls" : 200000,
-                    "tvalue" : -417.44231972282523
+                    "meanOld" : 564301.2996935772,
+                    "meanCurrent" : 2690777.792568831,
+                    "deviationOld" : 20311.003553415903,
+                    "deviationCurrent" : 40672.52850418691,
+                    "vms" : 497,
+                    "callsOld" : 600000,
+                    "calls" : 1000000,
+                    "tvalue" : -1044.2405022032294
                   },
                   "childs" : [ {
                     "call" : "org.apache.catalina.loader.WebappClassLoaderBase#findClass",
@@ -1293,12 +1293,12 @@
                     "module" : "",
                     "statistic" : {
                       "meanOld" : "NaN",
-                      "meanCurrent" : 5642456.637193033,
+                      "meanCurrent" : 5619564.017384242,
                       "deviationOld" : "NaN",
-                      "deviationCurrent" : 92234.53850052968,
-                      "vms" : 100,
+                      "deviationCurrent" : 82290.66062433689,
+                      "vms" : 498,
                       "callsOld" : 0,
-                      "calls" : 72000,
+                      "calls" : 360000,
                       "tvalue" : -1.0
                     },
                     "childs" : [ {
@@ -1308,12 +1308,12 @@
                       "module" : "",
                       "statistic" : {
                         "meanOld" : "NaN",
-                        "meanCurrent" : 5074946.8031142475,
+                        "meanCurrent" : 5057204.040543108,
                         "deviationOld" : "NaN",
-                        "deviationCurrent" : 76579.29805278633,
-                        "vms" : 100,
+                        "deviationCurrent" : 68736.81735517891,
+                        "vms" : 498,
                         "callsOld" : 0,
-                        "calls" : 72000,
+                        "calls" : 360000,
                         "tvalue" : -1.0
                       },
                       "childs" : [ {
@@ -1359,12 +1359,12 @@
                 "module" : "",
                 "statistic" : {
                   "meanOld" : "NaN",
-                  "meanCurrent" : 242.3375276061691,
+                  "meanCurrent" : 243.17566476467567,
                   "deviationOld" : "NaN",
-                  "deviationCurrent" : 16.043574768131265,
-                  "vms" : 99,
+                  "deviationCurrent" : 15.808499359973874,
+                  "vms" : 500,
                   "callsOld" : 0,
-                  "calls" : 1592000,
+                  "calls" : 7960000,
                   "tvalue" : -1.0
                 },
                 "childs" : [ ]
@@ -1375,12 +1375,12 @@
                 "module" : "",
                 "statistic" : {
                   "meanOld" : "NaN",
-                  "meanCurrent" : 42528.57803953402,
+                  "meanCurrent" : 42185.95732510646,
                   "deviationOld" : "NaN",
-                  "deviationCurrent" : 1571.3991455129749,
-                  "vms" : 99,
+                  "deviationCurrent" : 1324.5079593118837,
+                  "vms" : 500,
                   "callsOld" : 0,
-                  "calls" : 1592000,
+                  "calls" : 7960000,
                   "tvalue" : -1.0
                 },
                 "childs" : [ ]
@@ -1442,14 +1442,14 @@
               "otherKiekerPattern" : "private void org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesObjectStreamClassCaches()",
               "module" : "",
               "statistic" : {
-                "meanOld" : 2686405.2182841767,
-                "meanCurrent" : 3523042.2610444534,
-                "deviationOld" : 150772.83575557912,
-                "deviationCurrent" : 248467.98149289345,
-                "vms" : 99,
-                "callsOld" : 8000,
-                "calls" : 8000,
-                "tvalue" : -28.680831676283045
+                "meanOld" : 2680521.4242350524,
+                "meanCurrent" : 3500713.7612311174,
+                "deviationOld" : 153995.65850803952,
+                "deviationCurrent" : 240121.91889568418,
+                "vms" : 498,
+                "callsOld" : 40000,
+                "calls" : 40000,
+                "tvalue" : -64.16374210199587
               },
               "childs" : [ {
                 "call" : "org.apache.catalina.loader.WebappClassLoaderBase#getContextName",
@@ -1457,14 +1457,14 @@
                 "otherKiekerPattern" : "public java.lang.String org.apache.catalina.loader.WebappClassLoaderBase.getContextName()",
                 "module" : "",
                 "statistic" : {
-                  "meanOld" : 4403.382165272113,
-                  "meanCurrent" : 55207.06616673482,
-                  "deviationOld" : 530.3550036060063,
-                  "deviationCurrent" : 7749.601411292523,
-                  "vms" : 99,
-                  "callsOld" : 8000,
-                  "calls" : 8000,
-                  "tvalue" : -65.07720858654709
+                  "meanOld" : 4506.308065376964,
+                  "meanCurrent" : 55203.284042805884,
+                  "deviationOld" : 762.4407776631577,
+                  "deviationCurrent" : 8153.93179786424,
+                  "vms" : 498,
+                  "callsOld" : 40000,
+                  "calls" : 40000,
+                  "tvalue" : -138.14751596694438
                 },
                 "childs" : [ {
                   "call" : "ADDED",
@@ -1508,14 +1508,14 @@
           "otherKiekerPattern" : "public void org.apache.tomcat.util.modeler.Registry.unregisterComponent(javax.management.ObjectName)",
           "module" : "",
           "statistic" : {
-            "meanOld" : 50007.31197055992,
-            "meanCurrent" : 49179.641725655245,
-            "deviationOld" : 2422.8150686998856,
-            "deviationCurrent" : 3399.318122663144,
-            "vms" : 99,
-            "callsOld" : 280000,
-            "calls" : 248000,
-            "tvalue" : 1.9728024771171455
+            "meanOld" : 50296.33716062285,
+            "meanCurrent" : 49429.785725697984,
+            "deviationOld" : 2197.973411147755,
+            "deviationCurrent" : 3316.3068565503704,
+            "vms" : 494,
+            "callsOld" : 1400000,
+            "calls" : 1240000,
+            "tvalue" : 4.846250105304319
           },
           "childs" : [ {
             "call" : "ADDED",

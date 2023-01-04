@@ -1,6 +1,6 @@
 {
   "measurementConfig" : {
-    "vms" : 100,
+    "vms" : 500,
     "earlyStop" : false,
     "warmup" : 80,
     "iterations" : 80,
@@ -80,14 +80,14 @@
     "otherKiekerPattern" : "public void org.apache.tomcat.util.net.TestTLSClientHelloExtractor.testInputMalformed02()",
     "module" : "",
     "statistic" : {
-      "meanOld" : 946710.1963749998,
-      "meanCurrent" : 880599.3255624998,
-      "deviationOld" : 313131.75489371637,
-      "deviationCurrent" : 210739.10634604865,
-      "vms" : 100,
-      "callsOld" : 8000,
-      "calls" : 8000,
-      "tvalue" : 1.7515504368844226
+      "meanOld" : 862823.5702586208,
+      "meanCurrent" : 823217.731339651,
+      "deviationOld" : 210812.89414451248,
+      "deviationCurrent" : 149996.35588679026,
+      "vms" : 490,
+      "callsOld" : 40000,
+      "calls" : 40000,
+      "tvalue" : 3.3930490507459132
     },
     "childs" : [ {
       "call" : "org.apache.tomcat.util.net.TestTLSClientHelloExtractor#doTestInputNeedRead",
@@ -95,14 +95,14 @@
       "otherKiekerPattern" : "public void org.apache.tomcat.util.net.TestTLSClientHelloExtractor.doTestInputNeedRead(java.nio.ByteBuffer)",
       "module" : "",
       "statistic" : {
-        "meanOld" : 860265.5361875,
-        "meanCurrent" : 793445.2196875002,
-        "deviationOld" : 281457.2184342958,
-        "deviationCurrent" : 179706.6218913947,
-        "vms" : 100,
-        "callsOld" : 8000,
-        "calls" : 8000,
-        "tvalue" : 2.000997231783025
+        "meanOld" : 787667.3894989878,
+        "meanCurrent" : 744653.1127700615,
+        "deviationOld" : 188198.7060100242,
+        "deviationCurrent" : 124766.82629586375,
+        "vms" : 490,
+        "callsOld" : 40000,
+        "calls" : 40000,
+        "tvalue" : 4.223418262267782
       },
       "childs" : [ {
         "call" : "org.apache.tomcat.util.net.TLSClientHelloExtractor#<init>",
@@ -110,14 +110,14 @@
         "otherKiekerPattern" : "public new org.apache.tomcat.util.net.TLSClientHelloExtractor.<init>(java.nio.ByteBuffer)",
         "module" : "",
         "statistic" : {
-          "meanOld" : 752446.4060625,
-          "meanCurrent" : 680146.6570075761,
-          "deviationOld" : 259567.70472630125,
-          "deviationCurrent" : 146047.74094644416,
-          "vms" : 99,
-          "callsOld" : 8000,
-          "calls" : 8000,
-          "tvalue" : 2.42457227017237
+          "meanOld" : 686783.9071754562,
+          "meanCurrent" : 646326.2565580074,
+          "deviationOld" : 166559.66053633855,
+          "deviationCurrent" : 112044.77612282964,
+          "vms" : 490,
+          "callsOld" : 40000,
+          "calls" : 40000,
+          "tvalue" : 4.46642908222982
         },
         "childs" : [ {
           "call" : "org.apache.tomcat.util.net.TLSClientHelloExtractor#skipBytes",
@@ -125,14 +125,14 @@
           "otherKiekerPattern" : "private static java.lang.String org.apache.tomcat.util.net.TLSClientHelloExtractor.readProtocol(java.nio.ByteBuffer)",
           "module" : "",
           "statistic" : {
-            "meanOld" : 307639.02989690704,
-            "meanCurrent" : 262707.8406565657,
-            "deviationOld" : 86168.21380928658,
-            "deviationCurrent" : 35848.8774588632,
-            "vms" : 98,
-            "callsOld" : 8000,
-            "calls" : 8000,
-            "tvalue" : 4.7486521444618965
+            "meanOld" : 289621.53422193875,
+            "meanCurrent" : 263617.4895075758,
+            "deviationOld" : 52307.57731831808,
+            "deviationCurrent" : 43770.712540548375,
+            "vms" : 492,
+            "callsOld" : 40000,
+            "calls" : 40000,
+            "tvalue" : 8.45719370976846
           },
           "childs" : [ ]
         } ]
